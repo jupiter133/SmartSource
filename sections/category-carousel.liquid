@@ -9,7 +9,7 @@
       <a class="cat-tile" href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}{{ c.url }}{% endif %}" {{ block.shopify_attributes }}>
         <div class="cat-tile__img">
           {%- assign img = block.settings.image | default: c.featured_image -%}
-          {%- if img != blank -%}{{ img | image_url: width: 240 | image_tag: loading: 'lazy' }}{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+          {%- if img != blank -%}{{ img | image_url: width: 240 | image_tag: loading: 'lazy' }}{%- else -%}{% render 'device-art', title: block.settings.title, section: section, idx: forloop.index %}{%- endif -%}
         </div>
         <span>{{ block.settings.title | default: c.title }}</span>
       </a>

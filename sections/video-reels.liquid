@@ -10,7 +10,7 @@
           {{ block.settings.video | video_tag: muted: true, loop: true, playsinline: true, preload: 'metadata', image_size: '600x' }}
         {%- elsif block.settings.poster != blank -%}
           {{ block.settings.poster | image_url: width: 600 | image_tag: loading: 'lazy' }}
-        {%- else -%}{{ 'lifestyle-1' | placeholder_svg_tag }}{%- endif -%}
+        {%- else -%}<div class="reel__fill" style="--g: {% cycle '#d9c3b0,#7d6250', '#e8e8e8,#9a9aa5', '#9cbf8a,#c58b5a', '#c9b8f0,#f1d9e8', '#dcdcdc,#a7a2a8' %}"></div>{%- endif -%}
         {%- if block.settings.caption != blank -%}<span class="reel__caption">{{ block.settings.caption }}</span>{%- endif -%}
         <button class="reel__play" aria-label="Play">{% render 'icon', name: 'play' %}</button>
       </div>

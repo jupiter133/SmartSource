@@ -2,7 +2,7 @@
 <section class="page-width product" data-product>
   <div class="product__media">
     <div class="product__main-img">
-      {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 1200 | image_tag: loading: 'eager', data-main-img: '' }}{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+      {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 1200 | image_tag: loading: 'eager', data-main-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
     </div>
     {%- if product.media.size > 1 -%}
       <div class="thumbs">

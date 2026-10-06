@@ -98,6 +98,10 @@ body.mega-open .mega-overlay{opacity:1;visibility:visible}
 /* promo */
 .promo-banner{display:flex;align-items:flex-end;min-height:360px;border-radius:var(--radius);overflow:hidden;position:relative;background:var(--pb-bg);color:#fff}
 .promo-banner__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo-banner__chart{position:absolute;right:6%;top:12%;width:46%;max-width:520px}
+.device-art{width:100%;height:100%;max-height:100%}
+.cat-tile__img .device-art{width:90%}
+.hero__media .device-art{max-height:340px}
 .promo-banner__text{position:relative;padding:28px;max-width:420px}
 .promo-banner__text h2{font-size:1.6rem}
 .promo-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:-36px}
@@ -274,3 +278,4 @@ body.mega-open .mega-overlay{opacity:1;visibility:visible}
   .footer__cols{grid-template-columns:1fr 1fr}
   .post,.press{width:280px}
 }
+.reel__fill{width:100%;height:100%;background:linear-gradient(160deg,var(--g))}

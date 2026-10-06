@@ -39,7 +39,7 @@
   <div class="header__nav page-width">
     <ul class="nav-scroll">
       {%- for link in section.settings.main_menu.links -%}
-        {%- assign deal = false -%}{%- if forloop.first and section.settings.highlight_first -%}{%- assign deal = true -%}{%- endif -%}
+        {%- assign deal = false -%}{%- assign lt = link.title | downcase -%}{%- if section.settings.highlight_first and forloop.first and lt != 'home' -%}{%- assign deal = true -%}{%- endif -%}{%- if lt contains 'deal' -%}{%- assign deal = true -%}{%- endif -%}
         <li class="nav-item{% if link.links.size > 0 %} has-mega{% endif %}" data-nav-item>
           <a href="{{ link.url }}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}✦ {% endif %}{{ link.title }}</a>
           {%- if link.links.size > 0 -%}
@@ -72,7 +72,7 @@
                       {%- capture tint -%}{% cycle '#FDE7EC', '#F6E6FB', '#DDF9EC', '#DCF7F4', '#EEEAFD' %}{%- endcapture -%}
                       <a class="mega-tile" href="{{ child.url }}">
                         <span class="mega-tile__img" style="--tint: {{ tint }}">
-                          {%- if img != blank -%}{{ img | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '200px', alt: child.title }}{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+                          {%- if img != blank -%}{{ img | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '200px', alt: child.title }}{%- else -%}{% render 'device-art', title: child.title, section: section, idx: forloop.index %}{%- endif -%}
                         </span>
                         <span class="mega-tile__title">{{ child.title }}</span>
                       </a>

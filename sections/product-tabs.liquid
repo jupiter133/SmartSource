@@ -11,7 +11,7 @@
         {%- for product in block.settings.collection.products limit: section.settings.limit -%}
           {% render 'product-card', product: product, eyebrow: block.settings.eyebrow %}
         {%- else -%}
-          {%- for i in (1..5) -%}<div class="card card--placeholder">{{ 'product-3' | placeholder_svg_tag }}<p>Pick a collection</p></div>{%- endfor -%}
+          {%- for i in (1..5) -%}<div class="card card--placeholder">{% render 'device-art', title: 'phone', section: section, idx: forloop.index %}<p>Pick a collection in the editor</p></div>{%- endfor -%}
         {%- endfor -%}
       </div>
       <div class="section__foot">{% render 'carousel-arrows' %}</div>

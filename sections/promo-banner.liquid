@@ -1,6 +1,6 @@
 <section class="section page-width">
   <a class="promo-banner" href="{{ section.settings.link }}" style="--pb-bg: {{ section.settings.bg }}">
-    {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'promo-banner__img' }}{%- endif -%}
+    {%- if section.settings.image != blank -%}{{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'promo-banner__img' }}{%- else -%}<svg class="promo-banner__chart" viewBox="0 0 300 150" aria-hidden="true"><polyline points="0,140 80,60 120,100 190,30 230,70 290,5" fill="none" stroke="#39e639" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/></svg>{%- endif -%}
     <div class="promo-banner__text">
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.text }}</p>

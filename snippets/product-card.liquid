@@ -6,7 +6,7 @@
   <div class="card__img">
     {%- if product.featured_media -%}
       {{ product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '220px', alt: product.title }}
-    {%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+    {%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
   </div>
   {%- assign color_opt = product.options_with_values | where: 'name', 'Color' | first -%}
   {%- if color_opt -%}
