@@ -7,6 +7,9 @@
   {%- elsif tt contains 'console' or tt contains 'xbox' or tt contains 'playstation' or tt contains 'ps5' or tt contains 'nintendo' or tt contains 'gaming' or tt contains 'retro' -%}{%- assign k = 'console' -%}
   {%- elsif tt contains 'watch' or tt contains 'fitness' -%}{%- assign k = 'watch' -%}
   {%- elsif tt contains 'airpod' or tt contains 'audio' or tt contains 'headphone' or tt contains 'speaker' or tt contains 'accessor' -%}{%- assign k = 'audio' -%}
+  {%- elsif tt contains 'cable' or tt contains 'charger' -%}{%- assign k = 'cable' -%}
+  {%- elsif tt contains 'protector' -%}{%- assign k = 'protector' -%}
+  {%- elsif tt contains 'case' -%}{%- assign k = 'case' -%}
   {%- elsif tt contains 'deal' -%}{%- assign k = 'deal' -%}
   {%- else -%}{%- assign k = 'phone' -%}
   {%- endif -%}
@@ -18,6 +21,9 @@
     <linearGradient id="b{{ u }}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9ff5c8"/><stop offset="1" stop-color="#2bb3ff"/></linearGradient>
   </defs>
   {%- case k -%}
+  {%- when 'cable' -%}<path d="M30 30c0 40 60 20 60 60" fill="none" stroke="#1b1b22" stroke-width="5" stroke-linecap="round"/><rect x="22" y="14" width="16" height="22" rx="3" fill="url(#a{{ u }})"/><rect x="27" y="8" width="6" height="8" rx="1" fill="#c9c9d1"/><rect x="82" y="86" width="16" height="22" rx="3" fill="url(#b{{ u }})"/><rect x="87" y="106" width="6" height="6" rx="1" fill="#c9c9d1"/>
+  {%- when 'case' -%}<rect x="36" y="10" width="48" height="100" rx="12" fill="url(#a{{ u }})"/><rect x="42" y="16" width="36" height="88" rx="8" fill="#fff" opacity=".18"/><rect x="44" y="18" width="16" height="16" rx="5" fill="#1b1b22"/><circle cx="49" cy="23" r="3" fill="#555"/><circle cx="55" cy="29" r="3" fill="#555"/>
+  {%- when 'protector' -%}<rect x="44" y="18" width="40" height="92" rx="8" fill="#1b1b22"/><rect x="47" y="22" width="34" height="84" rx="5" fill="url(#b{{ u }})"/><rect x="34" y="10" width="40" height="92" rx="8" fill="#e8f4ff" fill-opacity=".75" stroke="#9fc8ff" stroke-width="1.5"/><path d="M42 22l24 24M42 34l16 16" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
   {%- when 'laptop' -%}<rect x="22" y="30" width="76" height="50" rx="4" fill="#1b1b22"/><rect x="26" y="34" width="68" height="42" fill="url(#a{{ u }})"/><path d="M12 82h96l-6 8H18z" fill="#c9c9d1"/>
   {%- when 'tablet' -%}<rect x="30" y="14" width="60" height="90" rx="7" fill="#1b1b22"/><rect x="34" y="18" width="52" height="82" rx="3" fill="url(#b{{ u }})"/>
   {%- when 'console' -%}<rect x="20" y="50" width="80" height="36" rx="18" fill="#1b1b22"/><circle cx="40" cy="68" r="7" fill="#555"/><circle cx="80" cy="64" r="4" fill="#FF4FA3"/><circle cx="88" cy="72" r="4" fill="#2bb3ff"/>
