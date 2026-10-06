@@ -3,6 +3,8 @@
   assign max_rows = section.settings.max_rows
 -%}
 {%- capture groups -%}
+  {%- comment -%} Guard: paginate errors if the buyback_device type is missing or not storefront-readable. {%- endcomment -%}
+  {%- if metaobjects.buyback_device.values.size > 0 -%}
   {%- paginate metaobjects.buyback_device.values by 250 -%}
     {%- for block in section.blocks -%}
       {%- assign wanted = block.settings.categories | downcase | split: ',' -%}
@@ -54,6 +56,7 @@
       {%- endif -%}
     {%- endfor -%}
   {%- endpaginate -%}
+  {%- endif -%}
 {%- endcapture -%}
 
 {%- if groups != blank or request.design_mode -%}
@@ -66,7 +69,7 @@
   {%- if groups != blank -%}
     <div class="sell-pay__grid">{{ groups }}</div>
   {%- else -%}
-    <p class="sell-pay__empty">No prices to show yet. In Shopify admin go to Content &gt; Metaobjects &gt; Buyback device, tick "Popular" on a few devices, and give them Buyback price entries. (Only you see this message in the theme editor.)</p>
+    <p class="sell-pay__empty">No prices to show yet. If you haven't set up the buyback data, run scripts/setup-sell-metaobjects.mjs (see README). Then in Shopify admin go to Content &gt; Metaobjects &gt; Buyback device, tick "Popular" on a few devices, and give them Buyback price entries. (Only you see this message in the theme editor.)</p>
   {%- endif -%}
 
   <div class="sell-pay__foot">

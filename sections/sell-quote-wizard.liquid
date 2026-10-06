@@ -178,7 +178,9 @@
       ],
       "devices": [
         {%- assign sep = false -%}
-        {%- paginate metaobjects.buyback_device.values by 250 -%}
+        {%- comment -%} Guard: paginate errors if the buyback_device type is missing or not storefront-readable. {%- endcomment -%}
+  {%- if metaobjects.buyback_device.values.size > 0 -%}
+  {%- paginate metaobjects.buyback_device.values by 250 -%}
           {%- for d in metaobjects.buyback_device.values -%}
             {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
             {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
@@ -191,6 +193,7 @@
             ]}
           {%- endfor -%}
         {%- endpaginate -%}
+  {%- endif -%}
       ]
     }
   </script>
