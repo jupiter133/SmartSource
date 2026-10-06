@@ -7,41 +7,73 @@
         "speed": 6
       },
       "blocks": {
-        "slide_1": {
+        "banner_1": {
           "type": "slide",
           "settings": {
-            "heading": "Meet the Smart Essentials.",
-            "subheading": "Great price. Trusted quality. Hand-picked by our experts.",
-            "button_label": "Gimme",
-            "art": "hero"
-          }
-        },
-        "slide_2": {
-          "type": "slide",
-          "settings": {
-            "heading": "iPhone, for way less than new.",
-            "subheading": "Professionally refurbished, 1-year warranty, free 30-day returns.",
-            "button_label": "Shop iPhone",
+            "full_banner": true,
+            "asset_image": "banner-iphone-like-new.webp",
+            "heading": "Like New. Half the Price. Certified refurbished iPhones, inspected and ready to go.",
+            "subheading": "",
+            "button_label": "",
             "button_link": "/collections/all/iphone",
-            "art": "phone",
-            "bg_style": "reverse"
+            "mobile_focus": 0
           }
         },
-        "slide_3": {
+        "banner_2": {
           "type": "slide",
           "settings": {
-            "heading": "Trade in. Trade up.",
-            "subheading": "Get an instant quote for your old device and put it toward your next one.",
-            "button_label": "Get my offer",
+            "full_banner": true,
+            "asset_image": "banner-iphone-17-lineup.webp",
+            "heading": "The iPhone 17 Lineup Is Here. Pro, Pro Max and 17e, refurbished and in stock.",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "/collections/all/iphone-17",
+            "mobile_focus": 0
+          }
+        },
+        "banner_3": {
+          "type": "slide",
+          "settings": {
+            "full_banner": true,
+            "asset_image": "banner-flagship-sale.webp",
+            "heading": "Flagship Tech. Smarter Prices. Every device is multi-point inspected and backed by a 12-month warranty and 30-day returns.",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "/collections/all?sort_by=price-ascending",
+            "mobile_focus": 0
+          }
+        },
+        "banner_4": {
+          "type": "slide",
+          "settings": {
+            "full_banner": true,
+            "asset_image": "banner-iphone-16-colours.webp",
+            "heading": "Pick Your Colour. iPhone 16 and 16 Plus in every shade.",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "/collections/all/iphone-16",
+            "mobile_focus": 0
+          }
+        },
+        "banner_5": {
+          "type": "slide",
+          "settings": {
+            "full_banner": true,
+            "asset_image": "banner-trade-in-up.webp",
+            "heading": "Trade In. Trade Up. Get cash for your old phone toward a certified iPhone.",
+            "subheading": "",
+            "button_label": "",
             "button_link": "/pages/sell-your-device",
-            "art": "deal"
+            "mobile_focus": 0
           }
         }
       },
       "block_order": [
-        "slide_1",
-        "slide_2",
-        "slide_3"
+        "banner_1",
+        "banner_2",
+        "banner_3",
+        "banner_4",
+        "banner_5"
       ]
     },
     "categories": {

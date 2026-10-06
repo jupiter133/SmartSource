@@ -7,6 +7,17 @@
         {%- when 'reverse' -%}{%- assign bg = 'var(--grad-rev)' -%}
         {%- else -%}{%- assign bg = 'var(--grad)' -%}
       {%- endcase -%}
+      {%- if block.settings.full_banner and block.settings.image != blank or block.settings.full_banner and block.settings.asset_image != blank -%}
+        {%- if forloop.first -%}{%- assign load = 'eager' -%}{%- else -%}{%- assign load = 'lazy' -%}{%- endif -%}
+        <a class="hero-banner" id="HeroSlide-{{ block.id }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ slides.size }}" href="{{ block.settings.button_link | default: routes.all_products_collection_url }}" style="--focus-x: {{ block.settings.mobile_focus }}%" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1920 | image_tag: loading: load, sizes: '100vw', widths: '750, 1100, 1500, 1920', alt: block.settings.heading }}
+          {%- else -%}
+            <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.heading | escape }}" width="1920" height="720" loading="{{ load }}"{% if forloop.first %} fetchpriority="high"{% endif %}>
+          {%- endif -%}
+        </a>
+        {%- continue -%}
+      {%- endif -%}
       <div class="hero" id="HeroSlide-{{ block.id }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ slides.size }}" style="--hero-bg: {{ bg }}; --hero-ink: {{ block.settings.ink }}" {{ block.shopify_attributes }}>
         <div class="hero__inner">
           <div class="hero__text">
@@ -47,6 +58,9 @@
   { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
   { "type": "url", "id": "button_link", "label": "Button link" },
   { "type": "image_picker", "id": "image", "label": "Image (transparent PNG works best)" },
+  { "type": "checkbox", "id": "full_banner", "label": "Image already has text (show it full-width)", "default": false, "info": "For finished banners (1920×720). Hides the heading and button below and makes the whole banner a link. The heading is still used as alt text." },
+  { "type": "text", "id": "asset_image", "label": "Theme asset banner (advanced)", "info": "Filename in the theme's assets folder. Used only if no image is picked above." },
+  { "type": "range", "id": "mobile_focus", "label": "Mobile crop: keep this side", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 0, "info": "0% keeps the left edge (where the text usually is)." },
   { "type": "select", "id": "art", "label": "Illustration (when no image)", "options": [
     {"value":"hero","label":"Device lineup"},{"value":"phone","label":"Phone"},{"value":"laptop","label":"Laptop"},{"value":"tablet","label":"Tablet"},{"value":"console","label":"Console"},{"value":"watch","label":"Watch"},{"value":"deal","label":"Laptop + phone"}
   ], "default": "hero" },

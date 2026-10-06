@@ -896,3 +896,16 @@ shopify-payment-terms{font-size:13px}
 .promo-cards--flat .promo-card__img{aspect-ratio:auto;height:260px}
 @media (max-width:749px){.promo-cards--flat .promo-card__img{height:200px}}
 .image-banner--art .device-art{filter:drop-shadow(0 18px 30px rgb(0 0 0 / .45)) brightness(1.15)}
+
+/* full-image hero banners (text baked into the image) */
+.hero-banner{flex:0 0 100%;scroll-snap-align:start;display:block;position:relative;line-height:0;background:#eee}
+.hero-banner img{width:100%;height:auto;aspect-ratio:1920/720;object-fit:cover}
+.hero-banner:focus-visible{outline:3px solid var(--c-ink);outline-offset:-3px}
+.hero-slider:has(.hero-banner) .hero-slider__controls{bottom:12px}
+@media (max-width:749px){
+  .hero-banner img{aspect-ratio:3/2;object-position:var(--focus-x,0%) 50%}
+  .hero-slider:has(.hero-banner) .hero-slider__controls{position:static;padding:10px 0 4px}
+  .hero-slider:has(.hero-banner) .hero-slider__dots{background:rgb(0 0 0 / .08)}
+  .hero-slider:has(.hero-banner) .hero-slider__dots .why-dot{background:#c9c9d1}.hero-slider:has(.hero-banner) .hero-slider__dots .why-dot.is-active{background:var(--c-ink)}
+  .hero-slider:has(.hero-banner) .hero-slider__arrow{background:#efeff2}
+}
