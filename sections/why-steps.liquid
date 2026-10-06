@@ -1,0 +1,42 @@
+<section class="section page-width why-steps">
+  <div class="why-head">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<p class="muted">{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+  <ol class="why-steps__list">
+    {%- for block in section.blocks -%}
+      <li class="why-step" {{ block.shopify_attributes }}>
+        <span class="why-step__icon">{% render 'icon', name: block.settings.icon %}</span>
+        <span class="why-step__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
+
+{% schema %}
+{
+  "name": "Why refurbished: steps",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How a device earns a spot in our store" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Not every device makes it. The ones that do go through this." }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [
+        {"value":"lock","label":"Lock"},{"value":"inspect","label":"Inspect"},{"value":"battery","label":"Battery"},{"value":"phone","label":"Screen"},{"value":"shield","label":"Shield"},{"value":"award","label":"Award"},{"value":"check","label":"Check"},{"value":"list","label":"Checklist"},{"value":"truck","label":"Shipping"}
+      ], "default": "inspect" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Inspected" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Every button, sensor and port tested." }
+    ] }
+  ],
+  "presets": [{ "name": "Why refurbished: steps", "blocks": [
+    { "type": "step", "settings": { "icon": "lock", "title": "Checked for theft", "text": "IMEI and serial checked. Blacklisted, stolen or account-locked devices get rejected." } },
+    { "type": "step", "settings": { "icon": "inspect", "title": "Tested end to end", "text": "Up to 100 checks: screen, cameras, speakers, buttons, Face ID, charging, signal." } },
+    { "type": "step", "settings": { "icon": "battery", "title": "Repaired with quality parts", "text": "Anything that fails gets fixed. Batteries below our health threshold get replaced." } },
+    { "type": "step", "settings": { "icon": "shield", "title": "Wiped and reset", "text": "Previous owner's data is fully erased and the device is restored to factory settings." } },
+    { "type": "step", "settings": { "icon": "award", "title": "Graded honestly", "text": "Cleaned, then graded on looks only. Every grade works like new." } }
+  ] }]
+}
+{% endschema %}

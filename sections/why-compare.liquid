@@ -1,0 +1,67 @@
+<section class="section page-width why-compare">
+  <div class="why-head">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<p class="muted">{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+  <div class="why-compare__scroll">
+    <table class="why-table">
+      <thead>
+        <tr>
+          <th scope="col"><span class="visually-hidden">Feature</span></th>
+          <th scope="col">{{ section.settings.col_new }}</th>
+          <th scope="col" class="is-us">{{ section.settings.col_us }}</th>
+          <th scope="col">{{ section.settings.col_used }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          <tr {{ block.shopify_attributes }}>
+            <th scope="row">{{ block.settings.feature }}</th>
+            {%- assign cells = block.settings.new | append: '|' | append: block.settings.us | append: '|' | append: block.settings.used | split: '|' -%}
+            {%- for c in cells -%}
+              {%- assign v = c | strip -%}
+              <td{% if forloop.index == 2 %} class="is-us"{% endif %}>
+                {%- case v -%}
+                  {%- when 'yes' -%}<span class="why-yes" aria-label="Yes">{% render 'icon', name: 'check' %}</span>
+                  {%- when 'no' -%}<span class="why-no" aria-label="No">✕</span>
+                  {%- else -%}{{ v }}
+                {%- endcase -%}
+              </td>
+            {%- endfor -%}
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why refurbished: compare",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New vs refurbished vs used" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Refurbished gets you the protection of new at a used price." },
+    { "type": "text", "id": "col_new", "label": "Column 1", "default": "Brand new" },
+    { "type": "text", "id": "col_us", "label": "Column 2 (highlighted)", "default": "Refurbished by us" },
+    { "type": "text", "id": "col_used", "label": "Column 3", "default": "Used / marketplace" },
+    { "type": "paragraph", "content": "In each row, type yes or no to show a check or a cross. Anything else shows as text." }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "feature", "label": "Feature", "default": "Warranty" },
+      { "type": "text", "id": "new", "label": "Column 1", "default": "yes" },
+      { "type": "text", "id": "us", "label": "Column 2", "default": "yes" },
+      { "type": "text", "id": "used", "label": "Column 3", "default": "no" }
+    ] }
+  ],
+  "presets": [{ "name": "Why refurbished: compare", "blocks": [
+    { "type": "row", "settings": { "feature": "Price", "new": "Full price", "us": "Up to 50% less", "used": "Cheap" } },
+    { "type": "row", "settings": { "feature": "Tested by technicians", "new": "yes", "us": "yes", "used": "no" } },
+    { "type": "row", "settings": { "feature": "Warranty", "new": "1 year", "us": "1 year", "used": "no" } },
+    { "type": "row", "settings": { "feature": "Free returns", "new": "yes", "us": "30 days", "used": "no" } },
+    { "type": "row", "settings": { "feature": "Data wiped & unlocked", "new": "yes", "us": "yes", "used": "Hope so" } },
+    { "type": "row", "settings": { "feature": "Not stolen or blacklisted", "new": "yes", "us": "Checked", "used": "Risky" } },
+    { "type": "row", "settings": { "feature": "Better for the planet", "new": "no", "us": "yes", "used": "yes" } }
+  ] }]
+}
+{% endschema %}

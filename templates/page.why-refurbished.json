@@ -1,0 +1,333 @@
+{
+  "sections": {
+    "hero": {
+      "type": "why-hero",
+      "settings": {},
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "Up to 50%",
+            "label": "Less than buying new"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "1 year",
+            "label": "Warranty on every device"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "30 days",
+            "label": "Free returns"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "100-point",
+            "label": "Quality inspection"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ]
+    },
+    "compare": {
+      "type": "why-compare",
+      "settings": {},
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "Price",
+            "new": "Full price",
+            "us": "Up to 50% less",
+            "used": "Cheap"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Tested by technicians",
+            "new": "yes",
+            "us": "yes",
+            "used": "no"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Warranty",
+            "new": "1 year",
+            "us": "1 year",
+            "used": "no"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Free returns",
+            "new": "yes",
+            "us": "30 days",
+            "used": "no"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Data wiped & unlocked",
+            "new": "yes",
+            "us": "yes",
+            "used": "Hope so"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Not stolen or blacklisted",
+            "new": "yes",
+            "us": "Checked",
+            "used": "Risky"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Better for the planet",
+            "new": "no",
+            "us": "yes",
+            "used": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7"
+      ]
+    },
+    "steps": {
+      "type": "why-steps",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "lock",
+            "title": "Checked for theft",
+            "text": "IMEI and serial checked. Blacklisted, stolen or account-locked devices get rejected."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "inspect",
+            "title": "Tested end to end",
+            "text": "Up to 100 checks: screen, cameras, speakers, buttons, Face ID, charging, signal."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "battery",
+            "title": "Repaired with quality parts",
+            "text": "Anything that fails gets fixed. Batteries below our health threshold get replaced."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "icon": "shield",
+            "title": "Wiped and reset",
+            "text": "Previous owner's data is fully erased and the device is restored to factory settings."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "icon": "award",
+            "title": "Graded honestly",
+            "text": "Cleaned, then graded on looks only. Every grade works like new."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ]
+    },
+    "grades": {
+      "type": "why-grades",
+      "settings": {},
+      "blocks": {
+        "grade_1": {
+          "type": "grade",
+          "settings": {
+            "name": "Premium"
+          }
+        },
+        "grade_2": {
+          "type": "grade",
+          "settings": {
+            "name": "Excellent",
+            "featured": true
+          }
+        },
+        "grade_3": {
+          "type": "grade",
+          "settings": {
+            "name": "Good"
+          }
+        },
+        "grade_4": {
+          "type": "grade",
+          "settings": {
+            "name": "Fair"
+          }
+        }
+      },
+      "block_order": [
+        "grade_1",
+        "grade_2",
+        "grade_3",
+        "grade_4"
+      ]
+    },
+    "promise": {
+      "type": "promise",
+      "settings": {
+        "heading": "Our Promise: Refurbished without the risk",
+        "button_label": "",
+        "link": ""
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "text": "Professionally refurbished"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Questions people ask before buying refurbished",
+        "schema": true
+      },
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Is refurbished the same as used?",
+            "answer": "<p>No. Used means sold as-is by whoever had it. Refurbished means our technicians tested it, fixed anything that failed, wiped it, graded it and put a 1-year warranty on it.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Will the battery be good?",
+            "answer": "<p>Yes. Every battery is tested, and any battery below our health threshold is replaced before the device goes on sale.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it unlocked?",
+            "answer": "<p>Yes. Our phones are carrier unlocked and free of any iCloud or Google account lock, so you can use any carrier.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "What if something goes wrong?",
+            "answer": "<p>You have 30 days to return it for free, for any reason. After that, our 1-year warranty covers any defect that isn't caused by damage.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Does it come with a charger?",
+            "answer": "<p>Each device ships with a compatible charging cable. Check the product page for what's in the box.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Why is it so much cheaper than new?",
+            "answer": "<p>You skip the new-in-box markup. The device has had one owner before you, and that's it. It's tested and backed the same way.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6"
+      ]
+    },
+    "cta": {
+      "type": "sell-cta",
+      "settings": {
+        "heading": "Ready to save?",
+        "text": "Tested, warrantied, and up to 50% less than new.",
+        "button_label": "Shop refurbished",
+        "button_link": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "compare",
+    "steps",
+    "grades",
+    "promise",
+    "faq",
+    "cta"
+  ]
+}
