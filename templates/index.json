@@ -228,10 +228,128 @@
         "b",
         "c"
       ]
+    },
+    "trust": {
+      "type": "trust-strip",
+      "blocks": {
+        "a": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "Backed by 12-Month Warranty"
+          }
+        },
+        "b": {
+          "type": "item",
+          "settings": {
+            "icon": "cash",
+            "text": "30-Day Money-Back Guarantee"
+          }
+        },
+        "c": {
+          "type": "item",
+          "settings": {
+            "icon": "percent",
+            "text": "Up to 70% Off Retail Prices"
+          }
+        },
+        "d": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "text": "90+ Point Certified Inspection"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "toptech": {
+      "type": "top-tech",
+      "blocks": {
+        "t0": {
+          "type": "card",
+          "settings": {
+            "label": "IPHONES",
+            "title": "Seamless. Secure. Simply iPhone.",
+            "bg": "#EDEDEF",
+            "link": "/collections/all/iphone"
+          }
+        },
+        "t1": {
+          "type": "card",
+          "settings": {
+            "label": "ANDROID",
+            "title": "Explore Top Android Picks.",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/android"
+          }
+        },
+        "t2": {
+          "type": "card",
+          "settings": {
+            "label": "IPADS",
+            "title": "Work Hard. Play Smart.",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/ipad"
+          }
+        },
+        "t3": {
+          "type": "card",
+          "settings": {
+            "label": "MACBOOKS",
+            "title": "Stay Connected, Stay Active",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/macbook"
+          }
+        },
+        "t4": {
+          "type": "card",
+          "settings": {
+            "label": "AUDIO",
+            "title": "Certified Beats, Everyday Vibes",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/audio"
+          }
+        },
+        "t5": {
+          "type": "card",
+          "settings": {
+            "label": "CONSOLES",
+            "title": "Game On For Less.",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/consoles"
+          }
+        },
+        "t6": {
+          "type": "card",
+          "settings": {
+            "label": "WATCHES",
+            "title": "Time, Upgraded.",
+            "bg": "#F4F4F5",
+            "link": "/collections/all/smartwatches"
+          }
+        }
+      },
+      "block_order": [
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ]
     }
   },
   "order": [
     "hero",
+    "trust",
+    "toptech",
     "categories",
     "trade",
     "cards",

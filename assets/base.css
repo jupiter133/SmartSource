@@ -89,6 +89,27 @@ body.mega-open .mega-overlay{opacity:1;visibility:visible}
 .hero__text p{margin:0 0 20px}
 .hero__media img,.hero__media svg{width:100%;max-height:340px;object-fit:contain}
 
+/* trust strip */
+.trust-strip{background:#fff;border-bottom:1px solid #e8e8ec;overflow:hidden}
+.trust-strip__inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:14px 20px;max-width:1800px;margin:0 auto}
+.trust-item{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500;white-space:nowrap}
+.trust-dup{display:none}
+.trust-item__icon{width:32px;height:32px;border-radius:99px;border:1px solid #e1e1e6;display:grid;place-items:center;flex-shrink:0}
+
+/* top tech */
+.top-tech__head{text-align:center;margin-bottom:28px}
+.eyebrow-grad{margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.04em;background:linear-gradient(90deg,#2f3a8f,#8a3cc2,#d4256a);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.top-tech__head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;margin:0}
+.top-tech__track{padding:4px 20px 8px;gap:14px}
+.tech-card{width:min(368px,82vw);aspect-ratio:368/376;background:var(--card-bg);border:1px solid #e3e3e8;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 24px 0;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.tech-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #0000001a}
+.tech-card__pill{background:linear-gradient(90deg,#7a3cff,#e8743b);color:#fff;font-size:12px;font-weight:600;padding:2px 7px;border-radius:4px}
+.tech-card h3{font-size:1.3rem;font-weight:600;margin:10px 0 0;line-height:1.15;text-wrap:balance}
+.tech-card__img{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;padding-top:16px;min-height:0}
+.tech-card__img img,.tech-card__img svg{max-height:100%;width:auto;max-width:90%;object-fit:contain;transition:transform .35s}
+.tech-card:hover .tech-card__img img,.tech-card:hover .tech-card__img svg{transform:scale(1.05)}
+.tech-card__img .device-art{width:75%;height:auto}
+
 /* carousel */
 .carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 8px}
 .carousel::-webkit-scrollbar{display:none}
@@ -318,6 +339,10 @@ shopify-payment-terms{font-size:13px}
 /* mobile */
 @media (max-width:749px){
   .header__utility,.header__text-link{display:none}
+  .trust-strip__inner.is-marquee{display:flex;width:max-content;gap:36px;animation:marquee 22s linear infinite}
+  @keyframes marquee{to{transform:translateX(calc(-50% - 18px))}}
+  .is-marquee .trust-dup{display:flex}
+  @media (prefers-reduced-motion:reduce){.trust-strip__inner.is-marquee{animation:none}}
   .header__main{flex-wrap:wrap;gap:8px}
   .header__burger{display:inline-flex}
   .header__logo{flex:1}
