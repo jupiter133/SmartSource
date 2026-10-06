@@ -40,6 +40,62 @@
             "icon": "shield",
             "title": "Data wiped"
           }
+        },
+        "b6": {
+          "type": "inspect",
+          "settings": {
+            "icon": "lock",
+            "title": "Face ID & Touch ID"
+          }
+        },
+        "b7": {
+          "type": "inspect",
+          "settings": {
+            "icon": "list",
+            "title": "Speakers & mic"
+          }
+        },
+        "b8": {
+          "type": "inspect",
+          "settings": {
+            "icon": "check",
+            "title": "Wi-Fi & Bluetooth"
+          }
+        },
+        "b9": {
+          "type": "inspect",
+          "settings": {
+            "icon": "unlock",
+            "title": "Carrier unlocked"
+          }
+        },
+        "b10": {
+          "type": "inspect",
+          "settings": {
+            "icon": "inspect",
+            "title": "IMEI & theft check"
+          }
+        },
+        "b11": {
+          "type": "inspect",
+          "settings": {
+            "icon": "battery",
+            "title": "Charging port"
+          }
+        },
+        "b12": {
+          "type": "inspect",
+          "settings": {
+            "icon": "star",
+            "title": "Deep cleaned"
+          }
+        },
+        "b13": {
+          "type": "inspect",
+          "settings": {
+            "icon": "award",
+            "title": "1-year warranty"
+          }
         }
       },
       "block_order": [
@@ -47,7 +103,15 @@
         "b2",
         "b3",
         "b4",
-        "b5"
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10",
+        "b11",
+        "b12",
+        "b13"
       ]
     },
     "promise": {
