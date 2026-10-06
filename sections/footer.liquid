@@ -39,7 +39,8 @@
     <div class="footer__bottom">
       <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
       <div class="footer__social">
-        {%- for s in 'instagram,tiktok,youtube,linkedin,facebook,x' | split: ',' -%}
+        {%- assign socials = 'instagram,tiktok,youtube,linkedin,facebook,x' | split: ',' -%}
+        {%- for s in socials -%}
           {%- assign key = 'social_' | append: s -%}
           {%- if section.settings[key] != blank -%}<a href="{{ section.settings[key] }}" aria-label="{{ s }}" target="_blank" rel="noopener">{% render 'icon', name: s %}</a>{%- endif -%}
         {%- endfor -%}
