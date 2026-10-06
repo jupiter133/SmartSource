@@ -63,6 +63,19 @@
     start();
   });
 
+  // Collection filters: apply on change, drop empty fields, slide-out drawer on mobile
+  $$('[data-filter-form]').forEach(form => {
+    const clean = () => $$('input, select', form).forEach(el => { if (!el.value || (el.type === 'checkbox' && !el.checked)) el.disabled = true; });
+    form.addEventListener('submit', clean);
+    const send = () => { clean(); form.submit(); };
+    form.addEventListener('change', e => { if (e.target.matches('input[type=checkbox], [data-autosubmit]')) send(); });
+    const drawer = $('[data-filter-drawer]', form), opener = $('[data-filter-open]', form);
+    const setOpen = open => { form.classList.toggle('filters-open', open); opener?.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; if (open) $('summary', drawer)?.focus(); };
+    opener?.addEventListener('click', () => setOpen(true));
+    $$('[data-filter-close]', form).forEach(b => b.addEventListener('click', () => { setOpen(false); opener?.focus(); }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && form.classList.contains('filters-open')) { setOpen(false); opener?.focus(); } });
+  });
+
   // Tabs
   $$('[data-tabs]').forEach(root => {
     $$('[data-tab]', root).forEach(tab => tab.addEventListener('click', () => {

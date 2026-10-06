@@ -1,1 +1,95 @@
-{ "sections": { "main": { "type": "main-collection", "settings": {} } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {},
+      "blocks": {
+        "chip_1": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone",
+            "link": "/collections/all/iphone"
+          }
+        },
+        "chip_2": {
+          "type": "chip",
+          "settings": {
+            "label": "Samsung",
+            "link": "/collections/all/samsung"
+          }
+        },
+        "chip_3": {
+          "type": "chip",
+          "settings": {
+            "label": "Google Pixel",
+            "link": "/collections/all/pixel"
+          }
+        },
+        "chip_4": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad",
+            "link": "/collections/all/ipad"
+          }
+        },
+        "chip_5": {
+          "type": "chip",
+          "settings": {
+            "label": "MacBook",
+            "link": "/collections/all/macbook"
+          }
+        },
+        "chip_6": {
+          "type": "chip",
+          "settings": {
+            "label": "Laptops",
+            "link": "/collections/all/laptops"
+          }
+        },
+        "chip_7": {
+          "type": "chip",
+          "settings": {
+            "label": "Consoles",
+            "link": "/collections/all/consoles"
+          }
+        },
+        "chip_8": {
+          "type": "chip",
+          "settings": {
+            "label": "Smartwatches",
+            "link": "/collections/all/smartwatches"
+          }
+        },
+        "chip_9": {
+          "type": "chip",
+          "settings": {
+            "label": "Audio",
+            "link": "/collections/all/audio"
+          }
+        },
+        "chip_10": {
+          "type": "chip",
+          "settings": {
+            "label": "Accessories",
+            "link": "/collections/all/accessories"
+          }
+        }
+      },
+      "block_order": [
+        "chip_1",
+        "chip_2",
+        "chip_3",
+        "chip_4",
+        "chip_5",
+        "chip_6",
+        "chip_7",
+        "chip_8",
+        "chip_9",
+        "chip_10"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

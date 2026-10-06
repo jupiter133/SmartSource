@@ -1,34 +1,193 @@
-<section class="page-width section">
-  <h1>{{ collection.title }}</h1>
-  {%- if collection.description != blank -%}<div class="rte muted">{{ collection.description }}</div>{%- endif -%}
+{%- liquid
+  assign tag_title = ''
+  if current_tags.size > 0
+    assign tag_title = current_tags.first | replace: '-', ' ' | capitalize
+    for b in section.blocks
+      assign bh = b.settings.link | split: '/' | last | split: '?' | first
+      if current_tags contains bh
+        assign tag_title = b.settings.label
+      endif
+    endfor
+  endif
+  if tag_title != blank
+    assign page_heading = section.settings.prefix | append: ' ' | append: tag_title
+  elsif collection.handle == 'all'
+    assign page_heading = section.settings.all_title
+  else
+    assign page_heading = section.settings.prefix | append: ' ' | append: collection.title
+  endif
+  assign page_heading = page_heading | strip
+-%}
+<div class="coll page-width" data-collection>
+  <nav class="coll-crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span>
+    {%- if tag_title != blank -%}
+      <a href="{{ collection.url }}">{{ collection.title }}</a><span aria-hidden="true">›</span><span aria-current="page">{{ tag_title }}</span>
+    {%- else -%}
+      <span aria-current="page">{{ collection.title }}</span>
+    {%- endif -%}
+  </nav>
+
+  {%- if section.settings.show_trust -%}
+    <ul class="coll-trust">
+      <li>{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_1 }}</span></li>
+      <li>{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></li>
+      <li>{% render 'icon', name: 'swap' %}<span>{{ section.settings.trust_3 }}</span></li>
+      <li>{% render 'icon', name: 'heart' %}<span>{{ section.settings.trust_4 }}</span></li>
+    </ul>
+  {%- endif -%}
+
+  <header class="coll-head">
+    <h1>{{ page_heading }}</h1>
+    {%- if collection.description != blank and tag_title == blank -%}
+      <div class="coll-head__desc rte">{{ collection.description }}</div>
+    {%- elsif section.settings.default_desc != blank -%}
+      <p class="coll-head__desc">{{ section.settings.default_desc }}</p>
+    {%- endif -%}
+  </header>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="coll-chips" role="list">
+      {%- for b in section.blocks -%}
+        {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
+        <a role="listitem" class="coll-chip{% if current_tags contains bh %} is-active{% endif %}" href="{{ b.settings.link }}"{% if current_tags contains bh %} aria-current="page"{% endif %} {{ b.shopify_attributes }}>{{ b.settings.label }}</a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
   {%- paginate collection.products by section.settings.per_page -%}
-  <form class="filters" data-filters>
-    {%- for filter in collection.filters -%}
-      <details class="filter">
-        <summary>{{ filter.label }}</summary>
-        <div class="filter__body">
-          {%- case filter.type -%}
-          {%- when 'list', 'boolean' -%}
-            {%- for v in filter.values -%}
-              <label><input type="checkbox" name="{{ v.param_name }}" value="{{ v.value }}" {% if v.active %}checked{% endif %} {% if v.count == 0 and v.active == false %}disabled{% endif %}> {{ v.label }} <span class="muted">({{ v.count }})</span></label>
-            {%- endfor -%}
-          {%- when 'price_range' -%}
-            <input type="number" name="{{ filter.min_value.param_name }}" placeholder="Min" value="{{ filter.min_value.value | money_without_currency | remove: ',' }}">
-            <input type="number" name="{{ filter.max_value.param_name }}" placeholder="Max" value="{{ filter.max_value.value | money_without_currency | remove: ',' }}">
-          {%- endcase -%}
+  <form class="coll-layout" action="{{ request.path }}" method="get" data-filter-form>
+    <aside class="coll-filters" id="CollFilters" data-filter-drawer aria-label="Filters">
+      <div class="coll-filters__top">
+        <h2>Filters</h2>
+        <button type="button" class="icon-btn coll-filters__close" data-filter-close aria-label="Close filters">{% render 'icon', name: 'close' %}</button>
+      </div>
+      {%- assign active_count = 0 -%}
+      {%- for filter in collection.filters -%}
+        {%- assign active_count = active_count | plus: filter.active_values.size -%}
+        {%- if filter.type == 'price_range' and filter.min_value.value != nil or filter.type == 'price_range' and filter.max_value.value != nil -%}{%- assign active_count = active_count | plus: 1 -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if active_count > 0 -%}
+        <div class="coll-active">
+          {%- for filter in collection.filters -%}
+            {%- for v in filter.active_values -%}<a class="coll-active__pill" href="{{ v.url_to_remove }}">{{ v.label }} <span aria-hidden="true">×</span><span class="visually-hidden">Remove filter</span></a>{%- endfor -%}
+            {%- if filter.type == 'price_range' -%}
+              {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+                <a class="coll-active__pill" href="{{ filter.url_to_remove }}">{{ filter.min_value.value | default: 0 | money_without_trailing_zeros }}–{{ filter.max_value.value | default: filter.range_max | money_without_trailing_zeros }} <span aria-hidden="true">×</span><span class="visually-hidden">Remove filter</span></a>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <a class="coll-active__clear" href="{{ request.path }}{% if collection.sort_by != blank %}?sort_by={{ collection.sort_by }}{% endif %}">Clear all</a>
         </div>
-      </details>
-    {%- endfor -%}
-    <select name="sort_by" aria-label="Sort">
-      {%- for o in collection.sort_options -%}<option value="{{ o.value }}" {% if o.value == collection.sort_by %}selected{% endif %}>{{ o.name }}</option>{%- endfor -%}
-    </select>
+      {%- endif -%}
+      {%- for filter in collection.filters -%}
+        <details class="coll-filter"{% if forloop.index <= section.settings.open_filters or filter.active_values.size > 0 %} open{% endif %}>
+          <summary>{{ filter.label }}<span class="coll-filter__plus" aria-hidden="true"></span></summary>
+          <div class="coll-filter__body">
+            {%- case filter.type -%}
+              {%- when 'list', 'boolean' -%}
+                {%- for v in filter.values -%}
+                  <label class="coll-check{% if v.count == 0 and v.active == false %} is-empty{% endif %}">
+                    <input type="checkbox" name="{{ v.param_name }}" value="{{ v.value }}"{% if v.active %} checked{% endif %}{% if v.count == 0 and v.active == false %} disabled{% endif %}>
+                    {%- if filter.label contains 'olor' or filter.label contains 'olour' -%}<span class="swatch" data-swatch="{{ v.value | escape }}"></span>{%- endif -%}
+                    <span class="coll-check__label">{{ v.label }}</span><span class="coll-check__count">{{ v.count }}</span>
+                  </label>
+                {%- endfor -%}
+              {%- when 'price_range' -%}
+                <div class="coll-price">
+                  <label><span>Min</span><input type="number" inputmode="numeric" min="0" name="{{ filter.min_value.param_name }}" placeholder="0" value="{% if filter.min_value.value %}{{ filter.min_value.value | divided_by: 100 }}{% endif %}"></label>
+                  <span aria-hidden="true">–</span>
+                  <label><span>Max</span><input type="number" inputmode="numeric" min="0" name="{{ filter.max_value.param_name }}" placeholder="{{ filter.range_max | divided_by: 100 }}" value="{% if filter.max_value.value %}{{ filter.max_value.value | divided_by: 100 }}{% endif %}"></label>
+                </div>
+                <button type="submit" class="btn btn--sm btn--dark">Apply</button>
+            {%- endcase -%}
+          </div>
+        </details>
+      {%- else -%}
+        <p class="coll-filters__none">Turn on filters in Shopify admin: Apps &gt; Search &amp; Discovery &gt; Filters. Add Price, Color, Storage and Condition.</p>
+      {%- endfor -%}
+      <div class="coll-filters__foot">
+        <button type="submit" class="btn btn--dark btn--block">Show {{ collection.products_count }} result{% if collection.products_count != 1 %}s{% endif %}</button>
+      </div>
+    </aside>
+    <div class="coll-filters__scrim" data-filter-close></div>
+
+    <div class="coll-main">
+      <div class="coll-bar">
+        <p class="coll-bar__count">{{ collection.products_count }} product{% if collection.products_count != 1 %}s{% endif %}</p>
+        {%- if section.settings.tradein_label != blank -%}
+          <a class="coll-tradein" href="{{ section.settings.tradein_link | default: '/pages/sell-your-device' }}">{% render 'icon', name: 'swap' %}{{ section.settings.tradein_label }} <span aria-hidden="true">›</span></a>
+        {%- endif -%}
+        <div class="coll-bar__right">
+          <button type="button" class="coll-bar__filter" data-filter-open aria-controls="CollFilters" aria-expanded="false">{% render 'icon', name: 'list' %}Filter{% if active_count > 0 %} <span class="coll-bar__badge">{{ active_count }}</span>{% endif %}</button>
+          <label class="coll-sort"><span class="visually-hidden">Sort by</span>
+            <select name="sort_by" data-autosubmit>
+              {%- for o in collection.sort_options -%}<option value="{{ o.value }}"{% if o.value == collection.sort_by %} selected{% endif %}>{{ o.name }}</option>{%- endfor -%}
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="coll-grid">
+        {%- if section.settings.show_promo -%}{%- unless paginate.current_page > 1 -%}
+          <div class="coll-promo" style="--promo-bg: {{ section.settings.promo_bg }}">
+            <span class="coll-promo__icon">{% render 'icon', name: 'shield' %}</span>
+            <p class="coll-promo__title">{{ section.settings.promo_title }}</p>
+            <p class="coll-promo__text">{{ section.settings.promo_text }}</p>
+          </div>
+        {%- endunless -%}{%- endif -%}
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <div class="coll-empty">
+            <p><strong>No devices match those filters.</strong></p>
+            <a class="btn btn--dark btn--sm" href="{{ request.path }}">Clear filters</a>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="coll-pages" aria-label="Pagination">
+          {%- if paginate.previous -%}<a class="coll-pages__btn" href="{{ paginate.previous.url }}" aria-label="Previous page">{% render 'icon', name: 'chev-left' %}</a>{%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a class="coll-pages__num" href="{{ part.url }}">{{ part.title }}</a>
+            {%- elsif part.title == paginate.current_page -%}<span class="coll-pages__num is-current" aria-current="page">{{ part.title }}</span>
+            {%- else -%}<span class="coll-pages__gap">{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}<a class="coll-pages__btn" href="{{ paginate.next.url }}" aria-label="Next page">{% render 'icon', name: 'chev-right' %}</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    </div>
   </form>
-  <div class="grid">
-    {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- else -%}<p class="muted">No products match.</p>{%- endfor -%}
-  </div>
-  {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
   {%- endpaginate -%}
-</section>
+</div>
+
 {% schema %}
-{ "name": "Collection", "settings": [{ "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }] }
+{ "name": "Collection page", "settings": [
+  { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+  { "type": "header", "content": "Heading" },
+  { "type": "text", "id": "prefix", "label": "Title prefix", "default": "Refurbished", "info": "Shown before the collection or category name, e.g. Refurbished iPhone." },
+  { "type": "text", "id": "all_title", "label": "Title on the all-products page", "default": "Shop all refurbished tech" },
+  { "type": "textarea", "id": "default_desc", "label": "Description (when the collection has none)", "default": "Premium tech without the premium price. Every device is tested by our technicians, backed by a 1-year warranty and free 30-day returns." },
+  { "type": "header", "content": "Trust bar" },
+  { "type": "checkbox", "id": "show_trust", "label": "Show trust bar", "default": true },
+  { "type": "text", "id": "trust_1", "label": "Item 1", "default": "1-year warranty" },
+  { "type": "text", "id": "trust_2", "label": "Item 2", "default": "Free standard shipping" },
+  { "type": "text", "id": "trust_3", "label": "Item 3", "default": "Free 30-day returns" },
+  { "type": "text", "id": "trust_4", "label": "Item 4", "default": "Real people, real support" },
+  { "type": "header", "content": "Toolbar" },
+  { "type": "text", "id": "tradein_label", "label": "Trade-in pill", "default": "Trade in to get it for less", "info": "Leave blank to hide." },
+  { "type": "url", "id": "tradein_link", "label": "Trade-in link" },
+  { "type": "range", "id": "open_filters", "label": "Filters open by default", "min": 0, "max": 6, "step": 1, "default": 2 },
+  { "type": "header", "content": "Promo tile" },
+  { "type": "checkbox", "id": "show_promo", "label": "Show promo tile first in the grid", "default": true },
+  { "type": "text", "id": "promo_title", "label": "Title", "default": "Free 1-year warranty included" },
+  { "type": "text", "id": "promo_text", "label": "Text", "default": "Repair or replacement on us, on every device." },
+  { "type": "color", "id": "promo_bg", "label": "Background", "default": "#CDEFF7" }
+],
+"blocks": [{ "type": "chip", "name": "Quick link", "settings": [
+  { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
+  { "type": "url", "id": "link", "label": "Link", "info": "Use a tag URL like /collections/all/iphone to filter." }
+]}],
+"presets": [{ "name": "Collection page" }] }
 {% endschema %}
