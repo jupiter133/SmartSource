@@ -1,31 +1,49 @@
-<section class="section page-width" data-carousel>
+{%- assign grid = false -%}{%- if section.settings.layout == 'grid' -%}{%- assign grid = true -%}{%- endif -%}
+<section class="section page-width{% if grid %} cat-grid-wrap{% endif %}"{% unless grid %} data-carousel{% endunless %}>
   <div class="section__head">
     <h2>{{ section.settings.heading }}</h2>
-    {% render 'carousel-arrows' %}
+    {%- unless grid -%}{% render 'carousel-arrows' %}{%- endunless -%}
   </div>
-  <div class="carousel" data-track>
+  <div class="{% if grid %}cat-grid{% else %}carousel{% endif %}"{% unless grid %} data-track{% endunless %}>
     {%- for block in section.blocks -%}
       {%- assign c = block.settings.collection -%}
-      <a class="cat-tile" href="{% if block.settings.link != blank %}{{ block.settings.link }}{% else %}{{ c.url }}{% endif %}" {{ block.shopify_attributes }}>
-        <div class="cat-tile__img">
-          {%- assign img = block.settings.image | default: c.featured_image -%}
-          {%- if img != blank -%}{{ img | image_url: width: 240 | image_tag: loading: 'lazy' }}{%- else -%}{% render 'device-art', title: block.settings.title, section: section, idx: forloop.index %}{%- endif -%}
+      {%- assign title = block.settings.title | default: c.title -%}
+      {%- assign img = block.settings.image | default: c.featured_image -%}
+      {%- if block.settings.art == 'auto' -%}{%- assign kind = nil -%}{%- else -%}{%- assign kind = block.settings.art -%}{%- endif -%}
+      <a class="{% if grid %}cat-card{% else %}cat-tile{% endif %}" href="{% if block.settings.link != blank %}{{ block.settings.link }}{% elsif c != blank %}{{ c.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" {{ block.shopify_attributes }}>
+        {%- if grid -%}<span class="cat-card__title">{{ title }}</span>{%- endif -%}
+        <div class="{% if grid %}cat-card__img{% else %}cat-tile__img{% endif %}">
+          {%- if img != blank -%}{{ img | image_url: width: 480 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 280px, 45vw', alt: title }}{%- else -%}{% render 'device-art', kind: kind, title: title, section: section, idx: forloop.index %}{%- endif -%}
         </div>
-        <span>{{ block.settings.title | default: c.title }}</span>
+        {%- unless grid -%}<span>{{ title }}</span>{%- endunless -%}
       </a>
     {%- endfor -%}
   </div>
 </section>
 {% schema %}
-{ "name": "Category carousel", "settings": [ { "type": "text", "id": "heading", "label": "Heading", "default": "Shop our most wanted" } ],
+{ "name": "Shop by category", "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "select", "id": "layout", "label": "Layout", "options": [{"value":"grid","label":"Grid of cards"},{"value":"carousel","label":"Swipe row (small icons)"}], "default": "grid" }
+  ],
   "blocks": [ { "type": "category", "name": "Category", "settings": [
     { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "text", "id": "title", "label": "Title override" },
-    { "type": "image_picker", "id": "image", "label": "Image override" },
-    { "type": "url", "id": "link", "label": "Link override" }
+    { "type": "image_picker", "id": "image", "label": "Image override", "info": "Transparent PNG works best." },
+    { "type": "url", "id": "link", "label": "Link override" },
+    { "type": "select", "id": "art", "label": "Illustration (when no image)", "options": [
+      {"value":"auto","label":"Auto from title"},{"value":"phone","label":"Phone"},{"value":"laptop","label":"Laptop"},{"value":"tablet","label":"Tablet"},{"value":"console","label":"Console"},{"value":"watch","label":"Watch"},{"value":"audio","label":"Audio"},{"value":"case","label":"Case"},{"value":"cable","label":"Cable"},{"value":"deal","label":"Laptop + phone"},{"value":"hero","label":"Device lineup"}
+    ], "default": "auto" }
   ]}],
-  "presets": [{ "name": "Category carousel", "blocks": [
-    {"type":"category","settings":{"title":"Great deals"}},{"type":"category","settings":{"title":"iPhone"}},{"type":"category","settings":{"title":"Android"}},
-    {"type":"category","settings":{"title":"iPad"}},{"type":"category","settings":{"title":"MacBook"}},{"type":"category","settings":{"title":"Windows Laptops"}},{"type":"category","settings":{"title":"AirPods"}}
+  "presets": [{ "name": "Shop by category", "blocks": [
+    {"type":"category","settings":{"title":"iPhone","link":"/collections/all/iphone","art":"phone"}},
+    {"type":"category","settings":{"title":"Android","link":"/collections/all/android","art":"phone"}},
+    {"type":"category","settings":{"title":"MacBook","link":"/collections/all/macbook","art":"laptop"}},
+    {"type":"category","settings":{"title":"Laptops","link":"/collections/all/laptops","art":"laptop"}},
+    {"type":"category","settings":{"title":"Tablets","link":"/collections/all/tablets","art":"tablet"}},
+    {"type":"category","settings":{"title":"Gaming","link":"/collections/all/consoles","art":"console"}},
+    {"type":"category","settings":{"title":"Smartwatches","link":"/collections/all/smartwatches","art":"watch"}},
+    {"type":"category","settings":{"title":"AirPods + Audio","link":"/collections/all/audio","art":"audio"}},
+    {"type":"category","settings":{"title":"Accessories","link":"/collections/all/accessories","art":"case"}},
+    {"type":"category","settings":{"title":"Great deals","link":"/collections/all?sort_by=price-ascending","art":"deal"}}
   ]}] }
 {% endschema %}

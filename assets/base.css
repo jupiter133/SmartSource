@@ -824,3 +824,17 @@ shopify-payment-terms{font-size:13px}
 .hero-slider .hero__inner{padding-bottom:64px}
 @media (prefers-reduced-motion:reduce){.hero-slider__track{scroll-behavior:auto}}
 @media (max-width:749px){.hero-slider .hero__media{max-height:240px}.hero-slider .hero__media svg,.hero-slider .hero__media img{max-height:240px}}
+
+/* shop by category grid */
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.cat-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 16px 18px;border-radius:16px;border:1px solid color-mix(in srgb,var(--c-accent) 18%,#e6e6ea);background:linear-gradient(180deg,color-mix(in srgb,var(--c-accent) 14%,#fff),#fff 85%);text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #00000f14;border-color:var(--c-accent)}
+.cat-card:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+.cat-card__title{font-size:1.1rem;font-weight:700;letter-spacing:-.01em;color:var(--c-ink)}
+.cat-card__img{width:100%;aspect-ratio:1;display:grid;place-items:center}
+.cat-card__img img{width:85%;height:85%;object-fit:contain;transition:transform .25s}
+.cat-card__img .device-art{width:80%;transition:transform .25s}
+.cat-card:hover .cat-card__img img,.cat-card:hover .cat-card__img .device-art{transform:scale(1.05)}
+@media (max-width:989px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:749px){.cat-grid{grid-template-columns:repeat(2,1fr);gap:12px}.cat-card{padding:16px 12px 12px;border-radius:14px}.cat-card__title{font-size:1rem}}
+@media (prefers-reduced-motion:reduce){.cat-card,.cat-card__img img,.cat-card__img .device-art{transition:none}}

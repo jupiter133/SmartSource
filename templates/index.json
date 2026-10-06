@@ -46,47 +46,89 @@
     },
     "categories": {
       "type": "category-carousel",
+      "settings": {
+        "heading": "Shop by category",
+        "layout": "grid"
+      },
       "blocks": {
         "c1": {
           "type": "category",
           "settings": {
-            "title": "Great deals"
+            "title": "iPhone",
+            "link": "/collections/all/iphone",
+            "art": "phone"
           }
         },
         "c2": {
           "type": "category",
           "settings": {
-            "title": "iPhone"
+            "title": "Android",
+            "link": "/collections/all/android",
+            "art": "phone"
           }
         },
         "c3": {
           "type": "category",
           "settings": {
-            "title": "Android"
+            "title": "MacBook",
+            "link": "/collections/all/macbook",
+            "art": "laptop"
           }
         },
         "c4": {
           "type": "category",
           "settings": {
-            "title": "iPad"
+            "title": "Laptops",
+            "link": "/collections/all/laptops",
+            "art": "laptop"
           }
         },
         "c5": {
           "type": "category",
           "settings": {
-            "title": "MacBook"
+            "title": "Tablets",
+            "link": "/collections/all/tablets",
+            "art": "tablet"
           }
         },
         "c6": {
           "type": "category",
           "settings": {
-            "title": "Windows Laptops"
+            "title": "Gaming",
+            "link": "/collections/all/consoles",
+            "art": "console"
           }
         },
         "c7": {
           "type": "category",
           "settings": {
-            "title": "AirPods"
+            "title": "Smartwatches",
+            "link": "/collections/all/smartwatches",
+            "art": "watch"
+          }
+        },
+        "c8": {
+          "type": "category",
+          "settings": {
+            "title": "AirPods + Audio",
+            "link": "/collections/all/audio",
+            "art": "audio"
+          }
+        },
+        "c9": {
+          "type": "category",
+          "settings": {
+            "title": "Accessories",
+            "link": "/collections/all/accessories",
+            "art": "case"
+          }
+        },
+        "c10": {
+          "type": "category",
+          "settings": {
+            "title": "Great deals",
+            "link": "/collections/all?sort_by=price-ascending",
+            "art": "deal"
           }
         }
       },
@@ -97,7 +139,10 @@
         "c4",
         "c5",
         "c6",
-        "c7"
+        "c7",
+        "c8",
+        "c9",
+        "c10"
       ]
     },
     "trade": {
