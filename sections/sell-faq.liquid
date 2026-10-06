@@ -1,0 +1,44 @@
+<section class="section page-width sell-faq">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="sell-faq__list">
+    {%- for block in section.blocks -%}
+      <details class="faq-item" {{ block.shopify_attributes }}>
+        <summary>{% render 'sell-terms-text', text: block.settings.question %}<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="rte faq-item__answer">{% render 'sell-terms-text', text: block.settings.answer %}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sell FAQ",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions" },
+    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] to use the numbers from Theme settings > Sell & trade-in terms." }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How long is my quote valid?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your quote is locked in for [quote_days] days. Ship it or drop it off within that window, or the quote expires and you'll need a new one.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell FAQ",
+      "blocks": [
+        { "type": "question" },
+        { "type": "question", "settings": { "question": "When do I get paid?", "answer": "<p>Payment is sent within [payment_days] business days of us receiving your device. Drop it off in one of our stores and we can pay you on the spot.</p>" } },
+        { "type": "question", "settings": { "question": "What if the condition doesn't match my quote?", "answer": "<p>We'll send you a revised offer. Accept it, or decline and we'll return your device free.</p>" } },
+        { "type": "question", "settings": { "question": "Is shipping free?", "answer": "<p>Yes. We send a free shipping label. Just make sure it ships within [quote_days] days of your quote.</p>" } },
+        { "type": "question", "settings": { "question": "What happens to my data?", "answer": "<p>Every device we buy is fully wiped. Before you send it, back up your data, sign out of iCloud or your Google account, and remove your SIM card.</p>" } },
+        { "type": "question", "settings": { "question": "Can I put the value toward a new device instead?", "answer": "<p>Yes. Choose the trade-in option and apply your value toward any device in our store.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

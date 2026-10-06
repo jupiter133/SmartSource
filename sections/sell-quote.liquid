@@ -1,0 +1,76 @@
+<section class="section page-width sell-quote" id="sell-quote">
+  <div class="sell-quote__card">
+    <div class="sell-quote__intro">
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="rte muted">{% render 'sell-terms-text', text: section.settings.text %}</div>{%- endif -%}
+    </div>
+
+    {%- form 'contact', id: 'SellQuoteForm', class: 'sell-quote__form' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="sell-quote__success" role="status" tabindex="-1" autofocus>
+          {% render 'icon', name: 'check' %}
+          <div class="rte">{% render 'sell-terms-text', text: section.settings.success %}</div>
+        </div>
+      {%- else -%}
+        {%- if form.errors -%}<div class="sell-quote__errors" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <input type="hidden" name="contact[tags]" value="sell-quote">
+        <div class="sell-quote__grid">
+          <label class="field field--full">
+            <span>Device</span>
+            <input type="text" name="contact[Device]" placeholder="e.g. iPhone 13 Pro, Galaxy S23, PS5" required autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Storage</span>
+            <select name="contact[Storage]">
+              {%- assign storages = section.settings.storage_options | split: ',' -%}
+              {%- for s in storages -%}<option>{{ s | strip }}</option>{%- endfor -%}
+            </select>
+          </label>
+          <label class="field">
+            <span>Condition</span>
+            <select name="contact[Condition]">
+              {%- assign conditions = section.settings.condition_options | split: ',' -%}
+              {%- for c in conditions -%}<option>{{ c | strip }}</option>{%- endfor -%}
+            </select>
+          </label>
+          <fieldset class="field field--full sell-quote__method">
+            <legend>How will you send it?</legend>
+            <label><input type="radio" name="contact[Delivery]" value="Ship with free label" checked> Ship it (free label)</label>
+            <label><input type="radio" name="contact[Delivery]" value="Drop off in store"> Drop off in store</label>
+          </fieldset>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="contact[name]" autocomplete="name" required>
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="contact[email]" autocomplete="email" required>
+          </label>
+          <label class="field field--full">
+            <span>Phone <small class="muted">(optional)</small></span>
+            <input type="tel" name="contact[phone]" autocomplete="tel">
+          </label>
+        </div>
+        <button type="submit" class="btn btn--dark btn--block btn--lg">{{ section.settings.button_label }}</button>
+        {%- if section.settings.fine_print != blank -%}<p class="sell-quote__fine muted">{% render 'sell-terms-text', text: section.settings.fine_print %}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sell quote form",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get your quote" },
+    { "type": "richtext", "id": "text", "label": "Intro", "default": "<p>Tell us what you've got. We'll email your quote, and it's locked in for [quote_days] days.</p>" },
+    { "type": "text", "id": "storage_options", "label": "Storage options", "info": "Comma-separated.", "default": "Not sure, 32GB, 64GB, 128GB, 256GB, 512GB, 1TB, 2TB" },
+    { "type": "text", "id": "condition_options", "label": "Condition options", "info": "Comma-separated.", "default": "Like new, Good: light scratches, Fair: visible wear, Cracked or damaged, Doesn't power on" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Request my quote" },
+    { "type": "text", "id": "fine_print", "label": "Fine print", "default": "Quotes are valid for [quote_days] days. Payment is sent within [payment_days] business days of us receiving your device." },
+    { "type": "richtext", "id": "success", "label": "Success message", "default": "<p><strong>Thanks, we've got your details.</strong> We'll email your quote shortly. It's locked in for [quote_days] days, so ship it or drop it off within [quote_days] days of your quote. Payment is sent within [payment_days] business days of us receiving your device.</p>" },
+    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] to use the numbers from Theme settings > Sell & trade-in terms. Submissions arrive in your store's contact inbox, tagged sell-quote." }
+  ],
+  "presets": [{ "name": "Sell quote form" }]
+}
+{% endschema %}

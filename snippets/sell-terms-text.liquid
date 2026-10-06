@@ -1,0 +1,7 @@
+{%- comment -%}
+  Replaces [quote_days] and [payment_days] in `text` with the values from
+  Theme settings > Sell & trade-in terms, so the terms live in one place.
+{%- endcomment -%}
+{%- assign qd = settings.sell_quote_days | append: '' -%}
+{%- assign pd = settings.sell_payment_days | append: '' -%}
+{{- text | replace: '[quote_days]', qd | replace: '[payment_days]', pd -}}

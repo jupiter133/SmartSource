@@ -1,0 +1,172 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "steps": {
+      "type": "sell-steps",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Get a Quote",
+            "icon": "tag"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Ship or Drop Off",
+            "icon": "truck",
+            "body": "<p>Bring it to any of our stores, or mail it in with our free shipping label. It must be shipped within [quote_days] days of your quote or the quote expires.</p>",
+            "bullets": "Drop off at any of our stores\nOr mail it with our free shipping label\nShip within [quote_days] days or the quote expires"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Inspection",
+            "icon": "inspect",
+            "body": "<p>We test the device and confirm its condition. If it doesn't match your quote, we'll send a revised offer. Accept it, or we return the device free.</p>",
+            "bullets": "We test it and confirm condition\nDoesn't match? We send a revised offer\nDecline and we return it free"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Get Paid",
+            "icon": "cash",
+            "body": "<p>Payment is sent within [payment_days] business days of us receiving your device. In-store drop-offs can be paid on the spot.</p>",
+            "bullets": "Paid within [payment_days] business days of receipt\nIn-store drop-offs can be paid on the spot"
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "title": "Trade-In Option",
+            "icon": "swap",
+            "body": "<p>Want a new phone instead? Apply your value toward any device in our store.</p>",
+            "bullets": "Apply your value toward any device in our store\nChoose new, refurbished or used"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ]
+    },
+    "terms": {
+      "type": "sell-terms",
+      "settings": {},
+      "blocks": {
+        "term_1": {
+          "type": "term",
+          "settings": {
+            "icon": "clock",
+            "value": "[quote_days] days",
+            "label": "to ship after your quote"
+          }
+        },
+        "term_2": {
+          "type": "term",
+          "settings": {
+            "icon": "cash",
+            "value": "[payment_days] business days",
+            "label": "payment after we receive it"
+          }
+        },
+        "term_3": {
+          "type": "term",
+          "settings": {
+            "icon": "truck",
+            "value": "Free",
+            "label": "shipping label, and return if you decline a revised offer"
+          }
+        },
+        "term_4": {
+          "type": "term",
+          "settings": {
+            "icon": "lock",
+            "value": "Secure",
+            "label": "all data wiped"
+          }
+        }
+      },
+      "block_order": [
+        "term_1",
+        "term_2",
+        "term_3",
+        "term_4"
+      ]
+    },
+    "quote": {
+      "type": "sell-quote",
+      "settings": {}
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {},
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {}
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "When do I get paid?",
+            "answer": "<p>Payment is sent within [payment_days] business days of us receiving your device. Drop it off in one of our stores and we can pay you on the spot.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "What if the condition doesn't match my quote?",
+            "answer": "<p>We'll send you a revised offer. Accept it, or decline and we'll return your device free.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Is shipping free?",
+            "answer": "<p>Yes. We send a free shipping label. Just make sure it ships within [quote_days] days of your quote.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "What happens to my data?",
+            "answer": "<p>Every device we buy is fully wiped. Before you send it, back up your data, sign out of iCloud or your Google account, and remove your SIM card.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Can I put the value toward a new device instead?",
+            "answer": "<p>Yes. Choose the trade-in option and apply your value toward any device in our store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "steps",
+    "terms",
+    "quote",
+    "faq"
+  ]
+}

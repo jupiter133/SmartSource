@@ -1,23 +1,143 @@
 [
-  { "name": "theme_info", "theme_name": "SmartSource", "theme_version": "1.0.0", "theme_author": "SmartSource", "theme_documentation_url": "https://help.shopify.com", "theme_support_url": "https://help.shopify.com" },
-  { "name": "Colors", "settings": [
-    { "type": "color", "id": "color_accent", "label": "Accent (hero / announcement)", "default": "#E5232B" },
-    { "type": "color", "id": "color_accent_text", "label": "Text on accent", "default": "#FFFFFF" },
-    { "type": "color", "id": "color_text", "label": "Text", "default": "#0E0E0E" },
-    { "type": "color", "id": "color_background", "label": "Page background", "default": "#F6F6F8" },
-    { "type": "color", "id": "color_surface", "label": "Card background", "default": "#FFFFFF" },
-    { "type": "color", "id": "color_highlight", "label": "Highlight (pills, badges)", "default": "#E6DBFF" },
-    { "type": "color", "id": "color_sale", "label": "Deal / sale color", "default": "#D4256A" }
-  ]},
-  { "name": "Layout", "settings": [
-    { "type": "range", "id": "page_width", "label": "Page width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
-    { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
-    { "type": "image_picker", "id": "favicon", "label": "Favicon" }
-  ]},
-  { "name": "Products", "settings": [
-    { "type": "paragraph", "content": "Condition badges come from product tags: condition:new, condition:refurbished, condition:used. Compare-at price is shown as the 'new' price." },
-    { "type": "checkbox", "id": "show_new_price", "label": "Show compare-at price as \"new\" price", "default": true },
-    { "type": "checkbox", "id": "show_rating", "label": "Show ratings (uses reviews.rating metafield)", "default": true },
-    { "type": "checkbox", "id": "cart_drawer", "label": "Open cart drawer on add", "default": true }
-  ]}
+  {
+    "name": "theme_info",
+    "theme_name": "SmartSource",
+    "theme_version": "1.0.0",
+    "theme_author": "SmartSource",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (hero / announcement)",
+        "default": "#E5232B"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Text on accent",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#0E0E0E"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page background",
+        "default": "#F6F6F8"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Card background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_highlight",
+        "label": "Highlight (pills, badges)",
+        "default": "#E6DBFF"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Deal / sale color",
+        "default": "#D4256A"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1200
+      },
+      {
+        "type": "range",
+        "id": "radius",
+        "label": "Corner radius",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Condition badges come from product tags: condition:new, condition:refurbished, condition:used. Compare-at price is shown as the 'new' price."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_new_price",
+        "label": "Show compare-at price as \"new\" price",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rating",
+        "label": "Show ratings (uses reviews.rating metafield)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_drawer",
+        "label": "Open cart drawer on add",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Sell & trade-in terms",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Used across the Sell Your Device page: walkthrough, key terms, FAQ and the quote form's success message. Write [quote_days] or [payment_days] in any text there and it is replaced with these numbers."
+      },
+      {
+        "type": "range",
+        "id": "sell_quote_days",
+        "label": "Quote valid / ship within (days)",
+        "min": 7,
+        "max": 60,
+        "step": 1,
+        "unit": "d",
+        "default": 21
+      },
+      {
+        "type": "range",
+        "id": "sell_payment_days",
+        "label": "Payment after we receive it (business days)",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "unit": "d",
+        "default": 5
+      }
+    ]
+  }
 ]

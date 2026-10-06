@@ -1,0 +1,58 @@
+<section class="section page-width sell-terms">
+  {%- if section.settings.heading != blank -%}<h2 class="sell-terms__heading">{{ section.settings.heading }}</h2>{%- endif -%}
+  <ul class="sell-terms__grid" role="list">
+    {%- for block in section.blocks -%}
+      <li class="sell-term" {{ block.shopify_attributes }}>
+        <span class="sell-term__icon">{% render 'icon', name: block.settings.icon %}</span>
+        <strong class="sell-term__value">{% render 'sell-terms-text', text: block.settings.value %}</strong>
+        <span class="sell-term__label">{% render 'sell-terms-text', text: block.settings.label %}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Sell key terms",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Key terms" },
+    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] to use the numbers from Theme settings > Sell & trade-in terms." }
+  ],
+  "blocks": [
+    {
+      "type": "term",
+      "name": "Term",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "clock", "label": "Clock" },
+            { "value": "cash", "label": "Cash" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "swap", "label": "Returns" }
+          ],
+          "default": "clock"
+        },
+        { "type": "text", "id": "value", "label": "Value", "default": "[quote_days] days" },
+        { "type": "text", "id": "label", "label": "Label", "default": "to ship after your quote" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Sell key terms",
+      "blocks": [
+        { "type": "term", "settings": { "icon": "clock", "value": "[quote_days] days", "label": "to ship after your quote" } },
+        { "type": "term", "settings": { "icon": "cash", "value": "[payment_days] business days", "label": "payment after we receive it" } },
+        { "type": "term", "settings": { "icon": "truck", "value": "Free", "label": "shipping label, and return if you decline a revised offer" } },
+        { "type": "term", "settings": { "icon": "lock", "value": "Secure", "label": "all data wiped" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

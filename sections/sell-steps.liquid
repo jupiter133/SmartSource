@@ -1,0 +1,155 @@
+{%- liquid
+  assign count = section.blocks.size
+  assign tints = '#FDE7EC,#F6E6FB,#DDF9EC,#DCF7F4,#EEEAFD' | split: ','
+-%}
+<section class="section page-width sell-steps" id="SellSteps-{{ section.id }}" data-sell-steps style="--n: {{ count }}; --i: 0">
+  <div class="sell-steps__head">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow-grad">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="muted">{% render 'sell-terms-text', text: section.settings.intro %}</p>{%- endif -%}
+  </div>
+
+  {%- if count > 0 -%}
+    <div class="sell-rail" data-rail>
+      <div class="sell-tabs" role="tablist" aria-label="{{ section.settings.heading | escape }}" data-tablist>
+        {%- for block in section.blocks -%}
+          <button
+            type="button"
+            class="sell-tab"
+            role="tab"
+            id="SellTab-{{ block.id }}"
+            aria-controls="SellPanel-{{ block.id }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            data-state="{% if forloop.first %}current{% else %}upcoming{% endif %}"
+            data-tab
+            {{ block.shopify_attributes }}
+          >
+            <span class="sell-tab__num" aria-hidden="true">{{ forloop.index }}</span>
+            <span class="sell-tab__label">{{ block.settings.title }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+      {%- if count > 1 -%}<div class="sell-track" aria-hidden="true"><span class="sell-track__fill"></span></div>{%- endif -%}
+    </div>
+
+    <div class="sell-panels" data-panels>
+      {%- for block in section.blocks -%}
+        {%- assign tint_index = forloop.index0 | modulo: 5 -%}
+        <div
+          class="sell-panel"
+          role="tabpanel"
+          id="SellPanel-{{ block.id }}"
+          aria-labelledby="SellTab-{{ block.id }}"
+          tabindex="0"
+          data-panel
+          {% unless forloop.first %}
+            hidden
+          {% endunless %}
+        >
+          <div class="sell-panel__media" style="--tint: {{ tints[tint_index] }}">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 45vw, 100vw', alt: block.settings.image.alt | default: block.settings.title }}
+            {%- else -%}
+              <span class="sell-panel__icon">{% render 'icon', name: block.settings.icon %}</span>
+            {%- endif -%}
+          </div>
+          <div class="sell-panel__body">
+            <p class="sell-panel__count">Step {{ forloop.index }} of {{ count }}</p>
+            <h3 class="sell-panel__title" tabindex="-1" data-panel-title>{{ block.settings.title }}</h3>
+            {%- if block.settings.body != blank -%}
+              <div class="rte sell-panel__copy">{% render 'sell-terms-text', text: block.settings.body %}</div>
+            {%- endif -%}
+            {%- if block.settings.bullets != blank -%}
+              {%- assign lines = block.settings.bullets | newline_to_br | split: '<br />' -%}
+              <ul class="sell-panel__list">
+                {%- for line in lines -%}
+                  {%- assign item = line | strip -%}
+                  {%- if item != blank -%}
+                    <li>{% render 'icon', name: 'check' %}<span>{% render 'sell-terms-text', text: item %}</span></li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+            <div class="sell-panel__nav">
+              {%- unless forloop.first -%}
+                <button type="button" class="btn" data-go="{{ forloop.index0 | minus: 1 }}">
+                  <span aria-hidden="true">&larr;</span> Back
+                </button>
+              {%- endunless -%}
+              {%- if forloop.last -%}
+                {%- if section.settings.finish_label != blank -%}
+                  <a class="btn btn--dark" href="{{ section.settings.finish_link | default: '#sell-quote' }}">{{ section.settings.finish_label }}</a>
+                {%- endif -%}
+              {%- else -%}
+                {%- assign next_block = section.blocks[forloop.index] -%}
+                <button type="button" class="btn btn--dark" data-go="{{ forloop.index }}">
+                  Next: {{ next_block.settings.title }} <span aria-hidden="true">&rarr;</span>
+                </button>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    <noscript><style>.sell-panel[hidden]{display:grid!important}.sell-panel__nav,.sell-track{display:none}</style></noscript>
+  {%- endif -%}
+</section>
+
+<script src="{{ 'sell-steps.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Sell steps (tabs)",
+  "class": "section-sell-steps",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "SELL YOUR DEVICE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How it works" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Five steps from quote to cash. Click through to see what happens at each one." },
+    { "type": "text", "id": "finish_label", "label": "Last step button label", "default": "Get my quote" },
+    { "type": "url", "id": "finish_link", "label": "Last step button link", "info": "Leave blank to jump to the quote form on this page." },
+    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] anywhere in the text. They're replaced with the numbers in Theme settings > Sell & trade-in terms." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab title", "default": "Get a Quote" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon (shown when there's no image)",
+          "options": [
+            { "value": "tag", "label": "Price tag" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "store", "label": "Store" },
+            { "value": "inspect", "label": "Inspection" },
+            { "value": "cash", "label": "Cash" },
+            { "value": "swap", "label": "Trade-in" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "lock", "label": "Lock" },
+            { "value": "clock", "label": "Clock" }
+          ],
+          "default": "tag"
+        },
+        { "type": "image_picker", "id": "image", "label": "Image (replaces the icon)" },
+        { "type": "richtext", "id": "body", "label": "Details", "default": "<p>Select your device, storage and condition. Your quote is locked in for [quote_days] days.</p>" },
+        { "type": "textarea", "id": "bullets", "label": "Bullet points", "info": "One per line.", "default": "Choose device, storage and condition\nQuote locked in for [quote_days] days\nNo obligation to sell" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell steps (tabs)",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Get a Quote", "icon": "tag" } },
+        { "type": "step", "settings": { "title": "Ship or Drop Off", "icon": "truck", "body": "<p>Bring it to any of our stores, or mail it in with our free shipping label. It must be shipped within [quote_days] days of your quote or the quote expires.</p>", "bullets": "Drop off at any of our stores\nOr mail it with our free shipping label\nShip within [quote_days] days or the quote expires" } },
+        { "type": "step", "settings": { "title": "Inspection", "icon": "inspect", "body": "<p>We test the device and confirm its condition. If it doesn't match your quote, we'll send a revised offer. Accept it, or we return the device free.</p>", "bullets": "We test it and confirm condition\nDoesn't match? We send a revised offer\nDecline and we return it free" } },
+        { "type": "step", "settings": { "title": "Get Paid", "icon": "cash", "body": "<p>Payment is sent within [payment_days] business days of us receiving your device. In-store drop-offs can be paid on the spot.</p>", "bullets": "Paid within [payment_days] business days of receipt\nIn-store drop-offs can be paid on the spot" } },
+        { "type": "step", "settings": { "title": "Trade-In Option", "icon": "swap", "body": "<p>Want a new phone instead? Apply your value toward any device in our store.</p>", "bullets": "Apply your value toward any device in our store\nChoose new, refurbished or used" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
