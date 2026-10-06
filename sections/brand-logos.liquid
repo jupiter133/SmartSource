@@ -1,0 +1,28 @@
+<section class="section page-width brand-logos">
+  {%- if section.settings.heading != blank -%}<h2 class="brand-logos__title">{{ section.settings.heading }}</h2>{%- endif -%}
+  <div class="brand-logos__grid">
+    {%- for block in section.blocks -%}
+      <a class="brand-logo" href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.logo != blank -%}{{ block.settings.logo | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.name }}{%- else -%}<span class="brand-logo__name">{{ block.settings.name }}</span>{%- endif -%}
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Brand logos", "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Top brands, refurbished" }
+  ],
+  "blocks": [{ "type": "brand", "name": "Brand", "settings": [
+    { "type": "text", "id": "name", "label": "Brand name", "default": "Apple" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "SVG or transparent PNG. Without one, the name shows as text." },
+    { "type": "url", "id": "link", "label": "Link" }
+  ]}],
+  "presets": [{ "name": "Brand logos", "blocks": [
+    { "type": "brand", "settings": { "name": "Apple", "link": "/collections/all/apple" } },
+    { "type": "brand", "settings": { "name": "Samsung", "link": "/collections/all/samsung" } },
+    { "type": "brand", "settings": { "name": "Google", "link": "/collections/all/pixel" } },
+    { "type": "brand", "settings": { "name": "Sony", "link": "/collections/all/playstation" } },
+    { "type": "brand", "settings": { "name": "Nintendo", "link": "/collections/all/nintendo" } },
+    { "type": "brand", "settings": { "name": "Microsoft", "link": "/collections/all/xbox" } }
+  ]}] }
+{% endschema %}

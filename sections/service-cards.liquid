@@ -1,0 +1,40 @@
+<section class="section page-width" data-carousel>
+  {%- if section.settings.heading != blank -%}
+    <div class="section__head"><h2>{{ section.settings.heading }}</h2></div>
+  {%- endif -%}
+  <div class="carousel service-cards" data-track>
+    {%- for block in section.blocks -%}
+      <div class="service-card" {{ block.shopify_attributes }}>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+        {%- if block.settings.button_label != blank -%}<a class="btn btn--dark btn--sm" href="{{ block.settings.link }}">{{ block.settings.button_label }}</a>{%- endif -%}
+        <div class="service-card__img" style="--tint: {{ block.settings.tint }}">
+          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 340px, 80vw', alt: block.settings.title }}{%- else -%}<span class="service-card__icon">{% render 'icon', name: block.settings.icon %}</span>{%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="section__foot">{% render 'carousel-arrows' %}</div>
+</section>
+{% schema %}
+{ "name": "Service cards", "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Optional." }
+  ],
+  "blocks": [{ "type": "card", "name": "Card", "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Trade-in" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Get an instant quote and put your old device toward your next one." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Trade in now" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Landscape photo, about 3:2." },
+    { "type": "select", "id": "icon", "label": "Icon (when no image)", "options": [
+      {"value":"swap","label":"Trade-in"},{"value":"inspect","label":"Repair"},{"value":"shield","label":"Protection"},{"value":"award","label":"Warranty"},{"value":"store","label":"Store"},{"value":"truck","label":"Shipping"},{"value":"cash","label":"Cash"},{"value":"battery","label":"Battery"}
+    ], "default": "swap" },
+    { "type": "color", "id": "tint", "label": "Background (when no image)", "default": "#E3F7FC" }
+  ]}],
+  "presets": [{ "name": "Service cards", "blocks": [
+    { "type": "card", "settings": { "title": "Trade-in", "text": "Cash or store credit for your old phone, tablet, laptop or console. Instant quote, free shipping label.", "button_label": "Trade in now", "link": "/pages/sell-your-device", "icon": "swap", "tint": "#E3F7FC" } },
+    { "type": "card", "settings": { "title": "Repairs", "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.", "button_label": "Book a repair", "link": "/pages/services", "icon": "inspect", "tint": "#FDE7F1" } },
+    { "type": "card", "settings": { "title": "1-year warranty", "text": "Every device is covered for a full year. Something goes wrong, we make it right.", "button_label": "See our promise", "link": "/pages/our-promise", "icon": "award", "tint": "#EDE9FE" } },
+    { "type": "card", "settings": { "title": "Visit a store", "text": "See it in person, trade in on the spot, or get help setting up your new device.", "button_label": "Find a store", "link": "/pages/contact", "icon": "store", "tint": "#E6F7EF" } }
+  ]}] }
+{% endschema %}

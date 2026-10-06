@@ -427,6 +427,183 @@
         "t5",
         "t6"
       ]
+    },
+    "deals": {
+      "type": "promo-cards",
+      "settings": {
+        "overlap": false
+      },
+      "blocks": {
+        "d1": {
+          "type": "card",
+          "settings": {
+            "heading": "Flagship camera. Mid-range price.",
+            "text": "Shop the Galaxy S25 for way less than new.",
+            "button_label": "See deal",
+            "link": "/collections/all/samsung"
+          }
+        },
+        "d2": {
+          "type": "card",
+          "settings": {
+            "heading": "Bigger screen. Smaller bill.",
+            "text": "iPad Air, refurbished and ready for class or the couch.",
+            "button_label": "Shop iPad",
+            "link": "/collections/all/ipad",
+            "art": "tablet"
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2"
+      ]
+    },
+    "services": {
+      "type": "service-cards",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "card",
+          "settings": {
+            "title": "Trade-in",
+            "text": "Cash or store credit for your old phone, tablet, laptop or console. Instant quote, free shipping label.",
+            "button_label": "Trade in now",
+            "link": "/pages/sell-your-device",
+            "icon": "swap",
+            "tint": "#E3F7FC"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "title": "Repairs",
+            "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
+            "button_label": "Book a repair",
+            "link": "/pages/services",
+            "icon": "inspect",
+            "tint": "#FDE7F1"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "title": "1-year warranty",
+            "text": "Every device is covered for a full year. Something goes wrong, we make it right.",
+            "button_label": "See our promise",
+            "link": "/pages/our-promise",
+            "icon": "award",
+            "tint": "#EDE9FE"
+          }
+        },
+        "b4": {
+          "type": "card",
+          "settings": {
+            "title": "Visit a store",
+            "text": "See it in person, trade in on the spot, or get help setting up your new device.",
+            "button_label": "Find a store",
+            "link": "/pages/contact",
+            "icon": "store",
+            "tint": "#E6F7EF"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "banners": {
+      "type": "image-banners",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "heading": "Game night, for less.",
+            "text": "PS5 and Switch, refurbished and tested.",
+            "button_label": "Shop gaming",
+            "link": "/collections/all/consoles",
+            "art": "console",
+            "bg": "#14213D"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "heading": "Back to school, under budget.",
+            "text": "MacBooks and iPads that won't wreck your wallet.",
+            "button_label": "Shop laptops",
+            "link": "/collections/all/macbook",
+            "art": "laptop",
+            "bg": "#3A1C3F"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "brands": {
+      "type": "brand-logos",
+      "settings": {
+        "heading": "Top brands, refurbished"
+      },
+      "blocks": {
+        "b1": {
+          "type": "brand",
+          "settings": {
+            "name": "Apple",
+            "link": "/collections/all/apple"
+          }
+        },
+        "b2": {
+          "type": "brand",
+          "settings": {
+            "name": "Samsung",
+            "link": "/collections/all/samsung"
+          }
+        },
+        "b3": {
+          "type": "brand",
+          "settings": {
+            "name": "Google",
+            "link": "/collections/all/pixel"
+          }
+        },
+        "b4": {
+          "type": "brand",
+          "settings": {
+            "name": "Sony",
+            "link": "/collections/all/playstation"
+          }
+        },
+        "b5": {
+          "type": "brand",
+          "settings": {
+            "name": "Nintendo",
+            "link": "/collections/all/nintendo"
+          }
+        },
+        "b6": {
+          "type": "brand",
+          "settings": {
+            "name": "Microsoft",
+            "link": "/collections/all/xbox"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ]
     }
   },
   "order": [
@@ -439,6 +616,10 @@
     "recommended",
     "promise",
     "reels",
+    "deals",
+    "services",
+    "banners",
+    "brands",
     "blog",
     "press"
   ]
