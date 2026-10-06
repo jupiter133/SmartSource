@@ -838,3 +838,14 @@ shopify-payment-terms{font-size:13px}
 @media (max-width:989px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:749px){.cat-grid{grid-template-columns:repeat(2,1fr);gap:12px}.cat-card{padding:16px 12px 12px;border-radius:14px}.cat-card__title{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){.cat-card,.cat-card__img img,.cat-card__img .device-art{transition:none}}
+
+/* header trade-in button */
+.header__tradein{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:10px 16px;border:1.5px solid var(--c-ink);border-radius:12px;font-weight:600;font-size:14px;white-space:nowrap;transition:background .15s,color .15s}
+.header__tradein svg{width:18px;height:18px}
+.header__tradein:hover{background:var(--c-ink);color:#fff}
+.header__tradein:focus-visible{outline:2px solid var(--c-accent);outline-offset:2px}
+@media (max-width:749px){
+  .header__main::after{content:"";order:4;flex-basis:100%;height:0}
+  .header__search{flex:1 1 0;min-width:0}
+  .header__tradein{order:6;padding:9px 12px;font-size:13px}
+}
