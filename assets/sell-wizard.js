@@ -18,7 +18,8 @@
 
   const categories = (catalog.categories || []).slice().sort((a, b) => a.s - b.s || a.n.localeCompare(b.n));
   const brands = (catalog.brands || []).slice().sort((a, b) => a.s - b.s || a.n.localeCompare(b.n));
-  const prices = catalog.prices || [];
+  // Prices come nested under each device (d.pr); a flat catalog.prices list also works.
+  const prices = (catalog.prices || []).concat((catalog.devices || []).flatMap((d) => (d.pr || []).map((x) => ({ d: d.h, st: x.st, p: x.p }))));
   const pricedDevices = new Set(prices.map((p) => p.d));
   const devices = (catalog.devices || []).filter((d) => pricedDevices.has(d.h));
   const conditions = (config.conditions || []).filter((c) => c.key in COND_INDEX);

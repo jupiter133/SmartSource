@@ -2,16 +2,6 @@
   assign quote_url = section.settings.quote_page | default: request.path
   assign max_rows = section.settings.max_rows
 -%}
-{%- comment -%}
-  Highest Like New price per device, as "|handle=price" pairs (up to 250 price entries).
-{%- endcomment -%}
-{%- capture price_index -%}
-  {%- paginate metaobjects.buyback_price.values by 250 -%}
-    {%- for p in metaobjects.buyback_price.values -%}|{{ p.device.value.system.handle }}={{ p.price_like_new.value | default: 0 }}{%- endfor -%}
-  {%- endpaginate -%}
-{%- endcapture -%}
-{%- assign price_entries = price_index | strip | remove_first: '|' | split: '|' -%}
-
 {%- capture groups -%}
   {%- paginate metaobjects.buyback_device.values by 250 -%}
     {%- for block in section.blocks -%}
@@ -28,12 +18,9 @@
         {%- endfor -%}
         {%- unless match -%}{%- continue -%}{%- endunless -%}
         {%- assign best = 0 -%}
-        {%- for e in price_entries -%}
-          {%- assign parts = e | split: '=' -%}
-          {%- if parts[0] == d.system.handle -%}
-            {%- assign v = parts[1] | times: 1.0 -%}
-            {%- if v > best -%}{%- assign best = v -%}{%- endif -%}
-          {%- endif -%}
+        {%- for pr in d.prices.value -%}
+          {%- assign v = pr.price_like_new.value | default: 0 | times: 1.0 -%}
+          {%- if v > best -%}{%- assign best = v -%}{%- endif -%}
         {%- endfor -%}
         {%- if best <= 0 -%}{%- continue -%}{%- endif -%}
         {%- assign sortkey = d.sort_order.value | default: 999 | plus: 10000 -%}

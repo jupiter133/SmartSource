@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
  * Creates the buyback metaobject definitions used by the Sell Your Device page,
- * then seeds categories, brands and 3 SAMPLE devices with obviously fake prices.
+ * then imports the full catalog from scripts/sell-catalog.json (categories, brands,
+ * 135 devices, their ESTIMATED prices). Rebuild that file with scripts/build_sell_catalog.py.
  *
  * Usage (Node 18+, no npm install needed):
  *   SHOPIFY_STORE=your-store.myshopify.com \
  *   SHOPIFY_ADMIN_TOKEN=shpat_xxx \
- *   node scripts/setup-sell-metaobjects.mjs            # definitions + sample data
+ *   node scripts/setup-sell-metaobjects.mjs            # definitions + full catalog
  *   node scripts/setup-sell-metaobjects.mjs --no-seed  # definitions only
  *   node scripts/setup-sell-metaobjects.mjs --dry-run  # print every API call, change nothing
  *
@@ -15,7 +16,9 @@
  * Safe to re-run: existing definitions are kept, sample entries are upserted by handle.
  */
 
-const STORE = process.env.SHOPIFY_STORE;
+import { readFileSync } from 'node:fs';
+
+const STORE = process.env.SHOPIFY_STORE || process.env.SHOPIFY_FLAG_STORE;
 const TOKEN = process.env.SHOPIFY_ADMIN_TOKEN;
 const VERSION = process.env.SHOPIFY_API_VERSION || '2026-01';
 const SEED = !process.argv.includes('--no-seed');
@@ -32,8 +35,12 @@ async function gql(query, variables = {}) {
     const op = query.match(/(metaobject\w+)/)[1];
     console.log(`  [dry-run] ${op} ${JSON.stringify(variables)}`);
     const id = `gid://shopify/Fake/${++fakeId}`;
-    if (op === 'metaobjectDefinitionByType') return { metaobjectDefinitionByType: null };
-    if (op === 'metaobjectDefinitionCreate') return { metaobjectDefinitionCreate: { metaobjectDefinition: { id }, userErrors: [] } };
+    if (op === 'metaobjectDefinitionByType') return { metaobjectDefinitionByType: gql.made?.[variables.type] || null };
+    if (op === 'metaobjectDefinitionCreate') {
+      gql.made = { ...gql.made, [variables.definition.type]: { id, fieldDefinitions: variables.definition.fieldDefinitions.map((f) => ({ key: f.key })) } };
+      return { metaobjectDefinitionCreate: { metaobjectDefinition: { id }, userErrors: [] } };
+    }
+    if (op === 'metaobjectDefinitionUpdate') return { metaobjectDefinitionUpdate: { metaobjectDefinition: { id }, userErrors: [] } };
     return { metaobjectUpsert: { metaobject: { id }, userErrors: [] } };
   }
   const res = await fetch(`https://${STORE}/admin/api/${VERSION}/graphql.json`, {
@@ -42,6 +49,12 @@ async function gql(query, variables = {}) {
     body: JSON.stringify({ query, variables }),
   });
   const body = await res.json();
+  const throttled = res.status === 429 || (body.errors || []).some((e) => e.extensions?.code === 'THROTTLED');
+  if (throttled && (gql.retries = (gql.retries || 0) + 1) <= 8) {
+    await new Promise((r) => setTimeout(r, 1000 * gql.retries));
+    return gql(query, variables);
+  }
+  gql.retries = 0;
   if (!res.ok || body.errors) throw new Error(`GraphQL request failed (${res.status}): ${JSON.stringify(body.errors || body)}`);
   return body.data;
 }
@@ -56,6 +69,7 @@ const ref = (key, name, definitionId) => ({ key, name, type: 'metaobject_referen
 const text = (key, name, required = false) => ({ key, name, type: 'single_line_text_field', required });
 const int = (key, name) => ({ key, name, type: 'number_integer' });
 const money = (key, name) => ({ key, name, type: 'number_decimal', description: 'CAD, before tax. Leave blank if you do not buy in this condition.' });
+const refList = (key, name, definitionId) => ({ key, name, type: 'list.metaobject_reference', validations: [{ name: 'metaobject_definition_id', value: definitionId }] });
 const bool = (key, name) => ({ key, name, type: 'boolean' });
 
 async function ensureDefinition(type, name, fieldDefinitions) {
@@ -64,10 +78,12 @@ async function ensureDefinition(type, name, fieldDefinitions) {
     { type },
   );
   if (existing.metaobjectDefinitionByType) {
+    const { id } = existing.metaobjectDefinitionByType;
     const have = existing.metaobjectDefinitionByType.fieldDefinitions.map((f) => f.key);
-    const missing = fieldDefinitions.map((f) => f.key).filter((k) => !have.includes(k));
-    console.log(`= ${type} already exists${missing.length ? ` (missing fields: ${missing.join(', ')}; add them in Settings > Custom data)` : ''}`);
-    return existing.metaobjectDefinitionByType.id;
+    const missing = fieldDefinitions.filter((f) => !have.includes(f.key));
+    if (missing.length) await addFields(id, type, missing);
+    else console.log(`= ${type} already exists`);
+    return id;
   }
   const data = await gql(
     `mutation($definition: MetaobjectDefinitionCreateInput!) {
@@ -90,6 +106,20 @@ async function ensureDefinition(type, name, fieldDefinitions) {
   assertNoUserErrors(data.metaobjectDefinitionCreate, `Create ${type}`);
   console.log(`+ created ${type}`);
   return data.metaobjectDefinitionCreate.metaobjectDefinition.id;
+}
+
+async function addFields(id, type, fields) {
+  const data = await gql(
+    `mutation($id: ID!, $definition: MetaobjectDefinitionUpdateInput!) {
+      metaobjectDefinitionUpdate(id: $id, definition: $definition) {
+        metaobjectDefinition { id }
+        userErrors { field message code }
+      }
+    }`,
+    { id, definition: { fieldDefinitions: fields.map((f) => ({ create: f })) } },
+  );
+  assertNoUserErrors(data.metaobjectDefinitionUpdate, `Add fields to ${type}`);
+  console.log(`+ ${type}: added ${fields.map((f) => f.key).join(', ')}`);
 }
 
 async function upsert(type, handle, fields) {
@@ -131,7 +161,7 @@ async function main() {
     bool('is_popular', 'Popular (show in "What we pay")'),
     bool('active', 'Active (buying this device)'),
   ]);
-  await ensureDefinition('buyback_price', 'Buyback price', [
+  const priceDef = await ensureDefinition('buyback_price', 'Buyback price', [
     text('name', 'Name (for your reference, e.g. iPhone 15 Pro 256GB)'),
     ref('device', 'Device', deviceDef),
     text('storage', 'Storage (e.g. 256GB)', true),
@@ -141,46 +171,40 @@ async function main() {
     money('price_cracked', 'Price: Cracked or Minor Issue'),
     money('price_defective', 'Price: Defective'),
   ]);
+  // Device -> its prices. The theme reads prices through this list, so there's no 250-row page limit.
+  await ensureDefinition('buyback_device', 'Buyback device', [refList('prices', 'Prices (one entry per storage option)', priceDef)]);
 
   if (!SEED) return console.log('Done (definitions only).');
 
-  const categories = [
-    ['smartphone', 'Smartphone'], ['tablet', 'Tablet'], ['smartwatch', 'Smartwatch'],
-    ['laptop-macbook', 'Laptop/MacBook'], ['gaming-console', 'Gaming Console'], ['audio', 'Audio'],
-  ];
+  const catalog = JSON.parse(readFileSync(new URL('./sell-catalog.json', import.meta.url)));
   const cat = {};
-  for (const [i, [handle, name]] of categories.entries()) cat[handle] = await upsert('buyback_category', handle, { name, sort_order: i + 1 });
-  console.log(`+ ${categories.length} categories`);
-
-  const brands = [['apple', 'Apple'], ['samsung', 'Samsung'], ['google', 'Google']];
+  for (const c of catalog.categories) cat[c.name] = await upsert('buyback_category', c.handle, { name: c.name, sort_order: c.sort_order });
+  console.log(`+ ${catalog.categories.length} categories`);
   const brand = {};
-  for (const [i, [handle, name]] of brands.entries()) brand[handle] = await upsert('buyback_brand', handle, { name, sort_order: i + 1 });
-  console.log(`+ ${brands.length} brands`);
+  for (const b of catalog.brands) brand[b.name] = await upsert('buyback_brand', b.handle, { name: b.name, sort_order: b.sort_order });
+  console.log(`+ ${catalog.brands.length} brands`);
 
-  // PLACEHOLDER DATA: fake names and obviously fake prices. Replace or delete before going live.
-  const devices = [
-    { handle: 'sample-iphone-15-pro', name: 'iPhone 15 Pro (SAMPLE)', category: 'smartphone', brand: 'apple', year: 2023, sort: 1,
-      prices: { '128GB': [1111, 999, 888, 555, 111], '256GB': [1234, 1111, 999, 666, 123] } },
-    { handle: 'sample-galaxy-s24', name: 'Galaxy S24 (SAMPLE)', category: 'smartphone', brand: 'samsung', year: 2024, sort: 2,
-      prices: { '128GB': [777, 666, 555, 333, 77], '256GB': [888, 777, 666, 444, 88] } },
-    { handle: 'sample-ipad-air-m2', name: 'iPad Air 11-inch M2 (SAMPLE)', category: 'tablet', brand: 'apple', year: 2024, sort: 3,
-      prices: { '128GB': [444, 333, 222, 111, 44] } },
-  ];
-  for (const d of devices) {
+  let n = 0;
+  for (const d of catalog.devices) {
     const id = await upsert('buyback_device', d.handle, {
-      name: d.name, category: cat[d.category], brand: brand[d.brand], release_year: d.year,
-      sort_order: d.sort, is_popular: true, active: true,
+      name: d.name, category: cat[d.category], brand: brand[d.brand], release_year: d.release_year,
+      sort_order: d.sort_order, is_popular: d.is_popular, active: true,
     });
-    for (const [storage, [likeNew, good, fair, cracked, defective]] of Object.entries(d.prices)) {
-      await upsert('buyback_price', `${d.handle}-${storage.toLowerCase()}`, {
-        name: `${d.name} ${storage}`, device: id, storage,
-        price_like_new: likeNew.toFixed(2), price_good: good.toFixed(2), price_fair: fair.toFixed(2),
-        price_cracked: cracked.toFixed(2), price_defective: defective.toFixed(2),
-      });
+    const priceIds = [];
+    for (const p of d.prices) {
+      const ph = `${d.handle}-${p.storage}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      priceIds.push(await upsert('buyback_price', ph, {
+        name: `${d.name} ${p.storage}`, device: id, storage: p.storage,
+        price_like_new: p.like_new.toFixed(2), price_good: p.good.toFixed(2), price_fair: p.fair.toFixed(2),
+        price_cracked: p.cracked.toFixed(2), price_defective: p.defective.toFixed(2),
+      }));
     }
+    await upsert('buyback_device', d.handle, { prices: JSON.stringify(priceIds) });
+    n += 1;
+    if (n % 10 === 0) console.log(`  ${n}/${catalog.devices.length} devices`);
   }
-  console.log(`+ ${devices.length} SAMPLE devices with placeholder prices`);
-  console.log('Done. Replace the SAMPLE devices and prices in Content > Metaobjects before launch.');
+  console.log(`+ ${catalog.devices.length} devices, ${catalog.devices.reduce((s, d) => s + d.prices.length, 0)} prices`);
+  console.log('Done. Prices are ESTIMATES: review them in Content > Metaobjects before launch.');
 }
 
 main().catch((err) => { console.error(err.message); process.exit(1); });

@@ -1,0 +1,4626 @@
+{
+ "note": "ESTIMATED buyback prices in CAD. Review before launch.",
+ "categories": [
+  {
+   "handle": "smartphone",
+   "name": "Smartphone",
+   "sort_order": 1
+  },
+  {
+   "handle": "tablet",
+   "name": "Tablet",
+   "sort_order": 2
+  },
+  {
+   "handle": "smartwatch",
+   "name": "Smartwatch",
+   "sort_order": 3
+  },
+  {
+   "handle": "laptop-macbook",
+   "name": "Laptop/MacBook",
+   "sort_order": 4
+  },
+  {
+   "handle": "gaming-console",
+   "name": "Gaming Console",
+   "sort_order": 5
+  },
+  {
+   "handle": "audio",
+   "name": "Audio",
+   "sort_order": 6
+  }
+ ],
+ "brands": [
+  {
+   "handle": "apple",
+   "name": "Apple",
+   "sort_order": 1
+  },
+  {
+   "handle": "samsung",
+   "name": "Samsung",
+   "sort_order": 2
+  },
+  {
+   "handle": "sony",
+   "name": "Sony",
+   "sort_order": 3
+  },
+  {
+   "handle": "microsoft",
+   "name": "Microsoft",
+   "sort_order": 4
+  },
+  {
+   "handle": "nintendo",
+   "name": "Nintendo",
+   "sort_order": 5
+  },
+  {
+   "handle": "valve",
+   "name": "Valve",
+   "sort_order": 6
+  }
+ ],
+ "devices": [
+  {
+   "handle": "iphone-8",
+   "name": "iPhone 8",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 115,
+     "good": 95,
+     "fair": 75,
+     "cracked": 45,
+     "defective": 15
+    },
+    {
+     "storage": "128GB",
+     "like_new": 125,
+     "good": 105,
+     "fair": 80,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "256GB",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    }
+   ],
+   "sort_order": 67
+  },
+  {
+   "handle": "iphone-8-plus",
+   "name": "iPhone 8 Plus",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "128GB",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "256GB",
+     "like_new": 155,
+     "good": 130,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    }
+   ],
+   "sort_order": 66
+  },
+  {
+   "handle": "iphone-x",
+   "name": "iPhone X",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 165,
+     "good": 140,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    },
+    {
+     "storage": "256GB",
+     "like_new": 190,
+     "good": 160,
+     "fair": 125,
+     "cracked": 75,
+     "defective": 25
+    }
+   ],
+   "sort_order": 65
+  },
+  {
+   "handle": "iphone-xr",
+   "name": "iPhone XR",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 135,
+     "good": 115,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "128GB",
+     "like_new": 145,
+     "good": 120,
+     "fair": 95,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "256GB",
+     "like_new": 165,
+     "good": 135,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    }
+   ],
+   "sort_order": 64
+  },
+  {
+   "handle": "iphone-xs",
+   "name": "iPhone XS",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 180,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 210,
+     "good": 175,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    },
+    {
+     "storage": "512GB",
+     "like_new": 245,
+     "good": 205,
+     "fair": 155,
+     "cracked": 95,
+     "defective": 30
+    }
+   ],
+   "sort_order": 63
+  },
+  {
+   "handle": "iphone-xs-max",
+   "name": "iPhone XS Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 200,
+     "good": 165,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "512GB",
+     "like_new": 260,
+     "good": 220,
+     "fair": 170,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 62
+  },
+  {
+   "handle": "iphone-11",
+   "name": "iPhone 11",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "128GB",
+     "like_new": 150,
+     "good": 130,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    },
+    {
+     "storage": "256GB",
+     "like_new": 175,
+     "good": 145,
+     "fair": 110,
+     "cracked": 65,
+     "defective": 20
+    }
+   ],
+   "sort_order": 61
+  },
+  {
+   "handle": "iphone-11-pro",
+   "name": "iPhone 11 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 205,
+     "good": 170,
+     "fair": 130,
+     "cracked": 80,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 235,
+     "good": 195,
+     "fair": 150,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "512GB",
+     "like_new": 275,
+     "good": 230,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    }
+   ],
+   "sort_order": 60
+  },
+  {
+   "handle": "iphone-11-pro-max",
+   "name": "iPhone 11 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 225,
+     "good": 185,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 255,
+     "good": 215,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "512GB",
+     "like_new": 295,
+     "good": 245,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    }
+   ],
+   "sort_order": 59
+  },
+  {
+   "handle": "iphone-se-2nd-gen",
+   "name": "iPhone SE (2nd gen)",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 95,
+     "good": 80,
+     "fair": 60,
+     "cracked": 35,
+     "defective": 10
+    },
+    {
+     "storage": "128GB",
+     "like_new": 105,
+     "good": 90,
+     "fair": 70,
+     "cracked": 40,
+     "defective": 15
+    },
+    {
+     "storage": "256GB",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    }
+   ],
+   "sort_order": 58
+  },
+  {
+   "handle": "iphone-12-mini",
+   "name": "iPhone 12 mini",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 165,
+     "good": 135,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    },
+    {
+     "storage": "128GB",
+     "like_new": 175,
+     "good": 145,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 200,
+     "good": 165,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    }
+   ],
+   "sort_order": 57
+  },
+  {
+   "handle": "iphone-12",
+   "name": "iPhone 12",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 185,
+     "good": 155,
+     "fair": 120,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "128GB",
+     "like_new": 200,
+     "good": 165,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 220,
+     "good": 185,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    }
+   ],
+   "sort_order": 56
+  },
+  {
+   "handle": "iphone-12-pro",
+   "name": "iPhone 12 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 235,
+     "good": 195,
+     "fair": 150,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 255,
+     "good": 215,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "512GB",
+     "like_new": 305,
+     "good": 255,
+     "fair": 195,
+     "cracked": 115,
+     "defective": 40
+    }
+   ],
+   "sort_order": 55
+  },
+  {
+   "handle": "iphone-12-pro-max",
+   "name": "iPhone 12 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 255,
+     "good": 215,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 280,
+     "good": 235,
+     "fair": 180,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "512GB",
+     "like_new": 325,
+     "good": 275,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    }
+   ],
+   "sort_order": 54
+  },
+  {
+   "handle": "iphone-13-mini",
+   "name": "iPhone 13 mini",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 215,
+     "good": 180,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "512GB",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    }
+   ],
+   "sort_order": 51
+  },
+  {
+   "handle": "iphone-13",
+   "name": "iPhone 13",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 215,
+     "good": 180,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 245,
+     "good": 205,
+     "fair": 155,
+     "cracked": 95,
+     "defective": 30
+    },
+    {
+     "storage": "512GB",
+     "like_new": 300,
+     "good": 250,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    }
+   ],
+   "sort_order": 50
+  },
+  {
+   "handle": "iphone-13-pro",
+   "name": "iPhone 13 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 300,
+     "good": 250,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 350,
+     "good": 295,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "1TB",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    }
+   ],
+   "sort_order": 48
+  },
+  {
+   "handle": "iphone-13-pro-max",
+   "name": "iPhone 13 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 300,
+     "good": 250,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 325,
+     "good": 275,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "1TB",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    }
+   ],
+   "sort_order": 47
+  },
+  {
+   "handle": "iphone-se-3rd-gen",
+   "name": "iPhone SE (3rd gen)",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 135,
+     "good": 115,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "128GB",
+     "like_new": 150,
+     "good": 125,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    },
+    {
+     "storage": "256GB",
+     "like_new": 185,
+     "good": 155,
+     "fair": 120,
+     "cracked": 70,
+     "defective": 25
+    }
+   ],
+   "sort_order": 46
+  },
+  {
+   "handle": "iphone-14",
+   "name": "iPhone 14",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 255,
+     "good": 210,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 285,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "512GB",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    }
+   ],
+   "sort_order": 42
+  },
+  {
+   "handle": "iphone-14-plus",
+   "name": "iPhone 14 Plus",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 285,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    }
+   ],
+   "sort_order": 41
+  },
+  {
+   "handle": "iphone-14-pro",
+   "name": "iPhone 14 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "512GB",
+     "like_new": 410,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "1TB",
+     "like_new": 475,
+     "good": 400,
+     "fair": 305,
+     "cracked": 185,
+     "defective": 60
+    }
+   ],
+   "sort_order": 39
+  },
+  {
+   "handle": "iphone-14-pro-max",
+   "name": "iPhone 14 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "256GB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 445,
+     "good": 370,
+     "fair": 285,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "1TB",
+     "like_new": 505,
+     "good": 425,
+     "fair": 325,
+     "cracked": 195,
+     "defective": 65
+    }
+   ],
+   "sort_order": 38
+  },
+  {
+   "handle": "iphone-15",
+   "name": "iPhone 15",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 300,
+     "good": 250,
+     "fair": 195,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 130,
+     "defective": 45
+    },
+    {
+     "storage": "512GB",
+     "like_new": 415,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    }
+   ],
+   "sort_order": 32
+  },
+  {
+   "handle": "iphone-15-plus",
+   "name": "iPhone 15 Plus",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 130,
+     "defective": 45
+    },
+    {
+     "storage": "256GB",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    }
+   ],
+   "sort_order": 31
+  },
+  {
+   "handle": "iphone-15-pro",
+   "name": "iPhone 15 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "256GB",
+     "like_new": 415,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "512GB",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "1TB",
+     "like_new": 565,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    }
+   ],
+   "sort_order": 29
+  },
+  {
+   "handle": "iphone-15-pro-max",
+   "name": "iPhone 15 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "512GB",
+     "like_new": 525,
+     "good": 440,
+     "fair": 340,
+     "cracked": 205,
+     "defective": 70
+    },
+    {
+     "storage": "1TB",
+     "like_new": 600,
+     "good": 505,
+     "fair": 390,
+     "cracked": 235,
+     "defective": 80
+    }
+   ],
+   "sort_order": 28
+  },
+  {
+   "handle": "iphone-16e",
+   "name": "iPhone 16e",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 325,
+     "good": 270,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    }
+   ],
+   "sort_order": 10
+  },
+  {
+   "handle": "iphone-16",
+   "name": "iPhone 16",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 360,
+     "good": 305,
+     "fair": 235,
+     "cracked": 140,
+     "defective": 45
+    },
+    {
+     "storage": "256GB",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    }
+   ],
+   "sort_order": 19
+  },
+  {
+   "handle": "iphone-16-plus",
+   "name": "iPhone 16 Plus",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    },
+    {
+     "storage": "256GB",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "512GB",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    }
+   ],
+   "sort_order": 18
+  },
+  {
+   "handle": "iphone-16-pro",
+   "name": "iPhone 16 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "256GB",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    },
+    {
+     "storage": "1TB",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    }
+   ],
+   "sort_order": 16
+  },
+  {
+   "handle": "iphone-16-pro-max",
+   "name": "iPhone 16 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "512GB",
+     "like_new": 630,
+     "good": 530,
+     "fair": 410,
+     "cracked": 245,
+     "defective": 80
+    },
+    {
+     "storage": "1TB",
+     "like_new": 725,
+     "good": 605,
+     "fair": 465,
+     "cracked": 280,
+     "defective": 95
+    }
+   ],
+   "sort_order": 15
+  },
+  {
+   "handle": "iphone-17",
+   "name": "iPhone 17",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "512GB",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    }
+   ],
+   "sort_order": 8
+  },
+  {
+   "handle": "iphone-air",
+   "name": "iPhone Air",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "512GB",
+     "like_new": 650,
+     "good": 545,
+     "fair": 420,
+     "cracked": 250,
+     "defective": 85
+    },
+    {
+     "storage": "1TB",
+     "like_new": 760,
+     "good": 635,
+     "fair": 490,
+     "cracked": 295,
+     "defective": 100
+    }
+   ],
+   "sort_order": 4
+  },
+  {
+   "handle": "iphone-17-pro",
+   "name": "iPhone 17 Pro",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 595,
+     "good": 500,
+     "fair": 385,
+     "cracked": 230,
+     "defective": 75
+    },
+    {
+     "storage": "512GB",
+     "like_new": 705,
+     "good": 590,
+     "fair": 455,
+     "cracked": 275,
+     "defective": 90
+    },
+    {
+     "storage": "1TB",
+     "like_new": 815,
+     "good": 680,
+     "fair": 525,
+     "cracked": 315,
+     "defective": 105
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "iphone-17-pro-max",
+   "name": "iPhone 17 Pro Max",
+   "category": "Smartphone",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 650,
+     "good": 545,
+     "fair": 420,
+     "cracked": 250,
+     "defective": 85
+    },
+    {
+     "storage": "512GB",
+     "like_new": 760,
+     "good": 635,
+     "fair": 490,
+     "cracked": 295,
+     "defective": 100
+    },
+    {
+     "storage": "1TB",
+     "like_new": 865,
+     "good": 725,
+     "fair": 560,
+     "cracked": 335,
+     "defective": 110
+    },
+    {
+     "storage": "2TB",
+     "like_new": 1085,
+     "good": 910,
+     "fair": 700,
+     "cracked": 420,
+     "defective": 140
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "samsung-galaxy-s21",
+   "name": "Samsung Galaxy S21",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 180,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 190,
+     "good": 160,
+     "fair": 125,
+     "cracked": 75,
+     "defective": 25
+    }
+   ],
+   "sort_order": 53
+  },
+  {
+   "handle": "samsung-galaxy-s21-plus",
+   "name": "Samsung Galaxy S21+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 235,
+     "good": 200,
+     "fair": 155,
+     "cracked": 90,
+     "defective": 30
+    }
+   ],
+   "sort_order": 52
+  },
+  {
+   "handle": "samsung-galaxy-s21-ultra",
+   "name": "Samsung Galaxy S21 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 280,
+     "good": 235,
+     "fair": 180,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "512GB",
+     "like_new": 310,
+     "good": 260,
+     "fair": 200,
+     "cracked": 120,
+     "defective": 40
+    }
+   ],
+   "sort_order": 49
+  },
+  {
+   "handle": "samsung-galaxy-s21-fe",
+   "name": "Samsung Galaxy S21 FE",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 185,
+     "good": 155,
+     "fair": 120,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 205,
+     "good": 170,
+     "fair": 130,
+     "cracked": 80,
+     "defective": 25
+    }
+   ],
+   "sort_order": 45
+  },
+  {
+   "handle": "samsung-galaxy-s22",
+   "name": "Samsung Galaxy S22",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 210,
+     "good": 175,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    }
+   ],
+   "sort_order": 44
+  },
+  {
+   "handle": "samsung-galaxy-s22-plus",
+   "name": "Samsung Galaxy S22+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 265,
+     "good": 220,
+     "fair": 170,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "256GB",
+     "like_new": 275,
+     "good": 230,
+     "fair": 180,
+     "cracked": 105,
+     "defective": 35
+    }
+   ],
+   "sort_order": 43
+  },
+  {
+   "handle": "samsung-galaxy-s22-ultra",
+   "name": "Samsung Galaxy S22 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "512GB",
+     "like_new": 370,
+     "good": 310,
+     "fair": 240,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "1TB",
+     "like_new": 420,
+     "good": 355,
+     "fair": 270,
+     "cracked": 165,
+     "defective": 55
+    }
+   ],
+   "sort_order": 40
+  },
+  {
+   "handle": "samsung-galaxy-s23",
+   "name": "Samsung Galaxy S23",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 250,
+     "good": 210,
+     "fair": 160,
+     "cracked": 95,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    }
+   ],
+   "sort_order": 35
+  },
+  {
+   "handle": "samsung-galaxy-s23-plus",
+   "name": "Samsung Galaxy S23+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 315,
+     "good": 265,
+     "fair": 200,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 350,
+     "good": 295,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    }
+   ],
+   "sort_order": 33
+  },
+  {
+   "handle": "samsung-galaxy-s23-ultra",
+   "name": "Samsung Galaxy S23 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "1TB",
+     "like_new": 510,
+     "good": 425,
+     "fair": 330,
+     "cracked": 195,
+     "defective": 65
+    }
+   ],
+   "sort_order": 30
+  },
+  {
+   "handle": "samsung-galaxy-s23-fe",
+   "name": "Samsung Galaxy S23 FE",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 205,
+     "good": 175,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    }
+   ],
+   "sort_order": 36
+  },
+  {
+   "handle": "samsung-galaxy-s24",
+   "name": "Samsung Galaxy S24",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 300,
+     "good": 250,
+     "fair": 195,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 325,
+     "good": 270,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    }
+   ],
+   "sort_order": 22
+  },
+  {
+   "handle": "samsung-galaxy-s24-plus",
+   "name": "Samsung Galaxy S24+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 420,
+     "good": 355,
+     "fair": 270,
+     "cracked": 165,
+     "defective": 55
+    }
+   ],
+   "sort_order": 21
+  },
+  {
+   "handle": "samsung-galaxy-s24-ultra",
+   "name": "Samsung Galaxy S24 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 535,
+     "good": 450,
+     "fair": 345,
+     "cracked": 205,
+     "defective": 70
+    },
+    {
+     "storage": "1TB",
+     "like_new": 625,
+     "good": 525,
+     "fair": 405,
+     "cracked": 240,
+     "defective": 80
+    }
+   ],
+   "sort_order": 17
+  },
+  {
+   "handle": "samsung-galaxy-s24-fe",
+   "name": "Samsung Galaxy S24 FE",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 245,
+     "good": 205,
+     "fair": 160,
+     "cracked": 95,
+     "defective": 30
+    },
+    {
+     "storage": "256GB",
+     "like_new": 265,
+     "good": 225,
+     "fair": 170,
+     "cracked": 105,
+     "defective": 35
+    }
+   ],
+   "sort_order": 23
+  },
+  {
+   "handle": "samsung-galaxy-s25",
+   "name": "Samsung Galaxy S25",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 360,
+     "good": 305,
+     "fair": 235,
+     "cracked": 140,
+     "defective": 45
+    },
+    {
+     "storage": "256GB",
+     "like_new": 390,
+     "good": 325,
+     "fair": 250,
+     "cracked": 150,
+     "defective": 50
+    }
+   ],
+   "sort_order": 11
+  },
+  {
+   "handle": "samsung-galaxy-s25-plus",
+   "name": "Samsung Galaxy S25+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "512GB",
+     "like_new": 505,
+     "good": 425,
+     "fair": 325,
+     "cracked": 195,
+     "defective": 65
+    }
+   ],
+   "sort_order": 9
+  },
+  {
+   "handle": "samsung-galaxy-s25-ultra",
+   "name": "Samsung Galaxy S25 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    },
+    {
+     "storage": "512GB",
+     "like_new": 640,
+     "good": 540,
+     "fair": 415,
+     "cracked": 250,
+     "defective": 85
+    },
+    {
+     "storage": "1TB",
+     "like_new": 750,
+     "good": 630,
+     "fair": 485,
+     "cracked": 290,
+     "defective": 95
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "samsung-galaxy-s25-edge",
+   "name": "Samsung Galaxy S25 Edge",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 550,
+     "good": 460,
+     "fair": 355,
+     "cracked": 215,
+     "defective": 70
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "samsung-galaxy-s25-fe",
+   "name": "Samsung Galaxy S25 FE",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 295,
+     "good": 245,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 320,
+     "good": 270,
+     "fair": 205,
+     "cracked": 125,
+     "defective": 40
+    }
+   ],
+   "sort_order": 12
+  },
+  {
+   "handle": "samsung-galaxy-z-flip5",
+   "name": "Samsung Galaxy Z Flip5",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 315,
+     "good": 265,
+     "fair": 200,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 350,
+     "good": 295,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    }
+   ],
+   "sort_order": 34
+  },
+  {
+   "handle": "samsung-galaxy-z-fold5",
+   "name": "Samsung Galaxy Z Fold5",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 565,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    },
+    {
+     "storage": "512GB",
+     "like_new": 600,
+     "good": 505,
+     "fair": 390,
+     "cracked": 235,
+     "defective": 80
+    },
+    {
+     "storage": "1TB",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    }
+   ],
+   "sort_order": 27
+  },
+  {
+   "handle": "samsung-galaxy-z-flip6",
+   "name": "Samsung Galaxy Z Flip6",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 415,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "512GB",
+     "like_new": 460,
+     "good": 385,
+     "fair": 295,
+     "cracked": 180,
+     "defective": 60
+    }
+   ],
+   "sort_order": 20
+  },
+  {
+   "handle": "samsung-galaxy-z-fold6",
+   "name": "Samsung Galaxy Z Fold6",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 715,
+     "good": 600,
+     "fair": 460,
+     "cracked": 275,
+     "defective": 90
+    },
+    {
+     "storage": "512GB",
+     "like_new": 760,
+     "good": 640,
+     "fair": 490,
+     "cracked": 295,
+     "defective": 100
+    },
+    {
+     "storage": "1TB",
+     "like_new": 850,
+     "good": 715,
+     "fair": 550,
+     "cracked": 330,
+     "defective": 110
+    }
+   ],
+   "sort_order": 14
+  },
+  {
+   "handle": "samsung-galaxy-z-flip7",
+   "name": "Samsung Galaxy Z Flip7",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 550,
+     "good": 460,
+     "fair": 355,
+     "cracked": 215,
+     "defective": 70
+    }
+   ],
+   "sort_order": 7
+  },
+  {
+   "handle": "samsung-galaxy-z-fold7",
+   "name": "Samsung Galaxy Z Fold7",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 905,
+     "good": 760,
+     "fair": 585,
+     "cracked": 350,
+     "defective": 115
+    },
+    {
+     "storage": "512GB",
+     "like_new": 960,
+     "good": 805,
+     "fair": 620,
+     "cracked": 370,
+     "defective": 125
+    },
+    {
+     "storage": "1TB",
+     "like_new": 1095,
+     "good": 915,
+     "fair": 705,
+     "cracked": 425,
+     "defective": 140
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "samsung-galaxy-a15-5g",
+   "name": "Samsung Galaxy A15 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 75,
+     "good": 65,
+     "fair": 50,
+     "cracked": 30,
+     "defective": 10
+    }
+   ],
+   "sort_order": 25
+  },
+  {
+   "handle": "samsung-galaxy-a16-5g",
+   "name": "Samsung Galaxy A16 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 75,
+     "good": 65,
+     "fair": 50,
+     "cracked": 30,
+     "defective": 10
+    }
+   ],
+   "sort_order": 26
+  },
+  {
+   "handle": "samsung-galaxy-a35-5g",
+   "name": "Samsung Galaxy A35 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 150,
+     "good": 125,
+     "fair": 95,
+     "cracked": 60,
+     "defective": 20
+    }
+   ],
+   "sort_order": 24
+  },
+  {
+   "handle": "samsung-galaxy-a36-5g",
+   "name": "Samsung Galaxy A36 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 180,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB",
+     "like_new": 205,
+     "good": 175,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    }
+   ],
+   "sort_order": 13
+  },
+  {
+   "handle": "samsung-galaxy-a54-5g",
+   "name": "Samsung Galaxy A54 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    }
+   ],
+   "sort_order": 37
+  },
+  {
+   "handle": "ipad-9th-gen",
+   "name": "iPad (9th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 90,
+     "good": 75,
+     "fair": 60,
+     "cracked": 35,
+     "defective": 10
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 125,
+     "good": 105,
+     "fair": 80,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 165,
+     "good": 140,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    }
+   ],
+   "sort_order": 27
+  },
+  {
+   "handle": "ipad-10th-gen",
+   "name": "iPad (10th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 235,
+     "good": 200,
+     "fair": 155,
+     "cracked": 90,
+     "defective": 30
+    }
+   ],
+   "sort_order": 24
+  },
+  {
+   "handle": "ipad-a16",
+   "name": "iPad (A16)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 245,
+     "good": 205,
+     "fair": 155,
+     "cracked": 95,
+     "defective": 30
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 350,
+     "good": 295,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 325,
+     "good": 270,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "ipad-mini-6th-gen",
+   "name": "iPad mini (6th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 135,
+     "good": 115,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 175,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 175,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 215,
+     "good": 180,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    }
+   ],
+   "sort_order": 26
+  },
+  {
+   "handle": "ipad-mini-a17-pro",
+   "name": "iPad mini (A17 Pro)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 360,
+     "good": 305,
+     "fair": 235,
+     "cracked": 140,
+     "defective": 45
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 295,
+     "good": 245,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 130,
+     "defective": 45
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 430,
+     "good": 360,
+     "fair": 275,
+     "cracked": 165,
+     "defective": 55
+    }
+   ],
+   "sort_order": 11
+  },
+  {
+   "handle": "ipad-air-5th-gen-m1",
+   "name": "iPad Air (5th gen, M1)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 235,
+     "good": 200,
+     "fair": 155,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 235,
+     "good": 200,
+     "fair": 155,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 285,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    }
+   ],
+   "sort_order": 22
+  },
+  {
+   "handle": "ipad-air-11-inch-m2",
+   "name": "iPad Air 11-inch (M2)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 130,
+     "defective": 45
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 385,
+     "good": 320,
+     "fair": 250,
+     "cracked": 150,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 475,
+     "good": 400,
+     "fair": 305,
+     "cracked": 185,
+     "defective": 60
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 565,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    }
+   ],
+   "sort_order": 10
+  },
+  {
+   "handle": "ipad-air-13-inch-m2",
+   "name": "iPad Air 13-inch (M2)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 360,
+     "good": 305,
+     "fair": 235,
+     "cracked": 140,
+     "defective": 45
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 430,
+     "good": 360,
+     "fair": 275,
+     "cracked": 165,
+     "defective": 55
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 475,
+     "good": 400,
+     "fair": 305,
+     "cracked": 185,
+     "defective": 60
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 565,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 655,
+     "good": 550,
+     "fair": 425,
+     "cracked": 255,
+     "defective": 85
+    }
+   ],
+   "sort_order": 8
+  },
+  {
+   "handle": "ipad-air-11-inch-m3",
+   "name": "iPad Air 11-inch (M3)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 325,
+     "good": 270,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 595,
+     "good": 500,
+     "fair": 385,
+     "cracked": 230,
+     "defective": 75
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 405,
+     "good": 340,
+     "fair": 260,
+     "cracked": 155,
+     "defective": 50
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 460,
+     "good": 385,
+     "fair": 295,
+     "cracked": 180,
+     "defective": 60
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 570,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 675,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "ipad-air-13-inch-m3",
+   "name": "iPad Air 13-inch (M3)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 595,
+     "good": 500,
+     "fair": 385,
+     "cracked": 230,
+     "defective": 75
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 705,
+     "good": 590,
+     "fair": 455,
+     "cracked": 275,
+     "defective": 90
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 515,
+     "good": 430,
+     "fair": 330,
+     "cracked": 200,
+     "defective": 65
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 570,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 675,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 785,
+     "good": 660,
+     "fair": 505,
+     "cracked": 305,
+     "defective": 100
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "ipad-pro-11-inch-4th-gen-m2",
+   "name": "iPad Pro 11-inch (4th gen, M2)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 255,
+     "good": 210,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 285,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 475,
+     "good": 400,
+     "fair": 305,
+     "cracked": 185,
+     "defective": 60
+    },
+    {
+     "storage": "2TB Wi-Fi",
+     "like_new": 600,
+     "good": 505,
+     "fair": 390,
+     "cracked": 235,
+     "defective": 80
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 410,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 540,
+     "good": 450,
+     "fair": 345,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "2TB Wi-Fi + Cellular",
+     "like_new": 665,
+     "good": 555,
+     "fair": 430,
+     "cracked": 255,
+     "defective": 85
+    }
+   ],
+   "sort_order": 20
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-6th-gen-m2",
+   "name": "iPad Pro 12.9-inch (6th gen, M2)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 350,
+     "good": 290,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 445,
+     "good": 370,
+     "fair": 285,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 570,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    },
+    {
+     "storage": "2TB Wi-Fi",
+     "like_new": 695,
+     "good": 585,
+     "fair": 450,
+     "cracked": 270,
+     "defective": 90
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 410,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 445,
+     "good": 370,
+     "fair": 285,
+     "cracked": 170,
+     "defective": 55
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 505,
+     "good": 425,
+     "fair": 325,
+     "cracked": 195,
+     "defective": 65
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 630,
+     "good": 530,
+     "fair": 410,
+     "cracked": 245,
+     "defective": 80
+    },
+    {
+     "storage": "2TB Wi-Fi + Cellular",
+     "like_new": 760,
+     "good": 635,
+     "fair": 490,
+     "cracked": 295,
+     "defective": 100
+    }
+   ],
+   "sort_order": 19
+  },
+  {
+   "handle": "ipad-pro-11-inch-m4",
+   "name": "iPad Pro 11-inch (M4)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 725,
+     "good": 605,
+     "fair": 465,
+     "cracked": 280,
+     "defective": 95
+    },
+    {
+     "storage": "2TB Wi-Fi",
+     "like_new": 905,
+     "good": 760,
+     "fair": 585,
+     "cracked": 350,
+     "defective": 115
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 630,
+     "good": 530,
+     "fair": 410,
+     "cracked": 245,
+     "defective": 80
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 815,
+     "good": 680,
+     "fair": 525,
+     "cracked": 315,
+     "defective": 105
+    },
+    {
+     "storage": "2TB Wi-Fi + Cellular",
+     "like_new": 995,
+     "good": 835,
+     "fair": 640,
+     "cracked": 385,
+     "defective": 130
+    }
+   ],
+   "sort_order": 7
+  },
+  {
+   "handle": "ipad-pro-13-inch-m4",
+   "name": "iPad Pro 13-inch (M4)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 860,
+     "good": 720,
+     "fair": 555,
+     "cracked": 330,
+     "defective": 110
+    },
+    {
+     "storage": "2TB Wi-Fi",
+     "like_new": 1040,
+     "good": 870,
+     "fair": 670,
+     "cracked": 400,
+     "defective": 135
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 770,
+     "good": 645,
+     "fair": 495,
+     "cracked": 295,
+     "defective": 100
+    },
+    {
+     "storage": "1TB Wi-Fi + Cellular",
+     "like_new": 950,
+     "good": 795,
+     "fair": 610,
+     "cracked": 365,
+     "defective": 120
+    },
+    {
+     "storage": "2TB Wi-Fi + Cellular",
+     "like_new": 1130,
+     "good": 945,
+     "fair": 730,
+     "cracked": 435,
+     "defective": 145
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "samsung-galaxy-tab-s8",
+   "name": "Samsung Galaxy Tab S8",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 185,
+     "good": 155,
+     "fair": 120,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 205,
+     "good": 170,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    }
+   ],
+   "sort_order": 25
+  },
+  {
+   "handle": "samsung-galaxy-tab-s8-plus",
+   "name": "Samsung Galaxy Tab S8+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 235,
+     "good": 200,
+     "fair": 155,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 260,
+     "good": 215,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 23
+  },
+  {
+   "handle": "samsung-galaxy-tab-s8-ultra",
+   "name": "Samsung Galaxy Tab S8 Ultra",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 290,
+     "good": 245,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 315,
+     "good": 265,
+     "fair": 205,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 370,
+     "good": 310,
+     "fair": 240,
+     "cracked": 145,
+     "defective": 50
+    }
+   ],
+   "sort_order": 21
+  },
+  {
+   "handle": "samsung-galaxy-tab-s9",
+   "name": "Samsung Galaxy Tab S9",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 250,
+     "good": 210,
+     "fair": 160,
+     "cracked": 95,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 290,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    }
+   ],
+   "sort_order": 15
+  },
+  {
+   "handle": "samsung-galaxy-tab-s9-plus",
+   "name": "Samsung Galaxy Tab S9+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 315,
+     "good": 265,
+     "fair": 200,
+     "cracked": 120,
+     "defective": 40
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 350,
+     "good": 295,
+     "fair": 225,
+     "cracked": 135,
+     "defective": 45
+    }
+   ],
+   "sort_order": 14
+  },
+  {
+   "handle": "samsung-galaxy-tab-s9-ultra",
+   "name": "Samsung Galaxy Tab S9 Ultra",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 415,
+     "good": 345,
+     "fair": 265,
+     "cracked": 160,
+     "defective": 55
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 510,
+     "good": 425,
+     "fair": 330,
+     "cracked": 195,
+     "defective": 65
+    }
+   ],
+   "sort_order": 13
+  },
+  {
+   "handle": "samsung-galaxy-tab-s9-fe",
+   "name": "Samsung Galaxy Tab S9 FE",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 140,
+     "good": 120,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 165,
+     "good": 135,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    }
+   ],
+   "sort_order": 17
+  },
+  {
+   "handle": "samsung-galaxy-tab-s9-fe-plus",
+   "name": "Samsung Galaxy Tab S9 FE+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 220,
+     "good": 185,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    }
+   ],
+   "sort_order": 16
+  },
+  {
+   "handle": "samsung-galaxy-tab-s10-plus",
+   "name": "Samsung Galaxy Tab S10+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 375,
+     "good": 315,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 420,
+     "good": 355,
+     "fair": 270,
+     "cracked": 165,
+     "defective": 55
+    }
+   ],
+   "sort_order": 12
+  },
+  {
+   "handle": "samsung-galaxy-tab-s10-ultra",
+   "name": "Samsung Galaxy Tab S10 Ultra",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 450,
+     "good": 380,
+     "fair": 290,
+     "cracked": 175,
+     "defective": 60
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "1TB Wi-Fi",
+     "like_new": 610,
+     "good": 510,
+     "fair": 395,
+     "cracked": 235,
+     "defective": 80
+    }
+   ],
+   "sort_order": 9
+  },
+  {
+   "handle": "samsung-galaxy-tab-s10-fe",
+   "name": "Samsung Galaxy Tab S10 FE",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 260,
+     "good": 220,
+     "fair": 170,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "samsung-galaxy-tab-s10-fe-plus",
+   "name": "Samsung Galaxy Tab S10 FE+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 295,
+     "good": 245,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 340,
+     "good": 285,
+     "fair": 220,
+     "cracked": 130,
+     "defective": 45
+    }
+   ],
+   "sort_order": 4
+  },
+  {
+   "handle": "samsung-galaxy-tab-a9-plus",
+   "name": "Samsung Galaxy Tab A9+",
+   "category": "Tablet",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 70,
+     "good": 60,
+     "fair": 45,
+     "cracked": 25,
+     "defective": 10
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 85,
+     "good": 70,
+     "fair": 55,
+     "cracked": 35,
+     "defective": 10
+    }
+   ],
+   "sort_order": 18
+  },
+  {
+   "handle": "macbook-air-13-inch-m1",
+   "name": "MacBook Air 13-inch (M1)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 235,
+     "good": 195,
+     "fair": 150,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "512GB",
+     "like_new": 290,
+     "good": 245,
+     "fair": 190,
+     "cracked": 115,
+     "defective": 40
+    }
+   ],
+   "sort_order": 13
+  },
+  {
+   "handle": "macbook-air-13-inch-m2",
+   "name": "MacBook Air 13-inch (M2)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "512GB",
+     "like_new": 475,
+     "good": 400,
+     "fair": 305,
+     "cracked": 185,
+     "defective": 60
+    }
+   ],
+   "sort_order": 12
+  },
+  {
+   "handle": "macbook-air-15-inch-m2",
+   "name": "MacBook Air 15-inch (M2)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 490,
+     "good": 410,
+     "fair": 315,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 565,
+     "good": 475,
+     "fair": 365,
+     "cracked": 220,
+     "defective": 75
+    }
+   ],
+   "sort_order": 11
+  },
+  {
+   "handle": "macbook-air-13-inch-m3",
+   "name": "MacBook Air 13-inch (M3)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 495,
+     "good": 415,
+     "fair": 320,
+     "cracked": 190,
+     "defective": 65
+    },
+    {
+     "storage": "512GB",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    }
+   ],
+   "sort_order": 7
+  },
+  {
+   "handle": "macbook-air-15-inch-m3",
+   "name": "MacBook Air 15-inch (M3)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 585,
+     "good": 490,
+     "fair": 380,
+     "cracked": 225,
+     "defective": 75
+    },
+    {
+     "storage": "512GB",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "macbook-air-13-inch-m4",
+   "name": "MacBook Air 13-inch (M4)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 540,
+     "good": 455,
+     "fair": 350,
+     "cracked": 210,
+     "defective": 70
+    },
+    {
+     "storage": "512GB",
+     "like_new": 650,
+     "good": 545,
+     "fair": 420,
+     "cracked": 250,
+     "defective": 85
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "macbook-air-15-inch-m4",
+   "name": "MacBook Air 15-inch (M4)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 650,
+     "good": 545,
+     "fair": 420,
+     "cracked": 250,
+     "defective": 85
+    },
+    {
+     "storage": "512GB",
+     "like_new": 760,
+     "good": 635,
+     "fair": 490,
+     "cracked": 295,
+     "defective": 100
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "macbook-pro-14-inch-m3",
+   "name": "MacBook Pro 14-inch (M3)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 600,
+     "good": 505,
+     "fair": 390,
+     "cracked": 235,
+     "defective": 80
+    },
+    {
+     "storage": "1TB",
+     "like_new": 680,
+     "good": 570,
+     "fair": 435,
+     "cracked": 260,
+     "defective": 85
+    }
+   ],
+   "sort_order": 10
+  },
+  {
+   "handle": "macbook-pro-14-inch-m3-pro",
+   "name": "MacBook Pro 14-inch (M3 Pro)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 755,
+     "good": 630,
+     "fair": 485,
+     "cracked": 290,
+     "defective": 95
+    },
+    {
+     "storage": "1TB",
+     "like_new": 905,
+     "good": 760,
+     "fair": 585,
+     "cracked": 350,
+     "defective": 115
+    }
+   ],
+   "sort_order": 9
+  },
+  {
+   "handle": "macbook-pro-16-inch-m3-pro",
+   "name": "MacBook Pro 16-inch (M3 Pro)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 940,
+     "good": 790,
+     "fair": 605,
+     "cracked": 365,
+     "defective": 120
+    }
+   ],
+   "sort_order": 8
+  },
+  {
+   "handle": "macbook-pro-14-inch-m4",
+   "name": "MacBook Pro 14-inch (M4)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 725,
+     "good": 605,
+     "fair": 465,
+     "cracked": 280,
+     "defective": 95
+    },
+    {
+     "storage": "1TB",
+     "like_new": 815,
+     "good": 680,
+     "fair": 525,
+     "cracked": 315,
+     "defective": 105
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "macbook-pro-14-inch-m4-pro",
+   "name": "MacBook Pro 14-inch (M4 Pro)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 905,
+     "good": 760,
+     "fair": 585,
+     "cracked": 350,
+     "defective": 115
+    }
+   ],
+   "sort_order": 4
+  },
+  {
+   "handle": "macbook-pro-16-inch-m4-pro",
+   "name": "MacBook Pro 16-inch (M4 Pro)",
+   "category": "Laptop/MacBook",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 1130,
+     "good": 945,
+     "fair": 730,
+     "cracked": 435,
+     "defective": 145
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "apple-watch-series-7",
+   "name": "Apple Watch Series 7",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "41mm GPS",
+     "like_new": 110,
+     "good": 90,
+     "fair": 70,
+     "cracked": 40,
+     "defective": 15
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 115,
+     "good": 100,
+     "fair": 75,
+     "cracked": 45,
+     "defective": 15
+    },
+    {
+     "storage": "41mm GPS + Cellular",
+     "like_new": 135,
+     "good": 115,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "45mm GPS + Cellular",
+     "like_new": 145,
+     "good": 120,
+     "fair": 95,
+     "cracked": 55,
+     "defective": 20
+    }
+   ],
+   "sort_order": 10
+  },
+  {
+   "handle": "apple-watch-se-2nd-gen",
+   "name": "Apple Watch SE (2nd gen)",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 80,
+     "good": 65,
+     "fair": 50,
+     "cracked": 30,
+     "defective": 10
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 90,
+     "good": 75,
+     "fair": 55,
+     "cracked": 35,
+     "defective": 10
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 95,
+     "good": 80,
+     "fair": 60,
+     "cracked": 35,
+     "defective": 10
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 105,
+     "good": 85,
+     "fair": 65,
+     "cracked": 40,
+     "defective": 15
+    }
+   ],
+   "sort_order": 9
+  },
+  {
+   "handle": "apple-watch-series-8",
+   "name": "Apple Watch Series 8",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "41mm GPS",
+     "like_new": 125,
+     "good": 105,
+     "fair": 80,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 135,
+     "good": 115,
+     "fair": 90,
+     "cracked": 55,
+     "defective": 20
+    },
+    {
+     "storage": "41mm GPS + Cellular",
+     "like_new": 160,
+     "good": 130,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    },
+    {
+     "storage": "45mm GPS + Cellular",
+     "like_new": 165,
+     "good": 140,
+     "fair": 110,
+     "cracked": 65,
+     "defective": 20
+    }
+   ],
+   "sort_order": 8
+  },
+  {
+   "handle": "apple-watch-ultra",
+   "name": "Apple Watch Ultra",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "49mm GPS + Cellular",
+     "like_new": 255,
+     "good": 210,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 7
+  },
+  {
+   "handle": "apple-watch-series-9",
+   "name": "Apple Watch Series 9",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "41mm GPS",
+     "like_new": 150,
+     "good": 125,
+     "fair": 95,
+     "cracked": 60,
+     "defective": 20
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 160,
+     "good": 135,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    },
+    {
+     "storage": "41mm GPS + Cellular",
+     "like_new": 190,
+     "good": 160,
+     "fair": 120,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "45mm GPS + Cellular",
+     "like_new": 200,
+     "good": 165,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "apple-watch-ultra-2",
+   "name": "Apple Watch Ultra 2",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "49mm GPS + Cellular",
+     "like_new": 300,
+     "good": 250,
+     "fair": 195,
+     "cracked": 115,
+     "defective": 40
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "apple-watch-series-10",
+   "name": "Apple Watch Series 10",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "42mm GPS",
+     "like_new": 180,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    },
+    {
+     "storage": "46mm GPS",
+     "like_new": 195,
+     "good": 165,
+     "fair": 125,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "42mm GPS + Cellular",
+     "like_new": 225,
+     "good": 190,
+     "fair": 145,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "46mm GPS + Cellular",
+     "like_new": 240,
+     "good": 200,
+     "fair": 155,
+     "cracked": 95,
+     "defective": 30
+    }
+   ],
+   "sort_order": 4
+  },
+  {
+   "handle": "apple-watch-se-3",
+   "name": "Apple Watch SE 3",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 135,
+     "good": 115,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 150,
+     "good": 125,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 160,
+     "good": 135,
+     "fair": 105,
+     "cracked": 65,
+     "defective": 20
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 180,
+     "good": 150,
+     "fair": 115,
+     "cracked": 70,
+     "defective": 25
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "apple-watch-series-11",
+   "name": "Apple Watch Series 11",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "42mm GPS",
+     "like_new": 215,
+     "good": 180,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "46mm GPS",
+     "like_new": 235,
+     "good": 195,
+     "fair": 150,
+     "cracked": 90,
+     "defective": 30
+    },
+    {
+     "storage": "42mm GPS + Cellular",
+     "like_new": 270,
+     "good": 225,
+     "fair": 175,
+     "cracked": 105,
+     "defective": 35
+    },
+    {
+     "storage": "46mm GPS + Cellular",
+     "like_new": 285,
+     "good": 240,
+     "fair": 185,
+     "cracked": 110,
+     "defective": 35
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "apple-watch-ultra-3",
+   "name": "Apple Watch Ultra 3",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "49mm GPS + Cellular",
+     "like_new": 435,
+     "good": 365,
+     "fair": 280,
+     "cracked": 170,
+     "defective": 55
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "airpods-2nd-gen",
+   "name": "AirPods (2nd gen)",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 25,
+     "good": 20,
+     "fair": 15,
+     "cracked": 10,
+     "defective": 5
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "airpods-3rd-gen",
+   "name": "AirPods (3rd gen)",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 45,
+     "good": 40,
+     "fair": 30,
+     "cracked": 20,
+     "defective": 5
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "airpods-4",
+   "name": "AirPods 4",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 60,
+     "good": 50,
+     "fair": 40,
+     "cracked": 25,
+     "defective": 10
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "airpods-pro",
+   "name": "AirPods Pro",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 50,
+     "good": 40,
+     "fair": 35,
+     "cracked": 20,
+     "defective": 5
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "airpods-pro-2",
+   "name": "AirPods Pro 2",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2022,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 80,
+     "good": 65,
+     "fair": 50,
+     "cracked": 30,
+     "defective": 10
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "airpods-max",
+   "name": "AirPods Max",
+   "category": "Audio",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "Standard",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    }
+   ],
+   "sort_order": 4
+  },
+  {
+   "handle": "playstation-4-slim",
+   "name": "PlayStation 4 Slim",
+   "category": "Gaming Console",
+   "brand": "Sony",
+   "release_year": 2016,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "500GB",
+     "like_new": 100,
+     "good": 85,
+     "fair": 65,
+     "cracked": 40,
+     "defective": 15
+    },
+    {
+     "storage": "1TB",
+     "like_new": 115,
+     "good": 100,
+     "fair": 75,
+     "cracked": 45,
+     "defective": 15
+    }
+   ],
+   "sort_order": 12
+  },
+  {
+   "handle": "playstation-4-pro",
+   "name": "PlayStation 4 Pro",
+   "category": "Gaming Console",
+   "brand": "Sony",
+   "release_year": 2016,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "1TB",
+     "like_new": 135,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    }
+   ],
+   "sort_order": 11
+  },
+  {
+   "handle": "playstation-5",
+   "name": "PlayStation 5",
+   "category": "Gaming Console",
+   "brand": "Sony",
+   "release_year": 2020,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "Digital Edition 825GB",
+     "like_new": 205,
+     "good": 175,
+     "fair": 135,
+     "cracked": 80,
+     "defective": 25
+    },
+    {
+     "storage": "Disc Edition 825GB",
+     "like_new": 260,
+     "good": 215,
+     "fair": 165,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 7
+  },
+  {
+   "handle": "playstation-5-slim",
+   "name": "PlayStation 5 Slim",
+   "category": "Gaming Console",
+   "brand": "Sony",
+   "release_year": 2023,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "Digital Edition 1TB",
+     "like_new": 375,
+     "good": 315,
+     "fair": 240,
+     "cracked": 145,
+     "defective": 50
+    },
+    {
+     "storage": "Disc Edition 1TB",
+     "like_new": 420,
+     "good": 350,
+     "fair": 270,
+     "cracked": 160,
+     "defective": 55
+    }
+   ],
+   "sort_order": 3
+  },
+  {
+   "handle": "playstation-5-pro",
+   "name": "PlayStation 5 Pro",
+   "category": "Gaming Console",
+   "brand": "Sony",
+   "release_year": 2024,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "2TB",
+     "like_new": 700,
+     "good": 590,
+     "fair": 455,
+     "cracked": 270,
+     "defective": 90
+    }
+   ],
+   "sort_order": 2
+  },
+  {
+   "handle": "xbox-series-s",
+   "name": "Xbox Series S",
+   "category": "Gaming Console",
+   "brand": "Microsoft",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    },
+    {
+     "storage": "1TB",
+     "like_new": 155,
+     "good": 130,
+     "fair": 100,
+     "cracked": 60,
+     "defective": 20
+    }
+   ],
+   "sort_order": 8
+  },
+  {
+   "handle": "xbox-series-x",
+   "name": "Xbox Series X",
+   "category": "Gaming Console",
+   "brand": "Microsoft",
+   "release_year": 2020,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "1TB Digital",
+     "like_new": 200,
+     "good": 165,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    },
+    {
+     "storage": "1TB",
+     "like_new": 220,
+     "good": 185,
+     "fair": 140,
+     "cracked": 85,
+     "defective": 30
+    },
+    {
+     "storage": "2TB",
+     "like_new": 265,
+     "good": 220,
+     "fair": 170,
+     "cracked": 100,
+     "defective": 35
+    }
+   ],
+   "sort_order": 6
+  },
+  {
+   "handle": "nintendo-switch",
+   "name": "Nintendo Switch",
+   "category": "Gaming Console",
+   "brand": "Nintendo",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB",
+     "like_new": 130,
+     "good": 110,
+     "fair": 85,
+     "cracked": 50,
+     "defective": 15
+    }
+   ],
+   "sort_order": 9
+  },
+  {
+   "handle": "nintendo-switch-oled",
+   "name": "Nintendo Switch OLED",
+   "category": "Gaming Console",
+   "brand": "Nintendo",
+   "release_year": 2021,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 200,
+     "good": 170,
+     "fair": 130,
+     "cracked": 75,
+     "defective": 25
+    }
+   ],
+   "sort_order": 5
+  },
+  {
+   "handle": "nintendo-switch-lite",
+   "name": "Nintendo Switch Lite",
+   "category": "Gaming Console",
+   "brand": "Nintendo",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB",
+     "like_new": 85,
+     "good": 70,
+     "fair": 55,
+     "cracked": 35,
+     "defective": 10
+    }
+   ],
+   "sort_order": 10
+  },
+  {
+   "handle": "nintendo-switch-2",
+   "name": "Nintendo Switch 2",
+   "category": "Gaming Console",
+   "brand": "Nintendo",
+   "release_year": 2025,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 515,
+     "good": 430,
+     "fair": 330,
+     "cracked": 200,
+     "defective": 65
+    }
+   ],
+   "sort_order": 1
+  },
+  {
+   "handle": "steam-deck-oled",
+   "name": "Steam Deck OLED",
+   "category": "Gaming Console",
+   "brand": "Valve",
+   "release_year": 2023,
+   "is_popular": true,
+   "prices": [
+    {
+     "storage": "512GB",
+     "like_new": 320,
+     "good": 270,
+     "fair": 210,
+     "cracked": 125,
+     "defective": 40
+    },
+    {
+     "storage": "1TB",
+     "like_new": 380,
+     "good": 320,
+     "fair": 245,
+     "cracked": 145,
+     "defective": 50
+    }
+   ],
+   "sort_order": 4
+  }
+ ]
+}

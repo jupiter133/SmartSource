@@ -159,7 +159,7 @@
     </aside>
   </div>
 
-  {%- comment -%} Catalog for the wizard. Categories and brands: up to 50 each. Devices and prices: up to 250 each. {%- endcomment -%}
+  {%- comment -%} Catalog for the wizard. Categories and brands: up to 50 each. Devices: up to 250, each with its own Prices list. {%- endcomment -%}
   <script type="application/json" data-sell-catalog>
     {
       "categories": [
@@ -182,16 +182,13 @@
           {%- for d in metaobjects.buyback_device.values -%}
             {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
             {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
-            {"h":{{ d.system.handle | json }},"n":{{ d.name.value | json }},"c":{{ d.category.value.system.handle | json }},"b":{{ d.brand.value.system.handle | json }},"y":{{ d.release_year.value | default: 0 | json }},"s":{{ d.sort_order.value | default: 999 | json }},"p":{% if d.is_popular.value %}true{% else %}false{% endif %},"i":{% if d.image.value != blank %}{{ d.image.value | image_url: width: 400 | json }}{% else %}null{% endif %}}
-          {%- endfor -%}
-        {%- endpaginate -%}
-      ],
-      "prices": [
-        {%- assign sep = false -%}
-        {%- paginate metaobjects.buyback_price.values by 250 -%}
-          {%- for p in metaobjects.buyback_price.values -%}
-            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
-            {"d":{{ p.device.value.system.handle | json }},"st":{{ p.storage.value | json }},"p":[{{ p.price_like_new.value | json }},{{ p.price_good.value | json }},{{ p.price_fair.value | json }},{{ p.price_cracked.value | json }},{{ p.price_defective.value | json }}]}
+            {"h":{{ d.system.handle | json }},"n":{{ d.name.value | json }},"c":{{ d.category.value.system.handle | json }},"b":{{ d.brand.value.system.handle | json }},"y":{{ d.release_year.value | default: 0 | json }},"s":{{ d.sort_order.value | default: 999 | json }},"p":{% if d.is_popular.value %}true{% else %}false{% endif %},"i":{% if d.image.value != blank %}{{ d.image.value | image_url: width: 400 | json }}{% else %}null{% endif %},"pr":[
+              {%- assign psep = false -%}
+              {%- for pr in d.prices.value -%}
+                {%- if psep -%},{%- endif -%}{%- assign psep = true -%}
+                {"st":{{ pr.storage.value | json }},"p":[{{ pr.price_like_new.value | json }},{{ pr.price_good.value | json }},{{ pr.price_fair.value | json }},{{ pr.price_cracked.value | json }},{{ pr.price_defective.value | json }}]}
+              {%- endfor -%}
+            ]}
           {%- endfor -%}
         {%- endpaginate -%}
       ]

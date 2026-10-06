@@ -64,7 +64,9 @@ In any Sell-page text field you can write `{quote_valid_days}`, `{payment_busine
    node scripts/setup-sell-metaobjects.mjs --dry-run   # optional: shows every API call, changes nothing
    SHOPIFY_STORE=your-store.myshopify.com SHOPIFY_ADMIN_TOKEN=shpat_xxx node scripts/setup-sell-metaobjects.mjs
    ```
-   Add `--no-seed` to skip the sample data. Re-running is safe.
+   This creates the definitions and imports the full catalog from `scripts/sell-catalog.json`: 135 devices (every iPhone from the 8 up, Samsung Galaxy S/Z/A, iPads, Galaxy Tabs, MacBooks, Apple Watch, AirPods, PlayStation/Xbox/Switch/Steam Deck) with 384 price rows. Add `--no-seed` for definitions only. Re-running is safe: it updates entries by handle.
+
+   **The prices are formula estimates** (launch price x age x brand x USD-to-CAD x condition share). Check them against your margins before launch. To change the formula or add models, edit `scripts/build_sell_catalog.py`, run `python3 scripts/build_sell_catalog.py`, then re-run the setup script.
 
 **Option B: manual**
 Admin > Settings > Custom data > Metaobjects > Add definition. For each one, turn on **Storefronts** access (needed for the theme to read it) and **Active/draft status**.
@@ -73,7 +75,7 @@ Admin > Settings > Custom data > Metaobjects > Add definition. For each one, tur
 |---|---|
 | Buyback category (`buyback_category`) | `name` single line text (required) · `image` file (images) · `sort_order` integer |
 | Buyback brand (`buyback_brand`) | `name` single line text (required) · `logo` file (images) · `sort_order` integer |
-| Buyback device (`buyback_device`) | `name` single line text (required) · `category` metaobject ref → Buyback category · `brand` metaobject ref → Buyback brand · `image` file · `release_year` integer · `sort_order` integer · `is_popular` true/false · `active` true/false |
+| Buyback device (`buyback_device`) | `name` single line text (required) · `category` metaobject ref → Buyback category · `brand` metaobject ref → Buyback brand · `image` file · `release_year` integer · `sort_order` integer · `is_popular` true/false · `active` true/false · `prices` **list** of metaobject refs → Buyback price (add this after creating Buyback price) |
 | Buyback price (`buyback_price`) | `name` single line text · `device` metaobject ref → Buyback device · `storage` single line text (required) · `price_like_new`, `price_good`, `price_fair`, `price_cracked`, `price_defective` decimal (CAD) |
 
 Keys must match exactly. Then add the categories: Smartphone, Tablet, Smartwatch, Laptop/MacBook, Gaming Console, Audio.
@@ -82,7 +84,7 @@ Keys must match exactly. Then add the categories: Smartphone, Tablet, Smartwatch
 
 **Add a device:** Content > Metaobjects > Buyback device > Add entry. Fill in name, category, brand, image (transparent PNG, square) and release year. Tick **Active**, set status to **Active**, then save. Devices without at least one price don't appear in the wizard.
 
-**Add prices:** Content > Metaobjects > Buyback price > Add entry. Pick the device, type the storage exactly as you want it shown (e.g. `256GB`), and enter the CAD amount for each condition. Leave a condition blank if you don't buy it; it shows as "Not accepted". Make one entry per storage size.
+**Add prices:** open the device and use its **Prices** field > Add entry: type the storage exactly as you want it shown (e.g. `256GB`, `256GB Wi-Fi + Cellular`, `45mm GPS`), pick the device, and enter the CAD amount for each condition. Leave a condition blank if you don't buy it; it shows as "Not accepted". One entry per storage option. **A price only appears on the site when it's in the device's Prices list.**
 
 **Mark popular:** open the device and tick **Popular**. Popular devices appear in "What we pay" (up to 7 per group; change this in the section settings) and get a Popular badge in the wizard. "Up to" is the highest Like New price across that device's storage sizes.
 
@@ -94,8 +96,8 @@ Keys must match exactly. Then add the categories: Smartphone, Tablet, Smartwatch
 
 **Where quotes go:** each submission arrives at your store's contact email (Settings > Notifications > Staff / Store contact email) with the quote reference (`Q-YYMMDD-XXXX`), every device with storage, condition and price, the total, send method, store, timestamp and expiry date.
 
-**Before launch:** delete or replace the three `(SAMPLE)` devices and their prices. They use made-up prices on purpose.
+**Before launch:** review the estimated prices, at least for the popular devices.
 
 ### Limits to know
-- Liquid reads at most **250 devices** and **250 price entries** (one per device + storage), and **50** categories or brands. Past that, ask a developer to load the rest through the Section Rendering API.
+- Liquid reads at most **250 devices** and **50** categories or brands. Prices are read through each device's Prices list, so there's no overall price limit.
 - The quote wizard needs JavaScript. Without it, visitors see a message pointing them to a store.
