@@ -518,7 +518,8 @@
             "button_label": "Trade in now",
             "link": "/pages/sell-your-device",
             "icon": "swap",
-            "tint": "#E3F7FC"
+            "tint": "#E3F7FC",
+            "asset_image": "svc-trade-in.webp"
           }
         },
         "b2": {
@@ -529,7 +530,8 @@
             "button_label": "Book a repair",
             "link": "/pages/services",
             "icon": "inspect",
-            "tint": "#FDE7F1"
+            "tint": "#FDE7F1",
+            "asset_image": "svc-repairs.webp"
           }
         },
         "b3": {
@@ -540,7 +542,8 @@
             "button_label": "See our promise",
             "link": "/pages/our-promise",
             "icon": "award",
-            "tint": "#EDE9FE"
+            "tint": "#EDE9FE",
+            "asset_image": "svc-warranty.webp"
           }
         },
         "b4": {

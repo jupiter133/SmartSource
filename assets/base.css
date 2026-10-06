@@ -859,7 +859,7 @@ shopify-payment-terms{font-size:13px}
 .service-cards{gap:16px}
 .service-card{width:min(340px,80vw);background:#fff;border:1px solid #ececf0;border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;align-items:flex-start}
 .service-card h3{font-size:1.25rem;margin:0 0 6px}
-.service-card p{margin:0 0 14px;font-size:14px;color:#44444d;min-height:3em}
+.service-card p{margin:0 0 14px;font-size:14px;color:#44444d;min-height:4.5em}
 .service-card__img{margin-top:16px;width:100%;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:var(--tint);display:grid;place-items:center}
 .service-card__img img{width:100%;height:100%;object-fit:cover}
 .service-card__icon{width:72px;height:72px;border-radius:20px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px #0000000f}

@@ -9,7 +9,7 @@
         <p>{{ block.settings.text }}</p>
         {%- if block.settings.button_label != blank -%}<a class="btn btn--dark btn--sm" href="{{ block.settings.link }}">{{ block.settings.button_label }}</a>{%- endif -%}
         <div class="service-card__img" style="--tint: {{ block.settings.tint }}">
-          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 340px, 80vw', alt: block.settings.title }}{%- else -%}<span class="service-card__icon">{% render 'icon', name: block.settings.icon %}</span>{%- endif -%}
+          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 340px, 80vw', alt: block.settings.title }}{%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.title | escape }}" width="900" height="600" loading="lazy">{%- else -%}<span class="service-card__icon">{% render 'icon', name: block.settings.icon %}</span>{%- endif -%}
         </div>
       </div>
     {%- endfor -%}
@@ -26,6 +26,7 @@
     { "type": "text", "id": "button_label", "label": "Button", "default": "Trade in now" },
     { "type": "url", "id": "link", "label": "Link" },
     { "type": "image_picker", "id": "image", "label": "Image", "info": "Landscape photo, about 3:2." },
+    { "type": "text", "id": "asset_image", "label": "Theme asset image (advanced)", "info": "Filename in the theme's assets folder. Used only if no image is picked above." },
     { "type": "select", "id": "icon", "label": "Icon (when no image)", "options": [
       {"value":"swap","label":"Trade-in"},{"value":"inspect","label":"Repair"},{"value":"shield","label":"Protection"},{"value":"award","label":"Warranty"},{"value":"store","label":"Store"},{"value":"truck","label":"Shipping"},{"value":"cash","label":"Cash"},{"value":"battery","label":"Battery"}
     ], "default": "swap" },
