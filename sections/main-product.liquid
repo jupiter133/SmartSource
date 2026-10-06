@@ -1,67 +1,193 @@
 {%- assign current = product.selected_or_first_available_variant -%}
-<section class="page-width product" data-product>
-  <div class="product__media">
-    <div class="product__main-img">
-      {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 1200 | image_tag: loading: 'eager', data-main-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
+{%- assign cond_idx = -1 -%}{%- assign storage_idx = -1 -%}{%- assign color_idx = -1 -%}
+{%- for o in product.options -%}
+  {%- assign on = o | downcase -%}
+  {%- if on contains 'condition' or on contains 'grade' -%}{%- assign cond_idx = forloop.index0 -%}
+  {%- elsif on contains 'storage' or on contains 'capacity' -%}{%- assign storage_idx = forloop.index0 -%}
+  {%- elsif on contains 'color' or on contains 'colour' -%}{%- assign color_idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+
+<div class="pdp" data-product data-section="{{ section.id }}">
+  {%- comment -%} Sticky bar {%- endcomment -%}
+  <div class="pdp-sticky" data-sticky aria-hidden="true">
+    <div class="page-width pdp-sticky__inner">
+      {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 80 | image_tag: class: 'pdp-sticky__img', data-variant-thumb: '' }}{%- endif -%}
+      <span class="pdp-sticky__opts" data-opts-text>{{ current.title }}</span>
+      <div class="pdp-sticky__price" data-price-block></div>
+      <button type="button" class="btn btn--dark pdp-sticky__btn" data-add-proxy>Add to cart</button>
     </div>
-    {%- if product.media.size > 1 -%}
-      <div class="thumbs">
-        {%- for m in product.media -%}
-          <button class="thumb" data-thumb="{{ m.preview_image | image_url: width: 1200 }}">{{ m.preview_image | image_url: width: 150 | image_tag: loading: 'lazy' }}</button>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
+    <div class="pdp-sticky__bar"><span data-progress></span></div>
   </div>
 
-  <div class="product__info">
-    {% render 'condition-badge', product: product %}
-    <h1>{{ product.title }}</h1>
-    {% render 'rating', product: product %}
-    <div data-price-wrap>{% render 'price', product: product, variant: current %}</div>
+  <div class="page-width">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      {%- if collection -%}<a href="{{ collection.url }}">{{ collection.title }}</a>
+      {%- elsif product.collections.first -%}<a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>{%- endif -%}
+      <span>{{ product.title }}</span>
+    </nav>
 
-    {%- form 'product', product, data-product-form: '' -%}
+    {%- comment -%} Top: gallery + buy box {%- endcomment -%}
+    <section class="pdp-top">
+      <div class="gallery">
+        <div class="gallery__thumbs">
+          {%- for m in product.media -%}
+            <button type="button" class="gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb="{{ m.preview_image | image_url: width: 1200 }}" data-media-id="{{ m.id }}">
+              {{ m.preview_image | image_url: width: 160 | image_tag: loading: 'lazy' }}
+              {%- if m.media_type == 'video' or m.media_type == 'external_video' -%}<span class="gallery__play">{% render 'icon', name: 'play' %}</span>{%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+        <div class="gallery__main">
+          {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', data-main-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
+          {%- if section.settings.show_seal -%}{% render 'condition-seal', product: product %}{%- endif -%}
+        </div>
+      </div>
+
+      <div class="buy">
+        {%- if section.settings.deal_text != blank -%}
+          <a class="deal-ticket" href="{{ section.settings.deal_link }}">
+            {% render 'icon', name: 'tag' %}
+            <span><strong>{{ section.settings.deal_text }}</strong><small>{{ section.settings.deal_subtext }} ›</small></span>
+          </a>
+        {%- endif -%}
+        <h1 class="buy__title">{{ product.title }}</h1>
+        <p class="buy__sub" data-opts-text>{{ current.title | replace: ' / ', ' · ' }}</p>
+        {% render 'rating', product: product %}
+
+        <div class="buy__row">
+          <div data-price-block></div>
+          <div class="buy__ctas">
+            <button type="button" class="btn btn--dark btn--lg" data-add-proxy>Add to cart</button>
+            <button type="button" class="btn btn--icon" aria-label="Save to wishlist" data-wish>{% render 'icon', name: 'heart' %}</button>
+          </div>
+        </div>
+        {%- form 'product', product, id: 'pdp-installments' -%}{{ form | payment_terms }}{%- endform -%}
+
+        {% render 'pdp-info-cards', section: section %}
+      </div>
+    </section>
+
+    {%- comment -%} Inspection carousel {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+    <section class="pdp-row" data-carousel>
+      <div></div>
+      <div>
+        <div class="section__head"><div><h2>{{ section.settings.inspect_heading }}</h2><p class="muted">{{ section.settings.inspect_sub }}</p></div>{% render 'carousel-arrows' %}</div>
+        <div class="carousel" data-track>
+          {%- for block in section.blocks -%}
+            <div class="inspect" {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon %}<span>{{ block.settings.title }}</span></div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+    {%- endif -%}
+
+    {%- comment -%} Step-by-step selectors {%- endcomment -%}
+    {%- form 'product', product, data-product-form: '', class: 'pdp-steps' -%}
       <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
       {%- unless product.has_only_default_variant -%}
-        {%- for option in product.options_with_values -%}
-          <fieldset class="opt" data-option-index="{{ forloop.index0 }}">
-            <legend>{{ option.name }}{% if option.name == 'Condition' %} <button type="button" class="link" data-cond-guide>What's the difference?</button>{% endif %}</legend>
-            <div class="opt__values">
+      {%- for option in product.options_with_values -%}
+        {%- assign i = forloop.index0 -%}
+        {%- if i == cond_idx -%}{%- assign heading = 'Select the condition' -%}{%- assign step_img = section.settings.condition_image -%}
+        {%- elsif i == storage_idx -%}{%- assign heading = 'Select storage' -%}{%- assign step_img = section.settings.storage_image -%}
+        {%- elsif i == color_idx -%}{%- assign heading = 'Select the color' -%}{%- assign step_img = blank -%}
+        {%- else -%}{%- assign heading = 'Select ' | append: option.name -%}{%- assign step_img = blank -%}{%- endif -%}
+        <section class="pdp-row step">
+          <div class="step__media">
+            {%- if i == color_idx -%}
+              <div class="step__img step__img--plain">{%- if current.featured_image -%}{{ current.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- elsif product.featured_media -%}{{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}</div>
+            {%- elsif step_img != blank -%}
+              <div class="step__img">{{ step_img | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- if i == cond_idx -%}<span class="step__caption" data-cond-caption>Example of {{ option.selected_value }} (body, screen)</span>{%- endif -%}</div>
+            {%- else -%}
+              <div class="step__img step__img--tint">{% render 'device-art', title: product.title %}</div>
+            {%- endif -%}
+          </div>
+          <fieldset class="step__body" data-option-index="{{ i }}">
+            <div class="step__head"><legend><h2>{{ heading }}</h2></legend>{%- if i == cond_idx and section.settings.grades_page != blank -%}<a href="{{ section.settings.grades_page }}" class="link">Learn more</a>{%- endif -%}</div>
+            <div class="choices{% if i == color_idx %} choices--grid{% endif %}">
               {%- for value in option.values -%}
-                <label class="opt__btn">
-                  <input type="radio" name="option-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                  <span>{{ value }}</span>
+                <label class="choice">
+                  <input type="radio" name="option-{{ i }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                  <span class="choice__box">
+                    {%- if i == color_idx -%}<span class="choice__dot" data-swatch="{{ value | escape }}"></span>{%- else -%}<span class="choice__radio"></span>{%- endif -%}
+                    <span class="choice__label">{{ value }}
+                      {%- if i == cond_idx -%}<small>{% render 'grade-desc', grade: value %}</small>{%- endif -%}
+                    </span>
+                    <span class="choice__price" data-choice-price></span>
+                  </span>
                 </label>
               {%- endfor -%}
             </div>
+            {%- if i == cond_idx -%}<div class="cond-note" data-cond-note></div>{%- endif -%}
           </fieldset>
-        {%- endfor -%}
+        </section>
+      {%- endfor -%}
       {%- endunless -%}
-      <button type="submit" class="btn btn--dark btn--block btn--lg" data-add {% unless current.available %}disabled{% endunless %}>
-        {% if current.available %}Add to cart{% else %}Sold out{% endif %}
-      </button>
-      {{ form | payment_button }}
+
+      {%- if section.settings.tradein_link != blank -%}
+      <section class="pdp-row step">
+        <div class="step__media"><div class="step__img step__img--tint">{%- if section.settings.tradein_image != blank -%}{{ section.settings.tradein_image | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- else -%}{% render 'device-art', kind: 'phone', title: 'Trade-in' %}{%- endif -%}</div></div>
+        <div class="step__body">
+          <h2>Get this for even less with Trade-in</h2>
+          <a class="info-card" href="{{ section.settings.tradein_link }}">{% render 'icon', name: 'swap' %}<span>See how Trade-in works</span><span class="info-card__chev">›</span></a>
+          <div class="tradein-search" data-tradein="{{ section.settings.tradein_link }}">
+            <input type="search" name="q" placeholder="Search your device" aria-label="Search your device">{% render 'icon', name: 'search' %}
+          </div>
+          <p class="muted small">e.g. iPhone 12, MacBook Air, Galaxy S22…</p>
+        </div>
+      </section>
+      {%- endif -%}
+
+      {%- comment -%} Summary {%- endcomment -%}
+      <section class="pdp-row step" data-summary>
+        <div class="step__media"><div class="step__img step__img--plain">{%- if product.featured_media -%}{{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}</div></div>
+        <div class="step__body">
+          <div class="summary">
+            <p class="summary__title">{{ product.title }}</p>
+            <div class="summary__tags" data-opt-tags></div>
+            <div data-price-block></div>
+          </div>
+          <button type="submit" class="btn btn--dark btn--block btn--lg" data-add {% unless current.available %}disabled{% endunless %}>Add to cart</button>
+          <details class="summary__more"><summary>{% render 'icon', name: 'shield' %} Get 30 days to change your mind</summary><p class="muted">Free returns within 30 days. Every device is tested and comes with a 1-year warranty.</p></details>
+          <div class="footer__pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
+          {% render 'pdp-info-cards', section: section %}
+        </div>
+      </section>
     {%- endform -%}
 
-    <ul class="perks">
-      {%- for block in section.blocks -%}
-        <li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon %}<span>{{ block.settings.text }}</span></li>
-      {%- endfor -%}
-    </ul>
-
-    <div class="cond-guide" data-cond-panel hidden>
-      <p><strong>New</strong> — Sealed, never used.</p>
-      <p><strong>Excellent / Like new</strong> — Refurbished, no visible wear.</p>
-      <p><strong>Good</strong> — Refurbished, light scratches only visible up close.</p>
-      <p><strong>Fair / Used</strong> — Visible wear. 100% functional, tested.</p>
-    </div>
-
-    <div class="rte product__desc">{{ product.description }}</div>
+    {%- if product.description != blank -%}
+      <section class="pdp-row"><div></div><div class="rte"><h2>About this device</h2>{{ product.description }}</div></section>
+    {%- endif -%}
   </div>
   <script type="application/json" data-product-json>{{ product | json }}</script>
-</section>
+  <script type="application/json" data-pdp-config>{"cond": {{ cond_idx }}, "storage": {{ storage_idx }}, "color": {{ color_idx }}, "compareLabel": "new"}</script>
+</div>
 {% schema %}
-{ "name": "Product", "blocks": [{ "type": "perk", "name": "Perk", "settings": [
-  { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"award","label":"Warranty"},{"value":"swap","label":"Returns"},{"value":"truck","label":"Shipping"},{"value":"list","label":"Inspection"},{"value":"shield","label":"Secure"}], "default": "award" },
-  { "type": "text", "id": "text", "label": "Text", "default": "1-year warranty" }
+{ "name": "Product page", "settings": [
+  { "type": "checkbox", "id": "show_seal", "label": "Show 'Professionally refurbished' seal", "default": true },
+  { "type": "text", "id": "deal_text", "label": "Deal banner title", "default": "Deals available" },
+  { "type": "text", "id": "deal_subtext", "label": "Deal banner text", "default": "See limited deals and price drops" },
+  { "type": "url", "id": "deal_link", "label": "Deal banner link" },
+  { "type": "header", "content": "Info cards" },
+  { "type": "text", "id": "delivery_text", "label": "Delivery", "default": "Free delivery in 2–4 business days" },
+  { "type": "text", "id": "delivery_sub", "label": "Delivery subtext", "default": "Express delivery available at checkout" },
+  { "type": "text", "id": "unlocked_text", "label": "Unlocked", "default": "Works with all carriers" },
+  { "type": "text", "id": "returns_text", "label": "Returns", "default": "Free 30-day returns · 1-year warranty" },
+  { "type": "text", "id": "promise_text", "label": "Promise", "default": "Guaranteed by our Promise" },
+  { "type": "url", "id": "promise_link", "label": "Promise link" },
+  { "type": "header", "content": "Inspection carousel" },
+  { "type": "text", "id": "inspect_heading", "label": "Heading", "default": "Restored professionally" },
+  { "type": "text", "id": "inspect_sub", "label": "Subheading", "default": "Based on up to 100 points of inspection" },
+  { "type": "header", "content": "Step images" },
+  { "type": "image_picker", "id": "condition_image", "label": "Condition step image" },
+  { "type": "image_picker", "id": "storage_image", "label": "Storage step image" },
+  { "type": "url", "id": "grades_page", "label": "Grades explained page" },
+  { "type": "header", "content": "Trade-in" },
+  { "type": "url", "id": "tradein_link", "label": "Trade-in page (leave blank to hide)" },
+  { "type": "image_picker", "id": "tradein_image", "label": "Trade-in image" }
+], "blocks": [{ "type": "inspect", "name": "Inspection card", "settings": [
+  { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"battery","label":"Battery"},{"value":"phone","label":"Screen"},{"value":"camera","label":"Camera"},{"value":"list","label":"Checklist"},{"value":"shield","label":"Data wipe"},{"value":"star","label":"Quality"}], "default": "battery" },
+  { "type": "text", "id": "title", "label": "Title", "default": "Battery health" }
 ]}] }
 {% endschema %}

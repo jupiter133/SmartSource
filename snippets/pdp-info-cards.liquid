@@ -1,0 +1,6 @@
+<div class="info-cards">
+  <div class="info-card info-card--stack">{% render 'icon', name: 'truck' %}<span><strong>{{ section.settings.delivery_text }}</strong><small>{{ section.settings.delivery_sub }}</small></span></div>
+  <div class="info-card">{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span></div>
+  <div class="info-card">{% render 'icon', name: 'swap' %}<span><strong>{{ section.settings.returns_text }}</strong></span></div>
+  <a class="info-card" href="{{ section.settings.promise_link }}">{% render 'icon', name: 'shield' %}<span><strong>{{ section.settings.promise_text }}</strong></span><span class="info-card__chev">›</span></a>
+</div>

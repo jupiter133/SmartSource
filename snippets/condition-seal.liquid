@@ -1,0 +1,9 @@
+{%- assign tags = product.tags | join: ',' | downcase -%}
+{%- unless tags contains 'condition:new' -%}
+<svg class="seal" viewBox="0 0 100 100" aria-label="Professionally refurbished">
+  <defs><path id="sealc" d="M50 50m-34 0a34 34 0 1 1 68 0a34 34 0 1 1-68 0"/><linearGradient id="sealg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd6f5"/><stop offset=".5" stop-color="#d6e4ff"/><stop offset="1" stop-color="#d9ffe9"/></linearGradient></defs>
+  <circle cx="50" cy="50" r="48" fill="url(#sealg)"/><circle cx="50" cy="50" r="24" fill="#fff"/>
+  <text font-size="10.5" font-weight="600" fill="#111" letter-spacing="1"><textPath href="#sealc">Professionally · refurbished ·</textPath></text>
+  <path d="M41 50l6 6 12-12" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+</svg>
+{%- endunless -%}

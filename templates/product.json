@@ -1,12 +1,97 @@
-{ "sections": {
-    "main": { "type": "main-product", "blocks": {
-      "a": {"type":"perk","settings":{"icon":"award","text":"1-year warranty"}},
-      "b": {"type":"perk","settings":{"icon":"swap","text":"Free 30-day returns"}},
-      "c": {"type":"perk","settings":{"icon":"truck","text":"Free shipping"}},
-      "d": {"type":"perk","settings":{"icon":"list","text":"Up to 100-point inspection"}} }, "block_order": ["a","b","c","d"] },
-    "promise": { "type": "promise", "blocks": {
-      "i1": {"type":"item","settings":{"icon":"award","text":"1-year warranty"}},
-      "i2": {"type":"item","settings":{"icon":"list","text":"Up to 100-point quality inspection"}},
-      "i3": {"type":"item","settings":{"icon":"swap","text":"Free 30-day returns"}},
-      "i4": {"type":"item","settings":{"icon":"star","text":"Professionally refurbished"}} }, "block_order": ["i1","i2","i3","i4"] }
-  }, "order": ["main","promise"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "tradein_link": "/pages/trade-in"
+      },
+      "blocks": {
+        "b1": {
+          "type": "inspect",
+          "settings": {
+            "icon": "battery",
+            "title": "Battery health"
+          }
+        },
+        "b2": {
+          "type": "inspect",
+          "settings": {
+            "icon": "phone",
+            "title": "Screen"
+          }
+        },
+        "b3": {
+          "type": "inspect",
+          "settings": {
+            "icon": "camera",
+            "title": "Cameras"
+          }
+        },
+        "b4": {
+          "type": "inspect",
+          "settings": {
+            "icon": "list",
+            "title": "Buttons & ports"
+          }
+        },
+        "b5": {
+          "type": "inspect",
+          "settings": {
+            "icon": "shield",
+            "title": "Data wiped"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    },
+    "promise": {
+      "type": "promise",
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "text": "Professionally refurbished"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "promise"
+  ]
+}

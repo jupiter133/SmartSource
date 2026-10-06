@@ -1,0 +1,7 @@
+{%- assign g = grade | downcase -%}
+{%- if g contains 'premium' -%}Like new + brand-new battery
+{%- elsif g contains 'excellent' -%}No visible signs of use
+{%- elsif g contains 'good' -%}Light marks, invisible at arm's length
+{%- elsif g contains 'fair' -%}Visible wear, 100% functional
+{%- elsif g contains 'new' -%}Sealed in box
+{%- endif -%}
