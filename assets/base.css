@@ -909,3 +909,11 @@ shopify-payment-terms{font-size:13px}
   .hero-slider:has(.hero-banner) .hero-slider__dots .why-dot{background:#c9c9d1}.hero-slider:has(.hero-banner) .hero-slider__dots .why-dot.is-active{background:var(--c-ink)}
   .hero-slider:has(.hero-banner) .hero-slider__arrow{background:#efeff2}
 }
+
+/* desktop nav: category list scrolls, side links keep their size */
+@media (min-width:750px){
+  .header__nav .nav-scroll{flex:1 1 auto;min-width:0}
+  .header__nav .nav-side{flex-shrink:0}
+}
+.nav-side-link svg{flex-shrink:0}
+.header__nav .mega a{white-space:normal}
