@@ -1,0 +1,16 @@
+{%- comment -%} params: section, title {%- endcomment -%}
+<aside class="mega__side">
+                  <p class="mega__label">Good to know</p>
+                  {%- for block in section.blocks -%}
+                    {%- assign scope = block.settings.only_for | downcase | split: ',' -%}
+                    {%- assign t = title | downcase -%}
+                    {%- assign show = true -%}
+                    {%- if block.settings.only_for != blank -%}{%- assign show = false -%}{%- for x in scope -%}{%- assign xs = x | strip -%}{%- if xs == t -%}{%- assign show = true -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+                    {%- if show -%}
+                      <a class="gtk" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                        <span class="gtk__icon">{% render 'icon', name: block.settings.icon %}</span>
+                        <span><strong>{{ block.settings.title }}</strong><small>{{ block.settings.text }}</small></span>
+                      </a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </aside>

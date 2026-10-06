@@ -38,6 +38,9 @@
   <nav class="header__nav-wrap" data-menu>
   <div class="header__nav page-width">
     <ul class="nav-scroll">
+      {%- if section.settings.nav_source == 'builtin' or section.settings.main_menu == blank -%}
+        {% render 'nav-default', section: section %}
+      {%- else -%}
       {%- for link in section.settings.main_menu.links -%}
         {%- assign deal = false -%}{%- assign lt = link.title | downcase -%}{%- if section.settings.highlight_first and forloop.first and lt != 'home' -%}{%- assign deal = true -%}{%- endif -%}{%- if lt contains 'deal' -%}{%- assign deal = true -%}{%- endif -%}
         <li class="nav-item{% if link.links.size > 0 %} has-mega{% endif %}" data-nav-item>
@@ -45,21 +48,7 @@
           {%- if link.links.size > 0 -%}
             <div class="mega" data-mega>
               <div class="mega__inner">
-                <aside class="mega__side">
-                  <p class="mega__label">Good to know</p>
-                  {%- for block in section.blocks -%}
-                    {%- assign scope = block.settings.only_for | downcase | split: ',' -%}
-                    {%- assign t = link.title | downcase -%}
-                    {%- assign show = true -%}
-                    {%- if block.settings.only_for != blank -%}{%- assign show = false -%}{%- for x in scope -%}{%- assign xs = x | strip -%}{%- if xs == t -%}{%- assign show = true -%}{%- endif -%}{%- endfor -%}{%- endif -%}
-                    {%- if show -%}
-                      <a class="gtk" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
-                        <span class="gtk__icon">{% render 'icon', name: block.settings.icon %}</span>
-                        <span><strong>{{ block.settings.title }}</strong><small>{{ block.settings.text }}</small></span>
-                      </a>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </aside>
+                {% render 'mega-side', section: section, title: link.title %}
                 <div class="mega__main">
                   <div class="mega__head"><p class="mega__label">Categories</p><a href="{{ link.url }}" class="mega__all">See all</a></div>
                   <div class="mega__grid">
@@ -86,9 +75,15 @@
       {%- else -%}
         <li><a href="/collections/all" class="nav-link nav-deal">✦ Great deals</a></li><li><a class="nav-link" href="/collections/all">Smartphones</a></li><li><a class="nav-link" href="/collections/all">Laptops</a></li>
       {%- endfor -%}
+      {%- endif -%}
     </ul>
     <ul class="nav-side">
-      {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+      {%- if section.settings.side_menu == blank -%}
+        <li><a class="nav-link nav-side-link" href="/pages/trade-in">{% render 'icon', name: 'swap' %}Trade in</a></li>
+        <li><a class="nav-link nav-side-link" href="/pages/services">{% render 'icon', name: 'shield' %}Services</a></li>
+      {%- else -%}
+        {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+      {%- endif -%}
     </ul>
   </div>
   </nav>
@@ -98,6 +93,7 @@
   { "type": "image_picker", "id": "logo", "label": "Logo" },
   { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 300, "step": 10, "unit": "px", "default": 150 },
   { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search for iPhone, MacBook, PS5..." },
+  { "type": "select", "id": "nav_source", "label": "Category menu source", "options": [{"value":"builtin","label":"Built-in electronics menu"},{"value":"shopify","label":"My Shopify menu (below)"}], "default": "builtin", "info": "Built-in links filter by product tag (e.g. iphone, samsung, macbook)." },
   { "type": "link_list", "id": "main_menu", "label": "Category menu", "default": "main-menu" },
   { "type": "checkbox", "id": "highlight_first", "label": "Highlight first link as deals", "default": true },
   { "type": "link_list", "id": "side_menu", "label": "Right-side menu (Trade in, Services...)" },

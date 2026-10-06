@@ -51,6 +51,7 @@ h1{font-size:clamp(1.8rem,3.5vw,2.6rem)} h2{font-size:1.35rem} h3{font-size:1.25
 .header__nav a{display:block;padding:10px 0;white-space:nowrap;border-bottom:2px solid transparent}
 .header__nav a:hover,.header__nav a.is-active{border-color:var(--c-ink)}
 .nav-deal{color:var(--c-sale)}
+.nav-side-link{display:flex!important;align-items:center;gap:6px}.nav-side-link svg{width:18px;height:18px}
 
 /* mega menu */
 .nav-item{position:static}

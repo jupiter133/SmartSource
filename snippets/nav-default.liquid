@@ -1,0 +1,50 @@
+{%- comment -%} Built-in category menu. Links use product-tag URLs, so no collections are required. {%- endcomment -%}
+<li class="nav-item"><a href="/collections/all?sort_by=price-ascending" class="nav-link nav-deal">✦ Great deals</a></li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/smartphones" class="nav-link" aria-haspopup="true" aria-expanded="false">Smartphones</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Smartphones' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/smartphones" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/iphone"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'iPhone', idx: 0 %}</span><span class="mega-tile__title">iPhone</span></a><a class="mega-tile" href="/collections/all/samsung"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Samsung Galaxy', idx: 1 %}</span><span class="mega-tile__title">Samsung Galaxy</span></a><a class="mega-tile" href="/collections/all/pixel"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'Google Pixel', idx: 2 %}</span><span class="mega-tile__title">Google Pixel</span></a><a class="mega-tile" href="/collections/all/android"><span class="mega-tile__img" style="--tint: #DCF7F4">{% render 'device-art', title: 'Android smartphones', idx: 3 %}</span><span class="mega-tile__title">Android smartphones</span></a><a class="mega-tile" href="/collections/all/phone-accessories"><span class="mega-tile__img" style="--tint: #EEEAFD">{% render 'device-art', title: 'Smartphone accessories', idx: 4 %}</span><span class="mega-tile__title">Smartphone accessories</span></a></div></div>
+  </div></div>
+</li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/laptops" class="nav-link" aria-haspopup="true" aria-expanded="false">Laptops</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Laptops' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/laptops" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/macbook"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'MacBook', idx: 0 %}</span><span class="mega-tile__title">MacBook</span></a><a class="mega-tile" href="/collections/all/windows"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Windows Laptops', idx: 1 %}</span><span class="mega-tile__title">Windows Laptops</span></a><a class="mega-tile" href="/collections/all/chromebook"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'Chromebooks', idx: 2 %}</span><span class="mega-tile__title">Chromebooks</span></a><a class="mega-tile" href="/collections/all/gaming-laptop"><span class="mega-tile__img" style="--tint: #DCF7F4">{% render 'device-art', title: 'Gaming Laptops', idx: 3 %}</span><span class="mega-tile__title">Gaming Laptops</span></a><a class="mega-tile" href="/collections/all/workstation"><span class="mega-tile__img" style="--tint: #EEEAFD">{% render 'device-art', title: 'Workstation Laptops', idx: 4 %}</span><span class="mega-tile__title">Workstation Laptops</span></a><a class="mega-tile" href="/collections/all/laptop-accessories"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'Accessories & Components', idx: 5 %}</span><span class="mega-tile__title">Accessories & Components</span></a></div></div>
+  </div></div>
+</li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/tablets" class="nav-link" aria-haspopup="true" aria-expanded="false">Tablets</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Tablets' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/tablets" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/ipad"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'iPad', idx: 0 %}</span><span class="mega-tile__title">iPad</span></a><a class="mega-tile" href="/collections/all/galaxy-tab"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Samsung Galaxy Tab', idx: 1 %}</span><span class="mega-tile__title">Samsung Galaxy Tab</span></a><a class="mega-tile" href="/collections/all/android-tablet"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'Android Tablets', idx: 2 %}</span><span class="mega-tile__title">Android Tablets</span></a><a class="mega-tile" href="/collections/all/tablet-accessories"><span class="mega-tile__img" style="--tint: #DCF7F4">{% render 'device-art', title: 'Tablet accessories', idx: 3 %}</span><span class="mega-tile__title">Tablet accessories</span></a></div></div>
+  </div></div>
+</li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/consoles" class="nav-link" aria-haspopup="true" aria-expanded="false">Gaming consoles</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Gaming consoles' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/consoles" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/xbox"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'Xbox', idx: 0 %}</span><span class="mega-tile__title">Xbox</span></a><a class="mega-tile" href="/collections/all/nintendo"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Nintendo', idx: 1 %}</span><span class="mega-tile__title">Nintendo</span></a><a class="mega-tile" href="/collections/all/playstation"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'PlayStation', idx: 2 %}</span><span class="mega-tile__title">PlayStation</span></a><a class="mega-tile" href="/collections/all/retro"><span class="mega-tile__img" style="--tint: #DCF7F4">{% render 'device-art', title: 'Retrogaming', idx: 3 %}</span><span class="mega-tile__title">Retrogaming</span></a><a class="mega-tile" href="/collections/all/console-accessories"><span class="mega-tile__img" style="--tint: #EEEAFD">{% render 'device-art', title: 'Console accessories', idx: 4 %}</span><span class="mega-tile__title">Console accessories</span></a></div></div>
+  </div></div>
+</li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/smartwatches" class="nav-link" aria-haspopup="true" aria-expanded="false">Smartwatches</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Smartwatches' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/smartwatches" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/apple-watch"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'Apple Watch', idx: 0 %}</span><span class="mega-tile__title">Apple Watch</span></a><a class="mega-tile" href="/collections/all/galaxy-watch"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Samsung Galaxy Watch', idx: 1 %}</span><span class="mega-tile__title">Samsung Galaxy Watch</span></a><a class="mega-tile" href="/collections/all/fitness"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'Fitness trackers', idx: 2 %}</span><span class="mega-tile__title">Fitness trackers</span></a></div></div>
+  </div></div>
+</li>
+<li class="nav-item has-mega" data-nav-item>
+  <a href="/collections/all/audio" class="nav-link" aria-haspopup="true" aria-expanded="false">Audio</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Audio' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/audio" class="mega__all">See all</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="/collections/all/airpods"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'AirPods', idx: 0 %}</span><span class="mega-tile__title">AirPods</span></a><a class="mega-tile" href="/collections/all/headphones"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Headphones', idx: 1 %}</span><span class="mega-tile__title">Headphones</span></a><a class="mega-tile" href="/collections/all/speakers"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'Speakers', idx: 2 %}</span><span class="mega-tile__title">Speakers</span></a></div></div>
+  </div></div>
+</li>
