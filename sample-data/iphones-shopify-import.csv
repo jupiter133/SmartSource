@@ -1,0 +1,91 @@
+Handle,Title,Body (HTML),Vendor,Type,Tags,Published,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Variant SKU,Variant Grams,Variant Inventory Tracker,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Status
+iphone-11,iPhone 11,"<p>Refurbished iPhone 11, 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-11-64GB-EXCELLENT,200,,deny,manual,216.99,699.00,TRUE,TRUE,draft
+iphone-11,,,,,,,,Good,,64GB,IPHONE-11-64GB-GOOD,200,,deny,manual,188.99,699.00,TRUE,TRUE,
+iphone-11,,,,,,,,Fair,,64GB,IPHONE-11-64GB-FAIR,200,,deny,manual,165.99,699.00,TRUE,TRUE,
+iphone-11-pro,iPhone 11 Pro,"<p>Refurbished iPhone 11 Pro, 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-11-PRO-64GB-EXCELLENT,200,,deny,manual,262.99,999.00,TRUE,TRUE,draft
+iphone-11-pro,,,,,,,,Good,,64GB,IPHONE-11-PRO-64GB-GOOD,200,,deny,manual,228.99,999.00,TRUE,TRUE,
+iphone-11-pro,,,,,,,,Fair,,64GB,IPHONE-11-PRO-64GB-FAIR,200,,deny,manual,201.99,999.00,TRUE,TRUE,
+iphone-11-pro-max,iPhone 11 Pro Max,"<p>Refurbished iPhone 11 Pro Max, 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-11-PRO-MAX-64GB-EXCELLENT,200,,deny,manual,297.99,1099.00,TRUE,TRUE,draft
+iphone-11-pro-max,,,,,,,,Good,,64GB,IPHONE-11-PRO-MAX-64GB-GOOD,200,,deny,manual,258.99,1099.00,TRUE,TRUE,
+iphone-11-pro-max,,,,,,,,Fair,,64GB,IPHONE-11-PRO-MAX-64GB-FAIR,200,,deny,manual,227.99,1099.00,TRUE,TRUE,
+iphone-se-2nd-gen,iPhone SE (2nd gen),"<p>Refurbished iPhone SE (2nd gen), 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-SE-2ND-GEN-64GB-EXCELLENT,200,,deny,manual,113.99,399.00,TRUE,TRUE,draft
+iphone-se-2nd-gen,,,,,,,,Good,,64GB,IPHONE-SE-2ND-GEN-64GB-GOOD,200,,deny,manual,98.99,399.00,TRUE,TRUE,
+iphone-se-2nd-gen,,,,,,,,Fair,,64GB,IPHONE-SE-2ND-GEN-64GB-FAIR,200,,deny,manual,86.99,399.00,TRUE,TRUE,
+iphone-12-mini,iPhone 12 mini,"<p>Refurbished iPhone 12 mini, 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-12-MINI-64GB-EXCELLENT,200,,deny,manual,216.99,699.00,TRUE,TRUE,draft
+iphone-12-mini,,,,,,,,Good,,64GB,IPHONE-12-MINI-64GB-GOOD,200,,deny,manual,188.99,699.00,TRUE,TRUE,
+iphone-12-mini,,,,,,,,Fair,,64GB,IPHONE-12-MINI-64GB-FAIR,200,,deny,manual,165.99,699.00,TRUE,TRUE,
+iphone-12,iPhone 12,"<p>Refurbished iPhone 12, 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-12-64GB-EXCELLENT,200,,deny,manual,262.99,799.00,TRUE,TRUE,draft
+iphone-12,,,,,,,,Good,,64GB,IPHONE-12-64GB-GOOD,200,,deny,manual,228.99,799.00,TRUE,TRUE,
+iphone-12,,,,,,,,Fair,,64GB,IPHONE-12-64GB-FAIR,200,,deny,manual,201.99,799.00,TRUE,TRUE,
+iphone-12-pro,iPhone 12 Pro,"<p>Refurbished iPhone 12 Pro, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-12-PRO-128GB-EXCELLENT,200,,deny,manual,343.99,999.00,TRUE,TRUE,draft
+iphone-12-pro,,,,,,,,Good,,128GB,IPHONE-12-PRO-128GB-GOOD,200,,deny,manual,298.99,999.00,TRUE,TRUE,
+iphone-12-pro,,,,,,,,Fair,,128GB,IPHONE-12-PRO-128GB-FAIR,200,,deny,manual,262.99,999.00,TRUE,TRUE,
+iphone-12-pro-max,iPhone 12 Pro Max,"<p>Refurbished iPhone 12 Pro Max, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-12-PRO-MAX-128GB-EXCELLENT,200,,deny,manual,400.99,1099.00,TRUE,TRUE,draft
+iphone-12-pro-max,,,,,,,,Good,,128GB,IPHONE-12-PRO-MAX-128GB-GOOD,200,,deny,manual,348.99,1099.00,TRUE,TRUE,
+iphone-12-pro-max,,,,,,,,Fair,,128GB,IPHONE-12-PRO-MAX-128GB-FAIR,200,,deny,manual,306.99,1099.00,TRUE,TRUE,
+iphone-13-mini,iPhone 13 mini,"<p>Refurbished iPhone 13 mini, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-13-MINI-128GB-EXCELLENT,200,,deny,manual,320.99,699.00,TRUE,TRUE,draft
+iphone-13-mini,,,,,,,,Good,,128GB,IPHONE-13-MINI-128GB-GOOD,200,,deny,manual,278.99,699.00,TRUE,TRUE,
+iphone-13-mini,,,,,,,,Fair,,128GB,IPHONE-13-MINI-128GB-FAIR,200,,deny,manual,245.99,699.00,TRUE,TRUE,
+iphone-13,iPhone 13,"<p>Refurbished iPhone 13, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-13-128GB-EXCELLENT,200,,deny,manual,366.99,799.00,TRUE,TRUE,draft
+iphone-13,,,,,,,,Good,,128GB,IPHONE-13-128GB-GOOD,200,,deny,manual,318.99,799.00,TRUE,TRUE,
+iphone-13,,,,,,,,Fair,,128GB,IPHONE-13-128GB-FAIR,200,,deny,manual,280.99,799.00,TRUE,TRUE,
+iphone-13-pro,iPhone 13 Pro,"<p>Refurbished iPhone 13 Pro, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-13-PRO-128GB-EXCELLENT,200,,deny,manual,469.99,999.00,TRUE,TRUE,draft
+iphone-13-pro,,,,,,,,Good,,128GB,IPHONE-13-PRO-128GB-GOOD,200,,deny,manual,408.99,999.00,TRUE,TRUE,
+iphone-13-pro,,,,,,,,Fair,,128GB,IPHONE-13-PRO-128GB-FAIR,200,,deny,manual,359.99,999.00,TRUE,TRUE,
+iphone-13-pro-max,iPhone 13 Pro Max,"<p>Refurbished iPhone 13 Pro Max, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-13-PRO-MAX-128GB-EXCELLENT,200,,deny,manual,538.99,1099.00,TRUE,TRUE,draft
+iphone-13-pro-max,,,,,,,,Good,,128GB,IPHONE-13-PRO-MAX-128GB-GOOD,200,,deny,manual,468.99,1099.00,TRUE,TRUE,
+iphone-13-pro-max,,,,,,,,Fair,,128GB,IPHONE-13-PRO-MAX-128GB-FAIR,200,,deny,manual,412.99,1099.00,TRUE,TRUE,
+iphone-se-3rd-gen,iPhone SE (3rd gen),"<p>Refurbished iPhone SE (3rd gen), 64GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,64GB,IPHONE-SE-3RD-GEN-64GB-EXCELLENT,200,,deny,manual,182.99,429.00,TRUE,TRUE,draft
+iphone-se-3rd-gen,,,,,,,,Good,,64GB,IPHONE-SE-3RD-GEN-64GB-GOOD,200,,deny,manual,158.99,429.00,TRUE,TRUE,
+iphone-se-3rd-gen,,,,,,,,Fair,,64GB,IPHONE-SE-3RD-GEN-64GB-FAIR,200,,deny,manual,139.99,429.00,TRUE,TRUE,
+iphone-14,iPhone 14,"<p>Refurbished iPhone 14, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-14-128GB-EXCELLENT,200,,deny,manual,423.99,799.00,TRUE,TRUE,draft
+iphone-14,,,,,,,,Good,,128GB,IPHONE-14-128GB-GOOD,200,,deny,manual,368.99,799.00,TRUE,TRUE,
+iphone-14,,,,,,,,Fair,,128GB,IPHONE-14-128GB-FAIR,200,,deny,manual,324.99,799.00,TRUE,TRUE,
+iphone-14-plus,iPhone 14 Plus,"<p>Refurbished iPhone 14 Plus, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-14-PLUS-128GB-EXCELLENT,200,,deny,manual,481.99,899.00,TRUE,TRUE,draft
+iphone-14-plus,,,,,,,,Good,,128GB,IPHONE-14-PLUS-128GB-GOOD,200,,deny,manual,418.99,899.00,TRUE,TRUE,
+iphone-14-plus,,,,,,,,Fair,,128GB,IPHONE-14-PLUS-128GB-FAIR,200,,deny,manual,368.99,899.00,TRUE,TRUE,
+iphone-14-pro,iPhone 14 Pro,"<p>Refurbished iPhone 14 Pro, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-14-PRO-128GB-EXCELLENT,200,,deny,manual,561.99,999.00,TRUE,TRUE,draft
+iphone-14-pro,,,,,,,,Good,,128GB,IPHONE-14-PRO-128GB-GOOD,200,,deny,manual,488.99,999.00,TRUE,TRUE,
+iphone-14-pro,,,,,,,,Fair,,128GB,IPHONE-14-PRO-128GB-FAIR,200,,deny,manual,429.99,999.00,TRUE,TRUE,
+iphone-14-pro-max,iPhone 14 Pro Max,"<p>Refurbished iPhone 14 Pro Max, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-14-PRO-MAX-128GB-EXCELLENT,200,,deny,manual,642.99,1099.00,TRUE,TRUE,draft
+iphone-14-pro-max,,,,,,,,Good,,128GB,IPHONE-14-PRO-MAX-128GB-GOOD,200,,deny,manual,558.99,1099.00,TRUE,TRUE,
+iphone-14-pro-max,,,,,,,,Fair,,128GB,IPHONE-14-PRO-MAX-128GB-FAIR,200,,deny,manual,491.99,1099.00,TRUE,TRUE,
+iphone-15,iPhone 15,"<p>Refurbished iPhone 15, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-15-128GB-EXCELLENT,200,,deny,manual,550.99,799.00,TRUE,TRUE,draft
+iphone-15,,,,,,,,Good,,128GB,IPHONE-15-128GB-GOOD,200,,deny,manual,478.99,799.00,TRUE,TRUE,
+iphone-15,,,,,,,,Fair,,128GB,IPHONE-15-128GB-FAIR,200,,deny,manual,421.99,799.00,TRUE,TRUE,
+iphone-15-plus,iPhone 15 Plus,"<p>Refurbished iPhone 15 Plus, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-15-PLUS-128GB-EXCELLENT,200,,deny,manual,619.99,899.00,TRUE,TRUE,draft
+iphone-15-plus,,,,,,,,Good,,128GB,IPHONE-15-PLUS-128GB-GOOD,200,,deny,manual,538.99,899.00,TRUE,TRUE,
+iphone-15-plus,,,,,,,,Fair,,128GB,IPHONE-15-PLUS-128GB-FAIR,200,,deny,manual,473.99,899.00,TRUE,TRUE,
+iphone-15-pro,iPhone 15 Pro,"<p>Refurbished iPhone 15 Pro, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-15-PRO-128GB-EXCELLENT,200,,deny,manual,711.99,999.00,TRUE,TRUE,draft
+iphone-15-pro,,,,,,,,Good,,128GB,IPHONE-15-PRO-128GB-GOOD,200,,deny,manual,618.99,999.00,TRUE,TRUE,
+iphone-15-pro,,,,,,,,Fair,,128GB,IPHONE-15-PRO-128GB-FAIR,200,,deny,manual,544.99,999.00,TRUE,TRUE,
+iphone-15-pro-max,iPhone 15 Pro Max,"<p>Refurbished iPhone 15 Pro Max, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-15-PRO-MAX-256GB-EXCELLENT,200,,deny,manual,837.99,1199.00,TRUE,TRUE,draft
+iphone-15-pro-max,,,,,,,,Good,,256GB,IPHONE-15-PRO-MAX-256GB-GOOD,200,,deny,manual,728.99,1199.00,TRUE,TRUE,
+iphone-15-pro-max,,,,,,,,Fair,,256GB,IPHONE-15-PRO-MAX-256GB-FAIR,200,,deny,manual,641.99,1199.00,TRUE,TRUE,
+iphone-16e,iPhone 16e,"<p>Refurbished iPhone 16e, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-16E-128GB-EXCELLENT,200,,deny,manual,492.99,599.00,TRUE,TRUE,draft
+iphone-16e,,,,,,,,Good,,128GB,IPHONE-16E-128GB-GOOD,200,,deny,manual,428.99,599.00,TRUE,TRUE,
+iphone-16e,,,,,,,,Fair,,128GB,IPHONE-16E-128GB-FAIR,200,,deny,manual,377.99,599.00,TRUE,TRUE,
+iphone-16,iPhone 16,"<p>Refurbished iPhone 16, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-16-128GB-EXCELLENT,200,,deny,manual,665.99,799.00,TRUE,TRUE,draft
+iphone-16,,,,,,,,Good,,128GB,IPHONE-16-128GB-GOOD,200,,deny,manual,578.99,799.00,TRUE,TRUE,
+iphone-16,,,,,,,,Fair,,128GB,IPHONE-16-128GB-FAIR,200,,deny,manual,509.99,799.00,TRUE,TRUE,
+iphone-16-plus,iPhone 16 Plus,"<p>Refurbished iPhone 16 Plus, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-16-PLUS-128GB-EXCELLENT,200,,deny,manual,745.99,899.00,TRUE,TRUE,draft
+iphone-16-plus,,,,,,,,Good,,128GB,IPHONE-16-PLUS-128GB-GOOD,200,,deny,manual,648.99,899.00,TRUE,TRUE,
+iphone-16-plus,,,,,,,,Fair,,128GB,IPHONE-16-PLUS-128GB-FAIR,200,,deny,manual,570.99,899.00,TRUE,TRUE,
+iphone-16-pro,iPhone 16 Pro,"<p>Refurbished iPhone 16 Pro, 128GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,128GB,IPHONE-16-PRO-128GB-EXCELLENT,200,,deny,manual,872.99,999.00,TRUE,TRUE,draft
+iphone-16-pro,,,,,,,,Good,,128GB,IPHONE-16-PRO-128GB-GOOD,200,,deny,manual,758.99,999.00,TRUE,TRUE,
+iphone-16-pro,,,,,,,,Fair,,128GB,IPHONE-16-PRO-128GB-FAIR,200,,deny,manual,667.99,999.00,TRUE,TRUE,
+iphone-16-pro-max,iPhone 16 Pro Max,"<p>Refurbished iPhone 16 Pro Max, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-16-PRO-MAX-256GB-EXCELLENT,200,,deny,manual,1033.99,1199.00,TRUE,TRUE,draft
+iphone-16-pro-max,,,,,,,,Good,,256GB,IPHONE-16-PRO-MAX-256GB-GOOD,200,,deny,manual,898.99,1199.00,TRUE,TRUE,
+iphone-16-pro-max,,,,,,,,Fair,,256GB,IPHONE-16-PRO-MAX-256GB-FAIR,200,,deny,manual,790.99,1199.00,TRUE,TRUE,
+iphone-17,iPhone 17,"<p>Refurbished iPhone 17, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-17-256GB-EXCELLENT,200,,deny,manual,803.99,799.00,TRUE,TRUE,draft
+iphone-17,,,,,,,,Good,,256GB,IPHONE-17-256GB-GOOD,200,,deny,manual,698.99,799.00,TRUE,TRUE,
+iphone-17,,,,,,,,Fair,,256GB,IPHONE-17-256GB-FAIR,200,,deny,manual,614.99,799.00,TRUE,TRUE,
+iphone-air,iPhone Air,"<p>Refurbished iPhone Air, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-AIR-256GB-EXCELLENT,200,,deny,manual,952.99,999.00,TRUE,TRUE,draft
+iphone-air,,,,,,,,Good,,256GB,IPHONE-AIR-256GB-GOOD,200,,deny,manual,828.99,999.00,TRUE,TRUE,
+iphone-air,,,,,,,,Fair,,256GB,IPHONE-AIR-256GB-FAIR,200,,deny,manual,729.99,999.00,TRUE,TRUE,
+iphone-17-pro,iPhone 17 Pro,"<p>Refurbished iPhone 17 Pro, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-17-PRO-256GB-EXCELLENT,200,,deny,manual,1090.99,1099.00,TRUE,TRUE,draft
+iphone-17-pro,,,,,,,,Good,,256GB,IPHONE-17-PRO-256GB-GOOD,200,,deny,manual,948.99,1099.00,TRUE,TRUE,
+iphone-17-pro,,,,,,,,Fair,,256GB,IPHONE-17-PRO-256GB-FAIR,200,,deny,manual,834.99,1099.00,TRUE,TRUE,
+iphone-17-pro-max,iPhone 17 Pro Max,"<p>Refurbished iPhone 17 Pro Max, 256GB, unlocked. Fully tested, 1-year warranty, free 30-day returns.</p>",Apple,Smartphone,"condition:refurbished, iPhone, Apple, Smartphones, unlocked",TRUE,Condition,Excellent,Storage,256GB,IPHONE-17-PRO-MAX-256GB-EXCELLENT,200,,deny,manual,1205.99,1199.00,TRUE,TRUE,draft
+iphone-17-pro-max,,,,,,,,Good,,256GB,IPHONE-17-PRO-MAX-256GB-GOOD,200,,deny,manual,1048.99,1199.00,TRUE,TRUE,
+iphone-17-pro-max,,,,,,,,Fair,,256GB,IPHONE-17-PRO-MAX-256GB-FAIR,200,,deny,manual,922.99,1199.00,TRUE,TRUE,
