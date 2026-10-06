@@ -93,6 +93,13 @@
       },
       {
         "type": "checkbox",
+        "id": "show_refurb_badge",
+        "label": "Show \"Refurbished\" badge on product cards",
+        "default": false,
+        "info": "Off: only New and Used get a badge, since everything else is refurbished."
+      },
+      {
+        "type": "checkbox",
         "id": "show_new_price",
         "label": "Show compare-at price as \"new\" price",
         "default": true

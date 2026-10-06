@@ -3,7 +3,7 @@
   {%- assign t = tag | downcase -%}
   {%- if t contains 'condition:' -%}
     {%- assign cond = t | remove: 'condition:' | strip -%}
-    <span class="badge badge--{{ cond | handleize }}">{{ cond | capitalize }}</span>
+    {%- unless cond == 'refurbished' and settings.show_refurb_badge != true -%}<span class="badge badge--{{ cond | handleize }}">{{ cond | capitalize }}</span>{%- endunless -%}
     {%- break -%}
   {%- endif -%}
 {%- endfor -%}
