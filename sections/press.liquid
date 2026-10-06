@@ -1,0 +1,22 @@
+<section class="section page-width" data-carousel>
+  <div class="section__head"><h2>{{ section.settings.heading }}</h2>{% render 'carousel-arrows' %}</div>
+  <div class="carousel" data-track>
+    {%- for block in section.blocks -%}
+      <a class="press" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        <div class="press__logo">{%- if block.settings.logo != blank -%}{{ block.settings.logo | image_url: width: 300 | image_tag: loading: 'lazy' }}{%- else -%}<span>{{ block.settings.outlet }}</span>{%- endif -%}</div>
+        <p>“{{ block.settings.quote }}”</p>
+        <span class="muted">{{ block.settings.date }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "As seen in", "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "As seen in" }],
+  "blocks": [{ "type": "item", "name": "Press mention", "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "text", "id": "outlet", "label": "Outlet name (if no logo)", "default": "TechDaily" },
+    { "type": "text", "id": "quote", "label": "Headline", "default": "The smartest way to buy a phone in 2026" },
+    { "type": "text", "id": "date", "label": "Date" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ]}], "presets": [{ "name": "As seen in", "blocks": [{"type":"item"},{"type":"item"},{"type":"item"}] }] }
+{% endschema %}

@@ -1,30 +1,82 @@
 <footer class="footer">
-  <div class="page-width footer__grid">
-    <div>
-      <p class="footer__brand">{{ shop.name }}</p>
-      <p class="muted">{{ section.settings.tagline }}</p>
-      {%- form 'customer', class: 'newsletter' -%}
+  <div class="page-width">
+    <div class="footer__news">
+      <div>
+        <h2>{{ section.settings.news_heading }}</h2>
+        <p class="footer__muted">{{ section.settings.news_text }}</p>
+      </div>
+      {%- form 'customer', class: 'footer__form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <input type="email" name="contact[email]" placeholder="Email for deal drops" required aria-label="Email">
-        <button class="btn">Join</button>
-        {%- if form.posted_successfully? -%}<p class="muted">You're in.</p>{%- endif -%}
+        <input type="email" name="contact[email]" placeholder="Email" required aria-label="Email">
+        <button class="btn btn--accent">Sign up</button>
+        {%- if form.posted_successfully? -%}<p class="footer__ok">You're in. Watch your inbox.</p>{%- endif -%}
       {%- endform -%}
     </div>
-    {%- for block in section.blocks -%}
-      <div {{ block.shopify_attributes }}>
-        <p class="footer__heading">{{ block.settings.menu.title }}</p>
-        <ul>{%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
+
+    <div class="footer__cols">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+        {%- when 'menu' -%}
+          <div class="footer__col" {{ block.shopify_attributes }}>
+            <p class="footer__heading">{{ block.settings.title | default: block.settings.menu.title }}</p>
+            <ul>{%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
+            {%- if block.settings.show_payments -%}
+              <p class="footer__label">Payments 100% secured</p>
+              <div class="footer__pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
+            {%- endif -%}
+          </div>
+        {%- when 'badges' -%}
+          <div class="footer__badges" {{ block.shopify_attributes }}>
+            {%- for i in (1..3) -%}
+              {%- assign key = 'badge_' | append: i -%}
+              {%- if block.settings[key] != blank -%}{{ block.settings[key] | image_url: width: 160 | image_tag: loading: 'lazy' }}{%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      <div class="footer__social">
+        {%- for s in 'instagram,tiktok,youtube,linkedin,facebook,x' | split: ',' -%}
+          {%- assign key = 'social_' | append: s -%}
+          {%- if section.settings[key] != blank -%}<a href="{{ section.settings[key] }}" aria-label="{{ s }}" target="_blank" rel="noopener">{% render 'icon', name: s %}</a>{%- endif -%}
+        {%- endfor -%}
       </div>
-    {%- endfor -%}
-  </div>
-  <div class="page-width footer__bottom">
-    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
-    {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}
+      <div class="footer__apps">
+        {%- if section.settings.google_play != blank -%}<a class="app-btn" href="{{ section.settings.google_play }}">{% render 'icon', name: 'play-store' %}<span><small>GET IT ON</small>Google Play</span></a>{%- endif -%}
+        {%- if section.settings.app_store != blank -%}<a class="app-btn" href="{{ section.settings.app_store }}">{% render 'icon', name: 'apple' %}<span><small>Download on the</small>App Store</span></a>{%- endif -%}
+      </div>
+    </div>
+    {%- if section.settings.wordmark -%}<div class="footer__wordmark" aria-hidden="true">{{ shop.name }}</div>{%- endif -%}
   </div>
 </footer>
 {% schema %}
 { "name": "Footer", "settings": [
-  { "type": "text", "id": "tagline", "label": "Tagline", "default": "New, refurbished and used tech. Tested, warrantied, way cheaper." }
-], "blocks": [ { "type": "menu", "name": "Menu column", "settings": [ { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" } ] } ],
-"max_blocks": 4 }
+  { "type": "text", "id": "news_heading", "label": "Newsletter heading", "default": "Stay in the loop with hot drops" },
+  { "type": "text", "id": "news_text", "label": "Newsletter text", "default": "Be first to know about new arrivals, price drops, and tech news that matters." },
+  { "type": "checkbox", "id": "wordmark", "label": "Show giant brand wordmark", "default": true },
+  { "type": "header", "content": "Social" },
+  { "type": "url", "id": "social_instagram", "label": "Instagram" },
+  { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+  { "type": "url", "id": "social_youtube", "label": "YouTube" },
+  { "type": "url", "id": "social_linkedin", "label": "LinkedIn" },
+  { "type": "url", "id": "social_facebook", "label": "Facebook" },
+  { "type": "url", "id": "social_x", "label": "X" },
+  { "type": "header", "content": "Apps" },
+  { "type": "url", "id": "google_play", "label": "Google Play link" },
+  { "type": "url", "id": "app_store", "label": "App Store link" }
+], "blocks": [
+  { "type": "menu", "name": "Menu column", "settings": [
+    { "type": "text", "id": "title", "label": "Heading" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    { "type": "checkbox", "id": "show_payments", "label": "Show payment icons under this column", "default": false }
+  ]},
+  { "type": "badges", "name": "Trust badges", "limit": 1, "settings": [
+    { "type": "image_picker", "id": "badge_1", "label": "Badge 1 (e.g. BBB)" },
+    { "type": "image_picker", "id": "badge_2", "label": "Badge 2" },
+    { "type": "image_picker", "id": "badge_3", "label": "Badge 3" }
+  ]}
+], "max_blocks": 6 }
 {% endschema %}

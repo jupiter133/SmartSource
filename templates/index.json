@@ -1,27 +1,244 @@
 {
   "sections": {
-    "hero": { "type": "hero", "settings": { "button_label": "Gimme" } },
-    "categories": { "type": "category-carousel", "blocks": {
-      "c1": {"type":"category","settings":{"title":"Great deals"}}, "c2": {"type":"category","settings":{"title":"iPhone"}},
-      "c3": {"type":"category","settings":{"title":"Android"}}, "c4": {"type":"category","settings":{"title":"iPad"}},
-      "c5": {"type":"category","settings":{"title":"MacBook"}}, "c6": {"type":"category","settings":{"title":"Windows Laptops"}},
-      "c7": {"type":"category","settings":{"title":"AirPods"}} }, "block_order": ["c1","c2","c3","c4","c5","c6","c7"] },
-    "trade": { "type": "promo-banner", "settings": {} },
-    "cards": { "type": "promo-cards", "blocks": {
-      "p1": {"type":"card","settings":{}},
-      "p2": {"type":"card","settings":{"heading":"Call your mom, on a budget.","text":"Bundle your phone with a mobile plan at an exclusive price.","button_label":"Learn more"}} }, "block_order": ["p1","p2"] },
-    "recommended": { "type": "product-tabs", "blocks": {
-      "t1": {"type":"tab","settings":{"label":"Best sellers"}},
-      "t2": {"type":"tab","settings":{"label":"Price drop"}},
-      "t3": {"type":"tab","settings":{"label":"Smart Essentials","eyebrow":"Smart Essentials"}} }, "block_order": ["t1","t2","t3"] },
-    "promise": { "type": "promise", "blocks": {
-      "i1": {"type":"item","settings":{"icon":"award","text":"1-year warranty"}},
-      "i2": {"type":"item","settings":{"icon":"list","text":"Up to 100-point quality inspection"}},
-      "i3": {"type":"item","settings":{"icon":"swap","text":"Free 30-day returns"}},
-      "i4": {"type":"item","settings":{"icon":"star","text":"Professionally refurbished"}} }, "block_order": ["i1","i2","i3","i4"] },
-    "reels": { "type": "video-reels", "blocks": {
-      "r1": {"type":"reel","settings":{"caption":"all for under $1,000"}}, "r2": {"type":"reel","settings":{}},
-      "r3": {"type":"reel","settings":{}}, "r4": {"type":"reel","settings":{}}, "r5": {"type":"reel","settings":{}} }, "block_order": ["r1","r2","r3","r4","r5"] }
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "button_label": "Gimme"
+      }
+    },
+    "categories": {
+      "type": "category-carousel",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Great deals"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "iPhone"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Android"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "iPad"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "MacBook"
+          }
+        },
+        "c6": {
+          "type": "category",
+          "settings": {
+            "title": "Windows Laptops"
+          }
+        },
+        "c7": {
+          "type": "category",
+          "settings": {
+            "title": "AirPods"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ]
+    },
+    "trade": {
+      "type": "promo-banner",
+      "settings": {}
+    },
+    "cards": {
+      "type": "promo-cards",
+      "blocks": {
+        "p1": {
+          "type": "card",
+          "settings": {}
+        },
+        "p2": {
+          "type": "card",
+          "settings": {
+            "heading": "Call your mom, on a budget.",
+            "text": "Bundle your phone with a mobile plan at an exclusive price.",
+            "button_label": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ]
+    },
+    "recommended": {
+      "type": "product-tabs",
+      "blocks": {
+        "t1": {
+          "type": "tab",
+          "settings": {
+            "label": "Best sellers"
+          }
+        },
+        "t2": {
+          "type": "tab",
+          "settings": {
+            "label": "Price drop"
+          }
+        },
+        "t3": {
+          "type": "tab",
+          "settings": {
+            "label": "Smart Essentials",
+            "eyebrow": "Smart Essentials"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    "promise": {
+      "type": "promise",
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "text": "Professionally refurbished"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ]
+    },
+    "reels": {
+      "type": "video-reels",
+      "blocks": {
+        "r1": {
+          "type": "reel",
+          "settings": {
+            "caption": "all for under $1,000"
+          }
+        },
+        "r2": {
+          "type": "reel",
+          "settings": {}
+        },
+        "r3": {
+          "type": "reel",
+          "settings": {}
+        },
+        "r4": {
+          "type": "reel",
+          "settings": {}
+        },
+        "r5": {
+          "type": "reel",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ]
+    },
+    "blog": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Tech Journal"
+      }
+    },
+    "press": {
+      "type": "press",
+      "blocks": {
+        "a": {
+          "type": "item",
+          "settings": {
+            "outlet": "OUTLET 1",
+            "quote": "Replace with a real headline about your store",
+            "date": ""
+          }
+        },
+        "b": {
+          "type": "item",
+          "settings": {
+            "outlet": "OUTLET 2",
+            "quote": "Replace with a real headline about your store",
+            "date": ""
+          }
+        },
+        "c": {
+          "type": "item",
+          "settings": {
+            "outlet": "OUTLET 3",
+            "quote": "Replace with a real headline about your store",
+            "date": ""
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
   },
-  "order": ["hero","categories","trade","cards","recommended","promise","reels"]
+  "order": [
+    "hero",
+    "categories",
+    "trade",
+    "cards",
+    "recommended",
+    "promise",
+    "reels",
+    "blog",
+    "press"
+  ]
 }

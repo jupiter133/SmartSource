@@ -1,6 +1,13 @@
 {
   "type": "footer",
   "name": "Footer group",
-  "sections": { "footer": { "type": "footer", "settings": {} } },
+  "sections": { "footer": { "type": "footer", "blocks": {
+    "about": { "type": "menu", "settings": { "title": "About" } },
+    "help": { "type": "menu", "settings": { "title": "Help" } },
+    "services": { "type": "menu", "settings": { "title": "Services", "show_payments": true } },
+    "resources": { "type": "menu", "settings": { "title": "Resources" } },
+    "legal": { "type": "menu", "settings": { "title": "Legal" } },
+    "badges": { "type": "badges", "settings": {} }
+  }, "block_order": ["about","help","services","resources","legal","badges"], "settings": {} } },
   "order": ["footer"]
 }
