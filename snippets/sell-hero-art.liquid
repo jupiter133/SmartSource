@@ -1,0 +1,39 @@
+{%- comment -%} Default hero visual: an angled stack of three phones, tinted with the theme accent colour. {%- endcomment -%}
+<svg class="sell-hero-art" viewBox="0 0 560 520" role="img" aria-label="A stack of smartphones">
+  <defs>
+    <linearGradient id="SellArtA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" style="stop-color: var(--c-accent)"/>
+      <stop offset="1" stop-color="#7a3cff"/>
+    </linearGradient>
+    <linearGradient id="SellArtB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb199"/>
+      <stop offset=".55" style="stop-color: var(--c-accent)"/>
+      <stop offset="1" stop-color="#2b1055"/>
+    </linearGradient>
+    <linearGradient id="SellArtC" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1b1b22"/>
+      <stop offset="1" stop-color="#4a4a58"/>
+    </linearGradient>
+    <radialGradient id="SellArtShadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="290" cy="478" rx="210" ry="26" fill="url(#SellArtShadow)"/>
+  <g transform="rotate(-16 170 260)">
+    <rect x="96" y="70" width="170" height="350" rx="30" fill="url(#SellArtC)"/>
+    <rect x="104" y="78" width="154" height="334" rx="24" fill="#2b2b35"/>
+    <circle cx="135" cy="112" r="15" fill="#111"/><circle cx="135" cy="150" r="15" fill="#111"/><circle cx="168" cy="131" r="15" fill="#111"/>
+  </g>
+  <g transform="rotate(-4 290 250)">
+    <rect x="200" y="50" width="180" height="370" rx="32" fill="#16161c"/>
+    <rect x="209" y="59" width="162" height="352" rx="25" fill="url(#SellArtB)"/>
+    <rect x="262" y="70" width="56" height="16" rx="8" fill="#16161c"/>
+  </g>
+  <g transform="rotate(12 420 270)">
+    <rect x="330" y="96" width="166" height="340" rx="30" fill="#16161c"/>
+    <rect x="338" y="104" width="150" height="324" rx="24" fill="url(#SellArtA)"/>
+    <rect x="388" y="114" width="50" height="14" rx="7" fill="#16161c"/>
+    <path d="M338 300 C 390 260, 430 340, 488 290 L 488 404 Q 488 428 464 428 L 362 428 Q 338 428 338 404 Z" fill="#fff" opacity=".14"/>
+  </g>
+</svg>

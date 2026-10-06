@@ -1,0 +1,44 @@
+{%- comment -%}
+  Sell program text helper. Renders `text` with the values from
+  Theme settings > Sell program:
+    {quote_valid_days} {payment_business_days} {prices_updated_date}
+    [if_free_return]...[/if_free_return]   shown only when free_return_on_decline is on
+    [if_instore_pay]...[/if_instore_pay]   shown only when instore_instant_pay is on
+  Older [quote_days] / [payment_days] tokens still work.
+{%- endcomment -%}
+{%- liquid
+  assign qd = settings.quote_valid_days | append: ''
+  assign pd = settings.payment_business_days | append: ''
+  assign updated = settings.prices_updated_date | append: ''
+  assign out = text | append: '' | replace: '{quote_valid_days}', qd | replace: '{payment_business_days}', pd | replace: '{prices_updated_date}', updated | replace: '[quote_days]', qd | replace: '[payment_days]', pd
+
+  if out contains '[if_free_return]'
+    assign parts = out | split: '[if_free_return]'
+    assign out = parts.first | default: ''
+    for part in parts offset: 1
+      assign pieces = part | split: '[/if_free_return]'
+      if settings.free_return_on_decline
+        assign out = out | append: pieces[0]
+      endif
+      if pieces.size > 1
+        assign out = out | append: pieces[1]
+      endif
+    endfor
+  endif
+
+  if out contains '[if_instore_pay]'
+    assign parts = out | split: '[if_instore_pay]'
+    assign out = parts.first | default: ''
+    for part in parts offset: 1
+      assign pieces = part | split: '[/if_instore_pay]'
+      if settings.instore_instant_pay
+        assign out = out | append: pieces[0]
+      endif
+      if pieces.size > 1
+        assign out = out | append: pieces[1]
+      endif
+    endfor
+  endif
+
+  echo out
+-%}

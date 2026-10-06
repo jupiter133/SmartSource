@@ -1,10 +1,210 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {}
+    "hero": {
+      "type": "sell-hero",
+      "settings": {},
+      "blocks": {
+        "chip_1": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone",
+            "category": "Smartphone",
+            "brand": "Apple"
+          }
+        },
+        "chip_2": {
+          "type": "chip",
+          "settings": {
+            "label": "Samsung",
+            "category": "Smartphone",
+            "brand": "Samsung"
+          }
+        },
+        "chip_3": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad",
+            "category": "Tablet",
+            "brand": "Apple"
+          }
+        },
+        "chip_4": {
+          "type": "chip",
+          "settings": {
+            "label": "MacBook",
+            "category": "Laptop/MacBook",
+            "brand": "Apple"
+          }
+        },
+        "chip_5": {
+          "type": "chip",
+          "settings": {
+            "label": "Watch",
+            "category": "Smartwatch",
+            "brand": ""
+          }
+        },
+        "trust_6": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping label"
+          }
+        },
+        "trust_7": {
+          "type": "trust",
+          "settings": {
+            "icon": "clock",
+            "text": "Quote locked {quote_valid_days} days"
+          }
+        },
+        "trust_8": {
+          "type": "trust",
+          "settings": {
+            "icon": "lock",
+            "text": "Data wiped securely"
+          }
+        },
+        "trust_9": {
+          "type": "trust",
+          "settings": {
+            "icon": "store",
+            "text": "Drop off in store"
+          }
+        }
+      },
+      "block_order": [
+        "chip_1",
+        "chip_2",
+        "chip_3",
+        "chip_4",
+        "chip_5",
+        "trust_6",
+        "trust_7",
+        "trust_8",
+        "trust_9"
+      ]
     },
-    "steps": {
+    "what_we_pay": {
+      "type": "sell-what-we-pay",
+      "settings": {},
+      "blocks": {
+        "group_1": {
+          "type": "group",
+          "settings": {
+            "title": "Phones",
+            "categories": "Smartphone"
+          }
+        },
+        "group_2": {
+          "type": "group",
+          "settings": {
+            "title": "Tablets",
+            "categories": "Tablet"
+          }
+        },
+        "group_3": {
+          "type": "group",
+          "settings": {
+            "title": "Laptops",
+            "categories": "Laptop/MacBook, Laptop, MacBook"
+          }
+        },
+        "group_4": {
+          "type": "group",
+          "settings": {
+            "title": "Watch & Audio",
+            "categories": "Smartwatch, Audio"
+          }
+        },
+        "group_5": {
+          "type": "group",
+          "settings": {
+            "title": "Gaming",
+            "categories": "Gaming Console"
+          }
+        }
+      },
+      "block_order": [
+        "group_1",
+        "group_2",
+        "group_3",
+        "group_4",
+        "group_5"
+      ]
+    },
+    "quote": {
+      "type": "sell-quote-wizard",
+      "settings": {},
+      "blocks": {
+        "condition_1": {
+          "type": "condition",
+          "settings": {
+            "key": "like_new",
+            "title": "Like New",
+            "summary": "Flawless. Looks and works like new.",
+            "checklist": "No visible scratches, scuffs or dents\nFully functional\nUnlocked Canadian model\nBattery health 90%+\nNo liquid damage\nNot iCloud locked or blacklisted"
+          }
+        },
+        "condition_2": {
+          "type": "condition",
+          "settings": {
+            "key": "good"
+          }
+        },
+        "condition_3": {
+          "type": "condition",
+          "settings": {
+            "key": "fair",
+            "title": "Fair",
+            "summary": "Heavy wear, still works perfectly.",
+            "checklist": "Heavy scratches, scuffs or dents\nFully functional\nNo cracks on the screen or back\nUnlocked Canadian model\nNo liquid damage\nNot iCloud locked or blacklisted"
+          }
+        },
+        "condition_4": {
+          "type": "condition",
+          "settings": {
+            "key": "cracked",
+            "title": "Cracked or Minor Issue",
+            "summary": "Cracked glass, or one small fault.",
+            "checklist": "Cracked screen or back glass, or\nOne minor fault, e.g. weak battery, camera or button\nPowers on and the screen displays\nNot iCloud locked or blacklisted"
+          }
+        },
+        "condition_5": {
+          "type": "condition",
+          "settings": {
+            "key": "defective",
+            "title": "Defective",
+            "summary": "Doesn't power on, or has a major fault.",
+            "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud locked or blacklisted"
+          }
+        },
+        "store_6": {
+          "type": "store",
+          "settings": {
+            "name": "Store 1 (edit me)",
+            "address": "Street, Toronto, ON"
+          }
+        },
+        "store_7": {
+          "type": "store",
+          "settings": {
+            "name": "Store 2 (edit me)",
+            "address": "Street, Mississauga, ON"
+          }
+        }
+      },
+      "block_order": [
+        "condition_1",
+        "condition_2",
+        "condition_3",
+        "condition_4",
+        "condition_5",
+        "store_6",
+        "store_7"
+      ]
+    },
+    "how_it_works": {
       "type": "sell-steps",
       "settings": {},
       "blocks": {
@@ -12,7 +212,9 @@
           "type": "step",
           "settings": {
             "title": "Get a Quote",
-            "icon": "tag"
+            "icon": "tag",
+            "body": "<p>Pick your device, storage and condition. Your quote is locked for {quote_valid_days} days.</p>",
+            "bullets": "Choose device, storage and condition\nQuote locked for {quote_valid_days} days\nNo obligation to sell"
           }
         },
         "step_2": {
@@ -20,8 +222,8 @@
           "settings": {
             "title": "Ship or Drop Off",
             "icon": "truck",
-            "body": "<p>Bring it to any of our stores, or mail it in with our free shipping label. It must be shipped within [quote_days] days of your quote or the quote expires.</p>",
-            "bullets": "Drop off at any of our stores\nOr mail it with our free shipping label\nShip within [quote_days] days or the quote expires"
+            "body": "<p>Use our free shipping label, or bring it to any of our stores. It must ship within {quote_valid_days} days of your quote.</p>",
+            "bullets": "Free prepaid shipping label\nOr drop it off at any of our GTA stores\nShip within {quote_valid_days} days"
           }
         },
         "step_3": {
@@ -29,8 +231,8 @@
           "settings": {
             "title": "Inspection",
             "icon": "inspect",
-            "body": "<p>We test the device and confirm its condition. If it doesn't match your quote, we'll send a revised offer. Accept it, or we return the device free.</p>",
-            "bullets": "We test it and confirm condition\nDoesn't match? We send a revised offer\nDecline and we return it free"
+            "body": "<p>We test it and confirm the condition. If it's different from your quote, we send a revised offer.[if_free_return] Accept it, or we return it free.[/if_free_return]</p>",
+            "bullets": "We test it and confirm condition\nDifferent? We send a revised offer\n[if_free_return]Decline and we return it free[/if_free_return]"
           }
         },
         "step_4": {
@@ -38,8 +240,8 @@
           "settings": {
             "title": "Get Paid",
             "icon": "cash",
-            "body": "<p>Payment is sent within [payment_days] business days of us receiving your device. In-store drop-offs can be paid on the spot.</p>",
-            "bullets": "Paid within [payment_days] business days of receipt\nIn-store drop-offs can be paid on the spot"
+            "body": "<p>We pay within {payment_business_days} business days of receiving it.[if_instore_pay] In-store drop-offs can be paid on the spot.[/if_instore_pay]</p>",
+            "bullets": "Paid within {payment_business_days} business days of receipt\n[if_instore_pay]In-store drop-offs paid on the spot[/if_instore_pay]"
           }
         },
         "step_5": {
@@ -47,8 +249,8 @@
           "settings": {
             "title": "Trade-In Option",
             "icon": "swap",
-            "body": "<p>Want a new phone instead? Apply your value toward any device in our store.</p>",
-            "bullets": "Apply your value toward any device in our store\nChoose new, refurbished or used"
+            "body": "<p>Want an upgrade instead? Put your value toward any phone in our store.</p>",
+            "bullets": "Put your value toward any phone in our store\nIn store, or as store credit online"
           }
         }
       },
@@ -68,7 +270,7 @@
           "type": "term",
           "settings": {
             "icon": "clock",
-            "value": "[quote_days] days",
+            "value": "{quote_valid_days} days",
             "label": "to ship after your quote"
           }
         },
@@ -76,8 +278,8 @@
           "type": "term",
           "settings": {
             "icon": "cash",
-            "value": "[payment_days] business days",
-            "label": "payment after we receive it"
+            "value": "{payment_business_days} business days",
+            "label": "to get paid"
           }
         },
         "term_3": {
@@ -85,7 +287,7 @@
           "settings": {
             "icon": "truck",
             "value": "Free",
-            "label": "shipping label, and return if you decline a revised offer"
+            "label": "shipping label"
           }
         },
         "term_4": {
@@ -93,7 +295,7 @@
           "settings": {
             "icon": "lock",
             "value": "Secure",
-            "label": "all data wiped"
+            "label": "data wipe"
           }
         }
       },
@@ -104,8 +306,8 @@
         "term_4"
       ]
     },
-    "quote": {
-      "type": "sell-quote",
+    "trade_in": {
+      "type": "trade-in-banner",
       "settings": {}
     },
     "faq": {
@@ -114,41 +316,48 @@
       "blocks": {
         "question_1": {
           "type": "question",
-          "settings": {}
+          "settings": {
+            "question": "How long does payment take?",
+            "answer": "<p>We pay within {payment_business_days} business days of receiving your device.[if_instore_pay] Drop it off in one of our stores and we can pay you on the spot.[/if_instore_pay]</p>"
+          }
         },
         "question_2": {
           "type": "question",
-          "settings": {
-            "question": "When do I get paid?",
-            "answer": "<p>Payment is sent within [payment_days] business days of us receiving your device. Drop it off in one of our stores and we can pay you on the spot.</p>"
-          }
+          "settings": {}
         },
         "question_3": {
           "type": "question",
           "settings": {
-            "question": "What if the condition doesn't match my quote?",
-            "answer": "<p>We'll send you a revised offer. Accept it, or decline and we'll return your device free.</p>"
+            "question": "Do I need to remove my accounts?",
+            "answer": "<p>Yes. Before you send it, sign out of iCloud and turn off Find My (iPhone), or remove your Google and Samsung accounts (Android), then take out your SIM card. We can't buy a device that's still locked to an account.</p>"
           }
         },
         "question_4": {
           "type": "question",
           "settings": {
-            "question": "Is shipping free?",
-            "answer": "<p>Yes. We send a free shipping label. Just make sure it ships within [quote_days] days of your quote.</p>"
+            "question": "What if my phone is cracked?",
+            "answer": "<p>We still buy it. Choose <strong>Cracked or Minor Issue</strong> in the quote tool to see your price.</p>"
           }
         },
         "question_5": {
           "type": "question",
           "settings": {
-            "question": "What happens to my data?",
-            "answer": "<p>Every device we buy is fully wiped. Before you send it, back up your data, sign out of iCloud or your Google account, and remove your SIM card.</p>"
+            "question": "What if inspection finds a different condition?",
+            "answer": "<p>We send you a revised offer. Accept it and we pay the new amount.[if_free_return] Decline it and we return your device free.[/if_free_return]</p>"
           }
         },
         "question_6": {
           "type": "question",
           "settings": {
-            "question": "Can I put the value toward a new device instead?",
-            "answer": "<p>Yes. Choose the trade-in option and apply your value toward any device in our store.</p>"
+            "question": "Do you buy locked or financed phones?",
+            "answer": "<p>We can't buy phones that are blacklisted, reported lost or stolen, or locked to an iCloud or Google account. If your phone is still on a financing plan or carrier contract, pay it off first.</p>"
+          }
+        },
+        "question_7": {
+          "type": "question",
+          "settings": {
+            "question": "Is my data safe?",
+            "answer": "<p>Yes. Every device we buy is securely wiped before it's resold. Back it up and reset it before you send it, too.</p>"
           }
         }
       },
@@ -158,15 +367,23 @@
         "question_3",
         "question_4",
         "question_5",
-        "question_6"
+        "question_6",
+        "question_7"
       ]
+    },
+    "cta": {
+      "type": "sell-cta",
+      "settings": {}
     }
   },
   "order": [
-    "main",
-    "steps",
-    "terms",
+    "hero",
+    "what_we_pay",
     "quote",
-    "faq"
+    "how_it_works",
+    "terms",
+    "trade_in",
+    "faq",
+    "cta"
   ]
 }

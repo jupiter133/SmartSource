@@ -112,15 +112,15 @@
     ]
   },
   {
-    "name": "Sell & trade-in terms",
+    "name": "Sell program",
     "settings": [
       {
         "type": "paragraph",
-        "content": "Used across the Sell Your Device page: walkthrough, key terms, FAQ and the quote form's success message. Write [quote_days] or [payment_days] in any text there and it is replaced with these numbers."
+        "content": "One place for the buyback terms. The Sell page, FAQ, quote wizard and confirmation screen all read these. In any text field on the Sell page you can write {quote_valid_days}, {payment_business_days} or {prices_updated_date}, and wrap a sentence in [if_free_return]...[/if_free_return] or [if_instore_pay]...[/if_instore_pay] to show it only when that option is on."
       },
       {
         "type": "range",
-        "id": "sell_quote_days",
+        "id": "quote_valid_days",
         "label": "Quote valid / ship within (days)",
         "min": 7,
         "max": 60,
@@ -130,13 +130,31 @@
       },
       {
         "type": "range",
-        "id": "sell_payment_days",
+        "id": "payment_business_days",
         "label": "Payment after we receive it (business days)",
         "min": 1,
         "max": 30,
         "step": 1,
         "unit": "d",
         "default": 5
+      },
+      {
+        "type": "checkbox",
+        "id": "free_return_on_decline",
+        "label": "Free return if customer declines a revised offer",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "instore_instant_pay",
+        "label": "Pay in-store drop-offs on the spot",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "prices_updated_date",
+        "label": "Prices last updated",
+        "info": "Shown under the price list, e.g. October 6, 2026. Leave blank to hide."
       }
     ]
   }

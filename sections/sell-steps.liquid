@@ -6,7 +6,7 @@
   <div class="sell-steps__head">
     {%- if section.settings.eyebrow != blank -%}<p class="eyebrow-grad">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2>{{ section.settings.heading }}</h2>
-    {%- if section.settings.intro != blank -%}<p class="muted">{% render 'sell-terms-text', text: section.settings.intro %}</p>{%- endif -%}
+    {%- if section.settings.intro != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.intro %}</p>{%- endif -%}
   </div>
 
   {%- if count > 0 -%}
@@ -58,15 +58,16 @@
             <p class="sell-panel__count">Step {{ forloop.index }} of {{ count }}</p>
             <h3 class="sell-panel__title" tabindex="-1" data-panel-title>{{ block.settings.title }}</h3>
             {%- if block.settings.body != blank -%}
-              <div class="rte sell-panel__copy">{% render 'sell-terms-text', text: block.settings.body %}</div>
+              <div class="rte sell-panel__copy">{% render 'sell-text', text: block.settings.body %}</div>
             {%- endif -%}
             {%- if block.settings.bullets != blank -%}
               {%- assign lines = block.settings.bullets | newline_to_br | split: '<br />' -%}
               <ul class="sell-panel__list">
                 {%- for line in lines -%}
-                  {%- assign item = line | strip -%}
+                  {%- capture item -%}{% render 'sell-text', text: line %}{%- endcapture -%}
+                  {%- assign item = item | strip -%}
                   {%- if item != blank -%}
-                    <li>{% render 'icon', name: 'check' %}<span>{% render 'sell-terms-text', text: item %}</span></li>
+                    <li>{% render 'icon', name: 'check' %}<span>{{ item }}</span></li>
                   {%- endif -%}
                 {%- endfor -%}
               </ul>
@@ -79,7 +80,7 @@
               {%- endunless -%}
               {%- if forloop.last -%}
                 {%- if section.settings.finish_label != blank -%}
-                  <a class="btn btn--dark" href="{{ section.settings.finish_link | default: '#sell-quote' }}">{{ section.settings.finish_label }}</a>
+                  <a class="btn btn--dark" href="{{ section.settings.finish_link | default: '#sell-quote' }}"{% if section.settings.finish_link == blank %} data-sell-start{% endif %}>{{ section.settings.finish_label }}</a>
                 {%- endif -%}
               {%- else -%}
                 {%- assign next_block = section.blocks[forloop.index] -%}
@@ -103,39 +104,114 @@
   "name": "Sell steps (tabs)",
   "class": "section-sell-steps",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "SELL YOUR DEVICE" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "How it works" },
-    { "type": "text", "id": "intro", "label": "Intro", "default": "Five steps from quote to cash. Click through to see what happens at each one." },
-    { "type": "text", "id": "finish_label", "label": "Last step button label", "default": "Get my quote" },
-    { "type": "url", "id": "finish_link", "label": "Last step button link", "info": "Leave blank to jump to the quote form on this page." },
-    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] anywhere in the text. They're replaced with the numbers in Theme settings > Sell & trade-in terms." }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SELL YOUR DEVICE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Five steps from quote to cash. Tap through to see what happens at each one."
+    },
+    {
+      "type": "text",
+      "id": "finish_label",
+      "label": "Last step button label",
+      "default": "Get my quote"
+    },
+    {
+      "type": "url",
+      "id": "finish_link",
+      "label": "Last step button link",
+      "info": "Leave blank to jump to the quote form on this page."
+    },
+    {
+      "type": "paragraph",
+      "content": "Write {quote_valid_days} or {payment_business_days} anywhere, and wrap text in [if_free_return]...[/if_free_return] or [if_instore_pay]...[/if_instore_pay]. Values come from Theme settings > Sell program."
+    }
   ],
   "blocks": [
     {
       "type": "step",
       "name": "Step",
       "settings": [
-        { "type": "text", "id": "title", "label": "Tab title", "default": "Get a Quote" },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab title",
+          "default": "Get a Quote"
+        },
         {
           "type": "select",
           "id": "icon",
           "label": "Icon (shown when there's no image)",
           "options": [
-            { "value": "tag", "label": "Price tag" },
-            { "value": "truck", "label": "Truck" },
-            { "value": "store", "label": "Store" },
-            { "value": "inspect", "label": "Inspection" },
-            { "value": "cash", "label": "Cash" },
-            { "value": "swap", "label": "Trade-in" },
-            { "value": "shield", "label": "Shield" },
-            { "value": "lock", "label": "Lock" },
-            { "value": "clock", "label": "Clock" }
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "store",
+              "label": "Store"
+            },
+            {
+              "value": "inspect",
+              "label": "Inspection"
+            },
+            {
+              "value": "cash",
+              "label": "Cash"
+            },
+            {
+              "value": "swap",
+              "label": "Trade-in"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            }
           ],
           "default": "tag"
         },
-        { "type": "image_picker", "id": "image", "label": "Image (replaces the icon)" },
-        { "type": "richtext", "id": "body", "label": "Details", "default": "<p>Select your device, storage and condition. Your quote is locked in for [quote_days] days.</p>" },
-        { "type": "textarea", "id": "bullets", "label": "Bullet points", "info": "One per line.", "default": "Choose device, storage and condition\nQuote locked in for [quote_days] days\nNo obligation to sell" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (replaces the icon)"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Details",
+          "default": "<p>Pick your device, storage and condition. Your quote is locked for {quote_valid_days} days.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "bullets",
+          "label": "Bullet points",
+          "info": "One per line.",
+          "default": "Choose device, storage and condition\nQuote locked for {quote_valid_days} days\nNo obligation to sell"
+        }
       ]
     }
   ],
@@ -143,11 +219,51 @@
     {
       "name": "Sell steps (tabs)",
       "blocks": [
-        { "type": "step", "settings": { "title": "Get a Quote", "icon": "tag" } },
-        { "type": "step", "settings": { "title": "Ship or Drop Off", "icon": "truck", "body": "<p>Bring it to any of our stores, or mail it in with our free shipping label. It must be shipped within [quote_days] days of your quote or the quote expires.</p>", "bullets": "Drop off at any of our stores\nOr mail it with our free shipping label\nShip within [quote_days] days or the quote expires" } },
-        { "type": "step", "settings": { "title": "Inspection", "icon": "inspect", "body": "<p>We test the device and confirm its condition. If it doesn't match your quote, we'll send a revised offer. Accept it, or we return the device free.</p>", "bullets": "We test it and confirm condition\nDoesn't match? We send a revised offer\nDecline and we return it free" } },
-        { "type": "step", "settings": { "title": "Get Paid", "icon": "cash", "body": "<p>Payment is sent within [payment_days] business days of us receiving your device. In-store drop-offs can be paid on the spot.</p>", "bullets": "Paid within [payment_days] business days of receipt\nIn-store drop-offs can be paid on the spot" } },
-        { "type": "step", "settings": { "title": "Trade-In Option", "icon": "swap", "body": "<p>Want a new phone instead? Apply your value toward any device in our store.</p>", "bullets": "Apply your value toward any device in our store\nChoose new, refurbished or used" } }
+        {
+          "type": "step",
+          "settings": {
+            "title": "Get a Quote",
+            "icon": "tag",
+            "body": "<p>Pick your device, storage and condition. Your quote is locked for {quote_valid_days} days.</p>",
+            "bullets": "Choose device, storage and condition\nQuote locked for {quote_valid_days} days\nNo obligation to sell"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Ship or Drop Off",
+            "icon": "truck",
+            "body": "<p>Use our free shipping label, or bring it to any of our stores. It must ship within {quote_valid_days} days of your quote.</p>",
+            "bullets": "Free prepaid shipping label\nOr drop it off at any of our GTA stores\nShip within {quote_valid_days} days"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Inspection",
+            "icon": "inspect",
+            "body": "<p>We test it and confirm the condition. If it's different from your quote, we send a revised offer.[if_free_return] Accept it, or we return it free.[/if_free_return]</p>",
+            "bullets": "We test it and confirm condition\nDifferent? We send a revised offer\n[if_free_return]Decline and we return it free[/if_free_return]"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Get Paid",
+            "icon": "cash",
+            "body": "<p>We pay within {payment_business_days} business days of receiving it.[if_instore_pay] In-store drop-offs can be paid on the spot.[/if_instore_pay]</p>",
+            "bullets": "Paid within {payment_business_days} business days of receipt\n[if_instore_pay]In-store drop-offs paid on the spot[/if_instore_pay]"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Trade-In Option",
+            "icon": "swap",
+            "body": "<p>Want an upgrade instead? Put your value toward any phone in our store.</p>",
+            "bullets": "Put your value toward any phone in our store\nIn store, or as store credit online"
+          }
+        }
       ]
     }
   ]

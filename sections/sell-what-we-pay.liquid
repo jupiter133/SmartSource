@@ -1,0 +1,132 @@
+{%- liquid
+  assign quote_url = section.settings.quote_page | default: request.path
+  assign max_rows = section.settings.max_rows
+-%}
+{%- comment -%}
+  Highest Like New price per device, as "|handle=price" pairs (up to 250 price entries).
+{%- endcomment -%}
+{%- capture price_index -%}
+  {%- paginate metaobjects.buyback_price.values by 250 -%}
+    {%- for p in metaobjects.buyback_price.values -%}|{{ p.device.value.system.handle }}={{ p.price_like_new.value | default: 0 }}{%- endfor -%}
+  {%- endpaginate -%}
+{%- endcapture -%}
+{%- assign price_entries = price_index | strip | remove_first: '|' | split: '|' -%}
+
+{%- capture groups -%}
+  {%- paginate metaobjects.buyback_device.values by 250 -%}
+    {%- for block in section.blocks -%}
+      {%- assign wanted = block.settings.categories | downcase | split: ',' -%}
+      {%- assign rows = '' -%}
+      {%- for d in metaobjects.buyback_device.values -%}
+        {%- unless d.is_popular.value -%}{%- continue -%}{%- endunless -%}
+        {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
+        {%- assign cname = d.category.value.name.value | downcase | strip -%}
+        {%- assign match = false -%}
+        {%- for w in wanted -%}
+          {%- assign ws = w | strip -%}
+          {%- if ws == cname -%}{%- assign match = true -%}{%- endif -%}
+        {%- endfor -%}
+        {%- unless match -%}{%- continue -%}{%- endunless -%}
+        {%- assign best = 0 -%}
+        {%- for e in price_entries -%}
+          {%- assign parts = e | split: '=' -%}
+          {%- if parts[0] == d.system.handle -%}
+            {%- assign v = parts[1] | times: 1.0 -%}
+            {%- if v > best -%}{%- assign best = v -%}{%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if best <= 0 -%}{%- continue -%}{%- endif -%}
+        {%- assign sortkey = d.sort_order.value | default: 999 | plus: 10000 -%}
+        {%- assign safe_name = d.name.value | replace: '~', '-' | replace: '¦', '-' -%}
+        {%- assign rows = rows | append: '¦' | append: sortkey | append: '~' | append: d.system.handle | append: '~' | append: safe_name | append: '~' | append: best -%}
+      {%- endfor -%}
+      {%- if rows != blank -%}
+        {%- assign sorted = rows | remove_first: '¦' | split: '¦' | sort -%}
+        <div class="pay-group" {{ block.shopify_attributes }}>
+          <h3 class="pay-group__title">{{ block.settings.title }}</h3>
+          <table class="pay-table">
+            <thead>
+              <tr><th scope="col">Model</th><th scope="col" class="pay-table__price">Up to</th></tr>
+            </thead>
+            <tbody>
+              {%- for r in sorted limit: max_rows -%}
+                {%- assign f = r | split: '~' -%}
+                {%- assign up_to = f[3] | times: 100 | round | money_without_trailing_zeros -%}
+                <tr>
+                  <th scope="row">{{ f[2] }}</th>
+                  <td class="pay-table__price">
+                    <a href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}" aria-label="Get a quote for {{ f[2] | escape }}, up to {{ up_to }}">
+                      {{ up_to }} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endcapture -%}
+
+{%- if groups != blank or request.design_mode -%}
+<section class="section page-width sell-pay" id="what-we-pay">
+  <div class="sell-pay__head">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.subtext != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.subtext %}</p>{%- endif -%}
+  </div>
+
+  {%- if groups != blank -%}
+    <div class="sell-pay__grid">{{ groups }}</div>
+  {%- else -%}
+    <p class="sell-pay__empty">No prices to show yet. In Shopify admin go to Content &gt; Metaobjects &gt; Buyback device, tick "Popular" on a few devices, and give them Buyback price entries. (Only you see this message in the theme editor.)</p>
+  {%- endif -%}
+
+  <div class="sell-pay__foot">
+    <p class="sell-pay__note">
+      {%- if settings.prices_updated_date != blank -%}Prices updated {{ settings.prices_updated_date }}. {% endif -%}
+      {%- render 'sell-text', text: section.settings.footnote -%}
+    </p>
+    {%- if section.settings.cta_label != blank -%}
+      <a class="btn btn--accent btn--lg" href="#sell-quote" data-sell-start>{{ section.settings.cta_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sell: what we pay",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What we pay" },
+    { "type": "text", "id": "subtext", "label": "Subtext", "default": "A sample of current values. Get your exact offer with the quote tool." },
+    { "type": "range", "id": "max_rows", "label": "Max devices per group", "min": 3, "max": 15, "step": 1, "default": 7 },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "'Up to' values are for the top storage option in the best condition. Prices move with the market. Your final offer follows inspection.", "info": "'Prices updated' comes first, from Theme settings > Sell program." },
+    { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },
+    { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on this page." },
+    { "type": "paragraph", "content": "Shows devices marked Popular in Content > Metaobjects. Each group lists the categories it includes, by name." }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Group",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Phones" },
+        { "type": "text", "id": "categories", "label": "Category names", "default": "Smartphone", "info": "Comma-separated, matching your buyback categories." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell: what we pay",
+      "blocks": [
+        { "type": "group", "settings": { "title": "Phones", "categories": "Smartphone" } },
+        { "type": "group", "settings": { "title": "Tablets", "categories": "Tablet" } },
+        { "type": "group", "settings": { "title": "Laptops", "categories": "Laptop/MacBook, Laptop, MacBook" } },
+        { "type": "group", "settings": { "title": "Watch & Audio", "categories": "Smartwatch, Audio" } },
+        { "type": "group", "settings": { "title": "Gaming", "categories": "Gaming Console" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -96,7 +96,7 @@
     </ul>
     <ul class="nav-side">
       {%- if section.settings.side_menu == blank -%}
-        <li><a class="nav-link nav-side-link" href="/pages/trade-in">{% render 'icon', name: 'swap' %}Trade in</a></li>
+        <li><a class="nav-link nav-side-link" href="/pages/sell-your-device">{% render 'icon', name: 'swap' %}Trade in</a></li>
         <li><a class="nav-link nav-side-link" href="/pages/services">{% render 'icon', name: 'shield' %}Services</a></li>
       {%- else -%}
         {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}

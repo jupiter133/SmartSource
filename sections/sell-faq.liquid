@@ -3,19 +3,40 @@
   <div class="sell-faq__list">
     {%- for block in section.blocks -%}
       <details class="faq-item" {{ block.shopify_attributes }}>
-        <summary>{% render 'sell-terms-text', text: block.settings.question %}<span class="faq-item__icon" aria-hidden="true"></span></summary>
-        <div class="rte faq-item__answer">{% render 'sell-terms-text', text: block.settings.answer %}</div>
+        <summary>{% render 'sell-text', text: block.settings.question %}<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="rte faq-item__answer">{% render 'sell-text', text: block.settings.answer %}</div>
       </details>
     {%- endfor -%}
   </div>
 </section>
+
+{%- if section.settings.schema and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {%- capture q -%}{% render 'sell-text', text: block.settings.question %}{%- endcapture -%}
+          {%- capture a -%}{% render 'sell-text', text: block.settings.answer %}{%- endcapture -%}
+          {
+            "@type": "Question",
+            "name": {{ q | strip_html | strip | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ a | strip_html | strip | json }} }
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Sell FAQ",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Questions" },
-    { "type": "paragraph", "content": "Write [quote_days] or [payment_days] to use the numbers from Theme settings > Sell & trade-in terms." }
+    { "type": "checkbox", "id": "schema", "label": "Add FAQ structured data for Google", "default": true, "info": "Only keep this on for one FAQ section per page." },
+    { "type": "paragraph", "content": "Write {quote_valid_days} or {payment_business_days}, and wrap text in [if_free_return]...[/if_free_return] or [if_instore_pay]...[/if_instore_pay]. Values come from Theme settings > Sell program." }
   ],
   "blocks": [
     {
@@ -23,7 +44,7 @@
       "name": "Question",
       "settings": [
         { "type": "text", "id": "question", "label": "Question", "default": "How long is my quote valid?" },
-        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your quote is locked in for [quote_days] days. Ship it or drop it off within that window, or the quote expires and you'll need a new one.</p>" }
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your quote is locked for {quote_valid_days} days. Ship it or drop it off within that window, or the quote expires and you'll need a new one.</p>" }
       ]
     }
   ],
@@ -31,12 +52,13 @@
     {
       "name": "Sell FAQ",
       "blocks": [
+        { "type": "question", "settings": { "question": "How long does payment take?", "answer": "<p>We pay within {payment_business_days} business days of receiving your device.[if_instore_pay] Drop it off in one of our stores and we can pay you on the spot.[/if_instore_pay]</p>" } },
         { "type": "question" },
-        { "type": "question", "settings": { "question": "When do I get paid?", "answer": "<p>Payment is sent within [payment_days] business days of us receiving your device. Drop it off in one of our stores and we can pay you on the spot.</p>" } },
-        { "type": "question", "settings": { "question": "What if the condition doesn't match my quote?", "answer": "<p>We'll send you a revised offer. Accept it, or decline and we'll return your device free.</p>" } },
-        { "type": "question", "settings": { "question": "Is shipping free?", "answer": "<p>Yes. We send a free shipping label. Just make sure it ships within [quote_days] days of your quote.</p>" } },
-        { "type": "question", "settings": { "question": "What happens to my data?", "answer": "<p>Every device we buy is fully wiped. Before you send it, back up your data, sign out of iCloud or your Google account, and remove your SIM card.</p>" } },
-        { "type": "question", "settings": { "question": "Can I put the value toward a new device instead?", "answer": "<p>Yes. Choose the trade-in option and apply your value toward any device in our store.</p>" } }
+        { "type": "question", "settings": { "question": "Do I need to remove my accounts?", "answer": "<p>Yes. Before you send it, sign out of iCloud and turn off Find My (iPhone), or remove your Google and Samsung accounts (Android), then take out your SIM card. We can't buy a device that's still locked to an account.</p>" } },
+        { "type": "question", "settings": { "question": "What if my phone is cracked?", "answer": "<p>We still buy it. Choose <strong>Cracked or Minor Issue</strong> in the quote tool to see your price.</p>" } },
+        { "type": "question", "settings": { "question": "What if inspection finds a different condition?", "answer": "<p>We send you a revised offer. Accept it and we pay the new amount.[if_free_return] Decline it and we return your device free.[/if_free_return]</p>" } },
+        { "type": "question", "settings": { "question": "Do you buy locked or financed phones?", "answer": "<p>We can't buy phones that are blacklisted, reported lost or stolen, or locked to an iCloud or Google account. If your phone is still on a financing plan or carrier contract, pay it off first.</p>" } },
+        { "type": "question", "settings": { "question": "Is my data safe?", "answer": "<p>Yes. Every device we buy is securely wiped before it's resold. Back it up and reset it before you send it, too.</p>" } }
       ]
     }
   ]

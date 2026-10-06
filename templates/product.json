@@ -3,7 +3,7 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "tradein_link": "/pages/trade-in"
+        "tradein_link": "/pages/sell-your-device"
       },
       "blocks": {
         "b1": {

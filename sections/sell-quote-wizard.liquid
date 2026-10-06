@@ -1,0 +1,275 @@
+{%- liquid
+  assign conditions = section.blocks | where: 'type', 'condition'
+  assign stores = section.blocks | where: 'type', 'store'
+-%}
+<section class="section page-width sell-wiz" id="sell-quote" data-sell-wizard data-section-id="{{ section.id }}">
+  <div class="sell-wiz__head">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow-grad">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.intro != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.intro %}</p>{%- endif -%}
+  </div>
+
+  <nav class="wiz-progress" aria-label="Quote steps" data-progress>
+    <ol role="list">
+      {%- assign labels = 'Device,Brand,Model,Storage,Condition,Details' | split: ',' -%}
+      {%- for label in labels -%}
+        <li>
+          <button type="button" class="wiz-progress__btn" data-goto="{{ forloop.index }}" disabled>
+            <span class="wiz-progress__num" aria-hidden="true">{{ forloop.index }}</span>
+            <span class="wiz-progress__label">{{ label }}</span>
+          </button>
+        </li>
+      {%- endfor -%}
+    </ol>
+    <div class="wiz-progress__bar" aria-hidden="true"><span data-progress-fill></span></div>
+  </nav>
+
+  <div class="wiz-layout">
+    <div class="wiz-main" data-wiz-main>
+      <div class="wiz-step" data-step="1" role="group" aria-labelledby="WizStep1-{{ section.id }}">
+        <h3 class="wiz-step__title" id="WizStep1-{{ section.id }}" tabindex="-1">What are you selling?</h3>
+        <div class="wiz-search">
+          <label class="visually-hidden" for="WizSearch-{{ section.id }}">Search for your device</label>
+          <div class="wiz-search__box">
+            {% render 'icon', name: 'search' %}
+            <input id="WizSearch-{{ section.id }}" type="search" placeholder="{{ section.settings.search_placeholder | escape }}" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="WizSearchList-{{ section.id }}" data-wiz-search>
+          </div>
+          <ul class="sell-search__list" id="WizSearchList-{{ section.id }}" role="listbox" aria-label="Matching devices" hidden data-wiz-search-list></ul>
+        </div>
+        <p class="wiz-or"><span>or pick a category</span></p>
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Category</legend><div class="wiz-cards wiz-cards--cats" data-options="1"></div></fieldset>
+      </div>
+
+      <div class="wiz-step" data-step="2" role="group" aria-labelledby="WizStep2-{{ section.id }}" hidden>
+        <h3 class="wiz-step__title" id="WizStep2-{{ section.id }}" tabindex="-1">Select brand</h3>
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Brand</legend><div class="wiz-cards wiz-cards--brands" data-options="2"></div></fieldset>
+      </div>
+
+      <div class="wiz-step" data-step="3" role="group" aria-labelledby="WizStep3-{{ section.id }}" hidden>
+        <h3 class="wiz-step__title" id="WizStep3-{{ section.id }}" tabindex="-1">Select model</h3>
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Model</legend><div class="wiz-cards wiz-cards--models" data-options="3"></div></fieldset>
+      </div>
+
+      <div class="wiz-step" data-step="4" role="group" aria-labelledby="WizStep4-{{ section.id }}" hidden>
+        <h3 class="wiz-step__title" id="WizStep4-{{ section.id }}" tabindex="-1">Storage</h3>
+        <p class="wiz-step__sub" data-step-sub="4"></p>
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Storage</legend><div class="wiz-cards wiz-cards--storage" data-options="4"></div></fieldset>
+      </div>
+
+      <div class="wiz-step" data-step="5" role="group" aria-labelledby="WizStep5-{{ section.id }}" hidden>
+        <h3 class="wiz-step__title" id="WizStep5-{{ section.id }}" tabindex="-1">Condition</h3>
+        <p class="wiz-step__sub">Be honest. We check every device, and an accurate pick means no surprises.</p>
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Condition</legend><div class="wiz-conds" data-options="5"></div></fieldset>
+      </div>
+
+      {%- form 'contact', id: 'SellWizardForm', class: 'wiz-form', data-wiz-form: '' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="wiz-step wiz-done" data-step="7" data-posted role="group" aria-labelledby="WizDone-{{ section.id }}">
+            <span class="wiz-done__icon">{% render 'icon', name: 'check' %}</span>
+            <h3 class="wiz-step__title" id="WizDone-{{ section.id }}" tabindex="-1">{{ section.settings.success_heading }}</h3>
+            <p class="wiz-done__ref" data-done-ref hidden>Your quote reference is <strong></strong></p>
+            <ul class="wiz-done__items" role="list" data-done-items></ul>
+            <p class="wiz-done__total" data-done-total hidden><span>Total</span><strong></strong></p>
+            <p class="wiz-done__expiry" data-done-expiry hidden>Ship or drop off by <strong></strong>.</p>
+            <h4>What happens next</h4>
+            <div class="rte wiz-done__next">{% render 'sell-text', text: section.settings.next_steps %}</div>
+            <button type="button" class="btn" data-restart>Start another quote</button>
+          </div>
+        {%- else -%}
+          <div class="wiz-step" data-step="6" role="group" aria-labelledby="WizStep6-{{ section.id }}" hidden>
+            <h3 class="wiz-step__title" id="WizStep6-{{ section.id }}" tabindex="-1">Your details</h3>
+            {%- if form.errors -%}<div class="wiz-errors" role="alert" data-form-errors>{{ form.errors | default_errors }}</div>{%- endif -%}
+            <div class="wiz-fields">
+              <label class="field"><span>Full name</span><input type="text" name="contact[name]" autocomplete="name" required data-detail="name"></label>
+              <label class="field"><span>Email</span><input type="email" name="contact[email]" autocomplete="email" required data-detail="email"></label>
+              <label class="field field--full"><span>Phone <small class="muted">(optional)</small></span><input type="tel" name="contact[phone]" autocomplete="tel" data-detail="phone"></label>
+            </div>
+            <fieldset class="wiz-fieldset wiz-method">
+              <legend>How will you send it?</legend>
+              <div class="wiz-cards wiz-cards--method">
+                <label class="wiz-card wiz-card--method">
+                  <input type="radio" name="wiz-method" value="ship" data-detail="method">
+                  <span class="wiz-card__check" aria-hidden="true">{% render 'icon', name: 'check' %}</span>
+                  <span class="wiz-card__icon">{% render 'icon', name: 'truck' %}</span>
+                  <span class="wiz-card__name">Ship it: free label</span>
+                  <span class="wiz-card__meta">We email you a prepaid shipping label.</span>
+                </label>
+                <label class="wiz-card wiz-card--method">
+                  <input type="radio" name="wiz-method" value="dropoff" data-detail="method">
+                  <span class="wiz-card__check" aria-hidden="true">{% render 'icon', name: 'check' %}</span>
+                  <span class="wiz-card__icon">{% render 'icon', name: 'store' %}</span>
+                  <span class="wiz-card__name">Drop off in store</span>
+                  <span class="wiz-card__meta">{% if settings.instore_instant_pay %}Get paid on the spot.{% else %}Bring it to any of our stores.{% endif %}</span>
+                </label>
+              </div>
+            </fieldset>
+            <label class="field field--full wiz-store" data-store-field hidden>
+              <span>Which store?</span>
+              <select name="wiz-store" data-detail="store">
+                <option value="">Choose a store</option>
+                {%- for store in stores -%}
+                  <option value="{{ store.settings.name | escape }}">{{ store.settings.name }}{% if store.settings.address != blank %} · {{ store.settings.address }}{% endif %}</option>
+                {%- endfor -%}
+              </select>
+            </label>
+            <p class="wiz-fine muted">{% render 'sell-text', text: section.settings.fine_print %}</p>
+            <div data-hidden-fields></div>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+      <noscript><p class="wiz-noscript">The quote tool needs JavaScript. Please turn it on, or visit one of our stores for a quote.</p></noscript>
+    </div>
+
+    <aside class="wiz-summary" aria-label="Your quote" data-summary>
+      <div class="wiz-sum">
+        <div class="wiz-sum__device">
+          <span class="wiz-sum__img" data-sum-img></span>
+          <div>
+            <strong data-sum-name>Pick your device</strong>
+            <span class="wiz-sum__meta" data-sum-meta>Your offer updates as you go.</span>
+          </div>
+        </div>
+        <div class="wiz-sum__pay">
+          <span>{{ section.settings.pay_label }}</span>
+          <strong data-sum-total aria-live="polite" aria-atomic="true">$0</strong>
+        </div>
+        <div class="wiz-sum__list" data-sum-list hidden>
+          <p class="wiz-sum__list-title">Devices in this quote</p>
+          <ul role="list" data-sum-items></ul>
+        </div>
+        {%- if section.settings.guarantee_title != blank -%}
+          <div class="wiz-sum__guarantee">
+            <span class="wiz-sum__guarantee-icon">{% render 'icon', name: 'shield' %}</span>
+            <div>
+              <strong>{{ section.settings.guarantee_title }}</strong>
+              <p>{% render 'sell-text', text: section.settings.guarantee_text %}</p>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="wiz-bar" data-bar>
+        <div class="wiz-bar__pay" aria-hidden="true"><span>{{ section.settings.pay_label }}</span><strong data-bar-total>$0</strong></div>
+        <div class="wiz-bar__btns">
+          <button type="button" class="btn wiz-bar__prev" data-prev>Previous</button>
+          <button type="button" class="btn btn--dark wiz-bar__next" data-next disabled>Next</button>
+          <button type="button" class="btn btn--accent wiz-bar__next" data-getpaid hidden>Get paid</button>
+          <button type="button" class="btn wiz-bar__add" data-addanother hidden><span class="wiz-long">Accept &amp; add another device</span><span class="wiz-short">+ Add another</span></button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  {%- comment -%} Catalog for the wizard. Categories and brands: up to 50 each. Devices and prices: up to 250 each. {%- endcomment -%}
+  <script type="application/json" data-sell-catalog>
+    {
+      "categories": [
+        {%- assign sep = false -%}
+          {%- for c in metaobjects.buyback_category.values limit: 50 -%}
+            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
+            {"h":{{ c.system.handle | json }},"n":{{ c.name.value | json }},"s":{{ c.sort_order.value | default: 999 | json }},"i":{% if c.image.value != blank %}{{ c.image.value | image_url: width: 320 | json }}{% else %}null{% endif %}}
+          {%- endfor -%}
+      ],
+      "brands": [
+        {%- assign sep = false -%}
+          {%- for b in metaobjects.buyback_brand.values limit: 50 -%}
+            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
+            {"h":{{ b.system.handle | json }},"n":{{ b.name.value | json }},"s":{{ b.sort_order.value | default: 999 | json }},"i":{% if b.logo.value != blank %}{{ b.logo.value | image_url: width: 240 | json }}{% else %}null{% endif %}}
+          {%- endfor -%}
+      ],
+      "devices": [
+        {%- assign sep = false -%}
+        {%- paginate metaobjects.buyback_device.values by 250 -%}
+          {%- for d in metaobjects.buyback_device.values -%}
+            {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
+            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
+            {"h":{{ d.system.handle | json }},"n":{{ d.name.value | json }},"c":{{ d.category.value.system.handle | json }},"b":{{ d.brand.value.system.handle | json }},"y":{{ d.release_year.value | default: 0 | json }},"s":{{ d.sort_order.value | default: 999 | json }},"p":{% if d.is_popular.value %}true{% else %}false{% endif %},"i":{% if d.image.value != blank %}{{ d.image.value | image_url: width: 400 | json }}{% else %}null{% endif %}}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      ],
+      "prices": [
+        {%- assign sep = false -%}
+        {%- paginate metaobjects.buyback_price.values by 250 -%}
+          {%- for p in metaobjects.buyback_price.values -%}
+            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
+            {"d":{{ p.device.value.system.handle | json }},"st":{{ p.storage.value | json }},"p":[{{ p.price_like_new.value | json }},{{ p.price_good.value | json }},{{ p.price_fair.value | json }},{{ p.price_cracked.value | json }},{{ p.price_defective.value | json }}]}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      ]
+    }
+  </script>
+  <script type="application/json" data-sell-config>
+    {
+      "quoteDays": {{ settings.quote_valid_days | json }},
+      "payDays": {{ settings.payment_business_days | json }},
+      "freeReturn": {{ settings.free_return_on_decline | json }},
+      "instorePay": {{ settings.instore_instant_pay | json }},
+      "conditions": [
+        {%- for block in conditions -%}
+          {%- assign lines = block.settings.checklist | newline_to_br | split: '<br />' -%}
+          {"key":{{ block.settings.key | json }},"title":{{ block.settings.title | json }},"summary":{{ block.settings.summary | json }},"checklist":[
+            {%- assign lsep = false -%}
+            {%- for line in lines -%}{%- assign item = line | strip -%}{%- if item != blank -%}{%- if lsep -%},{%- endif -%}{%- assign lsep = true -%}{{ item | json }}{%- endif -%}{%- endfor -%}
+          ]}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</section>
+
+<script src="{{ 'sell-wizard.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Sell: quote wizard",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "INSTANT QUOTE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get your instant offer" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "Five quick questions. Your quote is locked in for {quote_valid_days} days." },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search your model, e.g. iPhone 15 Pro" },
+    { "type": "text", "id": "pay_label", "label": "Price label", "default": "You'll get paid" },
+    { "type": "header", "content": "Guarantee card" },
+    { "type": "text", "id": "guarantee_title", "label": "Title", "default": "Price Promise" },
+    { "type": "textarea", "id": "guarantee_text", "label": "Text", "default": "Your quote is locked in for {quote_valid_days} days.[if_free_return] If inspection finds a different condition, accept the revised offer or get your device back free.[/if_free_return]" },
+    { "type": "header", "content": "Details and confirmation" },
+    { "type": "textarea", "id": "fine_print", "label": "Fine print under the form", "default": "Ship or drop off within {quote_valid_days} days of your quote. We pay within {payment_business_days} business days of receiving your device." },
+    { "type": "text", "id": "success_heading", "label": "Confirmation heading", "default": "You're all set. Your quote is locked in." },
+    { "type": "richtext", "id": "next_steps", "label": "What happens next", "default": "<ol><li>Ship it within {quote_valid_days} days with the free label we email you, or drop it off at your chosen store.</li><li>We inspect it and confirm the condition.[if_free_return] If it's different, accept the revised offer or get your device back free.[/if_free_return]</li><li>You get paid within {payment_business_days} business days of us receiving it.[if_instore_pay] Dropping off in store? We can pay you on the spot.[/if_instore_pay]</li></ol>" },
+    { "type": "paragraph", "content": "Devices and prices come from Content > Metaobjects. Submissions arrive in your store's contact inbox with the quote reference, every device, the total and the expiry date." }
+  ],
+  "blocks": [
+    {
+      "type": "condition",
+      "name": "Condition",
+      "limit": 5,
+      "settings": [
+        { "type": "select", "id": "key", "label": "Price column", "options": [ { "value": "like_new", "label": "Like New" }, { "value": "good", "label": "Good" }, { "value": "fair", "label": "Fair" }, { "value": "cracked", "label": "Cracked or Minor Issue" }, { "value": "defective", "label": "Defective" } ], "default": "good" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Good" },
+        { "type": "text", "id": "summary", "label": "One-line summary", "default": "Normal signs of use, works perfectly." },
+        { "type": "textarea", "id": "checklist", "label": "Checklist", "info": "One item per line.", "default": "Normal signs of wear\nFully functional\nUnlocked Canadian model\nBattery health 84%+\nNo heavy scratches or cracks\nNo liquid damage\nNot iCloud locked or blacklisted" }
+      ]
+    },
+    {
+      "type": "store",
+      "name": "Drop-off store",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Store name", "default": "Store name (edit me)" },
+        { "type": "text", "id": "address", "label": "Address", "default": "Street, City, ON" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell: quote wizard",
+      "blocks": [
+        { "type": "condition", "settings": { "key": "like_new", "title": "Like New", "summary": "Flawless. Looks and works like new.", "checklist": "No visible scratches, scuffs or dents\nFully functional\nUnlocked Canadian model\nBattery health 90%+\nNo liquid damage\nNot iCloud locked or blacklisted" } },
+        { "type": "condition", "settings": { "key": "good" } },
+        { "type": "condition", "settings": { "key": "fair", "title": "Fair", "summary": "Heavy wear, still works perfectly.", "checklist": "Heavy scratches, scuffs or dents\nFully functional\nNo cracks on the screen or back\nUnlocked Canadian model\nNo liquid damage\nNot iCloud locked or blacklisted" } },
+        { "type": "condition", "settings": { "key": "cracked", "title": "Cracked or Minor Issue", "summary": "Cracked glass, or one small fault.", "checklist": "Cracked screen or back glass, or\nOne minor fault, e.g. weak battery, camera or button\nPowers on and the screen displays\nNot iCloud locked or blacklisted" } },
+        { "type": "condition", "settings": { "key": "defective", "title": "Defective", "summary": "Doesn't power on, or has a major fault.", "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud locked or blacklisted" } },
+        { "type": "store", "settings": { "name": "Store 1 (edit me)", "address": "Street, Toronto, ON" } },
+        { "type": "store", "settings": { "name": "Store 2 (edit me)", "address": "Street, Mississauga, ON" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

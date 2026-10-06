@@ -1,0 +1,204 @@
+{%- liquid
+  assign quote_url = section.settings.quote_page | default: request.path
+  assign hl = section.settings.highlight | escape
+  assign headline = section.settings.headline | escape
+  if hl != blank and headline contains hl
+    assign wrapped = '<span class="sell-hero__hl">' | append: hl | append: '</span>'
+    assign headline = headline | replace_first: hl, wrapped
+  endif
+  assign show_reviews = false
+  if section.settings.review_score != blank and section.settings.review_count != blank
+    assign show_reviews = true
+  endif
+-%}
+<section class="sell-hero sell-hero--{{ section.settings.background }}" id="SellHero-{{ section.id }}" data-sell-hero data-quote-url="{{ quote_url }}">
+  <div class="sell-hero__bg" aria-hidden="true"></div>
+  <div class="page-width sell-hero__inner">
+    <div class="sell-hero__copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="sell-hero__pill" data-hero-anim style="--d: 0">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 class="sell-hero__title" data-hero-anim style="--d: 1">{{ headline }}</h1>
+      {%- if section.settings.subheadline != blank -%}
+        <p class="sell-hero__sub" data-hero-anim style="--d: 2">{% render 'sell-text', text: section.settings.subheadline %}</p>
+      {%- endif -%}
+
+      <form class="sell-search" action="{{ quote_url }}" method="get" role="search" data-sell-search data-hero-anim style="--d: 3">
+        <label class="visually-hidden" for="SellSearch-{{ section.id }}">{{ section.settings.search_label }}</label>
+        <div class="sell-search__box">
+          {% render 'icon', name: 'search' %}
+          <input
+            id="SellSearch-{{ section.id }}"
+            class="sell-search__input"
+            type="search"
+            name="sell_q"
+            placeholder="{{ section.settings.search_placeholder | escape }}"
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="SellSearchList-{{ section.id }}"
+            data-search-input
+          >
+          <button type="submit" class="btn btn--accent sell-search__btn">{{ section.settings.search_button }}</button>
+        </div>
+        <ul class="sell-search__list" id="SellSearchList-{{ section.id }}" role="listbox" aria-label="{{ section.settings.search_label | escape }}" hidden data-search-list></ul>
+        <p class="visually-hidden" aria-live="polite" data-search-status></p>
+      </form>
+
+      {%- assign chips = section.blocks | where: 'type', 'chip' -%}
+      {%- if chips.size > 0 -%}
+        <ul class="sell-hero__chips" role="list" data-hero-anim style="--d: 4">
+          {%- for block in chips -%}
+            <li>
+              <a
+                class="sell-chip"
+                href="{{ quote_url }}?sell_category={{ block.settings.category | url_encode }}&sell_brand={{ block.settings.brand | url_encode }}#sell-quote"
+                data-sell-start
+                data-category="{{ block.settings.category | escape }}"
+                data-brand="{{ block.settings.brand | escape }}"
+                {{ block.shopify_attributes }}
+              >{{ block.settings.label }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.price_link_label != blank -%}
+        <a class="sell-hero__more" href="#what-we-pay" data-hero-anim style="--d: 5">{{ section.settings.price_link_label }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="sell-hero__visual" data-hero-anim style="--d: 2">
+      <div class="sell-hero__art">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 45vw, 90vw', class: 'sell-hero__img', alt: section.settings.image.alt | default: '' }}
+        {%- else -%}
+          {% render 'sell-hero-art' %}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.card1_show -%}
+        <div class="glass-card glass-card--pay" data-hero-card style="--d: 4">
+          <span class="glass-card__label">{{ section.settings.card1_label }}</span>
+          <strong class="glass-card__amount" data-countup="{{ section.settings.card1_amount | default: 0 }}">{{ section.settings.card1_amount | default: 0 | times: 100 | money_without_trailing_zeros }}</strong>
+          {%- if section.settings.card1_caption != blank -%}<span class="glass-card__note">{{ section.settings.card1_caption }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.card2_text != blank -%}
+        <div class="glass-card glass-card--paid" data-hero-card style="--d: 5">
+          <span class="glass-card__tick">{% render 'icon', name: 'check' %}</span>
+          <span>{% render 'sell-text', text: section.settings.card2_text %}</span>
+        </div>
+      {%- endif -%}
+      {%- if show_reviews -%}
+        <div class="glass-card glass-card--reviews" data-hero-card style="--d: 6">
+          <span class="glass-card__star" aria-hidden="true">★</span>
+          {%- capture review_text -%}<strong>{{ section.settings.review_score }}</strong> · {{ section.settings.review_count }} {{ section.settings.review_source }}{%- endcapture -%}
+          {%- if section.settings.review_link != blank -%}
+            <a href="{{ section.settings.review_link }}" target="_blank" rel="noopener">{{ review_text }}</a>
+          {%- else -%}
+            <span>{{ review_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- assign trust = section.blocks | where: 'type', 'trust' -%}
+  {%- if trust.size > 0 -%}
+    <div class="sell-hero__trust">
+      <ul class="page-width sell-hero__trust-list" role="list">
+        {%- for block in trust -%}
+          <li {{ block.shopify_attributes }}><span class="sell-hero__trust-icon">{% render 'icon', name: block.settings.icon %}</span>{% render 'sell-text', text: block.settings.text %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Device index for the live search. Up to 250 active devices. {%- endcomment -%}
+  <script type="application/json" data-sell-index>
+    [
+    {%- assign sep = false -%}
+    {%- paginate metaobjects.buyback_device.values by 250 -%}
+      {%- for d in metaobjects.buyback_device.values -%}
+        {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
+        {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
+        {"h":{{ d.system.handle | json }},"n":{{ d.name.value | json }},"b":{{ d.brand.value.name.value | json }},"c":{{ d.category.value.name.value | json }},"i":{% if d.image.value != blank %}{{ d.image.value | image_url: width: 96 | json }}{% elsif d.category.value.image.value != blank %}{{ d.category.value.image.value | image_url: width: 96 | json }}{% else %}null{% endif %}}
+      {%- endfor -%}
+    {%- endpaginate -%}
+    ]
+  </script>
+</section>
+
+<script src="{{ 'sell-hero.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Sell hero",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow pill", "default": "🇨🇦 Canadian-owned · Real stores in the GTA" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Top dollar for your phone." },
+    { "type": "text", "id": "highlight", "label": "Words to highlight in the accent colour", "default": "Top dollar", "info": "Must match part of the headline exactly." },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline", "default": "Get an instant quote in 60 seconds. Ship it free or drop it off in store. Paid within {payment_business_days} business days." },
+    { "type": "header", "content": "Quick-start search" },
+    { "type": "text", "id": "search_label", "label": "Search label (for screen readers)", "default": "What are you selling?" },
+    { "type": "text", "id": "search_placeholder", "label": "Placeholder", "default": "What are you selling? e.g. iPhone 15 Pro" },
+    { "type": "text", "id": "search_button", "label": "Button", "default": "Get my quote" },
+    { "type": "text", "id": "price_link_label", "label": "Link to price list", "default": "See what we pay ↓" },
+    { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on the same page as this hero." },
+    { "type": "header", "content": "Visual" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG works best. Leave blank for the built-in phone stack." },
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "glow", "label": "Accent glow" }, { "value": "grid", "label": "Accent glow + grid" }, { "value": "plain", "label": "Plain" } ], "default": "grid" },
+    { "type": "header", "content": "Floating card: payout" },
+    { "type": "checkbox", "id": "card1_show", "label": "Show payout card", "default": true },
+    { "type": "text", "id": "card1_label", "label": "Label", "default": "You'll get paid" },
+    { "type": "number", "id": "card1_amount", "label": "Amount (CAD)", "default": 1040 },
+    { "type": "text", "id": "card1_caption", "label": "Caption", "default": "Example quote", "info": "Keep a caption like 'Example quote' unless the amount is a real, current offer." },
+    { "type": "header", "content": "Floating card: payment speed" },
+    { "type": "text", "id": "card2_text", "label": "Text", "default": "Paid in {payment_business_days} business days", "info": "Leave blank to hide." },
+    { "type": "header", "content": "Floating card: reviews" },
+    { "type": "paragraph", "content": "Only shown when both score and count are filled in. Use your real numbers." },
+    { "type": "text", "id": "review_score", "label": "Score", "placeholder": "4.9" },
+    { "type": "text", "id": "review_count", "label": "Review count", "placeholder": "312" },
+    { "type": "text", "id": "review_source", "label": "Source", "default": "Google reviews" },
+    { "type": "url", "id": "review_link", "label": "Link to reviews" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Category chip",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
+        { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Must match a buyback category name, e.g. Smartphone, Tablet." },
+        { "type": "text", "id": "brand", "label": "Brand name (optional)", "default": "Apple", "info": "Skips straight to that brand's models." }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust item",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "truck", "label": "Truck" }, { "value": "clock", "label": "Clock" }, { "value": "lock", "label": "Lock" }, { "value": "store", "label": "Store" }, { "value": "shield", "label": "Shield" }, { "value": "cash", "label": "Cash" } ], "default": "truck" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Free shipping label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell hero",
+      "blocks": [
+        { "type": "chip", "settings": { "label": "iPhone", "category": "Smartphone", "brand": "Apple" } },
+        { "type": "chip", "settings": { "label": "Samsung", "category": "Smartphone", "brand": "Samsung" } },
+        { "type": "chip", "settings": { "label": "iPad", "category": "Tablet", "brand": "Apple" } },
+        { "type": "chip", "settings": { "label": "MacBook", "category": "Laptop/MacBook", "brand": "Apple" } },
+        { "type": "chip", "settings": { "label": "Watch", "category": "Smartwatch", "brand": "" } },
+        { "type": "trust", "settings": { "icon": "truck", "text": "Free shipping label" } },
+        { "type": "trust", "settings": { "icon": "clock", "text": "Quote locked {quote_valid_days} days" } },
+        { "type": "trust", "settings": { "icon": "lock", "text": "Data wiped securely" } },
+        { "type": "trust", "settings": { "icon": "store", "text": "Drop off in store" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
