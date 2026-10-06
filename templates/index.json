@@ -410,7 +410,8 @@
             "label": "ANDROID",
             "title": "Explore Top Android Picks.",
             "bg": "#F4F4F5",
-            "link": "/collections/all/android"
+            "link": "/collections/all/android",
+            "asset_image": "tech-android.webp"
           }
         },
         "t2": {
@@ -429,7 +430,8 @@
             "label": "MACBOOKS",
             "title": "Stay Connected, Stay Active",
             "bg": "#F4F4F5",
-            "link": "/collections/all/macbook"
+            "link": "/collections/all/macbook",
+            "asset_image": "tech-macbooks.webp"
           }
         },
         "t4": {
@@ -438,7 +440,8 @@
             "label": "AUDIO",
             "title": "Certified Beats, Everyday Vibes",
             "bg": "#F4F4F5",
-            "link": "/collections/all/audio"
+            "link": "/collections/all/audio",
+            "asset_image": "tech-audio.webp"
           }
         },
         "t5": {
