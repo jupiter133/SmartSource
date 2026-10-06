@@ -31,7 +31,7 @@
   </div>
   {%- endif -%}
   <div class="header__main page-width">
-    <button class="icon-btn header__burger" aria-label="Menu" data-menu-toggle>{% render 'icon', name: 'menu' %}</button>
+    <button class="icon-btn header__burger" aria-label="Menu" aria-controls="HeaderMenu" aria-expanded="false" data-menu-toggle>{% render 'icon', name: 'menu' %}</button>
     <a href="{{ routes.root_url }}" class="header__logo">
       {%- if section.settings.logo != blank -%}
         {{ section.settings.logo | image_url: width: 400 | image_tag: width: section.settings.logo_width, alt: shop.name }}
@@ -52,7 +52,7 @@
       </a>
     </div>
   </div>
-  <nav class="header__nav-wrap" data-menu>
+  <nav class="header__nav-wrap" id="HeaderMenu" data-menu>
   <div class="header__nav page-width">
     <ul class="nav-scroll">
       {%- if section.settings.nav_source == 'builtin' or section.settings.main_menu == blank -%}

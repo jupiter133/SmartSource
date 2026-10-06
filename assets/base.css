@@ -348,7 +348,10 @@ shopify-payment-terms{font-size:13px}
   .header__logo{flex:1}
   .header__search{order:5;flex-basis:100%}
   .header__nav{display:none;flex-direction:column}
-  .header__nav.is-open{display:flex}
+  .header__nav-wrap.is-open .header__nav{display:flex}
+  .header__nav-wrap.is-open{max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;border-top:1px solid #eee}
+  .header__nav-wrap.is-open .nav-link{padding:13px 0;font-size:15px;border-bottom:1px solid #f0f0f3}
+  .header__nav .nav-scroll{overflow:visible}
   .header__nav ul{flex-direction:column;gap:0}
   .mega{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;display:none}
   .nav-item.is-open .mega{display:block}

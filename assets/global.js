@@ -6,7 +6,11 @@
   $$('[data-announcement] [data-close]').forEach(b => b.addEventListener('click', () => b.parentElement.remove()));
 
   // Mobile menu
-  $('[data-menu-toggle]')?.addEventListener('click', () => $('[data-menu]')?.classList.toggle('is-open'));
+  const menuBtn = $('[data-menu-toggle]'), menu = $('[data-menu]');
+  const setMenu = open => { menu?.classList.toggle('is-open', open); menuBtn?.setAttribute('aria-expanded', open); };
+  menuBtn?.addEventListener('click', () => setMenu(!menu?.classList.contains('is-open')));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu?.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); } });
+  matchMedia('(min-width: 750px)').addEventListener('change', e => e.matches && setMenu(false));
 
   // Mega menu: hover intent on desktop, tap to expand on mobile
   const overlay = document.createElement('div'); overlay.className = 'mega-overlay'; document.body.append(overlay);
