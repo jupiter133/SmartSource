@@ -748,12 +748,23 @@ shopify-payment-terms{font-size:13px}
 }
 
 /* why refurbished */
-.why-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
-.why-hero h1{font-size:clamp(2rem,1.4rem + 3vw,3.4rem);font-weight:800;letter-spacing:-.035em;margin:0 0 14px;text-wrap:balance}
-.why-hero__text{font-size:17px;color:#44444d;max-width:520px}.why-hero__text p{margin:0 0 8px}
+.why-hero{display:flex;flex-direction:column;gap:12px}
+.why-slider{position:relative}
+.why-slider__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;border-radius:24px}
+.why-slider__track::-webkit-scrollbar{display:none}
+.why-slide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;background:var(--slide-bg);color:var(--slide-ink);padding:48px 56px;min-height:440px}
+.why-slide h1,.why-slide__h{font-size:clamp(2rem,1.4rem + 3vw,3.4rem);font-weight:800;letter-spacing:-.035em;margin:0 0 14px;text-wrap:balance;color:inherit}
+.why-slide__eyebrow{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.06em;opacity:.7}
+.why-slide__text{font-size:17px;max-width:520px;opacity:.85}.why-slide__text p{margin:0 0 8px}
 .why-hero__ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.why-hero__art{background:var(--c-surface);border-radius:24px;aspect-ratio:5/4;display:grid;place-items:center;overflow:hidden}
-.why-hero__art .device-art{width:78%}.why-hero__art img{width:100%;height:100%;object-fit:cover}
+.why-slide__art{display:grid;place-items:center;height:100%;max-height:360px}
+.why-slide__art .device-art{width:78%;max-height:340px}.why-slide__art img{max-height:360px;width:auto;object-fit:contain}
+.why-slider__controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.why-slider__dots{display:flex;gap:8px}
+.why-dot{width:8px;height:8px;border-radius:99px;background:#cfcfd6;padding:0;transition:width .25s,background .25s}
+.why-dot.is-active{width:26px;background:var(--c-ink)}
+.why-dot:focus-visible,.why-slider .arrow:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.why-slider__track{scroll-behavior:auto}.why-dot{transition:none}}
 .why-stats{grid-column:1/-1;list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
 .why-stat{background:var(--c-surface);border-radius:var(--radius);padding:18px 20px;display:flex;flex-direction:column;gap:2px}
 .why-stat strong{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}.why-stat span{font-size:13px;color:#6b6b76}
@@ -780,8 +791,9 @@ shopify-payment-terms{font-size:13px}
 .why-grade h3{font-size:1.15rem;margin:0 0 4px}.why-grade p{margin:0;color:#55555e;font-size:14px}
 .why-grades__foot{margin-top:18px}
 @media (max-width:749px){
-  .why-hero{grid-template-columns:1fr;gap:20px}
-  .why-hero__art{order:-1;aspect-ratio:16/10}
+  .why-slide{grid-template-columns:1fr;gap:16px;padding:28px 22px 32px;min-height:0}
+  .why-slide__art{order:-1;max-height:200px}.why-slide__art .device-art,.why-slide__art img{max-height:200px}
+  .why-slider__track{border-radius:20px}
   .why-hero__ctas .btn{flex:1 1 100%}
   .why-stats{grid-template-columns:1fr 1fr}
   .why-stat strong{font-size:1.3rem}

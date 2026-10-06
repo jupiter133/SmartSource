@@ -32,6 +32,33 @@
     $$('[data-next]', root).forEach(b => b.addEventListener('click', () => track.scrollBy({ left: step() })));
   });
 
+  // Slideshows: scroll-snap track + dots, arrows, autoplay (paused on hover, focus, hidden tab, reduced motion)
+  $$('[data-slideshow]').forEach(root => {
+    const track = $('[data-slides]', root);
+    const slides = track ? [...track.children] : [];
+    if (slides.length < 2) return;
+    const dots = $$('[data-slide-dot]', root);
+    let i = 0, timer;
+    const go = n => { i = (n + slides.length) % slides.length; track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft }); };
+    const mark = () => dots.forEach((d, k) => { d.classList.toggle('is-active', k === i); k === i ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'); });
+    let raf;
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { i = Math.round(track.scrollLeft / track.clientWidth); mark(); }); }, { passive: true });
+    $('[data-slide-prev]', root)?.addEventListener('click', () => { go(i - 1); stop(); });
+    $('[data-slide-next]', root)?.addEventListener('click', () => { go(i + 1); stop(); });
+    dots.forEach((d, k) => d.addEventListener('click', () => { go(k); stop(); }));
+    const secs = +root.dataset.autoplay;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let paused = false, stopped = false;
+    const start = () => { clearInterval(timer); if (!secs || reduce || stopped) return; timer = setInterval(() => { if (!paused && !document.hidden) go(i + 1); }, secs * 1000); };
+    const stop = () => { stopped = true; clearInterval(timer); };
+    root.addEventListener('mouseenter', () => (paused = true));
+    root.addEventListener('mouseleave', () => (paused = false));
+    root.addEventListener('focusin', () => (paused = true));
+    root.addEventListener('focusout', e => { if (!root.contains(e.relatedTarget)) paused = false; });
+    track.addEventListener('touchstart', stop, { passive: true });
+    start();
+  });
+
   // Tabs
   $$('[data-tabs]').forEach(root => {
     $$('[data-tab]', root).forEach(tab => tab.addEventListener('click', () => {

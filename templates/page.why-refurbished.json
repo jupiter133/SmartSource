@@ -2,8 +2,47 @@
   "sections": {
     "hero": {
       "type": "why-hero",
-      "settings": {},
+      "settings": {
+        "autoplay": true,
+        "speed": 6,
+        "label": "Why refurbished"
+      },
       "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "WHY REFURBISHED",
+            "heading": "Same phone. Way less money. No catch.",
+            "text": "<p>Every device is tested, repaired and graded by our technicians, then backed by a 1-year warranty. You get the tech you want without paying the new-in-box tax.</p>",
+            "art": "hero",
+            "bg": "#F3F0FF",
+            "button_label": "Shop refurbished",
+            "button2_label": "Trade in your old device"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "TESTED, NOT GUESSED",
+            "heading": "Checked up to 100 ways before it reaches you.",
+            "text": "<p>Screen, battery, cameras, Face ID, charging, signal. Anything that fails gets fixed or the device doesn't make it.</p>",
+            "art": "phone",
+            "bg": "#E6F7EF",
+            "button_label": "See how we refurbish",
+            "button_link": "#how-we-refurbish"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "ZERO RISK",
+            "heading": "Don't love it? Send it back free.",
+            "text": "<p>30 days to change your mind, plus a 1-year warranty after that. Buying used has never been this safe.</p>",
+            "art": "deal",
+            "bg": "#FDECEF",
+            "button_label": "Shop now"
+          }
+        },
         "stat_1": {
           "type": "stat",
           "settings": {
@@ -34,6 +73,9 @@
         }
       },
       "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3",
         "stat_1",
         "stat_2",
         "stat_3",
