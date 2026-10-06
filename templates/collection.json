@@ -8,70 +8,384 @@
           "type": "chip",
           "settings": {
             "label": "iPhone",
-            "link": "/collections/all/iphone"
+            "link": "/collections/all/iphone",
+            "parent": ""
           }
         },
         "chip_2": {
           "type": "chip",
           "settings": {
             "label": "Samsung",
-            "link": "/collections/all/samsung"
+            "link": "/collections/all/samsung",
+            "parent": ""
           }
         },
         "chip_3": {
           "type": "chip",
           "settings": {
             "label": "Google Pixel",
-            "link": "/collections/all/pixel"
+            "link": "/collections/all/pixel",
+            "parent": ""
           }
         },
         "chip_4": {
           "type": "chip",
           "settings": {
             "label": "iPad",
-            "link": "/collections/all/ipad"
+            "link": "/collections/all/ipad",
+            "parent": ""
           }
         },
         "chip_5": {
           "type": "chip",
           "settings": {
             "label": "MacBook",
-            "link": "/collections/all/macbook"
+            "link": "/collections/all/macbook",
+            "parent": ""
           }
         },
         "chip_6": {
           "type": "chip",
           "settings": {
             "label": "Laptops",
-            "link": "/collections/all/laptops"
+            "link": "/collections/all/laptops",
+            "parent": ""
           }
         },
         "chip_7": {
           "type": "chip",
           "settings": {
             "label": "Consoles",
-            "link": "/collections/all/consoles"
+            "link": "/collections/all/consoles",
+            "parent": ""
           }
         },
         "chip_8": {
           "type": "chip",
           "settings": {
             "label": "Smartwatches",
-            "link": "/collections/all/smartwatches"
+            "link": "/collections/all/smartwatches",
+            "parent": ""
           }
         },
         "chip_9": {
           "type": "chip",
           "settings": {
             "label": "Audio",
-            "link": "/collections/all/audio"
+            "link": "/collections/all/audio",
+            "parent": ""
           }
         },
         "chip_10": {
           "type": "chip",
           "settings": {
             "label": "Accessories",
-            "link": "/collections/all/accessories"
+            "link": "/collections/all/accessories",
+            "parent": ""
+          }
+        },
+        "chip_11": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 17",
+            "link": "/collections/all/iphone-17",
+            "parent": "iphone"
+          }
+        },
+        "chip_12": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 16",
+            "link": "/collections/all/iphone-16",
+            "parent": "iphone"
+          }
+        },
+        "chip_13": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 15",
+            "link": "/collections/all/iphone-15",
+            "parent": "iphone"
+          }
+        },
+        "chip_14": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 14",
+            "link": "/collections/all/iphone-14",
+            "parent": "iphone"
+          }
+        },
+        "chip_15": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 13",
+            "link": "/collections/all/iphone-13",
+            "parent": "iphone"
+          }
+        },
+        "chip_16": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 12",
+            "link": "/collections/all/iphone-12",
+            "parent": "iphone"
+          }
+        },
+        "chip_17": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 11",
+            "link": "/collections/all/iphone-11",
+            "parent": "iphone"
+          }
+        },
+        "chip_18": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone SE",
+            "link": "/collections/all/iphone-se",
+            "parent": "iphone"
+          }
+        },
+        "chip_19": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy S25",
+            "link": "/collections/all/galaxy-s25",
+            "parent": "samsung"
+          }
+        },
+        "chip_20": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy S24",
+            "link": "/collections/all/galaxy-s24",
+            "parent": "samsung"
+          }
+        },
+        "chip_21": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy S23",
+            "link": "/collections/all/galaxy-s23",
+            "parent": "samsung"
+          }
+        },
+        "chip_22": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy Z Fold & Flip",
+            "link": "/collections/all/galaxy-z",
+            "parent": "samsung"
+          }
+        },
+        "chip_23": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy A",
+            "link": "/collections/all/galaxy-a",
+            "parent": "samsung"
+          }
+        },
+        "chip_24": {
+          "type": "chip",
+          "settings": {
+            "label": "Pixel 9",
+            "link": "/collections/all/pixel-9",
+            "parent": "pixel"
+          }
+        },
+        "chip_25": {
+          "type": "chip",
+          "settings": {
+            "label": "Pixel 8",
+            "link": "/collections/all/pixel-8",
+            "parent": "pixel"
+          }
+        },
+        "chip_26": {
+          "type": "chip",
+          "settings": {
+            "label": "Pixel 7",
+            "link": "/collections/all/pixel-7",
+            "parent": "pixel"
+          }
+        },
+        "chip_27": {
+          "type": "chip",
+          "settings": {
+            "label": "Pixel a-series",
+            "link": "/collections/all/pixel-a",
+            "parent": "pixel"
+          }
+        },
+        "chip_28": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad Pro",
+            "link": "/collections/all/ipad-pro",
+            "parent": "ipad"
+          }
+        },
+        "chip_29": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad Air",
+            "link": "/collections/all/ipad-air",
+            "parent": "ipad"
+          }
+        },
+        "chip_30": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad mini",
+            "link": "/collections/all/ipad-mini",
+            "parent": "ipad"
+          }
+        },
+        "chip_31": {
+          "type": "chip",
+          "settings": {
+            "label": "iPad",
+            "link": "/collections/all/ipad-standard",
+            "parent": "ipad"
+          }
+        },
+        "chip_32": {
+          "type": "chip",
+          "settings": {
+            "label": "MacBook Air",
+            "link": "/collections/all/macbook-air",
+            "parent": "macbook"
+          }
+        },
+        "chip_33": {
+          "type": "chip",
+          "settings": {
+            "label": "MacBook Pro",
+            "link": "/collections/all/macbook-pro",
+            "parent": "macbook"
+          }
+        },
+        "chip_34": {
+          "type": "chip",
+          "settings": {
+            "label": "Windows laptops",
+            "link": "/collections/all/windows",
+            "parent": "laptops"
+          }
+        },
+        "chip_35": {
+          "type": "chip",
+          "settings": {
+            "label": "Chromebooks",
+            "link": "/collections/all/chromebook",
+            "parent": "laptops"
+          }
+        },
+        "chip_36": {
+          "type": "chip",
+          "settings": {
+            "label": "Gaming laptops",
+            "link": "/collections/all/gaming-laptop",
+            "parent": "laptops"
+          }
+        },
+        "chip_37": {
+          "type": "chip",
+          "settings": {
+            "label": "PlayStation",
+            "link": "/collections/all/playstation",
+            "parent": "consoles"
+          }
+        },
+        "chip_38": {
+          "type": "chip",
+          "settings": {
+            "label": "Xbox",
+            "link": "/collections/all/xbox",
+            "parent": "consoles"
+          }
+        },
+        "chip_39": {
+          "type": "chip",
+          "settings": {
+            "label": "Nintendo",
+            "link": "/collections/all/nintendo",
+            "parent": "consoles"
+          }
+        },
+        "chip_40": {
+          "type": "chip",
+          "settings": {
+            "label": "Apple Watch",
+            "link": "/collections/all/apple-watch",
+            "parent": "smartwatches"
+          }
+        },
+        "chip_41": {
+          "type": "chip",
+          "settings": {
+            "label": "Galaxy Watch",
+            "link": "/collections/all/galaxy-watch",
+            "parent": "smartwatches"
+          }
+        },
+        "chip_42": {
+          "type": "chip",
+          "settings": {
+            "label": "Fitness trackers",
+            "link": "/collections/all/fitness",
+            "parent": "smartwatches"
+          }
+        },
+        "chip_43": {
+          "type": "chip",
+          "settings": {
+            "label": "AirPods",
+            "link": "/collections/all/airpods",
+            "parent": "audio"
+          }
+        },
+        "chip_44": {
+          "type": "chip",
+          "settings": {
+            "label": "Headphones",
+            "link": "/collections/all/headphones",
+            "parent": "audio"
+          }
+        },
+        "chip_45": {
+          "type": "chip",
+          "settings": {
+            "label": "Speakers",
+            "link": "/collections/all/speakers",
+            "parent": "audio"
+          }
+        },
+        "chip_46": {
+          "type": "chip",
+          "settings": {
+            "label": "Cables & chargers",
+            "link": "/collections/all/cables",
+            "parent": "accessories"
+          }
+        },
+        "chip_47": {
+          "type": "chip",
+          "settings": {
+            "label": "Cases",
+            "link": "/collections/all/cases",
+            "parent": "accessories"
+          }
+        },
+        "chip_48": {
+          "type": "chip",
+          "settings": {
+            "label": "Screen protectors",
+            "link": "/collections/all/screen-protectors",
+            "parent": "accessories"
           }
         }
       },
@@ -85,7 +399,45 @@
         "chip_7",
         "chip_8",
         "chip_9",
-        "chip_10"
+        "chip_10",
+        "chip_11",
+        "chip_12",
+        "chip_13",
+        "chip_14",
+        "chip_15",
+        "chip_16",
+        "chip_17",
+        "chip_18",
+        "chip_19",
+        "chip_20",
+        "chip_21",
+        "chip_22",
+        "chip_23",
+        "chip_24",
+        "chip_25",
+        "chip_26",
+        "chip_27",
+        "chip_28",
+        "chip_29",
+        "chip_30",
+        "chip_31",
+        "chip_32",
+        "chip_33",
+        "chip_34",
+        "chip_35",
+        "chip_36",
+        "chip_37",
+        "chip_38",
+        "chip_39",
+        "chip_40",
+        "chip_41",
+        "chip_42",
+        "chip_43",
+        "chip_44",
+        "chip_45",
+        "chip_46",
+        "chip_47",
+        "chip_48"
       ]
     }
   },

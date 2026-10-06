@@ -46,11 +46,42 @@
     {%- endif -%}
   </header>
 
+  {%- liquid
+    assign ctx = ''
+    for b in section.blocks
+      if b.settings.parent != blank
+        assign bh = b.settings.link | split: '/' | last | split: '?' | first
+        if current_tags contains b.settings.parent or current_tags contains bh
+          assign ctx = b.settings.parent
+        endif
+      endif
+    endfor
+    assign child_active = false
+    for b in section.blocks
+      if b.settings.parent == ctx and ctx != blank
+        assign bh = b.settings.link | split: '/' | last | split: '?' | first
+        if current_tags contains bh
+          assign child_active = true
+        endif
+      endif
+    endfor
+  -%}
   {%- if section.blocks.size > 0 -%}
     <div class="coll-chips" role="list">
+      {%- if ctx != blank -%}
+        {%- assign parent_label = ctx | replace: '-', ' ' | capitalize -%}
+        {%- for b in section.blocks -%}
+          {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
+          {%- if bh == ctx and b.settings.parent == blank -%}{%- assign parent_label = b.settings.label -%}{%- endif -%}
+        {%- endfor -%}
+        <a role="listitem" class="coll-chip{% unless child_active %} is-active{% endunless %}" href="{{ collection.url }}/{{ ctx }}"{% unless child_active %} aria-current="page"{% endunless %}>All {{ parent_label }}</a>
+      {%- endif -%}
       {%- for b in section.blocks -%}
-        {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
-        <a role="listitem" class="coll-chip{% if current_tags contains bh %} is-active{% endif %}" href="{{ b.settings.link }}"{% if current_tags contains bh %} aria-current="page"{% endif %} {{ b.shopify_attributes }}>{{ b.settings.label }}</a>
+        {%- if b.settings.parent == ctx or ctx == blank and b.settings.parent == blank -%}
+          {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
+          {%- assign on = false -%}{%- if current_tags contains bh -%}{%- assign on = true -%}{%- endif -%}
+          <a role="listitem" class="coll-chip{% if on %} is-active{% endif %}" href="{{ b.settings.link }}"{% if on %} aria-current="page"{% endif %} {{ b.shopify_attributes }}>{{ b.settings.label }}</a>
+        {%- endif -%}
       {%- endfor -%}
     </div>
   {%- endif -%}
@@ -187,7 +218,8 @@
 ],
 "blocks": [{ "type": "chip", "name": "Quick link", "settings": [
   { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
-  { "type": "url", "id": "link", "label": "Link", "info": "Use a tag URL like /collections/all/iphone to filter." }
+  { "type": "url", "id": "link", "label": "Link", "info": "Use a tag URL like /collections/all/iphone to filter." },
+  { "type": "text", "id": "parent", "label": "Only show inside this category", "info": "A tag, e.g. iphone. Leave blank for the top row (brands and categories). Example: an iPhone 15 link gets parent iphone, so it only shows on iPhone pages." }
 ]}],
 "presets": [{ "name": "Collection page" }] }
 {% endschema %}
