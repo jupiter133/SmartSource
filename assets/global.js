@@ -8,6 +8,21 @@
   // Mobile menu
   $('[data-menu-toggle]')?.addEventListener('click', () => $('[data-menu]')?.classList.toggle('is-open'));
 
+  // Mega menu: hover intent on desktop, tap to expand on mobile
+  const overlay = document.createElement('div'); overlay.className = 'mega-overlay'; document.body.append(overlay);
+  const desktop = () => matchMedia('(min-width: 750px)').matches;
+  const closeAll = () => { $$('[data-nav-item].is-open').forEach(i => { i.classList.remove('is-open'); $('.nav-link', i)?.setAttribute('aria-expanded', 'false'); }); document.body.classList.remove('mega-open'); };
+  const openItem = item => { closeAll(); item.classList.add('is-open'); $('.nav-link', item)?.setAttribute('aria-expanded', 'true'); if (desktop()) document.body.classList.add('mega-open'); };
+  $$('[data-nav-item].has-mega').forEach(item => {
+    let t;
+    item.addEventListener('mouseenter', () => { if (!desktop()) return; clearTimeout(t); t = setTimeout(() => openItem(item), 120); });
+    item.addEventListener('mouseleave', () => { if (!desktop()) return; clearTimeout(t); t = setTimeout(closeAll, 150); });
+    $('.nav-link', item).addEventListener('click', e => { if (desktop()) return; e.preventDefault(); item.classList.contains('is-open') ? closeAll() : openItem(item); });
+    $('.nav-link', item).addEventListener('keydown', e => { if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); openItem(item); $('.mega a', item)?.focus(); } });
+    item.addEventListener('focusout', e => { if (!item.contains(e.relatedTarget)) closeAll(); });
+  });
+  document.addEventListener('keydown', e => e.key === 'Escape' && closeAll());
+
   // Carousels
   $$('[data-carousel]').forEach(root => {
     const track = $('[data-track]', root);

@@ -35,17 +35,62 @@
       </a>
     </div>
   </div>
-  <nav class="header__nav page-width" data-menu>
+  <nav class="header__nav-wrap" data-menu>
+  <div class="header__nav page-width">
     <ul class="nav-scroll">
       {%- for link in section.settings.main_menu.links -%}
-        <li><a href="{{ link.url }}" class="{% if forloop.first and section.settings.highlight_first %}nav-deal{% endif %}{% if link.active %} is-active{% endif %}">{% if forloop.first and section.settings.highlight_first %}✦ {% endif %}{{ link.title }}</a></li>
+        {%- assign deal = false -%}{%- if forloop.first and section.settings.highlight_first -%}{%- assign deal = true -%}{%- endif -%}
+        <li class="nav-item{% if link.links.size > 0 %} has-mega{% endif %}" data-nav-item>
+          <a href="{{ link.url }}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}✦ {% endif %}{{ link.title }}</a>
+          {%- if link.links.size > 0 -%}
+            <div class="mega" data-mega>
+              <div class="mega__inner">
+                <aside class="mega__side">
+                  <p class="mega__label">Good to know</p>
+                  {%- for block in section.blocks -%}
+                    {%- assign scope = block.settings.only_for | downcase | split: ',' -%}
+                    {%- assign t = link.title | downcase -%}
+                    {%- assign show = true -%}
+                    {%- if block.settings.only_for != blank -%}{%- assign show = false -%}{%- for x in scope -%}{%- assign xs = x | strip -%}{%- if xs == t -%}{%- assign show = true -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+                    {%- if show -%}
+                      <a class="gtk" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                        <span class="gtk__icon">{% render 'icon', name: block.settings.icon %}</span>
+                        <span><strong>{{ block.settings.title }}</strong><small>{{ block.settings.text }}</small></span>
+                      </a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </aside>
+                <div class="mega__main">
+                  <div class="mega__head"><p class="mega__label">Categories</p><a href="{{ link.url }}" class="mega__all">See all</a></div>
+                  <div class="mega__grid">
+                    {%- for child in link.links -%}
+                      {%- assign img = blank -%}
+                      {%- case child.type -%}
+                        {%- when 'collection_link' -%}{%- assign img = child.object.image | default: child.object.featured_image -%}
+                        {%- when 'product_link' -%}{%- assign img = child.object.featured_image -%}
+                      {%- endcase -%}
+                      {%- capture tint -%}{% cycle '#FDE7EC', '#F6E6FB', '#DDF9EC', '#DCF7F4', '#EEEAFD' %}{%- endcapture -%}
+                      <a class="mega-tile" href="{{ child.url }}">
+                        <span class="mega-tile__img" style="--tint: {{ tint }}">
+                          {%- if img != blank -%}{{ img | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '200px', alt: child.title }}{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+                        </span>
+                        <span class="mega-tile__title">{{ child.title }}</span>
+                      </a>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </li>
       {%- else -%}
-        <li><a href="/collections/all" class="nav-deal">✦ Great deals</a></li><li><a href="/collections/all">Smartphones</a></li><li><a href="/collections/all">Laptops</a></li><li><a href="/collections/all">Tablets</a></li><li><a href="/collections/all">Gaming</a></li><li><a href="/collections/all">Audio</a></li>
+        <li><a href="/collections/all" class="nav-link nav-deal">✦ Great deals</a></li><li><a class="nav-link" href="/collections/all">Smartphones</a></li><li><a class="nav-link" href="/collections/all">Laptops</a></li>
       {%- endfor -%}
     </ul>
     <ul class="nav-side">
-      {%- for link in section.settings.side_menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+      {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
     </ul>
+  </div>
   </nav>
 </header>
 {% schema %}
@@ -58,6 +103,13 @@
   { "type": "link_list", "id": "side_menu", "label": "Right-side menu (Trade in, Services...)" },
   { "type": "checkbox", "id": "show_utility", "label": "Show utility row", "default": true },
   { "type": "link_list", "id": "utility_menu", "label": "Utility links (Promise, Blog...)" },
-  { "type": "url", "id": "help_link", "label": "Help link" }
-]}
+  { "type": "url", "id": "help_link", "label": "Help link" },
+  { "type": "paragraph", "content": "Dropdowns: add child links under a main menu item (Navigation). Collection images become the tiles." }
+], "blocks": [{ "type": "good_to_know", "name": "Dropdown: Good to know", "settings": [
+  { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"swap","label":"Trade-in"},{"value":"tag","label":"Deal"},{"value":"award","label":"Warranty"},{"value":"truck","label":"Shipping"},{"value":"shield","label":"Secure"}], "default": "swap" },
+  { "type": "text", "id": "title", "label": "Title", "default": "Trade-in" },
+  { "type": "text", "id": "text", "label": "Text", "default": "Get up to $700 for your old device" },
+  { "type": "url", "id": "link", "label": "Link" },
+  { "type": "text", "id": "only_for", "label": "Only show under these menu items", "info": "Comma-separated, e.g. Smartphones, Tablets. Blank = all dropdowns." }
+]}]}
 {% endschema %}

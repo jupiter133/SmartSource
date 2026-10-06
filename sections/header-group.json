@@ -2,8 +2,44 @@
   "type": "header",
   "name": "Header group",
   "sections": {
-    "announcement": { "type": "announcement-bar", "settings": { "text": "PS5 trade-in prices are peaking.", "link_text": "Cash in yours now", "link": "/pages/trade-in" } },
-    "header": { "type": "header", "settings": {} }
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "PS5 trade-in prices are peaking.",
+        "link_text": "Cash in yours now",
+        "link": "/pages/trade-in"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {},
+      "blocks": {
+        "g1": {
+          "type": "good_to_know",
+          "settings": {
+            "icon": "swap",
+            "title": "Trade-in",
+            "text": "Get up to $700 for your old device"
+          }
+        },
+        "g2": {
+          "type": "good_to_know",
+          "settings": {
+            "icon": "tag",
+            "title": "Exclusive deals",
+            "text": "Save on a phone + mobile plan bundle",
+            "only_for": "Smartphones"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2"
+      ]
+    }
   },
-  "order": ["announcement", "header"]
+  "order": [
+    "announcement",
+    "header"
+  ]
 }
