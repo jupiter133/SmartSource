@@ -917,3 +917,6 @@ shopify-payment-terms{font-size:13px}
 }
 .nav-side-link svg{flex-shrink:0}
 .header__nav .mega a{white-space:normal}
+.image-banner:not(.image-banner--art)::after{background:linear-gradient(180deg,transparent 35%,rgb(0 0 0 / .35) 60%,rgb(0 0 0 / .72))}
+.image-banner:not(.image-banner--art) .image-banner__text{text-shadow:0 1px 12px rgb(0 0 0 / .35)}
+.image-banner:not(.image-banner--art) .image-banner__text .btn{text-shadow:none}

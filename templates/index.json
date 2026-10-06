@@ -567,7 +567,10 @@
             "button_label": "Shop gaming",
             "link": "/collections/all/consoles",
             "art": "console",
-            "bg": "#14213D"
+            "bg": "#14213D",
+            "asset_image": "banner-gaming.webp",
+            "focus_x": 50,
+            "focus_y": 40
           }
         },
         "b2": {
@@ -578,7 +581,10 @@
             "button_label": "Shop laptops",
             "link": "/collections/all/macbook",
             "art": "laptop",
-            "bg": "#3A1C3F"
+            "bg": "#3A1C3F",
+            "asset_image": "banner-back-to-school.webp",
+            "focus_x": 50,
+            "focus_y": 25
           }
         }
       },
