@@ -2,15 +2,34 @@
   {%- if section.settings.show_utility -%}
   <div class="header__utility page-width">
     <nav class="utility-links">
-      {%- for link in section.settings.utility_menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+      {%- if section.settings.utility_menu == blank -%}
+        <a href="/pages/our-promise">{% render 'icon', name: 'shield' %}Our Promise</a>
+        <a href="/pages/about">Why refurbished</a>
+        <a href="/blogs/news">Tech Journal</a>
+      {%- else -%}
+        {%- for link in section.settings.utility_menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+      {%- endif -%}
     </nav>
-    {%- if localization.available_countries.size > 1 -%}
+    <div class="utility-right">
       {%- form 'localization', class: 'utility-locale' -%}
-        <select name="country_code" onchange="this.form.submit()" aria-label="Country">
-          {%- for c in localization.available_countries -%}<option value="{{ c.iso_code }}" {% if c.iso_code == localization.country.iso_code %}selected{% endif %}>{{ c.name }} ({{ c.currency.iso_code }})</option>{%- endfor -%}
-        </select>
+        <span class="utility-loc">{% render 'icon', name: 'pin' %}<span>{{ localization.country.name }} ({{ localization.country.currency.iso_code }})</span></span>
+        {%- if localization.available_countries.size > 1 -%}
+          <select name="country_code" onchange="this.form.submit()" aria-label="Country">
+            {%- for c in localization.available_countries -%}<option value="{{ c.iso_code }}" {% if c.iso_code == localization.country.iso_code %}selected{% endif %}>{{ c.name }} ({{ c.currency.iso_code }})</option>{%- endfor -%}
+          </select>
+        {%- endif -%}
+        {%- if localization.available_languages.size > 1 -%}
+          <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}" data-locale-input>
+          <span class="utility-langs">
+            {%- for l in localization.available_languages -%}
+              <button type="submit" class="{% if l.iso_code == localization.language.iso_code %}is-active{% endif %}" onclick="this.form.querySelector('[data-locale-input]').value='{{ l.iso_code }}'">{{ l.endonym_name | capitalize }}</button>{% unless forloop.last %}<span>|</span>{% endunless %}
+            {%- endfor -%}
+          </span>
+        {%- endif -%}
       {%- endform -%}
-    {%- endif -%}
+    </div>
+  </div>
+  {%- endif -%}
   </div>
   {%- endif -%}
   <div class="header__main page-width">
