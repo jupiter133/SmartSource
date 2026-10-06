@@ -3,7 +3,7 @@
     <div class="hero__text">
       <h1>{{ section.settings.heading }}</h1>
       <p>{{ section.settings.subheading }}</p>
-      {%- if section.settings.button_label != blank -%}<a class="btn btn--dark" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}<a class="btn btn--light" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>{%- endif -%}
     </div>
     <div class="hero__media">
       {%- if section.settings.image != blank -%}
@@ -19,7 +19,7 @@
   { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
   { "type": "url", "id": "button_link", "label": "Button link" },
   { "type": "image_picker", "id": "image", "label": "Image (transparent PNG works best)" },
-  { "type": "color", "id": "bg", "label": "Background", "default": "#DDF57A" },
-  { "type": "color", "id": "ink", "label": "Text", "default": "#0E0E0E" }
+  { "type": "color", "id": "bg", "label": "Background", "default": "#E5232B" },
+  { "type": "color", "id": "ink", "label": "Text", "default": "#FFFFFF" }
 ], "presets": [{ "name": "Hero banner" }] }
 {% endschema %}
