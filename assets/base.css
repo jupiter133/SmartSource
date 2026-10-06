@@ -801,3 +801,8 @@ shopify-payment-terms{font-size:13px}
   .why-stats{grid-template-columns:1fr 1fr}
   .why-stat strong{font-size:1.3rem}
 }
+
+/* Blend accent gradient in OKLCH so cyan→pink stays vivid instead of greying out in the middle */
+@supports (background: linear-gradient(in oklch, red, blue)) {
+  :root{--grad:linear-gradient(in oklch 120deg,var(--c-accent),var(--c-accent-2))}
+}
