@@ -1,4 +1,4 @@
-<section class="hero page-width-wide" style="--hero-bg: {{ section.settings.bg }}; --hero-ink: {{ section.settings.ink }}">
+<section class="hero page-width-wide" style="--hero-bg: {% if section.settings.bg_style == 'solid' %}{{ section.settings.bg }}{% else %}var(--grad){% endif %}; --hero-ink: {{ section.settings.ink }}">
   <div class="hero__inner">
     <div class="hero__text">
       <h1>{{ section.settings.heading }}</h1>
@@ -19,7 +19,8 @@
   { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
   { "type": "url", "id": "button_link", "label": "Button link" },
   { "type": "image_picker", "id": "image", "label": "Image (transparent PNG works best)" },
-  { "type": "color", "id": "bg", "label": "Background", "default": "#E5232B" },
+  { "type": "select", "id": "bg_style", "label": "Background style", "options": [{"value":"gradient","label":"Theme gradient"},{"value":"solid","label":"Solid colour"}], "default": "gradient" },
+  { "type": "color", "id": "bg", "label": "Solid background colour", "default": "#3B5BFF" },
   { "type": "color", "id": "ink", "label": "Text", "default": "#FFFFFF" }
 ], "presets": [{ "name": "Hero banner" }] }
 {% endschema %}

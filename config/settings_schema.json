@@ -13,8 +13,15 @@
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Accent (hero / announcement)",
-        "default": "#E5232B"
+        "label": "Accent (gradient start)",
+        "default": "#3B5BFF",
+        "info": "Used for buttons, banners, hero and highlights."
+      },
+      {
+        "type": "color",
+        "id": "color_accent_2",
+        "label": "Accent 2 (gradient end)",
+        "default": "#FF4FA3"
       },
       {
         "type": "color",
