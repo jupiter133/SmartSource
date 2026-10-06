@@ -190,8 +190,8 @@
     });
     $('[data-progress-fill]').style.width = `${(Math.min(step, 6) - 1) / 5 * 100}%`;
 
-    const next = $('[data-next]');
-    const prev = $('[data-prev]');
+    const next = $('[data-wiz-next]');
+    const prev = $('[data-wiz-prev]');
     const onCond = step === 5;
     prev.disabled = step === 1 && !state.items.length;
     prev.hidden = step === 7;
@@ -285,11 +285,11 @@
     autoTimer = setTimeout(() => { if (complete(state.step) && state.step < 5) goTo(Math.min(firstOpen(), 5)); }, 260); // skips storage when there's only one
   });
 
-  $('[data-next]').addEventListener('click', () => {
+  $('[data-wiz-next]').addEventListener('click', () => {
     if (state.step === 6) return form?.requestSubmit();
     if (complete(state.step)) goTo(state.step + 1);
   });
-  $('[data-prev]').addEventListener('click', () => {
+  $('[data-wiz-prev]').addEventListener('click', () => {
     if (state.step === 6 && !state.cur.cat && state.items.length) {
       const last = state.items.pop(); // bring the last device back so its condition can be changed
       state.cur = { cat: byHandle(devices, last.device)?.c, brand: byHandle(devices, last.device)?.b, device: last.device, storage: last.storage, cond: last.cond };
