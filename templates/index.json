@@ -186,14 +186,22 @@
       "blocks": {
         "p1": {
           "type": "card",
-          "settings": {}
+          "settings": {
+            "heading": "Like new. Way less.",
+            "text": "Refurbished iPhones and Galaxys, tested and backed by a 1-year warranty.",
+            "button_label": "Shop phones",
+            "link": "/collections/all",
+            "art": "phone"
+          }
         },
         "p2": {
           "type": "card",
           "settings": {
-            "heading": "Call your mom, on a budget.",
-            "text": "Bundle your phone with a mobile plan at an exclusive price.",
-            "button_label": "Learn more"
+            "heading": "Phone + plan, sorted.",
+            "text": "Pair your new phone with a mobile plan. We set it all up in store, so you walk out connected.",
+            "button_label": "Explore plans",
+            "link": "/pages/phone-plans",
+            "art": "phone"
           }
         }
       },
