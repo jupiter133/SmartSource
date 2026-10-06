@@ -11,7 +11,7 @@
         <h3>{{ block.settings.title }}</h3>
         <span class="tech-card__img">
           {%- assign img = block.settings.image | default: c.featured_image -%}
-          {%- if img != blank -%}{{ img | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '360px', alt: block.settings.label }}{%- else -%}{% render 'device-art', title: block.settings.label, idx: forloop.index %}{%- endif -%}
+          {%- if img != blank -%}{{ img | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '360px', alt: block.settings.label }}{%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.label | escape }}" width="800" height="800" loading="lazy">{%- else -%}{% render 'device-art', title: block.settings.label, idx: forloop.index %}{%- endif -%}
         </span>
       </a>
     {%- endfor -%}
@@ -23,6 +23,7 @@
   { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "TRUSTED BY MANY, LOVED BY ALL" },
   { "type": "text", "id": "heading", "label": "Heading", "default": "Explore our Top Tech" }
 ], "blocks": [{ "type": "card", "name": "Card", "settings": [
+  { "type": "text", "id": "asset_image", "label": "Theme asset image (advanced)", "info": "Filename in the theme's assets folder. Used only if no image or collection image is set." },
   { "type": "text", "id": "label", "label": "Pill label", "default": "IPHONES" },
   { "type": "text", "id": "title", "label": "Title", "default": "Seamless. Secure. Simply iPhone." },
   { "type": "image_picker", "id": "image", "label": "Image (transparent PNG)" },

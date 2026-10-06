@@ -400,7 +400,8 @@
             "label": "IPHONES",
             "title": "Seamless. Secure. Simply iPhone.",
             "bg": "#EDEDEF",
-            "link": "/collections/all/iphone"
+            "link": "/collections/all/iphone",
+            "asset_image": "tech-iphones.webp"
           }
         },
         "t1": {
@@ -418,7 +419,8 @@
             "label": "IPADS",
             "title": "Work Hard. Play Smart.",
             "bg": "#F4F4F5",
-            "link": "/collections/all/ipad"
+            "link": "/collections/all/ipad",
+            "asset_image": "tech-ipads.webp"
           }
         },
         "t3": {
