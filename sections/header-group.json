@@ -1,0 +1,9 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": { "type": "announcement-bar", "settings": { "text": "PS5 trade-in prices are peaking.", "link_text": "Cash in yours now", "link": "/pages/trade-in" } },
+    "header": { "type": "header", "settings": {} }
+  },
+  "order": ["announcement", "header"]
+}

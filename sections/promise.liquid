@@ -1,0 +1,30 @@
+<section class="section page-width">
+  <div class="section__head">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.button_label != blank -%}<a class="btn btn--dark" href="{{ section.settings.link }}">{{ section.settings.button_label }} →</a>{%- endif -%}
+  </div>
+  <div class="promise-grid">
+    {%- for block in section.blocks -%}
+      <div class="promise" {{ block.shopify_attributes }}>
+        <span class="promise__icon">{% render 'icon', name: block.settings.icon %}</span>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Promise / trust", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Our Promise: Refurbished without the risk" },
+  { "type": "text", "id": "button_label", "label": "Button", "default": "Our commitment" },
+  { "type": "url", "id": "link", "label": "Link" }
+], "blocks": [{ "type": "item", "name": "Item", "settings": [
+  { "type": "select", "id": "icon", "label": "Icon", "options": [
+    {"value":"award","label":"Warranty"},{"value":"list","label":"Inspection"},{"value":"swap","label":"Returns"},{"value":"star","label":"Quality"},{"value":"truck","label":"Shipping"},{"value":"shield","label":"Secure"}], "default": "award" },
+  { "type": "text", "id": "text", "label": "Text", "default": "1-year warranty" }
+]}], "presets": [{ "name": "Promise / trust", "blocks": [
+  {"type":"item","settings":{"icon":"award","text":"1-year warranty"}},
+  {"type":"item","settings":{"icon":"list","text":"Up to 100-point quality inspection"}},
+  {"type":"item","settings":{"icon":"swap","text":"Free 30-day returns"}},
+  {"type":"item","settings":{"icon":"star","text":"Professionally refurbished"}}
+]}] }
+{% endschema %}

@@ -1,0 +1,12 @@
+{ "sections": {
+    "main": { "type": "main-product", "blocks": {
+      "a": {"type":"perk","settings":{"icon":"award","text":"1-year warranty"}},
+      "b": {"type":"perk","settings":{"icon":"swap","text":"Free 30-day returns"}},
+      "c": {"type":"perk","settings":{"icon":"truck","text":"Free shipping"}},
+      "d": {"type":"perk","settings":{"icon":"list","text":"Up to 100-point inspection"}} }, "block_order": ["a","b","c","d"] },
+    "promise": { "type": "promise", "blocks": {
+      "i1": {"type":"item","settings":{"icon":"award","text":"1-year warranty"}},
+      "i2": {"type":"item","settings":{"icon":"list","text":"Up to 100-point quality inspection"}},
+      "i3": {"type":"item","settings":{"icon":"swap","text":"Free 30-day returns"}},
+      "i4": {"type":"item","settings":{"icon":"star","text":"Professionally refurbished"}} }, "block_order": ["i1","i2","i3","i4"] }
+  }, "order": ["main","promise"] }

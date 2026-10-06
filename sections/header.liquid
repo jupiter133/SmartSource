@@ -1,0 +1,63 @@
+<header class="header">
+  {%- if section.settings.show_utility -%}
+  <div class="header__utility page-width">
+    <nav class="utility-links">
+      {%- for link in section.settings.utility_menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+    </nav>
+    {%- if localization.available_countries.size > 1 -%}
+      {%- form 'localization', class: 'utility-locale' -%}
+        <select name="country_code" onchange="this.form.submit()" aria-label="Country">
+          {%- for c in localization.available_countries -%}<option value="{{ c.iso_code }}" {% if c.iso_code == localization.country.iso_code %}selected{% endif %}>{{ c.name }} ({{ c.currency.iso_code }})</option>{%- endfor -%}
+        </select>
+      {%- endform -%}
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+  <div class="header__main page-width">
+    <button class="icon-btn header__burger" aria-label="Menu" data-menu-toggle>{% render 'icon', name: 'menu' %}</button>
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: width: section.settings.logo_width, alt: shop.name }}
+      {%- else -%}<span>{{ shop.name }}</span>{%- endif -%}
+    </a>
+    <form action="{{ routes.search_url }}" class="header__search" role="search">
+      {% render 'icon', name: 'search' %}
+      <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" value="{{ search.terms | escape }}" aria-label="Search">
+      <input type="hidden" name="type" value="product">
+    </form>
+    <div class="header__actions">
+      {%- if section.settings.help_link != blank -%}<a class="header__text-link" href="{{ section.settings.help_link }}">Need help?</a>{%- endif -%}
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="icon-btn" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" aria-label="Account">{% render 'icon', name: 'user' %}</a>
+      {%- endif -%}
+      <a class="icon-btn cart-link" href="{{ routes.cart_url }}" aria-label="Cart" data-cart-open>
+        {% render 'icon', name: 'bag' %}<span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+  <nav class="header__nav page-width" data-menu>
+    <ul class="nav-scroll">
+      {%- for link in section.settings.main_menu.links -%}
+        <li><a href="{{ link.url }}" class="{% if forloop.first and section.settings.highlight_first %}nav-deal{% endif %}{% if link.active %} is-active{% endif %}">{% if forloop.first and section.settings.highlight_first %}✦ {% endif %}{{ link.title }}</a></li>
+      {%- else -%}
+        <li><a href="/collections/all" class="nav-deal">✦ Great deals</a></li><li><a href="/collections/all">Smartphones</a></li><li><a href="/collections/all">Laptops</a></li><li><a href="/collections/all">Tablets</a></li><li><a href="/collections/all">Gaming</a></li><li><a href="/collections/all">Audio</a></li>
+      {%- endfor -%}
+    </ul>
+    <ul class="nav-side">
+      {%- for link in section.settings.side_menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+    </ul>
+  </nav>
+</header>
+{% schema %}
+{ "name": "Header", "settings": [
+  { "type": "image_picker", "id": "logo", "label": "Logo" },
+  { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 300, "step": 10, "unit": "px", "default": 150 },
+  { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search for iPhone, MacBook, PS5..." },
+  { "type": "link_list", "id": "main_menu", "label": "Category menu", "default": "main-menu" },
+  { "type": "checkbox", "id": "highlight_first", "label": "Highlight first link as deals", "default": true },
+  { "type": "link_list", "id": "side_menu", "label": "Right-side menu (Trade in, Services...)" },
+  { "type": "checkbox", "id": "show_utility", "label": "Show utility row", "default": true },
+  { "type": "link_list", "id": "utility_menu", "label": "Utility links (Promise, Blog...)" },
+  { "type": "url", "id": "help_link", "label": "Help link" }
+]}
+{% endschema %}

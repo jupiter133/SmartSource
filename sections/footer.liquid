@@ -1,0 +1,30 @@
+<footer class="footer">
+  <div class="page-width footer__grid">
+    <div>
+      <p class="footer__brand">{{ shop.name }}</p>
+      <p class="muted">{{ section.settings.tagline }}</p>
+      {%- form 'customer', class: 'newsletter' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Email for deal drops" required aria-label="Email">
+        <button class="btn">Join</button>
+        {%- if form.posted_successfully? -%}<p class="muted">You're in.</p>{%- endif -%}
+      {%- endform -%}
+    </div>
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        <p class="footer__heading">{{ block.settings.menu.title }}</p>
+        <ul>{%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="page-width footer__bottom">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    {%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}
+  </div>
+</footer>
+{% schema %}
+{ "name": "Footer", "settings": [
+  { "type": "text", "id": "tagline", "label": "Tagline", "default": "New, refurbished and used tech. Tested, warrantied, way cheaper." }
+], "blocks": [ { "type": "menu", "name": "Menu column", "settings": [ { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" } ] } ],
+"max_blocks": 4 }
+{% endschema %}

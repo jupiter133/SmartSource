@@ -1,0 +1,67 @@
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="page-width product" data-product>
+  <div class="product__media">
+    <div class="product__main-img">
+      {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 1200 | image_tag: loading: 'eager', data-main-img: '' }}{%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+    </div>
+    {%- if product.media.size > 1 -%}
+      <div class="thumbs">
+        {%- for m in product.media -%}
+          <button class="thumb" data-thumb="{{ m.preview_image | image_url: width: 1200 }}">{{ m.preview_image | image_url: width: 150 | image_tag: loading: 'lazy' }}</button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="product__info">
+    {% render 'condition-badge', product: product %}
+    <h1>{{ product.title }}</h1>
+    {% render 'rating', product: product %}
+    <div data-price-wrap>{% render 'price', product: product, variant: current %}</div>
+
+    {%- form 'product', product, data-product-form: '' -%}
+      <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <fieldset class="opt" data-option-index="{{ forloop.index0 }}">
+            <legend>{{ option.name }}{% if option.name == 'Condition' %} <button type="button" class="link" data-cond-guide>What's the difference?</button>{% endif %}</legend>
+            <div class="opt__values">
+              {%- for value in option.values -%}
+                <label class="opt__btn">
+                  <input type="radio" name="option-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                  <span>{{ value }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endfor -%}
+      {%- endunless -%}
+      <button type="submit" class="btn btn--dark btn--block btn--lg" data-add {% unless current.available %}disabled{% endunless %}>
+        {% if current.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+      {{ form | payment_button }}
+    {%- endform -%}
+
+    <ul class="perks">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon %}<span>{{ block.settings.text }}</span></li>
+      {%- endfor -%}
+    </ul>
+
+    <div class="cond-guide" data-cond-panel hidden>
+      <p><strong>New</strong> — Sealed, never used.</p>
+      <p><strong>Excellent / Like new</strong> — Refurbished, no visible wear.</p>
+      <p><strong>Good</strong> — Refurbished, light scratches only visible up close.</p>
+      <p><strong>Fair / Used</strong> — Visible wear. 100% functional, tested.</p>
+    </div>
+
+    <div class="rte product__desc">{{ product.description }}</div>
+  </div>
+  <script type="application/json" data-product-json>{{ product | json }}</script>
+</section>
+{% schema %}
+{ "name": "Product", "blocks": [{ "type": "perk", "name": "Perk", "settings": [
+  { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"award","label":"Warranty"},{"value":"swap","label":"Returns"},{"value":"truck","label":"Shipping"},{"value":"list","label":"Inspection"},{"value":"shield","label":"Secure"}], "default": "award" },
+  { "type": "text", "id": "text", "label": "Text", "default": "1-year warranty" }
+]}] }
+{% endschema %}

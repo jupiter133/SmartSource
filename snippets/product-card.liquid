@@ -1,0 +1,21 @@
+<a class="card" href="{{ product.url }}">
+  <div class="card__top">
+    {%- if eyebrow != blank -%}<span class="card__eyebrow">{{ eyebrow }}</span>{%- endif -%}
+    {% render 'condition-badge', product: product %}
+  </div>
+  <div class="card__img">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', sizes: '220px', alt: product.title }}
+    {%- else -%}{{ 'product-1' | placeholder_svg_tag }}{%- endif -%}
+  </div>
+  {%- assign color_opt = product.options_with_values | where: 'name', 'Color' | first -%}
+  {%- if color_opt -%}
+    <div class="swatches">
+      {%- for val in color_opt.values limit: 4 -%}<span class="swatch" style="--sw: {{ val | downcase | replace: ' ', '' }}" title="{{ val }}"></span>{%- endfor -%}
+      {%- if color_opt.values.size > 4 -%}<span class="muted">+{{ color_opt.values.size | minus: 4 }}</span>{%- endif -%}
+    </div>
+  {%- endif -%}
+  <p class="card__title">{{ product.title }}</p>
+  {% render 'rating', product: product %}
+  {% render 'price', product: product %}
+</a>

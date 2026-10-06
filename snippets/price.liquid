@@ -1,0 +1,9 @@
+{%- assign v = variant | default: product.selected_or_first_available_variant -%}
+<div class="price" data-price>
+  {%- if product.price_varies and variant == blank -%}<span class="price__from">Starting at</span>{%- endif -%}
+  <span class="price__now">{{ v.price | default: product.price_min | money }}</span>
+  {%- if settings.show_new_price and v.compare_at_price > v.price -%}
+    <span class="price__new"><s>{{ v.compare_at_price | money }}</s> new</span>
+    <span class="price__save">Save {{ v.compare_at_price | minus: v.price | money_without_trailing_zeros }}</span>
+  {%- endif -%}
+</div>

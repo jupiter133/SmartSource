@@ -1,0 +1,14 @@
+<section class="page-width section">
+  <h1>Search</h1>
+  <form action="{{ routes.search_url }}" class="header__search"><input type="search" name="q" value="{{ search.terms | escape }}" aria-label="Search"><input type="hidden" name="type" value="product"></form>
+  {%- if search.performed -%}
+    <p class="muted">{{ search.results_count }} results for “{{ search.terms }}”</p>
+    {%- paginate search.results by 24 -%}
+    <div class="grid">
+      {%- for item in search.results -%}{%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}{%- endif -%}{%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+</section>
+{% schema %}{ "name": "Search" }{% endschema %}

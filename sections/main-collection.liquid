@@ -1,0 +1,34 @@
+<section class="page-width section">
+  <h1>{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}<div class="rte muted">{{ collection.description }}</div>{%- endif -%}
+  {%- paginate collection.products by section.settings.per_page -%}
+  <form class="filters" data-filters>
+    {%- for filter in collection.filters -%}
+      <details class="filter">
+        <summary>{{ filter.label }}</summary>
+        <div class="filter__body">
+          {%- case filter.type -%}
+          {%- when 'list', 'boolean' -%}
+            {%- for v in filter.values -%}
+              <label><input type="checkbox" name="{{ v.param_name }}" value="{{ v.value }}" {% if v.active %}checked{% endif %} {% if v.count == 0 and v.active == false %}disabled{% endif %}> {{ v.label }} <span class="muted">({{ v.count }})</span></label>
+            {%- endfor -%}
+          {%- when 'price_range' -%}
+            <input type="number" name="{{ filter.min_value.param_name }}" placeholder="Min" value="{{ filter.min_value.value | money_without_currency | remove: ',' }}">
+            <input type="number" name="{{ filter.max_value.param_name }}" placeholder="Max" value="{{ filter.max_value.value | money_without_currency | remove: ',' }}">
+          {%- endcase -%}
+        </div>
+      </details>
+    {%- endfor -%}
+    <select name="sort_by" aria-label="Sort">
+      {%- for o in collection.sort_options -%}<option value="{{ o.value }}" {% if o.value == collection.sort_by %}selected{% endif %}>{{ o.name }}</option>{%- endfor -%}
+    </select>
+  </form>
+  <div class="grid">
+    {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- else -%}<p class="muted">No products match.</p>{%- endfor -%}
+  </div>
+  {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
+  {%- endpaginate -%}
+</section>
+{% schema %}
+{ "name": "Collection", "settings": [{ "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }] }
+{% endschema %}

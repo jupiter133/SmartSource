@@ -1,0 +1,4 @@
+<section class="page-width section"><h1>Shop by category</h1>
+  <div class="grid">{%- for c in collections -%}<a class="cat-tile" href="{{ c.url }}"><div class="cat-tile__img">{%- if c.featured_image -%}{{ c.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}{%- endif -%}</div><span>{{ c.title }}</span></a>{%- endfor -%}</div>
+</section>
+{% schema %}{ "name": "Collections list" }{% endschema %}

@@ -1,0 +1,4 @@
+<article class="page-width section narrow"><h1>{{ article.title }}</h1><p class="muted">{{ article.published_at | date: '%b %d, %Y' }}</p>
+  {%- if article.image -%}{{ article.image | image_url: width: 1200 | image_tag }}{%- endif -%}
+  <div class="rte">{{ article.content }}</div></article>
+{% schema %}{ "name": "Article" }{% endschema %}

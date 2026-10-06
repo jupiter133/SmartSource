@@ -1,0 +1,32 @@
+<section class="section page-width" data-tabs>
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="pills" role="tablist">
+    {%- for block in section.blocks -%}
+      <button class="pill{% if forloop.first %} is-active{% endif %}" role="tab" data-tab="{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.label | default: block.settings.collection.title }}</button>
+    {%- endfor -%}
+  </div>
+  {%- for block in section.blocks -%}
+    <div class="tab-panel" data-panel="{{ block.id }}" data-carousel {% unless forloop.first %}hidden{% endunless %}>
+      <div class="carousel carousel--cards" data-track>
+        {%- for product in block.settings.collection.products limit: section.settings.limit -%}
+          {% render 'product-card', product: product, eyebrow: block.settings.eyebrow %}
+        {%- else -%}
+          {%- for i in (1..5) -%}<div class="card card--placeholder">{{ 'product-3' | placeholder_svg_tag }}<p>Pick a collection</p></div>{%- endfor -%}
+        {%- endfor -%}
+      </div>
+      <div class="section__foot">{% render 'carousel-arrows' %}</div>
+    </div>
+  {%- endfor -%}
+</section>
+{% schema %}
+{ "name": "Product tabs", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Recommended for you" },
+  { "type": "range", "id": "limit", "label": "Products per tab", "min": 4, "max": 16, "step": 1, "default": 10 }
+], "blocks": [{ "type": "tab", "name": "Tab", "settings": [
+  { "type": "text", "id": "label", "label": "Tab label" },
+  { "type": "collection", "id": "collection", "label": "Collection" },
+  { "type": "text", "id": "eyebrow", "label": "Card eyebrow label", "info": "e.g. Smart Essentials" }
+]}], "presets": [{ "name": "Product tabs", "blocks": [
+  {"type":"tab","settings":{"label":"Best sellers"}},{"type":"tab","settings":{"label":"Price drop"}},{"type":"tab","settings":{"label":"Smart Essentials","eyebrow":"Smart Essentials"}}
+]}] }
+{% endschema %}
