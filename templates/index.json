@@ -450,7 +450,8 @@
             "label": "CONSOLES",
             "title": "Game On For Less.",
             "bg": "#F4F4F5",
-            "link": "/collections/all/consoles"
+            "link": "/collections/all/consoles",
+            "asset_image": "tech-consoles.webp"
           }
         },
         "t6": {
@@ -459,7 +460,8 @@
             "label": "WATCHES",
             "title": "Time, Upgraded.",
             "bg": "#F4F4F5",
-            "link": "/collections/all/smartwatches"
+            "link": "/collections/all/smartwatches",
+            "asset_image": "tech-watches.webp"
           }
         }
       },
