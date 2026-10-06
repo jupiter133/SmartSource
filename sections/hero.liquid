@@ -1,26 +1,61 @@
-<section class="hero page-width-wide" style="--hero-bg: {% if section.settings.bg_style == 'solid' %}{{ section.settings.bg }}{% else %}var(--grad){% endif %}; --hero-ink: {{ section.settings.ink }}">
-  <div class="hero__inner">
-    <div class="hero__text">
-      <h1>{{ section.settings.heading }}</h1>
-      <p>{{ section.settings.subheading }}</p>
-      {%- if section.settings.button_label != blank -%}<a class="btn btn--light" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>{%- endif -%}
-    </div>
-    <div class="hero__media">
-      {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 750px) 55vw, 100vw' }}
-      {%- else -%}{% render 'device-art', kind: 'hero', title: 'Devices', section: section %}{%- endif -%}
-    </div>
+{%- assign slides = section.blocks | where: 'type', 'slide' -%}
+<section class="hero-slider" data-slideshow data-autoplay="{% if section.settings.autoplay %}{{ section.settings.speed }}{% else %}0{% endif %}" role="region" aria-roledescription="carousel" aria-label="Featured">
+  <div class="hero-slider__track" data-slides>
+    {%- for block in slides -%}
+      {%- case block.settings.bg_style -%}
+        {%- when 'solid' -%}{%- assign bg = block.settings.bg -%}
+        {%- when 'reverse' -%}{%- assign bg = 'var(--grad-rev)' -%}
+        {%- else -%}{%- assign bg = 'var(--grad)' -%}
+      {%- endcase -%}
+      <div class="hero" id="HeroSlide-{{ block.id }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ slides.size }}" style="--hero-bg: {{ bg }}; --hero-ink: {{ block.settings.ink }}" {{ block.shopify_attributes }}>
+        <div class="hero__inner">
+          <div class="hero__text">
+            {%- if forloop.first -%}<h1>{{ block.settings.heading }}</h1>{%- else -%}<h2 class="hero__h">{{ block.settings.heading }}</h2>{%- endif -%}
+            {%- if block.settings.subheading != blank -%}<p>{{ block.settings.subheading }}</p>{%- endif -%}
+            {%- if block.settings.button_label != blank -%}<a class="btn btn--light" href="{{ block.settings.button_link | default: routes.all_products_collection_url }}">{{ block.settings.button_label }}</a>{%- endif -%}
+          </div>
+          <div class="hero__media">
+            {%- if block.settings.image != blank -%}
+              {%- if forloop.first -%}
+                {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 750px) 55vw, 100vw', alt: block.settings.heading }}
+              {%- else -%}
+                {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 55vw, 100vw', alt: block.settings.heading }}
+              {%- endif -%}
+            {%- else -%}{% render 'device-art', kind: block.settings.art, title: block.settings.heading, section: section, idx: forloop.index %}{%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
   </div>
+  {%- if slides.size > 1 -%}
+    <div class="hero-slider__controls">
+      <button type="button" class="hero-slider__arrow" data-slide-prev aria-label="Previous slide">{% render 'icon', name: 'chev-left' %}</button>
+      <div class="hero-slider__dots">
+        {%- for block in slides -%}<button type="button" class="why-dot{% if forloop.first %} is-active{% endif %}" data-slide-dot="{{ forloop.index0 }}" aria-controls="HeroSlide-{{ block.id }}" aria-label="Go to slide {{ forloop.index }}"{% if forloop.first %} aria-current="true"{% endif %}></button>{%- endfor -%}
+      </div>
+      <button type="button" class="hero-slider__arrow" data-slide-next aria-label="Next slide">{% render 'icon', name: 'chev-right' %}</button>
+    </div>
+  {%- endif -%}
 </section>
 {% schema %}
-{ "name": "Hero banner", "settings": [
+{ "name": "Hero slideshow", "settings": [
+  { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
+  { "type": "range", "id": "speed", "label": "Seconds per slide", "min": 3, "max": 12, "step": 1, "unit": "s", "default": 6 }
+], "blocks": [{ "type": "slide", "name": "Slide", "limit": 6, "settings": [
   { "type": "text", "id": "heading", "label": "Heading", "default": "Meet the Smart Essentials." },
   { "type": "text", "id": "subheading", "label": "Subheading", "default": "Great price. Trusted quality. Hand-picked by our experts." },
   { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
   { "type": "url", "id": "button_link", "label": "Button link" },
   { "type": "image_picker", "id": "image", "label": "Image (transparent PNG works best)" },
-  { "type": "select", "id": "bg_style", "label": "Background style", "options": [{"value":"gradient","label":"Theme gradient"},{"value":"solid","label":"Solid colour"}], "default": "gradient" },
+  { "type": "select", "id": "art", "label": "Illustration (when no image)", "options": [
+    {"value":"hero","label":"Device lineup"},{"value":"phone","label":"Phone"},{"value":"laptop","label":"Laptop"},{"value":"tablet","label":"Tablet"},{"value":"console","label":"Console"},{"value":"watch","label":"Watch"},{"value":"deal","label":"Laptop + phone"}
+  ], "default": "hero" },
+  { "type": "select", "id": "bg_style", "label": "Background", "options": [{"value":"gradient","label":"Theme gradient"},{"value":"reverse","label":"Theme gradient (reversed)"},{"value":"solid","label":"Solid colour"}], "default": "gradient" },
   { "type": "color", "id": "bg", "label": "Solid background colour", "default": "#19C3E6" },
   { "type": "color", "id": "ink", "label": "Text", "default": "#FFFFFF" }
-], "presets": [{ "name": "Hero banner" }] }
+]}], "presets": [{ "name": "Hero slideshow", "blocks": [
+  { "type": "slide", "settings": { "heading": "Meet the Smart Essentials.", "subheading": "Great price. Trusted quality. Hand-picked by our experts.", "button_label": "Shop now", "art": "hero" } },
+  { "type": "slide", "settings": { "heading": "iPhone, for way less than new.", "subheading": "Professionally refurbished, 1-year warranty, free 30-day returns.", "button_label": "Shop iPhone", "button_link": "/collections/all/iphone", "art": "phone", "bg_style": "reverse" } },
+  { "type": "slide", "settings": { "heading": "Trade in. Trade up.", "subheading": "Get an instant quote for your old device and put it toward your next one.", "button_label": "Get my offer", "button_link": "/pages/sell-your-device", "art": "deal" } }
+]}] }
 {% endschema %}

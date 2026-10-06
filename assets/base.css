@@ -804,5 +804,22 @@ shopify-payment-terms{font-size:13px}
 
 /* Blend accent gradient in OKLCH so cyan→pink stays vivid instead of greying out in the middle */
 @supports (background: linear-gradient(in oklch, red, blue)) {
-  :root{--grad:linear-gradient(in oklch 120deg,var(--c-accent),var(--c-accent-2))}
+  :root{--grad:linear-gradient(in oklch 120deg,var(--c-accent),var(--c-accent-2));--grad-rev:linear-gradient(in oklch 300deg,var(--c-accent),var(--c-accent-2))}
 }
+
+/* hero slideshow */
+.hero-slider{position:relative}
+.hero-slider__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.hero-slider__track::-webkit-scrollbar{display:none}
+.hero-slider .hero{flex:0 0 100%;scroll-snap-align:start}
+.hero__h{font-size:clamp(1.8rem,3.5vw,2.6rem);color:inherit}
+.hero-slider__controls{position:absolute;left:0;right:0;bottom:14px;display:flex;align-items:center;justify-content:center;gap:12px;pointer-events:none}
+.hero-slider__controls>*{pointer-events:auto}
+.hero-slider__dots{display:flex;gap:8px;padding:6px 10px;border-radius:99px;background:rgb(0 0 0 / .18);backdrop-filter:blur(6px)}
+.hero-slider__dots .why-dot{background:rgb(255 255 255 / .55)}.hero-slider__dots .why-dot.is-active{background:#fff}
+.hero-slider__arrow{width:34px;height:34px;border-radius:99px;display:grid;place-items:center;background:rgb(255 255 255 / .9);color:#111}
+.hero-slider__arrow svg{width:16px;height:16px}
+.hero-slider__arrow:focus-visible,.hero-slider__dots .why-dot:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.hero-slider .hero__inner{padding-bottom:64px}
+@media (prefers-reduced-motion:reduce){.hero-slider__track{scroll-behavior:auto}}
+@media (max-width:749px){.hero-slider .hero__media{max-height:240px}.hero-slider .hero__media svg,.hero-slider .hero__media img{max-height:240px}}

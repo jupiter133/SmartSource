@@ -3,8 +3,46 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "button_label": "Gimme"
-      }
+        "autoplay": true,
+        "speed": 6
+      },
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "heading": "Meet the Smart Essentials.",
+            "subheading": "Great price. Trusted quality. Hand-picked by our experts.",
+            "button_label": "Gimme",
+            "art": "hero"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "heading": "iPhone, for way less than new.",
+            "subheading": "Professionally refurbished, 1-year warranty, free 30-day returns.",
+            "button_label": "Shop iPhone",
+            "button_link": "/collections/all/iphone",
+            "art": "phone",
+            "bg_style": "reverse"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "heading": "Trade in. Trade up.",
+            "subheading": "Get an instant quote for your old device and put it toward your next one.",
+            "button_label": "Get my offer",
+            "button_link": "/pages/sell-your-device",
+            "art": "deal"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ]
     },
     "categories": {
       "type": "category-carousel",
