@@ -1319,3 +1319,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 @media (max-width:989px){.footer__main{grid-template-columns:1fr;gap:36px}}
 @media (max-width:749px){.footer__bottom{flex-direction:column;align-items:flex-start;gap:16px}}
 @media (prefers-reduced-motion:reduce){.footer__social a{transition:none}}
+.mega-tile--all .mega-tile__title{font-weight:700}

@@ -154,8 +154,8 @@
         "chip_18": {
           "type": "chip",
           "settings": {
-            "label": "iPhone SE",
-            "link": "/collections/all/iphone-se",
+            "label": "iPhone 18",
+            "link": "/collections/all/iphone-18",
             "parent": "iphone"
           }
         },
@@ -419,6 +419,7 @@
         "chip_8",
         "chip_9",
         "chip_10",
+        "chip_18",
         "chip_11",
         "chip_air",
         "chip_12",
