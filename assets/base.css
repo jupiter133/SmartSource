@@ -1458,3 +1458,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .rv-more{margin-top:16px}
 @media (max-width:749px){.rv__grid{grid-template-columns:1fr;gap:24px}.rv-photo{flex-basis:140px;height:140px}}
 .rv-more[hidden],.rv-empty[hidden],.rv-item[hidden]{display:none}
+.coll-wide--left{grid-column:1 / span 2}.coll-wide--right{grid-column:-3 / -1}

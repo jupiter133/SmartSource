@@ -220,10 +220,10 @@
             {%- for w in (1..2) -%}
               {%- assign k = 'wide' | append: w | append: '_' -%}
               {%- assign kt = k | append: 'title' -%}{%- assign ka = k | append: 'after' -%}{%- assign kx = k | append: 'text' -%}{%- assign kl = k | append: 'link' -%}
-              {%- assign kll = k | append: 'link_label' -%}{%- assign ki = k | append: 'icon' -%}{%- assign kimg = k | append: 'image' -%}{%- assign kas = k | append: 'asset' -%}{%- assign kart = k | append: 'art' -%}
+              {%- assign kll = k | append: 'link_label' -%}{%- assign ki = k | append: 'icon' -%}{%- assign kimg = k | append: 'image' -%}{%- assign kas = k | append: 'asset' -%}{%- assign kart = k | append: 'art' -%}{%- assign kside = k | append: 'side' -%}
               {%- assign after = section.settings[ka] | plus: 0 -%}{%- assign need = after | plus: 2 -%}
               {%- if section.settings[kt] != blank and after > 0 and shown == after and total >= need -%}
-                <a class="coll-wide" href="{{ section.settings[kl] }}" style="--wide-bg: {{ section.settings.wide_bg }}">
+                <a class="coll-wide coll-wide--{{ section.settings[kside] | default: 'auto' }}" href="{{ section.settings[kl] }}" style="--wide-bg: {{ section.settings.wide_bg }}">
                   <div class="coll-wide__copy">
                     <span class="coll-wide__icon">{% render 'icon', name: section.settings[ki] %}</span>
                     <p class="coll-wide__title">{{ section.settings[kt] }}</p>
@@ -317,6 +317,7 @@
   { "type": "image_picker", "id": "wide1_image", "label": "Card 1 image" },
   { "type": "text", "id": "wide1_asset", "label": "Card 1 theme image file" },
   { "type": "select", "id": "wide1_art", "label": "Card 1 drawing (if no image)", "default": "case", "options": [{"value":"case","label":"Case"},{"value":"phone","label":"Phone"},{"value":"protector","label":"Screen protector"}] },
+  { "type": "select", "id": "wide1_side", "label": "Card 1 side", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"right","label":"Right"},{"value":"auto","label":"Wherever it fits"}] },
   { "type": "number", "id": "wide1_after", "label": "Card 1 shows after product #", "default": 5 },
   { "type": "text", "id": "wide2_title", "label": "Card 2 title", "default": "Bundle a phone plan" },
   { "type": "textarea", "id": "wide2_text", "label": "Card 2 text", "default": "Pair your phone with a mobile plan at a better price. We set it up so you leave connected." },
@@ -326,6 +327,7 @@
   { "type": "image_picker", "id": "wide2_image", "label": "Card 2 image" },
   { "type": "text", "id": "wide2_asset", "label": "Card 2 theme image file", "default": "pdp-step-storage.webp" },
   { "type": "select", "id": "wide2_art", "label": "Card 2 drawing (if no image)", "default": "phone", "options": [{"value":"case","label":"Case"},{"value":"phone","label":"Phone"},{"value":"protector","label":"Screen protector"}] },
+  { "type": "select", "id": "wide2_side", "label": "Card 2 side", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"right","label":"Right"},{"value":"auto","label":"Wherever it fits"}] },
   { "type": "number", "id": "wide2_after", "label": "Card 2 shows after product #", "default": 11 },
   { "type": "checkbox", "id": "show_promo", "label": "Show promo tile first in the grid", "default": true },
   { "type": "text", "id": "promo_title", "label": "Title", "default": "Free 1-year warranty included" },
