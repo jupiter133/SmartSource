@@ -67,7 +67,8 @@
     "header": {
       "type": "header",
       "settings": {
-        "help_link": "/pages/help"
+        "help_link": "/pages/help",
+        "tradein_label": "Sell device"
       },
       "blocks": {
         "g1": {

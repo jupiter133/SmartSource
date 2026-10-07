@@ -118,7 +118,7 @@
       </div>
     </form>
     {%- if section.settings.tradein_label != blank -%}
-      <a class="header__tradein" href="{{ section.settings.tradein_link | default: '/pages/sell-your-device' }}">{% render 'icon', name: 'swap' %}<span>{{ section.settings.tradein_label }}</span></a>
+      <a class="header__tradein" href="{{ section.settings.tradein_link | default: '/pages/sell-your-device' }}">{% render 'icon', name: 'cash' %}<span>{{ section.settings.tradein_label }}</span></a>
     {%- endif -%}
     <div class="header__actions">
       {%- if section.settings.help_link != blank -%}<a class="header__text-link" href="{{ section.settings.help_link }}">Need help?</a>{%- endif -%}
@@ -202,7 +202,7 @@
   { "type": "checkbox", "id": "show_postal", "label": "Show \"Update postal code\"", "default": true },
   { "type": "link_list", "id": "utility_menu", "label": "Utility links (Promise, Blog...)" },
   { "type": "url", "id": "help_link", "label": "Help link" },
-  { "type": "text", "id": "tradein_label", "label": "Trade-in button label", "default": "Trade-in", "info": "Shows next to the search bar. Leave blank to hide." },
+  { "type": "text", "id": "tradein_label", "label": "Sell button label", "default": "Sell device", "info": "Shows next to the search bar. Leave blank to hide." },
   { "type": "url", "id": "tradein_link", "label": "Trade-in button link", "info": "Defaults to /pages/sell-your-device." },
   { "type": "paragraph", "content": "Dropdowns: add child links under a main menu item (Navigation). Collection images become the tiles." }
 ], "blocks": [{ "type": "good_to_know", "name": "Dropdown: Good to know", "settings": [
