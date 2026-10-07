@@ -90,7 +90,7 @@
         {%- if section.settings.app_store != blank -%}<a class="app-btn" href="{{ section.settings.app_store }}">{% render 'icon', name: 'apple' %}<span><small>Download on the</small>App Store</span></a>{%- endif -%}
       </div>
     </div>
-    {%- if section.settings.wordmark -%}<div class="footer__wordmark" aria-hidden="true">{{ shop.name }}</div>{%- endif -%}
+    {%- if section.settings.wordmark -%}<div class="footer__wordmark" aria-hidden="true"><svg viewBox="0 0 1000 190" preserveAspectRatio="xMidYMax meet" focusable="false"><defs><linearGradient id="wm-{{ section.id }}" x1="0" x2="1"><stop offset="0" stop-color="var(--c-accent)"/><stop offset="1" stop-color="var(--c-accent-2)"/></linearGradient></defs><text x="500" y="160" text-anchor="middle" textLength="990" lengthAdjust="spacingAndGlyphs" fill="url(#wm-{{ section.id }})">{{ shop.name | escape }}</text></svg></div>{%- endif -%}
   </div>
 </footer>
 {% schema %}

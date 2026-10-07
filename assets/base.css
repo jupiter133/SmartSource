@@ -318,7 +318,7 @@ shopify-payment-terms{font-size:13px}
 .footer__apps{display:flex;gap:8px}
 .app-btn{display:flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid #3a3a42;border-radius:10px;color:#fff;font-weight:600;line-height:1.1}
 .app-btn small{display:block;font-size:9px;font-weight:400;color:#a3a3ad}
-.footer__wordmark{font-size:clamp(4rem,17vw,15rem);font-weight:800;letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1px #2a2a30;text-align:center;white-space:nowrap;margin-bottom:-.12em;user-select:none}
+.footer__wordmark{margin-top:24px;user-select:none;pointer-events:none;line-height:0}.footer__wordmark svg{display:block;width:100%;height:auto;overflow:visible}.footer__wordmark text{font-family:inherit;font-size:190px;font-weight:800;opacity:.14}
 
 /* blog */
 .post{width:340px;background:var(--c-surface);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 3px #0000000f;transition:transform .2s,box-shadow .2s}
