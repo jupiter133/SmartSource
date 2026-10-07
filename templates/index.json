@@ -96,7 +96,7 @@
           "type": "category",
           "settings": {
             "title": "Android",
-            "link": "/collections/all/android",
+            "link": "/pages/android",
             "art": "phone",
             "asset_image": "cat-android.webp"
           }
@@ -114,7 +114,7 @@
           "type": "category",
           "settings": {
             "title": "Laptops",
-            "link": "/collections/all/laptops",
+            "link": "/pages/laptops",
             "art": "laptop"
           }
         },
@@ -149,7 +149,7 @@
           "type": "category",
           "settings": {
             "title": "AirPods + Audio",
-            "link": "/collections/all/audio",
+            "link": "/pages/audio",
             "art": "audio",
             "asset_image": "cat-audio.webp"
           }

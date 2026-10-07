@@ -1,0 +1,42 @@
+{%- liquid
+  assign source = section.settings.collection
+  if source == blank
+    assign source = collections.all
+  endif
+  assign tags = section.settings.tags | downcase | split: ','
+  assign shown = 0
+-%}
+<section class="section page-width" data-carousel>
+  <div class="section__head">
+    <h2>{{ section.settings.heading }}</h2>
+    {% render 'carousel-arrows' %}
+  </div>
+  <div class="carousel carousel--cards" data-track>
+    {%- for product in source.products -%}
+      {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+      {%- assign ok = true -%}
+      {%- if section.settings.tags != blank -%}
+        {%- assign ok = false -%}
+        {%- assign ptags = product.tags | join: ',' | downcase | split: ',' -%}
+        {%- for t in tags -%}{%- assign ts = t | strip -%}{%- if ptags contains ts -%}{%- assign ok = true -%}{%- endif -%}{%- endfor -%}
+      {%- endif -%}
+      {%- if ok -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {% render 'product-card', product: product, eyebrow: section.settings.eyebrow %}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if shown == 0 -%}
+      {%- for i in (1..4) -%}<div class="card card--placeholder">{% render 'device-art', kind: section.settings.art, title: 'device', section: section, idx: forloop.index %}<p>Products tagged {{ section.settings.tags | default: 'anything' }} show here</p></div>{%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "Product row", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Shop our best deals" },
+  { "type": "collection", "id": "collection", "label": "Collection", "info": "Leave blank to use all products." },
+  { "type": "text", "id": "tags", "label": "Only products with these tags", "info": "Comma-separated, e.g. samsung, pixel. Leave blank for all." },
+  { "type": "range", "id": "limit", "label": "Products to show", "min": 4, "max": 16, "step": 1, "default": 10 },
+  { "type": "text", "id": "eyebrow", "label": "Card eyebrow label" },
+  { "type": "select", "id": "art", "label": "Placeholder illustration", "options": [{"value":"phone","label":"Phone"},{"value":"laptop","label":"Laptop"},{"value":"audio","label":"Audio"}], "default": "phone" }
+], "presets": [{ "name": "Product row" }] }
+{% endschema %}

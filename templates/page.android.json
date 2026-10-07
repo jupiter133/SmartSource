@@ -1,0 +1,209 @@
+{
+  "sections": {
+    "head": {
+      "type": "landing-head",
+      "settings": {
+        "crumb": "Android",
+        "heading": "Refurbished Android phones",
+        "text": "Samsung Galaxy, Google Pixel and more. Every phone is tested by our technicians, unlocked, and backed by a 1-year warranty."
+      }
+    },
+    "tiles": {
+      "type": "subcat-tiles",
+      "settings": {
+        "heading": "Shop Android and more",
+        "subheading": "Tested and perfected to the core",
+        "style": "big",
+        "tile_bg": "#DDF4FA"
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "Samsung Galaxy",
+            "link": "/collections/all/samsung",
+            "asset_image": "cat-android.webp",
+            "art": "phone"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Google Pixel",
+            "link": "/collections/all/pixel",
+            "asset_image": "tech-android.webp",
+            "art": "phone"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Galaxy Z Fold & Flip",
+            "link": "/collections/all/galaxy-z",
+            "asset_image": "",
+            "art": "phone"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "title": "Motorola",
+            "link": "/collections/all/motorola",
+            "asset_image": "",
+            "art": "phone"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "title": "All Android phones",
+            "link": "/collections/all/android",
+            "asset_image": "",
+            "art": "phone"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "title": "Android accessories",
+            "link": "/collections/all/android-accessories",
+            "asset_image": "",
+            "art": "case"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ]
+    },
+    "banners": {
+      "type": "image-banners",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "heading": "Flagship Android. Fraction of the price.",
+            "text": "Galaxy S and Pixel, tested and unlocked.",
+            "button_label": "Shop Galaxy",
+            "link": "/collections/all/samsung",
+            "art": "phone",
+            "bg": "#14213D"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "heading": "Pure Google, for less.",
+            "text": "Pixel phones with the best Android camera.",
+            "button_label": "Shop Pixel",
+            "link": "/collections/all/pixel",
+            "art": "phone",
+            "bg": "#3A1C3F"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "trust": {
+      "type": "trust-row",
+      "settings": {},
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ]
+    },
+    "deals": {
+      "type": "product-row",
+      "settings": {
+        "heading": "Shop our best deals",
+        "tags": "android, samsung, pixel",
+        "limit": 10,
+        "art": "phone"
+      }
+    },
+    "more": {
+      "type": "more-cards",
+      "settings": {
+        "heading": "But wait, there's more."
+      },
+      "blocks": {
+        "m1": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-trade-in.webp",
+            "title": "Trade in for cash",
+            "text": "Get an instant quote for your old device and put the value toward your next one.",
+            "button_label": "Get your offer",
+            "link": "/pages/sell-your-device"
+          }
+        },
+        "m2": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-repairs.webp",
+            "title": "Repairs, done right",
+            "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
+            "button_label": "Book a repair",
+            "link": "/pages/services"
+          }
+        },
+        "m3": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-warranty.webp",
+            "title": "Covered for a full year",
+            "text": "Every device comes with a 1-year warranty and free 30-day returns.",
+            "button_label": "See our promise",
+            "link": "/pages/our-promise"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ]
+    }
+  },
+  "order": [
+    "head",
+    "tiles",
+    "banners",
+    "trust",
+    "deals",
+    "more"
+  ]
+}

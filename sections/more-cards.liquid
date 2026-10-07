@@ -1,0 +1,31 @@
+<section class="section page-width more-cards">
+  {%- if section.settings.heading != blank -%}<h2 class="more-cards__title">{{ section.settings.heading }}</h2>{%- endif -%}
+  <div class="more-cards__grid">
+    {%- for block in section.blocks -%}
+      <div class="more-card" {{ block.shopify_attributes }}>
+        <div class="more-card__img" style="--tint: {{ block.settings.tint }}">
+          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 33vw, 100vw', alt: '' }}
+          {%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="" width="900" height="600" loading="lazy">
+          {%- else -%}<span class="service-card__icon">{% render 'icon', name: block.settings.icon %}</span>{%- endif -%}
+        </div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+        {%- if block.settings.button_label != blank -%}<a class="btn btn--dark btn--lg btn--block" href="{{ block.settings.link }}">{{ block.settings.button_label }}</a>{%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{ "name": "More cards", "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "But wait, there's more." }],
+  "blocks": [{ "type": "card", "name": "Card", "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset_image", "label": "Theme asset image (advanced)" },
+    { "type": "select", "id": "icon", "label": "Icon (when no image)", "options": [{"value":"swap","label":"Trade-in"},{"value":"shield","label":"Protection"},{"value":"inspect","label":"Inspection"},{"value":"award","label":"Warranty"},{"value":"store","label":"Store"}], "default": "swap" },
+    { "type": "color", "id": "tint", "label": "Background (when no image)", "default": "#E3F7FC" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Trade in for cash" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Get an instant quote and put it toward your next device." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Get your offer" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ]}],
+  "presets": [{ "name": "More cards", "blocks": [{"type":"card"},{"type":"card"},{"type":"card"}] }] }
+{% endschema %}

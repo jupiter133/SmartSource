@@ -1,0 +1,179 @@
+{
+  "sections": {
+    "head": {
+      "type": "landing-head",
+      "settings": {
+        "crumb": "Audio",
+        "heading": "Refurbished audio",
+        "text": "AirPods, headphones and speakers. Cleaned, tested and backed by a 1-year warranty."
+      }
+    },
+    "tiles": {
+      "type": "subcat-tiles",
+      "settings": {
+        "heading": "Shop audio",
+        "subheading": "Tested, cleaned and ready to play",
+        "style": "big",
+        "tile_bg": "#DDF4FA"
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "AirPods",
+            "link": "/collections/all/airpods",
+            "asset_image": "cat-audio.webp",
+            "art": "audio"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Headphones",
+            "link": "/collections/all/headphones",
+            "asset_image": "",
+            "art": "audio"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Speakers",
+            "link": "/collections/all/speakers",
+            "asset_image": "",
+            "art": "audio"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    "banners": {
+      "type": "image-banners",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "heading": "Hear more. Pay less.",
+            "text": "AirPods and AirPods Pro, refurbished.",
+            "button_label": "Shop AirPods",
+            "link": "/collections/all/airpods",
+            "art": "phone",
+            "bg": "#14213D"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "heading": "Your commute, upgraded.",
+            "text": "Noise-cancelling headphones for less.",
+            "button_label": "Shop headphones",
+            "link": "/collections/all/headphones",
+            "art": "phone",
+            "bg": "#3A1C3F"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "trust": {
+      "type": "trust-row",
+      "settings": {},
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ]
+    },
+    "deals": {
+      "type": "product-row",
+      "settings": {
+        "heading": "Shop our best deals",
+        "tags": "audio, airpods, headphones, speakers",
+        "limit": 10,
+        "art": "audio"
+      }
+    },
+    "more": {
+      "type": "more-cards",
+      "settings": {
+        "heading": "But wait, there's more."
+      },
+      "blocks": {
+        "m1": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-trade-in.webp",
+            "title": "Trade in for cash",
+            "text": "Get an instant quote for your old device and put the value toward your next one.",
+            "button_label": "Get your offer",
+            "link": "/pages/sell-your-device"
+          }
+        },
+        "m2": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-repairs.webp",
+            "title": "Repairs, done right",
+            "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
+            "button_label": "Book a repair",
+            "link": "/pages/services"
+          }
+        },
+        "m3": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-warranty.webp",
+            "title": "Covered for a full year",
+            "text": "Every device comes with a 1-year warranty and free 30-day returns.",
+            "button_label": "See our promise",
+            "link": "/pages/our-promise"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ]
+    }
+  },
+  "order": [
+    "head",
+    "tiles",
+    "banners",
+    "trust",
+    "deals",
+    "more"
+  ]
+}
