@@ -9,8 +9,8 @@
   <style>
     @keyframes ann-{{ section.id }}{
       0%{opacity:0;transform:translateY(70%)}
-      {{ slot | times: 0.08 }}%{opacity:1;transform:none}
-      {{ slot | times: 0.92 }}%{opacity:1;transform:none}
+      {{ slot | times: 0.06 }}%{opacity:1;transform:none}
+      {{ slot | times: 0.94 }}%{opacity:1;transform:none}
       {{ slot }}%{opacity:0;transform:translateY(-70%)}
       100%{opacity:0;transform:translateY(-70%)}
     }
@@ -35,7 +35,7 @@
 {%- endif -%}
 {% schema %}
 { "name": "Announcement bar", "settings": [
-  { "type": "range", "id": "speed", "label": "Seconds per message", "min": 3, "max": 10, "step": 1, "unit": "s", "default": 5 },
+  { "type": "range", "id": "speed", "label": "Seconds per message", "min": 4, "max": 20, "step": 1, "unit": "s", "default": 10 },
   { "type": "paragraph", "content": "Add messages as blocks. With 2 or more, they rotate. Hovering pauses the rotation." },
   { "type": "text", "id": "text", "label": "Fallback text (used only with no messages)", "default": "Trade-in prices are peaking." },
   { "type": "text", "id": "link_text", "label": "Fallback link text", "default": "Cash in yours now" },
