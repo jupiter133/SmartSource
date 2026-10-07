@@ -35,7 +35,7 @@
           <h3 class="pay-group__title">{{ block.settings.title }}</h3>
           <table class="pay-table">
             <thead>
-              <tr><th scope="col">Model</th><th scope="col" class="pay-table__price">Up to</th></tr>
+              <tr><th scope="col">Model</th><th scope="col" class="pay-table__price">Up to{% unless settings.sell_live %} <span class="wiz-preview-tag">Preview</span>{% endunless %}</th></tr>
             </thead>
             <tbody>
               {%- for r in sorted limit: max_rows -%}

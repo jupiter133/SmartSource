@@ -199,6 +199,7 @@
   </script>
   <script type="application/json" data-sell-config>
     {
+      "live": {{ settings.sell_live | json }},
       "quoteDays": {{ settings.quote_valid_days | json }},
       "payDays": {{ settings.payment_business_days | json }},
       "freeReturn": {{ settings.free_return_on_decline | json }},

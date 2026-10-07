@@ -382,8 +382,18 @@
     return `Q-${ymd}-${[...bytes].map((b) => chars[b % chars.length]).join('')}`;
   }
 
+  // Buyback Live switch (Theme settings > Sell program). While off, offers are previews and can't be submitted.
+  if (!config.live) {
+    const note = document.createElement('p');
+    note.className = 'wiz-preview';
+    note.setAttribute('role', 'status');
+    note.textContent = 'Preview offers, not final. Online quotes open soon. For a firm offer today, visit one of our stores.';
+    (root.querySelector('.wiz-panel') || root).prepend(note);
+  }
+
   form?.addEventListener('submit', (e) => {
     if (!$('[data-step="6"]')) return; // confirmation view: nothing to submit
+    if (!config.live) { e.preventDefault(); alert('Online quotes aren\'t open yet. These are preview offers. Visit one of our stores for a firm offer.'); return; }
     readDetails();
     const missing = $$('[data-step="6"] [required]').find((f) => !f.checkValidity());
     if (missing) { e.preventDefault(); missing.reportValidity(); return; }

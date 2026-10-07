@@ -133,6 +133,13 @@
         "content": "One place for the buyback terms. The Sell page, FAQ, quote wizard and confirmation screen all read these. In any text field on the Sell page you can write {quote_valid_days}, {payment_business_days} or {prices_updated_date}, and wrap a sentence in [if_free_return]...[/if_free_return] or [if_instore_pay]...[/if_instore_pay] to show it only when that option is on."
       },
       {
+        "type": "checkbox",
+        "id": "sell_live",
+        "label": "Buyback Live",
+        "default": false,
+        "info": "OFF = offers show 'Preview offer, not final' and customers can't submit a quote. Turn on once your real buyback prices are loaded."
+      },
+      {
         "type": "range",
         "id": "quote_valid_days",
         "label": "Quote valid / ship within (days)",
