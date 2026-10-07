@@ -1320,3 +1320,8 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 @media (max-width:749px){.footer__bottom{flex-direction:column;align-items:flex-start;gap:16px}}
 @media (prefers-reduced-motion:reduce){.footer__social a{transition:none}}
 .mega-tile--all .mega-tile__title{font-weight:700}
+.nav-budget{display:inline-flex!important;align-items:center;gap:6px}
+.nav-budget__tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px;background:color-mix(in srgb,var(--c-accent) 18%,#fff);color:var(--c-ink)}
+@media (max-width:749px){.nav-budget__tag{display:none}}
+@media (min-width:750px){.header__nav ul.nav-scroll{gap:18px}.header__nav .nav-side{gap:18px}.header__nav{gap:18px}}
+@media (min-width:750px) and (max-width:1399px){.nav-budget__tag{display:none}}

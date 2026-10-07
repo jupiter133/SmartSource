@@ -170,7 +170,7 @@
         "c10": {
           "type": "category",
           "settings": {
-            "title": "Great deals",
+            "title": "Steal Deals",
             "link": "/collections/all?sort_by=price-ascending",
             "art": "deal"
           }

@@ -1,5 +1,5 @@
 {%- comment -%} Built-in category menu. Links use product-tag URLs, so no collections are required. {%- endcomment -%}
-<li class="nav-item"><a href="/collections/all?sort_by=price-ascending" class="nav-link nav-deal">✦ Great deals</a></li>
+<li class="nav-item"><a href="/collections/all?sort_by=price-ascending" class="nav-link nav-deal">✦ Steal Deals</a></li>
 <li class="nav-item has-mega" data-nav-item>
   <a href="/collections/all/iphone" class="nav-link" aria-haspopup="true" aria-expanded="false">iPhone</a>
   <div class="mega" data-mega><div class="mega__inner">
@@ -41,13 +41,14 @@
   </div></div>
 </li>
 <li class="nav-item has-mega" data-nav-item>
-  <a href="/collections/all/consoles" class="nav-link" aria-haspopup="true" aria-expanded="false">Gaming consoles</a>
+  <a href="/collections/all/consoles" class="nav-link" aria-haspopup="true" aria-expanded="false">Consoles</a>
   <div class="mega" data-mega><div class="mega__inner">
-    {% render 'mega-side', section: section, title: 'Gaming consoles' %}
+    {% render 'mega-side', section: section, title: 'Consoles' %}
     <div class="mega__main"><div class="mega__head"><p class="mega__label">Categories</p><a href="/collections/all/consoles" class="mega__all">See all</a></div>
     <div class="mega__grid"><a class="mega-tile" href="/collections/all/xbox"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'device-art', title: 'Xbox', idx: 0 %}</span><span class="mega-tile__title">Xbox</span></a><a class="mega-tile" href="/collections/all/nintendo"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'device-art', title: 'Nintendo', idx: 1 %}</span><span class="mega-tile__title">Nintendo</span></a><a class="mega-tile" href="/collections/all/playstation"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'device-art', title: 'PlayStation', idx: 2 %}</span><span class="mega-tile__title">PlayStation</span></a><a class="mega-tile" href="/collections/all/retro"><span class="mega-tile__img" style="--tint: #DCF7F4">{% render 'device-art', title: 'Retrogaming', idx: 3 %}</span><span class="mega-tile__title">Retrogaming</span></a><a class="mega-tile" href="/collections/all/console-accessories"><span class="mega-tile__img" style="--tint: #EEEAFD">{% render 'device-art', title: 'Console accessories', idx: 4 %}</span><span class="mega-tile__title">Console accessories</span></a></div></div>
   </div></div>
 </li>
+<li class="nav-item"><a href="/collections/all?filter.v.price.lte=300&sort_by=price-ascending" class="nav-link nav-budget" title="Devices under $300">Budget</a></li>
 <li class="nav-item has-mega" data-nav-item>
   <a href="/collections/all/smartwatches" class="nav-link" aria-haspopup="true" aria-expanded="false">Smartwatches</a>
   <div class="mega" data-mega><div class="mega__inner">
