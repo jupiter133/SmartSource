@@ -899,7 +899,7 @@ shopify-payment-terms{font-size:13px}
 
 /* full-image hero banners (text baked into the image) */
 .hero-banner{flex:0 0 100%;scroll-snap-align:start;display:block;position:relative;line-height:0;background:#eee}
-.hero-banner img{width:100%;height:auto;aspect-ratio:1920/720;object-fit:cover}
+.hero-banner img{width:100%;height:auto;aspect-ratio:1920/620;object-fit:cover}
 .hero-banner:focus-visible{outline:3px solid var(--c-ink);outline-offset:-3px}
 .hero-slider:has(.hero-banner) .hero-slider__controls{bottom:12px}
 @media (max-width:749px){
