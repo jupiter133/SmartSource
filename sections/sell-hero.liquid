@@ -73,6 +73,8 @@
       <div class="sell-hero__art">
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 45vw, 90vw', class: 'sell-hero__img', alt: section.settings.image.alt | default: '' }}
+        {%- elsif section.settings.asset_image != blank -%}
+          <img class="sell-hero__img sell-hero__photo" src="{{ section.settings.asset_image | asset_url }}" alt="{{ section.settings.asset_image_alt | escape }}" width="1000" height="1000" fetchpriority="high">
         {%- else -%}
           {% render 'sell-hero-art' %}
         {%- endif -%}
@@ -150,6 +152,8 @@
     { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on the same page as this hero." },
     { "type": "header", "content": "Visual" },
     { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG works best. Leave blank for the built-in phone stack." },
+    { "type": "text", "id": "asset_image", "label": "Theme asset photo (advanced)", "info": "Used if no image is picked. Filename in the theme assets folder." },
+    { "type": "text", "id": "asset_image_alt", "label": "Photo description", "default": "Two hands swapping smartphones" },
     { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "glow", "label": "Accent glow" }, { "value": "grid", "label": "Accent glow + grid" }, { "value": "plain", "label": "Plain" } ], "default": "grid" },
     { "type": "header", "content": "Floating card: payout" },
     { "type": "checkbox", "id": "card1_show", "label": "Show payout card", "default": true },

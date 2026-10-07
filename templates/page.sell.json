@@ -11,7 +11,11 @@
   "sections": {
     "hero": {
       "type": "sell-hero",
-      "settings": {},
+      "settings": {
+        "background": "plain",
+        "asset_image": "sell-hero-photo.webp",
+        "card2_text": ""
+      },
       "blocks": {
         "chip_1": {
           "type": "chip",
