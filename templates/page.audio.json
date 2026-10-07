@@ -166,6 +166,105 @@
         "m2",
         "m3"
       ]
+    },
+    "reviews": {
+      "type": "review-cards",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    },
+    "articles": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Make the most of your audio",
+        "blog": "news",
+        "tag": "audio",
+        "limit": 6,
+        "show_all": false
+      }
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Popular questions",
+        "schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Are refurbished AirPods hygienic?",
+            "answer": "<p>Yes. Every pair is professionally cleaned and sanitised, and ear tips are replaced where applicable.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Will they pair with my phone?",
+            "answer": "<p>Yes. Every device is reset and tested for pairing, sound and microphone before it ships.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device has had a previous owner, then gone through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new and comes with a 1-year warranty.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's the difference between refurbished and used?",
+            "answer": "<p>Used means sold as-is. Refurbished means professionally checked, fixed and backed by a warranty and free 30-day returns.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty and returns do I get?",
+            "answer": "<p>Every device comes with a 1-year warranty and free 30-day returns, for any reason.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my old device?",
+            "answer": "<p>Trade it in. Get an instant quote on our trade-in page and put the value toward your next device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "seo": {
+      "type": "seo-text",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "part",
+          "settings": {
+            "heading": "Why buy refurbished audio from SmartSource?",
+            "body": "<p>Refurbished AirPods and headphones sound just like new, for a lot less. Every pair is cleaned, tested for sound, mic and battery, and graded by our technicians. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+          }
+        },
+        "p2": {
+          "type": "part",
+          "settings": {
+            "heading": "What audio can you find?",
+            "body": "<ul><li><a href=\"/collections/all/airpods\">AirPods and AirPods Pro</a>: seamless with iPhone</li><li><a href=\"/collections/all/headphones\">Headphones</a>: noise cancelling for travel and focus</li><li><a href=\"/collections/all/speakers\">Speakers</a>: sound for every room</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ]
     }
   },
   "order": [
@@ -174,6 +273,10 @@
     "banners",
     "trust",
     "deals",
-    "more"
+    "more",
+    "reviews",
+    "articles",
+    "faq",
+    "seo"
   ]
 }

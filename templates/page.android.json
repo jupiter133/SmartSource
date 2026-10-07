@@ -196,6 +196,113 @@
         "m2",
         "m3"
       ]
+    },
+    "reviews": {
+      "type": "review-cards",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    },
+    "articles": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Make the most of your Android",
+        "blog": "news",
+        "tag": "android",
+        "limit": 6,
+        "show_all": false
+      }
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Popular questions",
+        "schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Are refurbished Android phones worth it?",
+            "answer": "<p>Yes. You get flagship features like top cameras and fast chips for a lot less than new, with the same 1-year warranty.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Are your Android phones unlocked?",
+            "answer": "<p>Yes. Our phones are carrier unlocked, so you can use any Canadian carrier.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device has had a previous owner, then gone through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new and comes with a 1-year warranty.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's the difference between refurbished and used?",
+            "answer": "<p>Used means sold as-is. Refurbished means professionally checked, fixed and backed by a warranty and free 30-day returns.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty and returns do I get?",
+            "answer": "<p>Every device comes with a 1-year warranty and free 30-day returns, for any reason.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my old device?",
+            "answer": "<p>Trade it in. Get an instant quote on our trade-in page and put the value toward your next device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "seo": {
+      "type": "seo-text",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "part",
+          "settings": {
+            "heading": "Why buy a refurbished Android phone from SmartSource?",
+            "body": "<p>Refurbished Android phones work just like new ones, for a lot less money. Every phone is inspected, tested and graded by our technicians before it goes on sale. Unlike a random marketplace listing, every phone comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+          }
+        },
+        "p2": {
+          "type": "part",
+          "settings": {
+            "heading": "What Android phones can you find?",
+            "body": "<ul><li><a href=\"/collections/all/samsung\">Samsung Galaxy</a>: Galaxy S, Galaxy A and the Z Fold and Flip foldables</li><li><a href=\"/collections/all/pixel\">Google Pixel</a>: pure Android and some of the best phone cameras around</li><li><a href=\"/collections/all/motorola\">Motorola</a>: reliable everyday phones on a budget</li></ul>"
+          }
+        },
+        "p3": {
+          "type": "part",
+          "settings": {
+            "heading": "Understanding grades",
+            "body": "<p>Grades only describe how a phone looks, from <strong>Premium</strong> (like new) to <strong>Fair</strong> (visible wear). Every grade is fully functional and covered by the same warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
     }
   },
   "order": [
@@ -204,6 +311,10 @@
     "banners",
     "trust",
     "deals",
-    "more"
+    "more",
+    "reviews",
+    "articles",
+    "faq",
+    "seo"
   ]
 }

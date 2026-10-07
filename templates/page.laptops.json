@@ -199,6 +199,113 @@
         "m2",
         "m3"
       ]
+    },
+    "reviews": {
+      "type": "review-cards",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    },
+    "articles": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Make the most of your laptop",
+        "blog": "news",
+        "tag": "laptops",
+        "limit": 6,
+        "show_all": false
+      }
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Popular questions",
+        "schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Are refurbished laptops worth it?",
+            "answer": "<p>Yes. A refurbished MacBook or Windows laptop gives you the same performance as new for a lot less, backed by a 1-year warranty.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Is the battery checked?",
+            "answer": "<p>Yes. Every battery is tested, and batteries below our health threshold are replaced before sale.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device has had a previous owner, then gone through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new and comes with a 1-year warranty.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's the difference between refurbished and used?",
+            "answer": "<p>Used means sold as-is. Refurbished means professionally checked, fixed and backed by a warranty and free 30-day returns.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty and returns do I get?",
+            "answer": "<p>Every device comes with a 1-year warranty and free 30-day returns, for any reason.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my old device?",
+            "answer": "<p>Trade it in. Get an instant quote on our trade-in page and put the value toward your next device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "seo": {
+      "type": "seo-text",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "part",
+          "settings": {
+            "heading": "Why buy a refurbished laptop from SmartSource?",
+            "body": "<p>A refurbished laptop does everything a new one does, for a lot less money. Every laptop is inspected, tested and graded by our technicians, wiped and restored to factory settings. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+          }
+        },
+        "p2": {
+          "type": "part",
+          "settings": {
+            "heading": "What laptops can you find?",
+            "body": "<ul><li><a href=\"/collections/all/macbook\">MacBook Air and MacBook Pro</a>: Apple silicon performance, all-day battery</li><li><a href=\"/collections/all/windows\">Windows laptops</a>: for work, school and everything between</li><li><a href=\"/collections/all/chromebook\">Chromebooks</a>: simple, fast and affordable</li><li><a href=\"/collections/all/gaming-laptop\">Gaming laptops</a>: serious power for less</li></ul>"
+          }
+        },
+        "p3": {
+          "type": "part",
+          "settings": {
+            "heading": "Understanding grades",
+            "body": "<p>Grades only describe how a laptop looks, from <strong>Premium</strong> (like new) to <strong>Fair</strong> (visible wear). Every grade is fully functional and covered by the same warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
     }
   },
   "order": [
@@ -207,6 +314,10 @@
     "banners",
     "trust",
     "deals",
-    "more"
+    "more",
+    "reviews",
+    "articles",
+    "faq",
+    "seo"
   ]
 }

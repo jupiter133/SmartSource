@@ -1,11 +1,20 @@
 {%- assign b = section.settings.blog -%}
+{%- if b.articles_count > 0 or request.design_mode -%}
 <section class="section page-width" data-carousel>
   <div class="section__head">
     <h2>{{ section.settings.heading }}</h2>
-    {%- if b -%}<a class="btn btn--dark btn--sm" href="{{ b.url }}">All articles →</a>{%- endif -%}
+    <div class="section__head-actions">{%- if b and section.settings.show_all -%}<a class="btn btn--dark btn--sm" href="{{ b.url }}{% if section.settings.tag != blank %}/tagged/{{ section.settings.tag | handleize }}{% endif %}">All articles →</a>{%- endif -%}{% render 'carousel-arrows' %}</div>
   </div>
+  {%- assign want = section.settings.tag | downcase | strip -%}
+  {%- assign tagged = 0 -%}
+  {%- if want != blank -%}{%- for a in b.articles -%}{%- assign tl = a.tags | join: ',' | downcase | split: ',' -%}{%- if tl contains want -%}{%- assign tagged = tagged | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endif -%}
+  {%- if tagged == 0 -%}{%- assign want = '' -%}{%- endif -%}
   <div class="carousel blog-row" data-track>
-    {%- for a in b.articles limit: section.settings.limit -%}
+    {%- assign shown = 0 -%}
+    {%- for a in b.articles -%}
+      {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+      {%- if want != blank -%}{%- assign tl = a.tags | join: ',' | downcase | split: ',' -%}{%- unless tl contains want -%}{%- continue -%}{%- endunless -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
       <a class="post" href="{{ a.url }}">
         <div class="post__img">{%- if a.image -%}{{ a.image | image_url: width: 600 | image_tag: loading: 'lazy' }}{%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}</div>
         <div class="post__body">
@@ -20,10 +29,13 @@
     {%- endfor -%}
   </div>
 </section>
+{%- endif -%}
 {% schema %}
 { "name": "Blog posts", "settings": [
   { "type": "text", "id": "heading", "label": "Heading", "default": "Tech Journal" },
   { "type": "blog", "id": "blog", "label": "Blog" },
-  { "type": "range", "id": "limit", "label": "Posts", "min": 2, "max": 8, "step": 1, "default": 3 }
+  { "type": "range", "id": "limit", "label": "Posts", "min": 2, "max": 8, "step": 1, "default": 3 },
+  { "type": "text", "id": "tag", "label": "Only articles with this tag", "info": "e.g. laptops. Leave blank for all." },
+  { "type": "checkbox", "id": "show_all", "label": "Show All articles button", "default": true }
 ], "presets": [{ "name": "Blog posts" }] }
 {% endschema %}
