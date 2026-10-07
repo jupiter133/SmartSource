@@ -1285,3 +1285,7 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .utility-locale__row{display:flex;align-items:center;gap:20px}
 .header__logo img{display:block;max-width:100%;height:auto}
 @media (max-width:749px){.header__logo img{width:150px!important}}
+/* product step images: always fit inside their box (fixes clipped photos on mobile) */
+.step__img>img{position:absolute;inset:0;width:100%;height:100%}
+.step__img--plain>img{object-fit:contain;padding:4%}
+@media (max-width:749px){.step__img--plain{aspect-ratio:4/3}}
