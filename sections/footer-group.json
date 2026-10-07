@@ -23,7 +23,6 @@
           "type": "menu",
           "settings": {
             "title": "Services",
-            "show_payments": true,
             "links": "Trade in your device | /pages/sell-your-device\nRepairs | /pages/services\nPhone plans | /pages/phone-plans"
           }
         },
@@ -50,9 +49,7 @@
         "about",
         "help",
         "services",
-        "resources",
-        "legal",
-        "badges"
+        "resources"
       ],
       "settings": {}
     }

@@ -5,14 +5,39 @@
         <h2>{{ section.settings.news_heading }}</h2>
         <p class="footer__muted">{{ section.settings.news_text }}</p>
       </div>
-      {%- form 'customer', class: 'footer__form' -%}
+      {%- form 'customer' -%}
+        <div class="footer__form">
         <input type="hidden" name="contact[tags]" value="newsletter">
         <input type="email" name="contact[email]" placeholder="Email" required aria-label="Email">
         <button class="btn btn--accent">Sign up</button>
         {%- if form.posted_successfully? -%}<p class="footer__ok">You're in. Watch your inbox.</p>{%- endif -%}
+        </div>
       {%- endform -%}
     </div>
 
+    <div class="footer__main">
+    <div class="footer__brand">
+      <a href="{{ routes.root_url }}" class="footer__logo">
+        {%- if section.settings.logo != blank -%}{{ section.settings.logo | image_url: width: 400 | image_tag: alt: shop.name, loading: 'lazy' }}{%- else -%}<img src="{{ 'logo-smartsource-white.png' | asset_url }}" alt="{{ shop.name | escape }}" width="180" height="44" loading="lazy">{%- endif -%}
+      </a>
+      {%- if section.settings.tagline != blank -%}<p class="footer__tagline">{{ section.settings.tagline }}</p>{%- endif -%}
+      {%- capture social_links -%}
+        {%- assign socials = 'instagram,tiktok,facebook,youtube,x,linkedin' | split: ',' -%}
+        {%- for s in socials -%}
+          {%- assign key = 'social_' | append: s -%}
+          {%- if section.settings[key] != blank -%}<a href="{{ section.settings[key] }}" aria-label="{{ shop.name }} on {{ s | capitalize }}" target="_blank" rel="noopener">{% render 'icon', name: s %}</a>{%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if social_links != blank -%}
+        <p class="footer__label">Follow us</p>
+        <div class="footer__social">{{ social_links }}</div>
+      {%- elsif request.design_mode -%}
+        <p class="footer__hint">Add your social links in Footer settings to show icons here.</p>
+      {%- endif -%}
+      {%- if section.settings.store_text != blank -%}
+        <a class="footer__store" href="{{ section.settings.store_link | default: '/pages/contact' }}">{% render 'icon', name: 'pin' %}<span>{{ section.settings.store_text }}</span></a>
+      {%- endif -%}
+    </div>
     <div class="footer__cols">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
@@ -50,16 +75,16 @@
         {%- endcase -%}
       {%- endfor -%}
     </div>
+    </div>
 
     <div class="footer__bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
-      <div class="footer__social">
-        {%- assign socials = 'instagram,tiktok,youtube,linkedin,facebook,x' | split: ',' -%}
-        {%- for s in socials -%}
-          {%- assign key = 'social_' | append: s -%}
-          {%- if section.settings[key] != blank -%}<a href="{{ section.settings[key] }}" aria-label="{{ s }}" target="_blank" rel="noopener">{% render 'icon', name: s %}</a>{%- endif -%}
-        {%- endfor -%}
+      <div class="footer__legal">
+        <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+        {%- for policy in shop.policies -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{%- endfor -%}
       </div>
+      {%- if section.settings.show_payments and shop.enabled_payment_types.size > 0 -%}
+        <div class="footer__pay" aria-label="Accepted payments">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
+      {%- endif -%}
       <div class="footer__apps">
         {%- if section.settings.google_play != blank -%}<a class="app-btn" href="{{ section.settings.google_play }}">{% render 'icon', name: 'play-store' %}<span><small>GET IT ON</small>Google Play</span></a>{%- endif -%}
         {%- if section.settings.app_store != blank -%}<a class="app-btn" href="{{ section.settings.app_store }}">{% render 'icon', name: 'apple' %}<span><small>Download on the</small>App Store</span></a>{%- endif -%}
@@ -73,6 +98,12 @@
   { "type": "text", "id": "news_heading", "label": "Newsletter heading", "default": "Stay in the loop with hot drops" },
   { "type": "text", "id": "news_text", "label": "Newsletter text", "default": "Be first to know about new arrivals, price drops, and tech news that matters." },
   { "type": "checkbox", "id": "wordmark", "label": "Show giant brand wordmark", "default": true },
+  { "type": "header", "content": "Brand column" },
+  { "type": "image_picker", "id": "logo", "label": "Footer logo", "info": "Use a light version for the dark footer. Defaults to the white SmartSource logo." },
+  { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "Certified refurbished tech, tested by real technicians in Canada. 1-year warranty and free 30-day returns on every device." },
+  { "type": "text", "id": "store_text", "label": "Store link text", "default": "Visit our stores in the GTA" },
+  { "type": "url", "id": "store_link", "label": "Store link" },
+  { "type": "checkbox", "id": "show_payments", "label": "Show payment icons in the bottom bar", "default": true },
   { "type": "header", "content": "Social" },
   { "type": "url", "id": "social_instagram", "label": "Instagram" },
   { "type": "url", "id": "social_tiktok", "label": "TikTok" },
