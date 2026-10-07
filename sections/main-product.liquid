@@ -100,7 +100,7 @@
             {%- elsif step_img != blank -%}
               <div class="step__img">{{ step_img | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- if i == cond_idx -%}<span class="step__caption" data-cond-caption>Example of {{ option.selected_value }} (body, screen)</span>{%- endif -%}</div>
             {%- else -%}
-              <div class="step__img step__img--tint">{% render 'device-art', title: product.title %}</div>
+              <div class="step__img step__img--photo"><img src="{{ 'pdp-step-storage.webp' | asset_url }}" alt="" width="900" height="900" loading="lazy"></div>
             {%- endif -%}
           </div>
           <fieldset class="step__body" data-option-index="{{ i }}">
@@ -127,7 +127,7 @@
 
       {%- if section.settings.tradein_link != blank -%}
       <section class="pdp-row step">
-        <div class="step__media"><div class="step__img step__img--tint">{%- if section.settings.tradein_image != blank -%}{{ section.settings.tradein_image | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- else -%}{% render 'device-art', kind: 'phone', title: 'Trade-in' %}{%- endif -%}</div></div>
+        <div class="step__media"><div class="step__img step__img--tint">{%- if section.settings.tradein_image != blank -%}{{ section.settings.tradein_image | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- else -%}<img src="{{ 'pdp-step-tradein.webp' | asset_url }}" alt="Trading in a phone for cash" width="900" height="900" loading="lazy">{%- endif -%}</div></div>
         <div class="step__body">
           <h2>Get this for even less with Trade-in</h2>
           <a class="info-card" href="{{ section.settings.tradein_link }}">{% render 'icon', name: 'swap' %}<span>See how Trade-in works</span><span class="info-card__chev">›</span></a>
