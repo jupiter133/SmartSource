@@ -1,5 +1,6 @@
 <header class="header">
   {%- if section.settings.show_utility -%}
+  <div class="header__utility-bar">
   <div class="header__utility page-width">
     <nav class="utility-links">
       {%- if section.settings.utility_menu == blank -%}
@@ -28,6 +29,7 @@
         {%- endif -%}
       {%- endform -%}
     </div>
+  </div>
   </div>
   {%- endif -%}
   <div class="header__main page-width">

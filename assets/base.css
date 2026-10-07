@@ -1118,3 +1118,8 @@ shopify-payment-terms{font-size:13px}
 .seo-text .rte ul{margin:0 0 12px;padding-left:20px}
 .seo-text .rte li{margin-bottom:6px}
 .seo-text .rte a{text-decoration:underline;font-weight:600}
+
+/* grey utility band */
+.header__utility-bar{background:#f0f0f3;border-bottom:1px solid #e6e6ea}
+.header__utility-bar .header__utility{padding-top:7px;padding-bottom:7px;font-size:13px}
+@media (max-width:749px){.header__utility-bar{display:none}}
