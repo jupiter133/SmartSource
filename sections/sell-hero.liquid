@@ -23,6 +23,7 @@
         <p class="sell-hero__sub" data-hero-anim style="--d: 2">{% render 'sell-text', text: section.settings.subheadline %}</p>
       {%- endif -%}
 
+      {%- if section.settings.show_search -%}
       <form class="sell-search" action="{{ quote_url }}" method="get" role="search" data-sell-search data-hero-anim style="--d: 3">
         <label class="visually-hidden" for="SellSearch-{{ section.id }}">{{ section.settings.search_label }}</label>
         <div class="sell-search__box">
@@ -62,6 +63,12 @@
             </li>
           {%- endfor -%}
         </ul>
+      {%- endif -%}
+
+      {%- else -%}
+        <div class="sell-hero__cta" data-hero-anim style="--d: 3">
+          <a class="btn btn--accent sell-hero__btn" href="{{ quote_url }}#sell-quote" data-sell-start>{{ section.settings.search_button }} <span aria-hidden="true">→</span></a>
+        </div>
       {%- endif -%}
 
       {%- if section.settings.price_link_label != blank -%}
@@ -145,6 +152,7 @@
     { "type": "text", "id": "highlight", "label": "Words to highlight in the accent colour", "default": "Top dollar", "info": "Must match part of the headline exactly." },
     { "type": "textarea", "id": "subheadline", "label": "Subheadline", "default": "Get an instant quote in 60 seconds. Ship it free or drop it off in store. Paid within {payment_business_days} business days." },
     { "type": "header", "content": "Quick-start search" },
+    { "type": "checkbox", "id": "show_search", "label": "Show search bar and category pills", "default": false },
     { "type": "text", "id": "search_label", "label": "Search label (for screen readers)", "default": "What are you selling?" },
     { "type": "text", "id": "search_placeholder", "label": "Placeholder", "default": "What are you selling? e.g. iPhone 15 Pro" },
     { "type": "text", "id": "search_button", "label": "Button", "default": "Get my quote" },
