@@ -12,7 +12,7 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "hero_map": "default: tech-iphones.webp\niphone: cat-iphone.webp\nsamsung: cat-android.webp\npixel: tech-android.webp\nipad: tech-ipads.webp\ntablets: tech-ipads.webp\nmacbook: cat-macbook.webp\nlaptops: tech-macbooks.webp\nconsoles: tech-consoles.webp\nsmartwatches: cat-watches.webp\naudio: cat-audio.webp\ncases: cat-cases.webp"
+        "hero_map": "default: tech-iphones.webp\niphone: cat-iphone.webp\nsamsung: cat-android.webp\npixel: tech-android.webp\nipad: tech-ipads.webp\ntablets: tech-ipads.webp\nmacbook: cat-macbook.webp\nlaptops: tech-macbooks.webp\nconsoles: tech-consoles.webp\nsmartwatches: cat-watches.webp\naudio: cat-audio.webp\ncases: cat-cases.webp\ncables: cat-cables.webp\nchargers: cat-adapter.webp\npower-banks: cat-powerbank.webp\naccessories: cat-cases.webp"
       },
       "blocks": {
         "chip_1": {
@@ -378,7 +378,7 @@
         "chip_46": {
           "type": "chip",
           "settings": {
-            "label": "Cables & chargers",
+            "label": "Cables",
             "link": "/collections/all/cables",
             "parent": "accessories"
           }
