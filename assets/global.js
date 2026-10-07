@@ -110,8 +110,8 @@
     const root = (window.Shopify?.routes?.root || '/');
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const money = v => { const n = Number(v); return isNaN(n) ? '' : n.toLocaleString(undefined, { style: 'currency', currency: window.Shopify?.currency?.active || 'CAD' }); };
-    const open = () => { panel.hidden = false; input.setAttribute('aria-expanded', 'true'); };
-    const close = () => { panel.hidden = true; input.setAttribute('aria-expanded', 'false'); active = -1; };
+    const open = () => input.setAttribute('aria-expanded', 'true');
+    const close = () => { input.setAttribute('aria-expanded', 'false'); active = -1; };
     let timer, ctrl, active = -1;
     const items = () => $$('a, button', panel).filter(el => el.offsetParent !== null);
     const render = (q, data) => {
@@ -142,7 +142,6 @@
     input.addEventListener('focus', () => { open(); update(); });
     input.addEventListener('input', () => { open(); update(); });
     input.addEventListener('keydown', e => {
-      if (panel.hidden) return;
       const list = items();
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault(); active = (active + (e.key === 'ArrowDown' ? 1 : -1) + list.length) % list.length;
@@ -150,8 +149,7 @@
       } else if (e.key === 'Enter' && active > -1 && list[active]) { e.preventDefault(); list[active].click(); }
       else if (e.key === 'Escape') { close(); input.blur(); }
     });
-    document.addEventListener('click', e => { if (!form.contains(e.target)) close(); });
-    form.addEventListener('focusout', e => { if (!form.contains(e.relatedTarget)) setTimeout(() => { if (!form.contains(document.activeElement)) close(); }, 120); });
+    form.addEventListener('focusout', e => { if (!form.contains(e.relatedTarget)) close(); });
     $('[data-search-chat]', panel)?.addEventListener('click', e => {
       const inboxBtn = document.querySelector('inbox-online-store-chat')?.shadowRoot?.querySelector('button');
       if (inboxBtn) return inboxBtn.click();

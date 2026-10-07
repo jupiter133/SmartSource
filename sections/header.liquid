@@ -40,6 +40,7 @@
       {%- else -%}<span>{{ shop.name }}</span>{%- endif -%}
     </a>
     <form action="{{ routes.search_url }}" class="header__search" role="search" data-search-box>
+      <span class="header__search-field">
       {% render 'icon', name: 'search' %}
       <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" value="{{ search.terms | escape }}" aria-label="Search" role="combobox" aria-expanded="false" aria-controls="SearchPanel" aria-autocomplete="list" autocomplete="off"{% if section.settings.search_words != blank %} data-search-anim{% endif %}>
       {%- if section.settings.search_words != blank -%}
@@ -62,8 +63,10 @@
         </style>
         <span class="search-anim" id="SearchAnim-{{ section.id }}" aria-hidden="true">{{ section.settings.search_prefix }} <span class="search-anim__words"><span class="search-anim__sizer">{{ longest }}</span>{%- for w in sw -%}<span class="search-anim__word" style="animation-delay:0s,{{ step | times: forloop.index0 }}s">{{ w | strip }}</span>{%- endfor -%}</span></span>
       {%- endif -%}
+      </span>
       <input type="hidden" name="type" value="product">
-      <div class="search-panel" id="SearchPanel" data-search-panel hidden>
+      <div class="search-panel" id="SearchPanel" data-search-panel>
+        <div class="search-panel__inner">
         <div data-search-idle>
           {%- if section.settings.search_chat_label != blank -%}
             <button type="button" class="search-panel__ask" data-search-chat data-href="{{ section.settings.help_link | default: '/pages/help' }}">{% render 'icon', name: 'chat' %}<span>{{ section.settings.search_chat_label }}</span></button>
@@ -76,11 +79,12 @@
               {%- assign label = parts.first | strip -%}
               {%- if label == blank -%}{%- continue -%}{%- endif -%}
               {%- if parts.size > 1 -%}{%- assign href = parts.last | strip -%}{%- else -%}{%- assign q = label | url_param_escape -%}{%- assign href = routes.search_url | append: '?type=product&q=' | append: q -%}{%- endif -%}
-              <li role="option"><a class="search-panel__item" href="{{ href }}">{% render 'icon', name: 'search' %}<span>{{ label }}</span></a></li>
+              <li role="option"><a class="search-panel__item" href="{{ href }}"><span>{{ label }}</span></a></li>
             {%- endfor -%}
           </ul>
         </div>
         <div data-search-results hidden aria-live="polite"></div>
+        </div>
       </div>
     </form>
     {%- if section.settings.tradein_label != blank -%}
@@ -150,6 +154,7 @@
   </div>
   </nav>
 </header>
+<div class="search-scrim" aria-hidden="true"></div>
 {% schema %}
 { "name": "Header", "settings": [
   { "type": "image_picker", "id": "logo", "label": "Logo" },
