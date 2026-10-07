@@ -97,6 +97,13 @@
           <div class="step__media">
             {%- if i == color_idx -%}
               <div class="step__img step__img--plain">{%- if current.featured_image -%}{{ current.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- elsif product.featured_media -%}{{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}</div>
+            {%- elsif i == cond_idx and step_img == blank -%}
+              <div class="step__img step__img--photo step__img--grades">
+                {%- for v in option.values -%}{%- assign g = v | handleize -%}{%- assign gf = 'grade-' | append: g | append: '.webp' -%}
+                  {%- if g == 'fair' or g == 'good' or g == 'excellent' or g == 'premium' -%}<img src="{{ gf | asset_url }}" alt="Example of a {{ v }} grade phone" width="900" height="900" loading="lazy" data-cond-img="{{ v | escape }}"{% unless v == option.selected_value %} hidden{% endunless %}>{%- endif -%}
+                {%- endfor -%}
+                <span class="step__caption" data-cond-caption>Example of {{ option.selected_value }} (body, screen)</span>
+              </div>
             {%- elsif step_img != blank -%}
               <div class="step__img">{{ step_img | image_url: width: 900 | image_tag: loading: 'lazy' }}{%- if i == cond_idx -%}<span class="step__caption" data-cond-caption>Example of {{ option.selected_value }} (body, screen)</span>{%- endif -%}</div>
             {%- else -%}

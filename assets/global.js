@@ -256,6 +256,7 @@
       const condNote = $('[data-cond-note]', root);
       const capt = $('[data-cond-caption]', root);
       if (cfg.cond >= 0 && capt) capt.textContent = `Example of ${sel[cfg.cond]} (body, screen)`;
+      if (cfg.cond >= 0) { const imgs = $$('[data-cond-img]', root); if (imgs.some(im => im.dataset.condImg === sel[cfg.cond])) imgs.forEach(im => (im.hidden = im.dataset.condImg !== sel[cfg.cond])); }
 
       $$('[data-opts-text]', root).forEach(el => (el.textContent = sel.join(' · ')));
       $$('[data-opt-tags]', root).forEach(el => (el.innerHTML = sel.map(s => `<span>${s}</span>`).join('')));
