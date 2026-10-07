@@ -1226,3 +1226,6 @@ shopify-payment-terms{font-size:13px}
 .search-panel__empty{margin:12px 8px;color:#6b6b76}
 .search-panel__all{display:block;margin-top:8px;padding:12px 8px;border-top:1px solid #eee;font-weight:600;font-size:14px;border-radius:0 0 8px 8px}
 @media (max-width:749px){.search-panel{max-height:62vh;padding:8px;right:auto;width:calc(100vw - 32px)}}
+/* hide animated placeholder on focus / when typed, without relying on JS */
+.header__search:focus-within .search-anim,
+.header__search input:not(:placeholder-shown) ~ .search-anim{opacity:0;visibility:hidden}
