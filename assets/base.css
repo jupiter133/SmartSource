@@ -1022,3 +1022,4 @@ shopify-payment-terms{font-size:13px}
   .coll-sort select{width:100%}
 }
 @media (prefers-reduced-motion:reduce){.coll-filters,.coll-grid .card,.coll-filter__plus::before,.coll-filter__plus::after{transition:none}}
+.cat-card__img img{width:auto;height:auto;max-width:88%;max-height:72%}

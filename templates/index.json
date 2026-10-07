@@ -88,7 +88,8 @@
           "settings": {
             "title": "iPhone",
             "link": "/collections/all/iphone",
-            "art": "phone"
+            "art": "phone",
+            "asset_image": "tech-iphones.webp"
           }
         },
         "c2": {
@@ -96,7 +97,8 @@
           "settings": {
             "title": "Android",
             "link": "/collections/all/android",
-            "art": "phone"
+            "art": "phone",
+            "asset_image": "tech-android.webp"
           }
         },
         "c3": {
@@ -104,7 +106,8 @@
           "settings": {
             "title": "MacBook",
             "link": "/collections/all/macbook",
-            "art": "laptop"
+            "art": "laptop",
+            "asset_image": "tech-macbooks.webp"
           }
         },
         "c4": {
@@ -120,7 +123,8 @@
           "settings": {
             "title": "Tablets",
             "link": "/collections/all/tablets",
-            "art": "tablet"
+            "art": "tablet",
+            "asset_image": "tech-ipads.webp"
           }
         },
         "c6": {
@@ -128,7 +132,8 @@
           "settings": {
             "title": "Gaming",
             "link": "/collections/all/consoles",
-            "art": "console"
+            "art": "console",
+            "asset_image": "tech-consoles.webp"
           }
         },
         "c7": {
@@ -136,7 +141,8 @@
           "settings": {
             "title": "Smartwatches",
             "link": "/collections/all/smartwatches",
-            "art": "watch"
+            "art": "watch",
+            "asset_image": "tech-watches.webp"
           }
         },
         "c8": {
@@ -144,7 +150,8 @@
           "settings": {
             "title": "AirPods + Audio",
             "link": "/collections/all/audio",
-            "art": "audio"
+            "art": "audio",
+            "asset_image": "tech-audio.webp"
           }
         },
         "c9": {
