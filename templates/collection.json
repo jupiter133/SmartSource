@@ -154,8 +154,8 @@
         "chip_18": {
           "type": "chip",
           "settings": {
-            "label": "iPhone 18",
-            "link": "/collections/all/iphone-18",
+            "label": "iPhone SE",
+            "link": "/collections/all/iphone-se",
             "parent": "iphone"
           }
         },
@@ -406,6 +406,14 @@
             "link": "/collections/all/iphone-air",
             "parent": "iphone"
           }
+        },
+        "chip_i18": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone 18",
+            "link": "/collections/all/iphone-18",
+            "parent": "iphone"
+          }
         }
       },
       "block_order": [
@@ -419,7 +427,7 @@
         "chip_8",
         "chip_9",
         "chip_10",
-        "chip_18",
+        "chip_i18",
         "chip_11",
         "chip_air",
         "chip_12",
