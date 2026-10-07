@@ -1,7 +1,139 @@
-<section class="page-width section"><h1>{{ blog.title }}</h1>
+{%- comment -%}
+  Journal: one section renders the blog home, the 3 section pages, category pages and author pages.
+  /blogs/journal                     → home
+  /blogs/journal/tagged/comparisons  → section page (block kind "section")
+  /blogs/journal/tagged/news         → category page (block kind "category")
+  /blogs/journal/tagged/author-xyz   → author page (data from theme settings → Journal)
+{%- endcomment -%}
+{%- assign active = '' -%}{%- assign active_tag = '' -%}
+{%- if current_tags -%}{%- assign active_tag = current_tags | first -%}{%- assign active = active_tag | handleize -%}{%- endif -%}
+{%- assign topic = nil -%}
+{%- for b in section.blocks -%}{%- assign bh = b.settings.tag | handleize -%}{%- if bh == active -%}{%- assign topic = b -%}{%- endif -%}{%- endfor -%}
+
+{% render 'journal-bar', active: active %}
+
+<div class="jr jr-page">
+{%- if active == '' -%}
+  {%- comment -%} ===== HOME ===== {%- endcomment -%}
+  <section class="jr-hero">
+    <div class="page-width jr-hero__in">
+      <p class="jr-eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="jr-hero__title">{{ section.settings.title }}</h1>
+      <p class="jr-hero__sub">{{ section.settings.subtitle }}</p>
+      <form class="jr-hero__search" action="{{ routes.search_url }}" role="search">
+        <input type="hidden" name="type" value="article">
+        <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" aria-label="Search the Journal">
+        <button class="btn btn--accent" type="submit">Search</button>
+      </form>
+    </div>
+  </section>
+
+  {%- assign featured = nil -%}
+  {%- for a in blog.articles -%}{%- if a.tags contains 'featured' -%}{%- assign featured = a -%}{%- break -%}{%- endif -%}{%- endfor -%}
+  {%- if featured == nil -%}{%- assign featured = blog.articles.first -%}{%- endif -%}
+  {%- if featured -%}
+    <section class="page-width jr-block">
+      <h2 class="visually-hidden">Featured</h2>
+      {% render 'journal-card', article: featured, size: 'feature', heading: 'h3' %}
+    </section>
+  {%- endif -%}
+
+  {%- for b in section.blocks -%}
+    {%- if b.settings.kind == 'section' -%}
+      {%- capture cards -%}{%- assign n = 0 -%}{%- for a in blog.articles -%}{%- if a.tags contains b.settings.tag and a.id != featured.id -%}{% render 'journal-card', article: a %}{%- assign n = n | plus: 1 -%}{%- if n == 3 -%}{%- break -%}{%- endif -%}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+      {%- if cards != blank -%}
+        <section class="page-width jr-block" {{ b.shopify_attributes }}>
+          <div class="jr-block__head">
+            <div><h2 class="jr-h2">{{ b.settings.emoji }} {{ b.settings.title }}</h2><p class="jr-muted">{{ b.settings.intro }}</p></div>
+            <a class="jr-link" href="{{ blog.url }}/tagged/{{ b.settings.tag | handleize }}">See all →</a>
+          </div>
+          <div class="jr-grid">{{ cards }}</div>
+        </section>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <section class="page-width jr-block">
+    <h2 class="jr-h2">Browse by topic</h2>
+    <div class="jr-topics">
+      {%- for b in section.blocks -%}{%- if b.settings.kind == 'category' -%}
+        <a class="jr-topic" href="{{ blog.url }}/tagged/{{ b.settings.tag | handleize }}" {{ b.shopify_attributes }}><span class="jr-topic__emoji" aria-hidden="true">{{ b.settings.emoji }}</span><span>{{ b.settings.title }}</span></a>
+      {%- endif -%}{%- endfor -%}
+    </div>
+  </section>
+
+  <section class="page-width jr-block">{% render 'journal-newsletter', id: section.id %}</section>
+
   {%- paginate blog.articles by 12 -%}
-  <div class="grid">{%- for a in blog.articles -%}<a class="card" href="{{ a.url }}">{%- if a.image -%}{{ a.image | image_url: width: 500 | image_tag: loading: 'lazy' }}{%- endif -%}<p class="card__title">{{ a.title }}</p><p class="muted">{{ a.published_at | date: '%b %d, %Y' }}</p></a>{%- endfor -%}</div>
-  {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
+  <section class="page-width jr-block">
+    <h2 class="jr-h2">Latest</h2>
+    <div class="jr-grid">{%- for a in blog.articles -%}{% render 'journal-card', article: a %}{%- endfor -%}</div>
+    {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pages">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  </section>
   {%- endpaginate -%}
-</section>
-{% schema %}{ "name": "Blog" }{% endschema %}
+
+{%- else -%}
+  {%- comment -%} ===== SECTION / CATEGORY / AUTHOR ===== {%- endcomment -%}
+  {%- assign is_author = false -%}
+  {%- if active contains 'author-' -%}{%- assign is_author = true -%}{%- assign author_handle = active | remove_first: 'author-' -%}{%- endif -%}
+  <nav class="page-width jr-crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span>›</span><a href="{{ blog.url }}">Journal</a><span>›</span><span aria-current="page">{% if topic %}{{ topic.settings.title }}{% else %}{{ active_tag }}{% endif %}</span></nav>
+  <section class="jr-topic-hero">
+    <div class="page-width">
+      {%- if is_author -%}
+        {% render 'journal-author', handle: author_handle, size: 'full', heading: 'h1' %}
+      {%- else -%}
+        <p class="jr-eyebrow">{% if topic.settings.kind == 'section' %}Guides{% else %}Topic{% endif %}</p>
+        <h1 class="jr-hero__title">{% if topic %}{{ topic.settings.emoji }} {{ topic.settings.title }}{% else %}{{ active_tag }}{% endif %}</h1>
+        {%- if topic.settings.intro != blank -%}<p class="jr-hero__sub">{{ topic.settings.intro }}</p>{%- endif -%}
+      {%- endif -%}
+    </div>
+  </section>
+  {%- paginate blog.articles by 12 -%}
+  <section class="page-width jr-block">
+    {%- if blog.articles.size == 0 -%}<p class="jr-muted">Nothing here yet. <a class="jr-link" href="{{ blog.url }}">Back to the Journal</a></p>{%- endif -%}
+    <div class="jr-grid">{%- for a in blog.articles -%}{% render 'journal-card', article: a, heading: 'h2' %}{%- endfor -%}</div>
+    {%- if paginate.pages > 1 -%}<nav class="pagination" aria-label="Pages">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  </section>
+  {%- endpaginate -%}
+  <section class="page-width jr-block">{% render 'journal-newsletter', id: section.id %}</section>
+{%- endif -%}
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | append: '/' | json }} },
+    { "@type": "ListItem", "position": 2, "name": "Journal", "item": {{ shop.url | append: blog.url | json }} }
+    {%- if active != '' -%},
+    { "@type": "ListItem", "position": 3, "name": {% if topic %}{{ topic.settings.title | json }}{% else %}{{ active_tag | json }}{% endif %}, "item": {{ shop.url | append: blog.url | append: '/tagged/' | append: active | json }} }
+    {%- endif %}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Journal",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The SmartSource Journal" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Straight answers about your tech" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Which phone to buy, how to fix it, and how to make it last. Written by people who repair devices every day." },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Try “iPhone 14 vs 15” or “factory reset”" }
+  ],
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Topic",
+      "settings": [
+        { "type": "text", "id": "tag", "label": "Post tag (exact)", "info": "Posts with this tag appear on this topic's page." },
+        { "type": "select", "id": "kind", "label": "Type", "options": [ { "value": "section", "label": "Main section (shown on Journal home)" }, { "value": "category", "label": "Category" } ], "default": "category" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "emoji", "label": "Emoji" },
+        { "type": "textarea", "id": "intro", "label": "Intro" }
+      ]
+    }
+  ]
+}
+{% endschema %}

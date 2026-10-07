@@ -1,0 +1,28 @@
+{%- comment -%} Journal article card. Params: article, size ('feature' or blank), heading ('h2'/'h3') {%- endcomment -%}
+{%- assign kicker = '' -%}{%- assign kind = 'other' -%}
+{%- for t in article.tags -%}
+  {%- case t -%}
+    {%- when 'Comparisons' -%}{%- assign kicker = 'Comparison' -%}{%- assign kind = 'cmp' -%}{%- break -%}
+    {%- when 'Repair Guides' -%}{%- assign kicker = 'Repair guide' -%}{%- assign kind = 'fix' -%}{%- break -%}
+    {%- when 'How-To Guides' -%}{%- assign kicker = 'How-to' -%}{%- assign kind = 'how' -%}{%- break -%}
+  {%- endcase -%}
+{%- endfor -%}
+{%- if kicker == '' -%}{%- for t in article.tags -%}{%- unless t contains 'author-' or t == 'featured' -%}{%- assign kicker = t -%}{%- break -%}{%- endunless -%}{%- endfor -%}{%- endif -%}
+{%- assign words = article.content | strip_html | split: ' ' | size -%}
+{%- assign mins = words | divided_by: 220 | round | at_least: 1 -%}
+{%- assign hd = heading | default: 'h3' -%}
+<article class="jr-card jr-card--{{ kind }}{% if size == 'feature' %} jr-card--feature{% endif %}">
+  <a class="jr-card__img" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+    {%- if article.image -%}
+      {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', alt: article.image.alt | default: article.title }}
+    {%- else -%}
+      <span class="jr-card__art"><span>{{ kicker }}</span></span>
+    {%- endif -%}
+  </a>
+  <div class="jr-card__body">
+    <p class="jr-kicker">{{ kicker }}</p>
+    <{{ hd }} class="jr-card__title"><a href="{{ article.url }}">{{ article.title }}</a></{{ hd }}>
+    {%- if size == 'feature' -%}<p class="jr-card__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 32 }}</p>{%- endif -%}
+    <p class="jr-meta">{{ article.author }} · {{ mins }} min read</p>
+  </div>
+</article>

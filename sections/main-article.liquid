@@ -1,4 +1,234 @@
-<article class="page-width section narrow"><h1>{{ article.title }}</h1><p class="muted">{{ article.published_at | date: '%b %d, %Y' }}</p>
-  {%- if article.image -%}{{ article.image | image_url: width: 1200 | image_tag }}{%- endif -%}
-  <div class="rte">{{ article.content }}</div></article>
-{% schema %}{ "name": "Article" }{% endschema %}
+{%- comment -%}
+  Journal post. One section, six templates (article.*.json) set post_type.
+  Body conventions (all optional, written in the post HTML):
+    [[products:handle-a,handle-b]]  → live product cards from the catalog
+    [[price:handle]]                → live "from" price
+    <div class="jr-box jr-box--verdict|warn|pro|means|tip">…</div>   → callout boxes
+    <ol class="steps">…</ol>        → numbered steps (feeds HowTo schema)
+    <div class="device-tabs"><section data-label="iPhone">…</section>…</div> → device tabs
+    <div class="faq"><details><summary>Q</summary><div>A</div></details></div> → FAQ (feeds FAQ schema)
+    <figure class="photo-slot"><img …><figcaption>…</figcaption></figure> → photo; hidden while empty
+{%- endcomment -%}
+{%- assign post_type = section.settings.post_type -%}
+
+{%- comment -%} Tags → section, category, author {%- endcomment -%}
+{%- assign sec_tag = '' -%}{%- assign author_handle = '' -%}{%- assign cat_tag = '' -%}
+{%- for t in article.tags -%}{%- if t == 'Comparisons' or t == 'Repair Guides' or t == 'How-To Guides' -%}{%- assign sec_tag = t -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- for t in article.tags -%}{%- if t contains 'author-' -%}{%- assign author_handle = t | handleize | remove_first: 'author-' -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- for t in article.tags -%}{%- unless t == sec_tag or t contains 'author-' or t == 'featured' -%}{%- assign cat_tag = t -%}{%- break -%}{%- endunless -%}{%- endfor -%}
+{%- assign crumb_tag = sec_tag | default: cat_tag -%}
+
+{%- comment -%} Body processing: product cards, prices, heading anchors + table of contents {%- endcomment -%}
+{%- assign body = article.content -%}
+{%- assign shop_handles = '' -%}
+{%- if body contains '[[products:' -%}
+  {%- assign chunks = body | split: '[[products:' -%}
+  {%- capture body -%}{%- for c in chunks -%}{%- if forloop.first -%}{{ c }}{%- else -%}
+    {%- assign hs = c | split: ']]' | first -%}
+    {%- assign rest = c | remove_first: hs | remove_first: ']]' -%}
+    {%- assign list = hs | split: ',' -%}
+    {%- capture grid -%}{%- for h in list -%}{%- assign h = h | strip -%}{%- assign p = all_products[h] -%}{%- if p.id -%}{% render 'journal-product', product: p %}{%- assign shop_handles = shop_handles | append: h | append: ',' -%}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+    {%- if grid != blank -%}<div class="jr-shop">{{ grid }}</div>{%- endif -%}{{ rest }}
+  {%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- endif -%}
+{%- if body contains '[[price:' -%}
+  {%- assign chunks = body | split: '[[price:' -%}
+  {%- capture body -%}{%- for c in chunks -%}{%- if forloop.first -%}{{ c }}{%- else -%}
+    {%- assign h = c | split: ']]' | first | strip -%}{%- assign p = all_products[h] -%}
+    {%- if p.id -%}<a class="jr-price" href="{{ p.url }}">{{ p.price_min | money }}</a>{%- else -%}<span class="jr-price">see store</span>{%- endif -%}{{ c | remove_first: h | remove_first: ']]' }}
+  {%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- endif -%}
+{%- assign toc = '' -%}
+{%- if body contains '<h2' -%}
+  {%- assign parts = body | split: '<h2' -%}
+  {%- capture body -%}{%- for part in parts -%}{%- if forloop.first -%}{{ part }}{%- else -%}
+    {%- assign inner = part | split: '</h2>' | first -%}
+    {%- assign htitle = '<h2' | append: inner | append: '</h2>' | strip_html | strip -%}
+    {%- assign hid = htitle | handleize -%}
+    {%- capture li -%}<li><a href="#{{ hid }}">{{ htitle }}</a></li>{%- endcapture -%}{%- assign toc = toc | append: li -%}
+    {{- '<h2 id="' | append: hid | append: '"' -}}{{ part }}
+  {%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- endif -%}
+
+{%- assign words = article.content | strip_html | split: ' ' | size -%}
+{%- assign mins = words | divided_by: 220 | round | at_least: 1 -%}
+{%- assign first_handle = shop_handles | split: ',' | first -%}
+{%- assign first_product = nil -%}{%- if first_handle != blank -%}{%- assign first_product = all_products[first_handle] -%}{%- endif -%}
+
+{%- assign crumb_handle = crumb_tag | handleize -%}
+{% render 'journal-bar', active: crumb_handle %}
+
+<div class="jr jr-page">
+  <nav class="page-width jr-crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span>›</span><a href="{{ blog.url }}">Journal</a>
+    {%- if crumb_tag != blank -%}<span>›</span><a href="{{ blog.url }}/tagged/{{ crumb_tag | handleize }}">{{ crumb_tag }}</a>{%- endif -%}
+  </nav>
+
+  <article class="jr-post jr-post--{{ post_type }}">
+    <header class="page-width jr-post__head">
+      <p class="jr-kicker">{% case post_type %}{% when 'comparison' %}Comparison{% when 'repair' %}Repair guide{% when 'howto' %}How-to{% when 'gifting' %}Gift guide{% when 'news' %}News{% when 'expert' %}Tech Experts{% else %}{{ cat_tag | default: 'Journal' }}{% endcase %}</p>
+      <h1 class="jr-post__title">{{ article.title }}</h1>
+      {%- if article.excerpt != blank -%}<p class="jr-post__dek">{{ article.excerpt | strip_html }}</p>{%- endif -%}
+      <p class="jr-meta jr-post__meta">
+        By {% if author_handle != blank %}<a href="{{ blog.url }}/tagged/author-{{ author_handle }}">{{ article.author }}</a>{% else %}{{ article.author }}{% endif %}
+        · Updated <time datetime="{{ article.updated_at | date: '%Y-%m-%d' }}">{{ article.updated_at | date: '%b %-d, %Y' }}</time>
+        · {{ mins }} min read
+      </p>
+      {%- if post_type == 'expert' -%}{% render 'journal-author', name: article.author, size: 'full' %}{%- endif -%}
+    </header>
+
+    {%- if article.image -%}
+      <figure class="page-width jr-post__img">{{ article.image | image_url: width: 1600 | image_tag: sizes: '(min-width: 1200px) 1100px, 100vw', fetchpriority: 'high', alt: article.image.alt | default: article.title }}</figure>
+    {%- endif -%}
+
+    <div class="page-width jr-post__grid">
+      {%- if toc != blank -%}
+        <aside class="jr-toc" aria-label="On this page">
+          <details open data-jr-toc><summary>On this page</summary><ol>{{ toc }}</ol></details>
+        </aside>
+      {%- endif -%}
+      <div class="jr-post__main">
+        <div class="jr-rte">{{ body }}</div>
+
+        {%- if post_type == 'repair' -%}
+          {%- assign repair_url = settings.journal_repair_url -%}
+          {%- if repair_url == blank -%}{%- if pages['repairs'].id -%}{%- assign repair_url = pages['repairs'].url -%}{%- else -%}{%- assign repair_url = '/pages/contact' -%}{%- endif -%}{%- endif -%}
+          <div class="jr-cta jr-cta--repair">
+            <div><p class="jr-cta__title">Rather not open it up yourself?</p><p>Our technicians do this every day. Most screen, battery and port jobs are done same day, with a warranty on the repair.</p></div>
+            <a class="btn btn--accent" href="{{ repair_url }}">Book a repair</a>
+          </div>
+        {%- endif -%}
+
+        <div class="jr-cta">
+          {%- if first_product -%}
+            <div><p class="jr-cta__title">Skip the new-phone price</p><p>Get the {{ first_product.title }} refurbished from {{ first_product.price_min | money }}, tested by real technicians with a 1-year warranty and 30-day returns.</p></div>
+            <a class="btn btn--accent" href="{{ first_product.url }}">Shop refurbished {{ first_product.title }}</a>
+          {%- else -%}
+            {%- assign cta_url = section.settings.cta_default_url -%}{%- assign cta_label = section.settings.cta_default_label -%}
+            {%- assign map = section.settings.cta_map | newline_to_br | split: '<br />' -%}
+            {%- for line in map -%}{%- assign bits = line | split: '|' -%}{%- assign key = bits[0] | strip -%}
+              {%- if bits.size > 2 and article.tags contains key -%}{%- assign cta_url = bits[1] | strip -%}{%- assign cta_label = bits[2] | strip -%}{%- break -%}{%- endif -%}
+            {%- endfor -%}
+            <div><p class="jr-cta__title">Same tech, way less money</p><p>Every refurbished device is tested by real technicians, backed by a 1-year warranty and 30-day returns.</p></div>
+            <a class="btn btn--accent" href="{{ cta_url }}">{{ cta_label }}</a>
+          {%- endif -%}
+        </div>
+
+        {%- unless post_type == 'expert' -%}<div class="jr-post__author">{% render 'journal-author', name: article.author %}</div>{%- endunless -%}
+
+        {%- if article.tags.size > 0 -%}
+          <div class="jr-post__tags">{%- for t in article.tags -%}{%- unless t contains 'author-' or t == 'featured' -%}<a class="jr-chip" href="{{ blog.url }}/tagged/{{ t | handleize }}">{{ t }}</a>{%- endunless -%}{%- endfor -%}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </article>
+
+  {%- assign seen = article.id | append: ',' -%}{%- assign n = 0 -%}
+  {%- capture related -%}
+    {%- for a in blog.articles -%}{%- assign aid = a.id | append: ',' -%}
+      {%- if n < 3 and a.tags contains crumb_tag -%}{%- unless seen contains aid -%}{% render 'journal-card', article: a %}{%- assign seen = seen | append: aid -%}{%- assign n = n | plus: 1 -%}{%- endunless -%}{%- endif -%}
+    {%- endfor -%}
+    {%- for a in blog.articles -%}{%- assign aid = a.id | append: ',' -%}
+      {%- if n < 3 -%}{%- unless seen contains aid -%}{% render 'journal-card', article: a %}{%- assign seen = seen | append: aid -%}{%- assign n = n | plus: 1 -%}{%- endunless -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if related != blank -%}
+    <section class="page-width jr-block"><h2 class="jr-h2">Keep reading</h2><div class="jr-grid">{{ related }}</div></section>
+  {%- endif -%}
+  <section class="page-width jr-block">{% render 'journal-newsletter', id: section.id %}</section>
+</div>
+
+{%- comment -%} ===== Structured data ===== {%- endcomment -%}
+{%- assign desc = article.excerpt_or_content | strip_html | strip_newlines | truncate: 160 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {% if post_type == 'news' %}"NewsArticle"{% else %}"BlogPosting"{% endif %},
+  "headline": {{ article.title | json }},
+  "description": {{ desc | json }},
+  {%- if article.image %}"image": [{{ article.image | image_url: width: 1600 | prepend: 'https:' | json }}],{% endif %}
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+  "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+  "wordCount": {{ words }},
+  "author": { "@type": "{% if article.author contains 'SmartSource' %}Organization{% else %}Person{% endif %}", "name": {{ article.author | json }}{% if author_handle != blank %}, "url": {{ shop.url | append: blog.url | append: '/tagged/author-' | append: author_handle | json }}{% endif %} },
+  "publisher": { "@type": "Organization", "name": {{ shop.name | json }}, "logo": { "@type": "ImageObject", "url": {{ 'logo-smartsource.png' | asset_url | prepend: 'https:' | json }} } },
+  "mainEntityOfPage": {{ shop.url | append: article.url | json }}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | append: '/' | json }} },
+    { "@type": "ListItem", "position": 2, "name": "Journal", "item": {{ shop.url | append: blog.url | json }} },
+    {%- if crumb_tag != blank %}{ "@type": "ListItem", "position": 3, "name": {{ crumb_tag | json }}, "item": {{ shop.url | append: blog.url | append: '/tagged/' | append: crumb_tag | handleize | json }} },{% endif %}
+    { "@type": "ListItem", "position": {% if crumb_tag != blank %}4{% else %}3{% endif %}, "name": {{ article.title | json }} }
+  ]
+}
+</script>
+{%- if article.content contains '<summary' -%}
+{%- assign segs = article.content | split: '<summary' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for seg in segs offset: 1 -%}
+      {%- assign q = seg | split: '</summary>' | first | prepend: '<summary' | strip_html | strip -%}
+      {%- assign ans = seg | split: '</summary>' | last | split: '</details>' | first | strip_html | strip_newlines | strip -%}
+      { "@type": "Question", "name": {{ q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ ans | json }} } }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+{%- if post_type == 'repair' or post_type == 'howto' -%}{%- if article.content contains 'class="steps"' -%}
+{%- assign steps_html = article.content | split: 'class="steps"' -%}
+{%- assign steps_html = steps_html[1] | split: '</ol>' | first -%}
+{%- assign items = steps_html | split: '<li' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ article.title | json }},
+  "description": {{ desc | json }},
+  "step": [
+    {%- for it in items offset: 1 -%}
+      {%- assign stext = it | prepend: '<li' | strip_html | strip_newlines | strip -%}
+      {%- if it contains '<strong>' -%}{%- assign sname = it | split: '<strong>' | last | split: '</strong>' | first | strip_html | strip -%}{%- else -%}{%- assign sname = stext | truncatewords: 8 -%}{%- endif -%}
+      { "@type": "HowToStep", "position": {{ forloop.index }}, "name": {{ sname | json }}, "text": {{ stext | json }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}{%- endif -%}
+{%- if shop_handles != blank -%}
+{%- assign hl = shop_handles | split: ',' | uniq -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": {{ 'Products in ' | append: article.title | json }},
+  "itemListElement": [
+    {%- for h in hl -%}{%- assign p = all_products[h] -%}
+      { "@type": "ListItem", "position": {{ forloop.index }}, "item": { "@type": "Product", "name": {{ p.title | json }}, "url": {{ shop.url | append: p.url | json }}{% if p.featured_image %}, "image": {{ p.featured_image | image_url: width: 800 | prepend: 'https:' | json }}{% endif %}, "brand": { "@type": "Brand", "name": {{ p.vendor | json }} }, "offers": { "@type": "AggregateOffer", "priceCurrency": {{ cart.currency.iso_code | json }}, "lowPrice": {{ p.price_min | divided_by: 100.0 | json }}, "highPrice": {{ p.price_max | divided_by: 100.0 | json }}, "itemCondition": "https://schema.org/RefurbishedCondition", "availability": "https://schema.org/{% if p.available %}InStock{% else %}OutOfStock{% endif %}" } } }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Journal post",
+  "settings": [
+    { "type": "select", "id": "post_type", "label": "Post type", "default": "standard", "options": [
+      { "value": "standard", "label": "Standard" }, { "value": "comparison", "label": "Comparison" }, { "value": "repair", "label": "Repair guide" },
+      { "value": "howto", "label": "How-to" }, { "value": "gifting", "label": "Gifting" }, { "value": "news", "label": "News" }, { "value": "expert", "label": "Tech Expert" } ] },
+    { "type": "textarea", "id": "cta_map", "label": "Shop CTA by tag", "info": "One per line: Tag | link | button label. Used when the post has no product cards.", "default": "Laptops | /collections/all/laptops | Shop refurbished laptops\nTablets | /collections/all/tablets | Shop refurbished tablets\nGaming | /collections/all/consoles | Shop refurbished consoles\nAudio | /collections/all/audio | Shop refurbished audio\nAccessories | /collections/all/accessories | Shop accessories\nTrade-In | /pages/sell-your-device | Get a trade-in quote\nPhones | /collections/all/smartphones | Shop refurbished phones" },
+    { "type": "url", "id": "cta_default_url", "label": "Default CTA link", "default": "/collections/all" },
+    { "type": "text", "id": "cta_default_label", "label": "Default CTA label", "default": "Shop refurbished tech" }
+  ]
+}
+{% endschema %}

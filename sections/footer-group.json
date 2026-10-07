@@ -9,7 +9,7 @@
           "type": "menu",
           "settings": {
             "title": "About",
-            "links": "Why refurbished | /pages/why-refurbished\nOur promise | /pages/our-promise\nTech Journal | /blogs/news\nContact us | /pages/contact"
+            "links": "Why refurbished | /pages/why-refurbished\nOur promise | /pages/our-promise\nJournal | /blogs/journal\nContact us | /pages/contact"
           }
         },
         "help": {

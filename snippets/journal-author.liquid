@@ -1,0 +1,31 @@
+{%- comment -%} Author card from theme settings (Journal). Params: name or handle, size ('full' or blank), heading {%- endcomment -%}
+{%- assign found = 0 -%}
+{%- for i in (1..4) -%}
+  {%- assign k = 'author_' | append: i -%}
+  {%- assign kn = k | append: '_name' -%}{%- assign kh = k | append: '_handle' -%}
+  {%- assign a_name = settings[kn] -%}{%- assign a_handle = settings[kh] -%}
+  {%- if name != blank and a_name == name -%}{%- assign found = i -%}{%- break -%}{%- endif -%}
+  {%- if handle != blank and a_handle == handle -%}{%- assign found = i -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- if found > 0 -%}
+  {%- assign k = 'author_' | append: found -%}
+  {%- assign kn = k | append: '_name' -%}{%- assign kh = k | append: '_handle' -%}{%- assign kr = k | append: '_role' -%}
+  {%- assign kb = k | append: '_bio' -%}{%- assign kc = k | append: '_credentials' -%}{%- assign ki = k | append: '_image' -%}
+  {%- assign a_name = settings[kn] -%}{%- assign a_handle = settings[kh] -%}{%- assign a_role = settings[kr] -%}
+  {%- assign a_bio = settings[kb] -%}{%- assign a_cred = settings[kc] -%}{%- assign a_img = settings[ki] -%}
+  {%- assign jb = settings.journal_blog | default: 'journal' -%}
+  <div class="jr-author{% if size == 'full' %} jr-author--full{% endif %}">
+    <div class="jr-author__img">
+      {%- if a_img != blank -%}{{ a_img | image_url: width: 160 | image_tag: alt: a_name, loading: 'lazy', width: 80, height: 80 }}{%- else -%}<span>{{ a_name | slice: 0 }}</span>{%- endif -%}
+    </div>
+    <div class="jr-author__body">
+      {%- if heading -%}<{{ heading }} class="jr-author__name">{{ a_name }}</{{ heading }}>{%- else -%}<p class="jr-author__name"><a href="/blogs/{{ jb }}/tagged/author-{{ a_handle }}">{{ a_name }}</a></p>{%- endif -%}
+      {%- if a_role != blank -%}<p class="jr-author__role">{{ a_role }}</p>{%- endif -%}
+      {%- if a_bio != blank -%}<p class="jr-author__bio">{{ a_bio }}</p>{%- endif -%}
+      {%- if a_cred != blank -%}<ul class="jr-author__cred">{%- assign lines = a_cred | newline_to_br | split: '<br />' -%}{%- for l in lines -%}{%- assign l = l | strip -%}{%- if l != blank -%}<li>{{ l }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+      {%- unless heading -%}<a class="jr-author__more" href="/blogs/{{ jb }}/tagged/author-{{ a_handle }}">All posts by {{ a_name }} →</a>{%- endunless -%}
+    </div>
+  </div>
+{%- elsif name != blank -%}
+  <div class="jr-author"><div class="jr-author__img"><span>{{ name | slice: 0 }}</span></div><div class="jr-author__body"><p class="jr-author__name">{{ name }}</p></div></div>
+{%- endif -%}

@@ -171,5 +171,173 @@
         "info": "Shown under the price list, e.g. October 6, 2026. Leave blank to hide."
       }
     ]
+  },
+  {
+    "name": "Journal",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Journal (blog)"
+      },
+      {
+        "type": "text",
+        "id": "journal_blog",
+        "label": "Blog handle",
+        "default": "journal"
+      },
+      {
+        "type": "url",
+        "id": "journal_repair_url",
+        "label": "Repair service link"
+      },
+      {
+        "type": "paragraph",
+        "content": "Authors: tag a post author-<handle> (e.g. author-editors) and set the post's author name to match."
+      },
+      {
+        "type": "header",
+        "content": "Author 1"
+      },
+      {
+        "type": "text",
+        "id": "author_1_handle",
+        "label": "Handle",
+        "default": "editors"
+      },
+      {
+        "type": "text",
+        "id": "author_1_name",
+        "label": "Name (must match post author)",
+        "default": "SmartSource Editors"
+      },
+      {
+        "type": "text",
+        "id": "author_1_role",
+        "label": "Role",
+        "default": "Buying guides & comparisons"
+      },
+      {
+        "type": "textarea",
+        "id": "author_1_bio",
+        "label": "Bio",
+        "default": "We compare devices the way you'd compare them: price, battery, camera, and how long it'll last. No spec-sheet worship."
+      },
+      {
+        "type": "textarea",
+        "id": "author_1_credentials",
+        "label": "Credentials (one per line)"
+      },
+      {
+        "type": "image_picker",
+        "id": "author_1_image",
+        "label": "Photo"
+      },
+      {
+        "type": "header",
+        "content": "Author 2"
+      },
+      {
+        "type": "text",
+        "id": "author_2_handle",
+        "label": "Handle",
+        "default": "repair-bench"
+      },
+      {
+        "type": "text",
+        "id": "author_2_name",
+        "label": "Name (must match post author)",
+        "default": "SmartSource Repair Bench"
+      },
+      {
+        "type": "text",
+        "id": "author_2_role",
+        "label": "Role",
+        "default": "Repair technicians"
+      },
+      {
+        "type": "textarea",
+        "id": "author_2_bio",
+        "label": "Bio",
+        "default": "The team that tests, grades and repairs every device we sell. If a fix is safe to do at home, we'll show you. If it isn't, we'll say so."
+      },
+      {
+        "type": "textarea",
+        "id": "author_2_credentials",
+        "label": "Credentials (one per line)"
+      },
+      {
+        "type": "image_picker",
+        "id": "author_2_image",
+        "label": "Photo"
+      },
+      {
+        "type": "header",
+        "content": "Author 3"
+      },
+      {
+        "type": "text",
+        "id": "author_3_handle",
+        "label": "Handle"
+      },
+      {
+        "type": "text",
+        "id": "author_3_name",
+        "label": "Name (must match post author)"
+      },
+      {
+        "type": "text",
+        "id": "author_3_role",
+        "label": "Role"
+      },
+      {
+        "type": "textarea",
+        "id": "author_3_bio",
+        "label": "Bio"
+      },
+      {
+        "type": "textarea",
+        "id": "author_3_credentials",
+        "label": "Credentials (one per line)"
+      },
+      {
+        "type": "image_picker",
+        "id": "author_3_image",
+        "label": "Photo"
+      },
+      {
+        "type": "header",
+        "content": "Author 4"
+      },
+      {
+        "type": "text",
+        "id": "author_4_handle",
+        "label": "Handle"
+      },
+      {
+        "type": "text",
+        "id": "author_4_name",
+        "label": "Name (must match post author)"
+      },
+      {
+        "type": "text",
+        "id": "author_4_role",
+        "label": "Role"
+      },
+      {
+        "type": "textarea",
+        "id": "author_4_bio",
+        "label": "Bio"
+      },
+      {
+        "type": "textarea",
+        "id": "author_4_credentials",
+        "label": "Credentials (one per line)"
+      },
+      {
+        "type": "image_picker",
+        "id": "author_4_image",
+        "label": "Photo"
+      }
+    ]
   }
 ]

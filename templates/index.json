@@ -336,7 +336,8 @@
     "blog": {
       "type": "featured-blog",
       "settings": {
-        "heading": "Tech Journal"
+        "heading": "From the Journal",
+        "blog": "journal"
       }
     },
     "press": {

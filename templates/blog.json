@@ -1,1 +1,180 @@
-{ "sections": { "main": { "type": "main-blog", "settings": {} } }, "order": ["main"] }
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "t1": {
+          "type": "topic",
+          "settings": {
+            "tag": "Comparisons",
+            "kind": "section",
+            "title": "Comparisons",
+            "emoji": "⚖️",
+            "intro": "Device vs device, side by side. Quick verdict up top, specs underneath, and which one you should actually buy."
+          }
+        },
+        "t2": {
+          "type": "topic",
+          "settings": {
+            "tag": "How-To Guides",
+            "kind": "section",
+            "title": "How-To Guides",
+            "emoji": "🧭",
+            "intro": "Phone basics, done right: reset, back up, move your data, free up space, speed it up. iPhone and Android."
+          }
+        },
+        "t3": {
+          "type": "topic",
+          "settings": {
+            "tag": "Repair Guides",
+            "kind": "section",
+            "title": "Repair Guides (DIY)",
+            "emoji": "🔧",
+            "intro": "Fix it yourself: screens, batteries, charging ports, water damage. Honest difficulty ratings and when to call a pro."
+          }
+        },
+        "t4": {
+          "type": "topic",
+          "settings": {
+            "tag": "News",
+            "kind": "category",
+            "title": "News",
+            "emoji": "📰",
+            "intro": "What changed in tech this week, and what it means for your wallet."
+          }
+        },
+        "t5": {
+          "type": "topic",
+          "settings": {
+            "tag": "Tech Experts",
+            "kind": "category",
+            "title": "Tech Experts",
+            "emoji": "🧑‍🔧",
+            "intro": "Picks, answers and hard-earned advice from the people who test and repair our devices."
+          }
+        },
+        "t6": {
+          "type": "topic",
+          "settings": {
+            "tag": "Gifting",
+            "kind": "category",
+            "title": "Gifting",
+            "emoji": "🎁",
+            "intro": "Tech gifts by budget, by person and by occasion. Good gifts that don't cost new-phone money."
+          }
+        },
+        "t7": {
+          "type": "topic",
+          "settings": {
+            "tag": "Deals",
+            "kind": "category",
+            "title": "Deals",
+            "emoji": "🏷️",
+            "intro": "Where the real savings are right now, and how to spot a fake deal."
+          }
+        },
+        "t8": {
+          "type": "topic",
+          "settings": {
+            "tag": "Refurb 101",
+            "kind": "category",
+            "title": "Refurb 101",
+            "emoji": "♻️",
+            "intro": "New vs used vs refurbished, how grading works, and what a warranty really covers."
+          }
+        },
+        "t9": {
+          "type": "topic",
+          "settings": {
+            "tag": "Phones",
+            "kind": "category",
+            "title": "Phones",
+            "emoji": "📱",
+            "intro": "iPhone, Galaxy, Pixel: buying advice, comparisons and fixes."
+          }
+        },
+        "t10": {
+          "type": "topic",
+          "settings": {
+            "tag": "Laptops",
+            "kind": "category",
+            "title": "Laptops",
+            "emoji": "💻",
+            "intro": "MacBooks and Windows laptops: what to buy and what to check."
+          }
+        },
+        "t11": {
+          "type": "topic",
+          "settings": {
+            "tag": "Tablets",
+            "kind": "category",
+            "title": "Tablets",
+            "emoji": "📲",
+            "intro": "iPad and Galaxy Tab advice for school, work and couch time."
+          }
+        },
+        "t12": {
+          "type": "topic",
+          "settings": {
+            "tag": "Gaming",
+            "kind": "category",
+            "title": "Gaming",
+            "emoji": "🎮",
+            "intro": "PlayStation, Xbox, Switch and Steam Deck: which one and why."
+          }
+        },
+        "t13": {
+          "type": "topic",
+          "settings": {
+            "tag": "Audio",
+            "kind": "category",
+            "title": "Audio",
+            "emoji": "🎧",
+            "intro": "Earbuds and headphones: what's worth it and what isn't."
+          }
+        },
+        "t14": {
+          "type": "topic",
+          "settings": {
+            "tag": "Accessories",
+            "kind": "category",
+            "title": "Accessories",
+            "emoji": "🔌",
+            "intro": "Chargers, cables, cases and screen protectors that actually do the job."
+          }
+        },
+        "t15": {
+          "type": "topic",
+          "settings": {
+            "tag": "Trade-In",
+            "kind": "category",
+            "title": "Trade-In & Sell Your Device",
+            "emoji": "💸",
+            "intro": "Get the most cash for your old device, and do it safely."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "t10",
+        "t11",
+        "t12",
+        "t13",
+        "t14",
+        "t15"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

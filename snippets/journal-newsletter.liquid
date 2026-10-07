@@ -1,0 +1,16 @@
+<div class="jr-news">
+  <div>
+    <h2 class="jr-news__title">{{ heading | default: 'Get the good stuff, skip the spam' }}</h2>
+    <p>{{ text | default: 'One email a week: new guides, price drops on refurbished tech, and fixes that save you a repair bill.' }}</p>
+  </div>
+  {%- form 'customer', class: 'jr-news__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter,journal">
+    {%- if form.posted_successfully? -%}<p class="jr-news__ok" role="status">You're in. Check your inbox.</p>
+    {%- else -%}
+      <label class="visually-hidden" for="jr-news-{{ id }}">Email</label>
+      <input id="jr-news-{{ id }}" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" required>
+      <button type="submit" class="btn btn--accent">Sign up</button>
+      {%- if form.errors -%}<p class="jr-news__err">{{ form.errors | default_errors }}</p>{%- endif -%}
+    {%- endif -%}
+  {%- endform -%}
+</div>

@@ -1,0 +1,12 @@
+{%- comment -%} In-article product card. Param: product {%- endcomment -%}
+<a class="jr-prod" href="{{ product.url }}">
+  <span class="jr-prod__img">
+    {%- if product.featured_media -%}{{ product.featured_media | image_url: width: 240 | image_tag: loading: 'lazy', alt: product.featured_media.alt | default: product.title, width: 120, height: 120 }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
+  </span>
+  <span class="jr-prod__body">
+    <span class="jr-prod__title">{{ product.title }}</span>
+    <span class="jr-prod__price">{% if product.price_varies %}From {% endif %}{{ product.price_min | money }}</span>
+    {%- if product.compare_at_price_max > product.price_min -%}<span class="jr-prod__was">New: {{ product.compare_at_price_max | money }}</span>{%- endif -%}
+    <span class="jr-prod__cta">{% if product.available %}Shop refurbished →{% else %}See options →{% endif %}</span>
+  </span>
+</a>

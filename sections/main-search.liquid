@@ -1,12 +1,22 @@
-<section class="page-width section">
-  <h1>Search</h1>
-  <form action="{{ routes.search_url }}" class="header__search"><input type="search" name="q" value="{{ search.terms | escape }}" aria-label="Search"><input type="hidden" name="type" value="product"></form>
+{%- assign journal_only = false -%}
+{%- if search.types.size == 1 and search.types contains 'article' -%}{%- assign journal_only = true -%}{%- endif -%}
+{%- if journal_only -%}{% render 'journal-bar', active: '' %}{%- endif -%}
+<section class="page-width section{% if journal_only %} jr jr-page jr-search{% endif %}">
+  <h1>{% if journal_only %}Search the Journal{% else %}Search{% endif %}</h1>
+  <form action="{{ routes.search_url }}" class="header__search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" aria-label="Search">
+    <input type="hidden" name="type" value="{% if journal_only %}article{% else %}product{% endif %}">
+  </form>
   {%- if search.performed -%}
-    <p class="muted">{{ search.results_count }} results for “{{ search.terms }}”</p>
+    <p class="muted">{{ search.results_count }} results for “{{ search.terms }}”{% unless journal_only %} · <a class="jr-link" href="{{ routes.search_url }}?type=article&q={{ search.terms | url_encode }}">Search guides instead</a>{% endunless %}</p>
     {%- paginate search.results by 24 -%}
-    <div class="grid">
-      {%- for item in search.results -%}{%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}{%- endif -%}{%- endfor -%}
+    <div class="{% if journal_only %}jr-grid{% else %}grid{% endif %}">
+      {%- for item in search.results -%}
+        {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}
+        {%- elsif item.object_type == 'article' -%}{% render 'journal-card', article: item, heading: 'h2' %}{%- endif -%}
+      {%- endfor -%}
     </div>
+    {%- if search.results_count == 0 and journal_only -%}<p class="jr-muted">No guides match that yet. Try a device name, like “iPhone 13” or “PS5”.</p>{%- endif -%}
     {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
     {%- endpaginate -%}
   {%- endif -%}
