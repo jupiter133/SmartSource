@@ -1396,3 +1396,16 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .sum-card.sum-acc>summary::after{transform:rotate(-45deg)}.sum-card.sum-acc[open]>summary::after{transform:rotate(45deg)}
 .step__img--photo{background:#f7c9d4;overflow:hidden}.step__img--photo img{width:100%;height:100%;object-fit:cover}.step__img--tint:has(img[src*="pdp-step-tradein"]) img{width:100%;height:100%;object-fit:cover}
 .step__img--grades{position:relative}.step__img--grades img[hidden]{display:none}
+/* Wide promo cards in collection grid */
+.coll-wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:16px;background:var(--wide-bg,#FCE1EE);border-radius:14px;padding:22px;color:var(--c-ink);min-height:100%;transition:transform .2s,box-shadow .2s}
+.coll-wide:hover{transform:translateY(-2px);box-shadow:0 12px 28px #0000000f}
+.coll-wide__icon{width:42px;height:42px;border-radius:50%;background:var(--c-ink);color:#fff;display:grid;place-items:center;margin-bottom:12px}
+.coll-wide__icon svg{width:20px;height:20px}
+.coll-wide__title{font-size:20px;font-weight:700;line-height:1.25;margin:0 0 8px}
+.coll-wide__text{font-size:14px;color:#3d3d46;margin:0 0 14px}
+.coll-wide__link{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.coll-wide__art{align-self:stretch;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:color-mix(in srgb,#fff 35%,transparent);min-height:200px}
+.coll-wide__art img{width:100%;height:100%;object-fit:cover}
+.coll-wide__art svg{max-height:180px}
+@media (max-width:749px){.coll-wide{grid-template-columns:1fr;padding:18px}.coll-wide__art{min-height:160px}}
+.coll-grid{grid-auto-flow:row dense}

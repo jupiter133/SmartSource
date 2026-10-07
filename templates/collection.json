@@ -12,7 +12,9 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "hero_map": "default: tech-iphones.webp\niphone: cat-iphone.webp\nsamsung: cat-android.webp\npixel: tech-android.webp\nipad: tech-ipads.webp\ntablets: tech-ipads.webp\nmacbook: cat-macbook.webp\nlaptops: tech-macbooks.webp\nconsoles: tech-consoles.webp\nsmartwatches: cat-watches.webp\naudio: cat-audio.webp"
+        "hero_map": "default: tech-iphones.webp\niphone: cat-iphone.webp\nsamsung: cat-android.webp\npixel: tech-android.webp\nipad: tech-ipads.webp\ntablets: tech-ipads.webp\nmacbook: cat-macbook.webp\nlaptops: tech-macbooks.webp\nconsoles: tech-consoles.webp\nsmartwatches: cat-watches.webp\naudio: cat-audio.webp",
+        "wide1_link": "/collections/all/smartphones",
+        "wide2_link": "/pages/phone-plans"
       },
       "blocks": {
         "chip_1": {

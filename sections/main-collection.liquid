@@ -211,9 +211,34 @@
             <p class="coll-promo__text">{{ section.settings.promo_text }}</p>
           </div>
         {%- endunless -%}{%- endif -%}
+        {%- assign shown = 0 -%}{%- assign total = collection.products.size -%}
         {%- for product in collection.products -%}
           {%- if product.type == 'Mail-in Repair' or product.type == 'Mail-in Diagnostic' -%}{%- continue -%}{%- endif -%}
           {% render 'product-card', product: product %}
+          {%- assign shown = shown | plus: 1 -%}
+          {%- unless paginate.current_page > 1 -%}
+            {%- for w in (1..2) -%}
+              {%- assign k = 'wide' | append: w | append: '_' -%}
+              {%- assign kt = k | append: 'title' -%}{%- assign ka = k | append: 'after' -%}{%- assign kx = k | append: 'text' -%}{%- assign kl = k | append: 'link' -%}
+              {%- assign kll = k | append: 'link_label' -%}{%- assign ki = k | append: 'icon' -%}{%- assign kimg = k | append: 'image' -%}{%- assign kas = k | append: 'asset' -%}{%- assign kart = k | append: 'art' -%}
+              {%- assign after = section.settings[ka] | plus: 0 -%}{%- assign need = after | plus: 2 -%}
+              {%- if section.settings[kt] != blank and after > 0 and shown == after and total >= need -%}
+                <a class="coll-wide" href="{{ section.settings[kl] }}" style="--wide-bg: {{ section.settings.wide_bg }}">
+                  <div class="coll-wide__copy">
+                    <span class="coll-wide__icon">{% render 'icon', name: section.settings[ki] %}</span>
+                    <p class="coll-wide__title">{{ section.settings[kt] }}</p>
+                    <p class="coll-wide__text">{{ section.settings[kx] }}</p>
+                    <span class="coll-wide__link">{{ section.settings[kll] }}</span>
+                  </div>
+                  <div class="coll-wide__art">
+                    {%- if section.settings[kimg] != blank -%}{{ section.settings[kimg] | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}
+                    {%- elsif section.settings[kas] != blank -%}<img src="{{ section.settings[kas] | asset_url }}" alt="" width="600" height="600" loading="lazy">
+                    {%- else -%}{% render 'device-art', kind: section.settings[kart], title: section.settings[kt] %}{%- endif -%}
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endunless -%}
         {%- else -%}
           <div class="coll-empty">
             <p><strong>No devices match those filters.</strong></p>
@@ -260,6 +285,26 @@
   { "type": "url", "id": "tradein_link", "label": "Trade-in link" },
   { "type": "range", "id": "open_filters", "label": "Filters open by default", "min": 0, "max": 6, "step": 1, "default": 2 },
   { "type": "header", "content": "Promo tile" },
+  { "type": "header", "content": "Wide promo cards (in the product grid)" },
+  { "type": "color", "id": "wide_bg", "label": "Card background", "default": "#FCE1EE" },
+  { "type": "text", "id": "wide1_title", "label": "Card 1 title", "default": "Free case + screen protector" },
+  { "type": "textarea", "id": "wide1_text", "label": "Card 1 text", "default": "Get both free with any eligible phone. Your new phone is protected from day one." },
+  { "type": "text", "id": "wide1_link_label", "label": "Card 1 link text", "default": "See eligible phones" },
+  { "type": "url", "id": "wide1_link", "label": "Card 1 link" },
+  { "type": "select", "id": "wide1_icon", "label": "Card 1 icon", "default": "shield", "options": [{"value":"shield","label":"Shield"},{"value":"phone","label":"Phone"},{"value":"truck","label":"Truck"},{"value":"swap","label":"Swap"}] },
+  { "type": "image_picker", "id": "wide1_image", "label": "Card 1 image" },
+  { "type": "text", "id": "wide1_asset", "label": "Card 1 theme image file" },
+  { "type": "select", "id": "wide1_art", "label": "Card 1 drawing (if no image)", "default": "case", "options": [{"value":"case","label":"Case"},{"value":"phone","label":"Phone"},{"value":"protector","label":"Screen protector"}] },
+  { "type": "number", "id": "wide1_after", "label": "Card 1 shows after product #", "default": 5 },
+  { "type": "text", "id": "wide2_title", "label": "Card 2 title", "default": "Bundle a phone plan" },
+  { "type": "textarea", "id": "wide2_text", "label": "Card 2 text", "default": "Pair your phone with a mobile plan at a better price. We set it up so you leave connected." },
+  { "type": "text", "id": "wide2_link_label", "label": "Card 2 link text", "default": "Learn more" },
+  { "type": "url", "id": "wide2_link", "label": "Card 2 link", "default": "/collections/all" },
+  { "type": "select", "id": "wide2_icon", "label": "Card 2 icon", "default": "phone", "options": [{"value":"shield","label":"Shield"},{"value":"phone","label":"Phone"},{"value":"truck","label":"Truck"},{"value":"swap","label":"Swap"}] },
+  { "type": "image_picker", "id": "wide2_image", "label": "Card 2 image" },
+  { "type": "text", "id": "wide2_asset", "label": "Card 2 theme image file", "default": "pdp-step-storage.webp" },
+  { "type": "select", "id": "wide2_art", "label": "Card 2 drawing (if no image)", "default": "phone", "options": [{"value":"case","label":"Case"},{"value":"phone","label":"Phone"},{"value":"protector","label":"Screen protector"}] },
+  { "type": "number", "id": "wide2_after", "label": "Card 2 shows after product #", "default": 11 },
   { "type": "checkbox", "id": "show_promo", "label": "Show promo tile first in the grid", "default": true },
   { "type": "text", "id": "promo_title", "label": "Title", "default": "Free 1-year warranty included" },
   { "type": "text", "id": "promo_text", "label": "Text", "default": "Repair or replacement on us, on every device." },
