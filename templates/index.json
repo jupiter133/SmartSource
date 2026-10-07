@@ -1,69 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {
-        "autoplay": true,
-        "speed": 6
-      },
       "blocks": {
         "banner_1": {
           "type": "slide",
           "settings": {
-            "full_banner": true,
-            "asset_image": "banner-pro-camera.webp",
             "heading": "Pro Camera. No Pro Price. Certified refurbished iPhone Pro, ready to go.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone",
+            "full_banner": true,
+            "asset_image": "banner-pro-camera.webp",
             "mobile_focus": 0
           }
         },
         "banner_2": {
           "type": "slide",
           "settings": {
-            "full_banner": true,
-            "asset_image": "banner-upgrade-season.webp",
             "heading": "Upgrade Season Is On. iPhone 17 Pro, Pro Max and 17e, for way less than new.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone-17",
+            "full_banner": true,
+            "asset_image": "banner-upgrade-season.webp",
             "mobile_focus": 0
           }
         },
         "banner_3": {
           "type": "slide",
           "settings": {
-            "full_banner": true,
-            "asset_image": "banner-phone-laptop.webp",
             "heading": "Phone + Laptop. Both for Less. Every device is multi-point inspected and backed by a 12-month warranty and 30-day returns.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all?sort_by=price-ascending",
+            "full_banner": true,
+            "asset_image": "banner-phone-laptop.webp",
             "mobile_focus": 0
           }
         },
         "banner_4": {
           "type": "slide",
           "settings": {
-            "full_banner": true,
-            "asset_image": "banner-your-colour.webp",
             "heading": "Your Phone. Your Colour. iPhone 16 and 16 Plus in every shade, certified refurbished.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone-16",
+            "full_banner": true,
+            "asset_image": "banner-your-colour.webp",
             "mobile_focus": 0
           }
         },
         "banner_5": {
           "type": "slide",
           "settings": {
-            "full_banner": true,
-            "asset_image": "banner-out-with-old.webp",
             "heading": "Out With the Old. Trade in your phone and put the value toward a certified iPhone.",
             "subheading": "",
             "button_label": "",
             "button_link": "/pages/sell-your-device",
+            "full_banner": true,
+            "asset_image": "banner-out-with-old.webp",
             "mobile_focus": 0
           }
         }
@@ -74,40 +79,40 @@
         "banner_3",
         "banner_4",
         "banner_5"
-      ]
+      ],
+      "settings": {
+        "autoplay": true,
+        "speed": 6
+      }
     },
     "categories": {
       "type": "category-carousel",
-      "settings": {
-        "heading": "Shop by category",
-        "layout": "grid"
-      },
       "blocks": {
         "c1": {
           "type": "category",
           "settings": {
             "title": "iPhone",
+            "asset_image": "cat-iphone.webp",
             "link": "/collections/all/iphone",
-            "art": "phone",
-            "asset_image": "cat-iphone.webp"
+            "art": "phone"
           }
         },
         "c2": {
           "type": "category",
           "settings": {
             "title": "Android",
+            "asset_image": "cat-android.webp",
             "link": "/pages/android",
-            "art": "phone",
-            "asset_image": "cat-android.webp"
+            "art": "phone"
           }
         },
         "c3": {
           "type": "category",
           "settings": {
             "title": "MacBook",
+            "asset_image": "cat-macbook.webp",
             "link": "/collections/all/macbook",
-            "art": "laptop",
-            "asset_image": "cat-macbook.webp"
+            "art": "laptop"
           }
         },
         "c4": {
@@ -122,36 +127,36 @@
           "type": "category",
           "settings": {
             "title": "Tablets",
+            "asset_image": "tech-ipads.webp",
             "link": "/collections/all/tablets",
-            "art": "tablet",
-            "asset_image": "tech-ipads.webp"
+            "art": "tablet"
           }
         },
         "c6": {
           "type": "category",
           "settings": {
             "title": "Gaming",
+            "asset_image": "tech-consoles.webp",
             "link": "/collections/all/consoles",
-            "art": "console",
-            "asset_image": "tech-consoles.webp"
+            "art": "console"
           }
         },
         "c7": {
           "type": "category",
           "settings": {
             "title": "Smartwatches",
+            "asset_image": "cat-watches.webp",
             "link": "/collections/all/smartwatches",
-            "art": "watch",
-            "asset_image": "cat-watches.webp"
+            "art": "watch"
           }
         },
         "c8": {
           "type": "category",
           "settings": {
             "title": "AirPods + Audio",
+            "asset_image": "cat-audio.webp",
             "link": "/pages/audio",
-            "art": "audio",
-            "asset_image": "cat-audio.webp"
+            "art": "audio"
           }
         },
         "c9": {
@@ -182,7 +187,11 @@
         "c8",
         "c9",
         "c10"
-      ]
+      ],
+      "settings": {
+        "heading": "Shop by category",
+        "layout": "grid"
+      }
     },
     "trade": {
       "type": "promo-banner",
@@ -194,12 +203,12 @@
         "p1": {
           "type": "card",
           "settings": {
+            "asset_image": "cat-iphone.webp",
             "heading": "Like new. Way less.",
             "text": "Refurbished iPhones and Galaxys, tested and backed by a 1-year warranty.",
             "button_label": "Shop phones",
             "link": "/collections/all",
-            "art": "phone",
-            "asset_image": "cat-iphone.webp"
+            "art": "phone"
           }
         },
         "p2": {
@@ -216,7 +225,8 @@
       "block_order": [
         "p1",
         "p2"
-      ]
+      ],
+      "settings": {}
     },
     "recommended": {
       "type": "product-tabs",
@@ -245,7 +255,8 @@
         "t1",
         "t2",
         "t3"
-      ]
+      ],
+      "settings": {}
     },
     "promise": {
       "type": "promise",
@@ -284,7 +295,8 @@
         "i2",
         "i3",
         "i4"
-      ]
+      ],
+      "settings": {}
     },
     "reels": {
       "type": "video-reels",
@@ -318,7 +330,8 @@
         "r3",
         "r4",
         "r5"
-      ]
+      ],
+      "settings": {}
     },
     "blog": {
       "type": "featured-blog",
@@ -358,7 +371,8 @@
         "a",
         "b",
         "c"
-      ]
+      ],
+      "settings": {}
     },
     "trust": {
       "type": "trust-strip",
@@ -397,7 +411,8 @@
         "b",
         "c",
         "d"
-      ]
+      ],
+      "settings": {}
     },
     "toptech": {
       "type": "top-tech",
@@ -405,71 +420,71 @@
         "t0": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-iphones.webp",
             "label": "IPHONES",
             "title": "Seamless. Secure. Simply iPhone.",
-            "bg": "#EDEDEF",
             "link": "/collections/all/iphone",
-            "asset_image": "tech-iphones.webp"
+            "bg": "#EDEDEF"
           }
         },
         "t1": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-android.webp",
             "label": "ANDROID",
             "title": "Explore Top Android Picks.",
-            "bg": "#F4F4F5",
             "link": "/collections/all/android",
-            "asset_image": "tech-android.webp"
+            "bg": "#F4F4F5"
           }
         },
         "t2": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-ipads.webp",
             "label": "IPADS",
             "title": "Work Hard. Play Smart.",
-            "bg": "#F4F4F5",
             "link": "/collections/all/ipad",
-            "asset_image": "tech-ipads.webp"
+            "bg": "#F4F4F5"
           }
         },
         "t3": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-macbooks.webp",
             "label": "MACBOOKS",
             "title": "Stay Connected, Stay Active",
-            "bg": "#F4F4F5",
             "link": "/collections/all/macbook",
-            "asset_image": "tech-macbooks.webp"
+            "bg": "#F4F4F5"
           }
         },
         "t4": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-audio.webp",
             "label": "AUDIO",
             "title": "Certified Beats, Everyday Vibes",
-            "bg": "#F4F4F5",
             "link": "/collections/all/audio",
-            "asset_image": "tech-audio.webp"
+            "bg": "#F4F4F5"
           }
         },
         "t5": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-consoles.webp",
             "label": "CONSOLES",
             "title": "Game On For Less.",
-            "bg": "#F4F4F5",
             "link": "/collections/all/consoles",
-            "asset_image": "tech-consoles.webp"
+            "bg": "#F4F4F5"
           }
         },
         "t6": {
           "type": "card",
           "settings": {
+            "asset_image": "tech-watches.webp",
             "label": "WATCHES",
             "title": "Time, Upgraded.",
-            "bg": "#F4F4F5",
             "link": "/collections/all/smartwatches",
-            "asset_image": "tech-watches.webp"
+            "bg": "#F4F4F5"
           }
         }
       },
@@ -481,13 +496,11 @@
         "t4",
         "t5",
         "t6"
-      ]
+      ],
+      "settings": {}
     },
     "deals": {
       "type": "promo-cards",
-      "settings": {
-        "overlap": false
-      },
       "blocks": {
         "d1": {
           "type": "card",
@@ -512,11 +525,13 @@
       "block_order": [
         "d1",
         "d2"
-      ]
+      ],
+      "settings": {
+        "overlap": false
+      }
     },
     "services": {
       "type": "service-cards",
-      "settings": {},
       "blocks": {
         "b1": {
           "type": "card",
@@ -525,9 +540,9 @@
             "text": "Cash or store credit for your old phone, tablet, laptop or console. Instant quote, free shipping label.",
             "button_label": "Trade in now",
             "link": "/pages/sell-your-device",
+            "asset_image": "svc-trade-in.webp",
             "icon": "swap",
-            "tint": "#E3F7FC",
-            "asset_image": "svc-trade-in.webp"
+            "tint": "#E3F7FC"
           }
         },
         "b2": {
@@ -537,9 +552,9 @@
             "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
             "button_label": "Book a repair",
             "link": "/pages/services",
+            "asset_image": "svc-repairs.webp",
             "icon": "inspect",
-            "tint": "#FDE7F1",
-            "asset_image": "svc-repairs.webp"
+            "tint": "#FDE7F1"
           }
         },
         "b3": {
@@ -549,9 +564,9 @@
             "text": "Every device is covered for a full year. Something goes wrong, we make it right.",
             "button_label": "See our promise",
             "link": "/pages/our-promise",
+            "asset_image": "svc-warranty.webp",
             "icon": "award",
-            "tint": "#EDE9FE",
-            "asset_image": "svc-warranty.webp"
+            "tint": "#EDE9FE"
           }
         },
         "b4": {
@@ -571,51 +586,49 @@
         "b2",
         "b3",
         "b4"
-      ]
+      ],
+      "settings": {}
     },
     "banners": {
       "type": "image-banners",
-      "settings": {},
       "blocks": {
         "b1": {
           "type": "banner",
           "settings": {
+            "asset_image": "banner-gaming.webp",
+            "focus_x": 50,
+            "focus_y": 40,
             "heading": "Game night, for less.",
             "text": "PS5 and Switch, refurbished and tested.",
             "button_label": "Shop gaming",
             "link": "/collections/all/consoles",
             "art": "console",
-            "bg": "#14213D",
-            "asset_image": "banner-gaming.webp",
-            "focus_x": 50,
-            "focus_y": 40
+            "bg": "#14213D"
           }
         },
         "b2": {
           "type": "banner",
           "settings": {
+            "asset_image": "banner-back-to-school.webp",
+            "focus_x": 50,
+            "focus_y": 25,
             "heading": "Back to school, under budget.",
             "text": "MacBooks and iPads that won't wreck your wallet.",
             "button_label": "Shop laptops",
             "link": "/collections/all/macbook",
             "art": "laptop",
-            "bg": "#3A1C3F",
-            "asset_image": "banner-back-to-school.webp",
-            "focus_x": 50,
-            "focus_y": 25
+            "bg": "#3A1C3F"
           }
         }
       },
       "block_order": [
         "b1",
         "b2"
-      ]
+      ],
+      "settings": {}
     },
     "brands": {
       "type": "brand-logos",
-      "settings": {
-        "heading": "Top brands, refurbished"
-      },
       "blocks": {
         "b1": {
           "type": "brand",
@@ -667,7 +680,10 @@
         "b4",
         "b5",
         "b6"
-      ]
+      ],
+      "settings": {
+        "heading": "Top brands, refurbished"
+      }
     }
   },
   "order": [
