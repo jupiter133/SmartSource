@@ -1396,4 +1396,3 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .sum-card.sum-acc>summary::after{transform:rotate(-45deg)}.sum-card.sum-acc[open]>summary::after{transform:rotate(45deg)}
 .step__img--photo{background:#f7c9d4;overflow:hidden}.step__img--photo img{width:100%;height:100%;object-fit:cover}.step__img--tint:has(img[src*="pdp-step-tradein"]) img{width:100%;height:100%;object-fit:cover}
 .step__img--grades{position:relative}.step__img--grades img[hidden]{display:none}
-.mega-tile__img:has(img[src*="cat-cases"],img[src*="cat-cables"],img[src*="cat-adapter"],img[src*="cat-powerbank"]){background:#fff;border:1px solid #ececf0}.mega-tile__img .mega-tile__photo{object-fit:contain}
