@@ -43,7 +43,24 @@
       {% render 'icon', name: 'search' %}
       <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" value="{{ search.terms | escape }}" aria-label="Search" role="combobox" aria-expanded="false" aria-controls="SearchPanel" aria-autocomplete="list" autocomplete="off"{% if section.settings.search_words != blank %} data-search-anim{% endif %}>
       {%- if section.settings.search_words != blank -%}
-        <span class="search-anim" aria-hidden="true" data-words="{{ section.settings.search_words | escape }}">{{ section.settings.search_prefix }} <span class="search-anim__word">{{ section.settings.search_words | split: ',' | first | strip }}</span></span>
+        {%- assign sw = section.settings.search_words | split: ',' -%}
+        {%- assign longest = '' -%}
+        {%- for w in sw -%}{%- assign ws = w | strip -%}{%- if ws.size > longest.size -%}{%- assign longest = ws -%}{%- endif -%}{%- endfor -%}
+        {%- assign n = sw.size -%}
+        {%- assign step = 2.4 -%}
+        {%- assign total = step | times: n -%}
+        {%- assign slot = 100.0 | divided_by: n -%}
+        <style>
+          @keyframes search-word-{{ section.id }}{
+            0%{opacity:0;transform:translateY(60%)}
+            {{ slot | times: 0.12 }}%{opacity:1;transform:none}
+            {{ slot | times: 0.88 }}%{opacity:1;transform:none}
+            {{ slot }}%{opacity:0;transform:translateY(-60%)}
+            100%{opacity:0;transform:translateY(-60%)}
+          }
+          #SearchAnim-{{ section.id }} .search-anim__word{animation:search-grad 4s linear infinite,search-word-{{ section.id }} {{ total }}s linear infinite}
+        </style>
+        <span class="search-anim" id="SearchAnim-{{ section.id }}" aria-hidden="true">{{ section.settings.search_prefix }} <span class="search-anim__words"><span class="search-anim__sizer">{{ longest }}</span>{%- for w in sw -%}<span class="search-anim__word" style="animation-delay:0s,{{ step | times: forloop.index0 }}s">{{ w | strip }}</span>{%- endfor -%}</span></span>
       {%- endif -%}
       <input type="hidden" name="type" value="product">
       <div class="search-panel" id="SearchPanel" data-search-panel hidden>
@@ -141,7 +158,7 @@
   { "type": "text", "id": "search_prefix", "label": "Animated placeholder: lead-in", "default": "Search for" },
   { "type": "textarea", "id": "popular_searches", "label": "Search dropdown: popular searches", "default": "iPhone | /collections/all/iphone\niPad | /collections/all/ipad\nMacBook | /collections/all/macbook\nSamsung Galaxy | /collections/all/samsung\nTrade in your tech | /pages/sell-your-device\nShop all deals | /collections/all?sort_by=price-ascending", "info": "One per line: Label | link. Leave out the link to run a search for that word." },
   { "type": "text", "id": "search_chat_label", "label": "Search dropdown: help row", "default": "Need help choosing? Chat with us", "info": "Opens live chat if installed, otherwise the help page. Leave blank to hide." },
-  { "type": "text", "id": "search_words", "label": "Animated placeholder: rotating words", "default": "iPhone, MacBook, PS5, AirPods, Galaxy S25, iPad, Apple Watch, Pixel", "info": "Comma-separated. Leave blank to use the plain placeholder above." },
+  { "type": "text", "id": "search_words", "label": "Animated placeholder: rotating words", "default": "iPhone, Samsung, MacBook, PS5, AirPods, iPad, Apple Watch, Pixel", "info": "Comma-separated. Leave blank to use the plain placeholder above." },
   { "type": "select", "id": "nav_source", "label": "Category menu source", "options": [{"value":"builtin","label":"Built-in electronics menu"},{"value":"shopify","label":"My Shopify menu (below)"}], "default": "builtin", "info": "Built-in links filter by product tag (e.g. iphone, samsung, macbook)." },
   { "type": "link_list", "id": "main_menu", "label": "Category menu", "default": "main-menu" },
   { "type": "checkbox", "id": "highlight_first", "label": "Highlight first link as deals", "default": true },

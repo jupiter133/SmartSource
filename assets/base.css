@@ -1193,15 +1193,14 @@ shopify-payment-terms{font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){.help-topic,.help-q__chev{transition:none}}
 
-/* animated search placeholder */
+/* animated search placeholder (CSS-only rotation) */
 .header__search{position:relative}
-.search-anim{position:absolute;left:42px;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#6b6b76;font-size:inherit;transition:opacity .15s}
-.search-anim.is-hidden{opacity:0}
-.search-anim__word{display:inline-block;font-weight:600;background:linear-gradient(90deg,var(--c-accent),var(--c-accent-2),#7a5cff,var(--c-accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:search-grad 4s linear infinite;transition:opacity .28s ease,transform .28s ease}
-.search-anim__word.is-out{opacity:0;transform:translateY(-8px)}
-.search-anim__word.is-in{opacity:0;transform:translateY(8px);transition:none}
+.search-anim{position:absolute;left:42px;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;white-space:nowrap;overflow:hidden;color:#6b6b76;font-size:inherit;transition:opacity .15s}
+.search-anim__words{position:relative;display:inline-block;vertical-align:bottom;overflow:hidden}
+.search-anim__sizer{visibility:hidden;font-weight:600}
+.search-anim__word{position:absolute;left:0;top:0;opacity:0;font-weight:600;background:linear-gradient(90deg,var(--c-accent),var(--c-accent-2),#7a5cff,var(--c-accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
 @keyframes search-grad{to{background-position:300% 0}}
-@media (prefers-reduced-motion:reduce){.search-anim__word{animation:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.search-anim__word{animation:none!important}.search-anim__word:first-of-type{opacity:1}}
 /* hide native placeholder under the animated one; show it again once focused */
 .header__search:has(.search-anim) input::placeholder{color:transparent}
 .header__search:has(.search-anim) input:focus::placeholder{color:#8a8a94}
