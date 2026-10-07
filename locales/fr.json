@@ -10,5 +10,9 @@
 {
   "general": {
     "skip": "Passer au contenu"
+  },
+  "mail_in_repair": {
+    "preview_pricing": "Prix à titre indicatif, non définitifs",
+    "book": "Réserver cette réparation"
   }
 }

@@ -1,0 +1,1 @@
+lane,brand,model,category,spec,issue_or_service,part_tier,tier_description,parts_price,labour,diagnostic_fee,range_low,range_high,turnaround_days,warranty_days,in_stock,oos_mode,oos_extra_days,recommended,popular,is_placeholder

@@ -152,6 +152,7 @@
           <details class="summary__more"><summary>{% render 'icon', name: 'shield' %} Get 30 days to change your mind</summary><p class="muted">Free returns within 30 days. Every device is tested and comes with a 1-year warranty.</p></details>
           <div class="footer__pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
           {% render 'pdp-info-cards', section: section %}
+          <p class="pdp-repair-link">{% render 'icon', name: 'wrench' %} Broken phone instead? <a href="/pages/mail-in-repair">Mail it in for repair</a> from anywhere in Canada.</p>
         </div>
       </section>
     {%- endform -%}

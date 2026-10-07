@@ -1,0 +1,6 @@
+{%- comment -%} Quote app mount. Params: products, preset_model, preset_lane, preset_service, compact {%- endcomment -%}
+{% render 'mir-data', products: products %}
+<div class="mir-app{% if compact %} mir-app--compact{% endif %}" id="quote" data-mir-app{% if preset_model %} data-preset-model="{{ preset_model }}"{% endif %}{% if preset_lane %} data-preset-lane="{{ preset_lane }}"{% endif %}{% if preset_service %} data-preset-service="{{ preset_service }}"{% endif %}>
+  <noscript><p>Our instant quote needs JavaScript. You can still <a href="/pages/mail-in-repair/quote#manual">request a manual quote</a>.</p></noscript>
+  <div class="mir-app__loading" aria-hidden="true"></div>
+</div>

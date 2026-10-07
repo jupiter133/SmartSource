@@ -1,1 +1,9 @@
-{ "general": { "skip": "Skip to content" } }
+{
+  "general": {
+    "skip": "Skip to content"
+  },
+  "mail_in_repair": {
+    "preview_pricing": "Preview pricing, not final",
+    "book": "Book this repair"
+  }
+}

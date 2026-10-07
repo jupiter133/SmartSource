@@ -1,0 +1,37 @@
+<section class="page-width mir-block">
+  <div class="mir-card mir-track">
+    <h2 class="mir-h2">Track your repair</h2>
+    <form class="mir-form" data-mir-track-form action="{{ settings.mir_status_endpoint }}" method="get">
+      <div class="mir-form__row">
+        <label>Order number <input type="text" name="order" required placeholder="#1001" autocomplete="off"></label>
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+      </div>
+      <button type="submit" class="btn btn--accent mir-big" data-mir-track="track_lookup">Check status</button>
+    </form>
+    <div class="mir-track__result" data-mir-track-result hidden></div>
+    {%- if settings.mir_status_endpoint == blank -%}
+      <p class="mir-muted" data-mir-track-fallback>Live lookup is coming soon. For now, every status change is emailed to you, and you can see your order anytime by <a href="{{ routes.account_url }}">logging in with your email</a>.</p>
+    {%- endif -%}
+  </div>
+  <h3>What each status means</h3>
+  <ol class="mir-statuses">
+    <li><b>Label sent</b>Your prepaid label is in your inbox.</li>
+    <li><b>Received</b>Your device arrived and was photographed.</li>
+    <li><b>Diagnosing</b>A technician is checking it.</li>
+    <li><b>Quote sent</b>Specialized repairs: waiting for your approval.</li>
+    <li><b>Approved</b>You approved. Repair is scheduled.</li>
+    <li><b>Repairing</b>On the bench, with the part tier on your order.</li>
+    <li><b>Testing</b>Full function test.</li>
+    <li><b>Shipped back</b>On its way, with tracking.</li>
+    <li><b>Delivered</b>Back with you. Warranty starts.</li>
+  </ol>
+</section>
+<script>
+(function(){var f=document.querySelector('[data-mir-track-form]');if(!f)return;var ep=f.getAttribute('action');
+f.addEventListener('submit',function(e){e.preventDefault();var out=document.querySelector('[data-mir-track-result]');
+if(!ep){out.hidden=false;out.innerHTML='<p>Live lookup isn\'t switched on yet. Check your email for status updates, or <a href="{{ routes.account_url }}">log in to see your order</a>.</p>';return;}
+var q=new URLSearchParams(new FormData(f));out.hidden=false;out.textContent='Checking…';
+fetch(ep+(ep.indexOf('?')>-1?'&':'?')+q.toString()).then(function(r){return r.json()}).then(function(d){
+out.innerHTML='<p><strong>Status: '+(d.status||'Unknown')+'</strong></p>'+(d.part_tier?'<p>Part tier: '+d.part_tier+'</p>':'')+(d.tracking_url?'<p><a href="'+d.tracking_url+'">Carrier tracking</a></p>':'');
+}).catch(function(){out.textContent='We couldn\'t find that order. Check the number and email, or contact us.';});});})();
+</script>

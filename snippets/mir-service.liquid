@@ -1,0 +1,69 @@
+{%- comment -%} Specialized repair content. Param: key ('hub' | 'motherboard' | 'data-recovery' | 'water-damage') {%- endcomment -%}
+{%- assign mb = '/pages/mail-in-repair' -%}
+{%- if key == 'hub' -%}
+  <div class="mir-cards3">
+    <a class="mir-card mir-card--link" href="{{ mb }}/motherboard-repair"><span class="mir-card__icon">🔬</span><h3>Motherboard &amp; micro-soldering</h3><p>No power, no image, no charging, boot loops, failed chips. Board-level repair under the microscope.</p><span class="mir-link">How it works →</span></a>
+    <a class="mir-card mir-card--link" href="{{ mb }}/data-recovery"><span class="mir-card__icon">💾</span><h3>Data recovery</h3><p>Photos and files off phones that won't turn on, are water damaged, or have a dead board.</p><span class="mir-link">How it works →</span></a>
+    <a class="mir-card mir-card--link" href="{{ mb }}/water-damage"><span class="mir-card__icon">💧</span><h3>Water damage</h3><p>Corrosion cleaning, board repair and part replacement. The faster you ship, the better the odds.</p><span class="mir-link">How it works →</span></a>
+  </div>
+  <div class="mir-card mir-block-sm">
+    <h3>How specialized repairs work</h3>
+    <ol class="mir-rules"><li><strong>Pay a fixed diagnostic fee</strong> and ship with our prepaid label.</li><li><strong>We diagnose it</strong> and send you a firm quote, with part options if a part is needed.</li><li><strong>You approve</strong> before any repair starts.</li><li><strong>Decline?</strong> You only pay the diagnostic fee and we ship it back.</li></ol>
+  </div>
+
+{%- elsif key == 'motherboard' -%}
+  <div class="mir-prose">
+    <h2>The problem</h2>
+    <p>When a phone won't turn on, won't charge, shows no image, or restarts in a loop, and a new screen or battery doesn't fix it, the fault is usually on the logic board: a failed chip, a broken connector, a cracked solder joint, or a short circuit.</p>
+    <p>Most shops replace the whole board or tell you it's dead. Micro-soldering fixes the actual faulty component instead.</p>
+    <h2>Our process</h2>
+    <ol class="mir-rules"><li><strong>Inspect:</strong> visual check under the microscope for corrosion, damage and previous repairs.</li><li><strong>Measure:</strong> power-on current, voltage lines and shorts with a bench power supply and meter.</li><li><strong>Find the fault:</strong> trace it to the failed part or connection.</li><li><strong>Firm quote:</strong> you get an exact price and approve it before we start.</li><li><strong>Repair and test:</strong> replace or reflow the component, then full function test.</li></ol>
+    <h2>What we can and can't do</h2>
+    <div class="jr-pick mir-pick"><div><h3>Usually fixable</h3><ul><li>Charging chip and connector faults</li><li>Backlight and display connector damage</li><li>Shorted power lines</li><li>Audio chip issues</li><li>Boot loops caused by hardware</li></ul></div><div><h3>Hard or not possible</h3><ul><li>CPU or storage chip failures (data recovery may still be possible)</li><li>Boards snapped in half</li><li>Severe corrosion across many layers</li><li>Parts locked to the original board (Face ID, Touch ID) that are damaged</li></ul></div></div>
+    <h2>Realistic timelines</h2>
+    <p>Diagnosis usually takes 2 to 4 business days after arrival. Most board repairs take another 2 to 5 business days once you approve the quote. Complex faults can take longer; we'll tell you upfront.</p>
+  </div>
+
+{%- elsif key == 'data-recovery' -%}
+  <div class="mir-prose">
+    <h2>The problem</h2>
+    <p>The phone won't turn on, got wet, or the board failed, and your photos weren't backed up. The data is often still on the storage chip. Getting it back means getting the phone working long enough to copy it.</p>
+    <div class="jr-box jr-box--warn mir-box"><p class="jr-box__title">⚠️ Recovery is not guaranteed</p><p>We'll tell you honestly what the odds are after diagnosis. If we can't recover anything, you only pay the diagnostic fee.</p></div>
+    <h2>Honest odds by situation</h2>
+    <div class="jr-table"><table><thead><tr><th>Situation</th><th>Typical outlook</th></tr></thead><tbody>
+      <tr><th>Won't turn on after a drop or wear</th><td>Often good. Many are power or charging faults that can be repaired.</td></tr>
+      <tr><th>Water damage, shipped within days</th><td>Fair to good, depending on corrosion.</td></tr>
+      <tr><th>Water damage, weeks or months old</th><td>Lower. Corrosion may have destroyed key parts.</td></tr>
+      <tr><th>Storage or CPU chip failed</th><td>Poor on modern phones. Data is encrypted to the original chips.</td></tr>
+      <tr><th>Forgotten passcode or factory reset</th><td>Not possible. Modern phones are encrypted; we can't and won't bypass security.</td></tr>
+    </tbody></table></div>
+    <p>These are general expectations from the type of fault, not promises. Your firm quote will include our honest view of your device.</p>
+    <h2>Our process</h2>
+    <ol class="mir-rules"><li>Diagnose the fault without touching your data.</li><li>Quote the repair needed to bring the phone back to life.</li><li>Repair just enough to boot it, then copy your data to a secure drive.</li><li>Return your data on a drive or via secure download, plus your device.</li></ol>
+    <h2>What we do and don't touch</h2>
+    <ul><li>We copy only what you ask for (usually photos, videos, contacts).</li><li>We don't browse, open or review your files beyond confirming they copied.</li><li>We never bypass passcodes, encryption or account locks. You'll need your passcode to unlock the recovered phone.</li></ul>
+    <h2>Data privacy</h2>
+    <p>Recovered data is stored encrypted on an offline drive and deleted from our systems 30 days after you confirm you have it. Only the technician on your job has access. We never sell, share or keep your data.</p>
+    <h2>Realistic timelines</h2>
+    <p>Diagnosis in 2 to 4 business days after arrival. Recovery usually 3 to 7 business days after you approve.</p>
+  </div>
+
+{%- elsif key == 'water-damage' -%}
+  <div class="mir-prose">
+    <div class="jr-box jr-box--warn mir-box"><p class="jr-box__title">💧 Do this right now</p><ul><li><strong>Don't charge it.</strong> Power plus water speeds up corrosion and causes shorts.</li><li><strong>Don't turn it on</strong> or press buttons to "check".</li><li><strong>Don't use rice.</strong> It doesn't dry the inside, and starch dust gets in the ports.</li><li><strong>No heat.</strong> No hair dryer, oven or radiator.</li><li><strong>Ship it fast.</strong> Every day matters. Corrosion keeps spreading after it feels dry.</li></ul></div>
+    <h2>Honest odds</h2>
+    <p>Success depends mostly on two things: how long since it got wet, and what it got wet with.</p>
+    <div class="jr-table"><table><thead><tr><th></th><th>Typical outlook</th></tr></thead><tbody>
+      <tr><th>Fresh water, shipped within a few days, not charged</th><td>Best chance</td></tr>
+      <tr><th>Fresh water, charged or used while wet</th><td>Fair. Shorts may have damaged parts.</td></tr>
+      <tr><th>Salt water, pool water, coffee, pop</th><td>Lower. These corrode faster.</td></tr>
+      <tr><th>Weeks or months later</th><td>Lowest. Expect part replacements or data recovery only.</td></tr>
+    </tbody></table></div>
+    <h2>Our process</h2>
+    <ol class="mir-rules"><li>Disassemble and inspect under the microscope.</li><li>Clean corrosion from the board with an ultrasonic cleaner and isopropyl alcohol.</li><li>Test power lines and find failed components.</li><li>Firm quote: board repair, part replacements (with part tiers if available), or data recovery only.</li><li>Repair and test everything, including speakers, mics, cameras and charging.</li></ol>
+    <h2>What we can and can't do</h2>
+    <p>We can often bring a water-damaged phone back, but it may not be as reliable long term, and water resistance won't be factory-level again. If it can't be saved, we'll tell you if data recovery is still possible.</p>
+    <h2>Realistic timelines</h2>
+    <p>Diagnosis in 1 to 3 business days after arrival (we prioritize water damage). Repairs take 2 to 7 business days after approval.</p>
+  </div>
+{%- endif -%}

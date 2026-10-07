@@ -1,0 +1,15 @@
+<section class="page-width mir-block">
+  <h2 class="mir-h2">Why people trust us with their device</h2>
+  <div class="mir-trust">
+    <div>{% render 'icon', name: 'shield' %}<h3>Warranty on every repair</h3><p>Warranty length depends on the part you pick and is shown before you pay.</p></div>
+    <div>{% render 'icon', name: 'box' %}<h3>Insured both ways</h3><p>Prepaid labels with declared value and insurance. If it's lost in transit, we make it right.</p></div>
+    <div>{% render 'icon', name: 'lock' %}<h3>Your data stays private</h3><p>We only access what the repair needs to test. We never copy, browse or keep your files.</p></div>
+    <div>{% render 'icon', name: 'wrench' %}<h3>Real technicians</h3><p>The same bench that tests and grades every refurbished device we sell does your repair.</p></div>
+    {%- if settings.mir_years != blank -%}<div>{% render 'icon', name: 'clock' %}<h3>{{ settings.mir_years }} years in business</h3><p>Serving customers across Canada from the GTA.</p></div>{%- endif -%}
+  </div>
+  <div class="mir-photos">
+    <figure class="photo-slot mir-photo-slot" data-label="Photo: our repair bench"></figure>
+    <figure class="photo-slot mir-photo-slot" data-label="Photo: micro-soldering under the microscope"></figure>
+    <figure class="photo-slot mir-photo-slot" data-label="Photo: the technician team"></figure>
+  </div>
+</section>

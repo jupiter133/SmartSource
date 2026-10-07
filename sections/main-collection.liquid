@@ -212,6 +212,7 @@
           </div>
         {%- endunless -%}{%- endif -%}
         {%- for product in collection.products -%}
+          {%- if product.type == 'Mail-in Repair' or product.type == 'Mail-in Diagnostic' -%}{%- continue -%}{%- endif -%}
           {% render 'product-card', product: product %}
         {%- else -%}
           <div class="coll-empty">

@@ -1,0 +1,5 @@
+lane,brand,model,category,spec,issue_or_service,part_tier,tier_description,parts_price,labour,diagnostic_fee,range_low,range_high,turnaround_days,warranty_days,in_stock,oos_mode,oos_extra_days,recommended,popular,is_placeholder
+A,Apple,iPhone 15 Pro,phone,,Screen,Aftermarket,"LCD replacement screen (example — describe what you stock)",120.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,FALSE
+A,Apple,iPhone 15 Pro,phone,,Screen,Aftermarket Plus,"OLED replacement screen (example)",190.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,FALSE
+A,Apple,iPhone 15 Pro,phone,,Screen,Premium,"OEM-grade OLED screen (example)",280.00,49.00,,,,2,365,FALSE,show,5,FALSE,TRUE,FALSE
+B,,,,Phone,Data recovery,,,,,79.00,199.00,599.00,4,0,TRUE,hide,0,FALSE,FALSE,FALSE

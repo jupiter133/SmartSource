@@ -1,0 +1,26 @@
+{%- comment -%} FAQ list with schema. Param: limit (number, default all), schema (bool) {%- endcomment -%}
+{%- capture q1 -%}Is it safe to mail my phone?|Yes. You ship with our prepaid label, which includes declared value and insurance. Pack it with our guide and get a receipt at drop-off. If a parcel is lost in transit, we file the claim and replace or refund the device's declared value.{%- endcapture -%}
+{%- capture q2 -%}How long does a mail-in repair take?|Most standard repairs are back with you in about 5 to 10 business days door to door: 2 to 5 days shipping each way depending on your region, plus 1 to 3 days on the bench. Your quote shows an estimated return date.{%- endcapture -%}
+{%- capture q3 -%}What if you find more damage?|We stop and email you a new quote before doing anything extra. You approve it, or we fix only what you booked, or we ship it back.{%- endcapture -%}
+{%- capture q4 -%}What if you can't fix it?|You don't pay for the repair. We refund the repair price and ship your device back. For specialized repairs, the diagnostic fee covers the work already done.{%- endcapture -%}
+{%- capture q5 -%}Do I need to give you my passcode?|For most repairs, no. We test using the hardware test screens. For data recovery or some specialized repairs it helps, and we'll ask. You can always say no.{%- endcapture -%}
+{%- capture q6 -%}Will I lose my data?|Standard repairs usually don't touch your data, but always back up before shipping. We can't be responsible for data loss on a device that wasn't backed up.{%- endcapture -%}
+{%- capture q7 -%}What are part quality tiers?|Some repairs have more than one part option at different prices. Each option shows exactly what you're getting, its price, warranty and turnaround, so you choose.{%- endcapture -%}
+{%- capture q8 -%}Do you ship to all of Canada?|Yes, every province and territory. Northern and remote addresses take longer to ship. Your quote shows the timeline for your postal code.{%- endcapture -%}
+{%- capture q9 -%}How do I pay?|Online at booking, in CAD. Tax is based on your province. For specialized repairs you pay only the diagnostic fee up front, then approve the firm quote.{%- endcapture -%}
+{%- capture q10 -%}What if the part I picked goes out of stock?|We email you with three options: wait for it, switch to another tier and pay or get refunded the difference, or cancel for a full refund.{%- endcapture -%}
+{%- assign faqs = q1 | append: '~~' | append: q2 | append: '~~' | append: q3 | append: '~~' | append: q4 | append: '~~' | append: q5 | append: '~~' | append: q6 | append: '~~' | append: q7 | append: '~~' | append: q8 | append: '~~' | append: q9 | append: '~~' | append: q10 | split: '~~' -%}
+{%- assign lim = limit | default: 99 -%}
+<div class="mir-faq">
+  {%- for f in faqs limit: lim -%}{%- assign bits = f | split: '|' -%}
+    <details><summary>{{ bits[0] }}</summary><div><p>{{ bits[1] }}</p></div></details>
+  {%- endfor -%}
+</div>
+{%- if schema -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{%- for f in faqs limit: lim -%}{%- assign bits = f | split: '|' -%}
+{"@type":"Question","name":{{ bits[0] | json }},"acceptedAnswer":{"@type":"Answer","text":{{ bits[1] | json }}}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}]}
+</script>
+{%- endif -%}

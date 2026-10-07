@@ -339,5 +339,170 @@
         "label": "Photo"
       }
     ]
+  },
+  {
+    "name": "Mail-in repair",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Pricing switch"
+      },
+      {
+        "type": "checkbox",
+        "id": "mir_pricing_live",
+        "label": "Pricing Live",
+        "default": false,
+        "info": "OFF = quotes show 'Preview pricing, not final' and booking is disabled. Stays OFF automatically while any price row is still a placeholder, unless the override below is checked."
+      },
+      {
+        "type": "checkbox",
+        "id": "mir_live_override",
+        "label": "Override: go live even with placeholder rows",
+        "default": false,
+        "info": "Only check this if you have confirmed every placeholder price is correct."
+      },
+      {
+        "type": "header",
+        "content": "Part quality tiers"
+      },
+      {
+        "type": "paragraph",
+        "content": "Key must match the 'Part tier' option value on repair products. Order here = order shown to customers."
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_1_key",
+        "label": "Tier 1 key",
+        "default": "Aftermarket"
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_1_name",
+        "label": "Tier 1 name",
+        "default": "Aftermarket"
+      },
+      {
+        "type": "textarea",
+        "id": "mir_tier_1_desc",
+        "label": "Tier 1 description",
+        "default": "PLACEHOLDER: Budget-friendly replacement part. Rewrite to describe exactly what you stock."
+      },
+      {
+        "type": "checkbox",
+        "id": "mir_tier_1_placeholder",
+        "label": "Tier 1 copy is placeholder",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_2_key",
+        "label": "Tier 2 key",
+        "default": "Aftermarket Plus"
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_2_name",
+        "label": "Tier 2 name",
+        "default": "Aftermarket Plus"
+      },
+      {
+        "type": "textarea",
+        "id": "mir_tier_2_desc",
+        "label": "Tier 2 description",
+        "default": "PLACEHOLDER: Higher-grade replacement part. Rewrite to describe exactly what you stock."
+      },
+      {
+        "type": "checkbox",
+        "id": "mir_tier_2_placeholder",
+        "label": "Tier 2 copy is placeholder",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_3_key",
+        "label": "Tier 3 key",
+        "default": "Premium"
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_3_name",
+        "label": "Tier 3 name",
+        "default": "Premium"
+      },
+      {
+        "type": "textarea",
+        "id": "mir_tier_3_desc",
+        "label": "Tier 3 description",
+        "default": "PLACEHOLDER: Our top-grade part option. Rewrite to describe exactly what you stock."
+      },
+      {
+        "type": "checkbox",
+        "id": "mir_tier_3_placeholder",
+        "label": "Tier 3 copy is placeholder",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mir_tier_helper",
+        "label": "'Which one should I pick?' line",
+        "default": "Keeping the phone for years? Pick the recommended tier. Selling or trading it soon? The lowest tier does the job."
+      },
+      {
+        "type": "header",
+        "content": "Quote rules"
+      },
+      {
+        "type": "range",
+        "id": "mir_bundle_percent",
+        "label": "Bundle discount for 2+ repairs (%)",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "default": 10,
+        "info": "Must match an automatic discount in Discounts, or checkout won't apply it."
+      },
+      {
+        "type": "number",
+        "id": "mir_quote_valid_days",
+        "label": "Quote valid for (days)",
+        "default": 14
+      },
+      {
+        "type": "number",
+        "id": "mir_shipping_fee",
+        "label": "Shipping both ways (CAD, 0 = included)",
+        "default": 0
+      },
+      {
+        "type": "textarea",
+        "id": "mir_regions",
+        "label": "Regions: Name | postal prefixes | ship days each way | surcharge (CAD)",
+        "default": "Ontario | K,L,M,N,P | 2 | 0\nQuebec | G,H,J | 3 | 0\nPrairies | R,S,T | 4 | 0\nBC | V | 5 | 0\nAtlantic | A,B,C,E | 4 | 0\nNorth & remote | X,Y | 8 | 0",
+        "info": "Rural postal codes (second character 0, e.g. K0A) add 2 days."
+      },
+      {
+        "type": "textarea",
+        "id": "mir_tax",
+        "label": "Tax by province: Code | Name | rate % | label",
+        "default": "AB | Alberta | 5 | GST\nBC | British Columbia | 12 | GST + PST\nMB | Manitoba | 12 | GST + PST\nNB | New Brunswick | 15 | HST\nNL | Newfoundland and Labrador | 15 | HST\nNS | Nova Scotia | 14 | HST\nNT | Northwest Territories | 5 | GST\nNU | Nunavut | 5 | GST\nON | Ontario | 13 | HST\nPE | Prince Edward Island | 15 | HST\nQC | Quebec | 14.975 | GST + QST\nSK | Saskatchewan | 11 | GST + PST\nYT | Yukon | 5 | GST",
+        "info": "Estimate on the quote only. Checkout calculates the real tax."
+      },
+      {
+        "type": "text",
+        "id": "mir_status_endpoint",
+        "label": "Repair status lookup endpoint (optional)",
+        "info": "Leave blank until a status app or service is connected."
+      },
+      {
+        "type": "text",
+        "id": "mir_years",
+        "label": "Years in business (shown in trust bar; blank = hidden)"
+      },
+      {
+        "type": "text",
+        "id": "mir_video",
+        "label": "Explainer video URL (YouTube or .mp4; blank = hidden)"
+      }
+    ]
   }
 ]

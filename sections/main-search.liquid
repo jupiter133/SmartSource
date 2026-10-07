@@ -12,7 +12,7 @@
     {%- paginate search.results by 24 -%}
     <div class="{% if journal_only %}jr-grid{% else %}grid{% endif %}">
       {%- for item in search.results -%}
-        {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}
+        {%- if item.object_type == 'product' -%}{%- unless item.type contains 'Mail-in' -%}{% render 'product-card', product: item %}{%- endunless -%}
         {%- elsif item.object_type == 'article' -%}{% render 'journal-card', article: item, heading: 'h2' %}{%- endif -%}
       {%- endfor -%}
     </div>

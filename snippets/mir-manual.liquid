@@ -1,0 +1,22 @@
+<section class="page-width mir-block" id="manual">
+  <div class="mir-card mir-manual">
+    <h2 class="mir-h2">Get a manual quote</h2>
+    <p class="mir-muted">Device or issue not listed? Tell us what's going on and we'll email you an exact price, usually within 1 business day.</p>
+    {%- form 'contact', class: 'mir-form' -%}
+      {%- if form.posted_successfully? -%}<p class="mir-ok" role="status">Got it. We'll email your quote within 1 business day.</p>{%- else -%}
+      <input type="hidden" name="contact[Request]" value="Mail-in repair manual quote">
+      <div class="mir-form__row">
+        <label>Name <input type="text" name="contact[name]" autocomplete="name" required></label>
+        <label>Email <input type="email" name="contact[email]" autocomplete="email" required></label>
+      </div>
+      <div class="mir-form__row">
+        <label>Device (brand and model) <input type="text" name="contact[Device]" required placeholder="e.g. Google Pixel 7 Pro"></label>
+        <label>Postal code <input type="text" name="contact[Postal code]" autocomplete="postal-code" maxlength="7"></label>
+      </div>
+      <label>What's wrong? <textarea name="contact[body]" rows="4" required></textarea></label>
+      <button type="submit" class="btn btn--accent mir-big" data-mir-track="manual_submit">Request my quote</button>
+      {%- if form.errors -%}<p class="mir-err">{{ form.errors | default_errors }}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>

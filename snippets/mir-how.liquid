@@ -1,0 +1,48 @@
+<section class="page-width mir-block">
+  {%- if settings.mir_video != blank -%}
+    <div class="mir-video">
+      {%- if settings.mir_video contains 'youtu' -%}
+        {%- assign vid = settings.mir_video | split: 'v=' | last | split: '&' | first | split: '/' | last -%}
+        <iframe src="https://www.youtube-nocookie.com/embed/{{ vid }}" title="How mail-in repair works" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      {%- else -%}<video src="{{ settings.mir_video }}" controls preload="none" playsinline></video>{%- endif -%}
+    </div>
+  {%- endif -%}
+  <h2 class="mir-h2">What happens to your device</h2>
+  <ol class="mir-flow">
+    <li><b>Label sent</b>You get your prepaid, insured label by email.</li>
+    <li><b>Received</b>We photograph the parcel and device on arrival and email you.</li>
+    <li><b>Diagnosing</b>A technician checks the fault and the rest of the device.</li>
+    <li><b>Quote sent</b><em>Specialized repairs only.</em> You get a firm quote to approve.</li>
+    <li><b>Repairing</b>We fit the part tier you picked. It's on your order so the tech uses exactly that part.</li>
+    <li><b>Testing</b>Full function test: screen, touch, cameras, speakers, mics, charging, signal.</li>
+    <li><b>Shipped back</b>Insured, with tracking.</li>
+    <li><b>Delivered</b>Your warranty starts.</li>
+  </ol>
+  <div class="mir-cards2">
+    <div class="mir-card"><h3>What if we find more damage?</h3><p>We stop and email you a new quote. Nothing extra happens without your OK. Decline and we fix only what you booked, or refund it, and ship it back.</p></div>
+    <div class="mir-card"><h3>What if we can't fix it?</h3><p>You don't pay for the repair. We refund it and ship your device back free. For specialized repairs, the diagnostic fee covers the work done.</p></div>
+  </div>
+</section>
+<section class="page-width mir-block" id="packing">
+  <h2 class="mir-h2">Packing guide</h2>
+  <ol class="jr-rte mir-pack steps">
+    <li><strong>Use a small sturdy box,</strong> not a padded envelope.<figure class="photo-slot"></figure></li>
+    <li><strong>Wrap the device</strong> in bubble wrap or a soft cloth. Tape over a cracked screen so glass can't move.<figure class="photo-slot"></figure></li>
+    <li><strong>Fill the gaps</strong> so it can't move when you shake the box.<figure class="photo-slot"></figure></li>
+    <li><strong>Add your order number</strong> on a slip of paper inside.<figure class="photo-slot"></figure></li>
+    <li><strong>Stick the label on,</strong> drop it off, and keep your receipt.<figure class="photo-slot"></figure></li>
+  </ol>
+  <p class="mir-muted">Don't send chargers, cases, cables or SIM cards. We can't guarantee they come back.</p>
+</section>
+<section class="page-width mir-block" id="checklist">
+  <div class="mir-card mir-checklist">
+    <h2 class="mir-h2">Before you ship: checklist</h2>
+    <ul>
+      <li>☐ <strong>Back up your data.</strong> <a href="/blogs/journal/how-to-factory-reset-phone">How to back up</a></li>
+      <li>☐ <strong>Turn off Find My iPhone</strong> (Settings → your name → Find My) or <strong>remove your Google account</strong> on Android. We can't test a locked device.</li>
+      <li>☐ <strong>Remove your SIM card, memory card and case.</strong></li>
+      <li>☐ <strong>Charge it a little</strong> if it still turns on (not if it's water damaged).</li>
+      <li>☐ <strong>Write your order number</strong> on a slip inside the box.</li>
+    </ul>
+  </div>
+</section>

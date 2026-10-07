@@ -1,0 +1,43 @@
+{%- comment -%} Mail-In Repair sticky sub-nav + breadcrumbs. Params: current (key), crumb (current page title), parent_title, parent_url {%- endcomment -%}
+{%- assign mb = '/pages/mail-in-repair' -%}
+{{ 'journal.css' | asset_url | stylesheet_tag }}
+{{ 'mail-in-repair.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'journal.js' | asset_url }}" defer></script>
+<script>try{var t=localStorage.getItem('jr-theme');if(t)document.documentElement.setAttribute('data-jr-theme',t)}catch(e){}</script>
+<script src="{{ 'mail-in-repair.js' | asset_url }}" defer></script>
+<nav class="jr mir-subnav" aria-label="Mail-In Repair" data-mir-subnav>
+  <div class="page-width mir-subnav__row">
+    <a class="mir-subnav__brand" href="{{ mb }}">{% render 'icon', name: 'wrench' %}<span>Mail-In Repair</span></a>
+    <button type="button" class="mir-subnav__toggle" aria-expanded="false" aria-controls="mir-subnav-links" data-mir-subnav-toggle>Menu <span aria-hidden="true">▾</span></button>
+    <ul class="mir-subnav__links" id="mir-subnav-links">
+      {%- assign items = 'how-it-works|How It Works,quote|Get a Quote,what-we-fix|What We Fix,specialized|Specialized Repairs,pricing|Pricing & Turnaround,track|Track Your Repair,faq|FAQ,contact|Contact' | split: ',' -%}
+      {%- for it in items -%}
+        {%- assign k = it | split: '|' | first -%}{%- assign label = it | split: '|' | last -%}
+        {%- case k -%}
+          {%- when 'what-we-fix' -%}{%- assign href = mb | append: '#what-we-fix' -%}
+          {%- when 'contact' -%}{%- assign href = '/pages/contact' -%}
+          {%- else -%}{%- assign href = mb | append: '/' | append: k -%}
+        {%- endcase -%}
+        <li><a href="{{ href }}"{% if current == k %} aria-current="page" class="is-active"{% endif %}>{{ label }}</a></li>
+      {%- endfor -%}
+    </ul>
+    <button type="button" class="jr-bar__mode mir-subnav__mode" data-jr-mode aria-label="Toggle dark mode"><span class="jr-sun">☀</span><span class="jr-moon">☾</span></button>
+    <a class="btn btn--accent mir-subnav__cta" href="{{ mb }}/quote" data-mir-track="subnav_quote">Get a Quote</a>
+  </div>
+</nav>
+<nav class="jr page-width mir-crumbs" aria-label="Breadcrumb">
+  <a href="{{ routes.root_url }}">Home</a><span>›</span>
+  {%- if crumb == blank -%}<span aria-current="page">Mail-In Repair</span>
+  {%- else -%}<a href="{{ mb }}">Mail-In Repair</a><span>›</span>
+    {%- if parent_title != blank -%}<a href="{{ parent_url }}">{{ parent_title }}</a><span>›</span>{%- endif -%}
+    <span aria-current="page">{{ crumb }}</span>
+  {%- endif -%}
+</nav>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":{{ shop.url | append: '/' | json }}},
+{"@type":"ListItem","position":2,"name":"Mail-In Repair","item":{{ shop.url | append: mb | json }}}
+{%- if parent_title != blank -%},{"@type":"ListItem","position":3,"name":{{ parent_title | json }},"item":{{ shop.url | append: parent_url | json }}}{%- endif -%}
+{%- if crumb != blank -%},{"@type":"ListItem","position":{% if parent_title != blank %}4{% else %}3{% endif %},"name":{{ crumb | json }}}{%- endif -%}
+]}
+</script>

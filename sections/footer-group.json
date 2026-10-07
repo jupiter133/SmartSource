@@ -23,7 +23,7 @@
           "type": "menu",
           "settings": {
             "title": "Services",
-            "links": "Trade in your device | /pages/sell-your-device\nRepairs | /pages/services\nPhone plans | /pages/phone-plans"
+            "links": "Trade in your device | /pages/sell-your-device\nMail-in repair | /pages/mail-in-repair\nPhone plans | /pages/phone-plans"
           }
         },
         "resources": {

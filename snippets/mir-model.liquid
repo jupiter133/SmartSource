@@ -1,0 +1,24 @@
+{%- comment -%} Model page price table. Param: product (repair product) {%- endcomment -%}
+{%- assign model_name = product.metafields.repair.model.value | default: product.title -%}
+{%- assign issues = product.variants | map: 'option1' | uniq -%}
+<div class="jr-table mir-pricetable"><table>
+  <thead><tr><th>Repair</th><th>Part options</th><th>From</th><th>Repair time</th></tr></thead>
+  <tbody>
+  {%- for issue in issues -%}
+    {%- assign low = 999999999 -%}{%- assign tiers = '' -%}{%- assign days = 0 -%}{%- assign ph = false -%}
+    {%- for v in product.variants -%}{%- if v.option1 == issue -%}
+      {%- if v.price < low -%}{%- assign low = v.price -%}{%- assign days = v.metafields.repair.turnaround_days.value -%}{%- endif -%}
+      {%- if v.option2 -%}{%- assign tiers = tiers | append: v.option2 | append: ', ' -%}{%- endif -%}
+      {%- if v.metafields.repair.is_placeholder.value -%}{%- assign ph = true -%}{%- endif -%}
+    {%- endif -%}{%- endfor -%}
+    <tr><th>{{ issue }}</th><td>{{ tiers | split: ', ' | uniq | join: ', ' | default: 'Standard' }}</td><td>{{ low | money }}{% if ph %} <span class="mir-badge mir-badge--ph">PLACEHOLDER</span>{% endif %}</td><td>{{ days | default: '–' }} business day{% if days != 1 %}s{% endif %}</td></tr>
+  {%- endfor -%}
+  </tbody>
+</table></div>
+<p class="mir-muted">Prices in CAD, before tax. Prepaid insured shipping {% if settings.mir_shipping_fee > 0 %}{{ settings.mir_shipping_fee | times: 100 | money }}{% else %}included{% endif %}. Get the exact total with tax and an estimated return date in the quote above.</p>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":{{ model_name | append: ' mail-in repair' | json }},"serviceType":"Phone repair","areaServed":{"@type":"Country","name":"Canada"},
+"provider":{"@type":"Organization","name":{{ shop.name | json }},"url":{{ shop.url | json }}},
+"offers":[{%- for issue in issues -%}{%- assign low = 999999999 -%}{%- for v in product.variants -%}{%- if v.option1 == issue and v.price < low -%}{%- assign low = v.price -%}{%- endif -%}{%- endfor -%}
+{"@type":"Offer","name":{{ issue | json }},"priceCurrency":"CAD","price":{{ low | divided_by: 100.0 | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]}
+</script>

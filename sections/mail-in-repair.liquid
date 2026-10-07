@@ -1,0 +1,164 @@
+{%- comment -%}
+  Mail-In Repair: one section renders every page in the section.
+  - /pages/mail-in-repair                → page template "mail-in-repair" (kind from section setting: landing)
+  - /pages/mail-in-repair/<entry>        → metaobject "mail_in_repair" entries (kind field)
+  - /products/repair-<model>             → product template "repair" (kind: model, noindex; canonical page is the metaobject)
+{%- endcomment -%}
+{%- assign kind = section.settings.kind -%}
+{%- assign title = page.title -%}
+{%- assign rp = nil -%}{%- assign service_key = '' -%}{%- assign intro = section.settings.intro -%}
+{%- if metaobject -%}
+  {%- assign kind = metaobject.kind.value | default: 'landing' -%}
+  {%- assign title = metaobject.title.value -%}
+  {%- assign rp = metaobject.product.value -%}
+  {%- assign service_key = metaobject.service_key.value -%}
+  {%- if metaobject.intro.value != blank -%}{%- assign intro = metaobject.intro.value -%}{%- endif -%}
+{%- elsif product -%}
+  {%- assign kind = 'model' -%}{%- assign rp = product -%}{%- assign title = product.metafields.repair.model.value | append: ' repair by mail' -%}
+{%- endif -%}
+{%- assign mb = '/pages/mail-in-repair' -%}
+{%- assign rc = collections['mail-in-repair'] -%}
+
+{%- case kind -%}
+  {%- when 'landing' -%}{%- assign cur = '' -%}{%- assign crumb = '' -%}
+  {%- when 'how-it-works' -%}{%- assign cur = 'how-it-works' -%}{%- assign crumb = 'How It Works' -%}
+  {%- when 'quote' -%}{%- assign cur = 'quote' -%}{%- assign crumb = 'Get a Quote' -%}
+  {%- when 'specialized' -%}{%- assign cur = 'specialized' -%}{%- assign crumb = 'Specialized Repairs' -%}
+  {%- when 'service' -%}{%- assign cur = 'specialized' -%}{%- assign crumb = title -%}
+  {%- when 'pricing' -%}{%- assign cur = 'pricing' -%}{%- assign crumb = 'Pricing & Turnaround' -%}
+  {%- when 'track' -%}{%- assign cur = 'track' -%}{%- assign crumb = 'Track Your Repair' -%}
+  {%- when 'faq' -%}{%- assign cur = 'faq' -%}{%- assign crumb = 'FAQ' -%}
+  {%- when 'model' -%}{%- assign cur = 'quote' -%}{%- assign crumb = rp.metafields.repair.model.value | default: title -%}
+{%- endcase -%}
+{%- if kind == 'service' -%}
+  {% render 'mir-subnav', current: cur, crumb: crumb, parent_title: 'Specialized Repairs', parent_url: '/pages/mail-in-repair/specialized' %}
+{%- elsif kind == 'model' -%}
+  {% render 'mir-subnav', current: cur, crumb: crumb, parent_title: rp.vendor, parent_url: '/pages/mail-in-repair#what-we-fix' %}
+{%- else -%}
+  {% render 'mir-subnav', current: cur, crumb: crumb %}
+{%- endif -%}
+
+<div class="jr jr-page mir mir--{{ kind }}">
+{%- paginate rc.products by 250 -%}
+{%- assign all_products_list = rc.products -%}
+
+{%- case kind -%}
+
+{%- when 'landing' -%}
+  <section class="mir-hero">
+    <div class="page-width mir-hero__grid">
+      <div class="mir-hero__copy">
+        <p class="jr-eyebrow">Canada-wide mail-in repair</p>
+        <h1 class="mir-h1">{{ section.settings.heading }}</h1>
+        <p class="mir-lead">{{ section.settings.subheading }}</p>
+        <ul class="mir-ticks"><li>Exact price in under a minute</li><li>Free prepaid, insured shipping label</li><li>Warranty on every repair</li><li>Every province and territory</li></ul>
+      </div>
+      <div class="mir-hero__app">{% render 'mir-quote', products: all_products_list, compact: true %}</div>
+    </div>
+  </section>
+  <section class="page-width mir-block">
+    <div class="mir-block__head"><h2 class="mir-h2">How it works</h2><a class="mir-link" href="{{ mb }}/how-it-works">Full details →</a></div>
+    {% render 'mir-steps' %}
+  </section>
+  <section class="page-width mir-block" id="what-we-fix">
+    <h2 class="mir-h2">What we fix</h2>
+    <div class="mir-fix">
+      <div class="mir-fix__item"><span>📱</span>Cracked screens</div><div class="mir-fix__item"><span>🔋</span>Batteries</div><div class="mir-fix__item"><span>🔌</span>Charging ports</div>
+      <div class="mir-fix__item"><span>🪟</span>Back glass</div><div class="mir-fix__item"><span>📷</span>Cameras</div><div class="mir-fix__item"><span>💧</span>Water damage</div>
+      <div class="mir-fix__item"><span>🔬</span>Motherboards</div><div class="mir-fix__item"><span>💾</span>Data recovery</div>
+    </div>
+    {%- assign brands = all_products_list | where: 'type', 'Mail-in Repair' | map: 'vendor' | uniq -%}
+    {%- for b in brands -%}
+      <h3 class="mir-h3">{{ b }}</h3>
+      <div class="mir-models">
+        {%- for p in all_products_list -%}{%- if p.type == 'Mail-in Repair' and p.vendor == b -%}
+          <a href="{{ mb }}/{{ p.handle | remove_first: 'repair-' }}">{{ p.metafields.repair.model.value | default: p.title }}</a>
+        {%- endif -%}{%- endfor -%}
+      </div>
+    {%- endfor -%}
+    <p class="mir-muted">Tablets, laptops, consoles or another phone? <a class="mir-link" href="{{ mb }}/quote#manual">Get a manual quote</a>.</p>
+  </section>
+  <section class="page-width mir-block">
+    <div class="mir-block__head"><h2 class="mir-h2">Specialized repairs</h2><a class="mir-link" href="{{ mb }}/specialized">All specialized repairs →</a></div>
+    {% render 'mir-service', key: 'hub' %}
+  </section>
+  {% render 'mir-trust' %}
+  <section class="page-width mir-block">
+    <div class="mir-block__head"><h2 class="mir-h2">FAQ</h2><a class="mir-link" href="{{ mb }}/faq">All questions →</a></div>
+    {% render 'mir-faq', limit: 6, schema: true %}
+  </section>
+
+{%- when 'how-it-works' -%}
+  <section class="page-width mir-block mir-head"><h1 class="mir-h1">How mail-in repair works</h1><p class="mir-lead">{{ intro | default: 'Five steps. No phone calls. Your device back fixed, with a warranty.' }}</p></section>
+  <section class="page-width mir-block-sm">{% render 'mir-steps', full: true %}</section>
+  {% render 'mir-how' %}
+  <section class="page-width mir-block mir-cta"><h2 class="mir-h2">Ready? It takes a minute.</h2><a class="btn btn--accent mir-big" href="{{ mb }}/quote">Get my quote</a></section>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"How to get your phone repaired by mail in Canada","totalTime":"P10D","step":[
+  {"@type":"HowToStep","position":1,"name":"Get your quote","text":"Pick your device and issue to see the exact price and timeline."},
+  {"@type":"HowToStep","position":2,"name":"Book and pay","text":"Enter your details. We email a prepaid, insured shipping label and packing instructions."},
+  {"@type":"HowToStep","position":3,"name":"Pack and ship","text":"Back up your data, remove SIM and case, turn off Find My or Google lock, pack it and drop it off."},
+  {"@type":"HowToStep","position":4,"name":"We fix it","text":"We receive, diagnose, repair and test it, emailing you at each step."},
+  {"@type":"HowToStep","position":5,"name":"It comes back","text":"Shipped back with tracking and a warranty."}]}
+  </script>
+
+{%- when 'quote' -%}
+  <section class="page-width mir-block-sm mir-head"><h1 class="mir-h1">Get your repair quote</h1><p class="mir-lead">{{ intro | default: 'Exact price, timeline and warranty in under a minute.' }}</p></section>
+  <section class="page-width mir-block-sm">{% render 'mir-quote', products: all_products_list %}</section>
+  {% render 'mir-manual' %}
+
+{%- when 'specialized' -%}
+  <section class="page-width mir-block mir-head"><h1 class="mir-h1">Specialized repairs</h1><p class="mir-lead">{{ intro | default: "Motherboard repair, data recovery and water damage. Diagnosis first, then a firm quote you approve." }}</p></section>
+  <section class="page-width mir-block-sm">{% render 'mir-service', key: 'hub' %}</section>
+  <section class="page-width mir-block"><h2 class="mir-h2">Start a specialized repair</h2>{% render 'mir-quote', products: all_products_list, preset_lane: 'b' %}</section>
+
+{%- when 'service' -%}
+  {%- case service_key -%}
+    {%- when 'motherboard' -%}{%- assign svc = 'Motherboard / micro-soldering' -%}{%- assign stype = 'Motherboard repair' -%}
+    {%- when 'data-recovery' -%}{%- assign svc = 'Data recovery' -%}{%- assign stype = 'Data recovery' -%}
+    {%- when 'water-damage' -%}{%- assign svc = 'Water damage' -%}{%- assign stype = 'Water damage repair' -%}
+  {%- endcase -%}
+  <section class="page-width mir-block mir-head"><h1 class="mir-h1">{{ title }}</h1>{%- if intro != blank -%}<p class="mir-lead">{{ intro }}</p>{%- endif -%}<a class="btn btn--accent mir-big" href="#quote">Start diagnosis</a></section>
+  <section class="page-width mir-block-sm mir-narrow">{% render 'mir-service', key: service_key %}</section>
+  <section class="page-width mir-block"><h2 class="mir-h2">Start your {{ stype | downcase }}</h2>{% render 'mir-quote', products: all_products_list, preset_lane: 'b', preset_service: svc %}</section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":{{ title | json }},"serviceType":{{ stype | json }},"areaServed":{"@type":"Country","name":"Canada"},"provider":{"@type":"Organization","name":{{ shop.name | json }},"url":{{ shop.url | json }}}}</script>
+
+{%- when 'pricing' -%}
+  <section class="page-width mir-block mir-head"><h1 class="mir-h1">Pricing &amp; turnaround</h1><p class="mir-lead">{{ intro | default: 'What you pay, what you get, and how long it takes.' }}</p></section>
+  <section class="page-width mir-block-sm mir-narrow">{% render 'mir-pricing' %}</section>
+
+{%- when 'track' -%}
+  <section class="page-width mir-block-sm mir-head"><h1 class="mir-h1">Track your repair</h1></section>
+  {% render 'mir-track' %}
+
+{%- when 'faq' -%}
+  <section class="page-width mir-block mir-head"><h1 class="mir-h1">Mail-in repair FAQ</h1></section>
+  <section class="page-width mir-block-sm mir-narrow">{% render 'mir-faq', schema: true %}<h2 class="mir-h2 mir-block">Policies</h2>{% render 'mir-policies' %}<p class="mir-muted mir-block-sm">Still stuck? <a class="mir-link" href="/pages/contact">Contact us</a>.</p></section>
+
+{%- when 'model' -%}
+  {%- assign mname = rp.metafields.repair.model.value | default: rp.title -%}
+  <section class="page-width mir-block-sm mir-head"><h1 class="mir-h1">{{ mname }} repair by mail</h1><p class="mir-lead">{{ intro | default: 'Screen, battery, charging port and more, fixed by our technicians and shipped back anywhere in Canada.' }}</p></section>
+  <section class="page-width mir-block-sm">{% render 'mir-quote', products: all_products_list, preset_model: rp.handle %}</section>
+  <section class="page-width mir-block mir-narrow"><h2 class="mir-h2">{{ mname }} repair prices</h2>{% render 'mir-model', product: rp %}</section>
+  <section class="page-width mir-block">
+    <h2 class="mir-h2">Other {{ rp.vendor }} repairs</h2>
+    <div class="mir-models">{%- for p in all_products_list -%}{%- if p.type == 'Mail-in Repair' and p.vendor == rp.vendor and p.handle != rp.handle -%}<a href="{{ mb }}/{{ p.handle | remove_first: 'repair-' }}">{{ p.metafields.repair.model.value | default: p.title }}</a>{%- endif -%}{%- endfor -%}</div>
+  </section>
+  <section class="page-width mir-block"><h2 class="mir-h2">Something worse?</h2>{% render 'mir-service', key: 'hub' %}</section>
+{%- endcase -%}
+{%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Mail-In Repair",
+  "settings": [
+    { "type": "select", "id": "kind", "label": "Page type", "default": "landing", "options": [
+      { "value": "landing", "label": "Landing" }, { "value": "how-it-works", "label": "How it works" }, { "value": "quote", "label": "Quote" },
+      { "value": "specialized", "label": "Specialized hub" }, { "value": "pricing", "label": "Pricing" }, { "value": "track", "label": "Track" }, { "value": "faq", "label": "FAQ" } ] },
+    { "type": "text", "id": "heading", "label": "Landing heading", "default": "Mail-in repair, anywhere in Canada" },
+    { "type": "textarea", "id": "subheading", "label": "Landing subheading", "default": "Ship us your broken phone. We fix it and send it back. Exact price upfront, no phone calls needed." },
+    { "type": "textarea", "id": "intro", "label": "Intro (other pages)" }
+  ]
+}
+{% endschema %}

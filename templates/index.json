@@ -551,8 +551,8 @@
           "settings": {
             "title": "Repairs",
             "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
-            "button_label": "Book a repair",
-            "link": "/pages/services",
+            "button_label": "Start a mail-in repair",
+            "link": "/pages/mail-in-repair",
             "asset_image": "svc-repairs.webp",
             "icon": "inspect",
             "tint": "#FDE7F1"

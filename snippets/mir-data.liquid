@@ -1,0 +1,81 @@
+{%- comment -%}
+  Mail-In Repair pricing data → JSON for the quote app.
+  Source of truth: products of type "Mail-in Repair" (standard) and "Mail-in Diagnostic" (specialized),
+  one variant per pricing row, fields stored in variant metafields (namespace "repair").
+  Option order: standard = Issue, Part tier, Spec (optional); diagnostic = Service, Device.
+  Params: products (array, from a paginated collection)
+{%- endcomment -%}
+{%- assign ph_count = 0 -%}
+{%- capture models_json -%}
+{%- for p in products -%}
+  {%- assign is_diag = false -%}{%- if p.type == 'Mail-in Diagnostic' -%}{%- assign is_diag = true -%}{%- endif -%}
+  {%- assign page_handle = p.handle | remove_first: 'repair-' -%}
+  {
+    "handle": {{ p.handle | json }},
+    "title": {{ p.metafields.repair.model.value | default: p.title | json }},
+    "brand": {{ p.vendor | json }},
+    "category": {{ p.metafields.repair.category.value | default: 'phone' | json }},
+    "popular": {% if p.metafields.repair.popular.value %}true{% else %}false{% endif %},
+    "diag": {{ is_diag }},
+    "url": {% if is_diag %}null{% else %}{{ '/pages/mail-in-repair/' | append: page_handle | json }}{% endif %},
+    "variants": [
+      {%- for v in p.variants -%}
+        {%- assign m = v.metafields.repair -%}
+        {%- if m.is_placeholder.value -%}{%- assign ph_count = ph_count | plus: 1 -%}{%- endif -%}
+        {
+          "id": {{ v.id }},
+          "issue": {% unless is_diag %}{{ v.option1 | json }}{% else %}null{% endunless %},
+          "tier": {% if is_diag or v.option2 == nil %}null{% else %}{{ v.option2 | json }}{% endif %},
+          "spec": {% if is_diag or v.option3 == nil %}null{% else %}{{ v.option3 | json }}{% endif %},
+          "service": {% if is_diag %}{{ v.option1 | json }}{% else %}null{% endif %},
+          "device": {% if is_diag and v.option2 %}{{ v.option2 | json }}{% else %}null{% endif %},
+          "price": {{ v.price }},
+          "parts": {{ m.parts_price.value | default: 0 | json }},
+          "labour": {{ m.labour.value | default: 0 | json }},
+          "days": {{ m.turnaround_days.value | default: 0 | json }},
+          "warranty": {{ m.warranty_days.value | default: 0 | json }},
+          "desc": {{ m.tier_description.value | default: '' | json }},
+          "rec": {% if m.recommended.value %}true{% else %}false{% endif %},
+          "stock": {% if m.in_stock.value == false %}false{% else %}true{% endif %},
+          "oos": {{ m.oos_mode.value | default: 'hide' | json }},
+          "oosDays": {{ m.oos_extra_days.value | default: 0 | json }},
+          "fee": {{ m.diagnostic_fee.value | default: 0 | json }},
+          "low": {{ m.range_low.value | default: 0 | json }},
+          "high": {{ m.range_high.value | default: 0 | json }},
+          "ph": {% if m.is_placeholder.value %}true{% else %}false{% endif %},
+          "buyable": {{ v.available }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign live = false -%}
+{%- if settings.mir_pricing_live -%}{%- if ph_count == 0 or settings.mir_live_override -%}{%- assign live = true -%}{%- endif -%}{%- endif -%}
+<script type="application/json" id="mir-data">
+{
+  "models": [{{ models_json }}],
+  "live": {{ live }},
+  "placeholders": {{ ph_count }},
+  "currency": {{ cart.currency.iso_code | default: 'CAD' | json }},
+  "tiers": [
+    {%- for i in (1..3) -%}
+      {%- assign kk = 'mir_tier_' | append: i | append: '_key' -%}{%- assign kn = 'mir_tier_' | append: i | append: '_name' -%}
+      {%- assign kd = 'mir_tier_' | append: i | append: '_desc' -%}{%- assign kp = 'mir_tier_' | append: i | append: '_placeholder' -%}
+      { "key": {{ settings[kk] | json }}, "name": {{ settings[kn] | default: settings[kk] | json }}, "desc": {{ settings[kd] | json }}, "ph": {{ settings[kp] | json }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  "tierHelper": {{ settings.mir_tier_helper | json }},
+  "bundle": {{ settings.mir_bundle_percent | default: 0 }},
+  "validDays": {{ settings.mir_quote_valid_days | default: 14 }},
+  "shipFee": {{ settings.mir_shipping_fee | default: 0 }},
+  "regions": {{ settings.mir_regions | json }},
+  "tax": {{ settings.mir_tax | json }},
+  "statusEndpoint": {{ settings.mir_status_endpoint | json }},
+  "manualUrl": "/pages/mail-in-repair/quote#manual",
+  "t": {
+    "preview": {{ 'mail_in_repair.preview_pricing' | t | json }},
+    "book": {{ 'mail_in_repair.book' | t | json }}
+  }
+}
+</script>

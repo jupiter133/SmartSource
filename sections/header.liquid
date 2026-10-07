@@ -6,7 +6,7 @@
       {%- if section.settings.utility_menu == blank -%}
         <a href="/pages/our-promise">{% render 'icon', name: 'shield' %}Our Promise</a>
         <a href="/pages/why-refurbished">Why refurbished</a>
-        <a href="/blogs/news">Tech Journal</a>
+        <a href="/blogs/journal">Journal</a>
       {%- else -%}
         {%- for link in section.settings.utility_menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
       {%- endif -%}
@@ -176,7 +176,7 @@
       {%- if section.settings.side_menu == blank -%}
         <li><a class="nav-link nav-side-link" href="/pages/sell-your-device">{% render 'icon', name: 'swap' %}Trade in</a></li>
         <li><a class="nav-link nav-side-link" href="/pages/phone-plans">{% render 'icon', name: 'phone' %}Phone plans</a></li>
-        <li><a class="nav-link nav-side-link" href="/pages/services">{% render 'icon', name: 'shield' %}Services</a></li>
+        <li><a class="nav-link nav-side-link" href="/pages/mail-in-repair">{% render 'icon', name: 'wrench' %}Mail-In Repair</a></li>
       {%- else -%}
         {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
       {%- endif -%}

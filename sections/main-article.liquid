@@ -92,10 +92,10 @@
 
         {%- if post_type == 'repair' -%}
           {%- assign repair_url = settings.journal_repair_url -%}
-          {%- if repair_url == blank -%}{%- if pages['repairs'].id -%}{%- assign repair_url = pages['repairs'].url -%}{%- else -%}{%- assign repair_url = '/pages/contact' -%}{%- endif -%}{%- endif -%}
+          {%- if repair_url == blank -%}{%- assign repair_url = '/pages/mail-in-repair' -%}{%- endif -%}
           <div class="jr-cta jr-cta--repair">
-            <div><p class="jr-cta__title">Rather not open it up yourself?</p><p>Our technicians do this every day. Most screen, battery and port jobs are done same day, with a warranty on the repair.</p></div>
-            <a class="btn btn--accent" href="{{ repair_url }}">Book a repair</a>
+            <div><p class="jr-cta__title">Rather not open it up yourself?</p><p>Mail it to our technicians from anywhere in Canada. Exact price upfront, free insured shipping label, warranty on the repair.</p></div>
+            <a class="btn btn--accent" href="{{ repair_url }}" data-mir-track="blog_repair_cta">Get a mail-in repair quote</a>
           </div>
         {%- endif -%}
 

@@ -1,0 +1,210 @@
+lane,brand,model,category,spec,issue_or_service,part_tier,tier_description,parts_price,labour,diagnostic_fee,range_low,range_high,turnaround_days,warranty_days,in_stock,oos_mode,oos_extra_days,recommended,popular,is_placeholder
+A,Apple,iPhone 11,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,52.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,98.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,148.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,34.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,55.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,77.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,35.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,40.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,94.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,62.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 11,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,118.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,64.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,116.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,176.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,38.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,60.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,84.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,40.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,50.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,108.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,74.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 12,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,136.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 13,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,76.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,134.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,204.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,42.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,65.00,39.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,91.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,45.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,60.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,122.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,86.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 13,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,154.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,88.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,152.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,232.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,46.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,70.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,98.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,50.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,70.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,136.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,98.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 13 Pro,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,172.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 14,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,88.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,152.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,232.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,46.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,70.00,39.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,98.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,50.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,70.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,136.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,98.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 14,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,172.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,100.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,170.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,260.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,50.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,75.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,105.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,55.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,80.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,150.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,110.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 14 Pro,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,190.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 15,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,100.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,170.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,260.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,50.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,75.00,39.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,105.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,55.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,80.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,150.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,110.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,190.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,112.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,188.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,288.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,54.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,80.00,39.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,112.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,60.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,90.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,164.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,122.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 15 Pro,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,208.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,124.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,206.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,316.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,58.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,85.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,119.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,65.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,100.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,178.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,134.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 15 Pro Max,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,226.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 16,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,112.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,188.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,288.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,54.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,80.00,39.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,112.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,60.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,90.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,164.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,122.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Apple,iPhone 16,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,208.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,136.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,224.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,344.00,49.00,,,,2,365,FALSE,show,5,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,62.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Battery,Aftermarket Plus,PLACEHOLDER: higher-capacity-tested battery,90.00,39.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,126.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,70.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,110.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,192.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,146.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Apple,iPhone 16 Pro,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,244.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,52.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,98.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,148.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,34.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,77.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,35.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,40.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,94.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,62.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy A54 5G,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,118.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,64.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,116.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,176.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,38.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,84.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,40.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,50.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,108.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,74.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S21,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,136.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,76.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,134.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,204.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,42.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,91.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,45.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,60.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,122.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,86.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S22,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,154.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S23,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,88.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,152.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,232.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,46.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,98.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,50.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,70.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,136.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,98.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S23,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,172.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,124.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,206.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,316.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,58.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,119.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,65.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,100.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,178.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,134.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S23 Ultra,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,226.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S24,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,100.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,170.00,49.00,,,,1,180,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,260.00,49.00,,,,2,365,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,50.00,39.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,105.00,39.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,55.00,59.00,,,,1,180,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,80.00,69.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,150.00,69.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,110.00,49.00,,,,1,90,TRUE,hide,0,FALSE,TRUE,TRUE
+A,Samsung,Galaxy S24,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,190.00,49.00,,,,1,365,TRUE,hide,0,TRUE,TRUE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Screen,Aftermarket,PLACEHOLDER: budget replacement screen,136.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Screen,Aftermarket Plus,PLACEHOLDER: higher-grade replacement screen,224.00,49.00,,,,1,180,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Screen,Premium,PLACEHOLDER: top-grade screen,344.00,49.00,,,,2,365,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Battery,Aftermarket,PLACEHOLDER: replacement battery,62.00,39.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Battery,Premium,PLACEHOLDER: top-grade battery,126.00,39.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Charging port,Aftermarket Plus,PLACEHOLDER: replacement charging port assembly,70.00,59.00,,,,1,180,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Back glass,Aftermarket,PLACEHOLDER: replacement back glass,110.00,69.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Back glass,Premium,PLACEHOLDER: top-grade back glass,192.00,69.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Rear camera,Aftermarket,PLACEHOLDER: replacement rear camera,146.00,49.00,,,,1,90,TRUE,hide,0,FALSE,FALSE,TRUE
+A,Samsung,Galaxy S24 Ultra,phone,,Rear camera,Premium,PLACEHOLDER: top-grade rear camera,244.00,49.00,,,,1,365,TRUE,hide,0,TRUE,FALSE,TRUE
+B,,,,Phone,Motherboard / micro-soldering,,,,,49.00,149.00,399.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,Motherboard / micro-soldering,,,,,59.00,179.00,479.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,Motherboard / micro-soldering,,,,,74.00,224.00,598.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Phone,Data recovery,,,,,79.00,199.00,599.00,4,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,Data recovery,,,,,95.00,239.00,719.00,4,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,Data recovery,,,,,118.00,298.00,898.00,4,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Phone,Water damage,,,,,49.00,99.00,349.00,2,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,Water damage,,,,,59.00,119.00,419.00,2,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,Water damage,,,,,74.00,148.00,524.00,2,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Phone,No power,,,,,49.00,99.00,299.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,No power,,,,,59.00,119.00,359.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,No power,,,,,74.00,148.00,448.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Phone,Boot loop,,,,,49.00,79.00,249.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,Boot loop,,,,,59.00,95.00,299.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,Boot loop,,,,,74.00,118.00,374.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Phone,Board-level fault,,,,,49.00,149.00,399.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Tablet,Board-level fault,,,,,59.00,179.00,479.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
+B,,,,Laptop,Board-level fault,,,,,74.00,224.00,598.00,3,0,TRUE,hide,0,FALSE,FALSE,TRUE
