@@ -1,0 +1,7 @@
+{%- comment -%} Mega menu tile art: photo if available (asset name or full URL), else drawn device art. Params: src, title, idx, kind {%- endcomment -%}
+{%- if src != blank -%}
+  {%- if src contains '//' -%}{%- assign u = src | append: '&width=360' -%}{%- else -%}{%- assign u = src | asset_url -%}{%- endif -%}
+  <img class="mega-tile__photo" src="{{ u }}" alt="" width="360" height="360" loading="lazy" decoding="async">
+{%- else -%}
+  {% render 'device-art', title: title, idx: idx, kind: kind %}
+{%- endif -%}
