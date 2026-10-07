@@ -3,7 +3,9 @@
   <div class="brand-logos__grid">
     {%- for block in section.blocks -%}
       <a class="brand-logo" href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
-        {%- if block.settings.logo != blank -%}{{ block.settings.logo | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.name }}{%- else -%}<span class="brand-logo__name">{{ block.settings.name }}</span>{%- endif -%}
+        {%- if block.settings.logo != blank -%}{{ block.settings.logo | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.name }}
+        {%- elsif block.settings.asset_logo != blank -%}<img class="brand-logo__svg brand-logo__svg--{{ block.settings.asset_size }}" src="{{ block.settings.asset_logo | asset_url }}" alt="{{ block.settings.name | escape }}" width="160" height="48" loading="lazy">{%- if block.settings.show_name -%}<span class="brand-logo__label">{{ block.settings.name }}</span>{%- endif -%}
+        {%- else -%}<span class="brand-logo__name">{{ block.settings.name }}</span>{%- endif -%}
       </a>
     {%- endfor -%}
   </div>
@@ -15,6 +17,9 @@
   "blocks": [{ "type": "brand", "name": "Brand", "settings": [
     { "type": "text", "id": "name", "label": "Brand name", "default": "Apple" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "SVG or transparent PNG. Without one, the name shows as text." },
+    { "type": "text", "id": "asset_logo", "label": "Theme logo file", "info": "Used when no logo image is picked, e.g. logo-brand-apple.svg" },
+    { "type": "select", "id": "asset_size", "label": "Logo size", "default": "wordmark", "options": [{ "value": "icon", "label": "Icon (square)" }, { "value": "wordmark", "label": "Wordmark (wide)" }] },
+    { "type": "checkbox", "id": "show_name", "label": "Show name under logo", "default": false },
     { "type": "url", "id": "link", "label": "Link" }
   ]}],
   "presets": [{ "name": "Brand logos", "blocks": [

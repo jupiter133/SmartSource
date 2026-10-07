@@ -635,42 +635,60 @@
           "type": "brand",
           "settings": {
             "name": "Apple",
-            "link": "/collections/all/apple"
+            "link": "/collections/all/apple",
+            "asset_logo": "logo-brand-apple.svg",
+            "asset_size": "icon",
+            "show_name": true
           }
         },
         "b2": {
           "type": "brand",
           "settings": {
             "name": "Samsung",
-            "link": "/collections/all/samsung"
+            "link": "/collections/all/samsung",
+            "asset_logo": "logo-brand-samsung.svg",
+            "asset_size": "wordmark",
+            "show_name": false
           }
         },
         "b3": {
           "type": "brand",
           "settings": {
             "name": "Google",
-            "link": "/collections/all/pixel"
+            "link": "/collections/all/pixel",
+            "asset_logo": "logo-brand-google.svg",
+            "asset_size": "icon",
+            "show_name": true
           }
         },
         "b4": {
           "type": "brand",
           "settings": {
             "name": "Sony",
-            "link": "/collections/all/playstation"
+            "link": "/collections/all/playstation",
+            "asset_logo": "logo-brand-sony.svg",
+            "asset_size": "wordmark",
+            "show_name": false
           }
         },
         "b5": {
           "type": "brand",
           "settings": {
             "name": "Nintendo",
-            "link": "/collections/all/nintendo"
+            "link": "/collections/all/nintendo",
+            "asset_logo": "logo-brand-nintendo.svg",
+            "asset_size": "wordmark",
+            "show_name": false
           }
         },
         "b6": {
           "type": "brand",
           "settings": {
             "name": "Microsoft",
-            "link": "/collections/all/xbox"
+            "link": "/collections/all/xbox",
+            "asset_logo": "logo-brand-microsoft.svg",
+            "asset_size": "icon",
+            "show_name": true
           }
         }
       },
