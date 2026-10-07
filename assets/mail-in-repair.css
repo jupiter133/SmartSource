@@ -1,5 +1,5 @@
 /* Mail-In Repair. Builds on journal.css tokens (--jr-*) for dark mode and shared components. */
-.mir-subnav{position:sticky;top:var(--mir-top,0px);z-index:16;background:color-mix(in srgb,var(--jr-bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--jr-line)}
+.mir-subnav{position:sticky;top:var(--mir-top,0px);z-index:16;background:var(--jr-bg);border-bottom:1px solid var(--jr-line)}
 .mir-subnav__row{display:flex;align-items:center;gap:12px;min-height:56px}
 .mir-subnav__brand{display:flex;align-items:center;gap:8px;font-weight:800;white-space:nowrap;color:var(--jr-ink)}
 .mir-subnav__brand svg{color:var(--c-accent)}

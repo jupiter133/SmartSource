@@ -11,8 +11,8 @@
       tg.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     var h = document.querySelector('.header');
-    var setTop = function () { document.documentElement.style.setProperty('--mir-top', (h && getComputedStyle(h).position === 'sticky' ? h.offsetHeight : 0) + 'px'); };
-    setTop(); window.addEventListener('resize', setTop);
+    var setTop = function () { document.documentElement.style.setProperty('--mir-top', (h ? Math.max(0, Math.round(h.getBoundingClientRect().bottom)) : 0) + 'px'); };
+    setTop(); window.addEventListener('resize', setTop); window.addEventListener('scroll', setTop, { passive: true });
   }
 
   /* ---------- Analytics ---------- */

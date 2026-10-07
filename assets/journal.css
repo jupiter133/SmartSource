@@ -8,7 +8,7 @@ html[data-jr-theme=dark] body:has(.jr-page){background:#0d0d10}
 body:has(.jr-page) .footer{margin-top:0}
 
 /* Sticky bar */
-.jr-bar{position:sticky;top:var(--jr-top,0px);z-index:15;background:color-mix(in srgb,var(--jr-bg) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--jr-line)}
+.jr-bar{position:sticky;top:var(--jr-top,0px);z-index:15;background:var(--jr-bg);border-bottom:1px solid var(--jr-line);box-shadow:0 4px 14px #0000000f}
 .jr-bar__row{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:6px}
 .jr-bar__home{font-weight:800;font-size:17px;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
 .jr-bar__main{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}

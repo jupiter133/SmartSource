@@ -2,13 +2,16 @@
 (function () {
   var root = document.documentElement;
 
+  // Pin under the header only while the header is actually on screen (it may scroll away on some layouts).
+  var hdr = document.querySelector('.header');
   function setTop() {
-    var h = document.querySelector('.header');
-    var sticky = h && getComputedStyle(h).position === 'sticky';
-    root.style.setProperty('--jr-top', sticky ? h.offsetHeight + 'px' : '0px');
+    var b = hdr ? Math.max(0, Math.round(hdr.getBoundingClientRect().bottom)) : 0;
+    root.style.setProperty('--jr-top', b + 'px');
+    root.style.setProperty('--mir-top', b + 'px');
   }
   setTop();
   window.addEventListener('resize', setTop);
+  window.addEventListener('scroll', setTop, { passive: true });
 
   document.querySelectorAll('[data-jr-mode]').forEach(function (btn) {
     btn.addEventListener('click', function () {
