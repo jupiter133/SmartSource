@@ -1,10 +1,18 @@
 {%- liquid
+  assign ctags = ''
+  for t in current_tags
+    assign th = t | handleize
+    assign ctags = ctags | append: th | append: ','
+  endfor
+  assign ctags = ctags | split: ','
+-%}
+{%- liquid
   assign tag_title = ''
   if current_tags.size > 0
-    assign tag_title = current_tags.first | replace: '-', ' ' | capitalize
+    assign tag_title = current_tags.first
     for b in section.blocks
       assign bh = b.settings.link | split: '/' | last | split: '?' | first
-      if current_tags contains bh
+      if ctags contains bh
         assign tag_title = b.settings.label
       endif
     endfor
@@ -23,7 +31,7 @@
     for b in section.blocks
       if b.settings.parent != blank
         assign bh = b.settings.link | split: '/' | last | split: '?' | first
-        if current_tags contains b.settings.parent or current_tags contains bh
+        if ctags contains b.settings.parent or ctags contains bh
           assign ctx = b.settings.parent
         endif
       endif
@@ -32,7 +40,7 @@
     for b in section.blocks
       if b.settings.parent == ctx and ctx != blank
         assign bh = b.settings.link | split: '/' | last | split: '?' | first
-        if current_tags contains bh
+        if ctags contains bh
           assign child_active = true
         endif
       endif
@@ -41,7 +49,7 @@
 {%- liquid
   assign hero_key = ctx
   if hero_key == blank and current_tags.size > 0
-    assign hero_key = current_tags.first
+    assign hero_key = ctags.first
   endif
   if hero_key == blank
     assign hero_key = collection.handle
@@ -115,7 +123,7 @@
       {%- for b in section.blocks -%}
         {%- if b.settings.parent == ctx or ctx == blank and b.settings.parent == blank -%}
           {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
-          {%- assign on = false -%}{%- if current_tags contains bh -%}{%- assign on = true -%}{%- endif -%}
+          {%- assign on = false -%}{%- if ctags contains bh -%}{%- assign on = true -%}{%- endif -%}
           <a role="listitem" class="coll-chip{% if on %} is-active{% endif %}" href="{{ b.settings.link }}"{% if on %} aria-current="page"{% endif %} {{ b.shopify_attributes }}>{{ b.settings.label }}</a>
         {%- endif -%}
       {%- endfor -%}

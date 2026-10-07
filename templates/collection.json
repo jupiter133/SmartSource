@@ -398,6 +398,14 @@
             "link": "/collections/all/screen-protectors",
             "parent": "accessories"
           }
+        },
+        "chip_air": {
+          "type": "chip",
+          "settings": {
+            "label": "iPhone Air",
+            "link": "/collections/all/iphone-air",
+            "parent": "iphone"
+          }
         }
       },
       "block_order": [
@@ -412,6 +420,7 @@
         "chip_9",
         "chip_10",
         "chip_11",
+        "chip_air",
         "chip_12",
         "chip_13",
         "chip_14",
