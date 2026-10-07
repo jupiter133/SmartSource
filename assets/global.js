@@ -160,6 +160,23 @@
     });
   });
 
+  // Utility bar: postal code popover (saved on this device) + close popovers on outside click
+  $$('[data-postal]').forEach(box => {
+    const input = $('[data-postal-input]', box), label = $('[data-postal-label]', box), err = $('[data-postal-err]', box);
+    const show = v => { if (v && label) label.textContent = 'Deliver to ' + v; };
+    try { show(localStorage.getItem('ss_postal')); } catch (e) {}
+    const save = () => {
+      const v = (input.value || '').toUpperCase().replace(/\s+/g, '');
+      if (!/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/.test(v)) { if (err) err.hidden = false; return; }
+      const nice = v.slice(0, 3) + ' ' + v.slice(3);
+      if (err) err.hidden = true; try { localStorage.setItem('ss_postal', nice); } catch (e) {}
+      show(nice); box.open = false;
+    };
+    $('[data-postal-save]', box)?.addEventListener('click', save);
+    input?.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); save(); } });
+  });
+  document.addEventListener('click', e => $$('.utility-pop[open]').forEach(d => { if (!d.contains(e.target)) d.open = false; }));
+
   // Tabs
   $$('[data-tabs]').forEach(root => {
     $$('[data-tab]', root).forEach(tab => tab.addEventListener('click', () => {

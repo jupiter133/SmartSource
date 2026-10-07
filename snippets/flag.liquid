@@ -1,0 +1,6 @@
+{%- comment -%} Small country flag. Canada and US drawn as SVG; other countries fall back to the ISO code. {%- endcomment -%}
+{%- case code -%}
+{%- when 'CA' -%}<svg viewBox="0 0 36 18" width="30" height="15" role="img" aria-label="Canada"><rect width="36" height="18" fill="#fff"/><rect width="9" height="18" fill="#D52B1E"/><rect x="27" width="9" height="18" fill="#D52B1E"/><path fill="#D52B1E" d="M18 2.6l-1.15 2.15c-.13.23-.36.21-.59.08l-.83-.43.62 3.3c.13.6-.29.6-.5.34l-1.45-1.62-.24.82c-.03.11-.15.22-.33.2l-1.83-.39.48 1.75c.1.39.18.55-.11.65l-.65.31 3.16 2.57c.13.1.19.27.14.43l-.28.9c1.09-.13 2.07-.31 3.16-.43.1-.01.26.15.26.26l-.15 3.33h.56l-.09-3.32c0-.12.15-.28.25-.27 1.09.12 2.07.3 3.16.43l-.28-.9c-.05-.16.01-.33.14-.43l3.16-2.57-.65-.31c-.29-.1-.21-.26-.11-.65l.48-1.75-1.83.39c-.18.02-.3-.09-.33-.2l-.24-.82-1.45 1.62c-.21.26-.63.26-.5-.34l.62-3.3-.83.43c-.23.13-.46.15-.59-.08z"/></svg>
+{%- when 'US' -%}<svg viewBox="0 0 38 20" width="30" height="16" role="img" aria-label="United States"><rect width="38" height="20" fill="#B22234"/><g fill="#fff">{%- for i in (1..6) -%}<rect y="{{ i | times: 3.077 | minus: 1.538 }}" width="38" height="1.538"/>{%- endfor -%}</g><rect width="15.2" height="10.77" fill="#3C3B6E"/></svg>
+{%- else -%}<span class="flag-code">{{ code }}</span>
+{%- endcase -%}

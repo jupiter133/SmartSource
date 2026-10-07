@@ -12,21 +12,51 @@
       {%- endif -%}
     </nav>
     <div class="utility-right">
+      {%- if section.settings.show_postal -%}
+        <details class="utility-pop utility-postal" data-postal>
+          <summary>{% render 'icon', name: 'pin' %}<span class="utility-underline" data-postal-label>Update postal code</span></summary>
+          <div class="utility-pop__panel">
+            <label for="PostalInput">Your postal code</label>
+            <p class="utility-pop__hint">We'll use it to show delivery times and nearby stores.</p>
+            <div class="utility-postal__row">
+              <input id="PostalInput" type="text" inputmode="text" autocomplete="postal-code" maxlength="7" placeholder="e.g. M5V 2T6" data-postal-input>
+              <button type="button" class="btn btn--dark btn--sm" data-postal-save>Save</button>
+            </div>
+            <p class="utility-pop__err" data-postal-err hidden>Enter a valid Canadian postal code, like M5V 2T6.</p>
+          </div>
+        </details>
+      {%- endif -%}
       {%- form 'localization', class: 'utility-locale' -%}
-        <span class="utility-loc">{% render 'icon', name: 'pin' %}<span>{{ localization.country.name }} ({{ localization.country.currency.iso_code }})</span></span>
-        {%- if localization.available_countries.size > 1 -%}
-          <select name="country_code" onchange="this.form.submit()" aria-label="Country">
-            {%- for c in localization.available_countries -%}<option value="{{ c.iso_code }}" {% if c.iso_code == localization.country.iso_code %}selected{% endif %}>{{ c.name }} ({{ c.currency.iso_code }})</option>{%- endfor -%}
-          </select>
-        {%- endif -%}
-        {%- if localization.available_languages.size > 1 -%}
-          <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}" data-locale-input>
-          <span class="utility-langs">
-            {%- for l in localization.available_languages -%}
-              <button type="submit" class="{% if l.iso_code == localization.language.iso_code %}is-active{% endif %}" onclick="this.form.querySelector('[data-locale-input]').value='{{ l.iso_code }}'">{{ l.endonym_name | capitalize }}</button>{% unless forloop.last %}<span>|</span>{% endunless %}
-            {%- endfor -%}
-          </span>
-        {%- endif -%}
+        <div class="utility-locale__row">
+        {%- assign cc = localization.country.iso_code -%}
+        <details class="utility-pop utility-country">
+          <summary aria-label="Country: {{ localization.country.name }} ({{ localization.country.currency.iso_code }})">
+            <span class="utility-flag">{% render 'flag', code: cc %}</span>
+            <span class="utility-chev" aria-hidden="true"></span>
+          </summary>
+          <div class="utility-pop__panel utility-country__panel">
+            {%- if localization.available_countries.size > 1 -%}
+              <p class="utility-pop__title">Ship to</p>
+              {%- for c in localization.available_countries -%}
+                <button type="submit" name="country_code" value="{{ c.iso_code }}" class="utility-country__opt{% if c.iso_code == cc %} is-active{% endif %}"><span class="utility-flag">{% render 'flag', code: c.iso_code %}</span>{{ c.name }} ({{ c.currency.iso_code }})</button>
+              {%- endfor -%}
+            {%- else -%}
+              <p class="utility-pop__title">Shipping to {{ localization.country.name }}</p>
+              <p class="utility-pop__hint">Prices in {{ localization.country.currency.iso_code }}.</p>
+            {%- endif -%}
+          </div>
+        </details>
+        <span class="utility-langs">
+          {%- for l in localization.available_languages -%}
+            {%- if l.iso_code == localization.language.iso_code -%}
+              <span class="is-active">{{ l.endonym_name | capitalize }}</span>
+            {%- else -%}
+              <button type="submit" name="locale_code" value="{{ l.iso_code }}">{{ l.endonym_name | capitalize }}</button>
+            {%- endif -%}
+            {%- unless forloop.last -%}<span class="utility-sep" aria-hidden="true">|</span>{%- endunless -%}
+          {%- endfor -%}
+        </span>
+        </div>
       {%- endform -%}
     </div>
   </div>
@@ -169,6 +199,7 @@
   { "type": "checkbox", "id": "highlight_first", "label": "Highlight first link as deals", "default": true },
   { "type": "link_list", "id": "side_menu", "label": "Right-side menu (Trade in, Services...)" },
   { "type": "checkbox", "id": "show_utility", "label": "Show utility row", "default": true },
+  { "type": "checkbox", "id": "show_postal", "label": "Show \"Update postal code\"", "default": true },
   { "type": "link_list", "id": "utility_menu", "label": "Utility links (Promise, Blog...)" },
   { "type": "url", "id": "help_link", "label": "Help link" },
   { "type": "text", "id": "tradein_label", "label": "Trade-in button label", "default": "Trade-in", "info": "Shows next to the search bar. Leave blank to hide." },
