@@ -247,6 +247,21 @@
         {%- endfor -%}
       </div>
 
+      {%- assign g_blog = blogs[settings.journal_blog] -%}
+      {%- assign g_tag = '' -%}{%- assign g_key = ctags | first | default: collection.handle -%}
+      {%- assign g_lines = section.settings.guide_map | newline_to_br | split: '<br />' -%}
+      {%- for l in g_lines -%}{%- assign kv = l | split: ':' -%}{%- assign kk = kv[0] | strip -%}{%- if kk == g_key -%}{%- assign g_tag = kv[1] | strip -%}{%- endif -%}{%- endfor -%}
+      {%- if g_tag != blank and g_blog -%}
+        {%- for a in g_blog.articles limit: 50 -%}{%- if a.tags contains g_tag -%}
+          <a class="coll-guide" href="{{ a.url }}">
+            <span class="coll-guide__art"><span>{{ g_tag }}</span></span>
+            <span class="coll-guide__body"><small>Journal · {{ g_tag }}</small><strong>{{ a.title }}</strong><span>{{ a.excerpt_or_content | strip_html | truncatewords: 26 }}</span></span>
+            <span class="btn coll-guide__btn">Read guide</span>
+          </a>
+          {%- break -%}
+        {%- endif -%}{%- endfor -%}
+      {%- endif -%}
+
       {%- if paginate.pages > 1 -%}
         <nav class="coll-pages" aria-label="Pagination">
           {%- if paginate.previous -%}<a class="coll-pages__btn" href="{{ paginate.previous.url }}" aria-label="Previous page">{% render 'icon', name: 'chev-left' %}</a>{%- endif -%}
@@ -261,6 +276,11 @@
     </div>
   </form>
   {%- endpaginate -%}
+  {%- if section.settings.show_reviews -%}
+    {%- assign rv_scope = ctags | first | default: '' -%}
+    {%- assign rv_heading = 'Customer reviews for refurbished ' | append: collection.title -%}
+    {% render 'coll-reviews', scope: rv_scope, heading: rv_heading %}
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -285,6 +305,8 @@
   { "type": "url", "id": "tradein_link", "label": "Trade-in link" },
   { "type": "range", "id": "open_filters", "label": "Filters open by default", "min": 0, "max": 6, "step": 1, "default": 2 },
   { "type": "header", "content": "Promo tile" },
+  { "type": "checkbox", "id": "show_reviews", "label": "Show customer reviews (only when real reviews exist)", "default": true },
+  { "type": "textarea", "id": "guide_map", "label": "Journal guide under the grid: tag: Journal tag", "default": "iphone: Phones\nsamsung: Phones\nandroid: Phones\nsmartphones: Phones\nipad: Tablets\ntablets: Tablets\nmacbook: Laptops\nlaptops: Laptops\nconsoles: Gaming\nplaystation: Gaming\nxbox: Gaming\nnintendo: Gaming\naudio: Audio\naccessories: Accessories\ncables: Accessories" },
   { "type": "header", "content": "Wide promo cards (in the product grid)" },
   { "type": "color", "id": "wide_bg", "label": "Card background", "default": "#FCE1EE" },
   { "type": "text", "id": "wide1_title", "label": "Card 1 title", "default": "Free case + screen protector" },

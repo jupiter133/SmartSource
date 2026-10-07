@@ -1409,3 +1409,52 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .coll-wide__art svg{max-height:180px}
 @media (max-width:749px){.coll-wide{grid-template-columns:1fr;padding:18px}.coll-wide__art{min-height:160px}}
 .coll-grid{grid-auto-flow:row dense}
+/* Journal guide banner under collection grid */
+.coll-guide{display:grid;grid-template-columns:200px 1fr auto;align-items:center;gap:20px;margin:18px 0 6px;background:#fff;border:1px solid #ececf0;border-radius:14px;overflow:hidden;color:var(--c-ink)}
+.coll-guide__art{align-self:stretch;min-height:120px;display:flex;align-items:flex-end;padding:14px;background:repeating-linear-gradient(135deg,#101016 0 14px,#e8f97a 14px 28px)}
+.coll-guide__art span{background:#fff;font-weight:800;font-size:13px;padding:4px 8px;border-radius:6px}
+.coll-guide__body{display:flex;flex-direction:column;gap:4px;padding:14px 0;font-size:14px}
+.coll-guide__body small{color:#5b5b66}.coll-guide__body strong{font-size:16px}
+.coll-guide__body span{color:#3d3d46}
+.coll-guide__btn{margin-right:20px;white-space:nowrap;border:1px solid var(--c-ink);background:#fff}
+@media (max-width:749px){.coll-guide{grid-template-columns:1fr}.coll-guide__art{min-height:90px}.coll-guide__body{padding:0 16px}.coll-guide__btn{margin:0 16px 16px}}
+/* Collection reviews */
+.rv{margin-top:48px}
+.rv__title{font-size:clamp(20px,2.4vw,24px);margin:0 0 22px}
+.rv__grid{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
+.rv-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 3px #0000000d}
+.rv-card__label{font-size:18px;margin:0 0 6px}
+.rv-card__avg{font-size:18px;font-weight:600;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.rv-card__count{font-size:13px;color:#3d4a8f;margin:0 0 14px}
+.rv-stars{color:#111;letter-spacing:1px}.rv-stars .is-off{color:#d6d6db}.rv-stars--lg{font-size:20px}
+.rv-dist__row{display:grid;grid-template-columns:28px 1fr 28px;align-items:center;gap:8px;font-size:13px;margin:4px 0}
+.rv-dist__bar{height:6px;border-radius:9px;background:#ececf0;overflow:hidden}.rv-dist__bar span{display:block;height:100%;background:var(--c-ink)}
+.rv-filters{margin-top:28px;display:grid;gap:8px}
+.rv-filters__h{font-size:20px;font-weight:600;margin:0}
+.rv-filters__sub{font-weight:600;margin:10px 0 2px}
+.rv-filters label{display:flex;align-items:center;gap:10px;font-size:15px}
+.rv-filters input{width:18px;height:18px}
+.rv__photoshead,.rv__listhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.rv__photoshead h3,.rv__listhead h3{font-size:20px;margin:0}
+.rv-arrow{width:38px;height:38px;border-radius:50%;border:0;background:var(--c-ink);color:#fff;font-size:20px;cursor:pointer;margin-left:6px}
+.rv-photos{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-bottom:34px}
+.rv-photos::-webkit-scrollbar{display:none}
+.rv-photo{flex:0 0 160px;height:160px;margin:0;border-radius:12px;overflow:hidden;position:relative;scroll-snap-align:start}
+.rv-photo img{width:100%;height:100%;object-fit:cover}
+.rv-photo figcaption{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:10px;background:linear-gradient(transparent 55%,#000a);color:#fff;font-size:12px}
+.rv-photo .rv-stars{color:#fff}
+.rv-photo__name{align-self:flex-start;background:#fff;color:#111;padding:2px 6px;border-radius:4px;font-weight:600}
+.rv-sort select{border:1px solid #d6d6db;border-radius:8px;padding:9px 12px;font:inherit;font-size:14px;background:#fff}
+.rv-list{display:grid;gap:14px}
+.rv-item{background:#fff;border-radius:14px;padding:18px}
+.rv-item__head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.rv-item__name{font-size:18px;margin:0 0 4px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.rv-badge{font-size:12px;background:#e6eafc;color:#3d4a8f;padding:2px 8px;border-radius:4px;font-weight:600}
+.rv-item__meta{font-size:13px;color:#5b5b66;margin:0}
+.rv-item__score{font-size:18px;font-weight:600;white-space:nowrap;margin:0}
+.rv-item__photos{display:flex;gap:12px;margin:16px 0;overflow-x:auto}
+.rv-item__photos img{width:140px;height:140px;object-fit:cover;border-radius:10px}
+.rv-item__body{margin:12px 0 0;font-size:15px;line-height:1.6}
+.rv-more{margin-top:16px}
+@media (max-width:749px){.rv__grid{grid-template-columns:1fr;gap:24px}.rv-photo{flex-basis:140px;height:140px}}
+.rv-more[hidden],.rv-empty[hidden],.rv-item[hidden]{display:none}

@@ -1,0 +1,90 @@
+{%- comment -%}
+  Customer reviews block for collection pages. Reads real reviews from the "customer_review" metaobject
+  (Content > Metaobjects > Customer review). Renders nothing until at least one published review matches.
+  Params: scope (category tag handle, e.g. "iphone"), heading
+{%- endcomment -%}
+{%- assign rv_count = 0 -%}{%- assign rv_sum = 0 -%}
+{%- assign s5 = 0 -%}{%- assign s4 = 0 -%}{%- assign s3 = 0 -%}{%- assign s2 = 0 -%}{%- assign s1 = 0 -%}
+{%- assign rv_photos = '' -%}{%- assign rv_items = '' -%}
+{%- if metaobjects.customer_review.values.size > 0 -%}
+  {%- for r in metaobjects.customer_review.values limit: 200 -%}
+    {%- assign cat = r.category.value | downcase | strip -%}
+    {%- if scope != blank and cat != blank and cat != scope -%}{%- continue -%}{%- endif -%}
+    {%- assign rating = r.rating.value | plus: 0 -%}
+    {%- if rating < 1 -%}{%- continue -%}{%- endif -%}
+    {%- assign rv_count = rv_count | plus: 1 -%}{%- assign rv_sum = rv_sum | plus: rating -%}
+    {%- case rating -%}{%- when 5 -%}{%- assign s5 = s5 | plus: 1 -%}{%- when 4 -%}{%- assign s4 = s4 | plus: 1 -%}{%- when 3 -%}{%- assign s3 = s3 | plus: 1 -%}{%- when 2 -%}{%- assign s2 = s2 | plus: 1 -%}{%- else -%}{%- assign s1 = s1 | plus: 1 -%}{%- endcase -%}
+    {%- capture stars -%}<span class="rv-stars" aria-label="{{ rating }} out of 5">{%- for i in (1..5) -%}<span{% if i > rating %} class="is-off"{% endif %}>★</span>{%- endfor -%}</span>{%- endcapture -%}
+    {%- capture item -%}
+      <article class="rv-item" data-rating="{{ rating }}" data-condition="{{ r.condition.value | escape }}" data-date="{{ r.date.value | date: '%Y%m%d' }}" data-photos="{{ r.photos.value.size | default: 0 }}">
+        <header class="rv-item__head">
+          <div><p class="rv-item__name">{{ r.author.value }} {% if r.verified.value %}<span class="rv-badge">✓ Verified purchase</span>{% endif %}</p>
+          <p class="rv-item__meta">Reviewed {{ r.date.value | date: '%b %-d, %Y' }}{% if r.location.value != blank %} · {{ r.location.value }}{% endif %}{% if r.product.value %} · {{ r.product.value.title }}{% endif %}{% if r.condition.value != blank %} · {{ r.condition.value }}{% endif %}</p></div>
+          <p class="rv-item__score">{{ stars }} {{ rating }}/5</p>
+        </header>
+        {%- if r.photos.value.size > 0 -%}<div class="rv-item__photos">{%- for ph in r.photos.value limit: 4 -%}{{ ph | image_url: width: 320 | image_tag: loading: 'lazy', alt: 'Customer photo' }}{%- endfor -%}</div>{%- endif -%}
+        <p class="rv-item__body">{{ r.body.value | escape | newline_to_br }}</p>
+      </article>
+    {%- endcapture -%}
+    {%- assign rv_items = rv_items | append: item -%}
+    {%- if r.photos.value.size > 0 -%}
+      {%- capture ph -%}<figure class="rv-photo">{{ r.photos.value.first | image_url: width: 400 | image_tag: loading: 'lazy', alt: 'Customer photo' }}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
+      {%- assign rv_photos = rv_photos | append: ph -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if rv_count > 0 -%}
+  {%- assign avg = rv_sum | times: 1.0 | divided_by: rv_count | round: 1 -%}
+  <section class="rv" data-reviews>
+    <h2 class="rv__title">{{ heading }}</h2>
+    <div class="rv__grid">
+      <aside class="rv__side">
+        <div class="rv-card">
+          <p class="rv-card__label">Overall rating</p>
+          <p class="rv-card__avg"><span class="rv-stars rv-stars--lg">{%- for i in (1..5) -%}<span{% if i > avg %} class="is-off"{% endif %}>★</span>{%- endfor -%}</span> {{ avg }}/5</p>
+          <p class="rv-card__count">✓ {{ rv_count }} verified review{% if rv_count != 1 %}s{% endif %}</p>
+          <div class="rv-dist">
+            {%- for n in (1..5) reversed -%}
+              {%- case n -%}{%- when 5 -%}{%- assign c = s5 -%}{%- when 4 -%}{%- assign c = s4 -%}{%- when 3 -%}{%- assign c = s3 -%}{%- when 2 -%}{%- assign c = s2 -%}{%- else -%}{%- assign c = s1 -%}{%- endcase -%}
+              {%- assign pct = c | times: 100 | divided_by: rv_count -%}
+              <div class="rv-dist__row"><span>{{ n }}★</span><span class="rv-dist__bar"><span style="width:{{ pct }}%"></span></span><span>{{ c }}</span></div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="rv-filters">
+          <p class="rv-filters__h">Filters</p>
+          <p class="rv-filters__sub">Rating</p>
+          {%- for n in (1..5) reversed -%}<label><input type="checkbox" value="{{ n }}" data-rv-rating> {{ n }} star{% if n != 1 %}s{% endif %}</label>{%- endfor -%}
+          <p class="rv-filters__sub">Condition</p>
+          {%- assign grades = 'Premium,Excellent,Good,Fair' | split: ',' -%}{%- for g in grades -%}<label><input type="checkbox" value="{{ g }}" data-rv-cond> {{ g }}</label>{%- endfor -%}
+        </div>
+      </aside>
+      <div class="rv__main">
+        {%- if rv_photos != blank -%}
+          <div class="rv__photoshead"><h3>Top reviews with photos</h3><div><button type="button" class="rv-arrow" data-rv-prev aria-label="Previous">‹</button><button type="button" class="rv-arrow" data-rv-next aria-label="Next">›</button></div></div>
+          <div class="rv-photos" data-rv-track>{{ rv_photos }}</div>
+        {%- endif -%}
+        <div class="rv__listhead"><h3>Reviews</h3>
+          <label class="rv-sort"><span class="visually-hidden">Sort</span><select data-rv-sort><option value="relevant">Sort by most relevant</option><option value="new">Newest first</option><option value="high">Highest rated</option><option value="low">Lowest rated</option></select></label>
+        </div>
+        <div class="rv-list" data-rv-list>{{ rv_items }}</div>
+        <p class="rv-empty" data-rv-empty hidden>No reviews match those filters.</p>
+        <button type="button" class="btn rv-more" data-rv-more hidden>Show more reviews</button>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function(){var R=document.querySelector('[data-reviews]');if(!R)return;var list=R.querySelector('[data-rv-list]'),items=[].slice.call(list.children),more=R.querySelector('[data-rv-more]'),shown=5;
+  items.forEach(function(el,i){el.dataset.i=i});
+  function apply(){var rs=[].slice.call(R.querySelectorAll('[data-rv-rating]:checked')).map(function(x){return x.value}),cs=[].slice.call(R.querySelectorAll('[data-rv-cond]:checked')).map(function(x){return x.value}),s=R.querySelector('[data-rv-sort]').value;
+  var ok=items.filter(function(el){return(!rs.length||rs.indexOf(el.dataset.rating)>-1)&&(!cs.length||cs.indexOf(el.dataset.condition)>-1)});
+  ok.sort(function(a,b){if(s==='new')return b.dataset.date-a.dataset.date;if(s==='high')return b.dataset.rating-a.dataset.rating;if(s==='low')return a.dataset.rating-b.dataset.rating;return(b.dataset.photos-a.dataset.photos)||(b.dataset.rating-a.dataset.rating)||(a.dataset.i-b.dataset.i)});
+  items.forEach(function(el){el.hidden=true});ok.forEach(function(el,i){list.appendChild(el);el.hidden=i>=shown});
+  more.hidden=ok.length<=shown;R.querySelector('[data-rv-empty]').hidden=ok.length>0}
+  R.addEventListener('change',function(e){if(e.target.matches('[data-rv-rating],[data-rv-cond],[data-rv-sort]')){shown=5;apply()}});
+  more.addEventListener('click',function(){shown+=10;apply()});
+  var t=R.querySelector('[data-rv-track]');if(t){R.querySelector('[data-rv-prev]').addEventListener('click',function(){t.scrollBy({left:-340,behavior:'smooth'})});R.querySelector('[data-rv-next]').addEventListener('click',function(){t.scrollBy({left:340,behavior:'smooth'})})}
+  apply()})();
+  </script>
+{%- endif -%}
