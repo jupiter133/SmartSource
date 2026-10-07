@@ -2,7 +2,7 @@
   {%- for block in section.blocks -%}
     <div class="promo-card" {{ block.shopify_attributes }}>
       <div class="promo-card__img">
-        {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading }}{%- else -%}{% render 'device-art', kind: block.settings.art, title: block.settings.heading, section: section, idx: forloop.index %}{%- endif -%}
+        {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading }}{%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.heading | escape }}" width="900" height="660" loading="lazy">{%- else -%}{% render 'device-art', kind: block.settings.art, title: block.settings.heading, section: section, idx: forloop.index %}{%- endif -%}
       </div>
       <h3>{{ block.settings.heading }}</h3>
       <p>{{ block.settings.text }}</p>
@@ -15,6 +15,7 @@
   "settings": [{ "type": "checkbox", "id": "overlap", "label": "Tuck up into the section above", "default": true, "info": "Turn off when this isn't right under a banner." }],
   "blocks": [{ "type": "card", "name": "Card", "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset_image", "label": "Theme asset image (advanced)", "info": "Filename in the theme's assets folder. Used only if no image is picked above." },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Your kids will drop it. Pay less." },
     { "type": "text", "id": "text", "label": "Text", "default": "The iPhone 15, refurbished, for way less than new." },
     { "type": "text", "id": "button_label", "label": "Button", "default": "Save now" },

@@ -11,8 +11,8 @@
           "type": "slide",
           "settings": {
             "full_banner": true,
-            "asset_image": "banner-iphone-like-new.webp",
-            "heading": "Like New. Half the Price. Certified refurbished iPhones, inspected and ready to go.",
+            "asset_image": "banner-pro-camera.webp",
+            "heading": "Pro Camera. No Pro Price. Certified refurbished iPhone Pro, ready to go.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone",
@@ -23,8 +23,8 @@
           "type": "slide",
           "settings": {
             "full_banner": true,
-            "asset_image": "banner-iphone-17-lineup.webp",
-            "heading": "The iPhone 17 Lineup Is Here. Pro, Pro Max and 17e, refurbished and in stock.",
+            "asset_image": "banner-upgrade-season.webp",
+            "heading": "Upgrade Season Is On. iPhone 17 Pro, Pro Max and 17e, for way less than new.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone-17",
@@ -35,8 +35,8 @@
           "type": "slide",
           "settings": {
             "full_banner": true,
-            "asset_image": "banner-flagship-sale.webp",
-            "heading": "Flagship Tech. Smarter Prices. Every device is multi-point inspected and backed by a 12-month warranty and 30-day returns.",
+            "asset_image": "banner-phone-laptop.webp",
+            "heading": "Phone + Laptop. Both for Less. Every device is multi-point inspected and backed by a 12-month warranty and 30-day returns.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all?sort_by=price-ascending",
@@ -47,8 +47,8 @@
           "type": "slide",
           "settings": {
             "full_banner": true,
-            "asset_image": "banner-iphone-16-colours.webp",
-            "heading": "Pick Your Colour. iPhone 16 and 16 Plus in every shade.",
+            "asset_image": "banner-your-colour.webp",
+            "heading": "Your Phone. Your Colour. iPhone 16 and 16 Plus in every shade, certified refurbished.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone-16",
@@ -59,8 +59,8 @@
           "type": "slide",
           "settings": {
             "full_banner": true,
-            "asset_image": "banner-trade-in-up.webp",
-            "heading": "Trade In. Trade Up. Get cash for your old phone toward a certified iPhone.",
+            "asset_image": "banner-out-with-old.webp",
+            "heading": "Out With the Old. Trade in your phone and put the value toward a certified iPhone.",
             "subheading": "",
             "button_label": "",
             "button_link": "/pages/sell-your-device",
@@ -89,7 +89,7 @@
             "title": "iPhone",
             "link": "/collections/all/iphone",
             "art": "phone",
-            "asset_image": "tech-iphones.webp"
+            "asset_image": "cat-iphone.webp"
           }
         },
         "c2": {
@@ -98,7 +98,7 @@
             "title": "Android",
             "link": "/collections/all/android",
             "art": "phone",
-            "asset_image": "tech-android.webp"
+            "asset_image": "cat-android.webp"
           }
         },
         "c3": {
@@ -107,7 +107,7 @@
             "title": "MacBook",
             "link": "/collections/all/macbook",
             "art": "laptop",
-            "asset_image": "tech-macbooks.webp"
+            "asset_image": "cat-macbook.webp"
           }
         },
         "c4": {
@@ -142,7 +142,7 @@
             "title": "Smartwatches",
             "link": "/collections/all/smartwatches",
             "art": "watch",
-            "asset_image": "tech-watches.webp"
+            "asset_image": "cat-watches.webp"
           }
         },
         "c8": {
@@ -151,7 +151,7 @@
             "title": "AirPods + Audio",
             "link": "/collections/all/audio",
             "art": "audio",
-            "asset_image": "tech-audio.webp"
+            "asset_image": "cat-audio.webp"
           }
         },
         "c9": {
@@ -198,7 +198,8 @@
             "text": "Refurbished iPhones and Galaxys, tested and backed by a 1-year warranty.",
             "button_label": "Shop phones",
             "link": "/collections/all",
-            "art": "phone"
+            "art": "phone",
+            "asset_image": "cat-iphone.webp"
           }
         },
         "p2": {
