@@ -107,7 +107,6 @@
     const anim = input.parentElement.querySelector('.search-anim'); if (!anim) return;
     const word = $('.search-anim__word', anim);
     const words = anim.dataset.words.split(',').map(w => w.trim()).filter(Boolean);
-    input.dataset.ph = input.placeholder; input.placeholder = '';
     const sync = () => anim.classList.toggle('is-hidden', document.activeElement === input || !!input.value);
     ['focus', 'blur', 'input'].forEach(e => input.addEventListener(e, sync)); sync();
     if (words.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -117,6 +116,66 @@
       word.classList.add('is-out');
       setTimeout(() => { i = (i + 1) % words.length; word.textContent = words[i]; word.classList.remove('is-out'); word.classList.add('is-in'); requestAnimationFrame(() => requestAnimationFrame(() => word.classList.remove('is-in'))); }, 280);
     }, 2400);
+  });
+
+  // Header search dropdown: popular searches when empty, Shopify predictive search while typing
+  $$('[data-search-box]').forEach(form => {
+    const input = $('input[name=q]', form), panel = $('[data-search-panel]', form);
+    const idle = $('[data-search-idle]', panel), results = $('[data-search-results]', panel);
+    if (!input || !panel) return;
+    const root = (window.Shopify?.routes?.root || '/');
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const money = v => { const n = Number(v); return isNaN(n) ? '' : n.toLocaleString(undefined, { style: 'currency', currency: window.Shopify?.currency?.active || 'CAD' }); };
+    const open = () => { panel.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+    const close = () => { panel.hidden = true; input.setAttribute('aria-expanded', 'false'); active = -1; };
+    let timer, ctrl, active = -1;
+    const items = () => $$('a, button', panel).filter(el => el.offsetParent !== null);
+    const render = (q, data) => {
+      const r = data?.resources?.results || {};
+      const qs = (r.queries || []).slice(0, 4), ps = (r.products || []).slice(0, 5), cs = (r.collections || []).slice(0, 3), pg = (r.pages || []).slice(0, 2);
+      let html = '';
+      if (qs.length) html += '<p class="search-panel__label">Suggestions</p><ul class="search-panel__list">' + qs.map(x => `<li><a class="search-panel__item" href="${esc(x.url)}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>${x.styled_text || esc(x.text)}</span></a></li>`).join('') + '</ul>';
+      if (ps.length) html += '<p class="search-panel__label">Products</p><ul class="search-panel__list">' + ps.map(p => `<li><a class="search-panel__product" href="${esc(p.url)}"><span class="search-panel__thumb">${p.image ? `<img src="${esc(p.image)}&width=120" alt="" loading="lazy">` : ''}</span><span class="search-panel__ptext"><span>${esc(p.title)}</span><small>${p.price ? 'From ' + money(p.price_min || p.price) : ''}</small></span></a></li>`).join('') + '</ul>';
+      const more = [...cs.map(c => ({ t: c.title, u: c.url })), ...pg.map(p => ({ t: p.title, u: p.url }))];
+      if (more.length) html += '<p class="search-panel__label">Categories &amp; pages</p><ul class="search-panel__list">' + more.map(m => `<li><a class="search-panel__item" href="${esc(m.u)}"><span>${esc(m.t)}</span></a></li>`).join('') + '</ul>';
+      if (!qs.length && !ps.length && !more.length) html += `<p class="search-panel__empty">No matches for “${esc(q)}”.</p>`;
+      html += `<a class="search-panel__all" href="${root}search?type=product&q=${encodeURIComponent(q)}">See all results for “${esc(q)}” →</a>`;
+      results.innerHTML = html;
+    };
+    const update = () => {
+      const q = input.value.trim();
+      clearTimeout(timer); active = -1;
+      if (!q) { results.hidden = true; idle.hidden = false; return; }
+      idle.hidden = true; results.hidden = false;
+      timer = setTimeout(async () => {
+        ctrl?.abort(); ctrl = new AbortController();
+        try {
+          const url = `${root}search/suggest.json?q=${encodeURIComponent(q)}&resources[type]=query,product,collection,page&resources[limit]=6&resources[options][unavailable_products]=last`;
+          const res = await fetch(url, { signal: ctrl.signal }); render(q, await res.json());
+        } catch (e) { if (e.name !== 'AbortError') render(q, null); }
+      }, 180);
+    };
+    input.addEventListener('focus', () => { open(); update(); });
+    input.addEventListener('input', () => { open(); update(); });
+    input.addEventListener('keydown', e => {
+      if (panel.hidden) return;
+      const list = items();
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault(); active = (active + (e.key === 'ArrowDown' ? 1 : -1) + list.length) % list.length;
+        list.forEach((el, i) => el.classList.toggle('is-active', i === active)); list[active]?.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter' && active > -1 && list[active]) { e.preventDefault(); list[active].click(); }
+      else if (e.key === 'Escape') { close(); input.blur(); }
+    });
+    document.addEventListener('click', e => { if (!form.contains(e.target)) close(); });
+    form.addEventListener('focusout', e => { if (!form.contains(e.relatedTarget)) setTimeout(() => { if (!form.contains(document.activeElement)) close(); }, 120); });
+    $('[data-search-chat]', panel)?.addEventListener('click', e => {
+      const inboxBtn = document.querySelector('inbox-online-store-chat')?.shadowRoot?.querySelector('button');
+      if (inboxBtn) return inboxBtn.click();
+      if (window.tidioChatApi) return window.tidioChatApi.open();
+      if (window.GorgiasChat?.open) return window.GorgiasChat.open();
+      if (typeof window.zE === 'function') return window.zE('messenger', 'open');
+      location.href = e.currentTarget.dataset.href;
+    });
   });
 
   // Tabs

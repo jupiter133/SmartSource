@@ -39,13 +39,32 @@
         {{ section.settings.logo | image_url: width: 400 | image_tag: width: section.settings.logo_width, alt: shop.name }}
       {%- else -%}<span>{{ shop.name }}</span>{%- endif -%}
     </a>
-    <form action="{{ routes.search_url }}" class="header__search" role="search">
+    <form action="{{ routes.search_url }}" class="header__search" role="search" data-search-box>
       {% render 'icon', name: 'search' %}
-      <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" value="{{ search.terms | escape }}" aria-label="Search"{% if section.settings.search_words != blank %} data-search-anim{% endif %}>
+      <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" value="{{ search.terms | escape }}" aria-label="Search" role="combobox" aria-expanded="false" aria-controls="SearchPanel" aria-autocomplete="list" autocomplete="off"{% if section.settings.search_words != blank %} data-search-anim{% endif %}>
       {%- if section.settings.search_words != blank -%}
         <span class="search-anim" aria-hidden="true" data-words="{{ section.settings.search_words | escape }}">{{ section.settings.search_prefix }} <span class="search-anim__word">{{ section.settings.search_words | split: ',' | first | strip }}</span></span>
       {%- endif -%}
       <input type="hidden" name="type" value="product">
+      <div class="search-panel" id="SearchPanel" data-search-panel hidden>
+        <div data-search-idle>
+          {%- if section.settings.search_chat_label != blank -%}
+            <button type="button" class="search-panel__ask" data-search-chat data-href="{{ section.settings.help_link | default: '/pages/help' }}">{% render 'icon', name: 'chat' %}<span>{{ section.settings.search_chat_label }}</span></button>
+          {%- endif -%}
+          <p class="search-panel__label">Popular searches</p>
+          <ul class="search-panel__list" role="listbox" aria-label="Popular searches">
+            {%- assign lines = section.settings.popular_searches | newline_to_br | split: '<br />' -%}
+            {%- for line in lines -%}
+              {%- assign parts = line | strip | split: '|' -%}
+              {%- assign label = parts.first | strip -%}
+              {%- if label == blank -%}{%- continue -%}{%- endif -%}
+              {%- if parts.size > 1 -%}{%- assign href = parts.last | strip -%}{%- else -%}{%- assign q = label | url_param_escape -%}{%- assign href = routes.search_url | append: '?type=product&q=' | append: q -%}{%- endif -%}
+              <li role="option"><a class="search-panel__item" href="{{ href }}">{% render 'icon', name: 'search' %}<span>{{ label }}</span></a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        <div data-search-results hidden aria-live="polite"></div>
+      </div>
     </form>
     {%- if section.settings.tradein_label != blank -%}
       <a class="header__tradein" href="{{ section.settings.tradein_link | default: '/pages/sell-your-device' }}">{% render 'icon', name: 'swap' %}<span>{{ section.settings.tradein_label }}</span></a>
@@ -120,6 +139,8 @@
   { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 300, "step": 10, "unit": "px", "default": 150 },
   { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search iPhone, PS5…" },
   { "type": "text", "id": "search_prefix", "label": "Animated placeholder: lead-in", "default": "Search for" },
+  { "type": "textarea", "id": "popular_searches", "label": "Search dropdown: popular searches", "default": "iPhone | /collections/all/iphone\niPad | /collections/all/ipad\nMacBook | /collections/all/macbook\nSamsung Galaxy | /collections/all/samsung\nTrade in your tech | /pages/sell-your-device\nShop all deals | /collections/all?sort_by=price-ascending", "info": "One per line: Label | link. Leave out the link to run a search for that word." },
+  { "type": "text", "id": "search_chat_label", "label": "Search dropdown: help row", "default": "Need help choosing? Chat with us", "info": "Opens live chat if installed, otherwise the help page. Leave blank to hide." },
   { "type": "text", "id": "search_words", "label": "Animated placeholder: rotating words", "default": "iPhone, MacBook, PS5, AirPods, Galaxy S25, iPad, Apple Watch, Pixel", "info": "Comma-separated. Leave blank to use the plain placeholder above." },
   { "type": "select", "id": "nav_source", "label": "Category menu source", "options": [{"value":"builtin","label":"Built-in electronics menu"},{"value":"shopify","label":"My Shopify menu (below)"}], "default": "builtin", "info": "Built-in links filter by product tag (e.g. iphone, samsung, macbook)." },
   { "type": "link_list", "id": "main_menu", "label": "Category menu", "default": "main-menu" },
