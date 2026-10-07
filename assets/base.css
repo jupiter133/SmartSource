@@ -1332,3 +1332,65 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .brand-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.brand-logo .brand-logo__svg--icon{height:40px;width:40px}.brand-logo .brand-logo__svg--wordmark{height:30px;width:auto;max-width:78%}.brand-logo__label{font-weight:700;font-size:14px;color:var(--c-ink)}
 .brand-logo .brand-logo__svg--wordmark{width:132px;height:44px;max-width:85%;object-fit:cover}
 .brand-logo img[src*="logo-brand-nintendo"]{object-fit:contain;height:40px}
+/* PDP summary (Back Market-style) */
+.sum{align-items:start}
+.sum__media{position:sticky;top:120px}
+.sum-gal__main{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.sum-gal__img{display:none;width:100%;height:100%;object-fit:contain}
+.sum-gal__img.is-active{display:block}
+.sum-gal__nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+.sum-gal__arrow{width:32px;height:32px;border-radius:50%;border:0;background:var(--c-ink);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.sum-gal__thumb{width:40px;height:40px;padding:2px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer}
+.sum-gal__thumb.is-active{border:2px solid var(--c-ink)}
+.sum-gal__thumb img{width:100%;height:100%;object-fit:contain}
+.sum .summary{border:1px solid var(--c-ink);border-radius:10px;padding:20px 14px 14px;margin-bottom:12px}
+.sum .summary__title{font-size:20px;font-weight:600;display:flex;align-items:center;gap:8px;margin:0 0 10px}
+.sum-dot{width:12px;height:12px;border-radius:50%;background:#ccc;display:inline-block;box-shadow:inset 0 0 0 1px #0002}
+.sum .summary__tags span{border:1px solid #d6d6db}
+.sum-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-top:10px}
+.sum-price [data-price-block]{display:contents}
+.sum-price .pp{display:contents}
+.sum-price .pp__now{font-size:22px;font-weight:600}
+.sum-price .pp__was{order:3;flex-basis:100%;font-size:13px;color:#5b5b66}
+.sum-price__tradein{order:2;font-size:13px;font-weight:600;text-decoration:underline}
+.sum-acc>summary{list-style:none;cursor:pointer}
+.sum-acc>summary::-webkit-details-marker{display:none}
+.sum-acc--plain{border-bottom:1px solid #e6e6ea;margin:6px 0 12px}
+.sum-acc--plain>summary{display:flex;align-items:center;gap:10px;padding:14px 26px;font-size:16px;position:relative}
+.sum-acc--plain>summary svg{color:#0a8a4a;border:1.5px solid #0a8a4a;border-radius:50%;padding:2px;width:20px;height:20px}
+.sum-acc--plain>summary::after,.sum-card.sum-acc>summary::after,.sum-row>summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-left:auto;transition:transform .2s}
+.sum-acc--plain[open]>summary::after{transform:rotate(225deg)}
+.sum-acc--plain>p{padding:0 26px 14px;margin:0}
+.sum-by{font-size:12px;color:#5b5b66;display:flex;align-items:center;gap:6px;margin:4px 0 12px}
+.sum-by strong{color:var(--c-ink);text-decoration:underline}
+.sum-pay{justify-content:flex-start;margin-bottom:18px}
+.sum-cards{display:grid;gap:8px}
+.sum-card{background:#dfe3fb;border-radius:10px;color:var(--c-ink)}
+.sum-card__row,.sum-card>summary{display:flex;align-items:center;gap:14px;padding:14px 18px}
+.sum-card span{display:flex;flex-direction:column;gap:2px}
+.sum-card strong{font-size:14px;font-weight:600}
+.sum-card small{font-size:12px;color:#33333b}
+.sum-card>summary::after{transform:rotate(-45deg)}
+.sum-card[open]>summary::after{transform:rotate(45deg)}
+.sum-card>p{margin:0;padding:0 18px 16px 54px;font-size:14px;color:#33333b}
+.sum-card>p a{text-decoration:underline;font-weight:600}
+.sum-card__postal{display:flex;align-items:center;gap:6px;width:100%;border:0;border-top:1px solid #c9cef3;background:none;padding:10px 18px 12px 24px;font:inherit;font-size:14px;font-weight:600;text-decoration:underline;cursor:pointer;color:inherit}
+.sum-comes{margin:22px 0 10px}
+.sum-comes__label{margin:0 0 10px;font-size:15px}
+.sum-chip{display:inline-flex;align-items:center;gap:8px;background:#ececf0;border-radius:999px;padding:8px 14px;font-size:14px}
+.sum-comes__link{display:block;margin-top:14px;font-weight:600;text-decoration:underline}
+.sum-more{margin-top:26px}
+.sum-row{border-bottom:1px solid #e6e6ea}
+.sum-row>summary{list-style:none;display:flex;align-items:center;padding:22px 12px;font-size:16px;cursor:pointer}
+.sum-row>summary::-webkit-details-marker{display:none}
+.sum-row>summary::after{transform:rotate(-45deg)}
+.sum-row[open]>summary::after{transform:rotate(45deg)}
+.sum-row__body{padding:0 12px 20px;font-size:15px}
+.sum-specs{margin:0 0 14px;display:grid}
+.sum-specs div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #f0f0f3}
+.sum-specs dt{color:#5b5b66}.sum-specs dd{margin:0;font-weight:600;text-align:right}
+.sum-perks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.sum-perks li{display:flex;align-items:center;gap:10px}
+.sum-faq p{margin:0 0 12px}
+@media (max-width:749px){.sum__media{position:static}.sum-gal__main{max-width:320px;margin:0 auto}}
+.sum-card.sum-acc>summary::after{transform:rotate(-45deg)}.sum-card.sum-acc[open]>summary::after{transform:rotate(45deg)}

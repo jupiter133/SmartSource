@@ -169,7 +169,7 @@
       const v = (input.value || '').toUpperCase().replace(/\s+/g, '');
       if (!/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/.test(v)) { if (err) err.hidden = false; return; }
       const nice = v.slice(0, 3) + ' ' + v.slice(3);
-      if (err) err.hidden = true; try { localStorage.setItem('ss_postal', nice); } catch (e) {}
+      if (err) err.hidden = true; try { localStorage.setItem('ss_postal', nice); } catch (e) {} document.dispatchEvent(new Event('ss:postal'));
       show(nice); box.open = false;
     };
     $('[data-postal-save]', box)?.addEventListener('click', save);
@@ -259,6 +259,13 @@
 
       $$('[data-opts-text]', root).forEach(el => (el.textContent = sel.join(' · ')));
       $$('[data-opt-tags]', root).forEach(el => (el.innerHTML = sel.map(s => `<span>${s}</span>`).join('')));
+      $$('[data-sum-tags]', root).forEach(el => {
+        const t = sel.slice();
+        if (cfg.cond >= 0) t.splice(cfg.cond + 1, 0, /premium/i.test(sel[cfg.cond] || '') ? 'New battery' : 'Standard battery');
+        el.innerHTML = t.map(s => `<span>${s}</span>`).join('');
+      });
+      if (cfg.color >= 0) $$('[data-color-dot]', root).forEach(d => { const k = (sel[cfg.color] || '').toLowerCase(); d.style.background = SWATCH[k] || k.split(' ').pop(); d.title = sel[cfg.color] || ''; });
+      $$('[data-spec-opt]', root).forEach(d => { const v = sel[+d.dataset.specOpt]; if (v) d.textContent = v; });
       const btns = [addBtn, ...$$('[data-add-proxy]', root)];
       if (!variant) { btns.forEach(b => { b.disabled = true; b.textContent = 'Unavailable'; }); $$('[data-price-block]', root).forEach(el => (el.innerHTML = '')); return; }
       idInput.value = variant.id;
@@ -314,4 +321,27 @@
     await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: b.dataset.qty, quantity: +b.dataset.val }) });
     refreshCart();
   });
+
+  // PDP summary: mini gallery, delivery window, postal code
+  $$('[data-sum-gal]').forEach(g => {
+    const slides = $$('[data-sum-slide]', g), thumbs = $$('[data-sum-thumb]', g); let i = 0;
+    const go = n => { i = (n + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle('is-active', k === i)); thumbs.forEach((t, k) => t.classList.toggle('is-active', k === i)); };
+    thumbs.forEach(t => t.addEventListener('click', () => go(+t.dataset.sumThumb)));
+    $('[data-sum-prev]', g)?.addEventListener('click', () => go(i - 1));
+    $('[data-sum-next]', g)?.addEventListener('click', () => go(i + 1));
+  });
+  const addBiz = n => { const d = new Date(); let a = 0; while (a < n) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) a++; } return d; };
+  const md = d => d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' });
+  const sumDel = $('[data-sum-delivery]');
+  if (sumDel) {
+    const a = addBiz(2), b = addBiz(4);
+    sumDel.textContent = `Free delivery by ${md(a)} – ${a.getMonth() === b.getMonth() ? b.getDate() : md(b)}`;
+    const ex = $('[data-sum-express]'); if (ex) ex.textContent = `Express delivery by ${md(addBiz(1))} – ${md(addBiz(2))} at checkout`;
+  }
+  const postalLabel = () => { let p = ''; try { p = localStorage.getItem('ss_postal') || ''; } catch (e) {} $$('[data-sum-postal-label]').forEach(l => (l.textContent = p ? `Deliver to ${p}` : 'Update postal code')); };
+  postalLabel(); window.addEventListener('storage', postalLabel); document.addEventListener('ss:postal', postalLabel);
+  $$('[data-sum-postal]').forEach(b => b.addEventListener('click', () => {
+    const d = $('.utility-postal'); if (!d) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' }); d.open = true; setTimeout(() => $('input', d)?.focus(), 350);
+  }));
 })();

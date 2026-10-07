@@ -139,27 +139,102 @@
       </section>
       {%- endif -%}
 
-      {%- comment -%} Summary {%- endcomment -%}
-      <section class="pdp-row step" data-summary>
-        <div class="step__media"><div class="step__img step__img--plain">{%- if product.featured_media -%}{{ product.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', data-color-img: '' }}{%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}</div></div>
-        <div class="step__body">
+      {%- comment -%} Summary (Back Market-style buy box) {%- endcomment -%}
+      <section class="pdp-row step sum" data-summary>
+        <div class="step__media sum__media">
+          <div class="sum-gal" data-sum-gal>
+            <div class="sum-gal__main">
+              {%- if product.media.size > 0 -%}
+                {%- for m in product.media limit: 8 -%}
+                  <img class="sum-gal__img{% if forloop.first %} is-active{% endif %}" src="{{ m.preview_image | image_url: width: 900 }}" alt="{{ m.alt | default: product.title | escape }}" width="900" height="900" loading="lazy" data-sum-slide{% if forloop.first %} data-color-img{% endif %}>
+                {%- endfor -%}
+              {%- else -%}{% render 'device-art', title: product.title %}{%- endif -%}
+            </div>
+            {%- if product.media.size > 1 -%}
+              <div class="sum-gal__nav">
+                <button type="button" class="sum-gal__arrow" data-sum-prev aria-label="Previous image">‹</button>
+                {%- for m in product.media limit: 8 -%}
+                  <button type="button" class="sum-gal__thumb{% if forloop.first %} is-active{% endif %}" data-sum-thumb="{{ forloop.index0 }}" aria-label="Image {{ forloop.index }}"><img src="{{ m.preview_image | image_url: width: 120 }}" alt="" width="60" height="60" loading="lazy"></button>
+                {%- endfor -%}
+                <button type="button" class="sum-gal__arrow" data-sum-next aria-label="Next image">›</button>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="step__body sum__body">
           <div class="summary">
-            <p class="summary__title">{{ product.title }}</p>
-            <div class="summary__tags" data-opt-tags></div>
-            <div data-price-block></div>
+            <p class="summary__title">{{ product.title }} · Unlocked <span class="sum-dot" data-color-dot aria-hidden="true"></span></p>
+            <div class="summary__tags" data-sum-tags></div>
+            <div class="sum-price">
+              <div data-price-block></div>
+              {%- if section.settings.tradein_link != blank -%}<a class="sum-price__tradein" href="{{ section.settings.tradein_link }}">before trade-in</a>{%- endif -%}
+            </div>
           </div>
           <button type="submit" class="btn btn--dark btn--block btn--lg" data-add {% unless current.available %}disabled{% endunless %}>Add to cart</button>
-          <details class="summary__more"><summary>{% render 'icon', name: 'shield' %} Get 30 days to change your mind</summary><p class="muted">Free returns within 30 days. Every device is tested and comes with a 1-year warranty.</p></details>
-          <div class="footer__pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
-          {% render 'pdp-info-cards', section: section %}
+          <details class="sum-acc sum-acc--plain"><summary>{% render 'icon', name: 'check' %} Get 30 days to change your mind</summary><p class="muted">Changed your mind? Send it back within 30 days for a full refund. Free return label, no questions asked.</p></details>
+          <p class="sum-by">Proudly refurbished by <strong>{{ shop.name }}</strong> {% render 'flag', code: 'CA' %}</p>
+          <div class="footer__pay sum-pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
+
+          <div class="sum-cards">
+            <div class="sum-card sum-card--delivery">
+              <div class="sum-card__row">{% render 'icon', name: 'truck' %}<span><strong data-sum-delivery>Free delivery in 2–4 business days</strong><small data-sum-express>Express delivery available at checkout</small></span></div>
+              <button type="button" class="sum-card__postal" data-sum-postal>{% render 'icon', name: 'pin' %} <span data-sum-postal-label>Update postal code</span></button>
+            </div>
+            <details class="sum-card sum-acc">
+              <summary>{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span></summary>
+              <p>Use it with any Canadian carrier: Rogers, Bell, Telus, Freedom, Fido, Koodo, Virgin, Public Mobile and more. Pop in your SIM or set up an eSIM and you're done.</p>
+            </details>
+            <details class="sum-card sum-acc">
+              <summary>{% render 'icon', name: 'swap' %}<span><strong>Free 30-day returns</strong><small>1-year warranty</small></span></summary>
+              <p>Return it within 30 days for a full refund. After that, our 1-year warranty covers any defect from normal use. <a href="{{ section.settings.promise_link }}">Read our promise</a>.</p>
+            </details>
+          </div>
+
+          <div class="sum-comes">
+            <p class="sum-comes__label">Comes with</p>
+            <span class="sum-chip">{% render 'icon', name: 'cable' %} Compatible charging cable</span>
+            <a class="sum-comes__link" href="/collections/all/accessories">See accessories we don't include</a>
+          </div>
+
+          <div class="sum-more">
+            <details class="sum-row">
+              <summary>Technical specifications</summary>
+              <div class="sum-row__body">
+                <dl class="sum-specs">
+                  <div><dt>Brand</dt><dd>{{ product.vendor }}</dd></div>
+                  <div><dt>Model</dt><dd>{{ product.title }}</dd></div>
+                  {%- for o in product.options_with_values -%}<div><dt>{{ o.name }}</dt><dd data-spec-opt="{{ forloop.index0 }}">{{ o.selected_value }}</dd></div>{%- endfor -%}
+                  <div><dt>Network</dt><dd>Unlocked</dd></div>
+                </dl>
+                {%- if product.description != blank -%}<div class="rte">{{ product.description }}</div>{%- endif -%}
+              </div>
+            </details>
+            <details class="sum-row">
+              <summary>Perks &amp; benefits included</summary>
+              <div class="sum-row__body"><ul class="sum-perks">
+                <li>{% render 'icon', name: 'shield' %} 1-year warranty on every device</li>
+                <li>{% render 'icon', name: 'swap' %} Free 30-day returns</li>
+                <li>{% render 'icon', name: 'check' %} Tested on up to 100 points by our technicians</li>
+                <li>{% render 'icon', name: 'truck' %} Free standard shipping across Canada</li>
+                <li>{% render 'icon', name: 'lock' %} Previous owner's data fully erased</li>
+                <li>{% render 'icon', name: 'swap' %} Trade in your old phone to pay less</li>
+              </ul></div>
+            </details>
+            <details class="sum-row">
+              <summary>Frequently asked questions</summary>
+              <div class="sum-row__body sum-faq">
+                <p><strong>What's the difference between the grades?</strong><br>Grades describe looks only. Every grade works like new. Premium also comes with a brand-new battery.</p>
+                <p><strong>Will it work with my carrier?</strong><br>Yes. Every phone is unlocked and works with all Canadian carriers.</p>
+                <p><strong>What's in the box?</strong><br>The phone and a compatible charging cable. No wall adapter or earphones.</p>
+                <p><strong>Is my data safe?</strong><br>Every device is fully wiped and reset before it's sold.</p>
+              </div>
+            </details>
+          </div>
           <p class="pdp-repair-link">{% render 'icon', name: 'wrench' %} Broken phone instead? <a href="/pages/mail-in-repair">Mail it in for repair</a> from anywhere in Canada.</p>
         </div>
       </section>
     {%- endform -%}
 
-    {%- if product.description != blank -%}
-      <section class="pdp-row"><div></div><div class="rte"><h2>About this device</h2>{{ product.description }}</div></section>
-    {%- endif -%}
   </div>
   <script type="application/json" data-product-json>{{ product | json }}</script>
   <script type="application/json" data-pdp-config>{"cond": {{ cond_idx }}, "storage": {{ storage_idx }}, "color": {{ color_idx }}, "compareLabel": "new"}</script>
