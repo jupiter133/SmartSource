@@ -1,0 +1,159 @@
+{%- assign topics = section.blocks | where: 'type', 'topic' -%}
+<div class="help" data-help>
+  <section class="help-hero">
+    <div class="page-width">
+      <nav class="coll-crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span><span aria-current="page">Help Center</span></nav>
+      <p class="help-hero__brand"><strong>{{ shop.name }}</strong><br>Help Center</p>
+      <h1>{{ section.settings.heading }}</h1>
+
+      {%- assign tops = section.blocks | where: 'type', 'top_question' -%}
+      {%- if tops.size > 0 -%}
+        <div class="help-top">
+          <h2>{{ section.settings.top_heading }}</h2>
+          {%- for block in tops -%}
+            <details class="help-q" data-help-q {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.question }}<span class="help-q__chev" aria-hidden="true"></span></summary>
+              <div class="rte help-q__a">{{ block.settings.answer }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="help-search">
+        <label for="HelpSearch"><h2>{{ section.settings.search_heading }}</h2></label>
+        <div class="help-search__box">
+          <input id="HelpSearch" type="search" placeholder="How can we help?" autocomplete="off" data-help-search>
+          {% render 'icon', name: 'search' %}
+        </div>
+        <p class="help-search__none" data-help-none hidden>No matches. Try another word, or <a href="#help-contact">contact us</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  {%- if topics.size > 0 -%}
+  <section class="section page-width help-topics" data-help-topics>
+    <h2>Browse by topic</h2>
+    <div class="help-topics__grid">
+      {%- for t in topics -%}
+        <a class="help-topic" href="#topic-{{ t.settings.title | handleize }}" {{ t.shopify_attributes }}>
+          <span class="help-topic__icon">{% render 'icon', name: t.settings.icon %}</span>
+          <span class="help-topic__title">{{ t.settings.title }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  <section class="page-width help-groups">
+    {%- assign open = false -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'topic' -%}
+        {%- if open -%}</div></div>{%- endif -%}
+        <div class="help-group" id="topic-{{ block.settings.title | handleize }}" data-help-group>
+          <h2><span class="help-topic__icon">{% render 'icon', name: block.settings.icon %}</span>{{ block.settings.title }}</h2>
+          <div class="help-group__list">
+        {%- assign open = true -%}
+      {%- elsif block.type == 'question' and open -%}
+            <details class="help-q" data-help-q {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.question }}<span class="help-q__chev" aria-hidden="true"></span></summary>
+              <div class="rte help-q__a">{{ block.settings.answer }}</div>
+            </details>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if open -%}</div></div>{%- endif -%}
+  </section>
+  {%- endif -%}
+
+  <section class="section page-width help-contact" id="help-contact">
+    <ul class="help-promise">
+      <li>{% render 'icon', name: 'clock' %}<span>{{ section.settings.promise_1 }}</span></li>
+      <li>{% render 'icon', name: 'headset' %}<span>{{ section.settings.promise_2 }}</span></li>
+    </ul>
+    <h2>{{ section.settings.contact_heading }}</h2>
+    <p class="help-contact__intro">{{ section.settings.contact_text }}</p>
+
+    <div class="help-contact__grid">
+      <div class="help-card">
+        <span class="help-card__icon">{% render 'icon', name: 'chat' %}</span>
+        <h3>Live chat</h3>
+        <p>{{ section.settings.chat_text }}</p>
+        <button type="button" class="btn btn--dark btn--lg" data-help-chat data-fallback="{{ section.settings.chat_fallback_url }}">Start a chat</button>
+        <p class="help-card__note" data-help-chat-note hidden>Chat isn't available right now. Email us below and we'll get back to you.</p>
+      </div>
+      <div class="help-card">
+        <span class="help-card__icon">{% render 'icon', name: 'mail' %}</span>
+        <h3>Email</h3>
+        {%- assign mail = section.settings.email | default: shop.email -%}
+        <p>{{ section.settings.email_text }}{% if mail != blank %} Or write to <a href="mailto:{{ mail }}">{{ mail }}</a>.{% endif %}</p>
+        {%- form 'contact', id: 'HelpContactForm' -%}
+          <div class="help-form">
+          {%- if form.posted_successfully? -%}
+            <p class="help-form__ok" role="status">Thanks! We got your message and will reply by email.</p>
+          {%- else -%}
+            {%- if form.errors -%}<p class="help-form__err" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+            <div class="help-form__row">
+              <label><span>Name</span><input type="text" name="contact[name]" autocomplete="name" required></label>
+              <label><span>Email</span><input type="email" name="contact[email]" autocomplete="email" required value="{{ customer.email }}"></label>
+            </div>
+            <label><span>Order number <small>(optional)</small></span><input type="text" name="contact[order]" placeholder="#1001"></label>
+            <label><span>Topic</span>
+              <select name="contact[topic]">
+                {%- for t in topics -%}<option>{{ t.settings.title }}</option>{%- endfor -%}
+                <option>Something else</option>
+              </select>
+            </label>
+            <label><span>Message</span><textarea name="contact[body]" rows="4" required></textarea></label>
+            <button type="submit" class="btn btn--accent btn--block">Send message</button>
+          {%- endif -%}
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+    {%- if section.settings.orders_link != blank -%}
+      <p class="help-contact__orders">Question about an order? <a href="{{ section.settings.orders_link }}">Check your orders</a> for status and tracking.</p>
+    {%- endif -%}
+  </section>
+</div>
+
+{%- assign all_q = section.blocks | where: 'type', 'question' -%}
+{%- if all_q.size > 0 -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{%- for q in all_q -%}{"@type":"Question","name":{{ q.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ q.settings.answer | strip_html | json }}}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]}
+</script>
+{%- endif -%}
+
+{% schema %}
+{ "name": "Help center", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Need help? We've got you." },
+  { "type": "text", "id": "top_heading", "label": "Top questions heading", "default": "Most asked questions" },
+  { "type": "text", "id": "search_heading", "label": "Search heading", "default": "Search our help articles" },
+  { "type": "header", "content": "Contact" },
+  { "type": "text", "id": "promise_1", "label": "Promise 1", "default": "We reply within 1 business day" },
+  { "type": "text", "id": "promise_2", "label": "Promise 2", "default": "Friendly help from real people" },
+  { "type": "text", "id": "contact_heading", "label": "Heading", "default": "Still need help?" },
+  { "type": "text", "id": "contact_text", "label": "Text", "default": "Chat with us live, or send an email and we'll get back to you." },
+  { "type": "text", "id": "chat_text", "label": "Live chat text", "default": "Talk to our team right now during store hours." },
+  { "type": "url", "id": "chat_fallback_url", "label": "Chat fallback link", "info": "Optional. Used if no chat app is installed, e.g. a WhatsApp or SMS link." },
+  { "type": "paragraph", "content": "The chat button opens Shopify Inbox (free), Tidio, Gorgias or Zendesk if one is installed and turned on in Theme settings > App embeds." },
+  { "type": "text", "id": "email", "label": "Support email", "info": "Defaults to your store email." },
+  { "type": "text", "id": "email_text", "label": "Email text", "default": "Send us a message and we'll reply by email." },
+  { "type": "url", "id": "orders_link", "label": "Orders link", "default": "/account" }
+],
+"blocks": [
+  { "type": "top_question", "name": "Top question", "settings": [
+    { "type": "text", "id": "question", "label": "Question", "default": "How do I contact you?" },
+    { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Use live chat or the email form at the bottom of this page.</p>" }
+  ]},
+  { "type": "topic", "name": "Topic", "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Orders" },
+    { "type": "select", "id": "icon", "label": "Icon", "options": [
+      {"value":"bag","label":"Bag"},{"value":"user","label":"Account"},{"value":"phone","label":"Phone"},{"value":"card","label":"Payment"},{"value":"truck","label":"Shipping"},{"value":"box","label":"Order"},{"value":"wrench","label":"Repair"},{"value":"chat","label":"Chat"},{"value":"shield","label":"Warranty"},{"value":"swap","label":"Returns / trade-in"},{"value":"tag","label":"Deals"},{"value":"store","label":"Store"}
+    ], "default": "box" },
+    { "type": "paragraph", "content": "Questions added after this topic belong to it." }
+  ]},
+  { "type": "question", "name": "Question", "settings": [
+    { "type": "text", "id": "question", "label": "Question", "default": "Where is my order?" },
+    { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer here.</p>" }
+  ]}
+],
+"presets": [{ "name": "Help center" }] }
+{% endschema %}

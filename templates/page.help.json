@@ -1,0 +1,279 @@
+{
+  "sections": {
+    "main": {
+      "type": "help-center",
+      "settings": {},
+      "blocks": {
+        "top0": {
+          "type": "top_question",
+          "settings": {
+            "question": "How do I contact SmartSource?",
+            "answer": "<p>Start a live chat or send us an email using the options at the bottom of this page. You can also visit any of our stores.</p>"
+          }
+        },
+        "top1": {
+          "type": "top_question",
+          "settings": {
+            "question": "How do I cancel an order?",
+            "answer": "<p>Message us as soon as possible with your order number. If your order hasn't shipped yet, we'll cancel it and refund you in full.</p>"
+          }
+        },
+        "top2": {
+          "type": "top_question",
+          "settings": {
+            "question": "How do I get a repair?",
+            "answer": "<p>If your device has a problem, it's covered by our 1-year warranty. Contact us with your order number and a short description, and we'll repair or replace it.</p>"
+          }
+        },
+        "top3": {
+          "type": "top_question",
+          "settings": {
+            "question": "How do I get a refund?",
+            "answer": "<p>You have 30 days from delivery to return any device for free, for any reason. Contact us to start a return and we'll refund you once it arrives back.</p>"
+          }
+        },
+        "topic0": {
+          "type": "topic",
+          "settings": {
+            "title": "About SmartSource and refurbishing",
+            "icon": "bag"
+          }
+        },
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device had a previous owner, then went through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "What do the grades mean?",
+            "answer": "<p>Grades only describe how a device looks, from Premium (like new) to Fair (visible wear). Every grade works perfectly and gets the same warranty.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Is my data safe on a refurbished device?",
+            "answer": "<p>Yes. Every device is fully wiped and restored to factory settings before it's sold.</p>"
+          }
+        },
+        "topic1": {
+          "type": "topic",
+          "settings": {
+            "title": "Your orders",
+            "icon": "box"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Where is my order?",
+            "answer": "<p>Sign in to your account and open Orders to see status and tracking. You'll also get a shipping email with a tracking link.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Can I change my order?",
+            "answer": "<p>If it hasn't shipped, yes. Contact us with your order number and what you'd like to change.</p>"
+          }
+        },
+        "topic2": {
+          "type": "topic",
+          "settings": {
+            "title": "Shipping and delivery",
+            "icon": "truck"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Standard delivery takes 2 to 4 business days. Express delivery is available at checkout.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Is shipping free?",
+            "answer": "<p>Standard shipping is free on device orders.</p>"
+          }
+        },
+        "q8": {
+          "type": "question",
+          "settings": {
+            "question": "Can I pick up in store?",
+            "answer": "<p>Yes, choose in-store pickup at checkout if it's offered for your location.</p>"
+          }
+        },
+        "topic3": {
+          "type": "topic",
+          "settings": {
+            "title": "Payments",
+            "icon": "card"
+          }
+        },
+        "q9": {
+          "type": "question",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>All major credit and debit cards, plus the express payment options shown at checkout.</p>"
+          }
+        },
+        "q10": {
+          "type": "question",
+          "settings": {
+            "question": "Is checkout secure?",
+            "answer": "<p>Yes. Payments are processed securely by Shopify. We never see or store your full card details.</p>"
+          }
+        },
+        "topic4": {
+          "type": "topic",
+          "settings": {
+            "title": "Returns and refunds",
+            "icon": "swap"
+          }
+        },
+        "q11": {
+          "type": "question",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>Free 30-day returns on every device, for any reason.</p>"
+          }
+        },
+        "q12": {
+          "type": "question",
+          "settings": {
+            "question": "How long do refunds take?",
+            "answer": "<p>Once we receive and check your return, we refund to your original payment method. Your bank may take a few business days to show it.</p>"
+          }
+        },
+        "topic5": {
+          "type": "topic",
+          "settings": {
+            "title": "Warranty and repairs",
+            "icon": "shield"
+          }
+        },
+        "q13": {
+          "type": "question",
+          "settings": {
+            "question": "What does the warranty cover?",
+            "answer": "<p>Our 1-year warranty covers any defect or failure that isn't caused by accidental damage, liquid damage or misuse.</p>"
+          }
+        },
+        "q14": {
+          "type": "question",
+          "settings": {
+            "question": "Can you fix accidental damage?",
+            "answer": "<p>Yes, our technicians repair cracked screens, batteries and more. Accidental damage isn't covered by the warranty, but we'll quote you before any work.</p>"
+          }
+        },
+        "topic6": {
+          "type": "topic",
+          "settings": {
+            "title": "Trade-in",
+            "icon": "swap"
+          }
+        },
+        "q15": {
+          "type": "question",
+          "settings": {
+            "question": "How does trade-in work?",
+            "answer": "<p>Get an instant quote on our trade-in page, send your device with the free shipping label or drop it off in store, and get paid once we check it.</p>"
+          }
+        },
+        "q16": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to remove my accounts?",
+            "answer": "<p>Yes. Sign out of iCloud or your Google account, turn off Find My, and remove your SIM card before you send it.</p>"
+          }
+        },
+        "topic7": {
+          "type": "topic",
+          "settings": {
+            "title": "Phone plans",
+            "icon": "phone"
+          }
+        },
+        "q17": {
+          "type": "question",
+          "settings": {
+            "question": "Can I get a phone plan with my device?",
+            "answer": "<p>Yes. Visit one of our stores and we'll set up your new phone with a mobile plan before you leave.</p>"
+          }
+        },
+        "q18": {
+          "type": "question",
+          "settings": {
+            "question": "Are your phones unlocked?",
+            "answer": "<p>Yes. Our phones are carrier unlocked, so they work with any Canadian carrier.</p>"
+          }
+        },
+        "topic8": {
+          "type": "topic",
+          "settings": {
+            "title": "Account",
+            "icon": "user"
+          }
+        },
+        "q19": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need an account to order?",
+            "answer": "<p>No, you can check out as a guest. An account makes it easier to track orders and returns.</p>"
+          }
+        },
+        "q20": {
+          "type": "question",
+          "settings": {
+            "question": "I forgot my password",
+            "answer": "<p>On the sign-in page, choose Forgot your password and we'll email you a reset link.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "top0",
+        "top1",
+        "top2",
+        "top3",
+        "topic0",
+        "q1",
+        "q2",
+        "q3",
+        "topic1",
+        "q4",
+        "q5",
+        "topic2",
+        "q6",
+        "q7",
+        "q8",
+        "topic3",
+        "q9",
+        "q10",
+        "topic4",
+        "q11",
+        "q12",
+        "topic5",
+        "q13",
+        "q14",
+        "topic6",
+        "q15",
+        "q16",
+        "topic7",
+        "q17",
+        "q18",
+        "topic8",
+        "q19",
+        "q20"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

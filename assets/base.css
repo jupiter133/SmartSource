@@ -1123,3 +1123,72 @@ shopify-payment-terms{font-size:13px}
 .header__utility-bar{background:#f0f0f3;border-bottom:1px solid #e6e6ea}
 .header__utility-bar .header__utility{padding-top:7px;padding-bottom:7px;font-size:13px}
 @media (max-width:749px){.header__utility-bar{display:none}}
+
+/* ---------- help center ---------- */
+.help-hero{background:linear-gradient(180deg,color-mix(in srgb,var(--c-accent) 10%,#fff),var(--c-bg) 92%);padding:20px 0 40px}
+.help-hero__brand{margin:22px 0 0;font-size:1.3rem;line-height:1.25}
+.help-hero__brand strong{font-size:1.7rem;font-weight:800;letter-spacing:-.03em}
+.help-hero h1{text-align:center;font-size:clamp(2.2rem,1.4rem + 3.6vw,4rem);font-weight:800;letter-spacing:-.04em;margin:28px 0 40px}
+.help-top,.help-search{max-width:900px;margin:0 auto}
+.help-top h2{font-size:1.5rem;font-weight:600;margin:0 0 12px}
+.help-q{border-bottom:1px solid #e3e3e8}
+.help-top .help-q:first-of-type{border-top:1px solid #e3e3e8}
+.help-q summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 8px;font-size:17px;cursor:pointer}
+.help-q summary::-webkit-details-marker{display:none}
+.help-q summary:hover{background:#00000005}
+.help-q summary:focus-visible{outline:2px solid var(--c-ink);outline-offset:-2px}
+.help-q__chev{width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .2s;flex-shrink:0}
+.help-q[open] .help-q__chev{transform:rotate(-135deg)}
+.help-q__a{padding:0 8px 20px;color:#44444d;font-size:15px}.help-q__a p{margin:0 0 8px}
+.help-search{margin-top:40px;background:#fff;border-radius:16px;padding:28px 40px 32px;box-shadow:0 4px 24px #0000000d}
+.help-search h2{font-size:1.5rem;font-weight:600;margin:0 0 12px}
+.help-search__box{position:relative}
+.help-search__box input{width:100%;padding:16px 48px 16px 16px;border:1px solid #cfcfd8;border-radius:10px;font:inherit;font-size:16px}
+.help-search__box input:focus{outline:2px solid var(--c-accent);border-color:transparent}
+.help-search__box svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#55555e}
+.help-search__none{margin:12px 0 0;color:#6b6b76}.help-search__none a{text-decoration:underline}
+.help-topics h2{font-size:1.5rem;font-weight:600;margin:0 0 18px}
+.help-topics__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.help-topic{display:flex;align-items:center;gap:18px;background:#fff;border-radius:14px;padding:26px;box-shadow:0 1px 3px #0000000d;font-size:1.15rem;font-weight:500;transition:box-shadow .2s,transform .2s}
+.help-topic:hover{box-shadow:0 10px 26px #00000012;transform:translateY(-2px)}
+.help-topic:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+.help-topic__icon{width:56px;height:56px;border-radius:99px;background:#efeff3;display:inline-grid;place-items:center;flex-shrink:0}
+.help-topic__icon svg{width:24px;height:24px}
+.help-groups{max-width:900px}
+.help-group{scroll-margin-top:190px;margin-top:40px}
+.help-group h2{display:flex;align-items:center;gap:14px;font-size:1.4rem;font-weight:700;margin:0 0 8px}
+.help-group h2 .help-topic__icon{width:44px;height:44px}
+.help-group h2 .help-topic__icon svg{width:20px;height:20px}
+.help-promise{list-style:none;margin:0 0 32px;padding:24px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px;background:#e6e6ec;border-radius:12px}
+.help-promise li{display:flex;align-items:center;gap:16px;font-size:16px}
+.help-promise svg{width:32px;height:32px;flex-shrink:0}
+.help-contact h2{font-size:1.6rem;font-weight:700;margin:0 0 6px}
+.help-contact__intro{margin:0 0 22px;color:#44444d}
+.help-contact__grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;align-items:start}
+.help-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 1px 3px #0000000d}
+.help-card__icon{width:52px;height:52px;border-radius:14px;background:color-mix(in srgb,var(--c-accent) 18%,#fff);display:grid;place-items:center;margin-bottom:14px}
+.help-card__icon svg{width:26px;height:26px}
+.help-card h3{font-size:1.3rem;margin:0 0 6px}
+.help-card p{margin:0 0 18px;color:#44444d}
+.help-card a{text-decoration:underline;font-weight:600;color:var(--c-ink)}
+.help-card__note{margin:12px 0 0!important;font-size:14px}
+.help-form{display:flex;flex-direction:column;gap:12px}
+.help-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+.help-form small{font-weight:400;color:#8a8a94}
+.help-form input,.help-form select,.help-form textarea{padding:12px;border:1px solid #d9d9df;border-radius:10px;font:inherit;font-size:15px;font-weight:400;background:#fff}
+.help-form input:focus,.help-form select:focus,.help-form textarea:focus{outline:2px solid var(--c-accent);border-color:transparent}
+.help-form__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.help-form__ok{background:#e7f8ee;color:#14532d;padding:14px;border-radius:10px;margin:0}
+.help-form__err{background:#fdecec;color:#7f1d1d;padding:14px;border-radius:10px;margin:0}
+.help-contact__orders{margin:22px 0 0}.help-contact__orders a{text-decoration:underline;font-weight:600}
+@media (max-width:989px){.help-topics__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.help-contact__grid{grid-template-columns:1fr}}
+@media (max-width:749px){
+  .help-search{padding:20px}
+  .help-topics__grid{grid-template-columns:1fr;gap:10px}
+  .help-topic{padding:16px;font-size:1rem}
+  .help-topic__icon{width:44px;height:44px}
+  .help-promise{grid-template-columns:1fr;padding:18px}
+  .help-form__row{grid-template-columns:1fr}
+  .help-q summary{font-size:15px;padding:16px 4px}
+}
+@media (prefers-reduced-motion:reduce){.help-topic,.help-q__chev{transition:none}}

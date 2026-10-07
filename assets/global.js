@@ -76,6 +76,32 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && form.classList.contains('filters-open')) { setOpen(false); opener?.focus(); } });
   });
 
+  // Help center: live search across questions + open whichever chat app is installed
+  $$('[data-help]').forEach(root => {
+    const input = $('[data-help-search]', root), none = $('[data-help-none]', root);
+    const qs = $$('[data-help-q]', root), groups = $$('[data-help-group]', root), topics = $('[data-help-topics]', root);
+    input?.addEventListener('input', () => {
+      const term = input.value.trim().toLowerCase();
+      let hits = 0;
+      qs.forEach(q => { const on = !term || q.textContent.toLowerCase().includes(term); q.hidden = !on; if (on) hits++; if (term && on) q.open = false; });
+      groups.forEach(g => (g.hidden = term && !$$('[data-help-q]', g).some(q => !q.hidden)));
+      if (topics) topics.hidden = !!term;
+      if (none) none.hidden = !term || hits > 0;
+    });
+    const chatBtn = $('[data-help-chat]', root), note = $('[data-help-chat-note]', root);
+    chatBtn?.addEventListener('click', () => {
+      const inbox = document.querySelector('inbox-online-store-chat');
+      const inboxBtn = inbox?.shadowRoot?.querySelector('button');
+      if (inboxBtn) return inboxBtn.click();
+      if (window.tidioChatApi) return window.tidioChatApi.open();
+      if (window.GorgiasChat?.open) return window.GorgiasChat.open();
+      if (typeof window.zE === 'function') return window.zE('messenger', 'open');
+      if (chatBtn.dataset.fallback) return window.open(chatBtn.dataset.fallback, '_blank', 'noopener');
+      if (note) note.hidden = false;
+      $('#HelpContactForm')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
   // Tabs
   $$('[data-tabs]').forEach(root => {
     $$('[data-tab]', root).forEach(tab => tab.addEventListener('click', () => {

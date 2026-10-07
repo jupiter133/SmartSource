@@ -12,7 +12,9 @@
     },
     "header": {
       "type": "header",
-      "settings": {},
+      "settings": {
+        "help_link": "/pages/help"
+      },
       "blocks": {
         "g1": {
           "type": "good_to_know",
