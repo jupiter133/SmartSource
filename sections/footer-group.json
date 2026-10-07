@@ -1,13 +1,63 @@
 {
   "type": "footer",
   "name": "Footer group",
-  "sections": { "footer": { "type": "footer", "blocks": {
-    "about": { "type": "menu", "settings": { "title": "About" } },
-    "help": { "type": "menu", "settings": { "title": "Help" } },
-    "services": { "type": "menu", "settings": { "title": "Services", "show_payments": true } },
-    "resources": { "type": "menu", "settings": { "title": "Resources" } },
-    "legal": { "type": "menu", "settings": { "title": "Legal" } },
-    "badges": { "type": "badges", "settings": {} }
-  }, "block_order": ["about","help","services","resources","legal","badges"], "settings": {} } },
-  "order": ["footer"]
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "about": {
+          "type": "menu",
+          "settings": {
+            "title": "About",
+            "links": "Why refurbished | /pages/why-refurbished\nOur promise | /pages/our-promise\nTech Journal | /blogs/news\nContact us | /pages/contact"
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "title": "Help",
+            "links": "Help Center | /pages/help\nContact us | /pages/contact\nShipping & delivery | /policies/shipping-policy\nReturns & refunds | /policies/refund-policy\nTrack my order | /account"
+          }
+        },
+        "services": {
+          "type": "menu",
+          "settings": {
+            "title": "Services",
+            "show_payments": true,
+            "links": "Trade in your device | /pages/sell-your-device\nRepairs | /pages/services\nPhone plans | /pages/phone-plans"
+          }
+        },
+        "resources": {
+          "type": "menu",
+          "settings": {
+            "title": "Shop",
+            "links": "iPhone | /collections/all/iphone\nAndroid | /pages/android\nLaptops | /pages/laptops\nAudio | /pages/audio\nShop all | /collections/all"
+          }
+        },
+        "legal": {
+          "type": "menu",
+          "settings": {
+            "title": "Legal",
+            "links": "Privacy policy | /policies/privacy-policy\nTerms of service | /policies/terms-of-service\nRefund policy | /policies/refund-policy"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "about",
+        "help",
+        "services",
+        "resources",
+        "legal",
+        "badges"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "footer"
+  ]
 }

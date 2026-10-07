@@ -19,7 +19,22 @@
         {%- when 'menu' -%}
           <div class="footer__col" {{ block.shopify_attributes }}>
             <p class="footer__heading">{{ block.settings.title | default: block.settings.menu.title }}</p>
-            <ul>{%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}</ul>
+            <ul>
+              {%- if block.settings.links != blank -%}
+                {%- assign lines = block.settings.links | newline_to_br | split: '<br />' -%}
+                {%- for line in lines -%}
+                  {%- assign parts = line | strip | split: '|' -%}
+                  {%- assign label = parts.first | strip -%}
+                  {%- if label == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign url = parts.last | strip -%}
+                  {%- assign show = true -%}
+                  {%- if url contains '/pages/' -%}{%- assign h = url | split: '/pages/' | last -%}{%- if pages[h].id == blank -%}{%- assign show = false -%}{%- endif -%}{%- endif -%}
+                  {%- if show -%}<li><a href="{{ url }}">{{ label }}</a></li>{%- endif -%}
+                {%- endfor -%}
+              {%- else -%}
+                {%- for link in block.settings.menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+              {%- endif -%}
+            </ul>
             {%- if block.settings.show_payments -%}
               <p class="footer__label">Payments 100% secured</p>
               <div class="footer__pay">{%- for type in shop.enabled_payment_types -%}{{ type | payment_type_svg_tag: class: 'pay-icon' }}{%- endfor -%}</div>
@@ -71,7 +86,8 @@
 ], "blocks": [
   { "type": "menu", "name": "Menu column", "settings": [
     { "type": "text", "id": "title", "label": "Heading" },
-    { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" },
+    { "type": "textarea", "id": "links", "label": "Links", "info": "One per line: Label | link. Links to pages that don't exist yet are hidden automatically. Leave blank to use the menu below instead." },
+    { "type": "link_list", "id": "menu", "label": "Menu (used only if Links is blank)", "default": "footer" },
     { "type": "checkbox", "id": "show_payments", "label": "Show payment icons under this column", "default": false }
   ]},
   { "type": "badges", "name": "Trust badges", "limit": 1, "settings": [
