@@ -18,35 +18,7 @@
   endif
   assign page_heading = page_heading | strip
 -%}
-<div class="coll page-width" data-collection>
-  <nav class="coll-crumbs" aria-label="Breadcrumb">
-    <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span>
-    {%- if tag_title != blank -%}
-      <a href="{{ collection.url }}">{{ collection.title }}</a><span aria-hidden="true">›</span><span aria-current="page">{{ tag_title }}</span>
-    {%- else -%}
-      <span aria-current="page">{{ collection.title }}</span>
-    {%- endif -%}
-  </nav>
-
-  {%- if section.settings.show_trust -%}
-    <ul class="coll-trust">
-      <li>{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_1 }}</span></li>
-      <li>{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></li>
-      <li>{% render 'icon', name: 'swap' %}<span>{{ section.settings.trust_3 }}</span></li>
-      <li>{% render 'icon', name: 'heart' %}<span>{{ section.settings.trust_4 }}</span></li>
-    </ul>
-  {%- endif -%}
-
-  <header class="coll-head">
-    <h1>{{ page_heading }}</h1>
-    {%- if collection.description != blank and tag_title == blank -%}
-      <div class="coll-head__desc rte">{{ collection.description }}</div>
-    {%- elsif section.settings.default_desc != blank -%}
-      <p class="coll-head__desc">{{ section.settings.default_desc }}</p>
-    {%- endif -%}
-  </header>
-
-  {%- liquid
+{%- liquid
     assign ctx = ''
     for b in section.blocks
       if b.settings.parent != blank
@@ -66,6 +38,70 @@
       endif
     endfor
   -%}
+{%- liquid
+  assign hero_key = ctx
+  if hero_key == blank and current_tags.size > 0
+    assign hero_key = current_tags.first
+  endif
+  if hero_key == blank
+    assign hero_key = collection.handle
+  endif
+  assign hero_src = ''
+  assign hero_default = ''
+  assign lines = section.settings.hero_map | newline_to_br | split: '<br />'
+  for line in lines
+    assign pair = line | strip | split: ':'
+    assign k = pair.first | strip | downcase
+    assign v = line | strip | remove_first: pair.first | remove_first: ':' | strip
+    if k == hero_key
+      assign hero_src = v
+    endif
+    if k == 'default'
+      assign hero_default = v
+    endif
+  endfor
+  if hero_src == blank
+    assign hero_src = hero_default
+  endif
+  if hero_src != blank
+    unless hero_src contains '/'
+      assign hero_src = hero_src | asset_url
+    endunless
+  endif
+-%}
+<div class="coll page-width" data-collection>
+  <nav class="coll-crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span>
+    {%- if tag_title != blank -%}
+      <a href="{{ collection.url }}">{{ collection.title }}</a><span aria-hidden="true">›</span><span aria-current="page">{{ tag_title }}</span>
+    {%- else -%}
+      <span aria-current="page">{{ collection.title }}</span>
+    {%- endif -%}
+  </nav>
+
+  <section class="coll-hero coll-hero--{{ section.settings.hero_style }}">
+    <div class="coll-hero__copy">
+      {%- if section.settings.hero_eyebrow != blank -%}<p class="coll-hero__eyebrow">{{ section.settings.hero_eyebrow }}</p>{%- endif -%}
+      <h1>{{ page_heading }}</h1>
+      {%- if collection.description != blank and tag_title == blank -%}
+        <div class="coll-hero__desc rte">{{ collection.description }}</div>
+      {%- elsif section.settings.default_desc != blank -%}
+        <p class="coll-hero__desc">{{ section.settings.default_desc }}</p>
+      {%- endif -%}
+      {%- if section.settings.show_trust -%}
+        <ul class="coll-hero__trust">
+          <li>{% render 'icon', name: 'shield' %}<span>{{ section.settings.trust_1 }}</span></li>
+          <li>{% render 'icon', name: 'truck' %}<span>{{ section.settings.trust_2 }}</span></li>
+          <li>{% render 'icon', name: 'swap' %}<span>{{ section.settings.trust_3 }}</span></li>
+          <li>{% render 'icon', name: 'heart' %}<span>{{ section.settings.trust_4 }}</span></li>
+        </ul>
+      {%- endif -%}
+    </div>
+    {%- if hero_src != blank -%}
+      <div class="coll-hero__art"><img src="{{ hero_src }}" alt="" width="900" height="700" fetchpriority="high"></div>
+    {%- endif -%}
+  </section>
+
   {%- if section.blocks.size > 0 -%}
     <div class="coll-chips" role="list">
       {%- if ctx != blank -%}
@@ -200,6 +236,10 @@
   { "type": "text", "id": "prefix", "label": "Title prefix", "default": "Refurbished", "info": "Shown before the collection or category name, e.g. Refurbished iPhone." },
   { "type": "text", "id": "all_title", "label": "Title on the all-products page", "default": "Shop all refurbished tech" },
   { "type": "textarea", "id": "default_desc", "label": "Description (when the collection has none)", "default": "Premium tech without the premium price. Every device is tested by our technicians, backed by a 1-year warranty and free 30-day returns." },
+  { "type": "header", "content": "Hero banner" },
+  { "type": "select", "id": "hero_style", "label": "Style", "options": [{"value":"dark","label":"Dark with colour glow"},{"value":"gradient","label":"Theme gradient"},{"value":"light","label":"Light"}], "default": "dark" },
+  { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "Certified refurbished" },
+  { "type": "textarea", "id": "hero_map", "label": "Photo per category", "default": "default: tech-iphones.webp", "info": "One per line: tag: image. The image is a theme asset filename or a full image URL from Content > Files. Sub-pages (e.g. iPhone 15) use their parent's photo. 'default' is used everywhere else." },
   { "type": "header", "content": "Trust bar" },
   { "type": "checkbox", "id": "show_trust", "label": "Show trust bar", "default": true },
   { "type": "text", "id": "trust_1", "label": "Item 1", "default": "1-year warranty" },
