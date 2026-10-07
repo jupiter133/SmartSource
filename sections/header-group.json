@@ -16,8 +16,53 @@
       "settings": {
         "text": "PS5 trade-in prices are peaking.",
         "link_text": "Cash in yours now",
-        "link": "/pages/sell-your-device"
-      }
+        "link": "/pages/sell-your-device",
+        "speed": 5
+      },
+      "blocks": {
+        "m1": {
+          "type": "message",
+          "settings": {
+            "emoji": "🔥",
+            "text": "Trade-in prices are peaking. Get up to $700 for your old phone.",
+            "link_text": "Get my quote",
+            "link": "/pages/sell-your-device"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "emoji": "🛡️",
+            "text": "Every device: 1-year warranty + free 30-day returns.",
+            "link_text": "Our promise",
+            "link": "/pages/our-promise"
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "emoji": "🚚",
+            "text": "Free shipping across Canada, delivered in 2–4 business days.",
+            "link_text": "Shop now",
+            "link": "/collections/all"
+          }
+        },
+        "m4": {
+          "type": "message",
+          "settings": {
+            "emoji": "📱",
+            "text": "New phone + mobile plan, set up in store in minutes.",
+            "link_text": "Explore plans",
+            "link": "/pages/phone-plans"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ]
     },
     "header": {
       "type": "header",

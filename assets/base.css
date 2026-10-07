@@ -1236,3 +1236,20 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 /* hide animated placeholder on focus / when typed, without relying on JS */
 .header__search:focus-within .search-anim,
 .header__search input:not(:placeholder-shown) ~ .search-anim{opacity:0;visibility:hidden}
+
+/* announcement bar: bigger, rotating messages */
+.announcement{padding:0 52px;min-height:46px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500}
+.announcement__track{position:relative;width:100%;max-width:960px;height:46px;overflow:hidden}
+.announcement__msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;margin:0;opacity:0;white-space:nowrap}
+.announcement__msg.is-static,.announcement:not(.announcement--rotate) .announcement__msg{position:static;opacity:1;height:100%}
+.announcement__emoji{font-size:20px;line-height:1}
+.announcement__msg a{font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.announcement--rotate:hover .announcement__msg{animation-play-state:paused}
+.announcement__close{right:16px;font-size:24px}
+@media (max-width:749px){
+  .announcement{padding:0 40px 0 12px;font-size:13px;min-height:60px}
+  .announcement__track{height:60px}
+  .announcement__msg{white-space:normal;text-align:left;justify-content:flex-start;gap:8px;line-height:1.25}
+  .announcement__emoji{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){.announcement__msg{animation:none!important}.announcement__msg:first-child{opacity:1}}
