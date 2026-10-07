@@ -102,6 +102,23 @@
     });
   });
 
+  // Header search: rotating gradient word in the placeholder
+  $$('[data-search-anim]').forEach(input => {
+    const anim = input.parentElement.querySelector('.search-anim'); if (!anim) return;
+    const word = $('.search-anim__word', anim);
+    const words = anim.dataset.words.split(',').map(w => w.trim()).filter(Boolean);
+    input.dataset.ph = input.placeholder; input.placeholder = '';
+    const sync = () => anim.classList.toggle('is-hidden', document.activeElement === input || !!input.value);
+    ['focus', 'blur', 'input'].forEach(e => input.addEventListener(e, sync)); sync();
+    if (words.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let i = 0;
+    setInterval(() => {
+      if (anim.classList.contains('is-hidden') || document.hidden) return;
+      word.classList.add('is-out');
+      setTimeout(() => { i = (i + 1) % words.length; word.textContent = words[i]; word.classList.remove('is-out'); word.classList.add('is-in'); requestAnimationFrame(() => requestAnimationFrame(() => word.classList.remove('is-in'))); }, 280);
+    }, 2400);
+  });
+
   // Tabs
   $$('[data-tabs]').forEach(root => {
     $$('[data-tab]', root).forEach(tab => tab.addEventListener('click', () => {

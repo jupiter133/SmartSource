@@ -1192,3 +1192,13 @@ shopify-payment-terms{font-size:13px}
   .help-q summary{font-size:15px;padding:16px 4px}
 }
 @media (prefers-reduced-motion:reduce){.help-topic,.help-q__chev{transition:none}}
+
+/* animated search placeholder */
+.header__search{position:relative}
+.search-anim{position:absolute;left:42px;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#6b6b76;font-size:inherit;transition:opacity .15s}
+.search-anim.is-hidden{opacity:0}
+.search-anim__word{display:inline-block;font-weight:600;background:linear-gradient(90deg,var(--c-accent),var(--c-accent-2),#7a5cff,var(--c-accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:search-grad 4s linear infinite;transition:opacity .28s ease,transform .28s ease}
+.search-anim__word.is-out{opacity:0;transform:translateY(-8px)}
+.search-anim__word.is-in{opacity:0;transform:translateY(8px);transition:none}
+@keyframes search-grad{to{background-position:300% 0}}
+@media (prefers-reduced-motion:reduce){.search-anim__word{animation:none;transition:none}}
