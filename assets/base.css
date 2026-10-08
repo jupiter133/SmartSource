@@ -2110,3 +2110,26 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .lf-size{margin-top:auto;padding:6px 8px 0}
 .lf__bar{margin-top:16px}
 .lf__go{padding:12px 22px;font-size:15px;border-radius:10px}
+/* Finder v3: match Back Market */
+.lf-card{border:0;padding:14px 12px 12px;gap:12px;border-radius:12px;box-shadow:0 1px 2px #0000000a}
+.lf-card__q{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:500;letter-spacing:0;text-transform:none;color:#0e1016}
+.lf-help{width:18px;height:18px;border:1.4px solid #0e1016;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:600}
+.lf-list button{font-size:16px;font-weight:500;padding:15px 14px;border-radius:8px;background:#ececf1;border:2px solid transparent}
+.lf-list button::after{display:none}
+.lf-list button.is-on{background:#e8e0ff;border-color:transparent;color:#0e1016}
+.lf-pills{display:flex;flex-wrap:wrap;gap:6px}
+.lf-pills button{border-radius:999px;background:#ececf1;padding:9px 16px;font-size:14px;border:0}
+.lf-card--size .lf-pills{display:flex}
+.lf-pills button.is-on{background:#e8e0ff;color:#0e1016;border:0}
+.lf-hist{position:relative;display:flex;align-items:flex-end;gap:4px;height:58px;padding:0 4px 10px;margin-top:4px}
+.lf-hist i{flex:1;background:#b9c8f5;border-radius:2px 2px 0 0;min-height:2px}
+.lf-hist i:nth-child(n+5){background:#e2e4ea}
+.lf-hist__track{position:absolute;left:0;right:0;bottom:6px;height:2px;background:#d6d7dc}
+.lf-hist__track b{position:absolute;top:-9px;width:18px;height:18px;border:1.5px solid #0e1016;border-radius:5px;background:#fff}
+.lf-hist__track b:first-child{left:0}.lf-hist__track b:last-child{left:20px}
+.lf-range label{text-transform:none;letter-spacing:0;font-size:11px;border-color:#c9cad1;border-radius:6px}
+.lf-size{padding:0;margin:4px 0 6px}.lf-size img{width:100%;height:96px;object-fit:contain;display:block}
+.lf-more--pills{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.lf-more--pills label{flex-direction:row;align-items:center;border:0;background:#ececf1;border-radius:999px;padding:0 14px;height:36px;text-transform:none;letter-spacing:0;font-size:14px;color:#0e1016}
+.lf-more--pills label span{display:none}
+.lf-more--pills select{font-size:14px;font-weight:500;padding-right:4px;width:auto;cursor:pointer}

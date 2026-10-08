@@ -8,7 +8,7 @@
 <section class="lf" data-lf data-base="{{ base }}" data-coll="{% if coll == base %}{{ coll }}{% else %}all{% endif %}">
   <div class="lf__grid">
     <div class="lf-card">
-      <p class="lf-card__q">What will you use it for?</p>
+      <p class="lf-card__q">What will you use it for? <span class="lf-help" aria-hidden="true">?</span></p>
       <div class="lf-list">
         <button type="button" data-lf-tag="for-creatives" data-lf-group="use">For creatives</button>
         <button type="button" data-lf-tag="for-complex-work" data-lf-group="use">For complex work</button>
@@ -20,8 +20,9 @@
     <div class="lf-card">
       <p class="lf-card__q">What's your budget?</p>
       <div class="lf-pills">
-        {%- assign amts = '400,600,800,1000,1300,1600' | split: ',' -%}{%- for amt in amts -%}<button type="button" data-lf-max="{{ amt }}">${{ amt }}</button>{%- endfor -%}
+        <button type="button" data-lf-max="300">$300</button><button type="button" data-lf-max="450">$450</button><button type="button" data-lf-max="600">$600</button><button type="button" data-lf-max="750">$750</button><button type="button" data-lf-max="900">$900</button><button type="button" data-lf-max="1050">$1,050</button>
       </div>
+      <div class="lf-hist" aria-hidden="true"><i style="height:40%"></i><i style="height:75%"></i><i style="height:95%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:25%"></i><i style="height:14%"></i><i style="height:10%"></i><i style="height:8%"></i><i style="height:6%"></i><i style="height:4%"></i><i style="height:3%"></i><i style="height:3%"></i><i style="height:2%"></i><i style="height:2%"></i><i style="height:2%"></i><i style="height:1%"></i><i style="height:1%"></i><span class="lf-hist__track"><b></b><b></b></span></div>
       <div class="lf-range"><label><span>Min (CAD)</span><input type="number" min="0" step="50" placeholder="0" data-lf-min-in></label><label><span>Max (CAD)</span><input type="number" min="0" step="50" placeholder="Any" data-lf-max-in></label></div>
     </div>
     <div class="lf-card lf-card--size">
@@ -29,19 +30,20 @@
       <div class="lf-pills">
         {%- assign sizes = '13,14,15,16' | split: ',' -%}{%- for sz in sizes -%}<button type="button" data-lf-tag="{{ sz }}-inch" data-lf-group="size">{{ sz }}"</button>{%- endfor -%}
       </div>
-      <div class="lf-size" aria-hidden="true">
-        <svg viewBox="0 0 220 90"><rect x="8" y="22" width="86" height="56" rx="4" fill="#1d1e24"/><rect x="12" y="26" width="78" height="48" rx="2" fill="url(#lfg)"/><rect x="0" y="78" width="102" height="5" rx="2.5" fill="#b9bac2"/><rect x="104" y="8" width="104" height="70" rx="4" fill="#1d1e24"/><rect x="108" y="12" width="96" height="62" rx="2" fill="url(#lfg)"/><rect x="96" y="78" width="120" height="6" rx="3" fill="#b9bac2"/><defs><linearGradient id="lfg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a7a"/><stop offset=".5" stop-color="#ff3e9a"/><stop offset="1" stop-color="#4f7bff"/></linearGradient></defs></svg>
+      <div class="lf-size" aria-hidden="true"><img src="{{ 'cat-macbook.webp' | asset_url }}" alt="" loading="lazy">
+        <svg viewBox="0 0 220 90" hidden><rect x="8" y="22" width="86" height="56" rx="4" fill="#1d1e24"/><rect x="12" y="26" width="78" height="48" rx="2" fill="url(#lfg)"/><rect x="0" y="78" width="102" height="5" rx="2.5" fill="#b9bac2"/><rect x="104" y="8" width="104" height="70" rx="4" fill="#1d1e24"/><rect x="108" y="12" width="96" height="62" rx="2" fill="url(#lfg)"/><rect x="96" y="78" width="120" height="6" rx="3" fill="#b9bac2"/><defs><linearGradient id="lfg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a7a"/><stop offset=".5" stop-color="#ff3e9a"/><stop offset="1" stop-color="#4f7bff"/></linearGradient></defs></svg>
       </div>
+      <div class="lf-range"><label><span>Min</span><input type="number" readonly value="11" tabindex="-1"></label><label><span>Max</span><input type="number" readonly value="16" tabindex="-1"></label></div>
     </div>
     <div class="lf-card">
-      <p class="lf-card__q">Which condition?</p>
+      <p class="lf-card__q">Which condition? <span class="lf-help" aria-hidden="true">?</span></p>
       <div class="lf-list">
         {%- assign conds = 'Fair,Good,Excellent,Premium' | split: ',' -%}{%- for c in conds -%}<button type="button" data-lf-cond="{{ c }}">{{ c }}</button>{%- endfor -%}
       </div>
     </div>
     <div class="lf-card">
       <p class="lf-card__q">More requirements</p>
-      <div class="lf-more">
+      <div class="lf-more lf-more--pills">
         {%- if mac -%}
         <label><span>Model</span><select data-lf-sel="model"><option value="">Any</option><option value="macbook-air">MacBook Air</option><option value="macbook-pro">MacBook Pro</option></select></label>
         <label><span>Chip</span><select data-lf-sel="chip"><option value="">Any</option><option value="m4">M4</option><option value="m3">M3</option><option value="m2">M2</option><option value="m1">M1</option><option value="intel">Intel</option></select></label>
