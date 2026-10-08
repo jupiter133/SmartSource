@@ -11,7 +11,8 @@
     {%- if r.test_only.value and request.design_mode != true -%}{%- continue -%}{%- endif -%}
     {%- if r.test_only.value -%}{%- assign rv_has_test = true -%}{%- endif -%}
     {%- assign cat = r.category.value | downcase | strip -%}
-    {%- if scope != blank and cat != blank and cat != scope -%}{%- continue -%}{%- endif -%}
+    {%- if r.body.value == blank or r.date.value == blank -%}{%- continue -%}{%- endif -%}
+    {%- if scope != blank and cat != scope -%}{%- continue -%}{%- endif -%}
     {%- assign rating = r.rating.value | plus: 0 -%}
     {%- if rating < 1 -%}{%- continue -%}{%- endif -%}
     {%- assign rv_count = rv_count | plus: 1 -%}{%- assign rv_sum = rv_sum | plus: rating -%}
