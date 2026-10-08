@@ -3,11 +3,13 @@
   (Content > Metaobjects > Customer review). Renders nothing until at least one published review matches.
   Params: scope (category tag handle, e.g. "iphone"), heading
 {%- endcomment -%}
-{%- assign rv_count = 0 -%}{%- assign rv_sum = 0 -%}
+{%- assign rv_count = 0 -%}{%- assign rv_has_test = false -%}{%- assign rv_sum = 0 -%}
 {%- assign s5 = 0 -%}{%- assign s4 = 0 -%}{%- assign s3 = 0 -%}{%- assign s2 = 0 -%}{%- assign s1 = 0 -%}
 {%- assign rv_photos = '' -%}{%- assign rv_items = '' -%}
 {%- if metaobjects.customer_review.values.size > 0 -%}
   {%- for r in metaobjects.customer_review.values limit: 200 -%}
+    {%- if r.test_only.value and request.design_mode != true -%}{%- continue -%}{%- endif -%}
+    {%- if r.test_only.value -%}{%- assign rv_has_test = true -%}{%- endif -%}
     {%- assign cat = r.category.value | downcase | strip -%}
     {%- if scope != blank and cat != blank and cat != scope -%}{%- continue -%}{%- endif -%}
     {%- assign rating = r.rating.value | plus: 0 -%}
@@ -23,6 +25,7 @@
           <p class="rv-item__score">{{ stars }} {{ rating }}/5</p>
         </header>
         {%- if r.photos.value.size > 0 -%}<div class="rv-item__photos">{%- for ph in r.photos.value limit: 4 -%}{{ ph | image_url: width: 320 | image_tag: loading: 'lazy', alt: 'Customer photo' }}{%- endfor -%}</div>{%- endif -%}
+        {%- if r.title.value != blank -%}<p class="rv-item__title">{{ r.title.value }}</p>{%- endif -%}
         <p class="rv-item__body">{{ r.body.value | escape | newline_to_br }}</p>
       </article>
     {%- endcapture -%}
@@ -37,6 +40,7 @@
 {%- if rv_count > 0 -%}
   {%- assign avg = rv_sum | times: 1.0 | divided_by: rv_count | round: 1 -%}
   <section class="rv" data-reviews>
+    {%- if rv_has_test -%}<p class="rv-testnote">Test reviews: visible in the theme editor only. Shoppers don't see these.</p>{%- endif -%}
     <h2 class="rv__title">{{ heading }}</h2>
     <div class="rv__grid">
       <aside class="rv__side">
