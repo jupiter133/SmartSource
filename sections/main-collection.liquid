@@ -5,11 +5,24 @@
     assign ctags = ctags | append: th | append: ','
   endfor
   assign ctags = ctags | split: ','
+  comment
+    Shopify ignores a tag URL (e.g. /collections/all/macbook) when no product has that tag and shows everything.
+    Detect that so the page keeps its heading/finder and shows an empty state instead of all products.
+  endcomment
+  assign req_tag = request.path | split: '/' | last | url_decode | downcase
+  assign missing_tag = false
+  if current_tags.size == 0 and collection.handle == 'all' and req_tag != 'all' and req_tag != blank and request.path contains '/collections/all/'
+    assign missing_tag = true
+    assign ctags = req_tag | split: '+'
+  endif
 -%}
 {%- liquid
   assign tag_title = ''
-  if current_tags.size > 0
+  if current_tags.size > 0 or missing_tag
     assign tag_title = current_tags.first
+    if missing_tag
+      assign tag_title = ctags.first | replace: '-', ' ' | capitalize
+    endif
     for b in section.blocks
       assign bh = b.settings.link | split: '/' | last | split: '?' | first
       if ctags contains bh
@@ -213,7 +226,9 @@
           </div>
         {%- endunless -%}{%- endif -%}
         {%- assign shown = 0 -%}{%- assign total = collection.products.size -%}
+        {%- if missing_tag -%}<div class="coll-empty-tag"><p class="coll-empty-tag__h">Nothing in stock here right now</p><p>New stock lands every week. Check back soon, or <a href="{{ routes.all_products_collection_url }}">browse everything</a>.</p></div>{%- endif -%}
         {%- for product in collection.products -%}
+          {%- if missing_tag -%}{%- break -%}{%- endif -%}
           {%- if product.type == 'Mail-in Repair' or product.type == 'Mail-in Diagnostic' -%}{%- continue -%}{%- endif -%}
           {% render 'product-card', product: product %}
           {%- assign shown = shown | plus: 1 -%}
