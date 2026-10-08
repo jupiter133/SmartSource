@@ -1784,3 +1784,21 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .rs-card__prod{min-height:0;padding:14px 18px 16px;gap:14px;font-size:14px}
 .rs-card__prod img{width:56px;max-height:48px}
 .rs-card__prod span{-webkit-line-clamp:2}
+/* Review showcase: Back Market proportions */
+.rs{padding:56px 0 72px}
+.rs__wrap{max-width:1572px;padding:0 24px}
+.rs__head{margin-bottom:22px}
+.rs__head h2{font-size:clamp(22px,2vw,30px);font-weight:500;letter-spacing:-.01em}
+.rs__arrows{gap:14px}.rs__arrows button{width:56px;height:56px}
+.rs__track{gap:1.45%;grid-auto-columns:22.8%;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 60px),transparent)}
+.rs-card{border-radius:12px}
+.rs-card__top{aspect-ratio:348/544;padding:22px}
+.rs-card__name{top:22px;left:22px;font-size:17px;padding:1px 6px}
+.rs-card__ver{top:60px;left:22px}
+.rs-card__txt{font-size:17px;line-height:1.6}
+.rs-card__stars{margin-top:26px;font-size:15px}.rs-card__stars b{font-size:16px}
+.rs-card__prod{padding:20px 22px 22px;gap:22px;font-size:15px;line-height:1.45;align-items:flex-start}
+.rs-card__prod img{width:72px;max-height:72px}
+.rs-card__prod span{-webkit-line-clamp:4}
+@media (max-width:1000px){.rs__track{grid-auto-columns:46%;gap:3%}}
+@media (max-width:600px){.rs__track{grid-auto-columns:82%;gap:4%}}
