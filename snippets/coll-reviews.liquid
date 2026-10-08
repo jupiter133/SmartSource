@@ -37,7 +37,7 @@
               <p class="rv-prod__meta">{% if r.condition.value != blank %}<span>Condition <b>{{ r.condition.value }}</b></span>{% endif %}<span>Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></span></p>
             </div>
           </div>
-          <button type="button" class="rv-prod__helpful" data-rv-helpful aria-pressed="false"><span>{{ r.title.value | size | times: 7 | plus: rating | modulo: 190 | plus: 3 }}</span> 👍</button>
+          <button type="button" class="rv-prod__helpful" data-rv-helpful aria-pressed="false"><span>{{ r.helpful.value | default: 0 }}</span> 👍</button>
         </div>
         {%- endif -%}
       </article>
