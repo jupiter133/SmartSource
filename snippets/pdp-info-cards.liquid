@@ -1,6 +1,35 @@
 <div class="info-cards">
   <div class="info-card info-card--stack">{% render 'icon', name: 'truck' %}<span><strong>{{ section.settings.delivery_text }}</strong><small>{{ section.settings.delivery_sub }}</small></span></div>
+  {%- liquid
+    assign ptype = product.type | downcase
+    assign ptitle = product.title | downcase
+    assign kind = 'phone'
+    if ptype contains 'laptop' or ptitle contains 'macbook'
+      assign kind = 'laptop'
+    elsif ptype contains 'tablet' or ptitle contains 'ipad' or ptitle contains 'galaxy tab'
+      assign kind = 'tablet'
+    elsif ptype contains 'headphone' or ptype contains 'audio' or ptitle contains 'airpods'
+      assign kind = 'audio'
+    elsif ptype contains 'watch'
+      assign kind = 'watch'
+    elsif ptype contains 'console' or ptitle contains 'playstation' or ptitle contains 'xbox' or ptitle contains 'switch'
+      assign kind = 'console'
+    endif
+  -%}
+  {%- case kind -%}
+    {%- when 'phone' -%}
   <button type="button" class="info-card info-card--btn" data-sd-open="sd-unlocked">{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    {%- when 'laptop' -%}
+  <div class="info-card">{% render 'icon', name: 'check' %}<span><strong>Freshly reset, ready to set up</strong><small>Data wiped and {% if ptitle contains 'macbook' %}macOS{% else %}the operating system{% endif %} reinstalled</small></span></div>
+    {%- when 'tablet' -%}
+  <div class="info-card">{% render 'icon', name: 'check' %}<span><strong>{% if ptitle contains 'cellular' or ptitle contains 'lte' or ptitle contains '5g' %}Works with all carriers{% else %}Freshly reset, ready to set up{% endif %}</strong><small>{% if ptitle contains 'cellular' or ptitle contains 'lte' or ptitle contains '5g' %}Cellular models are unlocked{% else %}Data wiped and activation lock removed{% endif %}</small></span></div>
+    {%- when 'audio' -%}
+  <div class="info-card">{% render 'icon', name: 'check' %}<span><strong>Pairs with your devices</strong><small>Reset and cleaned, ready to connect over Bluetooth</small></span></div>
+    {%- when 'watch' -%}
+  <div class="info-card">{% render 'icon', name: 'check' %}<span><strong>Ready to pair</strong><small>Reset with activation lock removed</small></span></div>
+    {%- when 'console' -%}
+  <div class="info-card">{% render 'icon', name: 'check' %}<span><strong>Reset and account-free</strong><small>Sign in with your own account and play</small></span></div>
+  {%- endcase -%}
   <button type="button" class="info-card info-card--btn" data-sd-open="sd-returns">{% render 'icon', name: 'swap' %}<span><strong>Free 30-day returns</strong><strong>1-year warranty</strong></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button type="button" class="info-card info-card--btn" data-sd-open="sd-promise">{% render 'icon', name: 'shield' %}<span><strong>{{ section.settings.promise_text }}</strong></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </div>
