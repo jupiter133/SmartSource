@@ -1663,3 +1663,8 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ib__h{font-size:clamp(22px,2.4vw,34px);font-weight:700;margin:14px 0 8px;line-height:1.2;text-shadow:0 2px 12px #0006}
 .ib__p{margin:0;font-size:clamp(15px,1.2vw,18px);opacity:.92}
 .ib__btn{display:inline-block;margin-top:20px;background:#fff;color:#111;font-weight:600;padding:12px 22px;border-radius:10px}
+@media (min-width:750px){
+  .header__nav .nav-side{position:relative}
+  .header__nav .nav-side::before{content:"";position:absolute;top:0;bottom:0;left:-64px;width:56px;background:linear-gradient(90deg,#fff0,#fff 85%);pointer-events:none;opacity:0;transition:opacity .2s}
+  .header__nav.is-overflow .nav-side::before{opacity:1}
+}
