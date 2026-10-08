@@ -1997,3 +1997,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ti__perks li{position:relative;padding-left:28px;font-size:16px;line-height:1.5}
 .ti__perks li::before{content:"✓";position:absolute;left:4px;color:#6b3fd8}
 .ti__cartlink{display:block;text-align:center;margin-top:14px;text-decoration:underline;font-weight:500;color:#111}
+.sd [hidden],.ac [hidden]{display:none!important}

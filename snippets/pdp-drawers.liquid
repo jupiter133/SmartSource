@@ -75,7 +75,7 @@
 </dialog>
 
 {% render 'sell-catalog' %}
-<script type="application/json" data-ti-config>{"live": {{ settings.sell_live | json }}}</script>
+<script type="application/json" data-ti-config>{"live": {{ settings.sell_live | json }},"img":{"phone":{{ 'cat-iphone.webp' | asset_url | json }},"tablet":{{ 'tech-ipads.webp' | asset_url | json }},"watch":{{ 'cat-watches.webp' | asset_url | json }},"macbook":{{ 'cat-macbook.webp' | asset_url | json }},"laptop":{{ 'cat-laptops.webp' | asset_url | json }},"console":{{ 'tech-consoles.webp' | asset_url | json }},"audio":{{ 'cat-audio.webp' | asset_url | json }}}}</script>
 <script>
 (function(){if(window.__sd)return;window.__sd=1;
 function shut(d){d.classList.add('is-closing');setTimeout(function(){d.classList.remove('is-closing');d.close()},260)}
@@ -99,7 +99,7 @@ inp.oninput=function(){var q=inp.value.trim().toLowerCase();res.innerHTML='';if(
 p.appendChild(h('h3','ti__sub','Select a category'));
 if(!C.length){p.appendChild(h('p','ti__empty','Trade-in categories are coming soon.'));}
 C.forEach(function(c){var ds=V.filter(function(d){return d.c===c.h});if(!ds.length&&V.length)return;var b=h('button','ti__cat');b.type='button';
-var im=h('span','ti__catimg');if(c.i){var i=h('img');i.src=c.i;i.alt='';im.appendChild(i)}b.appendChild(im);b.appendChild(h('span','ti__catname',c.n));
+var im=h('span','ti__catimg');var src=c.i;if(!src&&cfg.img){var n=(c.n+' '+c.h).toLowerCase();src=/mac/.test(n)?cfg.img.macbook:/laptop|computer/.test(n)?cfg.img.laptop:/tablet|ipad/.test(n)?cfg.img.tablet:/watch/.test(n)?cfg.img.watch:/console|gam/.test(n)?cfg.img.console:/audio|airpod|head|ear/.test(n)?cfg.img.audio:/phone/.test(n)?cfg.img.phone:''}if(src){var i=h('img');i.src=src;i.alt='';im.appendChild(i)}b.appendChild(im);b.appendChild(h('span','ti__catname',c.n));
 if(cfg.live){var m=maxFor(ds);if(m)b.appendChild(h('span','ti__upto','Up to '+money(m)))}
 b.onclick=function(){st.cat=c.h;stepBrand()};p.appendChild(b)})})}
 function stepBrand(){var c=C.find(function(x){return x.h===st.cat})||{n:'device'};var bs=B.filter(function(b){return V.some(function(d){return d.c===st.cat&&d.b===b.h})});
