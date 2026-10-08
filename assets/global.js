@@ -313,8 +313,16 @@
     const res = await fetch('/cart/add.js', { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
     btn.disabled = false;
     if (!res.ok) { alert((await res.json()).description || 'Could not add to cart'); return; }
-    await refreshCart(); openDrawer();
+    await refreshCart();
+    const ti = document.getElementById('sd-tradein');
+    if (ti && typeof ti.showModal === 'function') { ti.showModal(); } else { openDrawer(); }
   }));
+  document.addEventListener('click', e => {
+    const s = e.target.closest('[data-tradein-skip]');
+    if (!s) return;
+    const d = s.closest('dialog'); d.classList.add('is-closing');
+    setTimeout(() => { d.classList.remove('is-closing'); d.close(); if (drawer) openDrawer(); else location.href = '/cart'; }, 260);
+  });
 
   document.addEventListener('click', async e => {
     const b = e.target.closest('[data-qty]');

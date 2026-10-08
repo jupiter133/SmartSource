@@ -41,6 +41,26 @@
   <div class="sd__foot"><a class="sd__btn" href="{{ plink }}">Learn more</a></div>
 </dialog>
 
+<dialog class="sd sd--tradein" id="sd-tradein" aria-labelledby="sd-tradein-t">
+  <div class="sd__bar"><p id="sd-tradein-t">Trade-in</p><button type="button" data-sd-close aria-label="Close">✕</button></div>
+  <div class="sd__body">
+    <h2 class="sd-ti__h">Want to get this for even less? Trade in your old tech for cash.</h2>
+    {%- assign est = product.metafields.custom.tradein_estimate.value -%}
+    <div class="sd-ti__card">
+      <span class="sd-ti__tag">{% if est %}With trade-in estimate{% else %}Added to your cart{% endif %}</span>
+      <div class="sd-ti__row">
+        {%- if product.featured_image -%}{{ product.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+        <div><p class="sd-ti__name">{{ product.title }}</p>{%- if est -%}<p class="sd-ti__price">{{ est | money_without_trailing_zeros }}<sup>*</sup></p>{%- else -%}<p class="sd-ti__sub">Trade in a phone, tablet, laptop or console and put the cash toward it.</p>{%- endif -%}</div>
+      </div>
+    </div>
+    {%- if est -%}<p class="sd-ti__note">*Price shown is an estimate after trade-in. Your actual offer depends on the device you send.</p>{%- endif -%}
+  </div>
+  <div class="sd-ti__foot">
+    <a class="sd-ti__btn" href="/pages/sell-your-device"><strong>Yes</strong><span>Get a trade-in offer in just 2 min</span></a>
+    <button type="button" class="sd-ti__btn" data-tradein-skip><strong>Skip trade-in</strong><span>View your cart</span></button>
+  </div>
+</dialog>
+
 <script>
 (function(){if(window.__sd)return;window.__sd=1;
 function shut(d){d.classList.add('is-closing');setTimeout(function(){d.classList.remove('is-closing');d.close()},260)}
