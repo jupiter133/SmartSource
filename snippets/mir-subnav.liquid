@@ -3,7 +3,6 @@
 {{ 'journal.css' | asset_url | stylesheet_tag }}
 {{ 'mail-in-repair.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'journal.js' | asset_url }}" defer></script>
-<script>try{var t=localStorage.getItem('jr-theme');if(t)document.documentElement.setAttribute('data-jr-theme',t)}catch(e){}</script>
 <script src="{{ 'mail-in-repair.js' | asset_url }}" defer></script>
 <nav class="jr mir-subnav" aria-label="Mail-In Repair" data-mir-subnav>
   <div class="page-width mir-subnav__row">
@@ -21,7 +20,6 @@
         <li><a href="{{ href }}"{% if current == k %} aria-current="page" class="is-active"{% endif %}>{{ label }}</a></li>
       {%- endfor -%}
     </ul>
-    <button type="button" class="jr-bar__mode mir-subnav__mode" data-jr-mode aria-label="Toggle dark mode"><span class="jr-sun">☀</span><span class="jr-moon">☾</span></button>
     <a class="btn btn--accent mir-subnav__cta" href="{{ mb }}/quote" data-mir-track="subnav_quote">Get a Quote</a>
   </div>
 </nav>

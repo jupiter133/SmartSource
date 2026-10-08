@@ -5,7 +5,6 @@
 {%- assign j_cats = 'News|Tech Experts|Gifting|Deals|Refurb 101|Phones|Laptops|Tablets|Gaming|Audio|Accessories|Trade-In' | split: '|' -%}
 {{ 'journal.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'journal.js' | asset_url }}" defer></script>
-<script>try{var t=localStorage.getItem('jr-theme');if(t)document.documentElement.setAttribute('data-jr-theme',t)}catch(e){}</script>
 <div class="jr jr-bar" data-jr-bar>
   <div class="page-width jr-bar__row">
     <a class="jr-bar__home{% if active == blank %} is-active{% endif %}" href="{{ jroot }}">Journal</a>
@@ -19,7 +18,6 @@
       <input type="search" name="q" placeholder="Search guides" aria-label="Search the Journal" value="{% if search.performed %}{{ search.terms | escape }}{% endif %}">
       <button type="submit" aria-label="Search">{% render 'icon', name: 'search' %}</button>
     </form>
-    <button type="button" class="jr-bar__mode" data-jr-mode aria-label="Toggle dark mode"><span class="jr-sun">☀</span><span class="jr-moon">☾</span></button>
   </div>
   <div class="page-width jr-chips" role="list">
     {%- for t in j_cats -%}{%- assign h = t | handleize -%}
