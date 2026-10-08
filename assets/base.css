@@ -1738,3 +1738,6 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .promo-card--photo h3{color:#fff;font-weight:500;font-size:clamp(24px,2.4vw,34px);margin:0 0 10px}
 .promo-card--photo p{color:#fff;font-size:17px;margin:0 0 22px}
 .promo-card--photo .btn{background:#fff;color:#111;align-self:flex-start;font-weight:500}
+.promo-cards .promo-card--photo .promo-card__img{height:auto;width:auto}
+.promo-cards .promo-card--photo .promo-card__img img{max-width:none!important;max-height:none!important}
+.promo-card--photo .btn{border:0}
