@@ -2041,3 +2041,13 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ca-banner__cta{background:none;color:#0e1016;padding:0;border-radius:0;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .ca-banner:hover .ca-banner__cta{color:#d52b1e}
 @media (max-width:600px){.ca-banner__cta{width:auto;text-align:left}}
+/* Canada banner v3 */
+.cab{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;grid-template-areas:"e c" "h c" "s c";align-items:center;column-gap:24px;padding:28px 36px;border-radius:20px;background:#0e1016;color:#fff;font-family:"DM Sans",Inter,sans-serif;isolation:isolate}
+.cab__eyebrow{grid-area:e;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ff8a80}
+.cab__eyebrow svg,.cab__eyebrow img{width:22px;height:auto;border-radius:2px}
+.cab__h{grid-area:h;font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin:8px 0 6px}
+.cab__sub{grid-area:s;font-size:15px;color:#c9cad1}
+.cab__cta{grid-area:c;background:#fff;color:#0e1016;font-weight:600;font-size:15px;padding:13px 22px;border-radius:10px;transition:transform .15s}
+.cab:hover .cab__cta{transform:translateX(3px)}
+.cab__leaf{position:absolute;z-index:-1;right:150px;top:50%;width:260px;height:260px;transform:translateY(-50%) rotate(-12deg);fill:#d52b1e;opacity:.9}
+@media (max-width:749px){.cab{grid-template-columns:1fr;grid-template-areas:"e" "h" "s" "c";padding:22px 20px;row-gap:4px}.cab__cta{justify-self:start;margin-top:14px}.cab__leaf{right:-60px;width:200px;height:200px;opacity:.35}}

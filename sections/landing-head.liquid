@@ -11,10 +11,12 @@
 -%}
 {%- if ca_label != blank -%}
 <div class="page-width ca-banner-wrap">
-  <a class="ca-banner" href="#lx-deals">
-    <span class="ca-banner__flag" aria-hidden="true">{% render 'flag', code: 'CA' %}</span>
-    <span class="ca-banner__text"><strong>Canada's best deals on {{ ca_label }}</strong><span>Refurbished &amp; certified pre-owned. Tested in the GTA, shipped across Canada.</span></span>
-    <span class="ca-banner__cta">Shop deals →</span>
+  <a class="cab" href="#lx-deals">
+    <span class="cab__eyebrow">{% render 'flag', code: 'CA' %} Made for Canada</span>
+    <strong class="cab__h">Canada's best deals on {{ ca_label }}.</strong>
+    <span class="cab__sub">Refurbished &amp; certified pre-owned. Tested in the GTA, shipped coast to coast.</span>
+    <span class="cab__cta">Shop the deals</span>
+    <svg class="cab__leaf" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 22l-38 70c-4 8-12 7-20 3l-28-14 21 108c4 20-9 20-15 6l-32-35-5 18c-1 4-5 7-9 6L62 162l12 40c5 17 11 25-5 31l-15 7 102 83c7 6 10 16 8 25l-9 30c35-4 67-10 102-14 3 0 5 2 5 5l-5 119h20l-5-119c0-3 2-5 5-5 35 4 67 10 102 14l-9-30c-2-9 1-19 8-25l102-83-15-7c-16-6-10-14-5-31l12-40-68 14c-4 1-8-2-9-6l-5-18-32 35c-6 14-19 14-15-6l21-108-28 14c-8 4-16 5-20-3z"/></svg>
   </a>
 </div>
 {%- endif -%}
