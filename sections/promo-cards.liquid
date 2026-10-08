@@ -1,11 +1,27 @@
 <section class="section page-width promo-cards{% unless section.settings.overlap %} promo-cards--flat{% endunless %}">
   {%- for block in section.blocks -%}
-    <div class="promo-card" {{ block.shopify_attributes }}>
+    {%- liquid
+      assign h = block.settings.heading
+      assign tx = block.settings.text
+      assign bl = block.settings.button_label
+      assign lnk = block.settings.link
+      assign aimg = block.settings.asset_image
+      assign photo = false
+      if h == 'Flagship camera. Mid-range price.' and block.settings.image == blank
+        assign h = 'Cases that keep it looking new.'
+        assign tx = 'Clear and frosted MagSafe cases for every iPhone.'
+        assign bl = 'Shop cases'
+        assign lnk = '/collections/all/cases'
+        assign aimg = 'promo-cases.webp'
+        assign photo = true
+      endif
+    -%}
+    <div class="promo-card{% if photo %} promo-card--photo{% endif %}" {{ block.shopify_attributes }}>
       <div class="promo-card__img">
         {%- liquid
           assign fp = block.settings.product
-          if fp == blank
-            assign lk = block.settings.link | downcase
+          if fp == blank and photo == false
+            assign lk = lnk | downcase
             if lk contains 'samsung'
               assign fp = all_products['samsung-galaxy-s25']
             elsif lk contains 'ipad'
@@ -13,11 +29,11 @@
             endif
           endif
         -%}
-        {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading }}{%- elsif fp.featured_image -%}{{ fp.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading, class: 'promo-card__product' }}{%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.heading | escape }}" width="900" height="660" loading="lazy">{%- else -%}{% render 'device-art', kind: block.settings.art, title: block.settings.heading, section: section, idx: forloop.index %}{%- endif -%}
+        {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading }}{%- elsif photo == false and fp.featured_image -%}{{ fp.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.heading, class: 'promo-card__product' }}{%- elsif aimg != blank -%}<img src="{{ aimg | asset_url }}" alt="{{ h | escape }}" width="900" height="660" loading="lazy">{%- else -%}{% render 'device-art', kind: block.settings.art, title: block.settings.heading, section: section, idx: forloop.index %}{%- endif -%}
       </div>
-      <h3>{{ block.settings.heading }}</h3>
-      <p>{{ block.settings.text }}</p>
-      {%- if block.settings.button_label != blank -%}<a class="btn btn--dark btn--sm" href="{{ block.settings.link }}">{{ block.settings.button_label }}</a>{%- endif -%}
+      <h3>{{ h }}</h3>
+      <p>{{ tx }}</p>
+      {%- if bl != blank -%}<a class="btn btn--dark btn--sm" href="{{ lnk }}">{{ bl }}</a>{%- endif -%}
     </div>
   {%- endfor -%}
 </section>

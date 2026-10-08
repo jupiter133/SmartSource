@@ -477,10 +477,11 @@
         "d1": {
           "type": "card",
           "settings": {
-            "heading": "Flagship camera. Mid-range price.",
-            "text": "Shop the Galaxy S25 for way less than new.",
-            "button_label": "See deal",
-            "link": "/collections/all/samsung"
+            "heading": "Cases that keep it looking new.",
+            "text": "Clear and frosted MagSafe cases for every iPhone.",
+            "button_label": "Shop cases",
+            "link": "/collections/all/cases",
+            "asset_image": "promo-cases.webp"
           }
         },
         "d2": {
