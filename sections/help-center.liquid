@@ -82,7 +82,7 @@
       <div class="help-card">
         <span class="help-card__icon">{% render 'icon', name: 'mail' %}</span>
         <h3>Email</h3>
-        {%- assign mail = section.settings.email | default: shop.email -%}
+        {%- assign mail = section.settings.email -%}
         <p>{{ section.settings.email_text }}{% if mail != blank %} Or write to <a href="mailto:{{ mail }}">{{ mail }}</a>.{% endif %}</p>
         {%- form 'contact', id: 'HelpContactForm' -%}
           <div class="help-form">
