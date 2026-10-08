@@ -15,6 +15,9 @@
         assign aimg = 'promo-cases.webp'
         assign photo = true
       endif
+      if aimg == 'promo-cases.webp'
+        assign photo = true
+      endif
     -%}
     <div class="promo-card{% if photo %} promo-card--photo{% endif %}" {{ block.shopify_attributes }}>
       <div class="promo-card__img">
