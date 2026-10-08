@@ -1676,4 +1676,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 @media (max-width:749px){.nav-fade-l{display:none}}
 /* Uniform photo fit in mega tiles */
 .mega-tile__img{position:relative}
-.mega-tile__img>img,.mega-tile__img .mega-tile__photo{position:absolute;inset:8% 8%;width:84%!important;height:84%!important;max-width:none;object-fit:contain;object-position:center}
+.mega-tile__img>img,.mega-tile__img .mega-tile__photo{position:absolute;inset:8% 8%;width:84%!important;height:84%!important;max-width:none;padding:0!important;object-fit:contain;object-position:center}
