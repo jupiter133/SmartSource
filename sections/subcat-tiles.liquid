@@ -22,6 +22,21 @@
     {%- endfor -%}
   </div>
 </section>
+{%- liquid
+  assign lx_tag = ''
+  case page.handle
+    when 'android'
+      assign lx_tag = 'android'
+      assign lx_label = 'Android phones'
+    when 'laptops'
+      assign lx_tag = 'laptops'
+      assign lx_label = 'laptops'
+    when 'audio'
+      assign lx_tag = 'audio'
+      assign lx_label = 'audio'
+  endcase
+-%}
+{%- if lx_tag != blank -%}{% render 'landing-extras', tag: lx_tag, label: lx_label %}{%- endif -%}
 {% schema %}
 { "name": "Landing: category tiles", "settings": [
   { "type": "text", "id": "heading", "label": "Heading", "default": "Shop laptops and more" },

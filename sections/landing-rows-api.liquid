@@ -1,0 +1,9 @@
+{%- comment -%} Fetched via ?section_id=landing-rows-api on a collection/tag URL. Outputs product cards only. {%- endcomment -%}
+{%- if collection -%}
+  {%- paginate collection.products by 12 -%}
+    {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+{% schema %}
+{ "name": "Landing rows (API)", "settings": [] }
+{% endschema %}
