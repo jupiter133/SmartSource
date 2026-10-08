@@ -1780,3 +1780,7 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 @media (max-width:900px){.rs-m{width:100vw;border-radius:0}.rs-m__content{grid-template-columns:1fr;overflow:auto}.rs-m__bar{padding:18px 56px}}
 .rs-card__ver{position:absolute;top:22px;right:22px;z-index:1;display:inline-flex;align-items:center;gap:5px;background:#dfe6f5;color:#2f4b8a;font-size:12.5px;font-weight:500;padding:3px 8px;border-radius:4px}
 .rs-card__ver svg{width:13px;height:13px}
+.rs-card__ver{top:58px;left:22px;right:auto;font-size:12px;padding:2px 7px}
+.rs-card__prod{min-height:0;padding:14px 18px 16px;gap:14px;font-size:14px}
+.rs-card__prod img{width:56px;max-height:48px}
+.rs-card__prod span{-webkit-line-clamp:2}
