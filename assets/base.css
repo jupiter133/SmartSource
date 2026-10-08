@@ -2070,3 +2070,24 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .cah__img{position:relative;max-width:100%;max-height:360px;width:auto;object-fit:contain;filter:drop-shadow(0 24px 40px #000a)}
 @media (max-width:849px){.cah{grid-template-columns:1fr;padding:28px 22px}.cah__art{min-height:220px;order:-1}.cah__leaf{width:280px}.cah__img{max-height:220px}}
 .cah__leaf{width:min(560px,130%)}
+/* Laptop / MacBook finder */
+.lf{margin:28px 0 8px;font-family:"DM Sans",Inter,sans-serif;color:#0e1016}
+.lf__grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.lf-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px #0000000d;display:flex;flex-direction:column;gap:12px}
+.lf-card__q{font-size:15px;font-weight:500;margin:0}
+.lf-list{display:grid;gap:8px}
+.lf-list button{background:#ececf0;border:2px solid transparent;border-radius:10px;padding:14px 14px;text-align:left;font:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:background .15s}
+.lf-list button:hover{background:#e2e3e8}
+.lf-pills{display:flex;flex-wrap:wrap;gap:8px}
+.lf-pills button{background:#ececf0;border:2px solid transparent;border-radius:999px;padding:8px 14px;font:inherit;font-size:15px;cursor:pointer}
+.lf-list button.is-on,.lf-pills button.is-on{background:#ede6ff;border-color:#6b3fd8;color:#3d2394}
+.lf-range{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.lf-range label,.lf-more label{display:flex;flex-direction:column;gap:2px;font-size:12px;color:#555;border:1px solid #c9cad1;border-radius:8px;padding:6px 10px;background:#fff}
+.lf-range input,.lf-more select{border:0;font:inherit;font-size:16px;color:#111;background:none;padding:0;outline:none;width:100%}
+.lf-size{margin-top:auto}.lf-size svg{width:100%;height:auto;display:block}
+.lf-more{display:grid;gap:8px}
+.lf__bar{display:flex;gap:16px;align-items:center;margin-top:14px}
+.lf__go{background:#111;color:#fff;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.lf__reset{background:none;border:0;font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}
+@media (max-width:1100px){.lf__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.lf__grid{grid-auto-flow:column;grid-auto-columns:78%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.lf-card{scroll-snap-align:start}}

@@ -109,6 +109,7 @@
       <div class="coll-hero__art"><img src="{{ hero_src }}" alt="" width="900" height="700" fetchpriority="high"></div>
     {%- endif -%}
   </section>
+  {%- if ctags contains 'macbook' -%}{% render 'laptop-finder', base: 'macbook', mac: true %}{%- elsif ctags contains 'laptops' -%}{% render 'laptop-finder', base: 'laptops', mac: false %}{%- endif -%}
 
   {%- if section.blocks.size > 0 -%}
     <div class="coll-chips" role="list">
@@ -203,7 +204,7 @@
         </div>
       </div>
 
-      <div class="coll-grid">
+      <div class="coll-grid" id="coll-results">
         {%- if section.settings.show_promo -%}{%- unless paginate.current_page > 1 -%}
           <div class="coll-promo" style="--promo-bg: {{ section.settings.promo_bg }}">
             <span class="coll-promo__icon">{% render 'icon', name: 'shield' %}</span>

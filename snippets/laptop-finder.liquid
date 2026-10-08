@@ -1,0 +1,81 @@
+{%- comment -%}
+  Guided finder for MacBook / laptop collection pages (Back Market style).
+  Params: base (collection tag, e.g. "macbook"), mac (true for MacBook-only options)
+  Builds /collections/all/<base>+<tags>?filter.v.price.gte=&filter.v.price.lte=&filter.v.option.condition=
+  Tag conventions on products: for-creatives, for-complex-work, gaming, on-the-go,
+  13-inch / 14-inch / 15-inch / 16-inch, macbook-air / macbook-pro, m1…m4, 256gb / 512gb / 1tb.
+{%- endcomment -%}
+<section class="lf" data-lf data-base="{{ base }}">
+  <div class="lf__grid">
+    <div class="lf-card">
+      <p class="lf-card__q">What will you use it for?</p>
+      <div class="lf-list">
+        <button type="button" data-lf-tag="for-creatives" data-lf-group="use">For creatives</button>
+        <button type="button" data-lf-tag="for-complex-work" data-lf-group="use">For complex work</button>
+        {%- unless mac -%}<button type="button" data-lf-tag="gaming" data-lf-group="use">Gaming</button>{%- endunless -%}
+        <button type="button" data-lf-tag="on-the-go" data-lf-group="use">On the go</button>
+        <button type="button" data-lf-tag="for-school" data-lf-group="use">For school</button>
+      </div>
+    </div>
+    <div class="lf-card">
+      <p class="lf-card__q">What's your budget?</p>
+      <div class="lf-pills">
+        {%- for p in (1..6) -%}{%- assign amt = p | times: 250 | plus: 250 -%}<button type="button" data-lf-max="{{ amt }}">${{ amt | money_without_currency | remove: '.00' }}</button>{%- endfor -%}
+      </div>
+      <div class="lf-range"><label><span>Min (CAD)</span><input type="number" min="0" step="50" placeholder="0" data-lf-min-in></label><label><span>Max (CAD)</span><input type="number" min="0" step="50" placeholder="Any" data-lf-max-in></label></div>
+    </div>
+    <div class="lf-card">
+      <p class="lf-card__q">How big should it be?</p>
+      <div class="lf-pills">
+        {%- assign sizes = '13,14,15,16' | split: ',' -%}{%- for sz in sizes -%}<button type="button" data-lf-tag="{{ sz }}-inch" data-lf-group="size">{{ sz }}"</button>{%- endfor -%}
+      </div>
+      <div class="lf-size" aria-hidden="true">
+        <svg viewBox="0 0 220 90"><rect x="8" y="22" width="86" height="56" rx="4" fill="#1d1e24"/><rect x="12" y="26" width="78" height="48" rx="2" fill="url(#lfg)"/><rect x="0" y="78" width="102" height="5" rx="2.5" fill="#b9bac2"/><rect x="104" y="8" width="104" height="70" rx="4" fill="#1d1e24"/><rect x="108" y="12" width="96" height="62" rx="2" fill="url(#lfg)"/><rect x="96" y="78" width="120" height="6" rx="3" fill="#b9bac2"/><defs><linearGradient id="lfg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5a7a"/><stop offset=".5" stop-color="#ff3e9a"/><stop offset="1" stop-color="#4f7bff"/></linearGradient></defs></svg>
+      </div>
+    </div>
+    <div class="lf-card">
+      <p class="lf-card__q">Which condition?</p>
+      <div class="lf-list">
+        {%- assign conds = 'Fair,Good,Excellent,Premium' | split: ',' -%}{%- for c in conds -%}<button type="button" data-lf-cond="{{ c }}">{{ c }}</button>{%- endfor -%}
+      </div>
+    </div>
+    <div class="lf-card">
+      <p class="lf-card__q">More requirements</p>
+      <div class="lf-more">
+        {%- if mac -%}
+        <label><span>Model</span><select data-lf-sel="model"><option value="">Any</option><option value="macbook-air">MacBook Air</option><option value="macbook-pro">MacBook Pro</option></select></label>
+        <label><span>Chip</span><select data-lf-sel="chip"><option value="">Any</option><option value="m4">M4</option><option value="m3">M3</option><option value="m2">M2</option><option value="m1">M1</option><option value="intel">Intel</option></select></label>
+        {%- else -%}
+        <label><span>Brand</span><select data-lf-sel="brand"><option value="">Any</option><option value="dell">Dell</option><option value="hp">HP</option><option value="lenovo">Lenovo</option><option value="asus">ASUS</option><option value="acer">Acer</option><option value="microsoft">Microsoft</option></select></label>
+        <label><span>Processor</span><select data-lf-sel="chip"><option value="">Any</option><option value="intel-core-i5">Intel Core i5</option><option value="intel-core-i7">Intel Core i7</option><option value="amd-ryzen">AMD Ryzen</option></select></label>
+        {%- endif -%}
+        <label><span>Storage</span><select data-lf-sel="storage"><option value="">Any</option><option value="256gb">256 GB</option><option value="512gb">512 GB</option><option value="1tb">1 TB</option></select></label>
+      </div>
+    </div>
+  </div>
+  <div class="lf__bar"><button type="button" class="lf__go" data-lf-go>↓ Show results</button><button type="button" class="lf__reset" data-lf-reset>Reset</button></div>
+</section>
+<script>
+(function(){var F=document.querySelector('[data-lf]');if(!F)return;var base=F.dataset.base,u=new URL(location.href);
+var path=u.pathname.split('/').pop(),cur=decodeURIComponent(path).split('+').filter(function(t){return t&&t!==base&&t!=='all'});
+var st={tags:{},max:u.searchParams.get('filter.v.price.lte')||'',min:u.searchParams.get('filter.v.price.gte')||'',cond:u.searchParams.get('filter.v.option.condition')||''};
+cur.forEach(function(t){var b=F.querySelector('[data-lf-tag="'+t+'"]');if(b)st.tags[b.dataset.lfGroup]=t;else{var o=F.querySelector('[data-lf-sel] option[value="'+t+'"]');if(o)st.tags[o.parentNode.dataset.lfSel]=t}});
+function paint(){F.querySelectorAll('[data-lf-tag]').forEach(function(b){b.classList.toggle('is-on',st.tags[b.dataset.lfGroup]===b.dataset.lfTag)});
+F.querySelectorAll('[data-lf-max]').forEach(function(b){b.classList.toggle('is-on',st.max===b.dataset.lfMax)});
+F.querySelectorAll('[data-lf-cond]').forEach(function(b){b.classList.toggle('is-on',st.cond===b.dataset.lfCond)});
+F.querySelector('[data-lf-max-in]').value=st.max;F.querySelector('[data-lf-min-in]').value=st.min;
+F.querySelectorAll('[data-lf-sel]').forEach(function(s){s.value=st.tags[s.dataset.lfSel]||''})}
+function go(){var tags=[base].concat(Object.keys(st.tags).map(function(k){return st.tags[k]}).filter(Boolean));var q=new URLSearchParams();
+if(st.min)q.set('filter.v.price.gte',st.min);if(st.max)q.set('filter.v.price.lte',st.max);if(st.cond)q.set('filter.v.option.condition',st.cond);
+location.href='/collections/all/'+tags.join('+')+(q.toString()?'?'+q:'')+'#coll-results'}
+F.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+if(b.dataset.lfTag){var g=b.dataset.lfGroup;st.tags[g]=st.tags[g]===b.dataset.lfTag?'':b.dataset.lfTag}
+else if(b.dataset.lfMax){st.max=st.max===b.dataset.lfMax?'':b.dataset.lfMax}
+else if(b.dataset.lfCond){st.cond=st.cond===b.dataset.lfCond?'':b.dataset.lfCond}
+else if(b.hasAttribute('data-lf-reset')){st={tags:{},max:'',min:'',cond:''};paint();location.href='/collections/all/'+base;return}
+else if(b.hasAttribute('data-lf-go')){go();return}
+paint()});
+F.querySelector('[data-lf-min-in]').onchange=function(){st.min=this.value};F.querySelector('[data-lf-max-in]').onchange=function(){st.max=this.value;paint()};
+F.querySelectorAll('[data-lf-sel]').forEach(function(s){s.onchange=function(){st.tags[s.dataset.lfSel]=s.value}});
+paint()})();
+</script>
