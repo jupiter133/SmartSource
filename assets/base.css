@@ -1741,3 +1741,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .promo-cards .promo-card--photo .promo-card__img{height:auto;width:auto}
 .promo-cards .promo-card--photo .promo-card__img img{max-width:none!important;max-height:none!important}
 .promo-card--photo .btn{border:0}
+.promo-card--photo .promo-card__img img{object-position:center 40%}
