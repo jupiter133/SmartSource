@@ -1713,3 +1713,15 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 @media (min-width:1300px){
   .header__nav.page-width{max-width:calc(var(--page-width) + 144px)}
 }
+/* Header text: Back Market colour + weight */
+@media (min-width:750px){
+  .header,.header a,.header button{color:#0e1016}
+  .header__utility-bar .header__utility{font-size:13.5px}
+  .utility-links a,.utility-right a,.utility-right button{font-weight:500;color:#0e1016}
+  .header__search input,.header__search input::placeholder{color:#3c3f48;font-size:16.5px;font-weight:400}
+  .header__text-link{font-size:17px;font-weight:500}
+  .header__nav{font-size:15.5px}
+  .header__nav .nav-link,.header__nav>ul>li>a,.nav-side-link{font-weight:400;color:#0e1016;letter-spacing:.005em}
+  .header__nav .nav-deal,.header__nav .nav-deal *{color:#a8326b!important;font-weight:400}
+  .header__nav .mega a{color:inherit}
+}
