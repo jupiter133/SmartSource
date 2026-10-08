@@ -56,7 +56,7 @@
         "q3": {
           "type": "question",
           "settings": {
-            "question": "Is my data safe on a refurbished device?",
+            "question": "Is my data safe on a pre-owned device?",
             "answer": "<p>Yes. Every device is fully wiped and restored to factory settings before it's sold.</p>"
           }
         },

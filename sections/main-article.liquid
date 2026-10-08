@@ -101,15 +101,15 @@
 
         <div class="jr-cta">
           {%- if first_product -%}
-            <div><p class="jr-cta__title">Skip the new-phone price</p><p>Get the {{ first_product.title }} refurbished from {{ first_product.price_min | money }}, tested by real technicians with a 1-year warranty and 30-day returns.</p></div>
-            <a class="btn btn--accent" href="{{ first_product.url }}">Shop refurbished {{ first_product.title }}</a>
+            <div><p class="jr-cta__title">Skip the new-phone price</p><p>Get the {{ first_product.title }} pre-owned from {{ first_product.price_min | money }}, tested by real technicians with a 1-year warranty and 30-day returns.</p></div>
+            <a class="btn btn--accent" href="{{ first_product.url }}">Shop pre-owned {{ first_product.title }}</a>
           {%- else -%}
             {%- assign cta_url = section.settings.cta_default_url -%}{%- assign cta_label = section.settings.cta_default_label -%}
             {%- assign map = section.settings.cta_map | newline_to_br | split: '<br />' -%}
             {%- for line in map -%}{%- assign bits = line | split: '|' -%}{%- assign key = bits[0] | strip -%}
               {%- if bits.size > 2 and article.tags contains key -%}{%- assign cta_url = bits[1] | strip -%}{%- assign cta_label = bits[2] | strip -%}{%- break -%}{%- endif -%}
             {%- endfor -%}
-            <div><p class="jr-cta__title">Same tech, way less money</p><p>Every refurbished device is tested by real technicians, backed by a 1-year warranty and 30-day returns.</p></div>
+            <div><p class="jr-cta__title">Same tech, way less money</p><p>Every refurbished and pre-owned device is tested by real technicians, backed by a 1-year warranty and 30-day returns.</p></div>
             <a class="btn btn--accent" href="{{ cta_url }}">{{ cta_label }}</a>
           {%- endif -%}
         </div>
@@ -226,9 +226,9 @@
     { "type": "select", "id": "post_type", "label": "Post type", "default": "standard", "options": [
       { "value": "standard", "label": "Standard" }, { "value": "comparison", "label": "Comparison" }, { "value": "repair", "label": "Repair guide" },
       { "value": "howto", "label": "How-to" }, { "value": "gifting", "label": "Gifting" }, { "value": "news", "label": "News" }, { "value": "expert", "label": "Tech Expert" } ] },
-    { "type": "textarea", "id": "cta_map", "label": "Shop CTA by tag", "info": "One per line: Tag | link | button label. Used when the post has no product cards.", "default": "Laptops | /collections/all/laptops | Shop refurbished laptops\nTablets | /collections/all/tablets | Shop refurbished tablets\nGaming | /collections/all/consoles | Shop refurbished consoles\nAudio | /collections/all/audio | Shop refurbished audio\nAccessories | /collections/all/accessories | Shop accessories\nTrade-In | /pages/sell-your-device | Get a trade-in quote\nPhones | /collections/all/smartphones | Shop refurbished phones" },
+    { "type": "textarea", "id": "cta_map", "label": "Shop CTA by tag", "info": "One per line: Tag | link | button label. Used when the post has no product cards.", "default": "Laptops | /collections/all/laptops | Shop pre-owned laptops\nTablets | /collections/all/tablets | Shop pre-owned tablets\nGaming | /collections/all/consoles | Shop pre-owned consoles\nAudio | /collections/all/audio | Shop pre-owned audio\nAccessories | /collections/all/accessories | Shop accessories\nTrade-In | /pages/sell-your-device | Get a trade-in quote\nPhones | /collections/all/smartphones | Shop pre-owned phones" },
     { "type": "url", "id": "cta_default_url", "label": "Default CTA link", "default": "/collections/all" },
-    { "type": "text", "id": "cta_default_label", "label": "Default CTA label", "default": "Shop refurbished tech" }
+    { "type": "text", "id": "cta_default_label", "label": "Default CTA label", "default": "Shop refurbished & pre-owned tech" }
   ]
 }
 {% endschema %}

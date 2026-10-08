@@ -13,7 +13,7 @@
       "type": "landing-head",
       "settings": {
         "crumb": "Audio",
-        "heading": "Refurbished audio",
+        "heading": "Refurbished & certified pre-owned audio",
         "text": "AirPods, headphones and speakers. Cleaned, tested and backed by a 1-year warranty."
       }
     },
@@ -68,7 +68,7 @@
           "type": "banner",
           "settings": {
             "heading": "Hear more. Pay less.",
-            "text": "AirPods and AirPods Pro, refurbished.",
+            "text": "AirPods and AirPods Pro, refurbished or pre-owned.",
             "button_label": "Shop AirPods",
             "link": "/collections/all/airpods",
             "art": "phone",
@@ -202,7 +202,7 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Are refurbished AirPods hygienic?",
+            "question": "Are pre-owned AirPods hygienic?",
             "answer": "<p>Yes. Every pair is professionally cleaned and sanitised, and ear tips are replaced where applicable.</p>"
           }
         },
@@ -258,8 +258,8 @@
         "p1": {
           "type": "part",
           "settings": {
-            "heading": "Why buy refurbished audio from SmartSource?",
-            "body": "<p>Refurbished AirPods and headphones sound just like new, for a lot less. Every pair is cleaned, tested for sound, mic and battery, and graded by our technicians. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+            "heading": "Why buy refurbished or pre-owned audio from SmartSource?",
+            "body": "<p>Refurbished and certified pre-owned AirPods and headphones sound just like new, for a lot less. Every pair is cleaned, tested for sound, mic and battery, and graded by our technicians. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
           }
         },
         "p2": {

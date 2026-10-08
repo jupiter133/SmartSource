@@ -13,7 +13,7 @@
       "type": "landing-head",
       "settings": {
         "crumb": "Laptops",
-        "heading": "Shop all refurbished laptops",
+        "heading": "Shop all refurbished & certified pre-owned laptops",
         "text": "MacBooks, Windows laptops and Chromebooks. Tested, cleaned and backed by a 1-year warranty."
       }
     },
@@ -98,7 +98,7 @@
           "type": "banner",
           "settings": {
             "heading": "Work hard. Spend less.",
-            "text": "MacBook Air and Pro, refurbished and ready.",
+            "text": "MacBook Air and Pro, refurbished or pre-owned and ready.",
             "button_label": "Shop MacBook",
             "link": "/collections/all/macbook",
             "art": "laptop",
@@ -235,8 +235,8 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Are refurbished laptops worth it?",
-            "answer": "<p>Yes. A refurbished MacBook or Windows laptop gives you the same performance as new for a lot less, backed by a 1-year warranty.</p>"
+            "question": "Are pre-owned laptops worth it?",
+            "answer": "<p>Yes. A refurbished or certified pre-owned MacBook or Windows laptop gives you the same performance as new for a lot less, backed by a 1-year warranty.</p>"
           }
         },
         "q2": {
@@ -291,8 +291,8 @@
         "p1": {
           "type": "part",
           "settings": {
-            "heading": "Why buy a refurbished laptop from SmartSource?",
-            "body": "<p>A refurbished laptop does everything a new one does, for a lot less money. Every laptop is inspected, tested and graded by our technicians, wiped and restored to factory settings. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+            "heading": "Why buy a refurbished or pre-owned laptop from SmartSource?",
+            "body": "<p>A pre-owned laptop does everything a new one does, for a lot less money. Every laptop is inspected, tested and graded by our technicians, wiped and restored to factory settings. Every one comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
           }
         },
         "p2": {

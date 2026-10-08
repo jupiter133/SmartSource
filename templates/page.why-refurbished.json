@@ -25,7 +25,7 @@
             "text": "<p>Every device is tested, repaired and graded by our technicians, then backed by a 1-year warranty. You get the tech you want without paying the new-in-box tax.</p>",
             "art": "hero",
             "bg": "#F3F0FF",
-            "button_label": "Shop refurbished",
+            "button_label": "Shop pre-owned",
             "button2_label": "Trade in your old device"
           }
         },
@@ -262,7 +262,7 @@
     "promise": {
       "type": "promise",
       "settings": {
-        "heading": "Our Promise: Refurbished without the risk",
+        "heading": "Our Promise: Pre-owned without the risk",
         "button_label": "",
         "link": ""
       },
@@ -306,7 +306,7 @@
     "faq": {
       "type": "sell-faq",
       "settings": {
-        "heading": "Questions people ask before buying refurbished",
+        "heading": "Questions people ask before buying pre-owned",
         "schema": true
       },
       "blocks": {
@@ -367,7 +367,7 @@
       "settings": {
         "heading": "Ready to save?",
         "text": "Tested, warrantied, and up to 50% less than new.",
-        "button_label": "Shop refurbished",
+        "button_label": "Shop pre-owned",
         "button_link": "/collections/all"
       }
     }

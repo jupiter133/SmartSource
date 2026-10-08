@@ -1,7 +1,7 @@
 <div class="jr-news">
   <div>
     <h2 class="jr-news__title">{{ heading | default: 'Get the good stuff, skip the spam' }}</h2>
-    <p>{{ text | default: 'One email a week: new guides, price drops on refurbished tech, and fixes that save you a repair bill.' }}</p>
+    <p>{{ text | default: 'One email a week: new guides, price drops on refurbished & pre-owned tech, and fixes that save you a repair bill.' }}</p>
   </div>
   {%- form 'customer', class: 'jr-news__form' -%}
     <input type="hidden" name="contact[tags]" value="newsletter,journal">

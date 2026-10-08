@@ -13,7 +13,7 @@
       "type": "landing-head",
       "settings": {
         "crumb": "Android",
-        "heading": "Refurbished Android phones",
+        "heading": "Refurbished & certified pre-owned Android phones",
         "text": "Samsung Galaxy, Google Pixel and more. Every phone is tested by our technicians, unlocked, and backed by a 1-year warranty."
       }
     },
@@ -232,7 +232,7 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Are refurbished Android phones worth it?",
+            "question": "Are pre-owned Android phones worth it?",
             "answer": "<p>Yes. You get flagship features like top cameras and fast chips for a lot less than new, with the same 1-year warranty.</p>"
           }
         },
@@ -288,8 +288,8 @@
         "p1": {
           "type": "part",
           "settings": {
-            "heading": "Why buy a refurbished Android phone from SmartSource?",
-            "body": "<p>Refurbished Android phones work just like new ones, for a lot less money. Every phone is inspected, tested and graded by our technicians before it goes on sale. Unlike a random marketplace listing, every phone comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+            "heading": "Why buy a refurbished or pre-owned Android phone from SmartSource?",
+            "body": "<p>Refurbished and certified pre-owned Android phones work just like new ones, for a lot less money. Every phone is inspected, tested and graded by our technicians before it goes on sale. Unlike a random marketplace listing, every phone comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
           }
         },
         "p2": {

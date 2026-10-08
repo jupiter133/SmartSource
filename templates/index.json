@@ -15,7 +15,7 @@
         "banner_1": {
           "type": "slide",
           "settings": {
-            "heading": "Pro Camera. No Pro Price. Certified refurbished iPhone Pro, ready to go.",
+            "heading": "Pro Camera. No Pro Price. Refurbished & certified pre-owned iPhone Pro, ready to go.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone",
@@ -51,7 +51,7 @@
         "banner_4": {
           "type": "slide",
           "settings": {
-            "heading": "Your Phone. Your Colour. iPhone 16 and 16 Plus in every shade, certified refurbished.",
+            "heading": "Your Phone. Your Colour. iPhone 16 and 16 Plus in every shade, refurbished or certified pre-owned.",
             "subheading": "",
             "button_label": "",
             "button_link": "/collections/all/iphone-16",
@@ -205,7 +205,7 @@
           "settings": {
             "asset_image": "cat-iphone.webp",
             "heading": "Like new. Way less.",
-            "text": "Refurbished iPhones and Galaxys, tested and backed by a 1-year warranty.",
+            "text": "Refurbished and certified pre-owned iPhones and Galaxys, tested and backed by a 1-year warranty.",
             "button_label": "Shop phones",
             "link": "/collections/all",
             "art": "phone"
@@ -488,7 +488,7 @@
           "type": "card",
           "settings": {
             "heading": "Bigger screen. Smaller bill.",
-            "text": "iPad Air, refurbished and ready for class or the couch.",
+            "text": "iPad Air, pre-owned and ready for class or the couch.",
             "button_label": "Shop iPad",
             "link": "/collections/all/ipad",
             "art": "tablet"
@@ -572,7 +572,7 @@
             "focus_x": 50,
             "focus_y": 40,
             "heading": "Game night, for less.",
-            "text": "PS5 and Switch, refurbished and tested.",
+            "text": "PS5 and Switch, refurbished or pre-owned and tested.",
             "button_label": "Shop gaming",
             "link": "/collections/all/consoles",
             "art": "console",
@@ -673,7 +673,7 @@
         "b6"
       ],
       "settings": {
-        "heading": "Top brands, refurbished"
+        "heading": "Top brands, refurbished & pre-owned"
       }
     },
     "impact": {
