@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "promise": {
+      "type": "promise",
+      "blocks": {
+        "p1": { "type": "pillar", "settings": { "icon": "star", "text": "Best-in-class refurbishment" } },
+        "p2": { "type": "pillar", "settings": { "icon": "checklist", "text": "Multi-point quality inspection" } },
+        "p3": { "type": "pillar", "settings": { "icon": "returns", "text": "Free 30-day returns" } },
+        "p4": { "type": "pillar", "settings": { "icon": "award", "text": "1-year warranty" } },
+        "c1": { "type": "card", "settings": { "icon": "check", "title": "Done in-house", "text": "Every device is inspected, repaired and graded by our own technicians in the GTA. No middlemen." } },
+        "c2": { "type": "card", "settings": { "icon": "battery", "title": "Battery health you can trust", "text": "Minimum 80% battery health on every phone. The exact number is listed before you buy." } },
+        "c3": { "type": "card", "settings": { "icon": "sparkle", "title": "Clean slate", "text": "Factory reset, full data wipe, and a deep clean and polish on every device we sell." } },
+        "c4": { "type": "card", "settings": { "icon": "headset", "title": "Real people, real stores", "text": "Talk to a real person by phone, chat, or at one of our stores when you need help." } },
+        "c5": { "type": "card", "settings": { "icon": "leaf", "title": "Better for the planet", "text": "Buying refurbished keeps working tech in use and out of landfill." } },
+        "c6": { "type": "card", "settings": { "icon": "flag", "title": "No red flags", "text": "Every device is checked to be unlocked, not blacklisted, and not reported lost or stolen." } },
+        "c7": { "type": "card", "settings": { "icon": "bulb", "title": "Peace of mind", "text": "Every purchase comes with a 1-year warranty, free 30-day returns, and support when you need it." } }
+      },
+      "block_order": ["p1","p2","p3","p4","c1","c2","c3","c4","c5","c6","c7"],
+      "settings": {}
+    }
+  },
+  "order": ["promise"]
+}
