@@ -219,3 +219,20 @@ body:has(.jr-page) .footer{margin-top:0}
 .jr-search h1{color:var(--jr-ink)}
 .jr .pagination a,.jr .pagination span{color:var(--jr-ink)}
 @media (max-width:749px){.jr-rte .jr-answer{font-size:18px}.jr-rte{font-size:17px}}
+/* Back Market-style card grid */
+.jr{--jr-bg:#f7f8fa;--jr-soft:#eef0f3}
+body:has(.jr-page){background:#f7f8fa}
+.jr-grid{gap:24px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.jr-card{border:0;border-radius:14px;box-shadow:0 1px 2px #0000000d,0 4px 14px #0000000a}
+.jr-card:hover{transform:none;box-shadow:0 2px 4px #00000012,0 10px 28px #00000014}
+.jr-card__img{aspect-ratio:8/5}
+.jr-card__img img{transition:transform .35s ease}
+.jr-card:hover .jr-card__img img{transform:scale(1.04)}
+.jr-card__body{padding:22px 24px 28px;gap:4px}
+.jr-card__body .jr-kicker{font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:#5b5b66}
+.jr-card__title{font-size:20px;font-weight:500;line-height:1.5;letter-spacing:0}
+.jr-grid .jr-card:not(.jr-card--feature) .jr-meta,.jr-grid .jr-card:not(.jr-card--feature) .jr-card__excerpt{display:none}
+.jr-grid .jr-card--feature{grid-column:1/-1}
+@media (max-width:1100px){.jr-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:800px){.jr-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.jr-card__body{padding:16px 16px 20px}.jr-card__title{font-size:17px}}
+@media (max-width:480px){.jr-grid{grid-template-columns:1fr}}
