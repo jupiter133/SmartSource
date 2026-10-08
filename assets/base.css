@@ -1614,3 +1614,12 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .header__nav a{padding:10px 0 14px}
   .nav-side-link{gap:8px}.nav-side-link svg{width:20px;height:20px}
 }
+@media (min-width:750px){
+  .header__utility-bar .header__utility{padding-top:8px;padding-bottom:2px}
+  .utility-links{gap:22px}
+  .header__main{gap:24px;padding-top:10px;padding-bottom:10px}
+  .header__nav{gap:28px}
+  .header__nav ul.nav-scroll{gap:24px}
+  .header__nav .nav-side{gap:28px;margin-left:auto;margin-right:-24px}
+  .header__nav a{padding:8px 0 11px}
+}
