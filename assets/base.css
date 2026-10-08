@@ -2031,3 +2031,13 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .lx__sub{margin:4px 0 0;color:#3c3f48;font-size:15px}
 .lx-row--best .card,.lx-row--steal .card{box-shadow:0 2px 10px #0000000d}
 @media (max-width:600px){.lx-row--best,.lx-row--steal{border-radius:16px;padding:22px 14px 18px!important}}
+/* Canada banner v2: clean, no gradient */
+.ca-banner{background:#fff;color:#0e1016;box-shadow:none;border:1px solid #e6e6ea;border-radius:14px;padding:18px 24px;gap:16px;position:relative;overflow:hidden}
+.ca-banner::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#d52b1e}
+.ca-banner__flag{background:none;padding:0;border-radius:0}
+.ca-banner__flag svg,.ca-banner__flag img{width:36px;border-radius:3px;box-shadow:0 0 0 1px #0000001a}
+.ca-banner__text strong{font-size:clamp(17px,1.6vw,20px);font-weight:600;letter-spacing:-.01em}
+.ca-banner__text span{font-size:14px;color:#55575f;opacity:1}
+.ca-banner__cta{background:none;color:#0e1016;padding:0;border-radius:0;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.ca-banner:hover .ca-banner__cta{color:#d52b1e}
+@media (max-width:600px){.ca-banner__cta{width:auto;text-align:left}}
