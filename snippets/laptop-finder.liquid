@@ -20,7 +20,7 @@
     <div class="lf-card">
       <p class="lf-card__q">What's your budget?</p>
       <div class="lf-pills">
-        {%- for p in (1..6) -%}{%- assign amt = p | times: 250 | plus: 250 -%}<button type="button" data-lf-max="{{ amt }}">${{ amt | money_without_currency | remove: '.00' }}</button>{%- endfor -%}
+        {%- assign amts = '400,600,800,1000,1300,1600' | split: ',' -%}{%- for amt in amts -%}<button type="button" data-lf-max="{{ amt }}">${{ amt }}</button>{%- endfor -%}
       </div>
       <div class="lf-range"><label><span>Min (CAD)</span><input type="number" min="0" step="50" placeholder="0" data-lf-min-in></label><label><span>Max (CAD)</span><input type="number" min="0" step="50" placeholder="Any" data-lf-max-in></label></div>
     </div>
