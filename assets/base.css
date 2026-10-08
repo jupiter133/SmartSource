@@ -1631,3 +1631,16 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .header__nav .mega{font-size:13px}
   .header__nav .mega a{padding:10px 0}
 }
+/* Header typography, Back Market-style (DM Sans ~ their Duplet) */
+@media (min-width:750px){
+  .header,.announcement{font-family:"DM Sans",Inter,system-ui,sans-serif;letter-spacing:0}
+  .announcement{font-size:15px;font-weight:400}
+  .header__utility-bar .header__utility{font-size:13px}
+  .utility-links a,.utility-right{font-weight:500}
+  .header__search input{font-family:inherit;font-size:16px}
+  .header__text-link{font-size:16px;font-weight:500}
+  .header__tradein{font-size:15px;font-weight:500}
+  .header__nav{font-size:15px}
+  .header__nav>ul>li>a,.header__nav .nav-link,.nav-side-link{font-weight:400}
+  .header__nav .mega{font-family:Inter,system-ui,sans-serif}
+}
