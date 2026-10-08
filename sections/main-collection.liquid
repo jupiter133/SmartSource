@@ -279,7 +279,6 @@
   {%- if section.settings.show_reviews -%}
     {%- assign rv_scope = ctx | default: ctags.first | default: '' -%}
     {%- assign rv_heading = 'Customer reviews' -%}
-    {%- if tag_title != blank -%}{%- assign rv_heading = 'Customer reviews for refurbished ' | append: tag_title -%}{%- elsif collection.handle != 'all' -%}{%- assign rv_heading = 'Customer reviews for refurbished ' | append: collection.title -%}{%- endif -%}
     {% render 'coll-reviews', scope: rv_scope, heading: rv_heading %}
   {%- endif -%}
 </div>

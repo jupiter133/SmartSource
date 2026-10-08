@@ -5,7 +5,7 @@
 {%- endcomment -%}
 {%- assign rv_count = 0 -%}{%- assign rv_has_test = false -%}{%- assign rv_sum = 0 -%}
 {%- assign s5 = 0 -%}{%- assign s4 = 0 -%}{%- assign s3 = 0 -%}{%- assign s2 = 0 -%}{%- assign s1 = 0 -%}
-{%- assign rv_photos = '' -%}{%- assign rv_items = '' -%}
+{%- assign rv_photos = '' -%}{%- assign rv_items = '' -%}{%- assign rv_rest = '' -%}
 {%- paginate metaobjects.customer_review.values by 250 -%}
 {%- if metaobjects.customer_review.values.size > 0 -%}
   {%- for r in metaobjects.customer_review.values -%}
@@ -13,7 +13,7 @@
     {%- if r.test_only.value -%}{%- assign rv_has_test = true -%}{%- endif -%}
     {%- assign cat = r.category.value | downcase | strip -%}
     {%- if r.body.value == blank or r.date.value == blank -%}{%- continue -%}{%- endif -%}
-    {%- if scope != blank and cat != scope -%}{%- continue -%}{%- endif -%}
+    {%- assign rv_match = true -%}{%- if scope != blank and cat != scope -%}{%- assign rv_match = false -%}{%- endif -%}
     {%- assign rating = r.rating.value | plus: 0 -%}
     {%- if rating < 1 -%}{%- continue -%}{%- endif -%}
     {%- assign rv_count = rv_count | plus: 1 -%}{%- assign rv_sum = rv_sum | plus: rating -%}
@@ -44,7 +44,7 @@
         {%- endif -%}
       </article>
     {%- endcapture -%}
-    {%- assign rv_items = rv_items | append: item -%}
+    {%- if rv_match -%}{%- assign rv_items = rv_items | append: item -%}{%- else -%}{%- assign rv_rest = rv_rest | append: item -%}{%- endif -%}
     {%- if r.photos.value.size > 0 -%}
       {%- capture ph -%}<figure class="rv-photo">{{ r.photos.value.first | image_url: width: 400 | image_tag: loading: 'lazy', alt: 'Customer photo' }}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
       {%- assign rv_photos = rv_photos | append: ph -%}
@@ -88,7 +88,7 @@
         <div class="rv__listhead"><h3>Reviews</h3>
           <label class="rv-sort"><span class="visually-hidden">Sort</span><select data-rv-sort><option value="relevant">Sort by most relevant</option><option value="new">Newest first</option><option value="high">Highest rated</option><option value="low">Lowest rated</option></select></label>
         </div>
-        <div class="rv-list" data-rv-list>{{ rv_items }}</div>
+        <div class="rv-list" data-rv-list>{{ rv_items }}{{ rv_rest }}</div>
         <p class="rv-empty" data-rv-empty hidden>No reviews match those filters.</p>
         <button type="button" class="btn rv-more" data-rv-more hidden>Show more reviews</button>
       </div>
