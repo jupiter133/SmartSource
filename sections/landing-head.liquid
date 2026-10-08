@@ -1,3 +1,23 @@
+{%- liquid
+  assign ca_label = ''
+  case page.handle
+    when 'android'
+      assign ca_label = 'Android phones'
+    when 'laptops'
+      assign ca_label = 'laptops'
+    when 'audio'
+      assign ca_label = 'audio'
+  endcase
+-%}
+{%- if ca_label != blank -%}
+<div class="page-width ca-banner-wrap">
+  <a class="ca-banner" href="#lx-deals">
+    <span class="ca-banner__flag" aria-hidden="true">{% render 'flag', code: 'CA' %}</span>
+    <span class="ca-banner__text"><strong>Canada's best deals on {{ ca_label }}</strong><span>Refurbished &amp; certified pre-owned. Tested in the GTA, shipped across Canada.</span></span>
+    <span class="ca-banner__cta">Shop deals →</span>
+  </a>
+</div>
+{%- endif -%}
 <section class="page-width landing-head">
   <nav class="coll-crumbs" aria-label="Breadcrumb">
     <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span><span aria-current="page">{{ section.settings.crumb | default: page.title }}</span>

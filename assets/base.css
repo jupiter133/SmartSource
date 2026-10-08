@@ -2010,3 +2010,13 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .lx__spark{color:#a8326b}
 .lx__loading,.lx__empty{color:#666;padding:24px 0}
 .lx-reviews{padding:24px 16px 56px}
+/* Canada deals banner */
+.ca-banner-wrap{padding-top:20px}
+.ca-banner{display:flex;align-items:center;gap:20px;padding:20px 28px;border-radius:16px;color:#fff;background:linear-gradient(110deg,#d52b1e 0%,#b0182c 45%,#7a1b5a 100%);box-shadow:0 6px 20px #d52b1e33;font-family:"DM Sans",Inter,sans-serif}
+.ca-banner__flag{flex:none;background:#fff;border-radius:6px;padding:4px;display:grid;place-items:center}
+.ca-banner__flag svg,.ca-banner__flag img{width:44px;height:auto;display:block}
+.ca-banner__text{flex:1;display:flex;flex-direction:column;gap:2px}
+.ca-banner__text strong{font-size:clamp(18px,2vw,24px);font-weight:600}
+.ca-banner__text span{font-size:15px;opacity:.9}
+.ca-banner__cta{flex:none;background:#fff;color:#111;font-weight:600;padding:12px 20px;border-radius:999px;font-size:15px}
+@media (max-width:600px){.ca-banner{flex-wrap:wrap;padding:16px}.ca-banner__cta{width:100%;text-align:center}}

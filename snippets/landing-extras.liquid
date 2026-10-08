@@ -4,7 +4,7 @@
   Rows load from /collections/all/<tag>?sort_by=…&section_id=landing-rows-api.
 {%- endcomment -%}
 <div class="lx" data-lx data-tag="{{ tag }}">
-  <section class="section page-width lx-row lx-row--ca" data-carousel>
+  <section class="section page-width lx-row lx-row--ca" id="lx-deals" data-carousel>
     <div class="section__head lx__head">
       <div><h2><span class="lx__flag" aria-hidden="true">{% render 'flag', code: 'CA' %}</span> Canada's best deals on {{ label }}</h2>
       <div class="lx__tabs" role="tablist"><button type="button" class="is-on" data-lx-tab="condition:refurbished" role="tab" aria-selected="true">Refurbished</button><button type="button" data-lx-tab="condition:certified-pre-owned" role="tab" aria-selected="false">Certified pre-owned</button></div></div>
