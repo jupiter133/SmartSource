@@ -1652,3 +1652,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .header__nav ul.nav-scroll{gap:20px}
   .header__nav .nav-side{gap:22px;left:0}
 }
+.promo-card__product{max-height:300px;width:auto!important;object-fit:contain;margin:0 auto;display:block}
