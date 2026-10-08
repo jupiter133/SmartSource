@@ -14,7 +14,7 @@
   <article class="rs-card{% if r.photos.value.size == 0 %} rs-card--nophoto{% endif %}">
     <button type="button" class="rs-card__top" data-rs-open aria-label="Read review by {{ r.author.value | escape }}">
       {%- if r.photos.value.size > 0 -%}<span class="rs-card__bg">{{ r.photos.value.first | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
-      <span class="rs-card__name">{{ r.author.value }}</span>
+      <span class="rs-card__name">{{ r.author.value }}</span>{%- if r.verified.value -%}<span class="rs-card__ver"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l2 1.6 2.5-.2.8 2.4 2.1 1.4-.9 2.4.9 2.4-2.1 1.4-.8 2.4-2.5-.2L8 16l-2-1.6-2.5.2-.8-2.4L.6 10.8l.9-2.4L.6 6l2.1-1.4.8-2.4 2.5.2z" fill="currentColor"/><path d="M5 8.2l2 2 4-4.2" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified purchase</span>{%- endif -%}
       <span class="rs-card__txt">{{ r.body.value | strip_html | truncate: 150 }}</span>
       <span class="rs-card__stars">{{ stars }} <b>{{ rating }}/5</b></span>
     </button>
