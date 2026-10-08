@@ -46,16 +46,18 @@
       <div class="lf-more lf-more--pills">
         {%- if mac -%}
         <label><span>Model</span><select data-lf-sel="model"><option value="">Model</option><option value="macbook-air">MacBook Air</option><option value="macbook-pro">MacBook Pro</option></select></label>
-        <label><span>Chip</span><select data-lf-sel="chip"><option value="">Chip</option><option value="m4">M4</option><option value="m3">M3</option><option value="m2">M2</option><option value="m1">M1</option><option value="intel">Intel</option></select></label>
+        <label><span>Release year</span><select data-lf-sel="year"><option value="">Release year</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option></select></label>
+        <label><span>Processor type</span><select data-lf-sel="chip"><option value="">Processor type</option><option value="m4">M4</option><option value="m3">M3</option><option value="m2">M2</option><option value="m1">M1</option><option value="intel">Intel</option></select></label>
         {%- else -%}
         <label><span>Brand</span><select data-lf-sel="brand"><option value="">Brand</option><option value="dell">Dell</option><option value="hp">HP</option><option value="lenovo">Lenovo</option><option value="asus">ASUS</option><option value="acer">Acer</option><option value="microsoft">Microsoft</option></select></label>
-        <label><span>Processor</span><select data-lf-sel="chip"><option value="">Processor</option><option value="intel-core-i5">Intel Core i5</option><option value="intel-core-i7">Intel Core i7</option><option value="amd-ryzen">AMD Ryzen</option></select></label>
+        <label><span>Processor</span><select data-lf-sel="chip"><option value="">Processor type</option><option value="intel-core-i5">Intel Core i5</option><option value="intel-core-i7">Intel Core i7</option><option value="amd-ryzen">AMD Ryzen</option></select></label>
         {%- endif -%}
-        <label><span>Storage</span><select data-lf-sel="storage"><option value="">Storage</option><option value="256gb">256 GB</option><option value="512gb">512 GB</option><option value="1tb">1 TB</option></select></label>
+        <label><span>Storage (GB)</span><select data-lf-sel="storage"><option value="">Storage (GB)</option><option value="128gb">128 GB</option><option value="256gb">256 GB</option><option value="512gb">512 GB</option><option value="1tb">1 TB</option></select></label>
+        <button type="button" class="lf-morebtn" data-lf-filters>⚙ More filters</button>
       </div>
     </div>
   </div>
-  <div class="lf__bar"><button type="button" class="lf__go" data-lf-go>↓ Show results</button><button type="button" class="lf__reset" data-lf-reset>Reset</button></div>
+  <div class="lf__bar"><button type="button" class="lf__go" data-lf-go>↓ Jump to results</button><button type="button" class="lf__reset" data-lf-reset>Reset</button></div>
 </section>
 <script>
 (function(){var F=document.querySelector('[data-lf]');if(!F)return;var base=F.dataset.base,u=new URL(location.href);
@@ -76,6 +78,7 @@ else if(b.dataset.lfMax){st.max=st.max===b.dataset.lfMax?'':b.dataset.lfMax}
 else if(b.dataset.lfCond){st.cond=st.cond===b.dataset.lfCond?'':b.dataset.lfCond}
 else if(b.hasAttribute('data-lf-reset')){st={tags:{},max:'',min:'',cond:''};paint();location.href=F.dataset.coll!=='all'?'/collections/'+F.dataset.coll:'/collections/all/'+base;return}
 else if(b.hasAttribute('data-lf-go')){go();return}
+else if(b.hasAttribute('data-lf-filters')){var o=document.querySelector('[data-filter-open]');if(o){o.click()}else{var f=document.getElementById('CollFilters');if(f)f.scrollIntoView({behavior:'smooth'})}return}
 paint()});
 F.querySelector('[data-lf-min-in]').onchange=function(){st.min=this.value};F.querySelector('[data-lf-max-in]').onchange=function(){st.max=this.value;paint()};
 F.querySelectorAll('[data-lf-sel]').forEach(function(s){s.onchange=function(){st.tags[s.dataset.lfSel]=s.value}});

@@ -2133,3 +2133,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .lf-more--pills label{flex-direction:row;align-items:center;border:0;background:#ececf1;border-radius:999px;padding:0 14px;height:36px;text-transform:none;letter-spacing:0;font-size:14px;color:#0e1016}
 .lf-more--pills label span{display:none}
 .lf-more--pills select{font-size:14px;font-weight:500;padding-right:4px;width:auto;cursor:pointer}
+.lf-morebtn{background:#ececf1;border:0;border-radius:999px;height:36px;padding:0 14px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px}
