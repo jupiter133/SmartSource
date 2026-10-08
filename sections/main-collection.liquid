@@ -124,7 +124,15 @@
   </section>
   {%- if ctags contains 'macbook' or collection.handle == 'macbook' -%}{% render 'laptop-finder', base: 'macbook', mac: true, coll: collection.handle %}{%- elsif ctags contains 'laptops' -%}{% render 'laptop-finder', base: 'laptops', mac: false %}{%- endif -%}
 
-  {%- if section.blocks.size > 0 -%}
+  {%- if collection.handle == 'macbook' -%}
+    {%- assign mchips = 'macbook-air:MacBook Air,macbook-pro:MacBook Pro,m4:M4,m3:M3,m2:M2,m1:M1,intel:Intel' | split: ',' -%}
+    <div class="coll-chips" role="list">
+      <a role="listitem" class="coll-chip{% if current_tags.size == 0 %} is-active{% endif %}" href="{{ collection.url }}">All MacBooks</a>
+      {%- for c in mchips -%}{%- assign kv = c | split: ':' -%}
+        <a role="listitem" class="coll-chip{% if current_tags contains kv[0] %} is-active{% endif %}" href="{{ collection.url }}/{{ kv[0] }}">{{ kv[1] }}</a>
+      {%- endfor -%}
+    </div>
+  {%- elsif section.blocks.size > 0 -%}
     <div class="coll-chips" role="list">
       {%- if ctx != blank -%}
         {%- assign parent_label = ctx | replace: '-', ' ' | capitalize -%}
