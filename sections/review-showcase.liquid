@@ -32,13 +32,15 @@
         <p class="rs-m__date">Reviewed {{ r.date.value | date: '%-m/%-d/%y' }}</p>
         <p class="rs-m__stars">{{ stars }} <b>{{ rating }}/5</b></p>
         {%- if r.title.value != blank -%}<p class="rs-m__title">{{ r.title.value }}</p>{%- endif -%}
-        <p class="rs-m__body">{{ r.body.value | escape | newline_to_br }}</p>
+        <p class="rs-m__body" data-rs-body>{{ r.body.value | escape | newline_to_br }}</p>
+        <button type="button" class="rs-m__more" data-rs-more hidden>Show more</button>
         <div class="rv-prod">
           <div class="rv-prod__card">
             {%- if rp and rp.featured_image -%}{{ rp.featured_image | image_url: width: 80 | image_tag: class: 'rv-prod__img', alt: '' }}{%- endif -%}
             <div class="rv-prod__info">
-              <p class="rv-prod__title">{% if rp %}<a href="{{ rp.url }}" class="rv-prod__name">{{ pname }}</a>{% else %}<span class="rv-prod__name">{{ pname }}</span>{% endif %}</p>
-              <p class="rv-prod__meta">{% if r.condition.value != blank %}<span>Condition <b>{{ r.condition.value }}</b></span>{% endif %}<span>Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></span></p>
+              <p class="rv-prod__title">{% if rp %}<a href="{{ rp.url }}" class="rv-prod__name">{{ pname }}</a>{% else %}<span class="rv-prod__name">{{ pname }}</span>{% endif %}<span class="rs-m__i" aria-hidden="true">ⓘ</span></p>
+              {%- if r.condition.value != blank -%}<p class="rs-m__line">Condition <b>{{ r.condition.value }}</b> <span class="rs-m__i" aria-hidden="true">ⓘ</span></p>{%- endif -%}
+              <p class="rs-m__line">Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></p>
             </div>
           </div>
           <span class="rv-prod__helpful">{{ r.helpful.value | default: 0 }} 👍</span>
@@ -72,9 +74,9 @@ function st(){p.disabled=t.scrollLeft<=4;nx.disabled=t.scrollLeft+t.clientWidth>
 function go(d){var k=t.querySelector('.rs-card');t.scrollBy({left:d*(k?k.offsetWidth+24:340),behavior:'smooth'})}
 p.onclick=function(){go(-1)};nx.onclick=function(){go(1)};t.addEventListener('scroll',st,{passive:true});st();
 function slide(i){var s=c.querySelectorAll('[data-rs-slide]');if(!s.length)return;cur=(i+s.length)%s.length;s.forEach(function(x,j){x.hidden=j!==cur});c.querySelectorAll('[data-rs-go]').forEach(function(b,j){b.classList.toggle('is-on',j===cur)})}
-t.addEventListener('click',function(e){var b=e.target.closest('[data-rs-open]');if(!b)return;var card=b.closest('.rs-card');c.innerHTML=card.querySelector('[data-rs-detail]').innerHTML;c.classList.toggle('is-single',!c.querySelector('.rs-m__gal'));R.querySelector('[data-rs-mtitle]').textContent=card.querySelector('.rs-card__prod span').textContent;slide(0);m.showModal()});
+t.addEventListener('click',function(e){var b=e.target.closest('[data-rs-open]');if(!b)return;var card=b.closest('.rs-card');c.innerHTML=card.querySelector('[data-rs-detail]').innerHTML;c.classList.toggle('is-single',!c.querySelector('.rs-m__gal'));R.querySelector('[data-rs-mtitle]').textContent=card.querySelector('.rs-card__prod span').textContent;slide(0);m.showModal();var bd=c.querySelector('[data-rs-body]'),mb=c.querySelector('[data-rs-more]');if(bd&&mb){bd.classList.add('is-clamped');mb.hidden=bd.scrollHeight<=bd.clientHeight+2;mb.onclick=function(){bd.classList.remove('is-clamped');mb.hidden=true}}});
 c.addEventListener('click',function(e){var g=e.target.closest('[data-rs-go]'),s=e.target.closest('[data-rs-step]');if(g)slide(+g.dataset.rsGo);if(s)slide(cur+ +s.dataset.rsStep)});
-R.querySelector('[data-rs-close]').onclick=function(){m.close()};m.addEventListener('click',function(e){if(e.target===m)m.close()})})();
+function shut(){m.classList.add('is-closing');setTimeout(function(){m.classList.remove('is-closing');m.close()},260)}R.querySelector('[data-rs-close]').onclick=shut;m.addEventListener('click',function(e){if(e.target===m)shut()});m.addEventListener('cancel',function(e){e.preventDefault();shut()})})();
 </script>
 {%- endif -%}
 
