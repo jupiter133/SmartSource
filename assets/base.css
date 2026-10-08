@@ -2069,3 +2069,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .cah__leaf{position:absolute;z-index:-1;width:min(440px,110%);height:auto;fill:#d52b1e;transform:rotate(-10deg);opacity:.95}
 .cah__img{position:relative;max-width:100%;max-height:360px;width:auto;object-fit:contain;filter:drop-shadow(0 24px 40px #000a)}
 @media (max-width:849px){.cah{grid-template-columns:1fr;padding:28px 22px}.cah__art{min-height:220px;order:-1}.cah__leaf{width:280px}.cah__img{max-height:220px}}
+.cah__leaf{width:min(560px,130%)}
