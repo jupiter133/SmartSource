@@ -5,8 +5,8 @@
     <nav class="utility-links">
       {%- if section.settings.utility_menu == blank -%}
         <a href="/pages/our-promise">{% render 'icon', name: 'shield' %}Our Promise</a>
-        <a href="/pages/why-refurbished">Why refurbished</a>
-        <a href="/blogs/journal">Journal</a>
+        <a href="/pages/why-refurbished">Why pre-owned</a>
+        <a href="/blogs/journal">Tech Journal</a>
       {%- else -%}
         {%- for link in section.settings.utility_menu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
       {%- endif -%}

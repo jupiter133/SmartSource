@@ -1878,3 +1878,19 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .promo-banner__text{position:relative;z-index:1}
 .promo-banner__text h2,.promo-banner__text h3{font-size:clamp(28px,2.8vw,42px)}
 @media (max-width:749px){.pb-art__dev--a{right:6%;height:40%;bottom:auto;top:10%}.pb-art__dev--b{display:none}.pb-art__chart{opacity:.6}}
+/* Refurbished vs certified pre-owned */
+.wt{padding:64px 16px 24px;font-family:"DM Sans",Inter,sans-serif;color:#0e1016;text-align:center}
+.wt__eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#a8326b;margin:0 0 10px}
+.wt__h{font-size:clamp(28px,3.4vw,44px);font-weight:500;letter-spacing:-.02em;margin:0 0 14px}
+.wt__sub{font-size:18px;color:#3c3f48;max-width:680px;margin:0 auto 36px;line-height:1.6}
+.wt__grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;max-width:1040px;margin:0 auto}
+.wt-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 3px #0000000d}
+.wt-card--cpo{background:linear-gradient(160deg,#fff 40%,#f3ecff)}
+.wt-card__tag{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:#ffe3ef;color:#a8326b}
+.wt-card--cpo .wt-card__tag{background:#ece5ff;color:#5b3fc4}
+.wt-card h3{font-size:24px;font-weight:500;margin:16px 0 10px}
+.wt-card p{font-size:16px;line-height:1.65;color:#3c3f48;margin:0 0 18px}
+.wt-card ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.wt-card li{font-size:16px;padding-left:28px;position:relative}
+.wt-card li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:#e6f7ef;color:#11804a;font-size:12px;display:grid;place-items:center;font-weight:700}
+@media (max-width:749px){.wt__grid{grid-template-columns:1fr}}
