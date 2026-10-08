@@ -321,7 +321,7 @@
     const s = e.target.closest('[data-tradein-skip]');
     if (!s) return;
     const d = s.closest('dialog'); d.classList.add('is-closing');
-    setTimeout(() => { d.classList.remove('is-closing'); d.close(); if (drawer) openDrawer(); else location.href = '/cart'; }, 260);
+    setTimeout(() => { d.classList.remove('is-closing'); d.close(); if (!(window.ssOpenAdded && window.ssOpenAdded())) { if (drawer) openDrawer(); else location.href = '/cart'; } }, 260);
   });
 
   document.addEventListener('click', async e => {

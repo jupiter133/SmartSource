@@ -61,11 +61,30 @@
   </div>
 </dialog>
 
+<dialog class="ac" id="sd-added" aria-label="Added to cart" data-pid="{{ product.id }}">
+  <div class="ac__top"><span class="ac__ok">✓</span><strong>Added to cart</strong>{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 80 | image_tag: alt: '', class: 'ac__thumb' }}{%- endif -%}<span class="ac__name">{{ product.title }}</span></div>
+  <div class="ac__body">
+    <section class="ac__row" data-ac-row="complementary" hidden><div class="ac__head"><h2>Goes well with</h2><div class="ac__arrows"><button type="button" data-ac-prev aria-label="Previous">‹</button><button type="button" data-ac-next aria-label="Next">›</button></div></div><div class="ac__track" data-ac-track></div></section>
+    <section class="ac__row" data-ac-row="related" hidden><div class="ac__head"><h2>Others also bought</h2><div class="ac__arrows"><button type="button" data-ac-prev aria-label="Previous">‹</button><button type="button" data-ac-next aria-label="Next">›</button></div></div><div class="ac__track" data-ac-track></div></section>
+  </div>
+  <div class="ac__foot"><button type="button" class="ac__back" data-sd-close>Back</button><a class="ac__go" href="/cart">Go to cart</a></div>
+</dialog>
+
 <script>
 (function(){if(window.__sd)return;window.__sd=1;
 function shut(d){d.classList.add('is-closing');setTimeout(function(){d.classList.remove('is-closing');d.close()},260)}
 document.addEventListener('click',function(e){var o=e.target.closest('[data-sd-open]');if(o){var d=document.getElementById(o.dataset.sdOpen);if(d&&!d.open){d.showModal()}return}
 var c=e.target.closest('[data-sd-close]');if(c){shut(c.closest('dialog'));return}
 if(e.target.classList&&e.target.classList.contains('sd')&&e.target.open)shut(e.target)});
-document.querySelectorAll('dialog.sd').forEach(function(d){d.addEventListener('cancel',function(e){e.preventDefault();shut(d)})})})();
+window.ssOpenAdded=function(){var d=document.getElementById('sd-added');if(!d)return false;d.showModal();if(d.dataset.loaded)return true;d.dataset.loaded=1;
+var fmt=function(c){return '$'+(c/100).toFixed(2)};
+function card(p){var v=(p.variants||[]).find(function(x){return x.available})||p.variants[0];var img=p.featured_image||'';if(img&&img.indexOf('//')===0)img='https:'+img;
+var a=document.createElement('article');a.className='ac-card';a.innerHTML='<a class="ac-card__img" href="'+p.url+'">'+(img?'<img src="'+img+(img.indexOf('?')>-1?'&':'?')+'width=400" alt="" loading="lazy">':'')+'</a><a class="ac-card__t" href="'+p.url+'"></a><p class="ac-card__p">'+fmt(v.price)+'</p><button type="button" class="ac-card__add">+ Add to cart</button>';
+a.querySelector('.ac-card__t').textContent=p.title;var b=a.querySelector('.ac-card__add');if(!v.available){b.disabled=true;b.textContent='Sold out'}
+b.onclick=function(){b.disabled=true;fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:v.id,quantity:1})}).then(function(r){if(!r.ok)throw 0;b.textContent='✓ Added';b.classList.add('is-added')}).catch(function(){b.disabled=false;b.textContent='Try again'})};return a}
+function fill(intent,fb){var row=d.querySelector('[data-ac-row="'+intent+'"]'),t=row.querySelector('[data-ac-track]');
+fetch('/recommendations/products.json?product_id='+d.dataset.pid+'&intent='+intent+'&limit=10').then(function(r){return r.json()}).then(function(j){var ps=(j.products||[]);if(!ps.length&&fb)return fetch(fb).then(function(r){return r.json()}).then(function(k){return k.products||[]});return ps}).then(function(ps){ps=ps.filter(function(p){return String(p.id)!==d.dataset.pid});if(!ps.length)return;ps.forEach(function(p){t.appendChild(card(p))});row.hidden=false;
+row.querySelector('[data-ac-prev]').onclick=function(){t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'})};row.querySelector('[data-ac-next]').onclick=function(){t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'})}}).catch(function(){})}
+fill('complementary','/collections/cases/products.json?limit=10');fill('related','/collections/audio/products.json?limit=10');return true};
+document.querySelectorAll('dialog.sd,dialog.ac').forEach(function(d){d.addEventListener('cancel',function(e){e.preventDefault();shut(d)})})})();
 </script>
