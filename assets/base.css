@@ -1674,3 +1674,6 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .header__nav.is-overflow-l .nav-fade-l::after{opacity:1}
 }
 @media (max-width:749px){.nav-fade-l{display:none}}
+/* Uniform photo fit in mega tiles */
+.mega-tile__img{position:relative}
+.mega-tile__img>img,.mega-tile__img .mega-tile__photo{position:absolute;inset:8% 8%;width:84%!important;height:84%!important;max-width:none;object-fit:contain;object-position:center}
