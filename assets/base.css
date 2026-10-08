@@ -1998,4 +1998,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ti__perks li::before{content:"✓";position:absolute;left:4px;color:#6b3fd8}
 .ti__cartlink{display:block;text-align:center;margin-top:14px;text-decoration:underline;font-weight:500;color:#111}
 .sd [hidden],.ac [hidden]{display:none!important}
-.rs-m__slide{display:block}.rs-m__slide[hidden]{display:none}.rs-m__slide img{width:100%;max-height:calc(100dvh - 240px);object-fit:contain;border-radius:16px;background:#e9ebef}.rv-photo img,.rv-item__photos img,.rs-card__bg img{width:100%;height:100%;object-fit:cover}
+.rs-m__slide{display:block}.rs-m__slide[hidden]{display:none}.rs-m__slide img{width:100%;max-height:calc(100dvh - 240px);object-fit:contain;border-radius:16px;background:#e9ebef}.rs-card__bg img{width:100%;height:100%;object-fit:cover}
