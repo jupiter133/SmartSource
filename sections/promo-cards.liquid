@@ -15,7 +15,10 @@
         assign aimg = 'promo-cases.png'
         assign photo = true
       endif
-      if aimg == 'promo-cases.png'
+      if lnk contains 'phone-plans' and block.settings.image == blank and block.settings.asset_image == blank
+        assign aimg = 'promo-sim.webp'
+      endif
+      if aimg == 'promo-cases.png' or aimg == 'promo-sim.webp'
         assign photo = true
       endif
     -%}
