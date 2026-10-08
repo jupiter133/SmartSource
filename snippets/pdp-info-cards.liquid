@@ -1,6 +1,6 @@
 <div class="info-cards">
   <div class="info-card info-card--stack">{% render 'icon', name: 'truck' %}<span><strong>{{ section.settings.delivery_text }}</strong><small>{{ section.settings.delivery_sub }}</small></span></div>
-  <div class="info-card">{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span></div>
-  <div class="info-card">{% render 'icon', name: 'swap' %}<span><strong>{{ section.settings.returns_text }}</strong></span></div>
-  <a class="info-card" href="{{ section.settings.promise_link }}">{% render 'icon', name: 'shield' %}<span><strong>{{ section.settings.promise_text }}</strong></span><span class="info-card__chev">›</span></a>
+  <button type="button" class="info-card info-card--btn" data-sd-open="sd-unlocked">{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button type="button" class="info-card info-card--btn" data-sd-open="sd-returns">{% render 'icon', name: 'swap' %}<span><strong>Free 30-day returns</strong><strong>1-year warranty</strong></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button type="button" class="info-card info-card--btn" data-sd-open="sd-promise">{% render 'icon', name: 'shield' %}<span><strong>{{ section.settings.promise_text }}</strong></span><svg class="info-card__chevsvg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </div>

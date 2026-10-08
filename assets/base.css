@@ -1894,3 +1894,7 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .wt-card li{font-size:16px;padding-left:28px;position:relative}
 .wt-card li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:#e6f7ef;color:#11804a;font-size:12px;display:grid;place-items:center;font-weight:700}
 @media (max-width:749px){.wt__grid{grid-template-columns:1fr}}
+.info-card--btn{width:100%;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.info-card--btn>span{flex:1;display:flex;flex-direction:column}
+.info-card__chevsvg{width:20px;height:20px;flex:none;margin-left:auto}
+.info-card--btn:hover{filter:brightness(.98)}
