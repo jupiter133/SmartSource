@@ -13,7 +13,17 @@
       <a class="{% if grid %}cat-card{% else %}cat-tile{% endif %}" href="{% if block.settings.link != blank %}{% render 'page-url', url: block.settings.link %}{% elsif c != blank %}{{ c.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" {{ block.shopify_attributes }}>
         {%- if grid -%}<span class="cat-card__title">{{ title }}</span>{%- endif -%}
         <div class="{% if grid %}cat-card__img{% else %}cat-tile__img{% endif %}">
-          {%- if img != blank -%}{{ img | image_url: width: 480 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 280px, 45vw', alt: title }}{%- elsif block.settings.asset_image != blank -%}<img src="{{ block.settings.asset_image | asset_url }}" alt="{{ title | escape }}" width="800" height="800" loading="lazy">{%- else -%}{% render 'device-art', kind: kind, title: title, section: section, idx: forloop.index %}{%- endif -%}
+          {%- liquid
+            assign aimg = block.settings.asset_image
+            if aimg == blank
+              if title == 'Laptops'
+                assign aimg = 'cat-laptops.webp'
+              elsif title == 'Accessories'
+                assign aimg = 'cat-cases.webp'
+              endif
+            endif
+          -%}
+          {%- if img != blank -%}{{ img | image_url: width: 480 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 280px, 45vw', alt: title }}{%- elsif aimg != blank -%}<img src="{{ aimg | asset_url }}" alt="{{ title | escape }}" width="800" height="800" loading="lazy">{%- else -%}{% render 'device-art', kind: kind, title: title, section: section, idx: forloop.index %}{%- endif -%}
         </div>
         {%- unless grid -%}<span>{{ title }}</span>{%- endunless -%}
       </a>
