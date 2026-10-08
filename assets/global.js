@@ -348,5 +348,6 @@
 })();
 /* Nav: fade the category row's right edge when it overflows (Back Market-style) */
 (function(){var nav=document.querySelector('.header__nav'),ul=nav&&nav.querySelector('ul.nav-scroll');if(!ul)return;
-function chk(){nav.classList.toggle('is-overflow',ul.scrollWidth-ul.clientWidth-ul.scrollLeft>4)}
+var fl=document.createElement('span');fl.className='nav-fade-l';fl.setAttribute('aria-hidden','true');ul.parentNode.insertBefore(fl,ul);
+function chk(){nav.classList.toggle('is-overflow',ul.scrollWidth-ul.clientWidth-ul.scrollLeft>4);nav.classList.toggle('is-overflow-l',ul.scrollLeft>4)}
 chk();ul.addEventListener('scroll',chk,{passive:true});window.addEventListener('resize',chk);window.addEventListener('load',chk);if(document.fonts)document.fonts.ready.then(chk)})();
