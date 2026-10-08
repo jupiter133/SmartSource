@@ -1,0 +1,59 @@
+{%- comment -%}
+  "Often bought together": this product + one add-on, added to cart together.
+  Add-on source, in order: product metafield custom.bought_together (product reference),
+  section setting, Shopify complementary recommendations (Search & Discovery app), first product in the "cases" collection.
+{%- endcomment -%}
+{%- liquid
+  assign addon = product.metafields.custom.bought_together.value
+  if addon == blank and fallback != blank
+    assign addon = fallback
+  endif
+  if addon == blank
+    for p in collections['cases'].products limit: 6
+      if p.available and p.id != product.id
+        assign addon = p
+        break
+      endif
+    endfor
+  endif
+  assign cur = product.selected_or_first_available_variant
+-%}
+<section class="bt" data-bt data-product-id="{{ product.id }}"{% if addon == blank %} data-bt-auto hidden{% endif %}>
+  <h2 class="bt__h">Often bought together</h2>
+  <div class="bt__box">
+    <div class="bt__item">
+      <div class="bt__img">{{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.title }}</div>
+      <p class="bt__name">{{ product.title }}</p>
+      <p class="bt__var" data-bt-var>{% unless cur.title == 'Default Title' %}{{ cur.title | replace: ' / ', ' · ' }}{% endunless %}</p>
+      <p class="bt__price" data-bt-main-price data-cents="{{ cur.price }}">{{ cur.price | money }}</p>
+      {%- if cur.compare_at_price > cur.price -%}<p class="bt__was" data-bt-was><s>{{ cur.compare_at_price | money }}</s> new</p>{%- endif -%}
+    </div>
+    <span class="bt__plus" aria-hidden="true">+</span>
+    <div class="bt__item" data-bt-addon>
+      {%- if addon != blank -%}
+        {%- assign av = addon.selected_or_first_available_variant -%}
+        <a class="bt__img" href="{{ addon.url }}">{{ addon.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: addon.title }}</a>
+        <a class="bt__name bt__name--clamp" href="{{ addon.url }}">{{ addon.title }}</a>
+        <p class="bt__price" data-bt-add-price data-cents="{{ av.price }}" data-variant="{{ av.id }}">{{ av.price | money }}</p>
+      {%- endif -%}
+    </div>
+    <div class="bt__buy">
+      <p class="bt__total">Total price: <span data-bt-total>{{ cur.price | plus: av.price | money }}</span></p>
+      <button type="button" class="bt__btn" data-bt-add>Add both to cart</button>
+      <p class="bt__note" data-bt-msg aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+<script>
+(function(){var S=document.querySelector('[data-bt]');if(!S)return;
+var fmt=function(c){try{return new Intl.NumberFormat({{ request.locale.iso_code | json }}+'-CA',{style:'currency',currency:{{ cart.currency.iso_code | json }}}).format(c/100)}catch(e){return '$'+(c/100).toFixed(2)}};
+var pj=document.querySelector('[data-product-json]'),P=pj?JSON.parse(pj.textContent):null,idIn=document.querySelector('[data-variant-id]');
+function total(){var a=S.querySelector('[data-bt-add-price]'),m=S.querySelector('[data-bt-main-price]');if(!a||!m)return;S.querySelector('[data-bt-total]').textContent=fmt(+m.dataset.cents + +a.dataset.cents)}
+function sync(){if(!P||!idIn)return;var v=P.variants.find(function(x){return String(x.id)===String(idIn.value)});if(!v)return;var m=S.querySelector('[data-bt-main-price]');m.dataset.cents=v.price;m.textContent=fmt(v.price);S.querySelector('[data-bt-var]').textContent=v.title==='Default Title'?'':v.title.split(' / ').join(' · ');var w=S.querySelector('[data-bt-was]');if(w){if(v.compare_at_price>v.price){w.hidden=false;w.querySelector('s').textContent=fmt(v.compare_at_price)}else w.hidden=true}total()}
+document.addEventListener('change',function(){setTimeout(sync,30)});document.addEventListener('click',function(){setTimeout(sync,60)});
+if(S.hasAttribute('data-bt-auto')){fetch('/recommendations/products.json?product_id='+S.dataset.productId+'&intent=complementary&limit=1').then(function(r){return r.json()}).then(function(d){var p=d.products&&d.products[0];if(!p)return;var v=p.variants.find(function(x){return x.available})||p.variants[0];var img=p.featured_image?(p.featured_image.indexOf('//')===0?'https:'+p.featured_image:p.featured_image):'';
+S.querySelector('[data-bt-addon]').innerHTML='<a class="bt__img" href="'+p.url+'">'+(img?'<img src="'+img+(img.indexOf('?')>-1?'&':'?')+'width=400" alt="" loading="lazy">':'')+'</a><a class="bt__name bt__name--clamp" href="'+p.url+'"></a><p class="bt__price" data-bt-add-price data-cents="'+v.price+'" data-variant="'+v.id+'">'+fmt(v.price)+'</p>';S.querySelector('.bt__name--clamp').textContent=p.title;S.hidden=false;total()}).catch(function(){})}
+S.querySelector('[data-bt-add]').addEventListener('click',function(){var b=this,a=S.querySelector('[data-bt-add-price]'),msg=S.querySelector('[data-bt-msg]');if(!a||!idIn)return;b.disabled=true;
+fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[{id:+idIn.value,quantity:1},{id:+a.dataset.variant,quantity:1}]})}).then(function(r){if(!r.ok)throw r;return r.json()}).then(function(){location.href='/cart'}).catch(function(){msg.textContent="Couldn't add both. One may be out of stock.";b.disabled=false})});
+total()})();
+</script>

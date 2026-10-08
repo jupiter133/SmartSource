@@ -239,6 +239,7 @@
     {%- endform -%}
 
   </div>
+  {%- if section.settings.show_bt -%}{% render 'bought-together', product: product, fallback: section.settings.bt_product %}{%- endif -%}
   <script type="application/json" data-product-json>{{ product | json }}</script>
   <script type="application/json" data-pdp-config>{"cond": {{ cond_idx }}, "storage": {{ storage_idx }}, "color": {{ color_idx }}, "compareLabel": "new"}</script>
 </div>
@@ -255,6 +256,8 @@
   { "type": "text", "id": "returns_text", "label": "Returns", "default": "Free 30-day returns · 1-year warranty" },
   { "type": "text", "id": "promise_text", "label": "Promise", "default": "Guaranteed by our Promise" },
   { "type": "url", "id": "promise_link", "label": "Promise link" },
+  { "type": "checkbox", "id": "show_bt", "label": "Show \"Often bought together\"", "default": true },
+  { "type": "product", "id": "bt_product", "label": "Default add-on product", "info": "Used when a product has no custom.bought_together metafield." },
   { "type": "header", "content": "Inspection carousel" },
   { "type": "text", "id": "inspect_heading", "label": "Heading", "default": "Restored professionally" },
   { "type": "text", "id": "inspect_sub", "label": "Subheading", "default": "Based on up to 100 points of inspection" },

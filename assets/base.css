@@ -1834,3 +1834,22 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .sd__foot{flex:none;padding:16px 32px 24px;border-top:1px solid #e3e4e8;background:#f7f8fa}
 .sd__btn{display:block;text-align:center;background:#111;color:#fff;font-size:17px;font-weight:500;padding:16px;border-radius:10px}
 @media (max-width:600px){.sd{border-radius:0}.sd__body{padding:24px 20px 32px}}
+/* Often bought together */
+.bt{max-width:1440px;margin:56px auto 0;padding:0 16px;font-family:"DM Sans",Inter,sans-serif;color:#0e1016}
+.bt__h{font-size:clamp(20px,2vw,26px);font-weight:500;margin:0 0 20px}
+.bt__box{background:#fff;border-radius:14px;padding:36px 32px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) minmax(0,1.3fr);align-items:center;gap:24px;box-shadow:0 1px 2px #0000000a}
+.bt__item{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.bt__img{display:grid;place-items:center;height:180px;margin-bottom:16px}
+.bt__img img{max-height:180px;width:auto;object-fit:contain}
+.bt__name{font-size:17px;font-weight:500;margin:0;color:inherit;max-width:300px}
+.bt__name--clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bt__var{font-size:16px;color:#3c3f48;margin:0}
+.bt__price{font-size:22px;font-weight:600;margin:8px 0 0}
+.bt__was{margin:0;color:#555;font-size:15px}
+.bt__plus{font-size:30px;font-weight:300}
+.bt__buy{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.bt__total{font-size:18px;font-weight:500;margin:0}
+.bt__btn{background:#111;color:#fff;border:0;border-radius:8px;padding:16px 26px;font:inherit;font-size:17px;font-weight:500;cursor:pointer}
+.bt__btn:disabled{opacity:.6}
+.bt__note{margin:0;font-size:14px;color:#b42318;min-height:1em}
+@media (max-width:900px){.bt__box{grid-template-columns:1fr auto 1fr;padding:24px 16px}.bt__buy{grid-column:1/-1}.bt__img{height:130px}.bt__img img{max-height:130px}.bt__name{font-size:15px}.bt__price{font-size:18px}}
