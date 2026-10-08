@@ -1602,3 +1602,15 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .rs-m__body{font-size:18px;line-height:1.75;margin:0}
 @media (max-width:1000px){.rs__track{grid-auto-columns:calc((100% - 24px)/2)}.rs-m__content{grid-template-columns:1fr;padding:20px;gap:20px}}
 @media (max-width:600px){.rs__track{grid-auto-columns:82%}.rs__arrows{display:none}.rs-card__top{padding:18px}}
+/* Header spacing, Back Market-style */
+@media (min-width:750px){
+  .header__utility-bar{background:#fff;border-bottom:0}
+  .header__utility-bar .header__utility{padding-top:12px;padding-bottom:4px;font-size:13px}
+  .utility-links{gap:28px}
+  .header__main{gap:32px;padding-top:14px;padding-bottom:14px}
+  .header__nav{font-size:14px;gap:40px;align-items:center}
+  .header__nav ul.nav-scroll{gap:34px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);padding-right:40px}
+  .header__nav .nav-side{gap:36px}
+  .header__nav a{padding:10px 0 14px}
+  .nav-side-link{gap:8px}.nav-side-link svg{width:20px;height:20px}
+}
