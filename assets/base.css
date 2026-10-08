@@ -1985,3 +1985,15 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ti__checks{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:16px}
 .ti__checks li{position:relative;padding-left:36px;font-size:17px;line-height:1.55}
 .ti__checks li::before{content:"✓";position:absolute;left:6px;top:0;font-size:16px}
+.ti__offer{background:#f3f0fc;border-radius:14px;padding:22px 24px;box-shadow:0 1px 3px #0000000d}
+.ti__offer-top{display:flex;align-items:center;gap:12px}
+.ti__ck{width:26px;height:26px;border-radius:50%;background:#6b3fd8;color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.ti__offer-name{flex:1;font-size:17px}
+.ti__rm{background:none;border:0;font:inherit;font-size:16px;cursor:pointer;color:#111}
+.ti__congrats{font-size:20px;font-weight:500;margin:20px 0 6px}
+.ti__val{font-size:38px;font-weight:600;color:#6b3fd8;margin:0;line-height:1.1}
+.ti__vallbl{color:#6b3fd8;font-size:16px;margin:6px 0 0;line-height:1.5}
+.ti__perks{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+.ti__perks li{position:relative;padding-left:28px;font-size:16px;line-height:1.5}
+.ti__perks li::before{content:"✓";position:absolute;left:4px;color:#6b3fd8}
+.ti__cartlink{display:block;text-align:center;margin-top:14px;text-decoration:underline;font-weight:500;color:#111}
