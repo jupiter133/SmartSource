@@ -160,43 +160,7 @@
   </div>
 
   {%- comment -%} Catalog for the wizard. Categories and brands: up to 50 each. Devices: up to 250, each with its own Prices list. {%- endcomment -%}
-  <script type="application/json" data-sell-catalog>
-    {
-      "categories": [
-        {%- assign sep = false -%}
-          {%- for c in metaobjects.buyback_category.values limit: 50 -%}
-            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
-            {"h":{{ c.system.handle | json }},"n":{{ c.name.value | json }},"s":{{ c.sort_order.value | default: 999 | json }},"i":{% if c.image.value != blank %}{{ c.image.value | image_url: width: 320 | json }}{% else %}null{% endif %}}
-          {%- endfor -%}
-      ],
-      "brands": [
-        {%- assign sep = false -%}
-          {%- for b in metaobjects.buyback_brand.values limit: 50 -%}
-            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
-            {"h":{{ b.system.handle | json }},"n":{{ b.name.value | json }},"s":{{ b.sort_order.value | default: 999 | json }},"i":{% if b.logo.value != blank %}{{ b.logo.value | image_url: width: 240 | json }}{% else %}null{% endif %}}
-          {%- endfor -%}
-      ],
-      "devices": [
-        {%- assign sep = false -%}
-        {%- comment -%} Guard: paginate errors if the buyback_device type is missing or not storefront-readable. {%- endcomment -%}
-  {%- if metaobjects.buyback_device.values.size > 0 -%}
-  {%- paginate metaobjects.buyback_device.values by 250 -%}
-          {%- for d in metaobjects.buyback_device.values -%}
-            {%- if d.active.value == false -%}{%- continue -%}{%- endif -%}
-            {%- if sep -%},{%- endif -%}{%- assign sep = true -%}
-            {"h":{{ d.system.handle | json }},"n":{{ d.name.value | json }},"c":{{ d.category.value.system.handle | json }},"b":{{ d.brand.value.system.handle | json }},"y":{{ d.release_year.value | default: 0 | json }},"s":{{ d.sort_order.value | default: 999 | json }},"p":{% if d.is_popular.value %}true{% else %}false{% endif %},"i":{% if d.image.value != blank %}{{ d.image.value | image_url: width: 400 | json }}{% else %}null{% endif %},"pr":[
-              {%- assign psep = false -%}
-              {%- for pr in d.prices.value -%}
-                {%- if psep -%},{%- endif -%}{%- assign psep = true -%}
-                {"st":{{ pr.storage.value | json }},"p":[{{ pr.price_like_new.value | json }},{{ pr.price_good.value | json }},{{ pr.price_fair.value | json }},{{ pr.price_cracked.value | json }},{{ pr.price_defective.value | json }}]}
-              {%- endfor -%}
-            ]}
-          {%- endfor -%}
-        {%- endpaginate -%}
-  {%- endif -%}
-      ]
-    }
-  </script>
+  {% render 'sell-catalog' %}
   <script type="application/json" data-sell-config>
     {
       "live": {{ settings.sell_live | json }},

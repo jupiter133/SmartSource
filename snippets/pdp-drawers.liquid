@@ -43,7 +43,7 @@
 
 <dialog class="sd sd--tradein" id="sd-tradein" aria-labelledby="sd-tradein-t">
   <div class="sd__bar"><p id="sd-tradein-t">Trade-in</p><button type="button" data-sd-close aria-label="Close">✕</button></div>
-  <div class="sd__body">
+  <div class="sd__body" data-ti-offer>
     <h2 class="sd-ti__h">Want to get this for even less? Trade in your old tech for cash.</h2>
     {%- assign est = product.metafields.custom.tradein_estimate.value -%}
     <div class="sd-ti__card">
@@ -55,8 +55,12 @@
     </div>
     {%- if est -%}<p class="sd-ti__note">*Price shown is an estimate after trade-in. Your actual offer depends on the device you send.</p>{%- endif -%}
   </div>
-  <div class="sd-ti__foot">
-    <a class="sd-ti__btn" href="/pages/sell-your-device"><strong>Yes</strong><span>Get a trade-in offer in just 2 min</span></a>
+  <div class="sd__body ti" data-ti-wiz hidden>
+    <div class="ti__nav" data-ti-navbar hidden><button type="button" class="ti__back" data-ti-back aria-label="Back">←</button><span data-ti-step></span><span></span></div>
+    <div data-ti-pane></div>
+  </div>
+  <div class="sd-ti__foot" data-ti-foot>
+    <button type="button" class="sd-ti__btn" data-ti-start><strong>Yes</strong><span>Get a trade-in offer in just 2 min</span></button>
     <button type="button" class="sd-ti__btn" data-tradein-skip><strong>Skip trade-in</strong><span>View your cart</span></button>
   </div>
 </dialog>
@@ -70,12 +74,52 @@
   <div class="ac__foot"><button type="button" class="ac__back" data-sd-close>Back</button><a class="ac__go" href="/cart">Go to cart</a></div>
 </dialog>
 
+{% render 'sell-catalog' %}
+<script type="application/json" data-ti-config>{"live": {{ settings.sell_live | json }}}</script>
 <script>
 (function(){if(window.__sd)return;window.__sd=1;
 function shut(d){d.classList.add('is-closing');setTimeout(function(){d.classList.remove('is-closing');d.close()},260)}
 document.addEventListener('click',function(e){var o=e.target.closest('[data-sd-open]');if(o){var d=document.getElementById(o.dataset.sdOpen);if(d&&!d.open){d.showModal()}return}
 var c=e.target.closest('[data-sd-close]');if(c){shut(c.closest('dialog'));return}
 if(e.target.classList&&e.target.classList.contains('sd')&&e.target.open)shut(e.target)});
+(function(){var D=document.getElementById('sd-tradein');if(!D)return;
+var cat={};try{cat=JSON.parse(document.querySelector('[data-sell-catalog]').textContent)}catch(e){}
+var cfg={};try{cfg=JSON.parse(document.querySelector('[data-ti-config]').textContent)}catch(e){}
+var C=(cat.categories||[]).slice().sort(function(a,b){return a.s-b.s}),B=(cat.brands||[]).slice().sort(function(a,b){return a.s-b.s}),V=(cat.devices||[]);
+var pane=D.querySelector('[data-ti-pane]'),nav=D.querySelector('[data-ti-navbar]'),stepEl=D.querySelector('[data-ti-step]'),st={},hist=[];
+var CARRIERS=['Unlocked','Rogers','Bell','Telus','Freedom','Fido','Koodo','Virgin Plus','Other'];
+function money(n){return '$'+Math.round(n).toLocaleString('en-CA')}
+function maxFor(list){var m=0;list.forEach(function(d){(d.pr||[]).forEach(function(p){(p.p||[]).forEach(function(x){if(+x>m)m=+x})})});return m}
+function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function show(name,title,build){if(hist[hist.length-1]!==name)hist.push(name);nav.hidden=hist.length<2;stepEl.textContent=title||'';pane.innerHTML='';build(pane);pane.scrollTop=0}
+function back(){hist.pop();var p=hist.pop();({cat:stepCat,brand:stepBrand,model:stepModel,storage:stepStorage,carrier:stepCarrier}[p]||stepCat)()}
+function stepCat(){show('cat','',function(p){p.appendChild(h('h2','ti__h','What do you want to sell?'));
+var sw=h('label','ti__search');var inp=h('input');inp.type='search';inp.placeholder='Search your device';sw.appendChild(inp);p.appendChild(sw);var res=h('div','ti__results');p.appendChild(res);
+inp.oninput=function(){var q=inp.value.trim().toLowerCase();res.innerHTML='';if(q.length<2)return;V.filter(function(d){return d.n.toLowerCase().indexOf(q)>-1}).slice(0,8).forEach(function(d){var b=h('button','ti__opt ti__opt--row',d.n);b.type='button';b.onclick=function(){st.cat=d.c;st.brand=d.b;st.dev=d;stepStorage()};res.appendChild(b)})};
+p.appendChild(h('h3','ti__sub','Select a category'));
+if(!C.length){p.appendChild(h('p','ti__empty','Trade-in categories are coming soon.'));}
+C.forEach(function(c){var ds=V.filter(function(d){return d.c===c.h});if(!ds.length&&V.length)return;var b=h('button','ti__cat');b.type='button';
+var im=h('span','ti__catimg');if(c.i){var i=h('img');i.src=c.i;i.alt='';im.appendChild(i)}b.appendChild(im);b.appendChild(h('span','ti__catname',c.n));
+if(cfg.live){var m=maxFor(ds);if(m)b.appendChild(h('span','ti__upto','Up to '+money(m)))}
+b.onclick=function(){st.cat=c.h;stepBrand()};p.appendChild(b)})})}
+function stepBrand(){var c=C.find(function(x){return x.h===st.cat})||{n:'device'};var bs=B.filter(function(b){return V.some(function(d){return d.c===st.cat&&d.b===b.h})});
+show('brand','Brand',function(p){p.appendChild(h('h2','ti__h','What brand is your '+c.n.toLowerCase()+'?'));var sel=h('select','ti__select');sel.appendChild(new Option('Brand',''));bs.forEach(function(b){sel.appendChild(new Option(b.n,b.h))});sel.onchange=function(){if(sel.value){st.brand=sel.value;stepModel()}};p.appendChild(sel)})}
+function stepModel(){var ds=V.filter(function(d){return d.c===st.cat&&d.b===st.brand}).sort(function(a,b){return (b.y-a.y)||(a.s-b.s)});
+show('model','Model',function(p){p.appendChild(h('h2','ti__h',"What's the specific title of your model?"));var sel=h('select','ti__select');sel.appendChild(new Option('Model',''));ds.forEach(function(d){sel.appendChild(new Option(d.n,d.h))});
+sel.onchange=function(){st.dev=ds.find(function(d){return d.h===sel.value});if(st.dev)stepStorage()};p.appendChild(sel);
+p.appendChild(h('p','ti__hint','Not sure? Go to Settings > General > About. If your model isn\'t in the list, we can\'t take it right now.'))})}
+function stepStorage(){var opts=(st.dev.pr||[]).map(function(x){return x.st}).filter(Boolean);if(!opts.length){stepCarrier();return}
+show('storage','Storage',function(p){p.appendChild(h('h2','ti__h',"What's the storage capacity?"));var g=h('div','ti__grid');opts.forEach(function(o){var b=h('button','ti__opt',o);b.type='button';b.onclick=function(){st.storage=o;stepCarrier()};g.appendChild(b)});p.appendChild(g);p.appendChild(h('p','ti__hint','Not sure? Go to Settings > General > About.'))})}
+function stepCarrier(){show('carrier','Carrier',function(p){p.appendChild(h('h2','ti__h','Is your device unlocked or locked to a carrier?'));var g=h('div','ti__grid');CARRIERS.forEach(function(o){var b=h('button','ti__opt',o);b.type='button';b.onclick=function(){st.carrier=o;stepDone()};g.appendChild(b)});p.appendChild(g);
+p.appendChild(h('p','ti__hint','A locked phone only works with one carrier. Unlocked phones work with any carrier.'));p.appendChild(h('p','ti__hint','iPhone: Settings > General > About > Carrier Lock. Android: try a SIM from another carrier. If you get signal, it\'s unlocked.'))})}
+function stepDone(){show('done','Your device',function(p){p.appendChild(h('h2','ti__h','Nice. Let\'s get your offer.'));var card=h('div','ti__sum');
+if(st.dev.i){var i=h('img');i.src=st.dev.i;i.alt='';card.appendChild(i)}var t=h('div');t.appendChild(h('strong',null,st.dev.n));t.appendChild(h('span',null,[st.storage,st.carrier].filter(Boolean).join(' · ')));
+if(cfg.live){var pr=(st.dev.pr||[]).find(function(x){return x.st===st.storage})||(st.dev.pr||[])[0];var m=pr?Math.max.apply(null,pr.p.map(Number).filter(Boolean)):0;if(m)t.appendChild(h('em','ti__price','Up to '+money(m)))}
+card.appendChild(t);p.appendChild(card);p.appendChild(h('p','ti__hint','Next, tell us its condition and get your final quote. Your new device stays in your cart.'));
+var go=h('a','sd__btn','Continue to my quote');go.href='/pages/sell-your-device?sell_device='+encodeURIComponent(st.dev.h)+'#sell-quote';p.appendChild(go)})}
+D.addEventListener('click',function(e){if(e.target.closest('[data-ti-start]')){D.querySelector('[data-ti-offer]').hidden=true;D.querySelector('[data-ti-foot]').hidden=true;D.querySelector('[data-ti-wiz]').hidden=false;st={};hist=[];stepCat()}
+if(e.target.closest('[data-ti-back]'))back()});
+D.addEventListener('close',function(){D.querySelector('[data-ti-offer]').hidden=false;D.querySelector('[data-ti-foot]').hidden=false;D.querySelector('[data-ti-wiz]').hidden=true})})();
 window.ssOpenAdded=function(){var d=document.getElementById('sd-added');if(!d)return false;d.showModal();if(d.dataset.loaded)return true;d.dataset.loaded=1;
 var fmt=function(c){return '$'+(c/100).toFixed(2)};
 function card(p){var v=(p.variants||[]).find(function(x){return x.available})||p.variants[0];var img=p.featured_image||'';if(img&&img.indexOf('//')===0)img='https:'+img;

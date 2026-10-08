@@ -1949,3 +1949,30 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ac__go{background:#111;color:#fff;padding:14px 22px;border-radius:8px;font-weight:500}
 @media (max-width:1000px){.ac__track{grid-auto-columns:42%}.ac__top strong{margin-right:12px}}
 @media (max-width:600px){.ac__name,.ac__thumb{display:none}.ac__body{padding:20px 16px}.ac__track{grid-auto-columns:70%}}
+/* Trade-in wizard inside the panel */
+.ti{padding-top:24px}
+.ti__nav{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin-bottom:18px;color:#6b3fd8;font-size:18px;text-align:center}
+.ti__back{background:none;border:0;font-size:26px;color:#6b3fd8;cursor:pointer;text-align:left;padding:0}
+.ti__h{font-size:26px;font-weight:500;margin:0 0 20px;line-height:1.3;letter-spacing:-.01em}
+.ti__sub{font-size:22px;font-weight:500;margin:32px 0 14px}
+.ti__search{display:block}
+.ti__search input{width:100%;padding:16px 18px;border:1px solid #c9cad1;border-radius:8px;font:inherit;font-size:17px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='1.8'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") no-repeat right 16px center/22px}
+.ti__results{display:grid;gap:6px;margin-top:8px}
+.ti__cat{width:100%;display:flex;align-items:center;gap:20px;background:#fff;border:0;border-radius:14px;padding:12px;margin-bottom:12px;font:inherit;cursor:pointer;box-shadow:0 1px 3px #0000000d;text-align:left}
+.ti__cat:hover{box-shadow:0 2px 10px #00000014}
+.ti__catimg{width:100px;height:76px;border-radius:10px;background:#fbe9ec;display:grid;place-items:center;overflow:hidden;flex:none}
+.ti__catimg img{width:100%;height:100%;object-fit:contain}
+.ti__catname{flex:1;font-size:20px}
+.ti__upto{font-size:17px;color:#555}
+.ti__select{width:100%;padding:22px 16px 10px;border:2px solid #111;border-radius:8px;font:inherit;font-size:17px;background:#fff;appearance:auto}
+.ti__grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ti__opt{background:#fff;border:1px solid #d6d7dc;border-radius:8px;padding:22px 12px;font:inherit;font-size:18px;cursor:pointer}
+.ti__opt:hover{border-color:#111}
+.ti__opt--row{text-align:left;padding:14px 16px;font-size:16px}
+.ti__hint{font-size:15px;color:#555;line-height:1.6;margin:14px 0 0}
+.ti__empty{color:#555}
+.ti__sum{display:flex;gap:20px;align-items:center;background:#fff;border-radius:14px;padding:18px;margin-bottom:6px}
+.ti__sum img{width:80px;height:100px;object-fit:contain}
+.ti__sum div{display:flex;flex-direction:column;gap:4px}.ti__sum strong{font-size:20px;font-weight:500}.ti__sum span{color:#555}
+.ti__price{font-style:normal;font-size:28px;font-weight:600;color:#6b3fd8}
+.ti .sd__btn{margin-top:24px}
