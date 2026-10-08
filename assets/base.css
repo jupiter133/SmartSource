@@ -2134,3 +2134,11 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .lf-more--pills label span{display:none}
 .lf-more--pills select{font-size:14px;font-weight:500;padding-right:4px;width:auto;cursor:pointer}
 .lf-morebtn{background:#ececf1;border:0;border-radius:999px;height:36px;padding:0 14px;font:inherit;font-size:14px;font-weight:500;cursor:pointer;margin-top:6px}
+/* Colour swatches on product cards (Back Market-style rings + out-of-stock slash) */
+.card .swatches,.coll-grid .swatches{gap:8px;margin:10px 0 6px}
+.card .swatch{position:relative;width:24px;height:24px;border:0;background:none;border-radius:50%;box-shadow:inset 0 0 0 1.5px #d3d4da}
+.card .swatch::before{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--sw,#ccc);box-shadow:inset 0 0 0 1px #0000001f}
+.card .swatch:first-child{box-shadow:inset 0 0 0 2px #19a49a}
+.card .swatch.is-oos::after{content:"";position:absolute;left:50%;top:-1px;bottom:-1px;width:2px;margin-left:-1px;background:#c1121f;transform:rotate(45deg);border-radius:1px}
+.card .swatch.is-oos::before{opacity:.75}
+.card .swatches .muted{font-size:12px}

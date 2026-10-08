@@ -11,8 +11,8 @@
   {%- assign color_opt = product.options_with_values | where: 'name', 'Color' | first -%}
   {%- if color_opt -%}
     <div class="swatches">
-      {%- for val in color_opt.values limit: 4 -%}<span class="swatch" data-swatch="{{ val | escape }}" title="{{ val }}"></span>{%- endfor -%}
-      {%- if color_opt.values.size > 4 -%}<span class="muted">+{{ color_opt.values.size | minus: 4 }}</span>{%- endif -%}
+      {%- for val in color_opt.values limit: 5 -%}{%- assign cav = false -%}{%- for v in product.variants -%}{%- if v.available and v.options contains val -%}{%- assign cav = true -%}{%- break -%}{%- endif -%}{%- endfor -%}<span class="swatch{% unless cav %} is-oos{% endunless %}" data-swatch="{{ val | escape }}" title="{{ val }}{% unless cav %} (out of stock){% endunless %}"></span>{%- endfor -%}
+      {%- if color_opt.values.size > 5 -%}<span class="muted">+{{ color_opt.values.size | minus: 5 }}</span>{%- endif -%}
     </div>
   {%- endif -%}
   <p class="card__title">{{ product.title }}</p>

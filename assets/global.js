@@ -204,7 +204,8 @@
     'rose gold':'#e8c4b8', 'natural titanium':'#bab4aa', 'black titanium':'#3a3a3c',
     // consoles
     'jet black':'#1e1f22', 'carbon black':'#232323', 'robot white':'#f4f4f4', 'galaxy black':'#1b1d2b', 'neon red/blue':'linear-gradient(90deg,#ff4554 50%,#00c3e3 50%)', turquoise:'#4fd1c5', coral:'#f47c7c' };
-  $$('[data-swatch]').forEach(d => { const k = d.dataset.swatch.toLowerCase(); d.style.setProperty('--sw', SWATCH[k] || k.split(' ').pop()); });
+  const SW_KEYS = [['obsidian','#2b2c30'],['porcelain','#efe9e1'],['hazel','#8c9a83'],['rose','#f2c9c4'],['peony','#f4b7c8'],['wintergreen','#bfe3cf'],['aloe','#bfe6d0'],['bay','#7fb2d9'],['mint','#bfe9d6'],['sage','#a9b8a0'],['lemongrass','#e6e58e'],['coral','#f08c7a'],['lavender','#c9b8ec'],['lilac','#cdb4e6'],['purple','#8c6cc8'],['violet','#8f6bd1'],['iris','#7b7fd4'],['indigo','#3d4a8c'],['navy','#24324f'],['teal','#2f8f8f'],['ultramarine','#5b6fe0'],['sky','#a9cdee'],['denim','#4c6c9a'],['blue','#5f8fd0'],['green','#6fae7e'],['olive','#7d7f4e'],['yellow','#f5dd73'],['orange','#f19a4a'],['pink','#f2b8c6'],['red','#d1001f'],['cream','#f3ead6'],['beige','#e8dcc4'],['titanium','#b8b3ab'],['desert','#c9a98a'],['bronze','#a8774b'],['copper','#b8734a'],['gold','#e8c98e'],['silver','#dcdde0'],['gray','#7c7d82'],['grey','#7c7d82'],['graphite','#54524f'],['charcoal','#3a3b3f'],['black','#1b1b1f'],['white','#f5f5f2'],['starlight','#f2ece0'],['midnight','#1f2430'],['jet','#151517'],['phantom','#2a2a2e'],['onyx','#232327'],['cobalt','#3456a8']];
+  $$('[data-swatch]').forEach(d => { const k = d.dataset.swatch.toLowerCase(); let c = SWATCH[k]; if (!c) { const hit = SW_KEYS.find(([w]) => k.includes(w)); c = hit ? hit[1] : (CSS.supports('color', k.split(' ').pop()) ? k.split(' ').pop() : '#c9cad1'); } d.style.setProperty('--sw', c); });
 
   $$('[data-product]').forEach(root => {
     const main = $('[data-main-img]', root);
