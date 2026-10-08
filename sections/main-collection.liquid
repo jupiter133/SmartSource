@@ -122,7 +122,7 @@
       <div class="coll-hero__art"><img src="{{ hero_src }}" alt="" width="900" height="700" fetchpriority="high"></div>
     {%- endif -%}
   </section>
-  {%- if ctags contains 'macbook' -%}{% render 'laptop-finder', base: 'macbook', mac: true %}{%- elsif ctags contains 'laptops' -%}{% render 'laptop-finder', base: 'laptops', mac: false %}{%- endif -%}
+  {%- if ctags contains 'macbook' or collection.handle == 'macbook' -%}{% render 'laptop-finder', base: 'macbook', mac: true, coll: collection.handle %}{%- elsif ctags contains 'laptops' -%}{% render 'laptop-finder', base: 'laptops', mac: false %}{%- endif -%}
 
   {%- if section.blocks.size > 0 -%}
     <div class="coll-chips" role="list">
