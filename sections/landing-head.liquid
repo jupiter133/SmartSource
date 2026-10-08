@@ -9,17 +9,36 @@
       assign ca_label = 'audio'
   endcase
 -%}
+{%- liquid
+  case page.handle
+    when 'android'
+      assign ca_img = 'cat-android.webp'
+    when 'laptops'
+      assign ca_img = 'cat-laptops.webp'
+    when 'audio'
+      assign ca_img = 'cat-audio.webp'
+  endcase
+-%}
 {%- if ca_label != blank -%}
-<div class="page-width ca-banner-wrap">
-  <a class="cab" href="#lx-deals">
-    <span class="cab__eyebrow">{% render 'flag', code: 'CA' %} Made for Canada</span>
-    <strong class="cab__h">Canada's best deals on {{ ca_label }}.</strong>
-    <span class="cab__sub">Refurbished &amp; certified pre-owned. Tested in the GTA, shipped coast to coast.</span>
-    <span class="cab__cta">Shop the deals</span>
-    <svg class="cab__leaf" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 22l-38 70c-4 8-12 7-20 3l-28-14 21 108c4 20-9 20-15 6l-32-35-5 18c-1 4-5 7-9 6L62 162l12 40c5 17 11 25-5 31l-15 7 102 83c7 6 10 16 8 25l-9 30c35-4 67-10 102-14 3 0 5 2 5 5l-5 119h20l-5-119c0-3 2-5 5-5 35 4 67 10 102 14l-9-30c-2-9 1-19 8-25l102-83-15-7c-16-6-10-14-5-31l12-40-68 14c-4 1-8-2-9-6l-5-18-32 35c-6 14-19 14-15-6l21-108-28 14c-8 4-16 5-20-3z"/></svg>
-  </a>
-</div>
-{%- endif -%}
+<section class="page-width cah-wrap">
+  <nav class="coll-crumbs" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span><span aria-current="page">{{ section.settings.crumb | default: page.title }}</span>
+  </nav>
+  <div class="cah">
+    <div class="cah__text">
+      <span class="cah__eyebrow">{% render 'flag', code: 'CA' %} Canada's best deals</span>
+      <h1 class="cah__h">{{ section.settings.heading | default: page.title }}</h1>
+      <p class="cah__sub">{{ section.settings.text | default: 'Tested by our technicians in the GTA, unlocked, and backed by a 1-year warranty.' }}</p>
+      <div class="cah__ctas"><a class="cah__btn" href="#lx-deals">Shop the deals</a><a class="cah__link" href="/pages/why-refurbished">Refurbished vs certified pre-owned</a></div>
+      <ul class="cah__chips"><li>Free shipping in Canada</li><li>1-year warranty</li><li>30-day returns</li></ul>
+    </div>
+    <div class="cah__art">
+      <svg class="cah__leaf" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 22l-38 70c-4 8-12 7-20 3l-28-14 21 108c4 20-9 20-15 6l-32-35-5 18c-1 4-5 7-9 6L62 162l12 40c5 17 11 25-5 31l-15 7 102 83c7 6 10 16 8 25l-9 30c35-4 67-10 102-14 3 0 5 2 5 5l-5 119h20l-5-119c0-3 2-5 5-5 35 4 67 10 102 14l-9-30c-2-9 1-19 8-25l102-83-15-7c-16-6-10-14-5-31l12-40-68 14c-4 1-8-2-9-6l-5-18-32 35c-6 14-19 14-15-6l21-108-28 14c-8 4-16 5-20-3z"/></svg>
+      <img src="{{ ca_img | asset_url }}" alt="" class="cah__img" width="800" height="600">
+    </div>
+  </div>
+</section>
+{%- else -%}
 <section class="page-width landing-head">
   <nav class="coll-crumbs" aria-label="Breadcrumb">
     <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span><span aria-current="page">{{ section.settings.crumb | default: page.title }}</span>
@@ -27,6 +46,7 @@
   <h1>{{ section.settings.heading | default: page.title }}</h1>
   {%- if section.settings.text != blank -%}<p class="landing-head__text">{{ section.settings.text }}</p>{%- endif -%}
 </section>
+{%- endif -%}
 {% schema %}
 { "name": "Landing: title", "settings": [
   { "type": "text", "id": "crumb", "label": "Breadcrumb label", "info": "Defaults to the page title." },
