@@ -187,16 +187,12 @@
               <div class="sum-card__row">{% render 'icon', name: 'truck' %}<span><strong data-sum-delivery>Free delivery in 2–4 business days</strong><small data-sum-express>Express delivery available at checkout</small></span></div>
               <button type="button" class="sum-card__postal" data-sum-postal>{% render 'icon', name: 'pin' %} <span data-sum-postal-label>Update postal code</span></button>
             </div>
-            <details class="sum-card sum-acc">
-              <summary>{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span></summary>
-              <p>Use it with any Canadian carrier: Rogers, Bell, Telus, Freedom, Fido, Koodo, Virgin, Public Mobile and more. Pop in your SIM or set up an eSIM and you're done.</p>
-            </details>
-            <details class="sum-card sum-acc">
-              <summary>{% render 'icon', name: 'swap' %}<span><strong>Free 30-day returns</strong><small>1-year warranty</small></span></summary>
-              <p>Return it within 30 days for a full refund. After that, our 1-year warranty covers any defect from normal use. <a href="{{ section.settings.promise_link }}">Read our promise</a>.</p>
-            </details>
+            <button type="button" class="sum-card sum-open" data-sd-open="sd-unlocked">{% render 'icon', name: 'unlock' %}<span><strong>{{ section.settings.unlocked_text }}</strong><small>This phone is unlocked</small></span><svg class="sum-card__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="sum-card sum-open" data-sd-open="sd-returns">{% render 'icon', name: 'swap' %}<span><strong>Free 30-day returns</strong><strong>1-year warranty</strong></span><svg class="sum-card__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="sum-card sum-open" data-sd-open="sd-promise"><svg class="sum-card__shield" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6.5c0 5-3.4 8.6-8 10.5-4.6-1.9-8-5.5-8-10.5V5z" fill="currentColor"/><path d="M8.5 12.3l2.4 2.4 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Guaranteed by the SmartSource Promise</strong></span><svg class="sum-card__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
 
+          {% render 'pdp-drawers', promise_link: section.settings.promise_link %}
           <div class="sum-comes">
             <p class="sum-comes__label">Comes with</p>
             <span class="sum-chip">{% render 'icon', name: 'cable' %} Compatible charging cable</span>
