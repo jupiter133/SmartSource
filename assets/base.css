@@ -1711,5 +1711,5 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .nav-fade-l{margin-right:-40px}
 }
 @media (min-width:1300px){
-  .header__nav{margin-left:-72px;margin-right:-72px}
+  .header__nav.page-width{max-width:calc(var(--page-width) + 144px)}
 }
