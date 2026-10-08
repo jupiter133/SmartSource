@@ -1696,3 +1696,9 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .rs-m__content.is-single{grid-template-columns:minmax(0,640px);justify-content:center}
 @media (max-width:1000px){.rs__track{grid-auto-columns:calc((100% - 20px)/2.1)}}
 @media (max-width:600px){.rs__track{grid-auto-columns:80%}}
+@media (min-width:750px){
+  .header__nav{gap:56px;padding-top:6px}
+  .header__nav ul.nav-scroll{gap:32px}
+  .header__nav .nav-side{gap:34px}
+  .nav-fade-l{margin-right:-56px}
+}
