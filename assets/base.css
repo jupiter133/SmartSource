@@ -1703,3 +1703,13 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .nav-fade-l{margin-right:-56px}
 }
 .mega-tile__all{font-size:clamp(22px,2vw,30px);font-weight:700;color:#111;letter-spacing:-.01em}
+/* Nav row wider than the logo row (Back Market-style) so more categories fit */
+@media (min-width:750px){
+  .header__nav{gap:40px}
+  .header__nav ul.nav-scroll{gap:26px}
+  .header__nav .nav-side{gap:28px}
+  .nav-fade-l{margin-right:-40px}
+}
+@media (min-width:1300px){
+  .header__nav{margin-left:-72px;margin-right:-72px}
+}
