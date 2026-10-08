@@ -674,6 +674,10 @@
       "settings": {
         "heading": "Top brands, refurbished"
       }
+    },
+    "impact": {
+      "type": "impact-banner",
+      "settings": {}
     }
   },
   "order": [
@@ -691,6 +695,7 @@
     "banners",
     "brands",
     "blog",
-    "press"
+    "press",
+    "impact"
   ]
 }
