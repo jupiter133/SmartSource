@@ -1,0 +1,74 @@
+{%- liquid
+  assign devs = ''
+  for b in section.blocks
+    unless devs contains b.settings.device
+      assign devs = devs | append: b.settings.device | append: ','
+    endunless
+  endfor
+  assign devs = devs | remove_last: ','
+  assign first_dev = devs | split: ',' | first
+-%}
+<div class="pr pr--tight" id="pi-{{ section.id }}">
+  <div class="pr__wrap">
+    <h2 class="pr__h2">{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p class="pr__sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+    {% render 'pr-devtabs', devices: devs %}
+    <div class="pi">
+      <div class="pi__side">
+        <button type="button" class="pi__arrow" data-pi-up><span aria-hidden="true">⌃</span></button><span class="pi__lbl">Scroll up</span>
+        <div class="pi__viewport"><ol class="pi__list" data-pi-list>
+          {%- for b in section.blocks -%}
+            <li class="pi__item" data-dev="{{ b.settings.device }}" {{ b.shopify_attributes }}{% if b.settings.device != first_dev %} hidden{% endif %}>
+              <button type="button">{% render 'pr-icon', name: b.settings.icon %}<span>{{ b.settings.title }}</span></button>
+              <template data-pi-img>{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: b.settings.title }}{%- else -%}<div class="pi__ph">{% render 'pr-icon', name: b.settings.icon %}</div>{%- endif -%}</template>
+              <template data-pi-text>{{ b.settings.text }}</template>
+            </li>
+          {%- endfor -%}
+        </ol></div>
+        <span class="pi__lbl">Scroll down</span><button type="button" class="pi__arrow" data-pi-down><span aria-hidden="true">⌄</span></button>
+      </div>
+      <div class="pi__main">
+        <div class="pi__img" data-pi-out></div>
+        <p class="pi__cap" data-pi-cap aria-live="polite"></p>
+      </div>
+    </div>
+    {%- if section.settings.note != blank -%}<p class="pi__note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</div>
+<script>
+(function(){var R=document.getElementById('pi-{{ section.id }}');if(!R)return;
+var list=R.querySelector('[data-pi-list]'),out=R.querySelector('[data-pi-out]'),cap=R.querySelector('[data-pi-cap]'),dev=R.querySelector('.pr-dev__btn').dataset.dev,i=0;
+function items(){return [].slice.call(list.children).filter(function(li){return li.dataset.dev===dev})}
+function show(n){var it=items();if(!it.length)return;i=Math.max(0,Math.min(it.length-1,n));
+[].forEach.call(list.children,function(li){li.hidden=li.dataset.dev!==dev;li.classList.remove('is-on','is-near')});
+var a=it[i];a.classList.add('is-on');if(it[i-1])it[i-1].classList.add('is-near');if(it[i+1])it[i+1].classList.add('is-near');
+list.style.transform='translateY('+(-(a.offsetTop+a.offsetHeight/2)+list.parentNode.clientHeight/2)+'px)';
+out.innerHTML=a.querySelector('[data-pi-img]').innerHTML;cap.textContent=a.querySelector('[data-pi-text]').innerHTML.trim();
+R.querySelector('[data-pi-up]').disabled=i===0;R.querySelector('[data-pi-down]').disabled=i===it.length-1}
+R.querySelector('[data-pi-up]').onclick=function(){show(i-1)};R.querySelector('[data-pi-down]').onclick=function(){show(i+1)};
+list.addEventListener('click',function(e){var li=e.target.closest('.pi__item');if(li)show(items().indexOf(li))});
+R.querySelectorAll('.pr-dev__btn').forEach(function(b){b.onclick=function(){R.querySelectorAll('.pr-dev__btn').forEach(function(x){x.setAttribute('aria-selected',x===b)});dev=b.dataset.dev;show(0)}});
+list.parentNode.addEventListener('wheel',function(e){if(Math.abs(e.deltaY)<20)return;var n=i+(e.deltaY>0?1:-1);if(n<0||n>=items().length)return;e.preventDefault();show(n)},{passive:false});
+show(0);window.addEventListener('resize',function(){show(i)})})();
+</script>
+{% schema %}
+{
+  "name": "Inspection checks",
+  "max_blocks": 50,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Multi-point quality inspection" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Explore some of the checks every device goes through before we list it." },
+    { "type": "text", "id": "note", "label": "Footnote" }
+  ],
+  "blocks": [
+    { "type": "check", "name": "Check", "settings": [
+      { "type": "select", "id": "device", "label": "Device", "default": "phones", "options": [ {"value":"phones","label":"Smartphones"},{"value":"tablets","label":"Tablets"},{"value":"laptops","label":"Laptops"},{"value":"consoles","label":"Gaming consoles"},{"value":"watches","label":"Smartwatches"},{"value":"audio","label":"Audio"} ] },
+      { "type": "text", "id": "icon", "label": "Icon name", "default": "check", "info": "camera, pin, hand, check, wifi, target, drop, bulb, headset, plug, battery, screen, chip, keyboard, gamepad, eye" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Check" },
+      { "type": "textarea", "id": "text", "label": "Description" },
+      { "type": "image_picker", "id": "image", "label": "Image" }
+    ] }
+  ],
+  "presets": [{ "name": "Inspection checks" }]
+}
+{% endschema %}

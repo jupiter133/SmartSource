@@ -1,0 +1,8 @@
+{%- comment -%} Device tab row. Params: devices (comma list of handles present), uid {%- endcomment -%}
+<div class="pr-dev" role="tablist">
+  {%- assign list = devices | split: ',' -%}
+  {%- for d in list -%}
+    {%- case d -%}{%- when 'phones' -%}{%- assign lbl = 'Smartphones' -%}{%- assign ic = 'phone' -%}{%- when 'tablets' -%}{%- assign lbl = 'Tablets' -%}{%- assign ic = 'tablet' -%}{%- when 'laptops' -%}{%- assign lbl = 'Laptops' -%}{%- assign ic = 'laptop' -%}{%- when 'consoles' -%}{%- assign lbl = 'Gaming consoles' -%}{%- assign ic = 'gamepad' -%}{%- when 'watches' -%}{%- assign lbl = 'Smartwatches' -%}{%- assign ic = 'watch' -%}{%- else -%}{%- assign lbl = 'Audio' -%}{%- assign ic = 'headset' -%}{%- endcase -%}
+    <button type="button" role="tab" class="pr-dev__btn" data-dev="{{ d }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"><span class="pr-dev__tile">{% render 'pr-icon', name: ic %}</span><span>{{ lbl }}</span></button>
+  {%- endfor -%}
+</div>

@@ -1,0 +1,74 @@
+{%- liquid
+  assign devs = ''
+  for b in section.blocks
+    unless devs contains b.settings.device
+      assign devs = devs | append: b.settings.device | append: ','
+    endunless
+  endfor
+  assign devs = devs | remove_last: ','
+-%}
+<div class="pr pr--tight" id="pg-{{ section.id }}">
+  <div class="pr__wrap">
+    <h2 class="pr__h2">{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p class="pr__sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+    {% render 'pr-devtabs', devices: devs %}
+    <div class="pg">
+      <div class="pg__grades" role="tablist" data-pg-grades></div>
+      <div class="pg__stage">
+        <div class="pg__img" data-pg-img></div>
+        <p class="pg__hint">{% render 'pr-icon', name: 'eye' %} Hover or tap to zoom</p>
+      </div>
+      <div class="pg__specs">
+        <div><span class="pg__ic">{% render 'pr-icon', name: 'screen' %}</span><h3>Screen</h3><p data-pg="screen"></p></div>
+        <div><span class="pg__ic">{% render 'pr-icon', name: 'phone' %}</span><h3>Body</h3><p data-pg="body"></p></div>
+        <div><span class="pg__ic">{% render 'pr-icon', name: 'chip' %}</span><h3>Hardware</h3><p data-pg="hardware"></p></div>
+        <div><span class="pg__ic">{% render 'pr-icon', name: 'battery' %}</span><h3>Battery</h3><p data-pg="battery"></p></div>
+      </div>
+    </div>
+    <div hidden data-pg-data>
+      {%- for b in section.blocks -%}
+        <div data-dev="{{ b.settings.device }}" data-grade="{{ b.settings.grade | escape }}" {{ b.shopify_attributes }}>
+          <template data-k="img">{%- if b.settings.image != blank -%}{{ b.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: b.settings.grade }}{%- elsif b.settings.device == 'phones' -%}{%- assign gi = 'grade-' | append: b.settings.grade | handleize | append: '.webp' -%}<img src="{{ gi | asset_url }}" alt="{{ b.settings.grade | escape }}" loading="lazy">{%- else -%}<div class="pi__ph">{% render 'pr-icon', name: 'eye' %}</div>{%- endif -%}</template>
+          <template data-k="screen">{{ b.settings.screen }}</template><template data-k="body">{{ b.settings.body }}</template><template data-k="hardware">{{ b.settings.hardware }}</template><template data-k="battery">{{ b.settings.battery }}</template>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+<script>
+(function(){var R=document.getElementById('pg-{{ section.id }}');if(!R)return;
+var data=[].slice.call(R.querySelectorAll('[data-pg-data] > div')),gb=R.querySelector('[data-pg-grades]'),img=R.querySelector('[data-pg-img]'),dev=R.querySelector('.pr-dev__btn').dataset.dev,grade=null;
+function t(el,k){return el.querySelector('[data-k="'+k+'"]').innerHTML.trim()}
+function render(){var rows=data.filter(function(d){return d.dataset.dev===dev});if(!rows.length)return;
+if(!rows.some(function(r){return r.dataset.grade===grade}))grade=rows[Math.min(2,rows.length-1)].dataset.grade;
+gb.innerHTML='';rows.forEach(function(r){var b=document.createElement('button');b.type='button';b.textContent=r.dataset.grade;b.setAttribute('aria-selected',r.dataset.grade===grade);b.onclick=function(){grade=r.dataset.grade;render()};gb.appendChild(b)});
+var row=rows.filter(function(r){return r.dataset.grade===grade})[0];img.innerHTML=t(row,'img');
+['screen','body','hardware','battery'].forEach(function(k){R.querySelector('[data-pg="'+k+'"]').textContent=t(row,k)})}
+R.querySelectorAll('.pr-dev__btn').forEach(function(b){b.onclick=function(){R.querySelectorAll('.pr-dev__btn').forEach(function(x){x.setAttribute('aria-selected',x===b)});dev=b.dataset.dev;render()}});
+function zoom(e){var r=img.getBoundingClientRect(),p=e.touches?e.touches[0]:e;img.style.setProperty('--zx',((p.clientX-r.left)/r.width*100)+'%');img.style.setProperty('--zy',((p.clientY-r.top)/r.height*100)+'%')}
+img.addEventListener('mousemove',zoom);img.addEventListener('mouseenter',function(){img.classList.add('is-zoom')});img.addEventListener('mouseleave',function(){img.classList.remove('is-zoom')});
+img.addEventListener('click',function(e){img.classList.toggle('is-zoom');zoom(e)});
+render()})();
+</script>
+{% schema %}
+{
+  "name": "Grades explorer",
+  "max_blocks": 50,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Our grades" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Grades describe how a device looks. Every device works 100%, whatever the grade." }
+  ],
+  "blocks": [
+    { "type": "grade", "name": "Grade", "settings": [
+      { "type": "select", "id": "device", "label": "Device", "default": "phones", "options": [ {"value":"phones","label":"Smartphones"},{"value":"tablets","label":"Tablets"},{"value":"laptops","label":"Laptops"},{"value":"consoles","label":"Gaming consoles"},{"value":"watches","label":"Smartwatches"},{"value":"audio","label":"Audio"} ] },
+      { "type": "text", "id": "grade", "label": "Grade name", "default": "Excellent" },
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "textarea", "id": "screen", "label": "Screen" },
+      { "type": "textarea", "id": "body", "label": "Body" },
+      { "type": "textarea", "id": "hardware", "label": "Hardware" },
+      { "type": "textarea", "id": "battery", "label": "Battery" }
+    ] }
+  ],
+  "presets": [{ "name": "Grades explorer" }]
+}
+{% endschema %}

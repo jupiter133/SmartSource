@@ -3,21 +3,738 @@
     "promise": {
       "type": "promise",
       "blocks": {
-        "p1": { "type": "pillar", "settings": { "icon": "star", "text": "Best-in-class refurbishment" } },
-        "p2": { "type": "pillar", "settings": { "icon": "checklist", "text": "Multi-point quality inspection" } },
-        "p3": { "type": "pillar", "settings": { "icon": "returns", "text": "Free 30-day returns" } },
-        "p4": { "type": "pillar", "settings": { "icon": "award", "text": "1-year warranty" } },
-        "c1": { "type": "card", "settings": { "icon": "check", "title": "Done in-house", "text": "Every device is inspected, repaired and graded by our own technicians in the GTA. No middlemen." } },
-        "c2": { "type": "card", "settings": { "icon": "battery", "title": "Battery health you can trust", "text": "Minimum 80% battery health on every phone. The exact number is listed before you buy." } },
-        "c3": { "type": "card", "settings": { "icon": "sparkle", "title": "Clean slate", "text": "Factory reset, full data wipe, and a deep clean and polish on every device we sell." } },
-        "c4": { "type": "card", "settings": { "icon": "headset", "title": "Real people, real stores", "text": "Talk to a real person by phone, chat, or at one of our stores when you need help." } },
-        "c5": { "type": "card", "settings": { "icon": "leaf", "title": "Better for the planet", "text": "Buying refurbished keeps working tech in use and out of landfill." } },
-        "c6": { "type": "card", "settings": { "icon": "flag", "title": "No red flags", "text": "Every device is checked to be unlocked, not blacklisted, and not reported lost or stolen." } },
-        "c7": { "type": "card", "settings": { "icon": "bulb", "title": "Peace of mind", "text": "Every purchase comes with a 1-year warranty, free 30-day returns, and support when you need it." } }
+        "p1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "star",
+            "text": "Best-in-class refurbishment"
+          }
+        },
+        "p2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "checklist",
+            "text": "Multi-point quality inspection"
+          }
+        },
+        "p3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "returns",
+            "text": "Free 30-day returns"
+          }
+        },
+        "p4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        },
+        "c1": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Done in-house",
+            "text": "Every device is inspected, repaired and graded by our own technicians in the GTA. No middlemen."
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Battery health you can trust",
+            "text": "Minimum 80% battery health on every phone. The exact number is listed before you buy."
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Clean slate",
+            "text": "Factory reset, full data wipe, and a deep clean and polish on every device we sell."
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "icon": "headset",
+            "title": "Real people, real stores",
+            "text": "Talk to a real person by phone, chat, or at one of our stores when you need help."
+          }
+        },
+        "c5": {
+          "type": "card",
+          "settings": {
+            "icon": "leaf",
+            "title": "Better for the planet",
+            "text": "Buying refurbished keeps working tech in use and out of landfill."
+          }
+        },
+        "c6": {
+          "type": "card",
+          "settings": {
+            "icon": "flag",
+            "title": "No red flags",
+            "text": "Every device is checked to be unlocked, not blacklisted, and not reported lost or stolen."
+          }
+        },
+        "c7": {
+          "type": "card",
+          "settings": {
+            "icon": "bulb",
+            "title": "Peace of mind",
+            "text": "Every purchase comes with a 1-year warranty, free 30-day returns, and support when you need it."
+          }
+        }
       },
-      "block_order": ["p1","p2","p3","p4","c1","c2","c3","c4","c5","c6","c7"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "settings": {}
+    },
+    "inspection": {
+      "type": "promise-inspection",
+      "blocks": {
+        "phones0": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "camera",
+            "title": "Cameras",
+            "text": "Every camera is tested for focus, image capture and video, including front-facing video calls."
+          }
+        },
+        "phones1": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "pin",
+            "title": "GPS and positioning",
+            "text": "GPS, compass and location services are checked for an accurate fix."
+          }
+        },
+        "phones2": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "hand",
+            "title": "Touchscreen",
+            "text": "The full screen is tested for touch response, dead zones and ghost touches."
+          }
+        },
+        "phones3": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "check",
+            "title": "Face ID and fingerprint",
+            "text": "Face ID, Touch ID and fingerprint sensors are tested to unlock correctly every time."
+          }
+        },
+        "phones4": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "wifi",
+            "title": "Wi-Fi, Bluetooth and cellular",
+            "text": "Wi-Fi, Bluetooth, NFC and cellular signal are tested on live networks."
+          }
+        },
+        "phones5": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "target",
+            "title": "IMEI and blacklist",
+            "text": "The IMEI is checked against carrier blacklists and lost or stolen reports. Every phone is unlocked."
+          }
+        },
+        "phones6": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "drop",
+            "title": "Liquid damage",
+            "text": "Internal liquid indicators are checked. Devices with water damage don't get sold."
+          }
+        },
+        "phones7": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "bulb",
+            "title": "Flash and lights",
+            "text": "The flash and indicator lights are checked to work properly."
+          }
+        },
+        "phones8": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "headset",
+            "title": "Mics and speakers",
+            "text": "Every mic, earpiece and loudspeaker is tested for clear, distortion-free sound."
+          }
+        },
+        "phones9": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "plug",
+            "title": "Ports and charging",
+            "text": "The charging port, wired and wireless charging are tested."
+          }
+        },
+        "phones10": {
+          "type": "check",
+          "settings": {
+            "device": "phones",
+            "icon": "battery",
+            "title": "Battery health",
+            "text": "Battery capacity is measured. Phones below 80% get a new battery before they're listed."
+          }
+        },
+        "tablets0": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "hand",
+            "title": "Touchscreen",
+            "text": "Full-screen touch response and pencil input are tested."
+          }
+        },
+        "tablets1": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "camera",
+            "title": "Cameras",
+            "text": "Front and rear cameras are tested for focus and video."
+          }
+        },
+        "tablets2": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "wifi",
+            "title": "Wi-Fi and Bluetooth",
+            "text": "Wireless connections are tested, plus cellular on LTE models."
+          }
+        },
+        "tablets3": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "headset",
+            "title": "Speakers and mics",
+            "text": "Every speaker and mic is tested for clear sound."
+          }
+        },
+        "tablets4": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "plug",
+            "title": "Ports and charging",
+            "text": "Charging port and accessory connectors are tested."
+          }
+        },
+        "tablets5": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "battery",
+            "title": "Battery health",
+            "text": "Battery capacity is measured and listed."
+          }
+        },
+        "tablets6": {
+          "type": "check",
+          "settings": {
+            "device": "tablets",
+            "icon": "target",
+            "title": "Activation lock",
+            "text": "iCloud and Google account locks are removed and verified."
+          }
+        },
+        "laptops0": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "keyboard",
+            "title": "Keyboard and trackpad",
+            "text": "Every key, the backlight and the trackpad are tested."
+          }
+        },
+        "laptops1": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "screen",
+            "title": "Display",
+            "text": "The display is checked for dead pixels, backlight bleed and colour."
+          }
+        },
+        "laptops2": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "chip",
+            "title": "Performance",
+            "text": "CPU, memory and storage are stress-tested."
+          }
+        },
+        "laptops3": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "camera",
+            "title": "Webcam and mics",
+            "text": "The webcam and mics are tested for video calls."
+          }
+        },
+        "laptops4": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "plug",
+            "title": "Ports",
+            "text": "Every USB, HDMI and audio port is tested."
+          }
+        },
+        "laptops5": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "wifi",
+            "title": "Wi-Fi and Bluetooth",
+            "text": "Wireless connections are tested for range and stability."
+          }
+        },
+        "laptops6": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "battery",
+            "title": "Battery cycles",
+            "text": "Battery health and cycle count are measured."
+          }
+        },
+        "laptops7": {
+          "type": "check",
+          "settings": {
+            "device": "laptops",
+            "icon": "target",
+            "title": "Firmware locks",
+            "text": "BIOS, MDM and Find My locks are removed and verified."
+          }
+        },
+        "consoles0": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "gamepad",
+            "title": "Controllers",
+            "text": "Every button, stick and trigger is tested for drift and response."
+          }
+        },
+        "consoles1": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "screen",
+            "title": "Video output",
+            "text": "HDMI output is tested at full resolution."
+          }
+        },
+        "consoles2": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "chip",
+            "title": "Performance and cooling",
+            "text": "The console runs under load to check fans and temperatures."
+          }
+        },
+        "consoles3": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "plug",
+            "title": "Ports and disc drive",
+            "text": "USB ports and the disc drive (if any) are tested."
+          }
+        },
+        "consoles4": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "wifi",
+            "title": "Online",
+            "text": "Wi-Fi, ethernet and online sign-in are tested."
+          }
+        },
+        "consoles5": {
+          "type": "check",
+          "settings": {
+            "device": "consoles",
+            "icon": "target",
+            "title": "Account and ban check",
+            "text": "The console is reset and checked to be free of bans and old accounts."
+          }
+        },
+        "audio0": {
+          "type": "check",
+          "settings": {
+            "device": "audio",
+            "icon": "headset",
+            "title": "Sound quality",
+            "text": "Each earbud or speaker is tested for balance, clarity and distortion."
+          }
+        },
+        "audio1": {
+          "type": "check",
+          "settings": {
+            "device": "audio",
+            "icon": "wifi",
+            "title": "Bluetooth pairing",
+            "text": "Pairing, range and connection stability are tested."
+          }
+        },
+        "audio2": {
+          "type": "check",
+          "settings": {
+            "device": "audio",
+            "icon": "hand",
+            "title": "Touch controls",
+            "text": "Touch and button controls are tested."
+          }
+        },
+        "audio3": {
+          "type": "check",
+          "settings": {
+            "device": "audio",
+            "icon": "battery",
+            "title": "Battery life",
+            "text": "Battery life of the earbuds and case is tested."
+          }
+        },
+        "audio4": {
+          "type": "check",
+          "settings": {
+            "device": "audio",
+            "icon": "plug",
+            "title": "Charging case",
+            "text": "Wired and wireless charging of the case is tested."
+          }
+        }
+      },
+      "block_order": [
+        "phones0",
+        "phones1",
+        "phones2",
+        "phones3",
+        "phones4",
+        "phones5",
+        "phones6",
+        "phones7",
+        "phones8",
+        "phones9",
+        "phones10",
+        "tablets0",
+        "tablets1",
+        "tablets2",
+        "tablets3",
+        "tablets4",
+        "tablets5",
+        "tablets6",
+        "laptops0",
+        "laptops1",
+        "laptops2",
+        "laptops3",
+        "laptops4",
+        "laptops5",
+        "laptops6",
+        "laptops7",
+        "consoles0",
+        "consoles1",
+        "consoles2",
+        "consoles3",
+        "consoles4",
+        "consoles5",
+        "audio0",
+        "audio1",
+        "audio2",
+        "audio3",
+        "audio4"
+      ],
+      "settings": {
+        "note": "Checks vary by model."
+      }
+    },
+    "grades": {
+      "type": "promise-grades",
+      "blocks": {
+        "phones-fair": {
+          "type": "grade",
+          "settings": {
+            "device": "phones",
+            "grade": "Fair",
+            "screen": "Visible scratches and light wear. Doesn't affect use.",
+            "body": "Noticeable scratches, scuffs or small dents.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "phones-good": {
+          "type": "grade",
+          "settings": {
+            "device": "phones",
+            "grade": "Good",
+            "screen": "Light scratches you may notice with the screen off.",
+            "body": "Light scratches and signs of use.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "phones-excellent": {
+          "type": "grade",
+          "settings": {
+            "device": "phones",
+            "grade": "Excellent",
+            "screen": "Almost no signs of use. Hairline marks at most.",
+            "body": "Almost no signs of use. Hairline scratches at most.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "phones-premium": {
+          "type": "grade",
+          "settings": {
+            "device": "phones",
+            "grade": "Premium",
+            "screen": "Flawless. No signs of use.",
+            "body": "Flawless. Looks like new.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "tablets-fair": {
+          "type": "grade",
+          "settings": {
+            "device": "tablets",
+            "grade": "Fair",
+            "screen": "Visible scratches and light wear. Doesn't affect use.",
+            "body": "Noticeable scratches, scuffs or small dents.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "tablets-good": {
+          "type": "grade",
+          "settings": {
+            "device": "tablets",
+            "grade": "Good",
+            "screen": "Light scratches you may notice with the screen off.",
+            "body": "Light scratches and signs of use.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "tablets-excellent": {
+          "type": "grade",
+          "settings": {
+            "device": "tablets",
+            "grade": "Excellent",
+            "screen": "Almost no signs of use. Hairline marks at most.",
+            "body": "Almost no signs of use. Hairline scratches at most.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "tablets-premium": {
+          "type": "grade",
+          "settings": {
+            "device": "tablets",
+            "grade": "Premium",
+            "screen": "Flawless. No signs of use.",
+            "body": "Flawless. Looks like new.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "laptops-fair": {
+          "type": "grade",
+          "settings": {
+            "device": "laptops",
+            "grade": "Fair",
+            "screen": "Visible scratches and light wear. Doesn't affect use.",
+            "body": "Noticeable scratches, scuffs or small dents.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "laptops-good": {
+          "type": "grade",
+          "settings": {
+            "device": "laptops",
+            "grade": "Good",
+            "screen": "Light scratches you may notice with the screen off.",
+            "body": "Light scratches and signs of use.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "laptops-excellent": {
+          "type": "grade",
+          "settings": {
+            "device": "laptops",
+            "grade": "Excellent",
+            "screen": "Almost no signs of use. Hairline marks at most.",
+            "body": "Almost no signs of use. Hairline scratches at most.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "laptops-premium": {
+          "type": "grade",
+          "settings": {
+            "device": "laptops",
+            "grade": "Premium",
+            "screen": "Flawless. No signs of use.",
+            "body": "Flawless. Looks like new.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "consoles-fair": {
+          "type": "grade",
+          "settings": {
+            "device": "consoles",
+            "grade": "Fair",
+            "screen": "Visible scratches and light wear. Doesn't affect use.",
+            "body": "Noticeable scratches, scuffs or small dents.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "N/A for consoles. Controllers hold a full charge."
+          }
+        },
+        "consoles-good": {
+          "type": "grade",
+          "settings": {
+            "device": "consoles",
+            "grade": "Good",
+            "screen": "Light scratches you may notice with the screen off.",
+            "body": "Light scratches and signs of use.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "N/A for consoles. Controllers hold a full charge."
+          }
+        },
+        "consoles-excellent": {
+          "type": "grade",
+          "settings": {
+            "device": "consoles",
+            "grade": "Excellent",
+            "screen": "Almost no signs of use. Hairline marks at most.",
+            "body": "Almost no signs of use. Hairline scratches at most.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "N/A for consoles. Controllers hold a full charge."
+          }
+        },
+        "consoles-premium": {
+          "type": "grade",
+          "settings": {
+            "device": "consoles",
+            "grade": "Premium",
+            "screen": "Flawless. No signs of use.",
+            "body": "Flawless. Looks like new.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "N/A for consoles. Controllers hold a full charge."
+          }
+        },
+        "audio-fair": {
+          "type": "grade",
+          "settings": {
+            "device": "audio",
+            "grade": "Fair",
+            "screen": "Visible scratches and light wear. Doesn't affect use.",
+            "body": "Noticeable scratches, scuffs or small dents.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "audio-good": {
+          "type": "grade",
+          "settings": {
+            "device": "audio",
+            "grade": "Good",
+            "screen": "Light scratches you may notice with the screen off.",
+            "body": "Light scratches and signs of use.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "audio-excellent": {
+          "type": "grade",
+          "settings": {
+            "device": "audio",
+            "grade": "Excellent",
+            "screen": "Almost no signs of use. Hairline marks at most.",
+            "body": "Almost no signs of use. Hairline scratches at most.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        },
+        "audio-premium": {
+          "type": "grade",
+          "settings": {
+            "device": "audio",
+            "grade": "Premium",
+            "screen": "Flawless. No signs of use.",
+            "body": "Flawless. Looks like new.",
+            "hardware": "100% functional. Tested, repaired and cleaned by our own technicians.",
+            "battery": "Minimum 80% battery health. Exact health listed on the product page."
+          }
+        }
+      },
+      "block_order": [
+        "phones-fair",
+        "phones-good",
+        "phones-excellent",
+        "phones-premium",
+        "tablets-fair",
+        "tablets-good",
+        "tablets-excellent",
+        "tablets-premium",
+        "laptops-fair",
+        "laptops-good",
+        "laptops-excellent",
+        "laptops-premium",
+        "consoles-fair",
+        "consoles-good",
+        "consoles-excellent",
+        "consoles-premium",
+        "audio-fair",
+        "audio-good",
+        "audio-excellent",
+        "audio-premium"
+      ],
       "settings": {}
     }
   },
-  "order": ["promise"]
+  "order": [
+    "promise",
+    "inspection",
+    "grades"
+  ]
 }
