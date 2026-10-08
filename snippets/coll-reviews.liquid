@@ -33,8 +33,8 @@
           <div class="rv-prod__card">
             {%- if rp and rp.featured_image -%}{{ rp.featured_image | image_url: width: 80 | image_tag: class: 'rv-prod__img', loading: 'lazy', alt: rp.title }}{%- else -%}<span class="rv-prod__img rv-prod__img--ph" aria-hidden="true"></span>{%- endif -%}
             <div class="rv-prod__info">
-              <p class="rv-prod__title">{% if rp %}{{ rp.title }}{% else %}{{ r.location.value }}{% endif %}{% if rp %} <a href="{{ rp.url }}" class="rv-prod__link">See item</a>{% endif %}</p>
-              <p class="rv-prod__meta">{% if r.condition.value != blank %}<span>Condition <b>{{ r.condition.value }}</b></span>{% endif %}<span>Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></span></p>
+              <p class="rv-prod__title"><span class="rv-prod__name">{% if rp %}{{ rp.title }}{% else %}{{ r.location.value }}{% endif %}</span>{% if r.variant.value != blank %}<span class="rv-prod__var"> - {{ r.variant.value }}</span>{% endif %}{% if rp %} <a href="{{ rp.url }}" class="rv-prod__link">See item</a>{% endif %}</p>
+              <p class="rv-prod__meta">{% if r.condition.value != blank %}<span>Condition <b>{{ r.condition.value }}</b> <svg class="rv-prod__i" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4.5M8 4.6v.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>{% endif %}<span>Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></span></p>
             </div>
           </div>
           <button type="button" class="rv-prod__helpful" data-rv-helpful aria-pressed="false"><span>{{ r.helpful.value | default: 0 }}</span> 👍</button>
