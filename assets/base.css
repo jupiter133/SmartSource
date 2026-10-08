@@ -1677,3 +1677,22 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 /* Uniform photo fit in mega tiles */
 .mega-tile__img{position:relative}
 .mega-tile__img>img,.mega-tile__img .mega-tile__photo{position:absolute;inset:8% 8%;width:84%!important;height:84%!important;max-width:none;padding:0!important;object-fit:contain;object-position:center}
+/* Review showcase: match Back Market sizing */
+.rs{padding:56px 0}
+.rs__wrap{max-width:1600px}
+.rs__head h2{font-size:clamp(20px,1.9vw,28px);font-weight:500;font-family:"DM Sans",Inter,sans-serif}
+.rs__arrows button{width:48px;height:48px;font-size:22px}
+.rs__track{gap:20px;grid-auto-columns:calc((100% - 60px)/4.15)}
+.rs-card{border-radius:10px;box-shadow:0 1px 2px #0000000f}
+.rs-card__top{aspect-ratio:355/555;max-height:none;padding:20px 22px;background:#232327}
+.rs-card--nophoto .rs-card__top{background:#232327}
+.rs-card--nophoto .rs-card__top::after{display:none}
+.rs-card__top::after{inset:45% 0 0;background:linear-gradient(transparent,#1d1d21 70%)}
+.rs-card__name{top:20px;left:22px;font-size:16px;font-weight:500;padding:1px 6px;border-radius:2px}
+.rs-card__txt{font-size:16px;line-height:1.55}
+.rs-card__stars{margin-top:22px;font-size:13px}.rs-card__stars b{font-weight:500;font-size:14px;margin-left:4px}
+.rs-card__prod{gap:20px;padding:22px 22px 26px;font-size:14px;line-height:1.55;min-height:132px;align-items:flex-start}
+.rs-card__prod img{width:72px;height:auto;max-height:72px;object-fit:contain}
+.rs-m__content.is-single{grid-template-columns:minmax(0,640px);justify-content:center}
+@media (max-width:1000px){.rs__track{grid-auto-columns:calc((100% - 20px)/2.1)}}
+@media (max-width:600px){.rs__track{grid-auto-columns:80%}}

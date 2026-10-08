@@ -4,30 +4,29 @@
 {%- for r in metaobjects.customer_review.values -%}
   {%- if r.test_only.value and request.design_mode != true -%}{%- continue -%}{%- endif -%}
   {%- assign rating = r.rating.value | plus: 0 -%}
-  {%- if rating < section.settings.min_rating or r.body.value == blank -%}{%- continue -%}{%- endif -%}
+  {%- if rating < section.settings.min_rating or r.body.value == blank or r.date.value == blank -%}{%- continue -%}{%- endif -%}
   {%- assign rp = r.product.value -%}
   {%- if section.settings.photos_only and r.photos.value.size == 0 -%}{%- continue -%}{%- endif -%}
-  {%- if r.photos.value.size == 0 and rp.featured_image == blank -%}{%- continue -%}{%- endif -%}
   {%- if n >= section.settings.limit -%}{%- break -%}{%- endif -%}
   {%- assign n = n | plus: 1 -%}
   {%- capture stars -%}{%- for i in (1..5) -%}<span{% if i > rating %} class="is-off"{% endif %}>★</span>{%- endfor -%}{%- endcapture -%}
   {%- assign pname = r.location.value -%}{%- if rp -%}{%- assign pname = rp.title -%}{%- endif -%}{%- if r.variant.value != blank -%}{%- assign pname = pname | append: ' - ' | append: r.variant.value -%}{%- endif -%}
-  <article class="rs-card">
+  <article class="rs-card{% if r.photos.value.size == 0 %} rs-card--nophoto{% endif %}">
     <button type="button" class="rs-card__top" data-rs-open aria-label="Read review by {{ r.author.value | escape }}">
-      <span class="rs-card__bg">{%- if r.photos.value.size > 0 -%}{{ r.photos.value.first | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{{ rp.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' , class: 'is-product' }}{%- endif -%}</span>
+      {%- if r.photos.value.size > 0 -%}<span class="rs-card__bg">{{ r.photos.value.first | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
       <span class="rs-card__name">{{ r.author.value }}</span>
       <span class="rs-card__txt">{{ r.body.value | strip_html | truncate: 150 }}</span>
       <span class="rs-card__stars">{{ stars }} <b>{{ rating }}/5</b></span>
     </button>
     <div class="rs-card__prod">
-      {%- if rp.featured_image -%}{{ rp.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
+      {%- if rp and rp.featured_image -%}{{ rp.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
       <span>{{ pname }}</span>
     </div>
     <template data-rs-detail>
-      <div class="rs-m__gal">
-        <div class="rs-m__main">{%- if r.photos.value.size > 0 -%}{%- for ph in r.photos.value -%}{{ ph | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'Customer photo', data-rs-slide: forloop.index0 }}{%- endfor -%}{%- else -%}{{ rp.featured_image | image_url: width: 1200 | image_tag: alt: pname, class: 'is-product', data-rs-slide: 0 }}{%- endif -%}</div>
+      {%- if r.photos.value.size > 0 -%}<div class="rs-m__gal">
+        <div class="rs-m__main">{%- for ph in r.photos.value -%}{{ ph | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'Customer photo', data-rs-slide: forloop.index0 }}{%- endfor -%}</div>
         {%- if r.photos.value.size > 1 -%}<div class="rs-m__thumbs"><button type="button" class="rs-m__nav" data-rs-step="-1" aria-label="Previous photo">‹</button>{%- for ph in r.photos.value -%}<button type="button" class="rs-m__thumb" data-rs-go="{{ forloop.index0 }}">{{ ph | image_url: width: 160 | image_tag: alt: '' }}</button>{%- endfor -%}<button type="button" class="rs-m__nav" data-rs-step="1" aria-label="Next photo">›</button></div>{%- endif -%}
-      </div>
+      </div>{%- endif -%}
       <div class="rs-m__panel">
         <div class="rs-m__head"><p class="rs-m__name">{{ r.author.value }}</p>{%- if r.verified.value -%}<span class="rs-m__badge">✓ Verified purchase</span>{%- endif -%}</div>
         <p class="rs-m__date">Reviewed {{ r.date.value | date: '%-m/%-d/%y' }}</p>
@@ -36,7 +35,7 @@
         <p class="rs-m__body">{{ r.body.value | escape | newline_to_br }}</p>
         <div class="rv-prod">
           <div class="rv-prod__card">
-            {%- if rp.featured_image -%}{{ rp.featured_image | image_url: width: 80 | image_tag: class: 'rv-prod__img', alt: '' }}{%- endif -%}
+            {%- if rp and rp.featured_image -%}{{ rp.featured_image | image_url: width: 80 | image_tag: class: 'rv-prod__img', alt: '' }}{%- endif -%}
             <div class="rv-prod__info">
               <p class="rv-prod__title">{% if rp %}<a href="{{ rp.url }}" class="rv-prod__name">{{ pname }}</a>{% else %}<span class="rv-prod__name">{{ pname }}</span>{% endif %}</p>
               <p class="rv-prod__meta">{% if r.condition.value != blank %}<span>Condition <b>{{ r.condition.value }}</b></span>{% endif %}<span>Purchased <b>{{ r.date.value | date: '%-m/%-d/%y' }}</b></span></p>
@@ -73,7 +72,7 @@ function st(){p.disabled=t.scrollLeft<=4;nx.disabled=t.scrollLeft+t.clientWidth>
 function go(d){var k=t.querySelector('.rs-card');t.scrollBy({left:d*(k?k.offsetWidth+24:340),behavior:'smooth'})}
 p.onclick=function(){go(-1)};nx.onclick=function(){go(1)};t.addEventListener('scroll',st,{passive:true});st();
 function slide(i){var s=c.querySelectorAll('[data-rs-slide]');if(!s.length)return;cur=(i+s.length)%s.length;s.forEach(function(x,j){x.hidden=j!==cur});c.querySelectorAll('[data-rs-go]').forEach(function(b,j){b.classList.toggle('is-on',j===cur)})}
-t.addEventListener('click',function(e){var b=e.target.closest('[data-rs-open]');if(!b)return;var card=b.closest('.rs-card');c.innerHTML=card.querySelector('[data-rs-detail]').innerHTML;R.querySelector('[data-rs-mtitle]').textContent=card.querySelector('.rs-card__prod span').textContent;slide(0);m.showModal()});
+t.addEventListener('click',function(e){var b=e.target.closest('[data-rs-open]');if(!b)return;var card=b.closest('.rs-card');c.innerHTML=card.querySelector('[data-rs-detail]').innerHTML;c.classList.toggle('is-single',!c.querySelector('.rs-m__gal'));R.querySelector('[data-rs-mtitle]').textContent=card.querySelector('.rs-card__prod span').textContent;slide(0);m.showModal()});
 c.addEventListener('click',function(e){var g=e.target.closest('[data-rs-go]'),s=e.target.closest('[data-rs-step]');if(g)slide(+g.dataset.rsGo);if(s)slide(cur+ +s.dataset.rsStep)});
 R.querySelector('[data-rs-close]').onclick=function(){m.close()};m.addEventListener('click',function(e){if(e.target===m)m.close()})})();
 </script>
