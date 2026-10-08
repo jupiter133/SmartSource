@@ -1898,3 +1898,14 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .info-card--btn>span{flex:1;display:flex;flex-direction:column}
 .info-card__chevsvg{width:20px;height:20px;flex:none;margin-left:auto}
 .info-card--btn:hover{filter:brightness(.98)}
+/* PDP info cards: uniform Back Market sizing */
+.info-cards{gap:14px}
+.info-cards>.info-card{padding:22px 28px;gap:24px;min-height:92px;border-radius:14px;font-family:"DM Sans",Inter,sans-serif;align-items:center}
+.info-cards>.info-card>svg:first-child,.info-cards>.info-card>.icon{width:30px;height:30px;flex:none}
+.info-cards>.info-card strong{font-size:17px;font-weight:500;line-height:1.35}
+.info-cards>.info-card small{font-size:15px;color:#3c3f48;margin-top:3px}
+.info-card--btn>span{gap:2px}
+.info-card--btn strong+strong{margin-top:2px}
+/* breathing room before the next section */
+.pdp{padding-bottom:72px}
+.pdp-repair-link{margin-top:20px}
