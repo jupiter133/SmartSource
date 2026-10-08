@@ -6,8 +6,9 @@
 {%- assign rv_count = 0 -%}{%- assign rv_has_test = false -%}{%- assign rv_sum = 0 -%}
 {%- assign s5 = 0 -%}{%- assign s4 = 0 -%}{%- assign s3 = 0 -%}{%- assign s2 = 0 -%}{%- assign s1 = 0 -%}
 {%- assign rv_photos = '' -%}{%- assign rv_items = '' -%}
+{%- paginate metaobjects.customer_review.values by 250 -%}
 {%- if metaobjects.customer_review.values.size > 0 -%}
-  {%- for r in metaobjects.customer_review.values limit: 200 -%}
+  {%- for r in metaobjects.customer_review.values -%}
     {%- if r.test_only.value and request.design_mode != true -%}{%- continue -%}{%- endif -%}
     {%- if r.test_only.value -%}{%- assign rv_has_test = true -%}{%- endif -%}
     {%- assign cat = r.category.value | downcase | strip -%}
@@ -22,7 +23,7 @@
       <article class="rv-item" data-rating="{{ rating }}" data-condition="{{ r.condition.value | escape }}" data-date="{{ r.date.value | date: '%Y%m%d' }}" data-photos="{{ r.photos.value.size | default: 0 }}">
         <header class="rv-item__head">
           <div><p class="rv-item__name">{{ r.author.value }} {% if r.verified.value %}<span class="rv-badge">✓ Verified purchase</span>{% endif %}</p>
-          <p class="rv-item__meta">Reviewed {{ r.date.value | date: '%b %-d, %Y' }}{% if r.location.value != blank %} · {{ r.location.value }}{% endif %}{% if r.product.value %} · {{ r.product.value.title }}{% endif %}{% if r.condition.value != blank %} · {{ r.condition.value }}{% endif %}</p></div>
+          <p class="rv-item__meta">Reviewed {{ r.date.value | date: '%b %-d, %Y' }}</p></div>
           <p class="rv-item__score">{{ stars }} {{ rating }}/5</p>
         </header>
         {%- if r.photos.value.size > 0 -%}<div class="rv-item__photos">{%- for ph in r.photos.value limit: 4 -%}{{ ph | image_url: width: 320 | image_tag: loading: 'lazy', alt: 'Customer photo' }}{%- endfor -%}</div>{%- endif -%}
@@ -50,6 +51,7 @@
     {%- endif -%}
   {%- endfor -%}
 {%- endif -%}
+{%- endpaginate -%}
 
 {%- if rv_count > 0 -%}
   {%- assign avg = rv_sum | times: 1.0 | divided_by: rv_count | round: 1 -%}
