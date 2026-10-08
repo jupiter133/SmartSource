@@ -1862,3 +1862,9 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .promo-cards--flat .promo-card__img{height:clamp(220px,22vw,300px);margin-bottom:12px}
 .promo-cards--flat .promo-card__img img{max-height:100%!important}
 .promo-card.promo-card--photo{min-height:360px}
+/* Trade-in banner: taller, Back Market type */
+.promo-banner{min-height:clamp(380px,34vw,500px);font-family:"DM Sans",Inter,sans-serif}
+.promo-banner__text{padding:clamp(28px,4vw,56px)}
+.promo-banner__text h2,.promo-banner__text h3{font-size:clamp(30px,3.4vw,52px);font-weight:500;letter-spacing:-.02em;line-height:1.1;margin:0 0 14px}
+.promo-banner__text p{font-size:clamp(16px,1.4vw,20px);max-width:520px;line-height:1.5;margin:0 0 26px}
+.promo-banner .btn{font-size:16px;font-weight:500;padding:13px 22px;border-radius:8px}
