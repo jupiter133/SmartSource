@@ -703,10 +703,6 @@
       "settings": {
         "heading": "Top brands, refurbished"
       }
-    },
-    "reviews": {
-      "type": "review-showcase",
-      "settings": {}
     }
   },
   "order": [
@@ -718,7 +714,6 @@
     "cards",
     "recommended",
     "promise",
-    "reviews",
     "reels",
     "deals",
     "services",

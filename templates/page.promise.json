@@ -730,10 +730,15 @@
         "audio-premium"
       ],
       "settings": {}
+    },
+    "reviews": {
+      "type": "review-showcase",
+      "settings": {}
     }
   },
   "order": [
     "promise",
+    "reviews",
     "inspection",
     "grades"
   ]
