@@ -299,39 +299,10 @@
       "settings": {}
     },
     "reels": {
-      "type": "video-reels",
-      "blocks": {
-        "r1": {
-          "type": "reel",
-          "settings": {
-            "caption": "all for under $1,000"
-          }
-        },
-        "r2": {
-          "type": "reel",
-          "settings": {}
-        },
-        "r3": {
-          "type": "reel",
-          "settings": {}
-        },
-        "r4": {
-          "type": "reel",
-          "settings": {}
-        },
-        "r5": {
-          "type": "reel",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4",
-        "r5"
-      ],
-      "settings": {}
+      "type": "review-showcase",
+      "settings": {
+        "title": "Don't just take our word for it"
+      }
     },
     "blog": {
       "type": "featured-blog",
