@@ -1,7 +1,7 @@
 {
   "sections": {
     "promise": {
-      "type": "promise",
+      "type": "promise-page",
       "blocks": {
         "p1": {
           "type": "pillar",

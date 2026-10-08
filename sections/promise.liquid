@@ -1,90 +1,30 @@
-
-<div class="pr" id="pr-{{ section.id }}">
-  <div class="pr__wrap">
-    <h1 class="pr__h1">{{ section.settings.title }}</h1>
-    {%- if section.settings.subtitle != blank -%}<p class="pr__sub">{{ section.settings.subtitle }}</p>{%- endif -%}
-
-    <ul class="pr__pillars">
-      {%- for b in section.blocks -%}{%- if b.type == 'pillar' -%}
-        <li {{ b.shopify_attributes }}><span class="pr__ic">{% render 'pr-icon', name: b.settings.icon %}</span><span>{{ b.settings.text }}</span></li>
-      {%- endif -%}{%- endfor -%}
-    </ul>
-
-    <div class="pr__media">
-      {%- if section.settings.video_url != blank -%}
-        {%- if section.settings.video_url.type == 'youtube' -%}<iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}" title="{{ section.settings.title | escape }}" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>{%- elsif section.settings.video_url.type == 'vimeo' -%}<iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}" title="{{ section.settings.title | escape }}" allowfullscreen loading="lazy"></iframe>{%- endif -%}
-      {%- elsif section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', sizes: '(min-width: 1200px) 1200px, 100vw' }}
-      {%- else -%}
-        <div class="pr__ph">{{ 'lifestyle-2' | placeholder_svg_tag }}</div>
-      {%- endif -%}
-    </div>
+<section class="section page-width">
+  <div class="section__head">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.button_label != blank -%}<a class="btn btn--dark" href="{{ section.settings.link }}">{{ section.settings.button_label }} →</a>{%- endif -%}
   </div>
-
-  <div class="pr__wrap pr__wrap--sec">
-    <h2 class="pr__h2">{{ section.settings.cards_title }}</h2>
-    {%- if section.settings.cards_sub != blank -%}<p class="pr__sub">{{ section.settings.cards_sub }}</p>{%- endif -%}
-    <div class="pr__track" data-pr-track>
-      {%- for b in section.blocks -%}{%- if b.type == 'card' -%}
-        <article class="pr-card" {{ b.shopify_attributes }}>
-          {% render 'pr-icon', name: b.settings.icon, class: 'pr-card__ic' %}
-          <h3>{{ b.settings.title }}</h3>
-          <p>{{ b.settings.text }}</p>
-        </article>
-      {%- endif -%}{%- endfor -%}
-    </div>
-    <div class="pr__nav"><button type="button" data-pr-prev aria-label="Previous" disabled>‹</button><button type="button" data-pr-next aria-label="Next">›</button></div>
+  <div class="promise-grid">
+    {%- for block in section.blocks -%}
+      <div class="promise" {{ block.shopify_attributes }}>
+        <span class="promise__icon">{% render 'icon', name: block.settings.icon %}</span>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
   </div>
-
-  <div class="pr__wrap pr__split">
-    <div class="pr__splitimg">
-      {%- if section.settings.about_image != blank -%}{{ section.settings.about_image | image_url: width: 1000 | image_tag: loading: 'lazy' }}{%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
-    </div>
-    <div class="pr__splittext">
-      <h2>{{ section.settings.about_title }}</h2>
-      <div class="pr__rte">{{ section.settings.about_text }}</div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){var R=document.getElementById('pr-{{ section.id }}');if(!R)return;var t=R.querySelector('[data-pr-track]'),p=R.querySelector('[data-pr-prev]'),n=R.querySelector('[data-pr-next]');
-function st(){p.disabled=t.scrollLeft<=4;n.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4}
-function go(d){var c=t.querySelector('.pr-card');t.scrollBy({left:d*(c?c.offsetWidth+24:320),behavior:'smooth'})}
-p.addEventListener('click',function(){go(-1)});n.addEventListener('click',function(){go(1)});t.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st()})();
-</script>
-
+</section>
 {% schema %}
-{
-  "name": "Our promise",
-  "settings": [
-    { "type": "text", "id": "title", "label": "Heading", "default": "The SmartSource Promise" },
-    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Everything you love about new, for less." },
-    { "type": "video_url", "id": "video_url", "label": "Video (YouTube or Vimeo)", "accept": ["youtube", "vimeo"] },
-    { "type": "image_picker", "id": "image", "label": "Image (used if no video)" },
-    { "type": "text", "id": "cards_title", "label": "Cards heading", "default": "Best-in-class refurbishment" },
-    { "type": "text", "id": "cards_sub", "label": "Cards subheading", "default": "Every device is tested, cleaned and graded by our own techs in the GTA." },
-    { "type": "image_picker", "id": "about_image", "label": "Bottom image" },
-    { "type": "text", "id": "about_title", "label": "Bottom heading", "default": "What is refurbishment?" },
-    { "type": "richtext", "id": "about_text", "label": "Bottom text", "default": "<p>Refurbishment is the process of restoring a device to full working order, from how it looks to how it performs.</p><p>Every phone, tablet and laptop we sell goes through our inspection, testing and cleaning process before it's listed. The bonus? <a href=\"/pages/why-refurbished\">It's way better for the planet, too.</a></p>" }
-  ],
-  "blocks": [
-    {
-      "type": "pillar", "name": "Pillar",
-      "settings": [
-        { "type": "select", "id": "icon", "label": "Icon", "default": "star", "options": [ {"value":"star","label":"Star"},{"value":"checklist","label":"Checklist"},{"value":"returns","label":"Returns"},{"value":"award","label":"Award"},{"value":"check","label":"Check"},{"value":"battery","label":"Battery"},{"value":"sparkle","label":"Sparkle"},{"value":"headset","label":"Headset"},{"value":"leaf","label":"Leaf"},{"value":"flag","label":"Flag"},{"value":"bulb","label":"Bulb"},{"value":"shield","label":"Shield"} ] },
-        { "type": "text", "id": "text", "label": "Text", "default": "Best-in-class refurbishment" }
-      ]
-    },
-    {
-      "type": "card", "name": "Card",
-      "settings": [
-        { "type": "select", "id": "icon", "label": "Icon", "default": "check", "options": [ {"value":"star","label":"Star"},{"value":"checklist","label":"Checklist"},{"value":"returns","label":"Returns"},{"value":"award","label":"Award"},{"value":"check","label":"Check"},{"value":"battery","label":"Battery"},{"value":"sparkle","label":"Sparkle"},{"value":"headset","label":"Headset"},{"value":"leaf","label":"Leaf"},{"value":"flag","label":"Flag"},{"value":"bulb","label":"Bulb"},{"value":"shield","label":"Shield"} ] },
-        { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
-        { "type": "textarea", "id": "text", "label": "Text" }
-      ]
-    }
-  ],
-  "presets": [{ "name": "Our promise" }]
-}
+{ "name": "Promise / trust", "settings": [
+  { "type": "text", "id": "heading", "label": "Heading", "default": "Our Promise: Refurbished without the risk" },
+  { "type": "text", "id": "button_label", "label": "Button", "default": "Our commitment" },
+  { "type": "url", "id": "link", "label": "Link" }
+], "blocks": [{ "type": "item", "name": "Item", "settings": [
+  { "type": "select", "id": "icon", "label": "Icon", "options": [
+    {"value":"award","label":"Warranty"},{"value":"list","label":"Inspection"},{"value":"swap","label":"Returns"},{"value":"star","label":"Quality"},{"value":"truck","label":"Shipping"},{"value":"shield","label":"Secure"}], "default": "award" },
+  { "type": "text", "id": "text", "label": "Text", "default": "1-year warranty" }
+]}], "presets": [{ "name": "Promise / trust", "blocks": [
+  {"type":"item","settings":{"icon":"award","text":"1-year warranty"}},
+  {"type":"item","settings":{"icon":"list","text":"Up to 100-point quality inspection"}},
+  {"type":"item","settings":{"icon":"swap","text":"Free 30-day returns"}},
+  {"type":"item","settings":{"icon":"star","text":"Professionally refurbished"}}
+]}] }
 {% endschema %}
