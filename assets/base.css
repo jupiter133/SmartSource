@@ -2020,3 +2020,14 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .ca-banner__text span{font-size:15px;opacity:.9}
 .ca-banner__cta{flex:none;background:#fff;color:#111;font-weight:600;padding:12px 20px;border-radius:999px;font-size:15px}
 @media (max-width:600px){.ca-banner{flex-wrap:wrap;padding:16px}.ca-banner__cta{width:100%;text-align:center}}
+/* Highlighted landing rows */
+.lx-row--best,.lx-row--steal{border-radius:24px;padding:32px 28px 28px!important;margin-top:28px;margin-bottom:28px;box-sizing:border-box}
+.lx-row--best{background:linear-gradient(135deg,#efe9ff 0%,#e3f1ff 100%)}
+.lx-row--steal{background:linear-gradient(135deg,#ffe6ef 0%,#fff1e3 100%)}
+.lx-row--best .section__head,.lx-row--steal .section__head{align-items:flex-end;margin-bottom:20px}
+.lx__badge{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+.lx-row--best .lx__badge{background:#5b3fc4;color:#fff}
+.lx-row--steal .lx__badge{background:#a8326b;color:#fff}
+.lx__sub{margin:4px 0 0;color:#3c3f48;font-size:15px}
+.lx-row--best .card,.lx-row--steal .card{box-shadow:0 2px 10px #0000000d}
+@media (max-width:600px){.lx-row--best,.lx-row--steal{border-radius:16px;padding:22px 14px 18px!important}}

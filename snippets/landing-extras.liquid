@@ -4,12 +4,12 @@
   Rows load from /collections/all/<tag>?sort_by=…&section_id=landing-rows-api.
 {%- endcomment -%}
 <div class="lx" data-lx data-tag="{{ tag }}">
-  <section class="section page-width lx-row" id="lx-deals" data-carousel>
-    <div class="section__head"><h2>Best sellers</h2>{% render 'carousel-arrows' %}</div>
+  <section class="section page-width lx-row lx-row--best" id="lx-deals" data-carousel>
+    <div class="section__head"><div><span class="lx__badge">🔥 Most popular</span><h2>Best sellers</h2><p class="lx__sub">What Canadians are buying right now.</p></div>{% render 'carousel-arrows' %}</div>
     <div class="carousel carousel--cards" data-track data-lx-load="best-selling"></div>
   </section>
-  <section class="section page-width lx-row" data-carousel>
-    <div class="section__head"><h2><span class="lx__spark" aria-hidden="true">✦</span> Steal deals</h2>{% render 'carousel-arrows' %}</div>
+  <section class="section page-width lx-row lx-row--steal" data-carousel>
+    <div class="section__head"><div><span class="lx__badge">✦ Lowest prices</span><h2>Steal deals</h2><p class="lx__sub">Our cheapest picks, tested and backed by a 1-year warranty.</p></div>{% render 'carousel-arrows' %}</div>
     <div class="carousel carousel--cards" data-track data-lx-load="price-ascending"></div>
   </section>
 </div>
