@@ -1725,3 +1725,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
   .header__nav .nav-deal,.header__nav .nav-deal *{color:#a8326b!important;font-weight:400}
   .header__nav .mega a{color:inherit}
 }
+@media (min-width:750px){.header__nav{font-size:14px}.nav-side-link svg{width:18px;height:18px}}
