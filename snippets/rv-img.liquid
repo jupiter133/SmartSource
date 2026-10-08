@@ -1,0 +1,19 @@
+{%- comment -%}
+  Renders a review photo from a file_reference value, whatever shape Liquid hands back
+  (image, media_image, generic_file). Never throws "invalid url input".
+  Params: f (file), w (width), cls (class)
+{%- endcomment -%}
+{%- liquid
+  assign w = w | default: 400
+  assign src = blank
+  if f.preview_image.src != blank
+    assign src = f.preview_image | image_url: width: w
+  elsif f.image.src != blank
+    assign src = f.image | image_url: width: w
+  elsif f.src != blank
+    assign src = f | image_url: width: w
+  elsif f.url != blank
+    assign src = f.url
+  endif
+-%}
+{%- if src != blank -%}<img src="{{ src }}" alt="Customer photo" loading="lazy"{% if cls %} class="{{ cls }}"{% endif %}>{%- endif -%}

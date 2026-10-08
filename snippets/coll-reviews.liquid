@@ -26,7 +26,7 @@
           <p class="rv-item__meta">Reviewed {{ r.date.value | date: '%b %-d, %Y' }}</p></div>
           <p class="rv-item__score">{{ stars }} {{ rating }}/5</p>
         </header>
-        {%- if r.photos.value.size > 0 -%}<div class="rv-item__photos">{%- for ph in r.photos.value limit: 4 -%}{{ ph.preview_image | image_url: width: 320 | image_tag: loading: 'lazy', alt: 'Customer photo' }}{%- endfor -%}</div>{%- endif -%}
+        {%- if r.photos.value.size > 0 -%}<div class="rv-item__photos">{%- for ph in r.photos.value limit: 4 -%}{% render 'rv-img', f: ph, w: 320 %}{%- endfor -%}</div>{%- endif -%}
         {%- if r.title.value != blank -%}<p class="rv-item__title">{{ r.title.value }}</p>{%- endif -%}
         <p class="rv-item__body">{{ r.body.value | escape | newline_to_br }}</p>
         {%- assign rp = r.product.value -%}
@@ -46,7 +46,7 @@
     {%- endcapture -%}
     {%- if rv_match -%}{%- assign rv_items = rv_items | append: item -%}{%- else -%}{%- assign rv_rest = rv_rest | append: item -%}{%- endif -%}
     {%- if r.photos.value.size > 0 -%}
-      {%- capture ph -%}<figure class="rv-photo">{{ r.photos.value.first.preview_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: 'Customer photo' }}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
+      {%- capture ph -%}<figure class="rv-photo">{% render 'rv-img', f: r.photos.value.first, w: 400 %}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
       {%- assign rv_photos = rv_photos | append: ph -%}
     {%- endif -%}
   {%- endfor -%}

@@ -13,7 +13,7 @@
   {%- assign pname = r.location.value -%}{%- if rp -%}{%- assign pname = rp.title -%}{%- endif -%}{%- if r.variant.value != blank -%}{%- assign pname = pname | append: ' - ' | append: r.variant.value -%}{%- endif -%}
   <article class="rs-card{% if r.photos.value.size == 0 %} rs-card--nophoto{% endif %}">
     <button type="button" class="rs-card__top" data-rs-open aria-label="Read review by {{ r.author.value | escape }}">
-      {%- if r.photos.value.size > 0 -%}<span class="rs-card__bg">{{ r.photos.value.first.preview_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
+      {%- if r.photos.value.size > 0 -%}<span class="rs-card__bg">{% render 'rv-img', f: r.photos.value.first, w: 700 %}</span>{%- endif -%}
       <span class="rs-card__name">{{ r.author.value }}</span>{%- if r.verified.value -%}<span class="rs-card__ver"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0l2 1.6 2.5-.2.8 2.4 2.1 1.4-.9 2.4.9 2.4-2.1 1.4-.8 2.4-2.5-.2L8 16l-2-1.6-2.5.2-.8-2.4L.6 10.8l.9-2.4L.6 6l2.1-1.4.8-2.4 2.5.2z" fill="currentColor"/><path d="M5 8.2l2 2 4-4.2" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified purchase</span>{%- endif -%}
       <span class="rs-card__txt">{{ r.body.value | strip_html | truncate: 150 }}</span>
       <span class="rs-card__stars">{{ stars }} <b>{{ rating }}/5</b></span>
@@ -24,8 +24,8 @@
     </div>
     <template data-rs-detail>
       {%- if r.photos.value.size > 0 -%}<div class="rs-m__gal">
-        <div class="rs-m__main">{%- for ph in r.photos.value -%}{{ ph.preview_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'Customer photo', data-rs-slide: forloop.index0 }}{%- endfor -%}</div>
-        {%- if r.photos.value.size > 1 -%}<div class="rs-m__thumbs"><button type="button" class="rs-m__nav" data-rs-step="-1" aria-label="Previous photo">‹</button>{%- for ph in r.photos.value -%}<button type="button" class="rs-m__thumb" data-rs-go="{{ forloop.index0 }}">{{ ph.preview_image | image_url: width: 160 | image_tag: alt: '' }}</button>{%- endfor -%}<button type="button" class="rs-m__nav" data-rs-step="1" aria-label="Next photo">›</button></div>{%- endif -%}
+        <div class="rs-m__main">{%- for ph in r.photos.value -%}<span class="rs-m__slide" data-rs-slide="{{ forloop.index0 }}">{% render 'rv-img', f: ph, w: 1400 %}</span>{%- endfor -%}</div>
+        {%- if r.photos.value.size > 1 -%}<div class="rs-m__thumbs"><button type="button" class="rs-m__nav" data-rs-step="-1" aria-label="Previous photo">‹</button>{%- for ph in r.photos.value -%}<button type="button" class="rs-m__thumb" data-rs-go="{{ forloop.index0 }}">{% render 'rv-img', f: ph, w: 160 %}</button>{%- endfor -%}<button type="button" class="rs-m__nav" data-rs-step="1" aria-label="Next photo">›</button></div>{%- endif -%}
       </div>{%- endif -%}
       <div class="rs-m__panel">
         <div class="rs-m__head"><p class="rs-m__name">{{ r.author.value }}</p>{%- if r.verified.value -%}<span class="rs-m__badge">✓ Verified purchase</span>{%- endif -%}</div>
