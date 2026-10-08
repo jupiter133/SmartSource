@@ -226,7 +226,7 @@
           </div>
         {%- endunless -%}{%- endif -%}
         {%- assign shown = 0 -%}{%- assign total = collection.products.size -%}
-        {%- if missing_tag -%}<div class="coll-empty-tag"><p class="coll-empty-tag__h">Nothing in stock here right now</p><p>New stock lands every week. Check back soon, or <a href="{{ routes.all_products_collection_url }}">browse everything</a>.</p></div>{%- endif -%}
+        {%- if missing_tag or collection.products_count == 0 -%}<div class="coll-empty-tag"><p class="coll-empty-tag__h">Nothing in stock here right now</p><p>New stock lands every week. Check back soon, or <a href="{{ routes.all_products_collection_url }}">browse everything</a>.</p></div>{%- endif -%}
         {%- for product in collection.products -%}
           {%- if missing_tag -%}{%- break -%}{%- endif -%}
           {%- if product.type == 'Mail-in Repair' or product.type == 'Mail-in Diagnostic' -%}{%- continue -%}{%- endif -%}
