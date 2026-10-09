@@ -9,9 +9,7 @@
   assign plans_url = routes.root_url | append: '/pages/plans' | replace: '//', '/'
   assign phones_url = routes.root_url | append: '/collections/all' | replace: '//', '/'
 
-  comment
-    Sort helpers: build "1NNN:handle" keys, sort as strings, then look metaobjects up by handle.
-  endcomment
+  # Sort helpers: build 1NNN:handle keys, sort as strings, then look metaobjects up by handle.
   assign pre_keys = ''
   for p in shop.metaobjects.prepaid_plan.values
     if p.active != blank and p.active.value == false

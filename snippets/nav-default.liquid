@@ -80,3 +80,12 @@
     <div class="mega__grid"><a class="mega-tile mega-tile--all" href="{% render 'page-url', url: '/pages/accessories' %}"><span class="mega-tile__img" style="--tint: #EEEAFD"><span class="mega-tile__all">All</span></span><span class="mega-tile__title">All accessories</span></a><a class="mega-tile" href="/collections/cases"><span class="mega-tile__img" style="--tint: #F6E6FB">{% render 'mega-art', src: 'cat-cases.webp', kind: 'case', title: 'Cases', idx: 0 %}</span><span class="mega-tile__title">Cases</span></a><a class="mega-tile" href="/collections/screen-protectors"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'mega-art', src: '', kind: 'protector', title: 'Screen protectors', idx: 4 %}</span><span class="mega-tile__title">Screen protectors</span></a></div></div>
   </div></div>
 </li>
+<li class="nav-item has-mega" data-nav-item>
+  {%- assign mp_url = routes.root_url | append: '/pages/plans' | replace: '//', '/' -%}
+  <a href="{{ mp_url }}" class="nav-link" aria-haspopup="true" aria-expanded="false">Mobile plans</a>
+  <div class="mega" data-mega><div class="mega__inner">
+    {% render 'mega-side', section: section, title: 'Mobile plans' %}
+    <div class="mega__main"><div class="mega__head"><p class="mega__label">Plans &amp; phones</p><a href="{{ mp_url }}" class="mega__all">All mobile plans →</a></div>
+    <div class="mega__grid"><a class="mega-tile" href="{{ mp_url }}?tab=prepaid"><span class="mega-tile__img" style="--tint: #E3F7FC">{% render 'plans-phone-art', label: 'Koodo Prepaid' %}</span><span class="mega-tile__title">Koodo Prepaid</span></a><a class="mega-tile" href="{{ mp_url }}?tab=postpaid"><span class="mega-tile__img" style="--tint: #EEEAFD">{% render 'plans-phone-art', label: 'Postpaid plans' %}</span><span class="mega-tile__title">Postpaid plans</span></a><a class="mega-tile" href="{{ mp_url }}?tab=financing"><span class="mega-tile__img" style="--tint: #DDF9EC">{% render 'plans-phone-art', label: 'Phones on financing' %}</span><span class="mega-tile__title">Phones on financing</span></a><a class="mega-tile" href="{{ mp_url }}?tab=postpaid&amp;byod=1"><span class="mega-tile__img" style="--tint: #FDE7EC">{% render 'plans-phone-art', label: 'Bring your own phone' %}</span><span class="mega-tile__title">Bring your own phone</span></a></div></div>
+  </div></div>
+</li>

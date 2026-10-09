@@ -328,7 +328,7 @@
               {%- assign kll = k | append: 'link_label' -%}{%- assign ki = k | append: 'icon' -%}{%- assign kimg = k | append: 'image' -%}{%- assign kas = k | append: 'asset' -%}{%- assign kart = k | append: 'art' -%}{%- assign kside = k | append: 'side' -%}
               {%- assign after = section.settings[ka] | plus: 0 -%}{%- assign need = after | plus: 2 -%}
               {%- if section.settings[kt] != blank and after > 0 and shown == after and total >= need -%}
-                <a class="coll-wide coll-wide--{{ section.settings[kside] | default: 'auto' }}" href="{{ section.settings[kl] }}" style="--wide-bg: {{ section.settings.wide_bg }}">
+                <a class="coll-wide coll-wide--{{ section.settings[kside] | default: 'auto' }}" href="{{ section.settings[kl] | replace: '/pages/phone-plans', '/pages/plans' }}" style="--wide-bg: {{ section.settings.wide_bg }}">
                   <div class="coll-wide__copy">
                     <span class="coll-wide__icon">{% render 'icon', name: section.settings[ki] %}</span>
                     <p class="coll-wide__title">{{ section.settings[kt] }}</p>

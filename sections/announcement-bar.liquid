@@ -24,9 +24,10 @@
       {%- for block in msgs -%}
         <p class="announcement__msg{% if n == 1 %} is-static{% endif %}"{% if n > 1 %} style="animation-delay:{{ step | times: forloop.index0 }}s"{% endif %} {{ block.shopify_attributes }}>
           {%- if block.settings.emoji != blank -%}<span class="announcement__emoji" aria-hidden="true">{{ block.settings.emoji }}</span>{%- endif -%}
-          <span>{{ block.settings.text }}</span>
-          {%- assign a_ok = true -%}{%- if block.settings.link contains '/pages/' -%}{%- assign ah = block.settings.link | split: '/pages/' | last | split: '?' | first -%}{%- if pages[ah].id == blank -%}{%- assign a_ok = false -%}{%- endif -%}{%- endif -%}
-          {%- if block.settings.link_text != blank and a_ok -%}<a href="{{ block.settings.link }}">{{ block.settings.link_text }} <span aria-hidden="true">→</span></a>{%- endif -%}
+          {%- assign a_link = block.settings.link | replace: '/pages/phone-plans', '/pages/plans' -%}{%- assign a_text = block.settings.text -%}{%- if a_link contains '/pages/plans' -%}{%- assign a_text = a_text | replace: ', set up in store in minutes', ', set up in minutes' | replace: ' in store', '' -%}{%- endif -%}
+          <span>{{ a_text }}</span>
+          {%- assign a_ok = true -%}{%- if a_link contains '/pages/' -%}{%- assign ah = a_link | split: '/pages/' | last | split: '?' | first -%}{%- if pages[ah].id == blank -%}{%- assign a_ok = false -%}{%- endif -%}{%- endif -%}
+          {%- if block.settings.link_text != blank and a_ok -%}<a href="{{ a_link }}">{{ block.settings.link_text }} <span aria-hidden="true">→</span></a>{%- endif -%}
         </p>
       {%- endfor -%}
     {%- endif -%}

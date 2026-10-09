@@ -18,6 +18,12 @@
       if lnk contains 'phone-plans' and block.settings.image == blank and block.settings.asset_image == blank
         assign aimg = 'promo-sim.webp'
       endif
+      if lnk contains 'phone-plans' or lnk contains '/pages/plans' or h contains 'Phone + plan'
+        assign lnk = routes.root_url | append: '/pages/plans' | replace: '//', '/'
+        if tx contains 'store'
+          assign tx = 'Pair your new phone with a mobile plan. Send a quick request and we set it all up, delivered or by eSIM.'
+        endif
+      endif
       if lnk contains '/pages/'
         assign ph = lnk | split: '/pages/' | last | split: '?' | first
         if pages[ph].id == blank

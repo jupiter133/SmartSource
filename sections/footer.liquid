@@ -51,7 +51,7 @@
                   {%- assign parts = line | strip | split: '|' -%}
                   {%- assign label = parts.first | strip -%}
                   {%- if label == blank -%}{%- continue -%}{%- endif -%}
-                  {%- assign url = parts.last | strip -%}
+                  {%- assign url = parts.last | strip | replace: '/pages/phone-plans', '/pages/plans' -%}
                   {%- assign show = true -%}
                   {%- if url contains '/pages/' -%}{%- assign h = url | split: '/pages/' | last -%}{%- if pages[h].id == blank -%}{%- assign show = false -%}{%- endif -%}{%- endif -%}
                   {%- if show -%}<li><a href="{{ url }}">{{ label }}</a></li>{%- endif -%}
