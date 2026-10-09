@@ -209,7 +209,7 @@
     <ul class="nav-side">
       {%- if section.settings.side_menu == blank -%}
         <li><a class="nav-link nav-side-link" href="/pages/sell-your-device"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 00-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0014.3 4.9L20 16"/><path d="M20 20v-4h-4"/><path d="M12 9v6M9 12h6"/></svg>Trade in</a></li>
-        <li><a class="nav-link nav-side-link" href="{{ routes.root_url | append: '/pages/plans' | replace: '//', '/' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>Mobile plans</a></li>
+        <li class="nav-side--plans"><a class="nav-link nav-side-link" href="{{ routes.root_url | append: '/pages/plans' | replace: '//', '/' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>Mobile plans</a></li>
         <li><a class="nav-link nav-side-link" href="/pages/mail-in-repair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.6v5.6c0 4.6-3 8.1-7 9.8-4-1.7-7-5.2-7-9.8V5.6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>Mail-In Repair</a></li>
       {%- else -%}
         {%- for link in section.settings.side_menu.links -%}<li><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
