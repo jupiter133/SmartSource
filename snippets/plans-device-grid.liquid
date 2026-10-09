@@ -13,13 +13,13 @@
         {%- assign h = k | split: ':' | last -%}{%- assign d = shop.metaobjects.financing_device[h] -%}
         {%- if d == blank -%}{%- continue -%}{%- endif -%}
         {%- liquid
-          assign min = 0
+          assign min = -1
           assign pm = d.price_matrix.value
           for m in pm
             for s in m[1]
               for o in s[1]
                 if o.monthly != blank
-                  if min == 0 or o.monthly < min
+                  if min < 0 or o.monthly < min
                     assign min = o.monthly
                   endif
                 endif
@@ -37,7 +37,7 @@
           </span>
           <span class="mp-device__brand">{{ d.brand.value }}</span>
           <span class="mp-device__name">{{ d.name.value }}</span>
-          <span class="mp-device__price">{%- if min > 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
+          <span class="mp-device__price">{%- if min >= 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
         </a>
       {%- endfor -%}
     </div>
