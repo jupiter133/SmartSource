@@ -2413,3 +2413,46 @@ body:has(.mp-dev){background:#F2F2F5}
 /* Sticky header: stick the section wrapper (the inner .header can't stick inside a same-height parent) */
 .shopify-section-group-header-group:has(> .header){position:sticky;top:0;z-index:40}
 .shopify-section-group-header-group > .header{position:relative}
+/* mp: postpaid phones + device page refinements */
+.mp{--mp-sel:#2a1748}
+.mp-postdev{margin-top:40px}
+.mp-postdev .mp-panelhead{margin-bottom:14px}
+.mp-dev .mp-pillopt input:checked+span{background:var(--mp-sel);border-color:var(--mp-sel);color:#fff}
+.mp-dev .mp-swatch input:checked+span{outline:2px solid var(--mp-sel);outline-offset:3px}
+.mp-dev__gallery{border:1px solid #d8d8e0}
+.mp-opt__sel{margin:0 0 8px;font-size:14px;color:#4a4a55}
+.mp-acc--line{background:transparent;border-radius:0;border-top:1px solid #d8d8e0;margin-top:0}
+.mp-acc--line:last-of-type{border-bottom:1px solid #d8d8e0}
+.mp-dev__left .mp-acc--line:first-of-type{margin-top:12px}
+.mp-acc--line>summary{padding:18px 0}
+.mp-acc--line .mp-acc__body{padding:0 0 16px}
+.mp-acc__plus{position:relative;width:14px;height:14px;flex-shrink:0}
+.mp-acc__plus::before,.mp-acc__plus::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s}
+.mp-acc__plus::after{transform:rotate(90deg)}
+.mp-acc[open] .mp-acc__plus::after{transform:rotate(0)}
+.mp-dev__panel{background:#ececf0}
+.mp-banner--promo{background:linear-gradient(120deg,#2a1748,#6b3fa0 55%,#19C3E6);color:#fff;flex-direction:column;align-items:flex-start;border:0;padding:16px 18px;margin-bottom:4px}
+.mp-banner--promo .mp-pill{background:#fff;color:#2a1748}
+.mp-banner--promo .mp-fine{color:#ffffffcc;margin:2px 0 0}
+.mp-fine--tight{margin:0}
+.mp-tip{background:#fff}
+.mp-pay{flex-direction:row;align-items:center;gap:14px}
+.mp-pay__label{flex:1 1 40%;font-size:15px}
+.mp-pay__div{align-self:stretch;width:1px;background:#d8d8e0}
+.mp-pay__amts{flex:1 1 60%;display:flex;flex-direction:column;gap:2px;color:#4a4a55}
+.mp-pay__amts strong{color:var(--c-ink,#111);font-size:18px}
+.mp-pay__amts small{font-size:13px;font-weight:600;color:#6b6b76}
+.mp-plancard{background:#fff;border:1.5px solid #d8d8e0;border-radius:12px;overflow:hidden}
+.mp-plancard:has(input:checked){border-color:var(--mp-sel);box-shadow:0 0 0 1px var(--mp-sel)}
+.mp-plancard .mp-radio__card{border:0;border-radius:0;box-shadow:none!important;padding:14px 16px 6px}
+.mp-plancard__name{font-size:15px}
+.mp-plancard__price strong{font-size:26px;line-height:1.1}
+.mp-plancard__price small{font-size:13px;font-weight:600;color:#6b6b76}
+.mp-plancard__price .mp-plan__note{display:inline}
+.mp-plancard__req{font-size:15px!important}
+.mp-plancard__inc{padding:0 16px 10px}
+.mp-plancard__inc>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--mp-sel)}
+.mp-plancard__inc>summary::-webkit-details-marker{display:none}
+.mp-plancard__inc[open] .mp-acc__chev{transform:rotate(-135deg);margin-top:4px}
+.mp-plancard__inc .mp-plan__list{padding:8px 0 0}
+.mp-continue{border-radius:999px}

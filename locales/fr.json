@@ -114,7 +114,9 @@
       "how_1": "Choisissez un forfait ou un téléphone et remplissez un court formulaire.",
       "how_2": "Nous planifions un appel au moment qui vous convient.",
       "how_3": "Nous configurons tout. Votre téléphone et votre SIM sont livrés, ou vous activez par eSIM.",
-      "byod_price": "{{ price }} $/mois en apportant votre téléphone"
+      "byod_price": "{{ price }} $/mois en apportant votre téléphone",
+      "phones_heading": "Ajoutez un nouveau téléphone à votre forfait",
+      "phones_sub": "Choisissez un téléphone pour voir les options, couleurs et prix mensuels."
     },
     "financing": {
       "heading": "Téléphones neufs, 0 $ à l'achat",
@@ -141,14 +143,21 @@
       "step1": "1. Choisissez le paiement de l'appareil",
       "step2": "2. Choisissez votre forfait",
       "upfront_monthly": "{{ upfront }} + taxes | {{ monthly }}/mois",
-      "return_row": "Mensualité la plus basse avec l'option de retour de l'appareil",
+      "return_row": "Obtenez le prix mensuel le plus bas avec l’option de retour de l’appareil",
       "return_info": "À propos de l'option de retour de l'appareil",
-      "term_note": "Financement à 0 % sur {{ months }} mois sur approbation du crédit. Taxes payables à l'achat.",
+      "term_note": "Financez votre appareil sur {{ months }} mois à 0 % d’intérêt, sur approbation du crédit. Taxes payables à l’achat.",
       "no_price": "Demandez le prix de cette configuration",
       "estimate": "Mensualité estimée : {{ device }} + {{ plan }} /mois + taxes",
       "estimate_pending": "Choisissez un forfait pour voir votre mensualité estimée.",
       "continue": "Continuer",
-      "image_soon": "Photo à venir"
+      "image_soon": "Photo à venir",
+      "storage_options": "Options de stockage offertes :",
+      "colours": "Couleurs offertes :",
+      "sim_options": "Options SIM :",
+      "terms_full": "Modalités et conditions",
+      "pay_label": "Payez {{ upfront }} à l’achat",
+      "upfront_taxes": "{{ upfront }} à l’achat + taxes",
+      "per_mo": " /mois"
     },
     "form": {
       "privacy": "Nous ne vous demanderons jamais votre NIP, une pièce d'identité ou vos informations de paiement en ligne.",

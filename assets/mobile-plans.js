@@ -10,7 +10,10 @@
   var I18N = {
     help: i18nEl ? i18nEl.getAttribute('data-help') : 'Help me choose',
     byod: i18nEl ? i18nEl.getAttribute('data-byod') : 'Bring my own phone',
-    upfront: i18nEl ? i18nEl.getAttribute('data-upfront-tpl') : '%U + taxes | %M/mo'
+    upfront: i18nEl ? i18nEl.getAttribute('data-upfront-tpl') : '%U + taxes | %M/mo',
+    payLabel: (i18nEl && i18nEl.getAttribute('data-pay-label')) || 'Pay %U upfront',
+    upfrontTaxes: (i18nEl && i18nEl.getAttribute('data-upfront-taxes')) || '%U upfront + taxes',
+    perMo: (i18nEl && i18nEl.getAttribute('data-per-mo')) || ' /mo.'
   };
   var store = {
     get: function (k) { try { return JSON.parse(sessionStorage.getItem(k) || 'null'); } catch (e) { return null; } },
@@ -270,16 +273,24 @@
     });
 
     /* brand chips */
-    var chips = $$('[data-mp-brand]', root);
-    chips.forEach(function (c) {
-      c.addEventListener('click', function () {
-        var b = c.getAttribute('data-mp-brand'), shown = 0;
-        chips.forEach(function (x) { var on = x === c; x.classList.toggle('is-active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
-        $$('[data-mp-devices] .mp-device', root).forEach(function (d) {
-          var on = b === 'all' || d.getAttribute('data-brand') === b;
-          d.hidden = !on; if (on) shown++;
+    $$('[data-mp-devgroup]', root).forEach(function (grp) {
+      var chips = $$('[data-mp-brand]', grp);
+      chips.forEach(function (c) {
+        c.addEventListener('click', function () {
+          var b = c.getAttribute('data-mp-brand'), shown = 0;
+          chips.forEach(function (x) { var on = x === c; x.classList.toggle('is-active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+          $$('[data-mp-devices] .mp-device', grp).forEach(function (d) {
+            var on = b === 'all' || d.getAttribute('data-brand') === b;
+            d.hidden = !on; if (on) shown++;
+          });
+          var nr = $('[data-mp-noresults]', grp); if (nr) nr.hidden = shown > 0;
         });
-        var nr = $('[data-mp-noresults]', root); if (nr) nr.hidden = shown > 0;
+      });
+    });
+    $$('[data-mp-goto]', root).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = document.querySelector(b.getAttribute('data-mp-goto'));
+        if (t) t.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
       });
     });
 
@@ -440,11 +451,15 @@
       opts.forEach(function (o, i) {
         var lab = document.createElement('label'); lab.className = 'mp-radio';
         var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'mp-pay'; inp.value = String(i); inp.checked = i === 0;
-        var card = document.createElement('span'); card.className = 'mp-radio__card';
-        var t = document.createElement('strong'); t.textContent = o.label || ('Pay ' + money(num(o.upfront) || 0) + ' upfront');
-        var s = document.createElement('span');
-        s.textContent = I18N.upfront.replace('%U', money(num(o.upfront) || 0)).replace('%M', money(num(o.monthly)));
-        card.appendChild(t); card.appendChild(s);
+        var card = document.createElement('span'); card.className = 'mp-radio__card mp-pay';
+        var up = money(num(o.upfront) || 0);
+        var t = document.createElement('strong'); t.className = 'mp-pay__label'; t.textContent = o.label || I18N.payLabel.replace('%U', up);
+        var div = document.createElement('span'); div.className = 'mp-pay__div'; div.setAttribute('aria-hidden', 'true');
+        var s = document.createElement('span'); s.className = 'mp-pay__amts';
+        var s1 = document.createElement('span'); s1.textContent = I18N.upfrontTaxes.replace('%U', up);
+        var s2 = document.createElement('strong'); s2.textContent = money(num(o.monthly)); var s3 = document.createElement('small'); s3.textContent = I18N.perMo; s2.appendChild(s3);
+        s.appendChild(s1); s.appendChild(s2);
+        card.appendChild(t); card.appendChild(div); card.appendChild(s);
         if (o.return_option) card.classList.add('is-return');
         lab.appendChild(inp); lab.appendChild(card); payBox.appendChild(lab);
         inp.addEventListener('change', updateEstimate);

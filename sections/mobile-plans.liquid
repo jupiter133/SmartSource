@@ -288,8 +288,15 @@
           {%- endif -%}
           <div class="mp-plan__btns">
             <button type="button" class="btn btn--dark btn--block" data-mp-byod="{{ p.name.value | escape }}" data-price="{{ p.byod_price.value | default: p.price.value }}">{{ 'plans.postpaid.byod' | t }}</button>
-            <button type="button" class="btn btn--block" data-mp-gotab="financing">{{ 'plans.postpaid.add_phone' | t }}</button>
+            <button type="button" class="btn btn--block" data-mp-goto="#MpPostpaidPhones">{{ 'plans.postpaid.add_phone' | t }}</button>
           </div>
+    <div class="mp-postdev" id="MpPostpaidPhones">
+      <div class="mp-panelhead">
+        <h2 class="mp-h2">{{ 'plans.postpaid.phones_heading' | t }}</h2>
+        <p class="muted">{{ 'plans.postpaid.phones_sub' | t }}</p>
+      </div>
+      {% render 'plans-device-grid', keys: dev_keys %}
+    </div>
         </article>
       {%- endfor -%}
     </div>
@@ -310,46 +317,7 @@
       <h2 class="mp-h2">{{ 'plans.financing.heading' | t }}</h2>
       <p class="muted">{{ 'plans.financing.sub' | t }}</p>
     </div>
-    <div class="mp-chips" role="group" aria-label="{{ 'plans.financing.filter' | t | escape }}">
-      <button type="button" class="mp-chip is-active" aria-pressed="true" data-mp-brand="all">{{ 'plans.common.all' | t }}</button>
-      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="apple">Apple</button>
-      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="samsung">Samsung</button>
-      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="google">Google</button>
-    </div>
-    <div class="mp-devices" data-mp-devices>
-      {%- for k in dev_keys -%}
-        {%- assign h = k | split: ':' | last -%}{%- assign d = shop.metaobjects.financing_device[h] -%}
-        {%- if d == blank -%}{%- continue -%}{%- endif -%}
-        {%- liquid
-          assign min = 0
-          assign pm = d.price_matrix.value
-          for m in pm
-            for s in m[1]
-              for o in s[1]
-                if o.monthly != blank
-                  if min == 0 or o.monthly < min
-                    assign min = o.monthly
-                  endif
-                endif
-              endfor
-            endfor
-          endfor
-          assign img = d.images.value | first
-          assign durl = d.system.url | default: '#'
-        -%}
-        <a class="mp-device" href="{{ durl }}" data-brand="{{ d.brand.value | downcase }}">
-          <span class="mp-device__img">
-            {%- if img != blank -%}{{ img | image_url: width: 500 | image_tag: loading: 'lazy', widths: '250,400,500', sizes: '(min-width: 990px) 25vw, 50vw', alt: d.name.value }}{%- else -%}{% render 'plans-phone-art', label: d.name.value %}{%- endif -%}
-            <span class="mp-device__pill">{{ 'plans.common.phone_pill' | t }}</span>
-            {%- if d.badge != blank -%}<span class="mp-badge mp-badge--corner">{{ d.badge.value }}</span>{%- endif -%}
-          </span>
-          <span class="mp-device__brand">{{ d.brand.value }}</span>
-          <span class="mp-device__name">{{ d.name.value }}</span>
-          <span class="mp-device__price">{%- if min > 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
-        </a>
-      {%- endfor -%}
-    </div>
-    <p class="muted" data-mp-noresults hidden>{{ 'plans.financing.empty' | t }}</p>
+    {% render 'plans-device-grid', keys: dev_keys %}
 
     <div class="mp-cross">
       <div>
