@@ -390,6 +390,7 @@
                   <div class="coll-wide__art">
                     {%- if section.settings[kimg] != blank -%}{{ section.settings[kimg] | image_url: width: 700 | image_tag: loading: 'lazy', alt: '' }}
                     {%- elsif section.settings[kas] != blank -%}<img src="{{ section.settings[kas] | asset_url }}" alt="" width="600" height="600" loading="lazy">
+                    {%- elsif section.settings[kt] contains 'case' or section.settings[kt] contains 'Case' -%}<img class="coll-wide__photo" src="{{ 'promo-case-protector.webp' | asset_url }}" alt="Clear case and screen protector" width="476" height="700" loading="lazy">
                     {%- else -%}{% render 'device-art', kind: section.settings[kart], title: section.settings[kt] %}{%- endif -%}
                   </div>
                 </a>
