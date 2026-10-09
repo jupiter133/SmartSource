@@ -311,7 +311,11 @@
   $$('[data-product-form]').forEach(form => form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = $('[data-add]', form); btn.disabled = true;
-    const res = await fetch('/cart/add.js', { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+    const addons = $$('[data-setup-addon]:checked').map(c => ({ id: +c.value, quantity: 1 }));
+    const fd = new FormData(form);
+    const res = addons.length
+      ? await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ items: [{ id: +fd.get('id'), quantity: +(fd.get('quantity') || 1) }].concat(addons) }) })
+      : await fetch('/cart/add.js', { method: 'POST', headers: { Accept: 'application/json' }, body: fd });
     btn.disabled = false;
     if (!res.ok) { alert((await res.json()).description || 'Could not add to cart'); return; }
     await refreshCart();

@@ -147,6 +147,8 @@
       </section>
       {%- endif -%}
 
+      {% render 'pdp-setup', product: product, p1: section.settings.setup_product_1, p2: section.settings.setup_product_2 %}
+
       {%- comment -%} Summary (Back Market-style buy box) {%- endcomment -%}
       <section class="pdp-row step sum" data-summary>
         <div class="step__media sum__media">
@@ -267,7 +269,10 @@
   { "type": "url", "id": "grades_page", "label": "Grades explained page" },
   { "type": "header", "content": "Trade-in" },
   { "type": "url", "id": "tradein_link", "label": "Trade-in page (leave blank to hide)" },
-  { "type": "image_picker", "id": "tradein_image", "label": "Trade-in image" }
+  { "type": "image_picker", "id": "tradein_image", "label": "Trade-in image" },
+  { "type": "header", "content": "Complete your setup" },
+  { "type": "product", "id": "setup_product_1", "label": "Add-on 1 (e.g. screen protector)", "info": "Per-product override: metafield custom.setup_addon_1" },
+  { "type": "product", "id": "setup_product_2", "label": "Add-on 2 (e.g. case)", "info": "Per-product override: metafield custom.setup_addon_2" }
 ], "blocks": [{ "type": "inspect", "name": "Inspection card", "settings": [
   { "type": "select", "id": "icon", "label": "Icon", "options": [{"value":"battery","label":"Battery"},{"value":"phone","label":"Screen"},{"value":"camera","label":"Camera"},{"value":"list","label":"Checklist"},{"value":"shield","label":"Data wipe"},{"value":"star","label":"Quality"},{"value":"unlock","label":"Unlocked"},{"value":"lock","label":"Security"},{"value":"inspect","label":"Inspection"},{"value":"check","label":"Check"},{"value":"award","label":"Award"},{"value":"clock","label":"Clock"},{"value":"truck","label":"Shipping"}], "default": "battery" },
   { "type": "text", "id": "title", "label": "Title", "default": "Battery health" }

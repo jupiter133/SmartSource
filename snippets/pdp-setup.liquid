@@ -1,0 +1,53 @@
+{%- comment -%}
+  "Complete your setup": optional add-ons ticked here are added to the cart with the device.
+  Sources (first found): product metafields custom.setup_addon_1/2, section settings, first available product
+  in the "screen-protectors" / "cases" collections. Discount badges only show when the add-on has a real compare-at price.
+{%- endcomment -%}
+{%- liquid
+  assign a1 = product.metafields.custom.setup_addon_1.value | default: p1
+  assign a2 = product.metafields.custom.setup_addon_2.value | default: p2
+  if a1 == blank
+    for x in collections['screen-protectors'].products limit: 6
+      if x.available
+        assign a1 = x
+        break
+      endif
+    endfor
+  endif
+  if a2 == blank
+    for x in collections['cases'].products limit: 6
+      if x.available
+        assign a2 = x
+        break
+      endif
+    endfor
+  endif
+  assign ptype = product.type | downcase
+-%}
+{%- if a1 != blank or a2 != blank -%}{%- unless ptype contains 'repair' or ptype contains 'diagnostic' -%}
+<section class="pdp-row setup">
+  <div class="setup__inner">
+    <p class="setup__eyebrow">Complete your setup</p>
+    <h2 class="setup__h">Everything your {{ product.title }} needs</h2>
+    <p class="setup__sub">Matched to your model. One order, one box, ready on day one.</p>
+    {%- assign list = '' -%}
+    {%- for a in (1..2) -%}
+      {%- if forloop.index == 1 -%}{%- assign ap = a1 -%}{%- else -%}{%- assign ap = a2 -%}{%- endif -%}
+      {%- if ap == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign av = ap.selected_or_first_available_variant -%}
+      <label class="setup-card{% unless av.available %} is-off{% endunless %}">
+        <input type="checkbox" data-setup-addon value="{{ av.id }}"{% unless av.available %} disabled{% endunless %}>
+        <span class="setup-card__img">{%- if ap.featured_image -%}{{ ap.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}</span>
+        <span class="setup-card__txt"><strong>{{ ap.title }}</strong>{%- if ap.metafields.custom.short_description != blank -%}<small>{{ ap.metafields.custom.short_description }}</small>{%- endif -%}</span>
+        <span class="setup-card__price">
+          <span>{%- if av.compare_at_price > av.price -%}<s>{{ av.compare_at_price | money }}</s> {% endif -%}<b>{{ av.price | money }}</b></span>
+          {%- if av.compare_at_price > av.price -%}<em>{{ av.compare_at_price | minus: av.price | times: 100 | divided_by: av.compare_at_price }}% OFF</em>{%- endif -%}
+          {%- unless av.available -%}<em class="is-oos">Sold out</em>{%- endunless -%}
+        </span>
+        <span class="setup-card__tick" aria-hidden="true"></span>
+      </label>
+    {%- endfor -%}
+    <div class="setup__note">{% render 'icon', name: 'info' %}<p><strong>Please note:</strong> ticked items are added to your cart with your device. You can remove them anytime before checkout.</p></div>
+  </div>
+</section>
+{%- endunless -%}{%- endif -%}
