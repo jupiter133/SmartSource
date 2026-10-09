@@ -13,7 +13,47 @@
     {%- if r.test_only.value -%}{%- assign rv_has_test = true -%}{%- endif -%}
     {%- assign cat = r.category.value | downcase | strip -%}
     {%- if r.body.value == blank or r.date.value == blank -%}{%- continue -%}{%- endif -%}
-    {%- assign rv_match = true -%}{%- if scope != blank and cat != scope -%}{%- assign rv_match = false -%}{%- endif -%}
+    {%- liquid
+      assign rv_match = true
+      if scope != blank
+        assign rv_match = false
+        assign rp0 = r.product.value
+        if rp0
+          for t in rp0.tags
+            assign th = t | handleize
+            if th == scope
+              assign rv_match = true
+              break
+            endif
+          endfor
+        endif
+        unless rv_match
+          if cat == scope
+            assign rv_match = true
+          else
+            case scope
+              when 'android', 'smartphones'
+                if cat == 'samsung' or cat == 'pixel' or cat == 'motorola' or cat == 'budget' or cat == 'android'
+                  assign rv_match = true
+                endif
+              when 'tablets'
+                if cat == 'ipad'
+                  assign rv_match = true
+                endif
+              when 'laptops'
+                if cat == 'macbook'
+                  assign rv_match = true
+                endif
+              when 'budget-phones', 'budget'
+                if cat == 'budget'
+                  assign rv_match = true
+                endif
+            endcase
+          endif
+        endunless
+      endif
+    -%}
+    {%- unless rv_match -%}{%- continue -%}{%- endunless -%}
     {%- assign rating = r.rating.value | plus: 0 -%}
     {%- if rating < 1 -%}{%- continue -%}{%- endif -%}
     {%- assign rv_count = rv_count | plus: 1 -%}{%- assign rv_sum = rv_sum | plus: rating -%}

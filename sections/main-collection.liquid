@@ -301,7 +301,7 @@
   </form>
   {%- endpaginate -%}
   {%- if section.settings.show_reviews -%}
-    {%- assign rv_scope = ctx | default: ctags.first | default: '' -%}
+    {%- assign rv_scope = ctx | default: ctags.first | default: '' -%}{%- if rv_scope == blank and collection.handle != 'all' -%}{%- assign rv_scope = collection.handle -%}{%- endif -%}
     {%- assign rv_heading = 'Customer reviews' -%}
     {% render 'coll-reviews', scope: rv_scope, heading: rv_heading %}
   {%- endif -%}
