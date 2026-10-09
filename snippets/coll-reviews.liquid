@@ -93,9 +93,9 @@
 {%- endif -%}
 {%- endpaginate -%}
 
-{%- if rv_count > 0 -%}
+{%- if api -%}<div data-rv-api>{{ rv_items }}</div>{%- elsif rv_count > 0 -%}
   {%- assign avg = rv_sum | times: 1.0 | divided_by: rv_count | round: 1 -%}
-  <section class="rv" data-reviews>
+  <section class="rv" data-reviews data-rv-pages="{% if paginate.pages %}{{ paginate.pages }}{% else %}1{% endif %}">
     {%- if rv_has_test -%}<p class="rv-testnote">Test reviews: visible in the theme editor only. Shoppers don't see these.</p>{%- endif -%}
     <h2 class="rv__title">{{ heading }}</h2>
     <div class="rv__grid">
@@ -146,6 +146,15 @@
   R.addEventListener('change',function(e){if(e.target.matches('[data-rv-rating],[data-rv-cond],[data-rv-sort]')){shown=5;apply()}});
   more.addEventListener('click',function(){shown+=10;apply()});
   var t=R.querySelector('[data-rv-track]');if(t){R.querySelector('[data-rv-prev]').addEventListener('click',function(){t.scrollBy({left:-340,behavior:'smooth'})});R.querySelector('[data-rv-next]').addEventListener('click',function(){t.scrollBy({left:340,behavior:'smooth'})})}
-  apply()})();
+  apply();
+  var url=location.pathname,q=new URLSearchParams(location.search);q.delete('page');
+  var pages=[2,3,4];Promise.all(pages.map(function(p){q.set('section_id','reviews-api');q.set('page',p);return fetch(url+'?'+q.toString()).then(function(r){return r.ok?r.text():''}).catch(function(){return ''})})).then(function(hs){var added=0;
+    hs.forEach(function(h){if(!h)return;var d=document.createElement('div');d.innerHTML=h;var box=d.querySelector('[data-rv-api]');if(!box)return;[].slice.call(box.children).forEach(function(el){el.dataset.i=items.length;items.push(el);list.appendChild(el);added++})});
+    if(!added)return;var n=items.length,sum=0,dist=[0,0,0,0,0,0];items.forEach(function(el){var r=+el.dataset.rating||0;sum+=r;dist[r]=(dist[r]||0)+1});
+    var avg=Math.round(sum/n*10)/10,av=R.querySelector('.rv-card__avg');if(av){var st=av.querySelectorAll('.rv-stars span');st.forEach(function(s,i){s.classList.toggle('is-off',i+1>avg)});av.lastChild.textContent=' '+avg+'/5'}
+    var ct=R.querySelector('.rv-card__count');if(ct)ct.textContent='✓ '+n+' verified review'+(n!==1?'s':'');
+    R.querySelectorAll('.rv-dist__row').forEach(function(row){var k=parseInt(row.firstChild.textContent,10),c=dist[k]||0;row.querySelector('.rv-dist__bar span').style.width=Math.round(c/n*100)+'%';row.lastChild.textContent=c});
+    apply()})
+  })();
   </script>
 {%- endif -%}

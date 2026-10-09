@@ -1,0 +1,22 @@
+{%- comment -%} Fetched via ?section_id=reviews-api&page=N to load reviews beyond the first 250 (up to 1,000). {%- endcomment -%}
+{%- liquid
+  assign scope = ''
+  if page
+    case page.handle
+      when 'android'
+        assign scope = 'android'
+      when 'laptops'
+        assign scope = 'laptops'
+      when 'audio'
+        assign scope = 'audio'
+    endcase
+  elsif current_tags.size > 0
+    assign scope = current_tags.first | handleize
+  elsif collection and collection.handle != 'all'
+    assign scope = collection.handle
+  endif
+-%}
+{% render 'coll-reviews', scope: scope, api: true %}
+{% schema %}
+{ "name": "Reviews (API)", "settings": [] }
+{% endschema %}
