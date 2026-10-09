@@ -124,30 +124,111 @@
   </section>
   {%- if ctags contains 'macbook' or collection.handle == 'macbook' -%}{% render 'laptop-finder', base: 'macbook', mac: true, coll: collection.handle %}{%- elsif ctags contains 'laptops' -%}{% render 'laptop-finder', base: 'laptops', mac: false %}{%- endif -%}
 
-  {%- if collection.handle == 'macbook' -%}
-    {%- assign mchips = 'macbook-air:MacBook Air,macbook-pro:MacBook Pro,m4:M4,m3:M3,m2:M2,m1:M1,intel:Intel' | split: ',' -%}
+  {%- comment -%}
+    Category pills are defined here in code (not from section blocks) so each category shows only its own pills.
+    Every tag below was checked against active products; tags with zero products were left out
+    (Shopify drops an unknown tag from the URL and shows everything).
+    Row format: tag|Label|href   — the first row is the "All" pill for that category.
+  {%- endcomment -%}
+  {%- liquid
+    assign pill_cat = ''
+    assign pill_brand = false
+    assign pc_h = collection.handle
+    if pc_h == 'macbook' or ctags contains 'macbook' or ctags contains 'macbook-air' or ctags contains 'macbook-pro'
+      assign pill_cat = 'macbook'
+    elsif pc_h == 'cases' or pc_h == 'screen-protectors' or ctags contains 'accessories' or ctags contains 'case' or ctags contains 'screen-protector'
+      assign pill_cat = 'accessories'
+    elsif pc_h == 'mail-in-repair' or ctags contains 'mail-in-repair'
+      assign pill_cat = 'none'
+    endif
+    if pill_cat == ''
+      for t in ctags
+        if t == blank
+          continue
+        endif
+        if t == 'laptops'
+          assign pill_cat = 'laptops'
+        elsif t == 'iphone' or t contains 'iphone-'
+          assign pill_cat = 'iphone'
+        elsif t == 'tablets' or t == 'ipad' or t contains 'ipad-' or t == 'galaxy-tab' or t == 'android-tablet' or t == 'joy-tab'
+          assign pill_cat = 'tablets'
+        elsif t == 'audio' or t == 'headphones' or t contains 'airpods'
+          assign pill_cat = 'audio'
+        elsif t == 'consoles' or t == 'gaming' or t == 'playstation' or t == 'xbox' or t == 'nintendo' or t == 'handheld'
+          assign pill_cat = 'consoles'
+        elsif t == 'smartwatches' or t == 'apple-watch'
+          assign pill_cat = 'smartwatches'
+        elsif t == 'android' or t == 'samsung-galaxy' or t contains 'galaxy-' or t == 'pixel' or t contains 'pixel-' or t == 'google' or t == 'motorola' or t contains 'moto-' or t == 'razr' or t == 'edge' or t == 'zte' or t == 'nubia' or t == 'alcatel' or t == 'foldable' or t == 'flip-phone'
+          assign pill_cat = 'android'
+        elsif t == 'smartphones'
+          assign pill_cat = 'phones'
+        elsif t == 'samsung' or t == 'apple'
+          assign pill_brand = true
+        endif
+        if pill_cat != ''
+          break
+        endif
+      endfor
+    endif
+    if pill_cat == '' and pill_brand
+      assign pill_cat = 'brand'
+    endif
+    if pill_cat == '' and pc_h == 'all'
+      assign pill_cat = 'top'
+    endif
+
+    case pill_cat
+      when 'iphone'
+        assign pill_rows = 'iphone|All iPhones|/collections/all/iphone;iphone-17|iPhone 17|/collections/all/iphone-17;iphone-air|iPhone Air|/collections/all/iphone-air;iphone-16|iPhone 16|/collections/all/iphone-16;iphone-15|iPhone 15|/collections/all/iphone-15;iphone-14|iPhone 14|/collections/all/iphone-14;iphone-13|iPhone 13|/collections/all/iphone-13;iphone-12|iPhone 12|/collections/all/iphone-12;iphone-11|iPhone 11|/collections/all/iphone-11;iphone-se|iPhone SE|/collections/all/iphone-se'
+      when 'android'
+        assign pill_rows = 'android|All Android|/collections/all/android;samsung|Samsung Galaxy|/collections/all/android+samsung;pixel|Google Pixel|/collections/all/pixel;motorola|Motorola|/collections/all/motorola;zte|ZTE|/collections/all/zte;alcatel|Alcatel|/collections/all/android+alcatel;foldable|Foldables|/collections/all/foldable'
+      when 'phones'
+        assign pill_rows = 'smartphones|All phones|/collections/all/smartphones;iphone|iPhone|/collections/all/iphone;samsung|Samsung Galaxy|/collections/all/android+samsung;pixel|Google Pixel|/collections/all/pixel;motorola|Motorola|/collections/all/motorola;zte|ZTE|/collections/all/zte;alcatel|Alcatel|/collections/all/android+alcatel'
+      when 'macbook'
+        assign pill_rows = 'macbook|All MacBooks|/collections/macbook;macbook-air|MacBook Air|/collections/macbook/macbook-air;macbook-pro|MacBook Pro|/collections/macbook/macbook-pro;m4|M4|/collections/macbook/m4;m3|M3|/collections/macbook/m3;m2|M2|/collections/macbook/m2;m1|M1|/collections/macbook/m1;intel|Intel|/collections/macbook/intel'
+      when 'laptops'
+        assign pill_rows = 'laptops|All laptops|/collections/all/laptops;macbook-air|MacBook Air|/collections/macbook/macbook-air;macbook-pro|MacBook Pro|/collections/macbook/macbook-pro;for-school|For school|/collections/all/laptops+for-school;for-creatives|For creatives|/collections/all/laptops+for-creatives'
+      when 'tablets'
+        assign pill_rows = 'tablets|All tablets|/collections/all/tablets;ipad|iPad|/collections/all/ipad;ipad-pro|iPad Pro|/collections/all/ipad-pro;ipad-air|iPad Air|/collections/all/ipad-air;ipad-mini|iPad mini|/collections/all/ipad-mini;ipad-standard|iPad (standard)|/collections/all/ipad-standard;galaxy-tab|Galaxy Tab|/collections/all/galaxy-tab;joy-tab|Alcatel Joy Tab|/collections/all/joy-tab'
+      when 'audio'
+        assign pill_rows = 'audio|All audio|/collections/all/audio;airpods-pro-3|AirPods Pro 3|/collections/all/airpods-pro-3;airpods-pro-2|AirPods Pro 2|/collections/all/airpods-pro-2;airpods-4-anc|AirPods 4 (ANC)|/collections/all/airpods-4-anc;airpods-4|AirPods 4|/collections/all/airpods-4;airpods-3|AirPods 3|/collections/all/airpods-3;airpods-2|AirPods 2|/collections/all/airpods-2;airpods-max|AirPods Max|/collections/all/airpods-max'
+      when 'consoles'
+        assign pill_rows = 'consoles|All consoles|/collections/all/consoles;playstation|PlayStation|/collections/all/playstation;xbox|Xbox|/collections/all/xbox;nintendo|Nintendo|/collections/all/nintendo;handheld|Handheld|/collections/all/handheld'
+      when 'smartwatches'
+        assign pill_rows = 'smartwatches|All smartwatches|/collections/all/smartwatches;apple-watch|Apple Watch|/collections/all/apple-watch'
+      when 'accessories'
+        assign pill_rows = 'accessories|All accessories|/collections/all/accessories;cases|Cases|/collections/cases;screen-protectors|Screen protectors|/collections/screen-protectors'
+      when 'brand'
+        assign pill_rows = 'all|All products|/collections/all;apple|Apple|/collections/all/apple;samsung|Samsung|/collections/all/samsung'
+      when 'top'
+        assign pill_rows = 'all|All products|/collections/all;iphone|iPhone|/collections/all/iphone;android|Android|/collections/all/android;macbook|MacBook|/collections/macbook;tablets|Tablets|/collections/all/tablets;audio|Audio|/collections/all/audio;consoles|Consoles|/collections/all/consoles;smartwatches|Smartwatches|/collections/all/smartwatches;accessories|Accessories|/collections/all/accessories'
+      else
+        assign pill_rows = ''
+    endcase
+
+    comment
+      Active pill: the most specific matching row (any row after the first whose tag is in the current tags,
+      or whose collection handle is this collection). Otherwise the "All" pill.
+    endcomment
+    assign pill_list = pill_rows | split: ';'
+    assign pill_on = ''
+    for row in pill_list
+      if forloop.first
+        continue
+      endif
+      assign pk = row | split: '|' | first
+      if ctags contains pk or pc_h == pk
+        assign pill_on = pk
+      endif
+    endfor
+  -%}
+  {%- if pill_list.size > 1 -%}
     <div class="coll-chips" role="list">
-      <a role="listitem" class="coll-chip{% if current_tags.size == 0 %} is-active{% endif %}" href="{{ collection.url }}">All MacBooks</a>
-      {%- for c in mchips -%}{%- assign kv = c | split: ':' -%}
-        <a role="listitem" class="coll-chip{% if current_tags contains kv[0] %} is-active{% endif %}" href="{{ collection.url }}/{{ kv[0] }}">{{ kv[1] }}</a>
-      {%- endfor -%}
-    </div>
-  {%- elsif section.blocks.size > 0 -%}
-    <div class="coll-chips" role="list">
-      {%- if ctx != blank -%}
-        {%- assign parent_label = ctx | replace: '-', ' ' | capitalize -%}
-        {%- for b in section.blocks -%}
-          {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
-          {%- if bh == ctx and b.settings.parent == blank -%}{%- assign parent_label = b.settings.label -%}{%- endif -%}
-        {%- endfor -%}
-        <a role="listitem" class="coll-chip{% unless child_active %} is-active{% endunless %}" href="{{ collection.url }}/{{ ctx }}"{% unless child_active %} aria-current="page"{% endunless %}>All {{ parent_label }}</a>
-      {%- endif -%}
-      {%- for b in section.blocks -%}
-        {%- if b.settings.parent == ctx or ctx == blank and b.settings.parent == blank -%}
-          {%- assign bh = b.settings.link | split: '/' | last | split: '?' | first -%}
-          {%- assign on = false -%}{%- if ctags contains bh -%}{%- assign on = true -%}{%- endif -%}
-          <a role="listitem" class="coll-chip{% if on %} is-active{% endif %}" href="{{ b.settings.link }}"{% if on %} aria-current="page"{% endif %} {{ b.shopify_attributes }}>{{ b.settings.label }}</a>
-        {%- endif -%}
+      {%- for row in pill_list -%}
+        {%- assign pp = row | split: '|' -%}
+        {%- assign on = false -%}
+        {%- if forloop.first and pill_on == '' -%}{%- assign on = true -%}{%- elsif forloop.first == false and pp[0] == pill_on -%}{%- assign on = true -%}{%- endif -%}
+        <a role="listitem" class="coll-chip{% if on %} is-active{% endif %}" href="{{ pp[2] }}"{% if on %} aria-current="page"{% endif %}>{{ pp[1] }}</a>
       {%- endfor -%}
     </div>
   {%- endif -%}

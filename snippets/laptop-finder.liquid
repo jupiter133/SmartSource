@@ -12,7 +12,6 @@
       <div class="lf-list">
         <button type="button" data-lf-tag="for-creatives" data-lf-group="use">For creatives</button>
         <button type="button" data-lf-tag="for-complex-work" data-lf-group="use">For complex work</button>
-        {%- unless mac -%}<button type="button" data-lf-tag="gaming" data-lf-group="use">Gaming</button>{%- endunless -%}
         <button type="button" data-lf-tag="on-the-go" data-lf-group="use">On the go</button>
         <button type="button" data-lf-tag="for-school" data-lf-group="use">For school</button>
       </div>
@@ -44,14 +43,10 @@
     <div class="lf-card">
       <p class="lf-card__q">More requirements</p>
       <div class="lf-more lf-more--pills">
-        {%- if mac -%}
+        {%- comment -%} Every laptop in the catalog is currently a MacBook, so both finders use the MacBook option set (PC brand/CPU tags returned no products). {%- endcomment -%}
         <label><span>Model</span><select data-lf-sel="model"><option value="">Model</option><option value="macbook-air">MacBook Air</option><option value="macbook-pro">MacBook Pro</option></select></label>
         <label><span>Release year</span><select data-lf-sel="year"><option value="">Release year</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option></select></label>
         <label><span>Processor type</span><select data-lf-sel="chip"><option value="">Processor type</option><option value="m4">M4</option><option value="m3">M3</option><option value="m2">M2</option><option value="m1">M1</option><option value="intel">Intel</option></select></label>
-        {%- else -%}
-        <label><span>Brand</span><select data-lf-sel="brand"><option value="">Brand</option><option value="dell">Dell</option><option value="hp">HP</option><option value="lenovo">Lenovo</option><option value="asus">ASUS</option><option value="acer">Acer</option><option value="microsoft">Microsoft</option></select></label>
-        <label><span>Processor</span><select data-lf-sel="chip"><option value="">Processor type</option><option value="intel-core-i5">Intel Core i5</option><option value="intel-core-i7">Intel Core i7</option><option value="amd-ryzen">AMD Ryzen</option></select></label>
-        {%- endif -%}
         <label><span>Storage (GB)</span><select data-lf-sel="storage"><option value="">Storage (GB)</option><option value="128gb">128 GB</option><option value="256gb">256 GB</option><option value="512gb">512 GB</option><option value="1tb">1 TB</option></select></label>
         <button type="button" class="lf-morebtn" data-lf-filters>⚙ More filters</button>
       </div>

@@ -148,6 +148,6 @@ b.onclick=function(){b.disabled=true;fetch('/cart/add.js',{method:'POST',headers
 function fill(intent,fb){var row=d.querySelector('[data-ac-row="'+intent+'"]'),t=row.querySelector('[data-ac-track]');
 fetch('/recommendations/products.json?product_id='+d.dataset.pid+'&intent='+intent+'&limit=10').then(function(r){return r.json()}).then(function(j){var ps=(j.products||[]);if(!ps.length&&fb)return fetch(fb).then(function(r){return r.json()}).then(function(k){return k.products||[]});return ps}).then(function(ps){ps=ps.filter(function(p){return String(p.id)!==d.dataset.pid});if(!ps.length)return;ps.forEach(function(p){t.appendChild(card(p))});row.hidden=false;
 row.querySelector('[data-ac-prev]').onclick=function(){t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'})};row.querySelector('[data-ac-next]').onclick=function(){t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'})}}).catch(function(){})}
-fill('complementary','/collections/cases/products.json?limit=10');fill('related','/collections/audio/products.json?limit=10');return true};
+fill('complementary','/collections/cases/products.json?limit=10');fill('related','/collections/all/audio/products.json?limit=10');return true};
 document.querySelectorAll('dialog.sd,dialog.ac').forEach(function(d){d.addEventListener('cancel',function(e){e.preventDefault();shut(d)})})})();
 </script>

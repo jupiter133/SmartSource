@@ -11,12 +11,18 @@
         assign h = 'Cases that keep it looking new.'
         assign tx = 'Clear and frosted MagSafe cases for every iPhone.'
         assign bl = 'Shop cases'
-        assign lnk = '/collections/all/cases'
+        assign lnk = '/collections/cases'
         assign aimg = 'promo-cases.png'
         assign photo = true
       endif
       if lnk contains 'phone-plans' and block.settings.image == blank and block.settings.asset_image == blank
         assign aimg = 'promo-sim.webp'
+      endif
+      if lnk contains '/pages/'
+        assign ph = lnk | split: '/pages/' | last | split: '?' | first
+        if pages[ph].id == blank
+          assign bl = ''
+        endif
       endif
       if aimg == 'promo-cases.png' or aimg == 'promo-sim.webp'
         assign photo = true
