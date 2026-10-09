@@ -21,7 +21,8 @@
         <div class="mp-dev__main" data-mp-gallery>
           {%- if images.size > 0 -%}
             {%- for img in images -%}
-              {%- if forloop.first -%}{{ img | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: d.name.value, class: 'mp-dev__img', data-mp-slide: forloop.index0 }}{%- else -%}{{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: d.name.value, class: 'mp-dev__img', hidden: 'hidden', data-mp-slide: forloop.index0 }}{%- endif -%}
+              {%- assign ialt = img.alt | default: d.name.value -%}{%- assign icol = img.alt | split: ' - ' | last | strip | downcase -%}
+              {%- if forloop.first -%}{{ img | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: ialt, class: 'mp-dev__img', data-mp-slide: forloop.index0, data-mp-colour: icol }}{%- else -%}{{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: ialt, class: 'mp-dev__img', hidden: 'hidden', data-mp-slide: forloop.index0, data-mp-colour: icol }}{%- endif -%}
             {%- endfor -%}
           {%- else -%}
             {% render 'plans-phone-art', label: d.name.value %}

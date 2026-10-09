@@ -501,12 +501,26 @@
     });
     renderPayments(); updateEstimate();
 
+    var showSlide = function (i) {
+      i = String(i);
+      $$('[data-mp-slide]', dev).forEach(function (s) { s.hidden = s.getAttribute('data-mp-slide') !== i; });
+      $$('[data-mp-thumb]', dev).forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-mp-thumb') === i); });
+    };
     $$('[data-mp-thumb]', dev).forEach(function (b) {
-      b.addEventListener('click', function () {
-        var i = b.getAttribute('data-mp-thumb');
-        $$('[data-mp-slide]', dev).forEach(function (s) { s.hidden = s.getAttribute('data-mp-slide') !== i; });
-        $$('[data-mp-thumb]', dev).forEach(function (x) { x.classList.toggle('is-active', x === b); });
-      });
+      b.addEventListener('click', function () { showSlide(b.getAttribute('data-mp-thumb')); });
+    });
+    // Colour swatch -> matching image (by colour name in alt, else by swatch index)
+    dev.addEventListener('change', function (e) {
+      if (!e.target.matches('[data-mp-cfg="colour"]')) return;
+      var slides = $$('[data-mp-slide]', dev);
+      if (!slides.length) return;
+      var name = String(e.target.value || '').trim().toLowerCase();
+      var hit = slides.filter(function (s) { return (s.getAttribute('data-mp-colour') || '') === name; })[0];
+      if (!hit) {
+        var idx = $$('input[data-mp-cfg="colour"]', dev).indexOf(e.target);
+        hit = slides[idx];
+      }
+      if (hit) showSlide(hit.getAttribute('data-mp-slide'));
     });
     var tip = $('[data-mp-tip]', dev);
     if (tip) tip.addEventListener('click', function () {
