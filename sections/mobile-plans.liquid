@@ -296,6 +296,14 @@
       </p>
       <template data-calc-tpl-ours>{{ 'plans.calc.breakdown_ours' | t: phone: '%P', plan: '%L' }}</template>
     </div>
+    <div class="mp-how">
+      <h3>{{ 'plans.postpaid.how_title' | t }}</h3>
+      <ol>
+        <li><span>1</span><p>{{ 'plans.prepaid.how_1' | t }}</p></li>
+        <li><span>2</span><p>{{ 'plans.prepaid.how_2' | t }}</p></li>
+        <li><span>3</span><p>{{ 'plans.prepaid.how_3' | t }}</p></li>
+      </ol>
+    </div>
   </section>
 
   {%- comment -%} ================= TAB 2: POSTPAID (unbranded) ================= {%- endcomment -%}
@@ -411,6 +419,14 @@
         <a class="btn btn--dark" href="{{ phones_url }}">{{ 'plans.financing.cross_phones' | t }}</a>
         <a class="btn" href="{{ plans_url }}?tab=prepaid" data-mp-gotab="prepaid">{{ 'plans.financing.cross_plans' | t }}</a>
       </div>
+    </div>
+    <div class="mp-how">
+      <h3>{{ 'plans.postpaid.how_title' | t }}</h3>
+      <ol>
+        <li><span>1</span><p>{{ 'plans.financing.how_1' | t }}</p></li>
+        <li><span>2</span><p>{{ 'plans.financing.how_2' | t }}</p></li>
+        <li><span>3</span><p>{{ 'plans.financing.how_3' | t }}</p></li>
+      </ol>
     </div>
   </section>
 

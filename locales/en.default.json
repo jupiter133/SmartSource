@@ -72,7 +72,10 @@
       "legal_title": "The legal stuff",
       "legal_default": "Automatic Top-Up bonus data applies while Automatic Top-Up stays on with a registered credit card. Prices and plan details are subject to change without notice.",
       "banner_title": "Pick a mobile phone plan",
-      "banner_sub": "All of our plans include call waiting, call forwarding, call display, voicemail and conference calling."
+      "banner_sub": "All of our plans include call waiting, call forwarding, call display, voicemail and conference calling.",
+      "how_1": "Pick a plan and send a quick activation request.",
+      "how_2": "We activate your line and contact you to confirm.",
+      "how_3": "Your SIM is delivered, or you activate by eSIM."
     },
     "bundle": {
       "title": "Buy a SmartSource phone + plan, save ${{ amount }}",
@@ -136,7 +139,10 @@
       "cross_title": "Want to pay even less?",
       "cross_text": "Get a certified refurbished phone + prepaid plan.",
       "cross_phones": "Shop refurbished phones",
-      "cross_plans": "See prepaid plans"
+      "cross_plans": "See prepaid plans",
+      "how_1": "Pick a phone, payment option and plan.",
+      "how_2": "Send the form. We schedule a call at a time that works for you.",
+      "how_3": "Your new phone and SIM are delivered, set up and ready."
     },
     "device": {
       "back": "All phones on financing",
