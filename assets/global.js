@@ -17,9 +17,9 @@
   const desktop = () => matchMedia('(min-width: 750px)').matches;
   const closeAll = () => { $$('[data-nav-item].is-open').forEach(i => { i.classList.remove('is-open'); $('.nav-link', i)?.setAttribute('aria-expanded', 'false'); }); document.body.classList.remove('mega-open'); };
   const openItem = item => { closeAll(); item.classList.add('is-open'); $('.nav-link', item)?.setAttribute('aria-expanded', 'true'); if (desktop()) document.body.classList.add('mega-open'); };
+  let t; // shared timer so leaving one item can't close the next one
   $$('[data-nav-item].has-mega').forEach(item => {
-    let t;
-    item.addEventListener('mouseenter', () => { if (!desktop()) return; clearTimeout(t); t = setTimeout(() => openItem(item), 120); });
+    item.addEventListener('mouseenter', () => { if (!desktop()) return; clearTimeout(t); t = setTimeout(() => openItem(item), document.body.classList.contains('mega-open') ? 0 : 120); });
     item.addEventListener('mouseleave', () => { if (!desktop()) return; clearTimeout(t); t = setTimeout(closeAll, 150); });
     $('.nav-link', item).addEventListener('click', e => { if (desktop()) return; e.preventDefault(); item.classList.contains('is-open') ? closeAll() : openItem(item); });
     $('.nav-link', item).addEventListener('keydown', e => { if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); openItem(item); $('.mega a', item)?.focus(); } });
