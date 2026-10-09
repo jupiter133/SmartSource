@@ -2456,3 +2456,48 @@ body:has(.mp-dev){background:#F2F2F5}
 .mp-plancard__inc[open] .mp-acc__chev{transform:rotate(-135deg);margin-top:4px}
 .mp-plancard__inc .mp-plan__list{padding:8px 0 0}
 .mp-continue{border-radius:999px}
+/* mp: Koodo-style prepaid tab */
+.mp-kbanner{background:#95F23A;color:#111;border-radius:16px;padding:24px 20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;overflow:hidden;margin-bottom:24px}
+.mp-kbanner__brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.mp-kbanner__brand .mp-dealer{margin:0;font-size:12.5px;font-weight:600;background:#111;color:#fff;padding:3px 10px;border-radius:999px}
+.mp-kbanner__title{margin:0 0 8px;font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.1;color:#111}
+.mp-kbanner__sub{margin:0;max-width:52ch;font-size:15px;color:#111}
+.mp-kbanner__art{width:110px;display:grid;place-items:center}
+.mp-kbanner__art img{width:100%;height:auto}
+.mp-kbanner__art .plans-phone-art{height:150px;width:auto}
+@media (min-width:750px){.mp-kbanner{padding:36px 40px}.mp-kbanner__art{width:240px}.mp-kbanner__art .plans-phone-art{height:200px}}
+.mp-kfilter__label{font-weight:700;font-size:15px;margin:0 0 10px}
+.mp-kfilter{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
+.mp-kfilter__btn{border:1px solid #d6d6dc;background:#fff;color:#111;border-radius:8px;padding:12px 6px;font-weight:600;font-size:14px;cursor:pointer}
+.mp-kfilter__btn.is-active{background:#111;border-color:#111;color:#fff}
+.mp-kfilter__btn:focus-visible{outline:2px solid #7B2CF0;outline-offset:2px}
+.mp-kgrid__h{font-size:22px;margin:0 0 16px}
+.mp-kgrid{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:990px){.mp-kgrid{grid-template-columns:repeat(3,1fr)}}
+.mp-kcard{position:relative;background:#fff;border:1px solid #dcdce2;border-radius:8px;display:flex;flex-direction:column}
+.mp-kcard[hidden]{display:none}
+.mp-kcard.has-badge{margin-top:12px}
+.mp-kcard__badge{position:absolute;left:16px;top:0;transform:translateY(-50%);background:#7B2CF0;color:#fff;font-size:12.5px;font-weight:700;padding:4px 12px;border-radius:999px}
+.mp-kcard__body{padding:24px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.mp-kcard__top{display:flex;justify-content:space-between;gap:12px}
+.mp-kcard__data{text-align:right}
+.mp-kcard__big{margin:0;font-size:44px;font-weight:800;line-height:1;letter-spacing:-.02em}
+.mp-kcard__big sup{font-size:.45em;vertical-align:top;position:relative;top:.25em;margin-right:1px}
+.mp-kcard__big small{font-size:.42em;font-weight:700;margin-left:2px}
+.mp-kcard__cap{margin:4px 0 0;font-size:13px;color:#55555f}
+.mp-kcard__bar{margin:0;background:#7B2CF0;color:#fff;font-weight:700;font-size:14px;text-align:center;padding:10px 14px;border-radius:999px;line-height:1.3}
+.mp-kcard__hr{border:0;border-top:1px solid #e4e4ea;margin:0}
+.mp-kcard__sim{margin:0;display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.mp-kcard__sim svg{flex-shrink:0;color:#7B2CF0}
+.mp-kcard__list{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px}
+.mp-kcard__list li{position:relative;padding-left:28px}
+.mp-kcard__list li::before{content:"";position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:#E6007E url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.mp-kcard .mp-save{margin:0;align-self:flex-start;font-size:12px}
+.mp-kcard__cta{margin-top:auto;background:#111;border-color:#111;border-radius:8px;padding:13px 16px}
+.mp-kcard__foot{background:#f3f3f5;border-top:1px solid #e4e4ea;border-radius:0 0 8px 8px;padding:12px 20px;text-align:center}
+.mp-kcard__more{background:none;border:0;padding:0;font-weight:600;font-size:14px;text-decoration:underline;cursor:pointer;color:#111}
+.mp-legal{margin-top:28px}
+.mp-kmodal .mp-kmodal__panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100% - 32px));max-height:calc(100% - 48px);overflow:auto;background:#fff;border-radius:12px;padding:28px 24px 24px}
+.mp-kmodal__x{position:absolute;right:12px;top:10px;width:36px;height:36px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer}
+.mp-kmodal__title{margin:0 40px 16px 0;font-size:24px}
+.mp-kmodal__h{font-size:16px;margin:0 0 12px}

@@ -264,11 +264,24 @@
 
     /* prepaid sub-tabs */
     var terms = $$('[data-mp-term]', root);
+    var termHead = $('[data-mp-termheading]', root);
     terms.forEach(function (b) {
       b.addEventListener('click', function () {
         var t = b.getAttribute('data-mp-term');
-        terms.forEach(function (x) { var on = x === b; x.classList.toggle('is-active', on); x.setAttribute('aria-selected', on ? 'true' : 'false'); });
-        $$('[data-mp-termgrid]', root).forEach(function (g) { g.hidden = g.getAttribute('data-mp-termgrid') !== t; });
+        terms.forEach(function (x) { var on = x === b; x.classList.toggle('is-active', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+        $$('[data-mp-kgrid] [data-term]', root).forEach(function (c) { c.hidden = t !== 'all' && c.getAttribute('data-term') !== t; });
+        if (termHead) termHead.textContent = b.getAttribute('data-heading') || '';
+      });
+    });
+    var detModal = $('[data-mp-modal="details"]', root);
+    $$('[data-mp-details]', root).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var card = b.closest('.mp-kcard'), tpl = card && $('template[data-mp-detailtpl]', card);
+        if (!tpl || !detModal) return;
+        var body = $('[data-mp-detailbody]', detModal);
+        body.innerHTML = '';
+        body.appendChild(tpl.content.cloneNode(true));
+        openModal(detModal);
       });
     });
 

@@ -72,24 +72,34 @@
 
   {%- comment -%} ================= TAB 1: PREPAID (Koodo) ================= {%- endcomment -%}
   <section class="mp-panel page-width" id="MpPanel-prepaid" role="tabpanel" aria-labelledby="MpTab-prepaid" data-mp-panel="prepaid">
-    <div class="mp-brandhead">
-      <span class="mp-brandhead__logo">
-        {%- if section.settings.koodo_logo != blank -%}
-          {{ section.settings.koodo_logo | image_url: width: 240 | image_tag: height: 32, loading: 'lazy', alt: 'Koodo' }}
+    <div class="mp-kbanner">
+      <div class="mp-kbanner__text">
+        <div class="mp-kbanner__brand">
+          {%- if section.settings.koodo_logo != blank -%}
+            {{ section.settings.koodo_logo | image_url: width: 240 | image_tag: height: 32, loading: 'lazy', alt: 'Koodo' }}
+          {%- else -%}
+            <span class="mp-wordmark" aria-label="Koodo">koodo</span>
+          {%- endif -%}
+          <span class="mp-dealer">{{ 'plans.prepaid.dealer' | t }}</span>
+        </div>
+        <h2 class="mp-kbanner__title">{{ 'plans.prepaid.banner_title' | t }}</h2>
+        <p class="mp-kbanner__sub">{{ 'plans.prepaid.banner_sub' | t }}</p>
+      </div>
+      <div class="mp-kbanner__art">
+        {%- if section.settings.prepaid_banner_image != blank -%}
+          {{ section.settings.prepaid_banner_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,450,600', sizes: '(min-width: 750px) 280px, 40vw', alt: '' }}
         {%- else -%}
-          <span class="mp-wordmark" aria-label="Koodo">koodo</span>
+          {% render 'plans-phone-art' %}
         {%- endif -%}
-      </span>
-      <div>
-        <h2 class="mp-h2">{{ 'plans.prepaid.heading' | t }}</h2>
-        <p class="mp-dealer">{{ 'plans.prepaid.dealer' | t }}</p>
       </div>
     </div>
 
-    <div class="mp-subtabs" role="tablist" aria-label="{{ 'plans.prepaid.term_label' | t | escape }}">
+    <p class="mp-kfilter__label" id="MpKFilterLabel">{{ 'plans.prepaid.filter_label' | t }}</p>
+    <div class="mp-kfilter" role="group" aria-labelledby="MpKFilterLabel">
+      <button type="button" class="mp-kfilter__btn" aria-pressed="false" data-mp-term="all" data-heading="{{ 'plans.prepaid.heading_all' | t | escape }}">{{ 'plans.common.all' | t }}</button>
       {%- for t in terms -%}
         {%- capture tk -%}plans.prepaid.term_{{ t }}{%- endcapture -%}
-        <button type="button" role="tab" class="mp-subtab{% if forloop.first %} is-active{% endif %}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-mp-term="{{ t }}">{{ tk | t }}</button>
+        <button type="button" class="mp-kfilter__btn{% if forloop.first %} is-active{% endif %}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" data-mp-term="{{ t }}" data-heading="{{ 'plans.prepaid.heading_term' | t: days: t | escape }}">{{ tk | t }}</button>
       {%- endfor -%}
     </div>
 
@@ -106,29 +116,101 @@
       {%- endfor -%}
     {%- endcapture -%}
 
-    {%- for t in terms -%}
-      <div class="mp-grid mp-grid--prepaid" data-mp-termgrid="{{ t }}"{% unless forloop.first %} hidden{% endunless %}>
-        {%- for k in pre_keys -%}
-          {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
-          {%- if p == blank or p.term.value != t -%}{%- continue -%}{%- endif -%}
-          <article class="mp-card mp-plan{% if p.badge != blank %} has-badge{% endif %}">
-            {%- if p.badge != blank -%}<span class="mp-badge">{{ p.badge.value }}</span>{%- endif -%}
-            <p class="mp-plan__data">{{ p.data.value }}</p>
-            <p class="mp-plan__price">{% render 'plans-money', amount: p.price.value %}<small>{{ 'plans.common.per_term' | t: days: t }}</small></p>
-            <ul class="mp-plan__list">
-              {%- if p.talk != blank -%}<li>{{ p.talk.value }}</li>{%- endif -%}
-              {%- if p.auto_topup_bonus != blank -%}<li>{{ 'plans.prepaid.bonus' | t: bonus: p.auto_topup_bonus.value }}</li>{%- endif -%}
+    <h3 class="mp-kgrid__h" data-mp-termheading>{{ 'plans.prepaid.heading_term' | t: days: terms[0] }}</h3>
+    <div class="mp-kgrid" data-mp-kgrid>
+      {%- for k in pre_keys -%}
+        {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
+        {%- if p == blank -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign t = p.term.value
+          assign dparts = p.data.value | strip | split: ' '
+          assign dnum = dparts[0] | plus: 0
+          assign dunit = dparts[1] | default: ''
+          assign has_data = false
+          if dnum > 0
+            assign has_data = true
+          endif
+          assign talk_n = p.talk.value | split: ' ' | first | plus: 0
+          assign topup = ''
+          if p.auto_topup_bonus != blank and has_data
+            assign bparts = p.auto_topup_bonus.value | remove: '+' | strip | split: ' '
+            assign bnum = bparts[0] | plus: 0
+            assign with_s = dnum | append: dunit
+            assign without = dnum | minus: bnum
+            if bparts[1] == dunit and without > 0
+              assign without_s = without | append: dunit
+              assign topup = 'plans.prepaid.topup_both' | t: with: with_s, without: without_s
+            else
+              assign topup = 'plans.prepaid.topup_with' | t: with: with_s
+            endif
+          endif
+          assign talk_html = p.talk.value | escape | replace: 'Unlimited', '<strong>Unlimited</strong>' | replace: 'illimit', '<strong>illimit</strong>'
+          assign price_parts = p.price.value | append: '' | split: '.'
+          assign cents = price_parts[1] | default: '0' | plus: 0
+        -%}
+        <article class="mp-kcard{% if p.badge != blank %} has-badge{% endif %}" data-term="{{ t }}"{% if t != terms[0] %} hidden{% endif %}>
+          {%- if p.badge != blank -%}<span class="mp-kcard__badge">{{ p.badge.value }}</span>{%- endif -%}
+          <div class="mp-kcard__body">
+            <div class="mp-kcard__top">
+              <div class="mp-kcard__price">
+                <p class="mp-kcard__big"><sup>$</sup>{{ p.price.value | floor }}{% if cents > 0 %}<sup>.{{ price_parts[1] | append: '0' | slice: 0, 2 }}</sup>{% endif %}</p>
+                <p class="mp-kcard__cap">{{ 'plans.prepaid.per_days' | t: days: t }}</p>
+              </div>
+              <div class="mp-kcard__data">
+                {%- if has_data -%}
+                  <p class="mp-kcard__big">{{ dnum }}<small>{{ dunit }}</small></p>
+                  <p class="mp-kcard__cap">{{ 'plans.prepaid.at_4g' | t }}</p>
+                {%- elsif talk_n > 0 -%}
+                  <p class="mp-kcard__big">{{ talk_n }}<small>{{ 'plans.prepaid.minutes' | t }}</small></p>
+                  <p class="mp-kcard__cap">{{ 'plans.prepaid.canada_wide' | t }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+            {%- if topup != '' -%}<p class="mp-kcard__bar">{{ topup }}</p>{%- endif -%}
+            <hr class="mp-kcard__hr">
+            <p class="mp-kcard__sim"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><strong>{{ section.settings.sim_text | default: 'Pay $5 for an eSIM or $10 for a physical SIM card' }}</strong></p>
+            <hr class="mp-kcard__hr">
+            <ul class="mp-kcard__list">
+              {%- if p.talk != blank -%}<li>{{ talk_html }}</li>{%- endif -%}
+              {%- if p.promo_text != blank -%}<li>{{ p.promo_text.value }}</li>{%- endif -%}
+              {%- if has_data -%}<li>{{ 'plans.prepaid.intl' | t }}</li>{%- endif -%}
+              <li>{{ 'plans.prepaid.features' | t }}</li>
             </ul>
-            {%- if p.promo_text != blank -%}<p class="mp-plan__promo">{{ p.promo_text.value }}</p>{%- endif -%}
             {%- if p.bundle_eligible.value and amt > 0 -%}<p class="mp-save">{{ 'plans.prepaid.save_tag' | t: amount: amt }}</p>{%- endif -%}
-            <button type="button" class="btn btn--dark btn--block mp-plan__cta" data-mp-activate="{{ p.handle }}">{{ 'plans.prepaid.activate' | t }}</button>
-          </article>
-        {%- else -%}
-          <p class="muted">{{ 'plans.prepaid.empty' | t }}</p>
-        {%- endfor -%}
+            <button type="button" class="btn btn--dark btn--block mp-kcard__cta" data-mp-activate="{{ p.handle }}">{{ 'plans.prepaid.activate' | t }}</button>
+          </div>
+          <div class="mp-kcard__foot"><button type="button" class="mp-kcard__more" data-mp-details aria-haspopup="dialog">{{ 'plans.prepaid.view_details' | t }}</button></div>
+          <template data-mp-detailtpl>
+            <h2 class="mp-kmodal__title" id="MpKDetailsTitle">{% if has_data %}{{ 'plans.prepaid.modal_title' | t: data: p.data.value }}{% else %}{{ p.talk.value }}{% endif %}</h2>
+            <h3 class="mp-kmodal__h">{{ 'plans.prepaid.details_title' | t }}</h3>
+            <ul class="mp-kcard__list">
+              {%- if topup != '' -%}<li>{{ topup }}</li>{%- elsif has_data -%}<li>{{ 'plans.prepaid.modal_title' | t: data: p.data.value }}</li>{%- endif -%}
+              {%- if p.talk != blank -%}<li>{{ talk_html }}</li>{%- endif -%}
+              {%- if p.promo_text != blank -%}<li>{{ p.promo_text.value }}</li>{%- endif -%}
+              {%- if has_data -%}<li>{{ 'plans.prepaid.intl' | t }}</li>{%- endif -%}
+              <li>{{ 'plans.prepaid.features' | t }}</li>
+              {%- if p.auto_topup_bonus != blank -%}<li>{{ 'plans.prepaid.bonus' | t: bonus: p.auto_topup_bonus.value }}</li>{%- endif -%}
+              <li>{{ section.settings.sim_text | default: 'Pay $5 for an eSIM or $10 for a physical SIM card' }}</li>
+            </ul>
+          </template>
+        </article>
+      {%- else -%}
+        <p class="muted">{{ 'plans.prepaid.empty' | t }}</p>
+      {%- endfor -%}
+    </div>
+
+    <details class="mp-acc mp-acc--line mp-legal">
+      <summary><h3 class="mp-acc__h">{{ 'plans.prepaid.legal_title' | t }}</h3><span class="mp-acc__plus" aria-hidden="true"></span></summary>
+      <div class="mp-acc__body">{%- if section.settings.legal_text != blank -%}{{ section.settings.legal_text }}{%- else -%}<p>{{ 'plans.prepaid.included' | t }}</p><p>{{ 'plans.prepaid.legal_default' | t }}</p>{%- endif -%}</div>
+    </details>
+
+    <div class="mp-modal mp-kmodal" data-mp-modal="details" hidden role="dialog" aria-modal="true" aria-labelledby="MpKDetailsTitle">
+      <div class="mp-modal__scrim" data-mp-close></div>
+      <div class="mp-kmodal__panel">
+        <button type="button" class="mp-kmodal__x" data-mp-close aria-label="{{ 'plans.prepaid.close' | t | escape }}">&times;</button>
+        <div data-mp-detailbody></div>
       </div>
-    {%- endfor -%}
-    <p class="mp-fine">{{ 'plans.prepaid.included' | t }}</p>
+    </div>
 
     {%- comment -%} Bundle banner {%- endcomment -%}
     {%- if amt > 0 -%}
@@ -490,6 +572,9 @@
   "tag": "div",
   "class": "mp-section",
   "settings": [
+    { "type": "image_picker", "id": "prepaid_banner_image", "label": "Prepaid banner image", "info": "Optional. Replaces the phone illustration in the green prepaid banner." },
+    { "type": "text", "id": "sim_text", "label": "Prepaid SIM offer line", "default": "Pay $5 for an eSIM or $10 for a physical SIM card" },
+    { "type": "richtext", "id": "legal_text", "label": "Prepaid legal text (\"The legal stuff\")", "info": "Leave blank to use the built-in, translated text." },
     { "type": "image_picker", "id": "koodo_logo", "label": "Koodo logo (prepaid tab)", "info": "Upload the official logo from the dealer portal. Without it, a simple text wordmark shows." },
     { "type": "paragraph", "content": "Plans, phones and promos are edited in Content > Metaobjects. Bundle discount and calculator numbers are in Theme settings > Mobile plans." }
   ],
