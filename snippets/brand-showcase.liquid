@@ -1,0 +1,48 @@
+{%- comment -%}
+  Brand page showcase, shown above the full catalogue on a brand collection page (e.g. /collections/all/samsung).
+  Order: Steal deals row → series tiles → Best sellers row → "Shop all <brand>" heading.
+  Rows reuse the landing-page highlighted rows (.lx-row--steal / .lx-row--best, loaded via section landing-rows-api).
+  Tiles reuse the landing-page big tiles (.subcat--big), images come from each series' representative product.
+  Params:
+    tag    – collection tag the rows load from, e.g. "samsung"
+    brand  – display name, e.g. "Samsung"
+    tiles  – "Title|link|product-handle;Title|link|product-handle;…" (product-handle gives the tile photo)
+    tiles_heading – optional, defaults to "Shop by series"
+{%- endcomment -%}
+<div class="lx bshow" data-lx data-tag="{{ tag }}">
+  <section class="section page-width lx-row lx-row--steal" data-carousel>
+    <div class="section__head"><div><span class="lx__badge">✦ Lowest prices</span><h2>Steal deals</h2><p class="lx__sub">Our cheapest {{ brand }} picks, tested and backed by a 1-year warranty.</p></div>{% render 'carousel-arrows' %}</div>
+    <div class="carousel carousel--cards" data-track data-lx-load="price-ascending"></div>
+  </section>
+
+  {%- assign bs_tiles = tiles | split: ';' -%}
+  {%- if bs_tiles.size > 0 -%}
+    <section class="section subcat subcat--big subcat--series">
+      <div class="subcat__head"><h2>{{ tiles_heading | default: 'Shop by series' }}</h2></div>
+      <div class="subcat__grid">
+        {%- for row in bs_tiles -%}
+          {%- assign tp = row | split: '|' -%}
+          {%- assign tprod = all_products[tp[2]] -%}
+          <a class="subcat-tile" href="{{ tp[1] }}">
+            <span class="subcat-tile__img" style="--tile-bg: #DDF4FA">
+              {%- if tprod.featured_image -%}
+                {{ tprod.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 400px, 80vw', alt: tp[0] }}
+              {%- else -%}
+                {% render 'device-art', kind: 'phone', title: tp[0], idx: forloop.index %}
+              {%- endif -%}
+            </span>
+            <span class="subcat-tile__title">{{ tp[0] }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  <section class="section page-width lx-row lx-row--best" data-carousel>
+    <div class="section__head"><div><span class="lx__badge">🔥 Most popular</span><h2>Best sellers</h2><p class="lx__sub">The {{ brand }} devices Canadians are buying right now.</p></div>{% render 'carousel-arrows' %}</div>
+    <div class="carousel carousel--cards" data-track data-lx-load="best-selling"></div>
+  </section>
+
+  <div class="bshow__all"><h2>Shop all {{ brand }}</h2></div>
+</div>
+{% render 'lx-loader' %}

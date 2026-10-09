@@ -29,6 +29,9 @@
         assign tag_title = b.settings.label
       endif
     endfor
+    if ctags contains 'galaxy-s'
+      assign tag_title = 'Galaxy S'
+    endif
   endif
   if tag_title != blank
     assign page_heading = section.settings.prefix | append: ' ' | append: tag_title
@@ -231,6 +234,34 @@
         <a role="listitem" class="coll-chip{% if on %} is-active{% endif %}" href="{{ pp[2] }}"{% if on %} aria-current="page"{% endif %}>{{ pp[1] }}</a>
       {%- endfor -%}
     </div>
+  {%- endif -%}
+
+  {%- comment -%}
+    Brand showcase (Steal deals, series tiles, Best sellers) above the full catalogue.
+    Only on a plain brand page: /collections/all/<brand> with exactly that one tag, first page, no filters or sort applied.
+    Enabled for Samsung; add a "when" for another brand (e.g. apple) to switch it on there.
+  {%- endcomment -%}
+  {%- liquid
+    assign bs_on = false
+    if collection.handle == 'all' and current_tags.size == 1 and missing_tag == false and current_page == 1 and collection.sort_by == blank
+      assign bs_on = true
+      for f in collection.filters
+        if f.active_values.size > 0 or f.min_value.value != nil or f.max_value.value != nil
+          assign bs_on = false
+        endif
+      endfor
+    endif
+    assign bs_tiles = ''
+    if bs_on
+      case ctags.first
+        when 'samsung'
+          assign bs_brand = 'Samsung'
+          assign bs_tiles = 'Galaxy S series|/collections/all/samsung+galaxy-s|samsung-galaxy-s25-ultra;Galaxy Z series|/collections/all/samsung+galaxy-z|samsung-galaxy-z-fold7;Galaxy A series|/collections/all/samsung+galaxy-a|samsung-galaxy-a55-5g'
+      endcase
+    endif
+  -%}
+  {%- if bs_tiles != blank -%}
+    {% render 'brand-showcase', tag: ctags.first, brand: bs_brand, tiles: bs_tiles %}
   {%- endif -%}
 
   {%- paginate collection.products by section.settings.per_page -%}

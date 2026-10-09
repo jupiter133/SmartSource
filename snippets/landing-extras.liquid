@@ -13,15 +13,4 @@
     <div class="carousel carousel--cards" data-track data-lx-load="price-ascending"></div>
   </section>
 </div>
-<script>
-(function(){var X=document.querySelector('[data-lx]');if(!X||X.dataset.ready)return;X.dataset.ready=1;var tag=X.dataset.tag;
-function load(track){var cond=track.dataset.lxCond,t=tag+(cond?'+'+encodeURIComponent(cond.replace(':','-')).toLowerCase():'');
-var url='/collections/all/'+tag+(cond?'+'+cond.replace(':','-'):'')+'?sort_by='+track.dataset.lxLoad+'&section_id=landing-rows-api';
-track.innerHTML='<p class="lx__loading">Loading…</p>';
-fetch(url).then(function(r){return r.ok?r.text():''}).then(function(h){var d=document.createElement('div');d.innerHTML=h;var cards=d.querySelectorAll('.card, article, a.card');var wrap=d.querySelector('.shopify-section')||d;
-var html=wrap.innerHTML.trim();var row=track.closest('.lx-row');
-if(!html||!wrap.querySelector('*')){track.innerHTML='';if(row.classList.contains('lx-row--ca')){track.innerHTML='<p class="lx__empty">Nothing here yet. Check back soon.</p>'}else{row.hidden=true}return}
-track.innerHTML=html;row.hidden=false}).catch(function(){track.innerHTML=''})}
-X.querySelectorAll('[data-lx-load]').forEach(load);
-X.querySelectorAll('[data-lx-tab]').forEach(function(b){b.onclick=function(){X.querySelectorAll('[data-lx-tab]').forEach(function(o){o.classList.toggle('is-on',o===b);o.setAttribute('aria-selected',o===b)});var tr=X.querySelector('[data-lx-cond]');tr.dataset.lxCond=b.dataset.lxTab;load(tr)}})})();
-</script>
+{% render 'lx-loader' %}

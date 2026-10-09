@@ -2715,3 +2715,16 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 @keyframes deal-glow{0%,100%{opacity:1}50%{opacity:.62}}
 @keyframes deal-spark{0%,100%{transform:scale(1) rotate(0)}40%{transform:scale(1.35) rotate(20deg)}60%{transform:scale(.95) rotate(-6deg)}}
 @media (prefers-reduced-motion:reduce){.nav-deal,.nav-deal__spark{animation:none}}
+/* Brand page showcase (e.g. /collections/all/samsung): Steal deals, series tiles, Best sellers, then the full catalogue */
+.bshow .lx-row--steal{margin-top:8px}
+.subcat--series{margin:36px 0}
+.bshow__all{margin:44px 0 18px}
+.bshow__all h2{font-size:1.6rem;font-weight:700;margin:0}
+@media (max-width:749px){
+  .subcat--series .subcat__grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+  .subcat--series .subcat__grid::-webkit-scrollbar{display:none}
+  .subcat--series .subcat-tile{scroll-snap-align:start}
+  .subcat--series{margin:28px 0}
+  .bshow__all{margin:32px 0 14px}
+  .bshow__all h2{font-size:1.35rem}
+}
