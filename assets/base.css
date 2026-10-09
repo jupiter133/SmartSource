@@ -2698,3 +2698,5 @@ html,body{overflow-x:clip;max-width:100%}
 @media (max-width:749px){.gallery{grid-template-columns:minmax(0,1fr)}}
 /* Tile photos: blend white JPG backgrounds into the tinted tile */
 .mega-tile__photo,.subcat-tile img{mix-blend-mode:multiply}
+/* iPhone 11 series photo has a lot of built-in padding: zoom it to match the other series tiles */
+.mega-tile__photo[src*="/width_550.jpg"],.subcat-tile img[src*="/width_550.jpg"]{scale:1.55}
