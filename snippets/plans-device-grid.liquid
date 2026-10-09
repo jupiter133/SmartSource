@@ -37,7 +37,7 @@
           </span>
           <span class="mp-device__brand">{{ d.brand.value }}</span>
           <span class="mp-device__name">{{ d.name.value }}</span>
-          <span class="mp-device__price">{%- if min >= 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
+          <span class="mp-device__price">{%- if min >= 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}</span><span class="mp-device__plan">{{ 'plans.common.with_eligible_plan' | t }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
         </a>
       {%- endfor -%}
     </div>

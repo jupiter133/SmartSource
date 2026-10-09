@@ -46,7 +46,8 @@
       "plan_includes": "Plan includes",
       "all": "All",
       "limited_time": "Limited time",
-      "taxes": "+ taxes"
+      "taxes": "+ taxes",
+      "with_eligible_plan": "with an eligible plan"
     },
     "prepaid": {
       "heading": "Prepaid plans",

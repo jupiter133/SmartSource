@@ -55,7 +55,8 @@
       "plan_includes": "Le forfait comprend",
       "all": "Tous",
       "limited_time": "Durée limitée",
-      "taxes": "+ taxes"
+      "taxes": "+ taxes",
+      "with_eligible_plan": "avec un forfait admissible"
     },
     "prepaid": {
       "heading": "Forfaits prépayés",
