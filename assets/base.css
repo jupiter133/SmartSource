@@ -2747,3 +2747,8 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   -webkit-mask:radial-gradient(circle 4px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
   mask:radial-gradient(circle 4px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
 .deal-badge svg{flex-shrink:0}
+/* Mobile menu: fit the real visible height and leave room for the iOS home bar so the last item is reachable */
+@media (max-width:749px){
+  .header__nav-wrap.is-open{max-height:var(--menu-h,calc(100dvh - 180px));padding-bottom:calc(24px + env(safe-area-inset-bottom))!important;box-sizing:border-box}
+  html.menu-lock,html.menu-lock body{overflow:hidden}
+}

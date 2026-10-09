@@ -7,7 +7,10 @@
 
   // Mobile menu
   const menuBtn = $('[data-menu-toggle]'), menu = $('[data-menu]');
-  const setMenu = open => { menu?.classList.toggle('is-open', open); menuBtn?.setAttribute('aria-expanded', open); };
+  // Mobile menu height = space actually left below the menu's top edge (works with iOS toolbars and the announcement bar)
+  const fitMenu = () => { if (!menu?.classList.contains('is-open')) return; const top = Math.max(0, menu.getBoundingClientRect().top); menu.style.setProperty('--menu-h', (window.visualViewport ? visualViewport.height : innerHeight) - top + 'px'); };
+  const setMenu = open => { menu?.classList.toggle('is-open', open); menuBtn?.setAttribute('aria-expanded', open); document.documentElement.classList.toggle('menu-lock', !!open); if (open) { menu.scrollTop = 0; requestAnimationFrame(fitMenu); } };
+  addEventListener('resize', fitMenu); window.visualViewport?.addEventListener('resize', fitMenu);
   menuBtn?.addEventListener('click', () => setMenu(!menu?.classList.contains('is-open')));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu?.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); } });
   matchMedia('(min-width: 750px)').addEventListener('change', e => e.matches && setMenu(false));
