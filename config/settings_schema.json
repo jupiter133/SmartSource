@@ -511,5 +511,49 @@
         "label": "Explainer video URL (YouTube or .mp4; blank = hidden)"
       }
     ]
+  },
+  {
+    "name": "Mobile plans",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Phone + plan bundle"
+      },
+      {
+        "type": "number",
+        "id": "plans_bundle_discount",
+        "label": "Bundle discount ($)",
+        "default": 25,
+        "info": "Off a refurbished SmartSource phone with an eligible prepaid plan."
+      },
+      {
+        "type": "textarea",
+        "id": "plans_bundle_fine_print",
+        "label": "Bundle fine print",
+        "default": "One discount per eligible prepaid activation. Applies to refurbished SmartSource phones only. We'll confirm eligibility when we contact you."
+      },
+      {
+        "type": "header",
+        "content": "Savings calculator"
+      },
+      {
+        "type": "text",
+        "id": "plans_calc_postpaid_monthly",
+        "label": "Typical postpaid plan ($/mo)",
+        "default": "90"
+      },
+      {
+        "type": "text",
+        "id": "plans_calc_financing_monthly",
+        "label": "Typical device financing ($/mo)",
+        "default": "43.71"
+      },
+      {
+        "type": "textarea",
+        "id": "plans_calc_disclaimer",
+        "label": "Calculator disclaimer",
+        "info": "Leave blank to use the built-in, translated disclaimer."
+      }
+    ]
   }
 ]
