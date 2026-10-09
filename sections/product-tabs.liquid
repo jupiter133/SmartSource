@@ -5,13 +5,15 @@
       {%- liquid
         comment
           Tabs without a collection load real products from a tag URL instead of showing placeholders.
-          Defaults by position: 1 Best sellers, 2 Flash deals (tag flash-deal), 3 Under $300.
+          Defaults by position: 1 Flash deals (tag flash-deal), 2 Best sellers, 3 Under $300.
         endcomment
         assign tl = block.settings.label | default: block.settings.collection.title
         if block.settings.collection == blank
           case forloop.index
-            when 2
+            when 1
               assign tl = 'Flash deals'
+            when 2
+              assign tl = 'Best sellers'
             when 3
               assign tl = 'Under $300'
           endcase
@@ -27,9 +29,9 @@
         if block.settings.collection == blank
           case forloop.index
             when 1
-              assign tab_src = '/collections/all/smartphones?sort_by=best-selling'
-            when 2
               assign tab_src = '/collections/all/flash-deal?sort_by=best-selling'
+            when 2
+              assign tab_src = '/collections/all/smartphones?sort_by=best-selling'
             else
               assign tab_src = '/collections/all/smartphones?filter.v.price.lte=300&sort_by=price-descending'
           endcase
