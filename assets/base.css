@@ -2510,3 +2510,10 @@ body:has(.mp-dev){background:#F2F2F5}
 /* stop sideways page scroll shifting the layout off-centre */
 html,body{overflow-x:clip;max-width:100%}
 .mp,.mp-panel{overflow-x:clip}
+/* mp: one shared centred container for every Mobile plans section */
+.mp{width:100%;max-width:100%;margin-left:auto;margin-right:auto}
+.mp .page-width,.mp.page-width{box-sizing:border-box;width:100%;max-width:var(--page-width,1200px);margin-left:auto;margin-right:auto;padding-left:16px;padding-right:16px}
+@media (min-width:750px){.mp .page-width,.mp.page-width{padding-left:24px;padding-right:24px}}
+.mp-faq>.mp-h2{text-align:center}
+.mp-faq__list{margin-left:auto;margin-right:auto}
+.mp-how h3{text-align:center}
