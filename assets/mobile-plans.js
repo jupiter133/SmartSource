@@ -587,3 +587,24 @@
     }
   });
 })();
+
+/* Preferred call day picker: next 10 days as radio chips (team confirms the exact time manually) */
+(function () {
+  document.querySelectorAll('[data-mp-dates]').forEach(function (box) {
+    if (box.childElementCount) return;
+    var loc = (box.dataset.locale || 'en') + '-CA';
+    var d = new Date();
+    for (var i = 0; i < 10; i++) {
+      var day = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
+      var wk = i === 0 ? box.dataset.today : i === 1 ? box.dataset.tomorrow : day.toLocaleDateString(loc, { weekday: 'short' });
+      var md = day.toLocaleDateString(loc, { month: 'short', day: 'numeric' });
+      var full = day.toLocaleDateString('en-CA', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      var l = document.createElement('label');
+      l.className = 'mp-date';
+      l.innerHTML = '<input type="radio" name="contact[Preferred call date]" required><span><small></small><b></b></span>';
+      var inp = l.querySelector('input'); inp.value = full; if (i === 0) inp.checked = true;
+      l.querySelector('small').textContent = wk; l.querySelector('b').textContent = md;
+      box.appendChild(l);
+    }
+  });
+})();

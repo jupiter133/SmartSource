@@ -204,7 +204,20 @@
       "byod": "J'apporte mon téléphone",
       "title_postpaid": "Planifier un appel",
       "summary": "Votre sélection",
-      "step": "Étape {{ n }} sur {{ total }}"
+      "step": "Étape {{ n }} sur {{ total }}",
+      "call_date": "Choisissez un jour pour l’appel",
+      "call_time": "Quel moment de la journée vous convient?",
+      "today": "Aujourd’hui",
+      "tomorrow": "Demain",
+      "slot_morning": "Matin",
+      "slot_morning_hours": "9 h – 12 h",
+      "slot_afternoon": "Après-midi",
+      "slot_afternoon_hours": "12 h – 17 h",
+      "slot_evening": "Soir",
+      "slot_evening_hours": "17 h – 20 h",
+      "slot_anytime": "N’importe quand",
+      "slot_anytime_hours": "9 h – 20 h",
+      "call_note": "Heure de l’Est. Nous confirmerons l’heure exacte par texto ou courriel."
     },
     "prepaid_form": {
       "title": "Activer Koodo Prépayé",

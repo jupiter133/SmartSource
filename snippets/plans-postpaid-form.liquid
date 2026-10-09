@@ -45,6 +45,21 @@
           <label for="MpPpPhone">{{ 'plans.form.phone' | t }}</label>
           <input id="MpPpPhone" type="tel" name="contact[phone]" autocomplete="tel" inputmode="tel" required value="{{ form.phone | escape }}">
         </div>
+        <fieldset class="mp-field mp-when">
+          <legend>{{ 'plans.form.call_date' | t }}</legend>
+          <div class="mp-when__dates" data-mp-dates data-locale="{{ request.locale.iso_code }}" data-today="{{ 'plans.form.today' | t | escape }}" data-tomorrow="{{ 'plans.form.tomorrow' | t | escape }}"></div>
+        </fieldset>
+        <fieldset class="mp-field mp-when">
+          <legend>{{ 'plans.form.call_time' | t }}</legend>
+          <div class="mp-when__times">
+            {%- assign slots = 'morning,afternoon,evening,anytime' | split: ',' -%}
+            {%- for sl in slots -%}
+              {%- capture lk %}plans.form.slot_{{ sl }}{% endcapture -%}{%- capture hk %}plans.form.slot_{{ sl }}_hours{% endcapture -%}
+              <label class="mp-slot"><input type="radio" name="contact[Preferred time of day]" value="{{ lk | t | escape }} ({{ hk | t | escape }})" required><span><b>{{ lk | t }}</b><small>{{ hk | t }}</small></span></label>
+            {%- endfor -%}
+          </div>
+          <p class="mp-when__note">{{ 'plans.form.call_note' | t }}</p>
+        </fieldset>
         <div class="mp-hp" aria-hidden="true"><label for="MpPpWeb">Website</label><input id="MpPpWeb" type="text" name="contact[website]" tabindex="-1" autocomplete="off" data-mp-hp></div>
         <label class="mp-check"><input type="checkbox" name="contact[Consent]" value="Yes" required><span>{{ 'plans.form.consent_postpaid' | t }}</span></label>
         <p class="mp-privacy"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l7 2.6v5.6c0 4.6-3 8.1-7 9.8-4-1.7-7-5.2-7-9.8V5.6z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>{{ 'plans.form.privacy' | t }}</p>

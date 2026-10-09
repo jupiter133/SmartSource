@@ -195,7 +195,20 @@
       "byod": "Bring my own phone",
       "title_postpaid": "Schedule a call",
       "summary": "Your selection",
-      "step": "Step {{ n }} of {{ total }}"
+      "step": "Step {{ n }} of {{ total }}",
+      "call_date": "Pick a day for your call",
+      "call_time": "What time of day works best?",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "slot_morning": "Morning",
+      "slot_morning_hours": "9 am – 12 pm",
+      "slot_afternoon": "Afternoon",
+      "slot_afternoon_hours": "12 – 5 pm",
+      "slot_evening": "Evening",
+      "slot_evening_hours": "5 – 8 pm",
+      "slot_anytime": "Anytime",
+      "slot_anytime_hours": "9 am – 8 pm",
+      "call_note": "Times are Eastern. We'll text or email to confirm the exact time."
     },
     "prepaid_form": {
       "title": "Activate Koodo Prepaid",
