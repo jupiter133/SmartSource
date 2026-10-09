@@ -372,15 +372,16 @@
             <button type="button" class="btn btn--dark btn--block" data-mp-byod="{{ p.name.value | escape }}" data-price="{{ p.byod_price.value | default: p.price.value }}">{{ 'plans.postpaid.byod' | t }}</button>
             <button type="button" class="btn btn--block" data-mp-goto="#MpPostpaidPhones">{{ 'plans.postpaid.add_phone' | t }}</button>
           </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
     <div class="mp-postdev" id="MpPostpaidPhones">
       <div class="mp-panelhead">
         <h2 class="mp-h2">{{ 'plans.postpaid.phones_heading' | t }}</h2>
         <p class="muted">{{ 'plans.postpaid.phones_sub' | t }}</p>
       </div>
       {% render 'plans-device-grid', keys: dev_keys %}
-    </div>
-        </article>
-      {%- endfor -%}
     </div>
 
     <div class="mp-how">

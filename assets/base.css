@@ -2501,3 +2501,9 @@ body:has(.mp-dev){background:#F2F2F5}
 .mp-kmodal__x{position:absolute;right:12px;top:10px;width:36px;height:36px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer}
 .mp-kmodal__title{margin:0 40px 16px 0;font-size:24px}
 .mp-kmodal__h{font-size:16px;margin:0 0 12px}
+/* Mobile plans: spacing */
+.mp-panel{padding-top:40px;padding-bottom:40px}
+.mp-panel .mp-promo,.mp-panel .mp-grid{margin-top:20px}
+.mp-grid--postpaid{gap:18px;margin-top:28px}
+.mp-postdev{margin-top:56px}
+.mp-how{margin-top:56px}
