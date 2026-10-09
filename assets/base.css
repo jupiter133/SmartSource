@@ -2742,3 +2742,8 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 .lx-row--slim .card__title{font-size:14px}
 @media (max-width:749px){.lx-row--slim .carousel--cards .card{width:170px}}
 
+/* Deal badges (tag-driven: flash-deal / price-drop), ticket shape like Back Market */
+.deal-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;margin:6px 0 2px;padding:3px 10px;font-size:13px;font-weight:600;line-height:1.3;color:#0b4f35;background:#8ff0c0;
+  -webkit-mask:radial-gradient(circle 4px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 4px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.deal-badge svg{flex-shrink:0}

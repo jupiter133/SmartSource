@@ -15,6 +15,13 @@
       {%- if color_opt.values.size > 5 -%}<span class="muted">+{{ color_opt.values.size | minus: 5 }}</span>{%- endif -%}
     </div>
   {%- endif -%}
+  {%- comment -%} Deal badges are opt-in per product via tags: "flash-deal" or "price-drop" {%- endcomment -%}
+  {%- assign tagsd = product.tags | join: ',' | downcase | handleize -%}
+  {%- if tagsd contains 'flash-deal' -%}
+    <span class="deal-badge"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>Flash deal</span>
+  {%- elsif tagsd contains 'price-drop' -%}
+    <span class="deal-badge"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 8.5l7 7M15.5 10v5.5H10" fill="none" stroke="#8ff0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Price drop</span>
+  {%- endif -%}
   <p class="card__title">{{ product.title }}</p>
   {% render 'rating', product: product %}
   {% render 'price', product: product %}
