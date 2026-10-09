@@ -2,22 +2,59 @@
   <h2>{{ section.settings.heading }}</h2>
   <div class="pills" role="tablist">
     {%- for block in section.blocks -%}
-      <button class="pill{% if forloop.first %} is-active{% endif %}" role="tab" data-tab="{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.label | default: block.settings.collection.title }}</button>
+      {%- liquid
+        comment
+          Tabs without a collection load real products from a tag URL instead of showing placeholders.
+          Defaults by position: 1 Best sellers, 2 Flash deals (tag flash-deal), 3 Under $300.
+        endcomment
+        assign tl = block.settings.label | default: block.settings.collection.title
+        if block.settings.collection == blank
+          case forloop.index
+            when 2
+              assign tl = 'Flash deals'
+            when 3
+              assign tl = 'Under $300'
+          endcase
+        endif
+      -%}
+      <button class="pill{% if forloop.first %} is-active{% endif %}" role="tab" data-tab="{{ block.id }}" {{ block.shopify_attributes }}>{{ tl }}</button>
     {%- endfor -%}
   </div>
   {%- for block in section.blocks -%}
     <div class="tab-panel" data-panel="{{ block.id }}" data-carousel {% unless forloop.first %}hidden{% endunless %}>
-      <div class="carousel carousel--cards" data-track>
+      {%- liquid
+        assign tab_src = ''
+        if block.settings.collection == blank
+          case forloop.index
+            when 1
+              assign tab_src = '/collections/all/smartphones?sort_by=best-selling'
+            when 2
+              assign tab_src = '/collections/all/flash-deal?sort_by=best-selling'
+            else
+              assign tab_src = '/collections/all/smartphones?filter.v.price.lte=300&sort_by=price-descending'
+          endcase
+        endif
+      -%}
+      <div class="carousel carousel--cards" data-track{% if tab_src != '' %} data-tab-src="{{ tab_src }}"{% endif %}>
+        {%- if tab_src != '' -%}<p class="lx__loading">Loading…</p>{%- else -%}
         {%- for product in block.settings.collection.products limit: section.settings.limit -%}
           {% render 'product-card', product: product, eyebrow: block.settings.eyebrow %}
         {%- else -%}
           {%- for i in (1..5) -%}<div class="card card--placeholder">{% render 'device-art', title: 'phone', section: section, idx: forloop.index %}<p>Pick a collection in the editor</p></div>{%- endfor -%}
         {%- endfor -%}
+        {%- endif -%}
       </div>
       <div class="section__foot">{% render 'carousel-arrows' %}</div>
     </div>
   {%- endfor -%}
 </section>
+<script>
+(function(){document.querySelectorAll('[data-tab-src]').forEach(function(t){
+  var u=t.dataset.tabSrc;fetch(u+(u.indexOf('?')>-1?'&':'?')+'section_id=landing-rows-api').then(function(r){return r.ok?r.text():''}).then(function(h){
+    var d=document.createElement('div');d.innerHTML=h;var w=d.querySelector('.shopify-section')||d;var html=w.innerHTML.trim();
+    if(html&&w.querySelector('.card')){t.innerHTML=html}else{t.closest('.tab-panel').querySelector('.section__foot').hidden=true;t.innerHTML='<p class="muted">Nothing here right now. Check back soon.</p>'}
+  }).catch(function(){t.innerHTML=''})})})();
+</script>
 {% schema %}
 { "name": "Product tabs", "settings": [
   { "type": "text", "id": "heading", "label": "Heading", "default": "Recommended for you" },
