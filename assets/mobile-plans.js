@@ -29,7 +29,7 @@
   }
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
-  function num(v) { var n = parseFloat(String(v || '').replace(',', '.')); return isNaN(n) ? null : n; }
+  function num(v) { if (v === 0) return 0; var n = parseFloat(String(v == null ? '' : v).replace(',', '.')); return isNaN(n) ? null : n; }
 
   /* ---------- modals ---------- */
   var lastFocus = null;
