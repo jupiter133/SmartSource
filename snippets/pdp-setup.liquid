@@ -6,7 +6,22 @@
 {%- liquid
   assign a1 = product.metafields.custom.setup_addon_1.value | default: p1
   assign a2 = product.metafields.custom.setup_addon_2.value | default: p2
-  if a1 == blank
+  assign ptype = product.type | downcase
+  assign ptitle = product.title | downcase
+  assign is_phone = false
+  if ptype contains 'phone' or ptitle contains 'iphone' or ptitle contains 'galaxy' or ptitle contains 'pixel' or ptitle contains 'moto'
+    assign is_phone = true
+  endif
+  if ptitle contains 'ipad' or ptitle contains 'tab ' or ptype contains 'tablet' or ptitle contains 'watch' or ptitle contains 'buds'
+    assign is_phone = false
+  endif
+  unless is_phone
+    assign p1 = blank
+    assign p2 = blank
+    assign a1 = product.metafields.custom.setup_addon_1.value
+    assign a2 = product.metafields.custom.setup_addon_2.value
+  endunless
+  if a1 == blank and is_phone
     for x in collections['screen-protectors'].products limit: 6
       if x.available
         assign a1 = x
@@ -14,7 +29,7 @@
       endif
     endfor
   endif
-  if a2 == blank
+  if a2 == blank and is_phone
     for x in collections['cases'].products limit: 6
       if x.available
         assign a2 = x
