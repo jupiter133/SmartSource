@@ -81,7 +81,10 @@
       "legal_title": "Les petits caractères",
       "legal_default": "Les données en prime du réapprovisionnement automatique s’appliquent tant que le réapprovisionnement automatique reste activé avec une carte de crédit enregistrée. Les prix et les détails des forfaits peuvent changer sans préavis.",
       "banner_title": "Choisissez un forfait de téléphone mobile",
-      "banner_sub": "Tous nos forfaits comprennent l’appel en attente, le renvoi d’appel, l’afficheur, la messagerie vocale et la conférence téléphonique."
+      "banner_sub": "Tous nos forfaits comprennent l’appel en attente, le renvoi d’appel, l’afficheur, la messagerie vocale et la conférence téléphonique.",
+      "how_1": "Choisissez un forfait et envoyez une courte demande d’activation.",
+      "how_2": "Nous activons votre ligne et vous contactons pour confirmer.",
+      "how_3": "Votre SIM est livrée, ou vous activez par eSIM."
     },
     "bundle": {
       "title": "Téléphone SmartSource + forfait : économisez {{ amount }} $",
@@ -145,7 +148,10 @@
       "cross_title": "Envie de payer encore moins?",
       "cross_text": "Procurez-vous un téléphone remis à neuf certifié + un forfait prépayé.",
       "cross_phones": "Voir les téléphones remis à neuf",
-      "cross_plans": "Voir les forfaits prépayés"
+      "cross_plans": "Voir les forfaits prépayés",
+      "how_1": "Choisissez un téléphone, une option de paiement et un forfait.",
+      "how_2": "Envoyez le formulaire. Nous planifions un appel au moment qui vous convient.",
+      "how_3": "Votre nouveau téléphone et votre SIM sont livrés, prêts à utiliser."
     },
     "device": {
       "back": "Tous les téléphones financés",
