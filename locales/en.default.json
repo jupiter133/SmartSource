@@ -133,10 +133,11 @@
       "how_title": "How it works",
       "how_1": "Pick a plan or phone and fill out a quick form.",
       "how_2": "We schedule a call at a time that works for you.",
-      "how_3": "We set everything up. Your phone and SIM are delivered, or you activate by eSIM.",
+      "how_3": "Once the carrier approves your account, we set everything up. Your phone and SIM are delivered, or you activate by eSIM.",
       "byod_price": "${{ price }}/mo when you bring your own phone",
       "phones_heading": "Add a new phone to your plan",
-      "phones_sub": "Pick a phone to see options, colours and monthly pricing."
+      "phones_sub": "Pick a phone to see options, colours and monthly pricing.",
+      "how_note": "All postpaid plans and device financing are subject to approval by, and the terms of, the selected carrier, including a credit check. Plans, prices and availability can change."
     },
     "financing": {
       "heading": "New phones, $0 down",
@@ -149,7 +150,8 @@
       "cross_plans": "See prepaid plans",
       "how_1": "Pick a phone, payment option and plan.",
       "how_2": "Send the form. We schedule a call at a time that works for you.",
-      "how_3": "Your new phone and SIM are delivered, set up and ready."
+      "how_3": "Once the carrier approves your account, your new phone and SIM are delivered, set up and ready.",
+      "how_note": "Device financing and plans are subject to approval by, and the terms of, the selected carrier, including a credit check. 0% financing is on approved credit. Prices and availability can change."
     },
     "device": {
       "back": "All phones on financing",

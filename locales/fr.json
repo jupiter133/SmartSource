@@ -142,10 +142,11 @@
       "how_title": "Comment ça marche",
       "how_1": "Choisissez un forfait ou un téléphone et remplissez un court formulaire.",
       "how_2": "Nous planifions un appel au moment qui vous convient.",
-      "how_3": "Nous configurons tout. Votre téléphone et votre SIM sont livrés, ou vous activez par eSIM.",
+      "how_3": "Une fois votre compte approuvé par le fournisseur, nous configurons tout. Votre téléphone et votre SIM sont livrés, ou vous activez par eSIM.",
       "byod_price": "{{ price }} $/mois en apportant votre téléphone",
       "phones_heading": "Ajoutez un nouveau téléphone à votre forfait",
-      "phones_sub": "Choisissez un téléphone pour voir les options, couleurs et prix mensuels."
+      "phones_sub": "Choisissez un téléphone pour voir les options, couleurs et prix mensuels.",
+      "how_note": "Tous les forfaits postpayés et le financement d’appareils sont sujets à l’approbation et aux conditions du fournisseur choisi, y compris une vérification de crédit. Les forfaits, les prix et la disponibilité peuvent changer."
     },
     "financing": {
       "heading": "Téléphones neufs, 0 $ à l'achat",
@@ -158,7 +159,8 @@
       "cross_plans": "Voir les forfaits prépayés",
       "how_1": "Choisissez un téléphone, une option de paiement et un forfait.",
       "how_2": "Envoyez le formulaire. Nous planifions un appel au moment qui vous convient.",
-      "how_3": "Votre nouveau téléphone et votre SIM sont livrés, prêts à utiliser."
+      "how_3": "Une fois votre compte approuvé par le fournisseur, votre nouveau téléphone et votre SIM sont livrés, prêts à utiliser.",
+      "how_note": "Le financement d’appareils et les forfaits sont sujets à l’approbation et aux conditions du fournisseur choisi, y compris une vérification de crédit. Financement à 0 % sur approbation du crédit. Les prix et la disponibilité peuvent changer."
     },
     "device": {
       "back": "Tous les téléphones financés",
