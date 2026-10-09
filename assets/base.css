@@ -2737,3 +2737,7 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 .lx-slim__spark{color:#FF2D87;font-size:.85em}
 .lx-row--slim .card{border:2px solid transparent;box-shadow:none;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#19C3E6,#8b5cf6 50%,#FF2D87) border-box}
 .lx-row--slim .card:hover{box-shadow:0 10px 24px -10px rgba(139,92,246,.35)}
+/* Slim Steal deals: smaller cards */
+.lx-row--slim .carousel--cards .card{width:200px}
+.lx-row--slim .card__title{font-size:14px}
+@media (max-width:749px){.lx-row--slim .carousel--cards .card{width:170px}}
