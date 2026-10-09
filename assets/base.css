@@ -2695,4 +2695,4 @@ html,body{overflow-x:clip;max-width:100%}
 .gallery{grid-template-columns:84px minmax(0,1fr)}
 .gallery__main{min-width:0;overflow:hidden}
 .gallery__main img{width:100%;height:100%;max-width:100%;object-fit:contain}
-@media (max-width:989px){.gallery{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:749px){.gallery{grid-template-columns:minmax(0,1fr)}}
