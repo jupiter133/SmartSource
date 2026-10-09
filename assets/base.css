@@ -2168,3 +2168,4 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .setup__note svg{width:26px;height:26px;flex:none}
 .setup__note p{margin:0;font-size:16px;line-height:1.5}.setup__note strong{display:block;font-size:20px;font-weight:600}
 @media (max-width:600px){.setup-card{grid-template-columns:64px 1fr;padding:18px}.setup-card__img{width:64px;height:64px}.setup-card__price{grid-column:2;align-items:flex-start;flex-direction:row;align-items:center}.setup-card__txt strong{font-size:17px}}
+.setup .setup__inner{max-width:none}

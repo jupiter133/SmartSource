@@ -40,8 +40,9 @@
   assign ptype = product.type | downcase
 -%}
 {%- if a1 != blank or a2 != blank -%}{%- unless ptype contains 'repair' or ptype contains 'diagnostic' -%}
-<section class="pdp-row setup">
-  <div class="setup__inner">
+<section class="pdp-row step setup">
+  <div class="step__media"><div class="step__img step__img--tint"><img src="{{ 'cat-cases.webp' | asset_url }}" alt="" width="900" height="900" loading="lazy"></div></div>
+  <div class="step__body setup__inner">
     <p class="setup__eyebrow">Complete your setup</p>
     <h2 class="setup__h">Everything your {{ product.title }} needs</h2>
     <p class="setup__sub">Matched to your model. One order, one box, ready on day one.</p>
