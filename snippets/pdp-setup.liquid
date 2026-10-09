@@ -53,7 +53,7 @@
       <label class="setup-card{% unless av.available %} is-off{% endunless %}">
         <input type="checkbox" data-setup-addon value="{{ av.id }}"{% unless av.available %} disabled{% endunless %}>
         <span class="setup-card__img">{%- if ap.featured_image -%}{{ ap.featured_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}</span>
-        <span class="setup-card__txt"><strong>{{ ap.title }}</strong>{%- if ap.metafields.custom.short_description != blank -%}<small>{{ ap.metafields.custom.short_description }}</small>{%- endif -%}</span>
+        <span class="setup-card__txt"><strong>{{ ap.title }}</strong>{%- assign sd = ap.metafields.custom.short_description | default: ap.description | strip_html | strip | truncate: 70 -%}{%- if sd != blank -%}<small>{{ sd }}</small>{%- endif -%}</span>
         <span class="setup-card__price">
           <span>{%- if av.compare_at_price > av.price -%}<s>{{ av.compare_at_price | money }}</s> {% endif -%}<b>{{ av.price | money }}</b></span>
           {%- if av.compare_at_price > av.price -%}<em>{{ av.compare_at_price | minus: av.price | times: 100 | divided_by: av.compare_at_price }}% OFF</em>{%- endif -%}
