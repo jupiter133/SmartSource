@@ -2673,3 +2673,21 @@ html,body{overflow-x:clip;max-width:100%}
 .mp-hero::before{content:none}
 .mp-hero__glow{display:none}
 .mp-hero__eyebrow{display:block;padding:0;margin:0 0 14px;background:none;border:0;border-radius:0;backdrop-filter:none;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6b6b76}
+/* Plans hero: SmartSource trust row (same as homepage trust strip) */
+.mp-feats{list-style:none;margin:0 auto;padding:16px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 32px;max-width:1000px;background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;border-top:1px solid #e1e1e6}
+.mp-feat{padding:0;position:static}
+.mp-feat::before{content:none!important}
+.mp-feat.trust-item{border-top:0!important}
+.mp-feat strong{font-weight:600;color:#111}
+.mp-feat__sub{color:#6b6b76;font-weight:400}
+.mp-feat .trust-item__icon{background:#fff}
+@media (max-width:520px){.mp-feats{flex-direction:column;align-items:flex-start;gap:10px;max-width:320px}.mp-feat.trust-item{white-space:normal}}
+/* Typewriter title: ghost keeps the space, live layer types over it */
+.mp-tw{display:grid}
+.mp-tw>span{grid-area:1/1}
+.mp-tw.is-typing .mp-tw__ghost{visibility:hidden}
+.mp-tw__live{display:none}
+.mp-tw.is-typing .mp-tw__live{display:block}
+.mp-tw__caret{display:inline-block;width:.07em;height:.9em;margin-left:.04em;vertical-align:-.06em;background:#111;animation:mp-caret 1s steps(1) infinite}
+@keyframes mp-caret{50%{opacity:0}}
+@media (min-width:521px){.mp-feats{max-width:1180px;gap:12px 28px}}

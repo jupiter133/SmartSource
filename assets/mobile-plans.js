@@ -608,3 +608,24 @@
     }
   });
 })();
+
+/* Hero title typewriter (skipped for reduced motion; real text stays in the DOM for SEO / screen readers) */
+(function () {
+  var h = document.querySelector('[data-mp-type]');
+  if (!h || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var ghost = h.querySelector('.mp-tw__ghost'), live = h.querySelector('.mp-tw__live');
+  var hl = ghost.querySelector('.mp-hero__hl');
+  var a = ghost.firstChild.textContent, b = hl ? hl.textContent : '';
+  var plain = document.createElement('span'), grad = document.createElement('span'), caret = document.createElement('span');
+  grad.className = 'mp-hero__hl'; caret.className = 'mp-tw__caret';
+  live.append(plain, grad, caret);
+  h.classList.add('is-typing');
+  var i = 0, total = a.length + b.length;
+  (function step() {
+    i++;
+    plain.textContent = a.slice(0, Math.min(i, a.length));
+    grad.textContent = i > a.length ? b.slice(0, i - a.length) : '';
+    if (i < total) setTimeout(step, i < a.length ? 55 : 85);
+    else setTimeout(function () { caret.remove(); h.classList.remove('is-typing'); }, 2200);
+  })();
+})();

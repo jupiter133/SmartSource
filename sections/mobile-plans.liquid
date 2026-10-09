@@ -49,25 +49,13 @@
   <section class="mp-hero">
     <div class="page-width mp-hero__inner">
       <p class="mp-hero__eyebrow">{{ 'plans.hero.eyebrow' | t }}</p>
-      <h1 class="mp-hero__title">{{ 'plans.hero.title_a' | t }} <span class="mp-hero__hl">{{ 'plans.hero.title_b' | t }}</span></h1>
+      <h1 class="mp-hero__title mp-tw" data-mp-type><span class="mp-tw__ghost">{{ 'plans.hero.title_a' | t }} <span class="mp-hero__hl">{{ 'plans.hero.title_b' | t }}</span></span><span class="mp-tw__live" aria-hidden="true"></span></h1>
       <p class="mp-hero__sub">{{ 'plans.hero.sub' | t }}</p>
       <ul class="mp-feats">
-        <li class="mp-feat">
-          <span class="mp-feat__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 8l6 6M15 8l-6 6"/></svg></span>
-          <span class="mp-feat__txt"><strong>{{ 'plans.hero.trust_1' | t }}</strong><small>{{ 'plans.hero.trust_1_sub' | t }}</small></span>
-        </li>
-        <li class="mp-feat">
-          <span class="mp-feat__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 7h4v4h-4zM10 15h4"/></svg></span>
-          <span class="mp-feat__txt"><strong>{{ 'plans.hero.trust_2' | t }}</strong><small>{{ 'plans.hero.trust_2_sub' | t }}</small></span>
-        </li>
-        <li class="mp-feat">
-          <span class="mp-feat__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></span>
-          <span class="mp-feat__txt"><strong>{{ 'plans.hero.trust_3' | t }}</strong><small>{{ 'plans.hero.trust_3_sub' | t }}</small></span>
-        </li>
-        <li class="mp-feat">
-          <span class="mp-feat__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span>
-          <span class="mp-feat__txt"><strong>{{ 'plans.hero.trust_4' | t }}</strong><small>{{ 'plans.hero.trust_4_sub' | t }}</small></span>
-        </li>
+        <li class="trust-item mp-feat"><span class="trust-item__icon">{% render 'icon', name: 'unlock' %}</span><span><strong>{{ 'plans.hero.trust_1' | t }}</strong> <span class="mp-feat__sub">{{ 'plans.hero.trust_1_sub' | t }}</span></span></li>
+        <li class="trust-item mp-feat"><span class="trust-item__icon">{% render 'icon', name: 'phone' %}</span><span><strong>{{ 'plans.hero.trust_2' | t }}</strong> <span class="mp-feat__sub">{{ 'plans.hero.trust_2_sub' | t }}</span></span></li>
+        <li class="trust-item mp-feat"><span class="trust-item__icon">{% render 'icon', name: 'percent' %}</span><span><strong>{{ 'plans.hero.trust_3' | t }}</strong> <span class="mp-feat__sub">{{ 'plans.hero.trust_3_sub' | t }}</span></span></li>
+        <li class="trust-item mp-feat"><span class="trust-item__icon">{% render 'icon', name: 'truck' %}</span><span><strong>{{ 'plans.hero.trust_4' | t }}</strong> <span class="mp-feat__sub">{{ 'plans.hero.trust_4_sub' | t }}</span></span></li>
       </ul>
     </div>
   </section>
