@@ -2229,7 +2229,7 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .mp-postdev,.mp-how,.mp-calc,.mp-bundle,.mp-cross{margin-top:var(--mp-gap)}
 .mp-addons,.mp-legal{margin-top:24px}
 
-/* ---------- prepaid (Koodo) ---------- */
+/* ---------- prepaid ---------- */
 .mp-wordmark{font-weight:800;font-size:24px;line-height:1;letter-spacing:-.04em;color:#111;text-transform:lowercase}
 .mp-dealer{margin:0;font-size:12px;font-weight:600}
 .mp-kbanner{background:#95F23A;color:#111;border-radius:var(--mp-r);padding:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;overflow:hidden;margin-bottom:32px}

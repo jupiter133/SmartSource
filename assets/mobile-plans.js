@@ -395,7 +395,7 @@
       var bundle = syncPrepaid();
       var p = selectedPlan();
       var name = ($('[name="contact[name]"]', prForm).value || '').trim();
-      setField(prForm, 'subject', '[PREPAID] ' + (p ? p.getAttribute('data-plan-short') : 'Koodo') + ' - ' + name);
+      setField(prForm, 'subject', '[PREPAID] ' + (p ? p.getAttribute('data-plan-short') : 'Prepaid') + ' - ' + name);
       setField(prForm, 'tags', bundle ? 'prepaid, bundle' : 'prepaid');
     });
     $$('[data-mp-activate]', root).forEach(function (b) {

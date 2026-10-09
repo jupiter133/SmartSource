@@ -4,7 +4,7 @@
   <div class="sd__bar"><p id="sd-unlocked-t">What are unlocked phones?</p><button type="button" data-sd-close aria-label="Close">✕</button></div>
   <div class="sd__body">
     <h2 class="sd__h">Unlocked phones: work with all carriers</h2>
-    <p>An unlocked phone isn't tied to one carrier. Use it with Rogers, Bell, Telus, Freedom, Fido, Koodo, Virgin, Public Mobile or any other Canadian carrier, and switch whenever you want.</p>
+    <p>An unlocked phone isn't tied to one carrier. Use it with any Canadian carrier, and switch whenever you want.</p>
     <p>Every phone we sell is unlocked. Pop in your SIM or set up an eSIM and you're done. <a href="/collections/all/smartphones">See all our unlocked phones</a></p>
     <a class="sd-card" href="/blogs/journal">
       <span class="sd-card__img" aria-hidden="true">{% render 'icon', name: 'phone' %}</span>
@@ -87,7 +87,7 @@ var cat={};try{cat=JSON.parse(document.querySelector('[data-sell-catalog]').text
 var cfg={};try{cfg=JSON.parse(document.querySelector('[data-ti-config]').textContent)}catch(e){}
 var C=(cat.categories||[]).slice().sort(function(a,b){return a.s-b.s}),B=(cat.brands||[]).slice().sort(function(a,b){return a.s-b.s}),V=(cat.devices||[]);
 var pane=D.querySelector('[data-ti-pane]'),nav=D.querySelector('[data-ti-navbar]'),stepEl=D.querySelector('[data-ti-step]'),st={},hist=[];
-var CARRIERS=['Unlocked','Rogers','Bell','Telus','Freedom','Fido','Koodo','Virgin Plus','Other'];
+var CARRIERS=['Unlocked','Rogers','Bell','Freedom','Fido','Virgin Plus','Other'];
 function money(n){return '$'+Math.round(n).toLocaleString('en-CA')}
 function maxFor(list){var m=0;list.forEach(function(d){(d.pr||[]).forEach(function(p){(p.p||[]).forEach(function(x){if(+x>m)m=+x})})});return m}
 function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}

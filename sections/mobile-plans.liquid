@@ -70,16 +70,11 @@
     </div>
   </div>
 
-  {%- comment -%} ================= TAB 1: PREPAID (Koodo) ================= {%- endcomment -%}
+  {%- comment -%} ================= TAB 1: PREPAID ================= {%- endcomment -%}
   <section class="mp-panel page-width" id="MpPanel-prepaid" role="tabpanel" aria-labelledby="MpTab-prepaid" data-mp-panel="prepaid">
     <div class="mp-kbanner">
       <div class="mp-kbanner__text">
         <div class="mp-kbanner__brand">
-          {%- if section.settings.koodo_logo != blank -%}
-            {{ section.settings.koodo_logo | image_url: width: 240 | image_tag: height: 32, loading: 'lazy', alt: 'Koodo' }}
-          {%- else -%}
-            <span class="mp-wordmark" aria-label="Koodo">koodo</span>
-          {%- endif -%}
           <span class="mp-dealer">{{ 'plans.prepaid.dealer' | t }}</span>
         </div>
         <h2 class="mp-kbanner__title">{{ 'plans.prepaid.banner_title' | t }}</h2>
@@ -108,9 +103,9 @@
         {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
         {%- if p == blank -%}{%- continue -%}{%- endif -%}
         {%- capture price_s -%}{% render 'plans-money', amount: p.price.value %}{%- endcapture -%}
-        {%- capture label -%}Koodo {{ price_s }} · {{ p.term.value }} days · {{ p.data.value }}{%- endcapture -%}
+        {%- capture label -%}Prepaid {{ price_s }} · {{ p.term.value }} days · {{ p.data.value }}{%- endcapture -%}
         <label class="mp-radio">
-          <input type="radio" name="contact[Plan]" value="{{ label | escape }}" data-plan-handle="{{ p.system.handle }}" data-plan-price="{{ p.price.value }}" data-plan-short="Koodo {{ price_s | escape }}" data-plan-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}" required>
+          <input type="radio" name="contact[Plan]" value="{{ label | escape }}" data-plan-handle="{{ p.system.handle }}" data-plan-price="{{ p.price.value }}" data-plan-short="Prepaid {{ price_s | escape }}" data-plan-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}" required>
           <span class="mp-radio__card"><strong>{{ price_s }}<small>{{ 'plans.common.per_term' | t: days: p.term.value }}</small></strong><span>{{ p.data.value }} · {{ p.talk.value }}</span></span>
         </label>
       {%- endfor -%}
@@ -482,7 +477,7 @@
           </div>
           <input type="hidden" name="contact[subject]" data-mp-field="subject">
           <input type="hidden" name="contact[tags]" data-mp-field="tags">
-          <input type="hidden" name="contact[Request type]" value="Prepaid activation (Koodo)">
+          <input type="hidden" name="contact[Request type]" value="Prepaid activation">
           <input type="hidden" name="contact[Bundle discount]" data-mp-field="bundle">
           <input type="hidden" name="contact[Page]" data-mp-field="page">
           <input type="hidden" name="contact[body]" data-mp-field="body">
@@ -503,7 +498,7 @@
               <div class="mp-field"><label for="MpTrCar">{{ 'plans.prepaid_form.current_carrier' | t }}</label>
                 <select id="MpTrCar" name="contact[Current carrier]" required disabled>
                   <option value="">—</option>
-                  {%- assign carriers = 'Bell,Chatr,Fido,Fizz,Freedom Mobile,Koodo,Lucky Mobile,Public Mobile,Rogers,TELUS,Videotron,Virgin Plus' | split: ',' -%}
+                  {%- assign carriers = 'Bell,Chatr,Fido,Fizz,Freedom Mobile,Lucky Mobile,Public Mobile,Rogers,Videotron,Virgin Plus' | split: ',' -%}
                   {%- for c in carriers -%}<option>{{ c }}</option>{%- endfor -%}
                   <option value="Other">{{ 'plans.prepaid_form.carrier_other' | t }}</option>
                 </select>
@@ -592,7 +587,6 @@
     { "type": "image_picker", "id": "prepaid_banner_image", "label": "Prepaid banner image", "info": "Optional. Replaces the phone illustration in the green prepaid banner." },
     { "type": "text", "id": "sim_text", "label": "Prepaid SIM offer line", "default": "Pay $5 for an eSIM or $10 for a physical SIM card" },
     { "type": "richtext", "id": "legal_text", "label": "Prepaid legal text (\"The legal stuff\")", "info": "Leave blank to use the built-in, translated text." },
-    { "type": "image_picker", "id": "koodo_logo", "label": "Koodo logo (prepaid tab)", "info": "Upload the official logo from the dealer portal. Without it, a simple text wordmark shows." },
     { "type": "paragraph", "content": "Plans, phones and promos are edited in Content > Metaobjects. Bundle discount and calculator numbers are in Theme settings > Mobile plans." }
   ],
   "blocks": [

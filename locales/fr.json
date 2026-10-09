@@ -17,8 +17,8 @@
   },
   "plans": {
     "meta": {
-      "title": "Forfaits prépayés Koodo, postpayés et téléphones financés | SmartSource",
-      "description": "Prépayé Koodo sans contrat, forfaits postpayés avec certains fournisseurs canadiens et téléphones à 0 $ à l'achat. Livrés ou activés par eSIM."
+      "title": "Forfaits prépayés, postpayés et téléphones financés | SmartSource",
+      "description": "Forfaits prépayés sans contrat, forfaits postpayés avec certains fournisseurs canadiens et téléphones à 0 $ à l'achat. Livrés ou activés par eSIM."
     },
     "hero": {
       "title": "Des forfaits mobiles moins chers. Activés en quelques minutes.",
@@ -51,8 +51,8 @@
       "taxes": "+ taxes"
     },
     "prepaid": {
-      "heading": "Koodo Prépayé",
-      "dealer": "Détaillant Koodo autorisé",
+      "heading": "Forfaits prépayés",
+      "dealer": "Détaillant autorisé",
       "term_label": "Durée du forfait",
       "term_30": "30 jours",
       "term_90": "90 jours",
@@ -88,9 +88,9 @@
     },
     "bundle": {
       "title": "Téléphone SmartSource + forfait : économisez {{ amount }} $",
-      "text": "Obtenez {{ amount }} $ de rabais sur tout téléphone remis à neuf SmartSource en activant un forfait prépayé Koodo admissible.",
+      "text": "Obtenez {{ amount }} $ de rabais sur tout téléphone remis à neuf SmartSource en activant un forfait prépayé admissible.",
       "cta": "Voir les téléphones remis à neuf",
-      "pdp": "Économisez {{ amount }} $ en ajoutant un forfait prépayé Koodo"
+      "pdp": "Économisez {{ amount }} $ en ajoutant un forfait prépayé"
     },
     "addons": {
       "title": "Options",
@@ -112,11 +112,11 @@
     },
     "calc": {
       "title": "Voyez combien vous pourriez économiser sur 24 mois.",
-      "sub": "Un téléphone remis à neuf SmartSource avec Koodo Prépayé, comparé à un téléphone neuf financé avec un forfait postpayé typique.",
+      "sub": "Un téléphone remis à neuf SmartSource avec un forfait prépayé, comparé à un téléphone neuf financé avec un forfait postpayé typique.",
       "plan": "Forfait prépayé",
       "phone_price": "Prix du téléphone remis à neuf",
       "buying": "J'achète un téléphone SmartSource",
-      "ours": "Téléphone SmartSource + Koodo Prépayé",
+      "ours": "Téléphone SmartSource + forfait prépayé",
       "theirs": "Téléphone neuf financé + postpayé typique",
       "total": "Total sur 24 mois",
       "breakdown_ours": "Téléphone {{ phone }} $ + forfait {{ plan }} $",
@@ -220,7 +220,7 @@
       "call_note": "Heure de l’Est. Nous confirmerons l’heure exacte par texto ou courriel."
     },
     "prepaid_form": {
-      "title": "Activer Koodo Prépayé",
+      "title": "Activer un forfait prépayé",
       "s1": "Forfait",
       "s2": "Numéro",
       "s3": "SIM et téléphone",

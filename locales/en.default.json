@@ -8,8 +8,8 @@
   },
   "plans": {
     "meta": {
-      "title": "Koodo Prepaid Plans, Postpaid & Phones on Financing | SmartSource",
-      "description": "Koodo prepaid with no contract, postpaid plans with select Canadian carriers, and $0-down phones. Delivered or set up by eSIM."
+      "title": "Prepaid Plans, Postpaid & Phones on Financing | SmartSource",
+      "description": "No-contract prepaid plans, postpaid plans with select Canadian carriers, and $0-down phones. Delivered or set up by eSIM."
     },
     "hero": {
       "title": "Phone plans for less. Set up in minutes.",
@@ -42,8 +42,8 @@
       "taxes": "+ taxes"
     },
     "prepaid": {
-      "heading": "Koodo Prepaid",
-      "dealer": "Authorized Koodo dealer",
+      "heading": "Prepaid plans",
+      "dealer": "Authorized retailer",
       "term_label": "Plan length",
       "term_30": "30 days",
       "term_90": "90 days",
@@ -79,9 +79,9 @@
     },
     "bundle": {
       "title": "Buy a SmartSource phone + plan, save ${{ amount }}",
-      "text": "Get ${{ amount }} off any refurbished SmartSource phone when you activate an eligible Koodo prepaid plan.",
+      "text": "Get ${{ amount }} off any refurbished SmartSource phone when you activate an eligible prepaid plan.",
       "cta": "Shop refurbished phones",
-      "pdp": "Save ${{ amount }} when you add a Koodo prepaid plan"
+      "pdp": "Save ${{ amount }} when you add a prepaid plan"
     },
     "addons": {
       "title": "Add-ons",
@@ -103,11 +103,11 @@
     },
     "calc": {
       "title": "See how much you could save over 24 months.",
-      "sub": "A SmartSource refurbished phone with Koodo prepaid, compared with a new financed phone on a typical postpaid plan.",
+      "sub": "A SmartSource refurbished phone with a prepaid plan, compared with a new financed phone on a typical postpaid plan.",
       "plan": "Prepaid plan",
       "phone_price": "Refurbished phone price",
       "buying": "I'm buying a SmartSource phone",
-      "ours": "SmartSource phone + Koodo prepaid",
+      "ours": "SmartSource phone + prepaid plan",
       "theirs": "New financed phone + typical postpaid",
       "total": "Total over 24 months",
       "breakdown_ours": "Phone ${{ phone }} + plan ${{ plan }}",
@@ -211,7 +211,7 @@
       "call_note": "Times are Eastern. We'll text or email to confirm the exact time."
     },
     "prepaid_form": {
-      "title": "Activate Koodo Prepaid",
+      "title": "Activate a prepaid plan",
       "s1": "Plan",
       "s2": "Number",
       "s3": "SIM and phone",
