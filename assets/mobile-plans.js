@@ -625,7 +625,7 @@
     i++;
     plain.textContent = a.slice(0, Math.min(i, a.length));
     grad.textContent = i > a.length ? b.slice(0, i - a.length) : '';
-    if (i < total) setTimeout(step, i < a.length ? 55 : 85);
-    else setTimeout(function () { caret.remove(); h.classList.remove('is-typing'); }, 2200);
+    if (i < total) setTimeout(step, i < a.length ? 28 : 40);
+    else setTimeout(function () { caret.remove(); h.classList.remove("is-typing"); }, 1200);
   })();
 })();
