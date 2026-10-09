@@ -231,7 +231,7 @@
   }
   function stickyTop() {
     var h = document.querySelector('.header');
-    return h && getComputedStyle(h).position === 'sticky' ? h.getBoundingClientRect().height : 0;
+    return h ? h.getBoundingClientRect().height : 0;
   }
   if (tabs.length) {
     tabsReady = true;
