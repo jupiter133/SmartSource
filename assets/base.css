@@ -2643,7 +2643,7 @@ html,body{overflow-x:clip;max-width:100%}
 .announcement{overflow:hidden;isolation:isolate}
 .announcement::after{content:"";position:absolute;top:0;bottom:0;left:0;width:28%;min-width:180px;pointer-events:none;z-index:0;
   background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,.08) 25%,rgba(255,255,255,.55) 50%,rgba(255,255,255,.08) 75%,transparent 100%);
-  transform:translateX(-120%) skewX(-18deg);animation:ann-sweep 4.5s ease-in-out infinite}
+  transform:translateX(-120%) skewX(-18deg);animation:ann-sweep 6.5s ease-in-out infinite}
 .announcement__track,.announcement__close{position:relative;z-index:1}
 .announcement__close{position:absolute}
 @keyframes ann-sweep{0%{transform:translateX(-120%) skewX(-18deg)}55%,100%{transform:translateX(480%) skewX(-18deg)}}
