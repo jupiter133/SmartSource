@@ -86,7 +86,7 @@
     {%- endcapture -%}
     {%- if rv_match -%}{%- assign rv_items = rv_items | append: item -%}{%- else -%}{%- assign rv_rest = rv_rest | append: item -%}{%- endif -%}
     {%- if r.photos.value.size > 0 -%}
-      {%- capture ph -%}<figure class="rv-photo">{% render 'rv-img', f: r.photos.value.first, w: 400 %}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
+      {%- capture ph -%}<figure class="rv-photo">{%- for pf in r.photos.value limit: 1 -%}{% render 'rv-img', f: pf, w: 400 %}{%- endfor -%}<figcaption><span class="rv-photo__name">{{ r.author.value }}</span><span>{{ stars }} {{ rating }}/5</span></figcaption></figure>{%- endcapture -%}
       {%- assign rv_photos = rv_photos | append: ph -%}
     {%- endif -%}
   {%- endfor -%}
