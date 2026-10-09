@@ -1,0 +1,300 @@
+{
+  "sections": {
+    "head": {
+      "type": "landing-head",
+      "settings": {
+        "crumb": "Tablets",
+        "heading": "Refurbished & certified pre-owned tablets",
+        "text": "iPad, Samsung Galaxy Tab and other Android tablets. Every tablet is tested by our technicians and backed by a 1-year warranty."
+      }
+    },
+    "tiles": {
+      "type": "subcat-tiles",
+      "settings": {
+        "heading": "Shop tablets",
+        "subheading": "Tested and perfected to the core",
+        "style": "big",
+        "tile_bg": "#EEEAFD"
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "iPad",
+            "link": "/collections/all/ipad",
+            "art": "tablet",
+            "asset_image": "tech-ipads.webp"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "Samsung Galaxy Tab",
+            "link": "/collections/all/samsung+tablets",
+            "art": "tablet",
+            "image": "shopify://shop_images/sg-galaxy-tab-s9-wifi-x710-468419-sm-x710nzaaxsp-537501841.png"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "Android Tablets",
+            "link": "/collections/all/android-tablet",
+            "art": "tablet",
+            "asset_image": ""
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "title": "All tablets",
+            "link": "/collections/all/tablets",
+            "art": "tablet",
+            "asset_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ]
+    },
+    "banners": {
+      "type": "image-banners",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "heading": "iPad, for less.",
+            "text": "Tested and graded by our technicians.",
+            "button_label": "Shop iPad",
+            "link": "/collections/all/ipad",
+            "art": "tablet",
+            "bg": "#14213D"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "heading": "Galaxy Tab.",
+            "text": "Samsung tablets for work and play.",
+            "button_label": "Shop Galaxy Tab",
+            "link": "/collections/all/samsung+tablets",
+            "art": "tablet",
+            "bg": "#3A1C3F"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "trust": {
+      "type": "trust-row",
+      "settings": {},
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ]
+    },
+    "deals": {
+      "type": "product-row",
+      "settings": {
+        "heading": "Shop our best deals",
+        "tags": "tablets, ipad",
+        "limit": 10,
+        "art": "phone"
+      }
+    },
+    "more": {
+      "type": "more-cards",
+      "settings": {
+        "heading": "But wait, there's more."
+      },
+      "blocks": {
+        "m1": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-trade-in.webp",
+            "title": "Trade in for cash",
+            "text": "Get an instant quote for your old device and put the value toward your next one.",
+            "button_label": "Get your offer",
+            "link": "/pages/sell-your-device"
+          }
+        },
+        "m2": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-repairs.webp",
+            "title": "Repairs, done right",
+            "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
+            "button_label": "Book a repair",
+            "link": "/pages/mail-in-repair"
+          }
+        },
+        "m3": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-warranty.webp",
+            "title": "Covered for a full year",
+            "text": "Every device comes with a 1-year warranty and free 30-day returns.",
+            "button_label": "See our promise",
+            "link": "/pages/our-promise"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ]
+    },
+    "reviews": {
+      "type": "review-cards",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    },
+    "articles": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Make the most of your tablet",
+        "blog": "news",
+        "tag": "tablets",
+        "limit": 6,
+        "show_all": false
+      }
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Popular questions",
+        "schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Are pre-owned tablets worth it?",
+            "answer": "<p>Yes. A refurbished tablet works like new for a lot less, with a 1-year warranty and free 30-day returns.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Which tablet should I choose?",
+            "answer": "<p>iPad suits people already using Apple devices; Galaxy Tab and other Android tablets suit Android users. Both are tested the same way.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device has had a previous owner, then gone through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new and comes with a 1-year warranty.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's the difference between refurbished and used?",
+            "answer": "<p>Used means sold as-is. Refurbished means professionally checked, fixed and backed by a warranty and free 30-day returns.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty and returns do I get?",
+            "answer": "<p>Every device comes with a 1-year warranty and free 30-day returns, for any reason.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my old device?",
+            "answer": "<p>Trade it in. Get an instant quote on our trade-in page and put the value toward your next device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "seo": {
+      "type": "seo-text",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "part",
+          "settings": {
+            "heading": "Why buy a refurbished or pre-owned tablet from SmartSource?",
+            "body": "<p>Every tablet is checked by our team before it goes on sale, and comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+          }
+        },
+        "p2": {
+          "type": "part",
+          "settings": {
+            "heading": "What tablets can you find?",
+            "body": "<ul><li><a href=\"/collections/all/ipad\">iPad</a></li><li><a href=\"/collections/all/samsung+tablets\">Samsung Galaxy Tab</a></li><li><a href=\"/collections/all/android-tablet\">Android tablets</a></li></ul>"
+          }
+        },
+        "p3": {
+          "type": "part",
+          "settings": {
+            "heading": "Understanding grades",
+            "body": "<p>Grades only describe how a device looks, from <strong>Premium</strong> (like new) to <strong>Fair</strong> (visible wear). Every grade is fully functional and covered by the same warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    }
+  },
+  "order": [
+    "head",
+    "tiles",
+    "banners",
+    "trust",
+    "deals",
+    "more",
+    "reviews",
+    "articles",
+    "faq",
+    "seo"
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "sections": {
+    "head": {
+      "type": "landing-head",
+      "settings": {
+        "crumb": "iPhone",
+        "heading": "Refurbished & certified pre-owned iPhones",
+        "text": "From iPhone SE to iPhone 17. Every iPhone is tested by our technicians, unlocked, and backed by a 1-year warranty."
+      }
+    },
+    "tiles": {
+      "type": "subcat-tiles",
+      "settings": {
+        "heading": "Shop iPhone by series",
+        "subheading": "Tested and perfected to the core",
+        "style": "big",
+        "tile_bg": "#FDE7EC"
+      },
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 17",
+            "link": "/collections/all/iphone-17",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550.png"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone Air",
+            "link": "/collections/all/iphone-air",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_e1444a60-655f-4ecc-a5c3-4c459e18522f.png"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 16",
+            "link": "/collections/all/iphone-16",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_d2e62b06-1b2a-4ce7-979e-d84c7cf2f5c0.png"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 15",
+            "link": "/collections/all/iphone-15",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_5cea3c28-2932-45e5-a451-0450ccc3dc6e.png"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 14",
+            "link": "/collections/all/iphone-14",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_2f4ec5c9-a4f4-439e-8867-2758c59c23b2.png"
+          }
+        },
+        "t6": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 13",
+            "link": "/collections/all/iphone-13",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_cedb434b-16f2-4047-8f7c-0eaa775a62d8.png"
+          }
+        },
+        "t7": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 12",
+            "link": "/collections/all/iphone-12",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_cd073af8-ee5b-4afb-873f-6f94742661b0.png"
+          }
+        },
+        "t8": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone 11",
+            "link": "/collections/all/iphone-11",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_0c2bf946-e64d-408b-b423-e2760f725010.png"
+          }
+        },
+        "t9": {
+          "type": "tile",
+          "settings": {
+            "title": "iPhone SE",
+            "link": "/collections/all/iphone-se",
+            "art": "phone",
+            "image": "shopify://shop_images/width_550_52767a82-0a4a-4a71-a398-2a851cf51868.png"
+          }
+        },
+        "t10": {
+          "type": "tile",
+          "settings": {
+            "title": "All iPhones",
+            "link": "/collections/all/iphone",
+            "art": "phone",
+            "asset_image": "cat-iphone.webp"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8",
+        "t9",
+        "t10"
+      ]
+    },
+    "banners": {
+      "type": "image-banners",
+      "settings": {},
+      "blocks": {
+        "b1": {
+          "type": "banner",
+          "settings": {
+            "heading": "Recent iPhones for less.",
+            "text": "iPhone 16 and iPhone 15, tested and unlocked.",
+            "button_label": "Shop iPhone 16",
+            "link": "/collections/all/iphone-16",
+            "art": "phone",
+            "bg": "#14213D"
+          }
+        },
+        "b2": {
+          "type": "banner",
+          "settings": {
+            "heading": "Small and affordable.",
+            "text": "iPhone SE: the compact way into iOS.",
+            "button_label": "Shop iPhone SE",
+            "link": "/collections/all/iphone-se",
+            "art": "phone",
+            "bg": "#3A1C3F"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    },
+    "trust": {
+      "type": "trust-row",
+      "settings": {},
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "icon": "list",
+            "text": "Up to 100-point quality inspection"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "icon": "swap",
+            "text": "Free 30-day returns"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "icon": "award",
+            "text": "1-year warranty"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ]
+    },
+    "deals": {
+      "type": "product-row",
+      "settings": {
+        "heading": "Shop our best deals",
+        "tags": "iphone",
+        "limit": 10,
+        "art": "phone"
+      }
+    },
+    "more": {
+      "type": "more-cards",
+      "settings": {
+        "heading": "But wait, there's more."
+      },
+      "blocks": {
+        "m1": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-trade-in.webp",
+            "title": "Trade in for cash",
+            "text": "Get an instant quote for your old device and put the value toward your next one.",
+            "button_label": "Get your offer",
+            "link": "/pages/sell-your-device"
+          }
+        },
+        "m2": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-repairs.webp",
+            "title": "Repairs, done right",
+            "text": "Cracked screen or tired battery? Our technicians fix it, most jobs same day.",
+            "button_label": "Book a repair",
+            "link": "/pages/mail-in-repair"
+          }
+        },
+        "m3": {
+          "type": "card",
+          "settings": {
+            "asset_image": "svc-warranty.webp",
+            "title": "Covered for a full year",
+            "text": "Every device comes with a 1-year warranty and free 30-day returns.",
+            "button_label": "See our promise",
+            "link": "/pages/our-promise"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ]
+    },
+    "reviews": {
+      "type": "review-cards",
+      "settings": {
+        "heading": "What our customers say"
+      }
+    },
+    "articles": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Make the most of your iPhone",
+        "blog": "news",
+        "tag": "iphone",
+        "limit": 6,
+        "show_all": false
+      }
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {
+        "heading": "Popular questions",
+        "schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Are pre-owned iPhones worth it?",
+            "answer": "<p>Yes. You get the same iOS experience for a lot less than new, with a 1-year warranty and free 30-day returns.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Are your iPhones unlocked?",
+            "answer": "<p>Yes. Our phones are carrier unlocked, so you can use any Canadian carrier.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What does refurbished mean?",
+            "answer": "<p>A refurbished device has had a previous owner, then gone through our technicians: tested, repaired where needed, wiped, cleaned and graded. It works like new and comes with a 1-year warranty.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's the difference between refurbished and used?",
+            "answer": "<p>Used means sold as-is. Refurbished means professionally checked, fixed and backed by a warranty and free 30-day returns.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty and returns do I get?",
+            "answer": "<p>Every device comes with a 1-year warranty and free 30-day returns, for any reason.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What about my old device?",
+            "answer": "<p>Trade it in. Get an instant quote on our trade-in page and put the value toward your next device.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "seo": {
+      "type": "seo-text",
+      "settings": {},
+      "blocks": {
+        "p1": {
+          "type": "part",
+          "settings": {
+            "heading": "Why buy a refurbished or pre-owned iPhone from SmartSource?",
+            "body": "<p>Every iPhone is checked by our team before it goes on sale, and comes with a <strong>1-year warranty</strong> and <strong>free 30-day returns</strong>.</p>"
+          }
+        },
+        "p2": {
+          "type": "part",
+          "settings": {
+            "heading": "What iPhones can you find?",
+            "body": "<ul><li><a href=\"/collections/all/iphone-16\">iPhone 16</a> and <a href=\"/collections/all/iphone-15\">iPhone 15</a></li><li><a href=\"/collections/all/iphone-13\">iPhone 13</a> and <a href=\"/collections/all/iphone-12\">iPhone 12</a></li><li><a href=\"/collections/all/iphone-se\">iPhone SE</a>: compact and affordable</li></ul>"
+          }
+        },
+        "p3": {
+          "type": "part",
+          "settings": {
+            "heading": "Understanding grades",
+            "body": "<p>Grades only describe how a device looks, from <strong>Premium</strong> (like new) to <strong>Fair</strong> (visible wear). Every grade is fully functional and covered by the same warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    }
+  },
+  "order": [
+    "head",
+    "tiles",
+    "banners",
+    "trust",
+    "deals",
+    "more",
+    "reviews",
+    "articles",
+    "faq",
+    "seo"
+  ]
+}

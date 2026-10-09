@@ -7,6 +7,18 @@
       assign ca_label = 'laptops'
     when 'audio'
       assign ca_label = 'audio'
+    when 'iphone'
+      assign ca_label = 'iPhones'
+    when 'tablets'
+      assign ca_label = 'tablets'
+    when 'consoles'
+      assign ca_label = 'consoles'
+    when 'smartwatches'
+      assign ca_label = 'smartwatches'
+    when 'accessories'
+      assign ca_label = 'accessories'
+    when 'budget-phones'
+      assign ca_label = 'budget phones'
   endcase
 -%}
 {%- liquid
@@ -17,6 +29,18 @@
       assign ca_img = 'cat-laptops.webp'
     when 'audio'
       assign ca_img = 'cat-audio.webp'
+    when 'iphone'
+      assign ca_img = 'cat-iphone.webp'
+    when 'tablets'
+      assign ca_img = 'tech-ipads.webp'
+    when 'consoles'
+      assign ca_img = 'tech-consoles.webp'
+    when 'smartwatches'
+      assign ca_img = 'cat-watches.webp'
+    when 'accessories'
+      assign ca_img = 'cat-cases.webp'
+    when 'budget-phones'
+      assign ca_img = 'cat-android.webp'
   endcase
 -%}
 {%- if ca_label != blank -%}

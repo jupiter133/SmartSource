@@ -148,7 +148,32 @@
       {%- for link in section.settings.main_menu.links -%}
         {%- assign deal = false -%}{%- assign lt = link.title | downcase -%}{%- if section.settings.highlight_first and forloop.first and lt != 'home' -%}{%- assign deal = true -%}{%- endif -%}{%- if lt contains 'deal' -%}{%- assign deal = true -%}{%- endif -%}
         <li class="nav-item{% if link.links.size > 0 %} has-mega{% endif %}" data-nav-item>
-          <a href="{{ link.url }}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}✦ {% endif %}{{ link.title }}</a>
+          {%- liquid
+            assign nav_url = link.url
+            case lt
+              when 'iphone', 'iphones'
+                assign nav_url = '/pages/iphone'
+              when 'android'
+                assign nav_url = '/pages/android'
+              when 'macbook', 'macbooks'
+                assign nav_url = '/collections/macbook'
+              when 'laptops'
+                assign nav_url = '/pages/laptops'
+              when 'tablets'
+                assign nav_url = '/pages/tablets'
+              when 'consoles'
+                assign nav_url = '/pages/consoles'
+              when 'smartwatches'
+                assign nav_url = '/pages/smartwatches'
+              when 'budget phones', 'budget'
+                assign nav_url = '/pages/budget-phones'
+              when 'audio'
+                assign nav_url = '/pages/audio'
+              when 'accessories'
+                assign nav_url = '/pages/accessories'
+            endcase
+          -%}
+          <a href="{% render 'page-url', url: nav_url %}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}✦ {% endif %}{{ link.title }}</a>
           {%- if link.links.size > 0 -%}
             <div class="mega" data-mega>
               <div class="mega__inner">

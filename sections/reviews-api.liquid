@@ -9,6 +9,18 @@
         assign scope = 'laptops'
       when 'audio'
         assign scope = 'audio'
+      when 'iphone'
+        assign scope = 'iphone'
+      when 'tablets'
+        assign scope = 'tablets'
+      when 'consoles'
+        assign scope = 'consoles'
+      when 'smartwatches'
+        assign scope = 'smartwatches'
+      when 'accessories'
+        assign scope = 'accessories'
+      when 'budget-phones'
+        assign scope = 'budget'
     endcase
   elsif current_tags.size > 0
     assign scope = current_tags.first | handleize

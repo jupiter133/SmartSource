@@ -1,8 +1,8 @@
-{%- comment -%} Outputs url. If it points at a landing page (/pages/android|laptops|audio) that hasn't been created in admin yet, falls back to the matching tag listing so the link never 404s. {%- endcomment -%}
+{%- comment -%} Outputs url. If it points at a landing page (/pages/android|laptops|audio|iphone|tablets|consoles|smartwatches|accessories) that hasn't been created in admin yet, falls back to the matching tag listing so the link never 404s. {%- endcomment -%}
 {%- assign out = url -%}
 {%- if url contains '/pages/' -%}
   {%- assign h = url | split: '/pages/' | last | split: '?' | first -%}
-  {%- assign landing = 'android,laptops,audio' | split: ',' -%}
+  {%- assign landing = 'android,laptops,audio,iphone,tablets,consoles,smartwatches,accessories,budget-phones' | split: ',' -%}
   {%- if landing contains h and pages[h].id == blank -%}{%- assign out = '/collections/all/' | append: h -%}{%- endif -%}
 {%- endif -%}
 {{- out -}}
