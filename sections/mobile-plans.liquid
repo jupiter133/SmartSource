@@ -85,7 +85,7 @@
         {%- if section.settings.prepaid_banner_image != blank -%}
           {{ section.settings.prepaid_banner_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,450,600', sizes: '(min-width: 750px) 280px, 40vw', alt: '' }}
         {%- else -%}
-          {% render 'plans-phone-art' %}
+          {% render 'plans-phone-art', product: 'iphone-16' %}
         {%- endif -%}
       </div>
     </div>
@@ -211,7 +211,7 @@
     {%- comment -%} Bundle banner {%- endcomment -%}
     {%- if amt > 0 -%}
       <div class="mp-bundle">
-        <div class="mp-bundle__art">{% render 'plans-phone-art' %}</div>
+        <div class="mp-bundle__art">{% render 'plans-phone-art', product: 'iphone-15' %}</div>
         <div class="mp-bundle__copy">
           <h3>{{ 'plans.bundle.title' | t: amount: amt }}</h3>
           <p>{{ 'plans.bundle.text' | t: amount: amt }}</p>
@@ -346,7 +346,7 @@
             <button type="button" class="btn btn--dark" data-mp-promo="{{ pr.headline.value | escape }}">{% if pr.cta_label != blank %}{{ pr.cta_label.value }}{% else %}{{ 'plans.postpaid.deal_cta' | t }}{% endif %}</button>
           </div>
           <div class="mp-promo__art">
-            {%- if pr.image != blank -%}{{ pr.image.value | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'plans-phone-art' %}{%- endif -%}
+            {%- if pr.image != blank -%}{{ pr.image.value | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'plans-phone-art', product: 'iphone-17-pro' %}{%- endif -%}
           </div>
         </article>
       {%- endfor -%}
