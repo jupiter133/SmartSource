@@ -32,7 +32,10 @@
     <div class="bt__item" data-bt-addon>
       {%- if addon != blank -%}
         {%- assign av = addon.selected_or_first_available_variant -%}
-        <a class="bt__img" href="{{ addon.url }}">{{ addon.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: addon.title }}</a>
+        <a class="bt__img" href="{{ addon.url }}">
+          {%- if addon.featured_image -%}{{ addon.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: addon.title }}
+          {%- else -%}<img src="{{ 'promo-case-protector.webp' | asset_url }}" alt="{{ addon.title | escape }}" width="476" height="700" loading="lazy">{%- endif -%}
+        </a>
         <a class="bt__name bt__name--clamp" href="{{ addon.url }}">{{ addon.title }}</a>
         <p class="bt__price" data-bt-add-price data-cents="{{ av.price }}" data-variant="{{ av.id }}">{{ av.price | money }}</p>
       {%- endif -%}
