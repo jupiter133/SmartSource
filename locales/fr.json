@@ -23,10 +23,17 @@
     "hero": {
       "title": "Des forfaits mobiles moins chers. Activés en quelques minutes.",
       "sub": "Prépayé sans contrat, ou postpayé avec téléphone à 0 $ à l'achat. Choisissez, envoyez une demande, on s'occupe du reste.",
-      "trust_1": "Aucun contrat en prépayé",
-      "trust_2": "eSIM offerte",
-      "trust_3": "Financement d'appareil à 0 % sur approbation du crédit",
-      "trust_4": "Livraison gratuite ou eSIM"
+      "trust_1": "Sans contrat",
+      "trust_2": "Prêt pour l’eSIM",
+      "trust_3": "Financement à 0 %",
+      "trust_4": "Livraison gratuite",
+      "eyebrow": "Détaillant autorisé auprès de fournisseurs admissibles",
+      "title_a": "Des forfaits canadiens",
+      "title_b": "pour moins cher.",
+      "trust_1_sub": "Sur tous les forfaits prépayés",
+      "trust_2_sub": "Configurez directement sur votre téléphone",
+      "trust_3_sub": "Sur approbation du crédit",
+      "trust_4_sub": "Ou activez par eSIM"
     },
     "tabs": {
       "label": "Types de forfaits",

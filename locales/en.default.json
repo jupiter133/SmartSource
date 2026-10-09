@@ -14,10 +14,17 @@
     "hero": {
       "title": "Phone plans for less. Set up in minutes.",
       "sub": "No-contract prepaid, or postpaid with $0-down phones. Pick what fits, send a request, we handle the rest.",
-      "trust_1": "No contract on prepaid",
-      "trust_2": "eSIM available",
-      "trust_3": "0% device financing on approved credit",
-      "trust_4": "Free delivery or eSIM"
+      "trust_1": "No contract",
+      "trust_2": "eSIM ready",
+      "trust_3": "0% device financing",
+      "trust_4": "Free delivery",
+      "eyebrow": "Authorized retailer with eligible carriers",
+      "title_a": "Canadian phone plans",
+      "title_b": "for less.",
+      "trust_1_sub": "On every prepaid plan",
+      "trust_2_sub": "Set up right on your phone",
+      "trust_3_sub": "On approved credit",
+      "trust_4_sub": "Or activate by eSIM"
     },
     "tabs": {
       "label": "Plan types",
