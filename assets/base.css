@@ -2741,3 +2741,4 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 .lx-row--slim .carousel--cards .card{width:200px}
 .lx-row--slim .card__title{font-size:14px}
 @media (max-width:749px){.lx-row--slim .carousel--cards .card{width:170px}}
+
