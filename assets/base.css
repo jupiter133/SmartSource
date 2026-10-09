@@ -2178,7 +2178,7 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 .mp{
   --mp-brand:#19C3E6;--mp-brand-ink:#0b7f99;--mp-brand-soft:#e8f8fc;--mp-brand-line:#c4ecf6;
   --mp-bg:#F2F2F5;--mp-ink:var(--c-ink,#0e0e0e);--mp-text:#45454f;--mp-muted:#6b6b76;
-  --mp-line:#e6e6ec;--mp-line-2:#d4d4dc;--mp-tint:#f6f6f8;--mp-sel:#2a1748;
+  --mp-line:#e6e6ec;--mp-line-2:#d4d4dc;--mp-tint:#f6f6f8;--mp-sel:#111;
   --mp-r:16px;--mp-r-sm:12px;
   --mp-shadow:0 1px 2px rgba(17,17,26,.04),0 2px 8px rgba(17,17,26,.04);
   --mp-shadow-hi:0 4px 12px rgba(17,17,26,.06),0 12px 32px rgba(17,17,26,.08);
@@ -2342,8 +2342,8 @@ body:has(.header__search:focus-within) .search-scrim{display:block}
 
 /* ---------- postpaid ---------- */
 .mp-banner{background:var(--mp-ink);color:#fff;border-radius:var(--mp-r-sm);padding:16px 20px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;margin-bottom:16px}
-.mp-banner--promo{background:linear-gradient(120deg,#2a1748,#5a3390 60%,#1b8fb0);flex-direction:column;align-items:flex-start;gap:8px;padding:16px 20px;margin:0}
-.mp-banner--promo .mp-pill{background:#fff;color:#2a1748}
+.mp-banner--promo{background:linear-gradient(120deg,#0b7f99,#19C3E6);flex-direction:column;align-items:flex-start;gap:8px;padding:16px 20px;margin:0}
+.mp-banner--promo .mp-pill{background:#fff;color:#0b7f99}
 .mp-banner--promo strong{font-size:16px;line-height:1.3}
 .mp-banner--promo .mp-fine{color:#ffffffcc;margin:0}
 .mp-promos{display:grid;gap:16px;margin-bottom:24px}
