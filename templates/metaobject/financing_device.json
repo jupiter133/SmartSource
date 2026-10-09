@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "financing-device", "settings": { "show_promo": true } }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,61 @@
+{%- comment -%}
+  Postpaid / financing / BYOD request: compact one-step drawer. Opened by JS (mobile-plans.js) with a selection.
+  Fields are only name, email, phone; everything else is hidden summary fields filled from the selection.
+{%- endcomment -%}
+<div class="mp-modal" id="MpPostpaid" data-mp-modal="postpaid" hidden>
+  <div class="mp-modal__scrim" data-mp-close></div>
+  <div class="mp-modal__panel" role="dialog" aria-modal="true" aria-labelledby="MpPostpaidTitle">
+    <div class="mp-modal__head">
+      <h2 id="MpPostpaidTitle" class="mp-modal__title">{{ 'plans.form.title_postpaid' | t }}</h2>
+      <button type="button" class="mp-modal__x" data-mp-close aria-label="{{ 'plans.common.close' | t }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    {%- form 'contact', id: 'MpPostpaidForm', class: 'mp-form', novalidate: 'novalidate' -%}
+      <div class="mp-form__body" data-mp-formbody>
+        <div class="mp-form__error" data-mp-errors {% unless form.errors %}hidden{% endunless %} role="alert">
+          {{ 'plans.form.error' | t }}
+          {%- if form.errors -%}{{ form.errors | default_errors }}{%- endif -%}
+        </div>
+        <div class="mp-summary">
+          <div class="mp-summary__head"><span>{{ 'plans.form.summary' | t }}</span><button type="button" class="mp-link" data-mp-edit>{{ 'plans.common.edit' | t }}</button></div>
+          <ul class="mp-summary__list" data-mp-summary></ul>
+        </div>
+        <input type="hidden" name="contact[subject]" data-mp-field="subject">
+        <input type="hidden" name="contact[tags]" data-mp-field="tags">
+        <input type="hidden" name="contact[Request type]" data-mp-field="type">
+        <input type="hidden" name="contact[Selection]" data-mp-field="selection">
+        <input type="hidden" name="contact[Plan]" data-mp-field="plan">
+        <input type="hidden" name="contact[Device]" data-mp-field="device">
+        <input type="hidden" name="contact[Model]" data-mp-field="model">
+        <input type="hidden" name="contact[Storage]" data-mp-field="storage">
+        <input type="hidden" name="contact[Colour]" data-mp-field="colour">
+        <input type="hidden" name="contact[SIM type]" data-mp-field="sim">
+        <input type="hidden" name="contact[Device payment]" data-mp-field="payment">
+        <input type="hidden" name="contact[Estimated monthly]" data-mp-field="estimate">
+        <input type="hidden" name="contact[Page]" data-mp-field="page">
+        <input type="hidden" name="contact[body]" data-mp-field="body">
+        <div class="mp-field">
+          <label for="MpPpName">{{ 'plans.form.name' | t }}</label>
+          <input id="MpPpName" type="text" name="contact[name]" autocomplete="name" required value="{{ form.name | escape }}">
+        </div>
+        <div class="mp-field">
+          <label for="MpPpEmail">{{ 'plans.form.email' | t }}</label>
+          <input id="MpPpEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email | escape }}">
+        </div>
+        <div class="mp-field">
+          <label for="MpPpPhone">{{ 'plans.form.phone' | t }}</label>
+          <input id="MpPpPhone" type="tel" name="contact[phone]" autocomplete="tel" inputmode="tel" required value="{{ form.phone | escape }}">
+        </div>
+        <div class="mp-hp" aria-hidden="true"><label for="MpPpWeb">Website</label><input id="MpPpWeb" type="text" name="contact[website]" tabindex="-1" autocomplete="off" data-mp-hp></div>
+        <label class="mp-check"><input type="checkbox" name="contact[Consent]" value="Yes" required><span>{{ 'plans.form.consent_postpaid' | t }}</span></label>
+        <p class="mp-privacy"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l7 2.6v5.6c0 4.6-3 8.1-7 9.8-4-1.7-7-5.2-7-9.8V5.6z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>{{ 'plans.form.privacy' | t }}</p>
+        <button type="submit" class="btn btn--dark btn--lg btn--block mp-submit" data-sending="{{ 'plans.form.sending' | t | escape }}">{{ 'plans.form.schedule' | t }}</button>
+      </div>
+      <div class="mp-success" data-mp-success hidden>
+        <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#19C3E6" opacity=".15"/><path d="M15 24.5l6 6 12-13" fill="none" stroke="#0e9cbb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p class="mp-success__text">{{ 'plans.form.success_postpaid' | t }}</p>
+        <a class="btn btn--dark" href="{{ routes.root_url | append: '/pages/plans' | replace: '//', '/' }}" data-mp-backplans>{{ 'plans.form.back_to_plans' | t }}</a>
+      </div>
+      <span hidden data-mp-posted="{% if form.posted_successfully? %}1{% endif %}" data-mp-haserrors="{% if form.errors %}1{% endif %}"></span>
+    {%- endform -%}
+  </div>
+</div>

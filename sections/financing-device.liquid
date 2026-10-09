@@ -1,0 +1,145 @@
+{%- comment -%}
+  Device detail page for a financing_device metaobject (URL: /pages/phones-on-financing/<handle>).
+  Prices come from the price_matrix JSON: {"<model>": {"<storage>": [{"label": "...", "upfront": 0, "monthly": 43.71, "return_option": false}]}}.
+  Missing prices show "Request pricing for this configuration".
+{%- endcomment -%}
+{%- liquid
+  assign d = metaobject
+  assign months = d.financing_term_months.value | default: 24
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign plans_url = routes.root_url | append: '/pages/plans' | replace: '//', '/'
+  assign models = d.models.value
+  assign storages = d.storage_options.value
+  assign colours = d.colours.value
+  assign images = d.images.value
+-%}
+<div class="mp mp-dev page-width" data-mp data-mp-device data-locale="{{ request.locale.iso_code }}" data-months="{{ months }}" data-device="{{ d.name.value | escape }}">
+  <nav class="mp-dev__back"><a href="{{ plans_url }}?tab=financing">← {{ 'plans.device.back' | t }}</a></nav>
+  <div class="mp-dev__grid">
+    <div class="mp-dev__left">
+      <div class="mp-dev__gallery">
+        <div class="mp-dev__main" data-mp-gallery>
+          {%- if images.size > 0 -%}
+            {%- for img in images -%}
+              {%- if forloop.first -%}{{ img | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: d.name.value, class: 'mp-dev__img', data-mp-slide: forloop.index0 }}{%- else -%}{{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: d.name.value, class: 'mp-dev__img', hidden: 'hidden', data-mp-slide: forloop.index0 }}{%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {% render 'plans-phone-art', label: d.name.value %}
+          {%- endif -%}
+        </div>
+        {%- if images.size > 1 -%}
+          <div class="mp-dev__thumbs">
+            {%- for img in images -%}
+              <button type="button" class="mp-dev__thumb{% if forloop.first %} is-active{% endif %}" data-mp-thumb="{{ forloop.index0 }}" aria-label="{{ d.name.value | escape }} {{ forloop.index }}">{{ img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <p class="mp-device__brand">{{ d.brand.value }}</p>
+      <h1 class="mp-dev__title">{{ d.name.value }}</h1>
+      {%- if d.description != blank -%}<div class="mp-dev__desc">{{ d.description | metafield_tag }}</div>{%- endif -%}
+
+      {%- if models.size > 0 -%}
+        <fieldset class="mp-opt">
+          <legend>{{ 'plans.device.model' | t }}</legend>
+          <div class="mp-pills">{%- for m in models -%}<label class="mp-pillopt"><input type="radio" name="mp-model" value="{{ m | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="model"><span>{{ m }}</span></label>{%- endfor -%}</div>
+        </fieldset>
+      {%- endif -%}
+      {%- if storages.size > 0 -%}
+        <fieldset class="mp-opt">
+          <legend>{{ 'plans.device.storage' | t }}</legend>
+          <div class="mp-pills">{%- for s in storages -%}<label class="mp-pillopt"><input type="radio" name="mp-storage" value="{{ s | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="storage"><span>{{ s }}</span></label>{%- endfor -%}</div>
+        </fieldset>
+      {%- endif -%}
+      {%- if colours.size > 0 -%}
+        <fieldset class="mp-opt">
+          <legend>{{ 'plans.device.colour' | t }}: <span data-mp-colourname>{{ colours[0].name }}</span></legend>
+          <div class="mp-swatches">{%- for c in colours -%}<label class="mp-swatch" title="{{ c.name | escape }}"><input type="radio" name="mp-colour" value="{{ c.name | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="colour"><span style="--sw: {{ c.hex | default: '#ccc' }}"></span><span class="visually-hidden">{{ c.name }}</span></label>{%- endfor -%}</div>
+        </fieldset>
+      {%- endif -%}
+      <fieldset class="mp-opt">
+        <legend>{{ 'plans.device.sim' | t }}</legend>
+        <div class="mp-pills">
+          <label class="mp-pillopt"><input type="radio" name="mp-sim" value="SIM" checked data-mp-cfg="sim"><span>{{ 'plans.device.sim_physical' | t }}</span></label>
+          <label class="mp-pillopt"><input type="radio" name="mp-sim" value="eSIM" data-mp-cfg="sim"><span>{{ 'plans.device.sim_esim' | t }}</span></label>
+        </div>
+      </fieldset>
+
+      <details class="mp-acc"><summary><h2 class="mp-acc__h">{{ 'plans.device.financing_details' | t }}</h2><span class="mp-acc__chev" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.financing_text != blank -%}{{ section.settings.financing_text }}{%- else -%}<p>{{ 'plans.device.financing_details_text' | t: months: months }}</p>{%- endif -%}</div></details>
+      <details class="mp-acc"><summary><h2 class="mp-acc__h">{{ 'plans.device.terms' | t }}</h2><span class="mp-acc__chev" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.terms_text != blank -%}{{ section.settings.terms_text }}{%- else -%}<p>{{ 'plans.device.terms_text' | t }}</p>{%- endif -%}</div></details>
+    </div>
+
+    <aside class="mp-dev__right">
+      <div class="mp-dev__panel">
+        {%- for pr in shop.metaobjects.plan_promo.values -%}
+          {%- liquid
+            if pr.section.value != 'postpaid'
+              continue
+            endif
+            if pr.active != blank and pr.active.value == false
+              continue
+            endif
+            assign sd = pr.start_date.value | date: '%Y-%m-%d'
+            assign ed = pr.end_date.value | date: '%Y-%m-%d'
+            if pr.start_date != blank and sd > today
+              continue
+            endif
+            if pr.end_date != blank and ed < today
+              continue
+            endif
+          -%}
+          {%- if section.settings.show_promo -%}<div class="mp-banner mp-banner--sm"><span class="mp-pill">{{ 'plans.common.limited_time' | t }}</span><strong>{{ pr.headline.value }}</strong>{%- if pr.fine_print != blank -%}<span class="mp-fine">{{ pr.fine_print.value }}</span>{%- endif -%}</div>{%- endif -%}
+          {%- break -%}
+        {%- endfor -%}
+
+        <h2 class="mp-dev__step">{{ 'plans.device.step1' | t }}</h2>
+        <div class="mp-radios" data-mp-payments></div>
+        <p class="mp-nopriceline" data-mp-noprice hidden>{{ 'plans.device.no_price' | t }}</p>
+        {%- if d.return_option_available.value -%}
+          <div class="mp-inforow">
+            <span>{{ 'plans.device.return_row' | t }}</span>
+            <button type="button" class="mp-tip" aria-label="{{ 'plans.device.return_info' | t | escape }}" aria-expanded="false" data-mp-tip>i</button>
+            <div class="mp-tip__body" hidden data-mp-tipbody>{{ d.return_option_note.value | default: '' }}</div>
+          </div>
+        {%- endif -%}
+        <p class="mp-fine">{{ 'plans.device.term_note' | t: months: months }}</p>
+
+        <h2 class="mp-dev__step">{{ 'plans.device.step2' | t }}</h2>
+        <div class="mp-radios">
+          {%- for p in d.compatible_plans.value -%}
+            {%- if p.active != blank and p.active.value == false -%}{%- continue -%}{%- endif -%}
+            <label class="mp-radio mp-radio--plan">
+              <input type="radio" name="mp-plan" value="{{ p.name.value | escape }}" data-price="{{ p.price.value }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="plan">
+              <span class="mp-radio__card">
+                <span class="mp-radio__row"><strong>{{ p.name.value }}</strong><strong>{% if p.price != blank %}{% render 'plans-money', amount: p.price.value %}{{ 'plans.common.per_month' | t }}{% else %}{{ 'plans.common.request_pricing' | t }}{% endif %}</strong></span>
+                {%- if p.price_note != blank -%}<span class="mp-plan__note">{{ p.price_note.value }}</span>{%- endif -%}
+              </span>
+            </label>
+            {%- if p.includes != blank -%}
+              <details class="mp-acc mp-acc--mini mp-acc--inplan"><summary>{{ 'plans.common.plan_includes' | t }}<span class="mp-acc__chev" aria-hidden="true"></span></summary><ul class="mp-plan__list">{%- for x in p.includes.value -%}<li>{{ x }}</li>{%- endfor -%}</ul></details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <p class="mp-estimate" aria-live="polite" data-mp-estimate data-tpl="{{ 'plans.device.estimate' | t: device: '%D', plan: '%P' | escape }}" data-pending="{{ 'plans.device.estimate_pending' | t | escape }}" data-noprice="{{ 'plans.device.no_price' | t | escape }}"></p>
+        <button type="button" class="btn btn--dark btn--lg btn--block" data-mp-continue>{{ 'plans.device.continue' | t }}</button>
+        <p class="mp-privacy">{{ 'plans.form.privacy' | t }}</p>
+      </div>
+    </aside>
+  </div>
+  <script type="application/json" data-mp-matrix>{{ d.price_matrix.value | json }}</script>
+  <span hidden data-mp-i18n data-upfront-tpl="{{ 'plans.device.upfront_monthly' | t: upfront: '%U', monthly: '%M' | escape }}" data-help="{{ 'plans.form.help_choose' | t | escape }}" data-byod="{{ 'plans.form.byod' | t | escape }}"></span>
+  {% render 'plans-postpaid-form' %}
+</div>
+<script src="{{ 'mobile-plans.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Financing device",
+  "settings": [
+    { "type": "checkbox", "id": "show_promo", "label": "Show active postpaid promo in the side panel", "default": true },
+    { "type": "richtext", "id": "financing_text", "label": "Financing details text", "info": "Leave blank to use the built-in, translated text." },
+    { "type": "richtext", "id": "terms_text", "label": "Terms text", "info": "Leave blank to use the built-in, translated text." }
+  ]
+}
+{% endschema %}

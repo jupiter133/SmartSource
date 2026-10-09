@@ -1,0 +1,24 @@
+{%- comment -%} PDP badge for phones: links to the prepaid tab of /pages/plans. Params: product {%- endcomment -%}
+{%- liquid
+  assign is_phone = false
+  assign pt = product.type | downcase
+  if pt contains 'phone'
+    assign is_phone = true
+  endif
+  for tg in product.tags
+    assign tl = tg | downcase
+    if tl == 'iphone' or tl == 'samsung' or tl == 'pixel' or tl == 'android' or tl == 'phones' or tl == 'smartphones' or tl == 'motorola'
+      assign is_phone = true
+    endif
+  endfor
+  if pt contains 'case' or pt contains 'accessor' or pt contains 'repair'
+    assign is_phone = false
+  endif
+  assign amt = settings.plans_bundle_discount | default: 25
+-%}
+{%- if is_phone and amt > 0 -%}
+  <a class="bundle-badge" href="{{ routes.root_url | append: '/pages/plans?tab=prepaid' | replace: '//', '/' }}">
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>{{ 'plans.bundle.pdp' | t: amount: amt }} <span aria-hidden="true">→</span></span>
+  </a>
+{%- endif -%}

@@ -54,6 +54,7 @@
         <h1 class="buy__title">{{ product.title }}</h1>
         <p class="buy__sub" data-opts-text>{{ current.title | replace: ' / ', ' · ' }}</p>
         {% render 'rating', product: product %}
+        {% render 'bundle-badge', product: product %}
 
         <div class="buy__row">
           <div data-price-block></div>

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "mobile-plans",
+      "blocks": {
+        "banner": { "type": "promo_banner", "settings": { "enabled": false, "headline": "Lock in your rate", "text": "", "start_date": "", "end_date": "" } }
+      },
+      "block_order": ["banner"],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

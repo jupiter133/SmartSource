@@ -1,0 +1,10 @@
+{%- comment -%} Formats a dollar amount (not cents) for EN/FR: $35, $43.71 / 35 $, 43,71 $. Params: amount {%- endcomment -%}
+{%- liquid
+  assign c = amount | times: 100 | round
+  assign s = c | money_without_currency | remove: '.00' | remove: ',00'
+  if request.locale.iso_code == 'fr'
+    echo s | replace: '.', ',' | append: ' $'
+  else
+    echo '$' | append: s
+  endif
+-%}

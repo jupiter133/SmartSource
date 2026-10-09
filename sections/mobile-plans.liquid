@@ -1,0 +1,550 @@
+{%- comment -%}
+  Mobile plans page (/pages/plans). Data comes from metaobjects: prepaid_plan, postpaid_plan, financing_device, plan_promo.
+  All copy lives in locales under "plans" so EN/FR both work. Blocks (add-ons, FAQ, promo banner) are optional:
+  with none added, built-in translated defaults render.
+{%- endcomment -%}
+{%- liquid
+  assign amt = settings.plans_bundle_discount | default: 25
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign plans_url = routes.root_url | append: '/pages/plans' | replace: '//', '/'
+  assign phones_url = routes.root_url | append: '/collections/all' | replace: '//', '/'
+
+  comment
+    Sort helpers: build "1NNN:handle" keys, sort as strings, then look metaobjects up by handle.
+  endcomment
+  assign pre_keys = ''
+  for p in shop.metaobjects.prepaid_plan.values
+    if p.active != blank and p.active.value == false
+      continue
+    endif
+    assign so = p.sort_order.value | default: 999 | plus: 1000
+    assign pre_keys = pre_keys | append: so | append: ':' | append: p.handle | append: ','
+  endfor
+  assign pre_keys = pre_keys | split: ',' | sort
+
+  assign post_keys = ''
+  for p in shop.metaobjects.postpaid_plan.values
+    if p.active != blank and p.active.value == false
+      continue
+    endif
+    assign so = p.sort_order.value | default: 999 | plus: 1000
+    assign post_keys = post_keys | append: so | append: ':' | append: p.handle | append: ','
+  endfor
+  assign post_keys = post_keys | split: ',' | sort
+
+  assign dev_keys = ''
+  for p in shop.metaobjects.financing_device.values
+    if p.active != blank and p.active.value == false
+      continue
+    endif
+    assign so = p.sort_order.value | default: 999 | plus: 1000
+    assign dev_keys = dev_keys | append: so | append: ':' | append: p.handle | append: ','
+  endfor
+  assign dev_keys = dev_keys | split: ',' | sort
+
+  assign terms = '30,90,365' | split: ','
+-%}
+
+<div class="mp" data-mp data-bundle="{{ amt }}" data-locale="{{ request.locale.iso_code }}" data-calc-postpaid="{{ settings.plans_calc_postpaid_monthly | default: '90' | escape }}" data-calc-financing="{{ settings.plans_calc_financing_monthly | default: '43.71' | escape }}">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="mp-hero">
+    <div class="page-width">
+      <h1 class="mp-hero__title">{{ 'plans.hero.title' | t }}</h1>
+      <p class="mp-hero__sub">{{ 'plans.hero.sub' | t }}</p>
+      <ul class="mp-trust">
+        <li>{{ 'plans.hero.trust_1' | t }}</li>
+        <li>{{ 'plans.hero.trust_2' | t }}</li>
+        <li>{{ 'plans.hero.trust_3' | t }}</li>
+        <li>{{ 'plans.hero.trust_4' | t }}</li>
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} STICKY TABS {%- endcomment -%}
+  <div class="mp-tabs" data-mp-tabsbar>
+    <div class="page-width">
+      <div class="mp-tabs__list" role="tablist" aria-label="{{ 'plans.tabs.label' | t | escape }}">
+        <button type="button" role="tab" id="MpTab-prepaid" aria-controls="MpPanel-prepaid" aria-selected="true" class="mp-tab is-active" data-mp-tab="prepaid">{{ 'plans.tabs.prepaid' | t }}</button>
+        <button type="button" role="tab" id="MpTab-postpaid" aria-controls="MpPanel-postpaid" aria-selected="false" tabindex="-1" class="mp-tab" data-mp-tab="postpaid">{{ 'plans.tabs.postpaid' | t }}</button>
+        <button type="button" role="tab" id="MpTab-financing" aria-controls="MpPanel-financing" aria-selected="false" tabindex="-1" class="mp-tab" data-mp-tab="financing">{{ 'plans.tabs.financing' | t }}</button>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ================= TAB 1: PREPAID (Koodo) ================= {%- endcomment -%}
+  <section class="mp-panel page-width" id="MpPanel-prepaid" role="tabpanel" aria-labelledby="MpTab-prepaid" data-mp-panel="prepaid">
+    <div class="mp-brandhead">
+      <span class="mp-brandhead__logo">
+        {%- if section.settings.koodo_logo != blank -%}
+          {{ section.settings.koodo_logo | image_url: width: 240 | image_tag: height: 32, loading: 'lazy', alt: 'Koodo' }}
+        {%- else -%}
+          <span class="mp-wordmark" aria-label="Koodo">koodo</span>
+        {%- endif -%}
+      </span>
+      <div>
+        <h2 class="mp-h2">{{ 'plans.prepaid.heading' | t }}</h2>
+        <p class="mp-dealer">{{ 'plans.prepaid.dealer' | t }}</p>
+      </div>
+    </div>
+
+    <div class="mp-subtabs" role="tablist" aria-label="{{ 'plans.prepaid.term_label' | t | escape }}">
+      {%- for t in terms -%}
+        {%- capture tk -%}plans.prepaid.term_{{ t }}{%- endcapture -%}
+        <button type="button" role="tab" class="mp-subtab{% if forloop.first %} is-active{% endif %}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-mp-term="{{ t }}">{{ tk | t }}</button>
+      {%- endfor -%}
+    </div>
+
+    {%- capture prepaid_options -%}
+      {%- for k in pre_keys -%}
+        {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
+        {%- if p == blank -%}{%- continue -%}{%- endif -%}
+        {%- capture price_s -%}{% render 'plans-money', amount: p.price.value %}{%- endcapture -%}
+        {%- capture label -%}Koodo {{ price_s }} · {{ p.term.value }} days · {{ p.data.value }}{%- endcapture -%}
+        <label class="mp-radio">
+          <input type="radio" name="contact[Plan]" value="{{ label | escape }}" data-plan-handle="{{ p.handle }}" data-plan-price="{{ p.price.value }}" data-plan-short="Koodo {{ price_s | escape }}" data-plan-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}" required>
+          <span class="mp-radio__card"><strong>{{ price_s }}<small>{{ 'plans.common.per_term' | t: days: p.term.value }}</small></strong><span>{{ p.data.value }} · {{ p.talk.value }}</span></span>
+        </label>
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- for t in terms -%}
+      <div class="mp-grid mp-grid--prepaid" data-mp-termgrid="{{ t }}"{% unless forloop.first %} hidden{% endunless %}>
+        {%- for k in pre_keys -%}
+          {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
+          {%- if p == blank or p.term.value != t -%}{%- continue -%}{%- endif -%}
+          <article class="mp-card mp-plan{% if p.badge != blank %} has-badge{% endif %}">
+            {%- if p.badge != blank -%}<span class="mp-badge">{{ p.badge.value }}</span>{%- endif -%}
+            <p class="mp-plan__data">{{ p.data.value }}</p>
+            <p class="mp-plan__price">{% render 'plans-money', amount: p.price.value %}<small>{{ 'plans.common.per_term' | t: days: t }}</small></p>
+            <ul class="mp-plan__list">
+              {%- if p.talk != blank -%}<li>{{ p.talk.value }}</li>{%- endif -%}
+              {%- if p.auto_topup_bonus != blank -%}<li>{{ 'plans.prepaid.bonus' | t: bonus: p.auto_topup_bonus.value }}</li>{%- endif -%}
+            </ul>
+            {%- if p.promo_text != blank -%}<p class="mp-plan__promo">{{ p.promo_text.value }}</p>{%- endif -%}
+            {%- if p.bundle_eligible.value and amt > 0 -%}<p class="mp-save">{{ 'plans.prepaid.save_tag' | t: amount: amt }}</p>{%- endif -%}
+            <button type="button" class="btn btn--dark btn--block mp-plan__cta" data-mp-activate="{{ p.handle }}">{{ 'plans.prepaid.activate' | t }}</button>
+          </article>
+        {%- else -%}
+          <p class="muted">{{ 'plans.prepaid.empty' | t }}</p>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+    <p class="mp-fine">{{ 'plans.prepaid.included' | t }}</p>
+
+    {%- comment -%} Bundle banner {%- endcomment -%}
+    {%- if amt > 0 -%}
+      <div class="mp-bundle">
+        <div class="mp-bundle__art">{% render 'plans-phone-art' %}</div>
+        <div class="mp-bundle__copy">
+          <h3>{{ 'plans.bundle.title' | t: amount: amt }}</h3>
+          <p>{{ 'plans.bundle.text' | t: amount: amt }}</p>
+          {%- if settings.plans_bundle_fine_print != blank -%}<p class="mp-fine">{{ settings.plans_bundle_fine_print }}</p>{%- endif -%}
+        </div>
+        <a class="btn btn--dark" href="{{ phones_url }}">{{ 'plans.bundle.cta' | t }}</a>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Add-ons {%- endcomment -%}
+    {%- assign addon_blocks = section.blocks | where: 'type', 'addon' -%}
+    <details class="mp-acc mp-addons">
+      <summary><h3>{{ 'plans.addons.title' | t }}</h3><span class="mp-acc__chev" aria-hidden="true"></span></summary>
+      <div class="mp-addons__body">
+        {%- if addon_blocks.size > 0 -%}
+          {%- assign groups = addon_blocks | map: 'settings' | map: 'group' | uniq -%}
+          {%- for g in groups -%}
+            <div class="mp-addons__group">
+              <h4>{{ g }}</h4>
+              <ul>{%- for b in addon_blocks -%}{%- if b.settings.group == g -%}<li {{ b.shopify_attributes }}><span>{{ b.settings.name }}</span><strong>{% render 'plans-money', amount: b.settings.price %}</strong></li>{%- endif -%}{%- endfor -%}</ul>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="mp-addons__group"><h4>{{ 'plans.addons.canada' | t }}</h4><ul>
+            <li><span>{{ 'plans.addons.a1' | t }}</span><strong>{% render 'plans-money', amount: 5 %}</strong></li>
+            <li><span>{{ 'plans.addons.a2' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+            <li><span>{{ 'plans.addons.a3' | t }}</span><strong>{% render 'plans-money', amount: 10 %}</strong></li>
+            <li><span>{{ 'plans.addons.a4' | t }}</span><strong>{% render 'plans-money', amount: 20 %}</strong></li>
+          </ul></div>
+          <div class="mp-addons__group"><h4>{{ 'plans.addons.us' | t }}</h4><ul>
+            <li><span>{{ 'plans.addons.u1' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+            <li><span>{{ 'plans.addons.u2' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+            <li><span>{{ 'plans.addons.u3' | t }}</span><strong>{% render 'plans-money', amount: 25 %}</strong></li>
+          </ul></div>
+          <div class="mp-addons__group"><h4>{{ 'plans.addons.intl' | t }}</h4><ul>
+            <li><span>{{ 'plans.addons.i1' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+            <li><span>{{ 'plans.addons.i2' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+            <li><span>{{ 'plans.addons.i3' | t }}</span><strong>{% render 'plans-money', amount: 10 %}</strong></li>
+            <li><span>{{ 'plans.addons.i4' | t }}</span><strong>{% render 'plans-money', amount: 15 %}</strong></li>
+          </ul></div>
+        {%- endif -%}
+        <p class="mp-fine">{{ 'plans.addons.note' | t }}</p>
+      </div>
+    </details>
+
+    {%- comment -%} Savings calculator {%- endcomment -%}
+    <div class="mp-calc" data-mp-calc>
+      <div class="mp-calc__intro">
+        <h3>{{ 'plans.calc.title' | t }}</h3>
+        <p class="muted">{{ 'plans.calc.sub' | t }}</p>
+      </div>
+      <div class="mp-calc__grid">
+        <div class="mp-calc__inputs">
+          <div class="mp-field">
+            <label for="MpCalcPlan">{{ 'plans.calc.plan' | t }}</label>
+            <select id="MpCalcPlan" data-calc-plan>
+              {%- for k in pre_keys -%}
+                {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
+                {%- if p == blank or p.price == blank -%}{%- continue -%}{%- endif -%}
+                <option value="{{ p.handle }}" data-price="{{ p.price.value }}" data-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}"{% if p.badge.value == 'Most popular' %} selected{% endif %}>{% render 'plans-money', amount: p.price.value %} · {{ 'plans.common.days' | t: days: p.term.value }} · {{ p.data.value }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+          <div class="mp-field">
+            <label for="MpCalcPhone">{{ 'plans.calc.phone_price' | t }}</label>
+            <div class="mp-input-prefix"><span aria-hidden="true">$</span><input id="MpCalcPhone" type="number" min="0" step="1" inputmode="numeric" value="550" data-calc-phone></div>
+          </div>
+          <label class="mp-switch"><input type="checkbox" checked data-calc-buying><span class="mp-switch__track" aria-hidden="true"></span><span>{{ 'plans.calc.buying' | t }}</span></label>
+        </div>
+        <div class="mp-calc__out" aria-live="polite">
+          <div class="mp-calc__card mp-calc__card--ours"><p>{{ 'plans.calc.ours' | t }}</p><strong data-calc-ours>—</strong><small data-calc-ours-break></small></div>
+          <div class="mp-calc__card"><p>{{ 'plans.calc.theirs' | t }}</p><strong data-calc-theirs>—</strong><small data-calc-theirs-break></small></div>
+          <p class="mp-calc__save" data-calc-save data-tpl="{{ 'plans.calc.save' | t: amount: '%A' | escape }}" data-none="{{ 'plans.calc.no_save' | t | escape }}"></p>
+        </div>
+      </div>
+      <p class="mp-fine">
+        {%- if settings.plans_calc_disclaimer != blank -%}{{ settings.plans_calc_disclaimer }}{%- else -%}{{ 'plans.calc.disclaimer' | t: postpaid: settings.plans_calc_postpaid_monthly, financing: settings.plans_calc_financing_monthly }}{%- endif -%}
+      </p>
+      <template data-calc-tpl-ours>{{ 'plans.calc.breakdown_ours' | t: phone: '%P', plan: '%L' }}</template>
+    </div>
+  </section>
+
+  {%- comment -%} ================= TAB 2: POSTPAID (unbranded) ================= {%- endcomment -%}
+  <section class="mp-panel page-width" id="MpPanel-postpaid" role="tabpanel" aria-labelledby="MpTab-postpaid" data-mp-panel="postpaid" hidden>
+    <div class="mp-panelhead">
+      <h2 class="mp-h2">{{ 'plans.postpaid.heading' | t }}</h2>
+      <p class="muted">{{ 'plans.postpaid.sub' | t }}</p>
+    </div>
+
+    {%- for b in section.blocks -%}
+      {%- if b.type != 'promo_banner' or b.settings.enabled == false -%}{%- continue -%}{%- endif -%}
+      {%- if b.settings.start_date != blank and b.settings.start_date > today -%}{%- continue -%}{%- endif -%}
+      {%- if b.settings.end_date != blank and b.settings.end_date < today -%}{%- continue -%}{%- endif -%}
+      <div class="mp-banner" {{ b.shopify_attributes }}>
+        <strong>{{ b.settings.headline }}</strong>
+        {%- if b.settings.text != blank -%}<span>{{ b.settings.text }}</span>{%- endif -%}
+      </div>
+    {%- endfor -%}
+
+    <div class="mp-promos">
+      {%- for pr in shop.metaobjects.plan_promo.values -%}
+        {%- liquid
+          if pr.section.value != 'postpaid'
+            continue
+          endif
+          if pr.active != blank and pr.active.value == false
+            continue
+          endif
+          assign sd = pr.start_date.value | date: '%Y-%m-%d'
+          assign ed = pr.end_date.value | date: '%Y-%m-%d'
+          if pr.start_date != blank and sd > today
+            continue
+          endif
+          if pr.end_date != blank and ed < today
+            continue
+          endif
+        -%}
+        <article class="mp-promo">
+          <div class="mp-promo__copy">
+            <span class="mp-pill">{{ 'plans.common.limited_time' | t }}</span>
+            <h3 class="mp-promo__headline">{{ pr.headline.value }}</h3>
+            {%- if pr.subtext != blank -%}<p>{{ pr.subtext.value }}</p>{%- endif -%}
+            {%- if pr.fine_print != blank -%}<p class="mp-fine">{{ pr.fine_print.value }}</p>{%- endif -%}
+            <button type="button" class="btn btn--dark" data-mp-promo="{{ pr.headline.value | escape }}">{% if pr.cta_label != blank %}{{ pr.cta_label.value }}{% else %}{{ 'plans.postpaid.deal_cta' | t }}{% endif %}</button>
+          </div>
+          <div class="mp-promo__art">
+            {%- if pr.image != blank -%}{{ pr.image.value | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}{%- else -%}{% render 'plans-phone-art' %}{%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <p class="mp-byodhint" data-mp-byodhint hidden>{{ 'plans.postpaid.byod_hint' | t }}</p>
+    <div class="mp-grid mp-grid--postpaid" id="MpPostpaidPlans">
+      {%- for k in post_keys -%}
+        {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.postpaid_plan[h] -%}
+        {%- if p == blank -%}{%- continue -%}{%- endif -%}
+        <article class="mp-card mp-plan mp-plan--post{% if p.badge != blank %} has-badge{% endif %}">
+          {%- if p.badge != blank -%}<span class="mp-badge">{{ p.badge.value }}</span>{%- endif -%}
+          <div class="mp-plan__top">
+            <p class="mp-plan__name">{{ p.name.value }}</p>
+            {%- if p.network != blank -%}<span class="mp-net">{{ p.network.value }}</span>{%- endif -%}
+          </div>
+          <p class="mp-plan__price">{% if p.price != blank %}{% render 'plans-money', amount: p.price.value %}<small>{{ 'plans.common.per_month' | t }}</small>{% else %}{{ 'plans.common.request_pricing' | t }}{% endif %}</p>
+          {%- if p.price_note != blank -%}<p class="mp-plan__note">{{ p.price_note.value }}</p>{%- endif -%}
+          {%- if p.byod_price != blank and p.byod_price.value != p.price.value -%}<p class="mp-plan__note">{{ 'plans.postpaid.byod_price' | t: price: p.byod_price.value }}</p>{%- endif -%}
+          {%- if p.promo_text != blank -%}<p class="mp-plan__promo">{{ p.promo_text.value }}</p>{%- endif -%}
+          {%- if p.includes != blank -%}
+            <details class="mp-acc mp-acc--mini"><summary>{{ 'plans.common.plan_includes' | t }}<span class="mp-acc__chev" aria-hidden="true"></span></summary>
+              <ul class="mp-plan__list">{%- for x in p.includes.value -%}<li>{{ x }}</li>{%- endfor -%}</ul>
+            </details>
+          {%- endif -%}
+          <div class="mp-plan__btns">
+            <button type="button" class="btn btn--dark btn--block" data-mp-byod="{{ p.name.value | escape }}" data-price="{{ p.byod_price.value | default: p.price.value }}">{{ 'plans.postpaid.byod' | t }}</button>
+            <button type="button" class="btn btn--block" data-mp-gotab="financing">{{ 'plans.postpaid.add_phone' | t }}</button>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <div class="mp-how">
+      <h3>{{ 'plans.postpaid.how_title' | t }}</h3>
+      <ol>
+        <li><span>1</span><p>{{ 'plans.postpaid.how_1' | t }}</p></li>
+        <li><span>2</span><p>{{ 'plans.postpaid.how_2' | t }}</p></li>
+        <li><span>3</span><p>{{ 'plans.postpaid.how_3' | t }}</p></li>
+      </ol>
+    </div>
+  </section>
+
+  {%- comment -%} ================= TAB 3: PHONES ON FINANCING (unbranded) ================= {%- endcomment -%}
+  <section class="mp-panel page-width" id="MpPanel-financing" role="tabpanel" aria-labelledby="MpTab-financing" data-mp-panel="financing" hidden>
+    <div class="mp-panelhead">
+      <h2 class="mp-h2">{{ 'plans.financing.heading' | t }}</h2>
+      <p class="muted">{{ 'plans.financing.sub' | t }}</p>
+    </div>
+    <div class="mp-chips" role="group" aria-label="{{ 'plans.financing.filter' | t | escape }}">
+      <button type="button" class="mp-chip is-active" aria-pressed="true" data-mp-brand="all">{{ 'plans.common.all' | t }}</button>
+      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="apple">Apple</button>
+      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="samsung">Samsung</button>
+      <button type="button" class="mp-chip" aria-pressed="false" data-mp-brand="google">Google</button>
+    </div>
+    <div class="mp-devices" data-mp-devices>
+      {%- for k in dev_keys -%}
+        {%- assign h = k | split: ':' | last -%}{%- assign d = shop.metaobjects.financing_device[h] -%}
+        {%- if d == blank -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign min = 0
+          assign pm = d.price_matrix.value
+          for m in pm
+            for s in m[1]
+              for o in s[1]
+                if o.monthly != blank
+                  if min == 0 or o.monthly < min
+                    assign min = o.monthly
+                  endif
+                endif
+              endfor
+            endfor
+          endfor
+          assign img = d.images.value | first
+          assign durl = d.system.url | default: '#'
+        -%}
+        <a class="mp-device" href="{{ durl }}" data-brand="{{ d.brand.value | downcase }}">
+          <span class="mp-device__img">
+            {%- if img != blank -%}{{ img | image_url: width: 500 | image_tag: loading: 'lazy', widths: '250,400,500', sizes: '(min-width: 990px) 25vw, 50vw', alt: d.name.value }}{%- else -%}{% render 'plans-phone-art', label: d.name.value %}{%- endif -%}
+            <span class="mp-device__pill">{{ 'plans.common.phone_pill' | t }}</span>
+            {%- if d.badge != blank -%}<span class="mp-badge mp-badge--corner">{{ d.badge.value }}</span>{%- endif -%}
+          </span>
+          <span class="mp-device__brand">{{ d.brand.value }}</span>
+          <span class="mp-device__name">{{ d.name.value }}</span>
+          <span class="mp-device__price">{%- if min > 0 -%}{%- capture ms -%}{% render 'plans-money', amount: min %}{%- endcapture -%}{{ 'plans.common.from_month' | t: price: ms }}{%- else -%}{{ 'plans.common.request_pricing' | t }}{%- endif -%}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    <p class="muted" data-mp-noresults hidden>{{ 'plans.financing.empty' | t }}</p>
+
+    <div class="mp-cross">
+      <div>
+        <h3>{{ 'plans.financing.cross_title' | t }}</h3>
+        <p>{{ 'plans.financing.cross_text' | t }}</p>
+      </div>
+      <div class="mp-cross__btns">
+        <a class="btn btn--dark" href="{{ phones_url }}">{{ 'plans.financing.cross_phones' | t }}</a>
+        <a class="btn" href="{{ plans_url }}?tab=prepaid" data-mp-gotab="prepaid">{{ 'plans.financing.cross_plans' | t }}</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ================= FAQ ================= {%- endcomment -%}
+  {%- assign faq_blocks = section.blocks | where: 'type', 'faq' -%}
+  {%- capture faq_ld -%}
+    {%- if faq_blocks.size > 0 -%}
+      {%- for b in faq_blocks -%}{"@type":"Question","name":{{ b.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ b.settings.answer | strip_html | json }}}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..10) -%}{%- capture qk -%}plans.faq.q{{ i }}{%- endcapture -%}{%- capture ak -%}plans.faq.a{{ i }}{%- endcapture -%}{"@type":"Question","name":{{ qk | t | json }},"acceptedAnswer":{"@type":"Answer","text":{{ ak | t: amount: amt | json }}}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
+    {%- endif -%}
+  {%- endcapture -%}
+  <section class="mp-faq page-width">
+    <h2 class="mp-h2">{{ 'plans.faq.title' | t }}</h2>
+    <div class="mp-faq__list">
+      {%- if faq_blocks.size > 0 -%}
+        {%- for b in faq_blocks -%}
+          <details class="mp-acc" {{ b.shopify_attributes }}><summary><h3>{{ b.settings.question }}</h3><span class="mp-acc__chev" aria-hidden="true"></span></summary><div class="mp-acc__body">{{ b.settings.answer }}</div></details>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..10) -%}
+          {%- capture qk -%}plans.faq.q{{ i }}{%- endcapture -%}{%- capture ak -%}plans.faq.a{{ i }}{%- endcapture -%}
+          <details class="mp-acc"><summary><h3>{{ qk | t }}</h3><span class="mp-acc__chev" aria-hidden="true"></span></summary><div class="mp-acc__body"><p>{{ ak | t: amount: amt }}</p></div></details>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ faq_ld }}]}</script>
+
+  {%- comment -%} Bottom CTA {%- endcomment -%}
+  <section class="mp-bottom page-width">
+    <div class="mp-bottom__inner">
+      <div><h2 class="mp-h2">{{ 'plans.cta.title' | t }}</h2><p>{{ 'plans.cta.text' | t }}</p></div>
+      <button type="button" class="btn btn--light btn--lg" data-mp-help>{{ 'plans.cta.button' | t }}</button>
+    </div>
+  </section>
+
+  {%- comment -%} ================= PREPAID REQUEST (multi-step) ================= {%- endcomment -%}
+  <div class="mp-modal mp-modal--steps" id="MpPrepaid" data-mp-modal="prepaid" hidden>
+    <div class="mp-modal__scrim" data-mp-close></div>
+    <div class="mp-modal__panel" role="dialog" aria-modal="true" aria-labelledby="MpPrepaidTitle">
+      <div class="mp-modal__head">
+        <h2 id="MpPrepaidTitle" class="mp-modal__title">{{ 'plans.prepaid_form.title' | t }}</h2>
+        <button type="button" class="mp-modal__x" data-mp-close aria-label="{{ 'plans.common.close' | t }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="mp-progress" aria-hidden="true"><span data-mp-progress></span></div>
+      <p class="mp-steplabel" data-mp-steplabel data-tpl="{{ 'plans.form.step' | t: n: '%N', total: '5' | escape }}"></p>
+      {%- form 'contact', id: 'MpPrepaidForm', class: 'mp-form', novalidate: 'novalidate' -%}
+        <div class="mp-form__body" data-mp-formbody>
+          <div class="mp-form__error" data-mp-errors {% unless form.errors %}hidden{% endunless %} role="alert">
+            {{ 'plans.form.error' | t }}
+            {%- if form.errors -%}{{ form.errors | default_errors }}{%- endif -%}
+          </div>
+          <input type="hidden" name="contact[subject]" data-mp-field="subject">
+          <input type="hidden" name="contact[tags]" data-mp-field="tags">
+          <input type="hidden" name="contact[Request type]" value="Prepaid activation (Koodo)">
+          <input type="hidden" name="contact[Bundle discount]" data-mp-field="bundle">
+          <input type="hidden" name="contact[Page]" data-mp-field="page">
+          <input type="hidden" name="contact[body]" data-mp-field="body">
+
+          <fieldset class="mp-step" data-step="1">
+            <legend>{{ 'plans.prepaid_form.plan_label' | t }}</legend>
+            <div class="mp-radios">{{ prepaid_options }}</div>
+          </fieldset>
+
+          <fieldset class="mp-step" data-step="2" hidden>
+            <legend>{{ 'plans.prepaid_form.s2' | t }}</legend>
+            <div class="mp-radios mp-radios--2">
+              <label class="mp-radio"><input type="radio" name="contact[Number]" value="New number" checked data-mp-number><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.number_new' | t }}</strong></span></label>
+              <label class="mp-radio"><input type="radio" name="contact[Number]" value="Transfer my number" data-mp-number><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.number_transfer' | t }}</strong></span></label>
+            </div>
+            <div class="mp-cond" data-mp-if="transfer" hidden>
+              <div class="mp-field"><label for="MpTrNum">{{ 'plans.prepaid_form.transfer_number' | t }}</label><input id="MpTrNum" type="tel" inputmode="tel" autocomplete="tel" name="contact[Number to transfer]" required disabled></div>
+              <div class="mp-field"><label for="MpTrCar">{{ 'plans.prepaid_form.current_carrier' | t }}</label>
+                <select id="MpTrCar" name="contact[Current carrier]" required disabled>
+                  <option value="">—</option>
+                  {%- assign carriers = 'Bell,Chatr,Fido,Fizz,Freedom Mobile,Koodo,Lucky Mobile,Public Mobile,Rogers,TELUS,Videotron,Virgin Plus' | split: ',' -%}
+                  {%- for c in carriers -%}<option>{{ c }}</option>{%- endfor -%}
+                  <option value="Other">{{ 'plans.prepaid_form.carrier_other' | t }}</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="mp-step" data-step="3" hidden>
+            <legend>{{ 'plans.prepaid_form.s3' | t }}</legend>
+            <div class="mp-radios mp-radios--2">
+              <label class="mp-radio"><input type="radio" name="contact[SIM type]" value="Ship me a SIM" checked data-mp-sim><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.sim_ship' | t }}</strong></span></label>
+              <label class="mp-radio"><input type="radio" name="contact[SIM type]" value="eSIM" data-mp-sim><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.sim_esim' | t }}</strong><span>{{ 'plans.prepaid_form.esim_note' | t }}</span></span></label>
+            </div>
+            <div class="mp-radios mp-radios--2">
+              <label class="mp-radio"><input type="radio" name="contact[Phone]" value="I have an unlocked phone" checked data-mp-phone><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.phone_have' | t }}</strong></span></label>
+              <label class="mp-radio"><input type="radio" name="contact[Phone]" value="I want a SmartSource phone" data-mp-phone><span class="mp-radio__card"><strong>{{ 'plans.prepaid_form.phone_want' | t }}</strong></span></label>
+            </div>
+            <div class="mp-cond" data-mp-if="have">
+              <label class="mp-check"><input type="checkbox" name="contact[Unlocked phone confirmed]" value="Yes" required><span>{{ 'plans.prepaid_form.phone_confirm' | t }}</span></label>
+            </div>
+            <div class="mp-cond" data-mp-if="want" hidden>
+              <div class="mp-field"><label for="MpWantPhone">{{ 'plans.prepaid_form.phone_which' | t }}</label><input id="MpWantPhone" type="text" name="contact[SmartSource phone]" disabled></div>
+              <a class="mp-link" href="{{ phones_url }}" target="_blank" rel="noopener">{{ 'plans.prepaid_form.browse' | t }} →</a>
+              <p class="mp-save" data-mp-bundlenote hidden>{{ 'plans.prepaid_form.bundle_note' | t: amount: amt }}</p>
+            </div>
+          </fieldset>
+
+          <fieldset class="mp-step" data-step="4" hidden>
+            <legend>{{ 'plans.prepaid_form.s4' | t }}</legend>
+            <div class="mp-field"><label for="MpPrName">{{ 'plans.form.name' | t }}</label><input id="MpPrName" type="text" name="contact[name]" autocomplete="name" required value="{{ form.name | escape }}"></div>
+            <div class="mp-field"><label for="MpPrPhone">{{ 'plans.form.phone' | t }}</label><input id="MpPrPhone" type="tel" name="contact[phone]" autocomplete="tel" inputmode="tel" required value="{{ form.phone | escape }}"></div>
+            <div class="mp-field"><label for="MpPrEmail">{{ 'plans.form.email' | t }}</label><input id="MpPrEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email | escape }}"></div>
+            <div class="mp-cond" data-mp-if="ship">
+              <p class="mp-sublabel">{{ 'plans.prepaid_form.address' | t }}</p>
+              <div class="mp-field"><label for="MpAddr1">{{ 'plans.prepaid_form.street' | t }}</label><input id="MpAddr1" type="text" name="contact[Shipping street]" autocomplete="shipping street-address" required></div>
+              <div class="mp-row">
+                <div class="mp-field"><label for="MpCity">{{ 'plans.prepaid_form.city' | t }}</label><input id="MpCity" type="text" name="contact[Shipping city]" autocomplete="shipping address-level2" required></div>
+                <div class="mp-field"><label for="MpProv">{{ 'plans.prepaid_form.province' | t }}</label>
+                  <select id="MpProv" name="contact[Shipping province]" autocomplete="shipping address-level1" required>
+                    <option value="">—</option>
+                    {%- assign provs = 'AB,BC,MB,NB,NL,NS,NT,NU,ON,PE,SK,YT' | split: ',' -%}
+                    {%- for pv in provs -%}<option>{{ pv }}</option>{%- endfor -%}
+                  </select>
+                </div>
+              </div>
+              <div class="mp-field"><label for="MpPostal">{{ 'plans.prepaid_form.postal' | t }}</label><input id="MpPostal" type="text" name="contact[Shipping postal code]" autocomplete="shipping postal-code" maxlength="7" required></div>
+            </div>
+            <div class="mp-hp" aria-hidden="true"><label for="MpPrWeb">Website</label><input id="MpPrWeb" type="text" name="contact[website]" tabindex="-1" autocomplete="off" data-mp-hp></div>
+            <label class="mp-check"><input type="checkbox" name="contact[Consent]" value="Yes" required><span>{{ 'plans.form.consent_prepaid' | t }}</span></label>
+          </fieldset>
+
+          <fieldset class="mp-step" data-step="5" hidden>
+            <legend>{{ 'plans.prepaid_form.s5' | t }}</legend>
+            <dl class="mp-review" data-mp-review></dl>
+            <p class="muted">{{ 'plans.prepaid_form.review_note' | t }}</p>
+          </fieldset>
+
+          <p class="mp-privacy"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l7 2.6v5.6c0 4.6-3 8.1-7 9.8-4-1.7-7-5.2-7-9.8V5.6z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>{{ 'plans.form.privacy' | t }}</p>
+          <div class="mp-stepnav">
+            <button type="button" class="btn" data-mp-prev hidden>{{ 'plans.common.back' | t }}</button>
+            <button type="button" class="btn btn--dark" data-mp-next>{{ 'plans.common.next' | t }}</button>
+            <button type="submit" class="btn btn--dark mp-submit" data-mp-send hidden data-sending="{{ 'plans.form.sending' | t | escape }}">{{ 'plans.prepaid_form.send' | t }}</button>
+          </div>
+        </div>
+        <div class="mp-success" data-mp-success hidden>
+          <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#19C3E6" opacity=".15"/><path d="M15 24.5l6 6 12-13" fill="none" stroke="#0e9cbb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="mp-success__text">{{ 'plans.form.success_prepaid' | t }}</p>
+          <a class="btn btn--dark" href="{{ plans_url }}" data-mp-backplans>{{ 'plans.form.back_to_plans' | t }}</a>
+        </div>
+        <span hidden data-mp-posted="{% if form.posted_successfully? %}1{% endif %}" data-mp-haserrors="{% if form.errors %}1{% endif %}"></span>
+      {%- endform -%}
+    </div>
+  </div>
+
+  {% render 'plans-postpaid-form' %}
+</div>
+<span hidden data-mp-i18n data-help="{{ 'plans.form.help_choose' | t | escape }}" data-byod="{{ 'plans.form.byod' | t | escape }}"></span>
+<script src="{{ 'mobile-plans.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Mobile plans",
+  "tag": "div",
+  "class": "mp-section",
+  "settings": [
+    { "type": "image_picker", "id": "koodo_logo", "label": "Koodo logo (prepaid tab)", "info": "Upload the official logo from the dealer portal. Without it, a simple text wordmark shows." },
+    { "type": "paragraph", "content": "Plans, phones and promos are edited in Content > Metaobjects. Bundle discount and calculator numbers are in Theme settings > Mobile plans." }
+  ],
+  "blocks": [
+    { "type": "addon", "name": "Prepaid add-on", "settings": [
+      { "type": "text", "id": "group", "label": "Group", "default": "Canada-wide" },
+      { "type": "text", "id": "name", "label": "Name", "default": "3 GB data" },
+      { "type": "number", "id": "price", "label": "Price ($)", "default": 15 }
+    ] },
+    { "type": "faq", "name": "FAQ item", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Can I use eSIM?" },
+      { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes, if your phone supports eSIM.</p>" }
+    ] },
+    { "type": "promo_banner", "name": "Postpaid promo banner", "settings": [
+      { "type": "checkbox", "id": "enabled", "label": "Show banner", "default": true },
+      { "type": "text", "id": "headline", "label": "Headline", "default": "Lock in your rate" },
+      { "type": "text", "id": "text", "label": "Text" },
+      { "type": "text", "id": "start_date", "label": "Start date (YYYY-MM-DD)", "info": "Optional" },
+      { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD)", "info": "Optional" }
+    ] }
+  ],
+  "presets": [{ "name": "Mobile plans" }]
+}
+{% endschema %}
