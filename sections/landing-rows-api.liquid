@@ -1,7 +1,13 @@
 {%- comment -%} Fetched via ?section_id=landing-rows-api on a collection/tag URL. Outputs product cards only. {%- endcomment -%}
 {%- if collection -%}
-  {%- paginate collection.products by 12 -%}
-    {%- for product in collection.products -%}{% render 'product-card', product: product %}{%- endfor -%}
+  {%- paginate collection.products by 36 -%}
+    {%- assign shown = 0 -%}
+    {%- for product in collection.products -%}
+      {%- comment -%} Skip unpriced ($0) listings so rows never show $0.00 {%- endcomment -%}
+      {%- if product.price_min <= 0 or shown >= 12 -%}{%- continue -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {% render 'product-card', product: product %}
+    {%- endfor -%}
   {%- endpaginate -%}
 {%- endif -%}
 {% schema %}

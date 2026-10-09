@@ -10,8 +10,8 @@
     tiles_heading – optional, defaults to "Shop by series"
 {%- endcomment -%}
 <div class="lx bshow" data-lx data-tag="{{ tag }}">
-  <section class="section page-width lx-row lx-row--steal" data-carousel>
-    <div class="section__head"><div><span class="lx__badge">✦ Lowest prices</span><h2>Steal deals</h2><p class="lx__sub">Our cheapest {{ brand }} picks, tested and backed by a 1-year warranty.</p></div>{% render 'carousel-arrows' %}</div>
+  <section class="section page-width lx-row lx-row--steal lx-row--slim" data-carousel>
+    <div class="section__head"><h2><span class="lx-slim__spark" aria-hidden="true">✦</span> Steal deals</h2>{% render 'carousel-arrows' %}</div>
     <div class="carousel carousel--cards" data-track data-lx-load="price-ascending"></div>
   </section>
 
