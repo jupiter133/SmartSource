@@ -182,7 +182,9 @@
       "terms_full": "Modalités et conditions",
       "pay_label": "Payez {{ upfront }} à l’achat",
       "upfront_taxes": "{{ upfront }} à l’achat + taxes",
-      "per_mo": " /mois"
+      "per_mo": " /mois",
+      "no_price_info": "Le prix de cette configuration est offert sur demande. Nous vous le confirmerons lors de votre appel.",
+      "estimate_noprice": "Forfait {{ plan }}/mois + prix de l'appareil sur demande"
     },
     "form": {
       "privacy": "Nous ne vous demanderons jamais votre NIP, une pièce d'identité ou vos informations de paiement en ligne.",

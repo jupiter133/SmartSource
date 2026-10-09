@@ -173,7 +173,9 @@
       "terms_full": "Terms and conditions",
       "pay_label": "Pay {{ upfront }} upfront",
       "upfront_taxes": "{{ upfront }} upfront + taxes",
-      "per_mo": " /mo."
+      "per_mo": " /mo.",
+      "no_price_info": "Pricing for this configuration is available on request. We'll confirm it on your call.",
+      "estimate_noprice": "Plan {{ plan }}/mo + device pricing on request"
     },
     "form": {
       "privacy": "We'll never ask for your PIN, ID or payment info online.",

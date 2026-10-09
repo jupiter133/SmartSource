@@ -1,7 +1,7 @@
 {%- comment -%}
   Device detail page for a financing_device metaobject (URL: /pages/phones-on-financing/<handle>).
   Prices come from the price_matrix JSON: {"<model>": {"<storage>": [{"label": "...", "upfront": 0, "monthly": 43.71, "return_option": false}]}}.
-  Missing prices show "Request pricing for this configuration".
+  Missing prices show one "pricing on request" info card in step 1.
 {%- endcomment -%}
 {%- liquid
   assign d = metaobject
@@ -14,64 +14,76 @@
   assign images = d.images.value
 -%}
 <div class="mp mp-dev page-width" data-mp data-mp-device data-locale="{{ request.locale.iso_code }}" data-months="{{ months }}" data-device="{{ d.name.value | escape }}">
-  <nav class="mp-dev__back"><a href="{{ plans_url }}?tab=financing">← {{ 'plans.device.back' | t }}</a></nav>
+  <nav class="mp-dev__back"><a href="{{ plans_url }}?tab=financing"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ 'plans.device.back' | t }}</a></nav>
   <div class="mp-dev__grid">
     <div class="mp-dev__left">
-      <div class="mp-dev__gallery">
-        <div class="mp-dev__main" data-mp-gallery>
+      <div class="mp-gal">
+        <div class="mp-gal__stage" data-mp-gallery>
           {%- if images.size > 0 -%}
             {%- for img in images -%}
               {%- assign ialt = img.alt | default: d.name.value -%}{%- assign icol = img.alt | split: ' - ' | last | strip | downcase -%}
-              {%- if forloop.first -%}{{ img | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: ialt, class: 'mp-dev__img', data-mp-slide: forloop.index0, data-mp-colour: icol }}{%- else -%}{{ img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,600,900', sizes: '(min-width: 990px) 45vw, 90vw', alt: ialt, class: 'mp-dev__img', hidden: 'hidden', data-mp-slide: forloop.index0, data-mp-colour: icol }}{%- endif -%}
+              {%- if forloop.first -%}
+                {{ img | image_url: width: 1040 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '400,600,800,1040', sizes: '(min-width: 990px) 520px, 92vw', alt: ialt, class: 'mp-gal__img', data-mp-slide: forloop.index0, data-mp-colour: icol }}
+              {%- else -%}
+                {{ img | image_url: width: 1040 | image_tag: loading: 'lazy', widths: '400,600,800,1040', sizes: '(min-width: 990px) 520px, 92vw', alt: ialt, class: 'mp-gal__img', hidden: 'hidden', data-mp-slide: forloop.index0, data-mp-colour: icol }}
+              {%- endif -%}
             {%- endfor -%}
           {%- else -%}
-            {% render 'plans-phone-art', label: d.name.value %}
+            <div class="mp-gal__ph">{% render 'plans-phone-art', label: d.name.value %}</div>
           {%- endif -%}
         </div>
         {%- if images.size > 1 -%}
-          <div class="mp-dev__thumbs">
+          <div class="mp-gal__thumbs" role="group" aria-label="{{ d.name.value | escape }}">
             {%- for img in images -%}
-              <button type="button" class="mp-dev__thumb{% if forloop.first %} is-active{% endif %}" data-mp-thumb="{{ forloop.index0 }}" aria-label="{{ d.name.value | escape }} {{ forloop.index }}">{{ img | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}</button>
+              <button type="button" class="mp-gal__thumb{% if forloop.first %} is-active{% endif %}" data-mp-thumb="{{ forloop.index0 }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="{{ img.alt | default: d.name.value | escape }} ({{ forloop.index }}/{{ images.size }})">{{ img | image_url: width: 160 | image_tag: loading: 'lazy', alt: '', width: 64, height: 64 }}</button>
             {%- endfor -%}
           </div>
         {%- endif -%}
       </div>
-      <h1 class="mp-dev__title">{{ d.name.value }}</h1>
-      {%- if d.description != blank -%}<div class="mp-dev__desc">{{ d.description | metafield_tag }}</div>{%- endif -%}
 
-      {%- if models.size > 0 -%}
-        <fieldset class="mp-opt">
-          <legend>{{ 'plans.device.model' | t }}</legend>
-          <div class="mp-pills">{%- for m in models -%}<label class="mp-pillopt"><input type="radio" name="mp-model" value="{{ m | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="model"><span>{{ m }}</span></label>{%- endfor -%}</div>
-        </fieldset>
-      {%- endif -%}
-      {%- if storages.size > 0 -%}
-        <fieldset class="mp-opt">
-          <legend>{{ 'plans.device.storage_options' | t }}</legend>
-          <div class="mp-pills">{%- for s in storages -%}<label class="mp-pillopt"><input type="radio" name="mp-storage" value="{{ s | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="storage"><span>{{ s }}</span></label>{%- endfor -%}</div>
-        </fieldset>
-      {%- endif -%}
-      {%- if colours.size > 0 -%}
-        <fieldset class="mp-opt">
-          <legend>{{ 'plans.device.colours' | t }}</legend>
-          <p class="mp-opt__sel" data-mp-colourname>{{ colours[0].name }}</p>
-          <div class="mp-swatches">{%- for c in colours -%}<label class="mp-swatch" title="{{ c.name | escape }}"><input type="radio" name="mp-colour" value="{{ c.name | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="colour"><span style="--sw: {{ c.hex | default: '#ccc' }}"></span><span class="visually-hidden">{{ c.name }}</span></label>{%- endfor -%}</div>
-        </fieldset>
-      {%- endif -%}
-      <fieldset class="mp-opt">
-        <legend>{{ 'plans.device.sim_options' | t }}</legend>
-        <div class="mp-pills">
-          <label class="mp-pillopt"><input type="radio" name="mp-sim" value="SIM" checked data-mp-cfg="sim"><span>{{ 'plans.device.sim_physical' | t }}</span></label>
-          <label class="mp-pillopt"><input type="radio" name="mp-sim" value="eSIM" data-mp-cfg="sim"><span>{{ 'plans.device.sim_esim' | t }}</span></label>
+      <div class="mp-dev__info">
+        {%- if d.brand != blank -%}<p class="mp-dev__brand">{{ d.brand.value }}</p>{%- endif -%}
+        <h1 class="mp-dev__title">{{ d.name.value }}</h1>
+        {%- if d.description != blank -%}<div class="mp-dev__desc">{{ d.description | metafield_tag }}</div>{%- endif -%}
+
+        <div class="mp-dev__opts">
+          {%- if models.size > 0 -%}
+            {%- comment -%} One model: keep the checked input for price lookup, hide the single pill {%- endcomment -%}
+            <fieldset class="mp-opt"{% if models.size == 1 %} hidden{% endif %}>
+              <legend>{{ 'plans.device.model' | t }}</legend>
+              <div class="mp-pills">{%- for m in models -%}<label class="mp-pillopt"><input type="radio" name="mp-model" value="{{ m | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="model"><span>{{ m }}</span></label>{%- endfor -%}</div>
+            </fieldset>
+          {%- endif -%}
+          {%- if storages.size > 0 -%}
+            <fieldset class="mp-opt">
+              <legend>{{ 'plans.device.storage' | t }}</legend>
+              <div class="mp-pills">{%- for s in storages -%}<label class="mp-pillopt"><input type="radio" name="mp-storage" value="{{ s | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="storage"><span>{{ s }}</span></label>{%- endfor -%}</div>
+            </fieldset>
+          {%- endif -%}
+          {%- if colours.size > 0 -%}
+            <fieldset class="mp-opt">
+              <legend>{{ 'plans.device.colour' | t }}<span class="mp-opt__sel" data-mp-colourname>{{ colours[0].name }}</span></legend>
+              <div class="mp-swatches">{%- for c in colours -%}<label class="mp-swatch" title="{{ c.name | escape }}"><input type="radio" name="mp-colour" value="{{ c.name | escape }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="colour"><span class="mp-swatch__dot" style="--sw: {{ c.hex | default: '#ccc' }}"></span><span class="visually-hidden">{{ c.name }}</span></label>{%- endfor -%}</div>
+            </fieldset>
+          {%- endif -%}
+          <fieldset class="mp-opt">
+            <legend>{{ 'plans.device.sim' | t }}</legend>
+            <div class="mp-pills">
+              <label class="mp-pillopt"><input type="radio" name="mp-sim" value="SIM" checked data-mp-cfg="sim"><span>{{ 'plans.device.sim_physical' | t }}</span></label>
+              <label class="mp-pillopt"><input type="radio" name="mp-sim" value="eSIM" data-mp-cfg="sim"><span>{{ 'plans.device.sim_esim' | t }}</span></label>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
 
-      <details class="mp-acc mp-acc--line"><summary><h2 class="mp-acc__h">{{ 'plans.device.financing_details' | t }}</h2><span class="mp-acc__plus" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.financing_text != blank -%}{{ section.settings.financing_text }}{%- else -%}<p>{{ 'plans.device.financing_details_text' | t: months: months }}</p>{%- endif -%}</div></details>
-      <details class="mp-acc mp-acc--line"><summary><h2 class="mp-acc__h">{{ 'plans.device.terms_full' | t }}</h2><span class="mp-acc__plus" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.terms_text != blank -%}{{ section.settings.terms_text }}{%- else -%}<p>{{ 'plans.device.terms_text' | t }}</p>{%- endif -%}</div></details>
+        <div class="mp-dev__accs">
+          <details class="mp-acc mp-acc--line"><summary><h2 class="mp-acc__h">{{ 'plans.device.financing_details' | t }}</h2><span class="mp-acc__plus" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.financing_text != blank -%}{{ section.settings.financing_text }}{%- else -%}<p>{{ 'plans.device.financing_details_text' | t: months: months }}</p>{%- endif -%}</div></details>
+          <details class="mp-acc mp-acc--line"><summary><h2 class="mp-acc__h">{{ 'plans.device.terms_full' | t }}</h2><span class="mp-acc__plus" aria-hidden="true"></span></summary><div class="mp-acc__body">{%- if section.settings.terms_text != blank -%}{{ section.settings.terms_text }}{%- else -%}<p>{{ 'plans.device.terms_text' | t }}</p>{%- endif -%}</div></details>
+        </div>
+      </div>
     </div>
 
     <aside class="mp-dev__right">
-      <div class="mp-dev__panel">
+      <div class="mp-dev__panel" data-mp-panelbox>
         {%- for pr in shop.metaobjects.plan_promo.values -%}
           {%- liquid
             if pr.section.value != 'postpaid'
@@ -93,40 +105,53 @@
           {%- break -%}
         {%- endfor -%}
 
-        <h2 class="mp-dev__step">{{ 'plans.device.step1' | t }}</h2>
-        {%- if d.return_option_available.value -%}
-          <div class="mp-inforow">
-            <span>{{ 'plans.device.return_row' | t }}</span>
-            <button type="button" class="mp-tip" aria-label="{{ 'plans.device.return_info' | t | escape }}" aria-expanded="false" data-mp-tip>?</button>
-            <div class="mp-tip__body" hidden data-mp-tipbody>{{ d.return_option_note.value | default: '' }}</div>
-          </div>
-        {%- endif -%}
-        <p class="mp-fine mp-fine--tight">{{ 'plans.device.term_note' | t: months: months }}</p>
-        <div class="mp-radios" data-mp-payments></div>
-        <p class="mp-nopriceline" data-mp-noprice hidden>{{ 'plans.device.no_price' | t }}</p>
-
-        <h2 class="mp-dev__step">{{ 'plans.device.step2' | t }}</h2>
-        <div class="mp-radios">
-          {%- for p in d.compatible_plans.value -%}
-            {%- if p.active != blank and p.active.value == false -%}{%- continue -%}{%- endif -%}
-            <div class="mp-plancard">
-              <label class="mp-radio mp-radio--plan">
-                <input type="radio" name="mp-plan" value="{{ p.name.value | escape }}" data-price="{{ p.price.value }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="plan">
-                <span class="mp-radio__card">
-                  <strong class="mp-plancard__name">{{ p.name.value }}</strong>
-                  <span class="mp-plancard__price">{% if p.price != blank %}<strong>{% render 'plans-money', amount: p.price.value %}</strong><small>{{ 'plans.device.per_mo' | t }}</small>{% if p.price_note != blank %} <span class="mp-plan__note">- {{ p.price_note.value }}</span>{% endif %}{% else %}<strong class="mp-plancard__req">{{ 'plans.common.request_pricing' | t }}</strong>{% endif %}</span>
-                </span>
-              </label>
-              {%- if p.includes != blank -%}
-                <details class="mp-plancard__inc"><summary>{{ 'plans.common.plan_includes' | t }}<span class="mp-acc__chev" aria-hidden="true"></span></summary><ul class="mp-plan__list">{%- for x in p.includes.value -%}<li>{{ x }}</li>{%- endfor -%}</ul></details>
-              {%- endif -%}
+        <section class="mp-dev__sec" aria-labelledby="MpDevStep1">
+          <h2 class="mp-dev__step" id="MpDevStep1">{{ 'plans.device.step1' | t }}</h2>
+          <p class="mp-dev__note">{{ 'plans.device.term_note' | t: months: months }}</p>
+          {%- if d.return_option_available.value -%}
+            <div class="mp-inforow">
+              <span>{{ 'plans.device.return_row' | t }}</span>
+              <button type="button" class="mp-tip" aria-label="{{ 'plans.device.return_info' | t | escape }}" aria-expanded="false" data-mp-tip>?</button>
+              <div class="mp-tip__body" hidden data-mp-tipbody>{{ d.return_option_note.value | default: '' }}</div>
             </div>
-          {%- endfor -%}
-        </div>
+          {%- endif -%}
+          <div class="mp-radios mp-radios--pay" data-mp-payments></div>
+          <div class="mp-infocard" data-mp-noprice hidden>
+            <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="6.25" r="1" fill="currentColor"/></svg>
+            <p>{{ 'plans.device.no_price_info' | t }}</p>
+          </div>
+        </section>
 
-        <p class="mp-estimate" aria-live="polite" data-mp-estimate data-tpl="{{ 'plans.device.estimate' | t: device: '%D', plan: '%P' | escape }}" data-pending="{{ 'plans.device.estimate_pending' | t | escape }}" data-noprice="{{ 'plans.device.no_price' | t | escape }}"></p>
-        <button type="button" class="btn btn--accent btn--lg btn--block mp-continue" data-mp-continue>{{ 'plans.device.continue' | t }}</button>
-        <p class="mp-privacy">{{ 'plans.form.privacy' | t }}</p>
+        <section class="mp-dev__sec" aria-labelledby="MpDevStep2">
+          <h2 class="mp-dev__step" id="MpDevStep2">{{ 'plans.device.step2' | t }}</h2>
+          <div class="mp-radios">
+            {%- for p in d.compatible_plans.value -%}
+              {%- if p.active != blank and p.active.value == false -%}{%- continue -%}{%- endif -%}
+              <div class="mp-plancard">
+                <label class="mp-radio mp-radio--plan">
+                  <input type="radio" name="mp-plan" value="{{ p.name.value | escape }}" data-price="{{ p.price.value }}" {% if forloop.first %}checked{% endif %} data-mp-cfg="plan">
+                  <span class="mp-radio__card">
+                    <span class="mp-plancard__dot" aria-hidden="true"></span>
+                    <span class="mp-plancard__main">
+                      <strong class="mp-plancard__name">{{ p.name.value }}</strong>
+                      {%- if p.price_note != blank -%}<span class="mp-plancard__note">{{ p.price_note.value }}</span>{%- endif -%}
+                    </span>
+                    <span class="mp-plancard__price">{% if p.price != blank %}<strong>{% render 'plans-money', amount: p.price.value %}</strong><small>{{ 'plans.device.per_mo' | t }}</small>{% else %}<strong class="mp-plancard__req">{{ 'plans.common.request_pricing' | t }}</strong>{% endif %}</span>
+                  </span>
+                </label>
+                {%- if p.includes != blank -%}
+                  <details class="mp-plancard__inc"><summary>{{ 'plans.common.plan_includes' | t }}<span class="mp-acc__chev" aria-hidden="true"></span></summary><ul class="mp-plan__list">{%- for x in p.includes.value -%}<li>{{ x }}</li>{%- endfor -%}</ul></details>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </section>
+
+        <div class="mp-dev__foot">
+          <p class="mp-estimate" aria-live="polite" data-mp-estimate data-tpl="{{ 'plans.device.estimate' | t: device: '%D', plan: '%P' | escape }}" data-pending="{{ 'plans.device.estimate_pending' | t | escape }}" data-noprice="{{ 'plans.device.estimate_noprice' | t: plan: '%P' | escape }}"></p>
+          <button type="button" class="btn btn--accent btn--lg btn--block mp-continue" data-mp-continue>{{ 'plans.device.continue' | t }}</button>
+          <p class="mp-privacy"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l7 2.6v5.6c0 4.6-3 8.1-7 9.8-4-1.7-7-5.2-7-9.8V5.6z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>{{ 'plans.form.privacy' | t }}</p>
+        </div>
       </div>
     </aside>
   </div>

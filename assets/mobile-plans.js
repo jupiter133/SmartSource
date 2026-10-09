@@ -236,10 +236,10 @@
     var h = document.querySelector('.header');
     return h ? h.getBoundingClientRect().height : 0;
   }
+  var setTop = function () { root.style.setProperty('--mp-top', stickyTop() + 'px'); };
+  setTop(); window.addEventListener('resize', setTop);
   if (tabs.length) {
     tabsReady = true;
-    var setTop = function () { root.style.setProperty('--mp-top', stickyTop() + 'px'); };
-    setTop(); window.addEventListener('resize', setTop);
     tabs.forEach(function (t, i) {
       t.addEventListener('click', function () { setTab(t.getAttribute('data-mp-tab'), true); });
       t.addEventListener('keydown', function (e) {
@@ -477,6 +477,7 @@
         lab.appendChild(inp); lab.appendChild(card); payBox.appendChild(lab);
         inp.addEventListener('change', updateEstimate);
       });
+      payBox.hidden = opts.length === 0;
       $('[data-mp-noprice]', dev).hidden = opts.length > 0;
     };
     var currentPayment = function () {
@@ -489,9 +490,12 @@
     var updateEstimate = function () {
       var p = currentPayment(), pl = planEl();
       var planPrice = pl ? num(pl.getAttribute('data-price')) : null;
-      if (!p) est.textContent = est.getAttribute('data-noprice');
-      else if (!pl || planPrice == null) est.textContent = est.getAttribute('data-pending');
-      else est.textContent = est.getAttribute('data-tpl').replace('%D', money(num(p.monthly))).replace('%P', money(planPrice));
+      var txt = '';
+      if (!p) txt = planPrice != null ? est.getAttribute('data-noprice').replace('%P', money(planPrice)) : '';
+      else if (!pl || planPrice == null) txt = est.getAttribute('data-pending');
+      else txt = est.getAttribute('data-tpl').replace('%D', money(num(p.monthly))).replace('%P', money(planPrice));
+      est.textContent = txt;
+      est.hidden = !txt;
       return { p: p, pl: pl, planPrice: planPrice };
     };
     dev.addEventListener('change', function (e) {
@@ -504,7 +508,11 @@
     var showSlide = function (i) {
       i = String(i);
       $$('[data-mp-slide]', dev).forEach(function (s) { s.hidden = s.getAttribute('data-mp-slide') !== i; });
-      $$('[data-mp-thumb]', dev).forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-mp-thumb') === i); });
+      $$('[data-mp-thumb]', dev).forEach(function (x) {
+        var on = x.getAttribute('data-mp-thumb') === i;
+        x.classList.toggle('is-active', on);
+        x.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
     };
     $$('[data-mp-thumb]', dev).forEach(function (b) {
       b.addEventListener('click', function () { showSlide(b.getAttribute('data-mp-thumb')); });
@@ -516,12 +524,28 @@
       if (!slides.length) return;
       var name = String(e.target.value || '').trim().toLowerCase();
       var hit = slides.filter(function (s) { return (s.getAttribute('data-mp-colour') || '') === name; })[0];
+      if (!hit && name) hit = slides.filter(function (s) { return (s.getAttribute('alt') || '').toLowerCase().indexOf(name) > -1; })[0];
       if (!hit) {
         var idx = $$('input[data-mp-cfg="colour"]', dev).indexOf(e.target);
         hit = slides[idx];
       }
       if (hit) showSlide(hit.getAttribute('data-mp-slide'));
     });
+    // Sticky side panel: pinned under the header when it fits; when taller than the viewport it
+    // scrolls until its bottom (Continue) is visible, then sticks there.
+    var panelBox = $('[data-mp-panelbox]', dev);
+    if (panelBox) {
+      var fit = function () {
+        var top = parseFloat(getComputedStyle(root).getPropertyValue('--mp-top')) || 0;
+        var tall = panelBox.offsetHeight > window.innerHeight - top - 48;
+        var aside = panelBox.parentNode;
+        aside.classList.toggle('is-tall', tall);
+        if (tall) aside.style.setProperty('--mp-sticky', (window.innerHeight - panelBox.offsetHeight - 24) + 'px');
+        else aside.style.removeProperty('--mp-sticky');
+      };
+      fit(); window.addEventListener('resize', fit);
+      if (window.ResizeObserver) new ResizeObserver(fit).observe(panelBox);
+    }
     var tip = $('[data-mp-tip]', dev);
     if (tip) tip.addEventListener('click', function () {
       var body = $('[data-mp-tipbody]', dev); body.hidden = !body.hidden;
