@@ -122,7 +122,7 @@
         {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
         {%- if p == blank -%}{%- continue -%}{%- endif -%}
         {%- liquid
-          assign t = p.term.value
+          assign t = p.term.value | append: ''
           assign dparts = p.data.value | strip | split: ' '
           assign dnum = dparts[0] | plus: 0
           assign dunit = dparts[1] | default: ''
@@ -367,7 +367,7 @@
             <p class="mp-plan__name">{{ p.name.value }}</p>
             {%- if p.network != blank -%}<span class="mp-net">{{ p.network.value }}</span>{%- endif -%}
           </div>
-          <p class="mp-plan__price">{% if p.price != blank %}{% render 'plans-money', amount: p.price.value %}<small>{{ 'plans.common.per_month' | t }}</small>{% else %}{{ 'plans.common.request_pricing' | t }}{% endif %}</p>
+          <p class="mp-plan__price{% if p.price == blank %} mp-plan__price--req{% endif %}">{% if p.price != blank %}{% render 'plans-money', amount: p.price.value %}<small>{{ 'plans.common.per_month' | t }}</small>{% else %}{{ 'plans.common.request_pricing' | t }}{% endif %}</p>
           {%- if p.price_note != blank -%}<p class="mp-plan__note">{{ p.price_note.value }}</p>{%- endif -%}
           {%- if p.byod_price != blank and p.byod_price.value != p.price.value -%}<p class="mp-plan__note">{{ 'plans.postpaid.byod_price' | t: price: p.byod_price.value }}</p>{%- endif -%}
           {%- if p.promo_text != blank -%}<p class="mp-plan__promo">{{ p.promo_text.value }}</p>{%- endif -%}

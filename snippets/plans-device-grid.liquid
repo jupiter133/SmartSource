@@ -31,7 +31,7 @@
         -%}
         <a class="mp-device" href="{{ durl }}" data-brand="{{ d.brand.value | downcase }}">
           <span class="mp-device__img">
-            {%- if img != blank -%}{{ img | image_url: width: 500 | image_tag: loading: 'lazy', widths: '250,400,500', sizes: '(min-width: 990px) 25vw, 50vw', alt: d.name.value }}{%- else -%}{% render 'plans-phone-art', label: d.name.value %}{%- endif -%}
+            {%- if img != blank -%}{{ img | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240,360,480,600', sizes: '(min-width: 1200px) 260px, (min-width: 990px) 22vw, (min-width: 750px) 30vw, 45vw', alt: d.name.value }}{%- else -%}{% render 'plans-phone-art', label: d.name.value %}{%- endif -%}
             <span class="mp-device__pill">{{ 'plans.common.phone_pill' | t }}</span>
             {%- if d.badge != blank -%}<span class="mp-badge mp-badge--corner">{{ d.badge.value }}</span>{%- endif -%}
           </span>
