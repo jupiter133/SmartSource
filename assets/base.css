@@ -2752,3 +2752,4 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   .header__nav-wrap.is-open{max-height:var(--menu-h,calc(100dvh - 180px));padding-bottom:calc(24px + env(safe-area-inset-bottom))!important;box-sizing:border-box}
   html.menu-lock,html.menu-lock body{overflow:hidden}
 }
+.mp-opt__note{flex-basis:100%;margin:6px 0 0;font-size:13px;color:#6b6b76}

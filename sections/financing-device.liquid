@@ -69,8 +69,13 @@
           <fieldset class="mp-opt">
             <legend>{{ 'plans.device.sim' | t }}</legend>
             <div class="mp-pills">
+              {%- if d.esim_only.value -%}
+                <label class="mp-pillopt"><input type="radio" name="mp-sim" value="eSIM" checked data-mp-cfg="sim"><span>{{ 'plans.device.sim_esim' | t }}</span></label>
+                <p class="mp-opt__note">{{ 'plans.device.esim_only' | t }}</p>
+              {%- else -%}
               <label class="mp-pillopt"><input type="radio" name="mp-sim" value="SIM" checked data-mp-cfg="sim"><span>{{ 'plans.device.sim_physical' | t }}</span></label>
               <label class="mp-pillopt"><input type="radio" name="mp-sim" value="eSIM" data-mp-cfg="sim"><span>{{ 'plans.device.sim_esim' | t }}</span></label>
+              {%- endif -%}
             </div>
           </fieldset>
         </div>
