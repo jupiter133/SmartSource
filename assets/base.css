@@ -2708,3 +2708,10 @@ html,body{overflow-x:clip;max-width:100%}
 .shopify-section-group-header-group:has(> .header){transition:transform .25s}
 body:has(.pdp-sticky.is-on) .shopify-section-group-header-group:has(> .header){transform:translateY(-100%);pointer-events:none}
 body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
+/* Steal Deals: bright logo pink + attention pulse */
+.nav-deal,.header__nav .nav-deal,.header__nav .nav-deal *{color:#FF2D87!important;font-weight:600!important}
+.nav-deal{position:relative;animation:deal-glow 2.4s ease-in-out infinite}
+.nav-deal__spark{display:inline-block;animation:deal-spark 2.4s ease-in-out infinite;transform-origin:50% 55%}
+@keyframes deal-glow{0%,100%{text-shadow:0 0 0 rgba(255,45,135,0)}50%{text-shadow:0 0 12px rgba(255,45,135,.55)}}
+@keyframes deal-spark{0%,100%{transform:scale(1) rotate(0)}40%{transform:scale(1.35) rotate(20deg)}60%{transform:scale(.95) rotate(-6deg)}}
+@media (prefers-reduced-motion:reduce){.nav-deal,.nav-deal__spark{animation:none}}

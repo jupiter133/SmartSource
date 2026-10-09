@@ -173,7 +173,7 @@
                 assign nav_url = '/pages/accessories'
             endcase
           -%}
-          <a href="{% render 'page-url', url: nav_url %}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}✦ {% endif %}{{ link.title }}</a>
+          <a href="{% render 'page-url', url: nav_url %}" class="nav-link{% if deal %} nav-deal{% endif %}{% if link.active or link.child_active %} is-active{% endif %}" {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}>{% if deal %}<span class="nav-deal__spark" aria-hidden="true">✦</span> {% endif %}{{ link.title }}</a>
           {%- if link.links.size > 0 -%}
             <div class="mega" data-mega>
               <div class="mega__inner">
@@ -202,7 +202,7 @@
           {%- endif -%}
         </li>
       {%- else -%}
-        <li><a href="/collections/all" class="nav-link nav-deal">✦ Steal Deals</a></li><li><a class="nav-link" href="/collections/all">iPhone</a></li><li><a class="nav-link" href="/collections/all">Android</a></li><li><a class="nav-link" href="/collections/all">MacBook</a></li><li><a class="nav-link" href="/collections/all">Laptops</a></li><li><a class="nav-link" href="/collections/all">Accessories</a></li>
+        <li><a href="/collections/all" class="nav-link nav-deal"><span class="nav-deal__spark" aria-hidden="true">✦</span> Steal Deals</a></li><li><a class="nav-link" href="/collections/all">iPhone</a></li><li><a class="nav-link" href="/collections/all">Android</a></li><li><a class="nav-link" href="/collections/all">MacBook</a></li><li><a class="nav-link" href="/collections/all">Laptops</a></li><li><a class="nav-link" href="/collections/all">Accessories</a></li>
       {%- endfor -%}
       {%- endif -%}
     </ul>
