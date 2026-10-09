@@ -146,6 +146,21 @@
     endif
     if pill_cat == ''
       for t in ctags
+        assign t3 = t | slice: 0, 8
+        if t == 'galaxy-s' or t3 == 'galaxy-s'
+          assign pill_cat = 'galaxy-s'
+        elsif t == 'galaxy-z' or t3 == 'galaxy-z'
+          assign pill_cat = 'galaxy-z'
+        elsif t == 'galaxy-a' or t3 == 'galaxy-a'
+          assign pill_cat = 'galaxy-a'
+        endif
+        if pill_cat != ''
+          break
+        endif
+      endfor
+    endif
+    if pill_cat == ''
+      for t in ctags
         if t == blank
           continue
         endif
@@ -181,6 +196,12 @@
     endif
 
     case pill_cat
+      when 'galaxy-s'
+        assign pill_rows = 'galaxy-s|All Galaxy S|/collections/all/samsung+galaxy-s;galaxy-s26|Galaxy S26|/collections/all/galaxy-s26;galaxy-s25|Galaxy S25|/collections/all/galaxy-s25;galaxy-s24|Galaxy S24|/collections/all/galaxy-s24;galaxy-s23|Galaxy S23|/collections/all/galaxy-s23;galaxy-s22|Galaxy S22|/collections/all/galaxy-s22;galaxy-s21|Galaxy S21|/collections/all/galaxy-s21'
+      when 'galaxy-z'
+        assign pill_rows = 'galaxy-z|All Galaxy Z|/collections/all/samsung+galaxy-z;galaxy-z-fold|Galaxy Z Fold|/collections/all/galaxy-z-fold;galaxy-z-flip|Galaxy Z Flip|/collections/all/galaxy-z-flip'
+      when 'galaxy-a'
+        assign pill_rows = 'galaxy-a|All Galaxy A|/collections/all/samsung+galaxy-a;galaxy-a7x|A70 series|/collections/all/galaxy-a7x;galaxy-a5x|A50 series|/collections/all/galaxy-a5x;galaxy-a3x|A30 series|/collections/all/galaxy-a3x;galaxy-a2x|A20 series|/collections/all/galaxy-a2x;galaxy-a1x|A10 series|/collections/all/galaxy-a1x;galaxy-a0x|A0 series|/collections/all/galaxy-a0x'
       when 'iphone'
         assign pill_rows = 'iphone|All iPhones|/collections/all/iphone;iphone-18|iPhone 18|/collections/all/iphone-18;iphone-17|iPhone 17|/collections/all/iphone-17;iphone-air|iPhone Air|/collections/all/iphone-air;iphone-16|iPhone 16|/collections/all/iphone-16;iphone-15|iPhone 15|/collections/all/iphone-15;iphone-14|iPhone 14|/collections/all/iphone-14;iphone-13|iPhone 13|/collections/all/iphone-13;iphone-12|iPhone 12|/collections/all/iphone-12;iphone-11|iPhone 11|/collections/all/iphone-11;iphone-se|iPhone SE|/collections/all/iphone-se'
       when 'android'
