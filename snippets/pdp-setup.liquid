@@ -66,16 +66,4 @@
     <div class="setup__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01" stroke-linecap="round"/></svg><p><strong>Please note:</strong> ticked items are added to your cart with your device. You can remove them anytime before checkout.</p></div>
   </div>
 </section>
-<script>
-(function(){if(window.__setupTot)return;window.__setupTot=1;
-var pj=document.querySelector('[data-product-json]'),P=pj?JSON.parse(pj.textContent):null;
-var fmt=function(c){try{return new Intl.NumberFormat('en-CA',{style:'currency',currency:{{ cart.currency.iso_code | json }}}).format(c/100)}catch(e){return '$'+(c/100).toFixed(2)}};
-function run(){var add=0,n=0;document.querySelectorAll('[data-setup-addon]:checked').forEach(function(c){add+=+c.dataset.price;n++});
-var idIn=document.querySelector('[data-variant-id]'),v=P&&idIn?P.variants.find(function(x){return String(x.id)===String(idIn.value)}):null,base=v?v.price:0;
-document.querySelectorAll('[data-price-block]').forEach(function(b){var el=b.parentNode.querySelector(':scope > .pb-addons');
-if(!n){if(el)el.remove();return}
-if(!el){el=document.createElement('p');el.className='pb-addons';b.insertAdjacentElement('afterend',el)}
-el.innerHTML='+ '+fmt(add)+' for '+n+' add-on'+(n>1?'s':'')+' · <b>Total '+fmt(base+add)+'</b>'})}
-document.addEventListener('change',function(){setTimeout(run,60)});document.addEventListener('click',function(){setTimeout(run,120)});run()})();
-</script>
 {%- endunless -%}{%- endif -%}

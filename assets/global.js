@@ -229,7 +229,9 @@
 
     const priceHTML = v => {
       const save = v.compare_at_price > v.price ? `<span class="pp__was"><s>${fmt(v.compare_at_price)}</s> ${cfg.compareLabel || 'new'} <span class="pp__save">Save ${fmt(v.compare_at_price - v.price)}</span></span>` : '';
-      return `<div class="pp"><span class="pp__now">${fmt(v.price)}</span>${save}</div>`;
+      let add = 0, n = 0; $$('[data-setup-addon]:checked').forEach(c => { add += +c.dataset.price || 0; n++; });
+      const inc = n ? `<span class="pp__inc">incl. ${fmt(add)} for ${n} add-on${n > 1 ? 's' : ''}</span>` : '';
+      return `<div class="pp"><span class="pp__now">${fmt(v.price + add)}</span>${save}${inc}</div>`;
     };
 
     const update = (fromUser) => {
@@ -280,6 +282,7 @@
       }
       if (fromUser) { const url = new URL(location.href); url.searchParams.set('variant', variant.id); history.replaceState({}, '', url); }
     };
+    document.addEventListener('change', e => { if (e.target.matches('[data-setup-addon]')) update(false); });
     root.addEventListener('change', e => { if (e.target.closest('fieldset[data-option-index]')) update(true); });
     $$('[data-add-proxy]', root).forEach(b => b.addEventListener('click', () => form.requestSubmit()));
     update(false);
