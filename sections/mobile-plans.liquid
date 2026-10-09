@@ -16,7 +16,7 @@
       continue
     endif
     assign so = p.sort_order.value | default: 999 | plus: 1000
-    assign pre_keys = pre_keys | append: so | append: ':' | append: p.handle | append: ','
+    assign pre_keys = pre_keys | append: so | append: ':' | append: p.system.handle | append: ','
   endfor
   assign pre_keys = pre_keys | split: ',' | sort
 
@@ -26,7 +26,7 @@
       continue
     endif
     assign so = p.sort_order.value | default: 999 | plus: 1000
-    assign post_keys = post_keys | append: so | append: ':' | append: p.handle | append: ','
+    assign post_keys = post_keys | append: so | append: ':' | append: p.system.handle | append: ','
   endfor
   assign post_keys = post_keys | split: ',' | sort
 
@@ -36,7 +36,7 @@
       continue
     endif
     assign so = p.sort_order.value | default: 999 | plus: 1000
-    assign dev_keys = dev_keys | append: so | append: ':' | append: p.handle | append: ','
+    assign dev_keys = dev_keys | append: so | append: ':' | append: p.system.handle | append: ','
   endfor
   assign dev_keys = dev_keys | split: ',' | sort
 
@@ -110,7 +110,7 @@
         {%- capture price_s -%}{% render 'plans-money', amount: p.price.value %}{%- endcapture -%}
         {%- capture label -%}Koodo {{ price_s }} · {{ p.term.value }} days · {{ p.data.value }}{%- endcapture -%}
         <label class="mp-radio">
-          <input type="radio" name="contact[Plan]" value="{{ label | escape }}" data-plan-handle="{{ p.handle }}" data-plan-price="{{ p.price.value }}" data-plan-short="Koodo {{ price_s | escape }}" data-plan-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}" required>
+          <input type="radio" name="contact[Plan]" value="{{ label | escape }}" data-plan-handle="{{ p.system.handle }}" data-plan-price="{{ p.price.value }}" data-plan-short="Koodo {{ price_s | escape }}" data-plan-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}" required>
           <span class="mp-radio__card"><strong>{{ price_s }}<small>{{ 'plans.common.per_term' | t: days: p.term.value }}</small></strong><span>{{ p.data.value }} · {{ p.talk.value }}</span></span>
         </label>
       {%- endfor -%}
@@ -177,7 +177,7 @@
               <li>{{ 'plans.prepaid.features' | t }}</li>
             </ul>
             {%- if p.bundle_eligible.value and amt > 0 -%}<p class="mp-save">{{ 'plans.prepaid.save_tag' | t: amount: amt }}</p>{%- endif -%}
-            <button type="button" class="btn btn--dark btn--block mp-kcard__cta" data-mp-activate="{{ p.handle }}">{{ 'plans.prepaid.activate' | t }}</button>
+            <button type="button" class="btn btn--dark btn--block mp-kcard__cta" data-mp-activate="{{ p.system.handle }}">{{ 'plans.prepaid.activate' | t }}</button>
           </div>
           <div class="mp-kcard__foot"><button type="button" class="mp-kcard__more" data-mp-details aria-haspopup="dialog">{{ 'plans.prepaid.view_details' | t }}</button></div>
           <template data-mp-detailtpl>
@@ -275,7 +275,7 @@
               {%- for k in pre_keys -%}
                 {%- assign h = k | split: ':' | last -%}{%- assign p = shop.metaobjects.prepaid_plan[h] -%}
                 {%- if p == blank or p.price == blank -%}{%- continue -%}{%- endif -%}
-                <option value="{{ p.handle }}" data-price="{{ p.price.value }}" data-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}"{% if p.badge.value == 'Most popular' %} selected{% endif %}>{% render 'plans-money', amount: p.price.value %} · {{ 'plans.common.days' | t: days: p.term.value }} · {{ p.data.value }}</option>
+                <option value="{{ p.system.handle }}" data-price="{{ p.price.value }}" data-term="{{ p.term.value }}" data-eligible="{% if p.bundle_eligible.value %}1{% endif %}"{% if p.badge.value == 'Most popular' %} selected{% endif %}>{% render 'plans-money', amount: p.price.value %} · {{ 'plans.common.days' | t: days: p.term.value }} · {{ p.data.value }}</option>
               {%- endfor -%}
             </select>
           </div>
