@@ -2703,3 +2703,8 @@ html,body{overflow-x:clip;max-width:100%}
 /* Landing tiles: iPhone 18 photo is cropped tight, shrink it to match the padded series photos */
 .subcat--big .subcat-tile__img img[src*="iphone-18-lineup"]{scale:.72;translate:0 12%}
 .subcat--big .subcat-tile__img img[src*="/width_550.jpg"]{scale:.82;translate:0 4%}
+/* PDP: when the sticky buy bar is showing, slide the sticky header away instead of stacking under it */
+.pdp-sticky{z-index:60}
+.shopify-section-group-header-group:has(> .header){transition:transform .25s}
+body:has(.pdp-sticky.is-on) .shopify-section-group-header-group:has(> .header){transform:translateY(-100%);pointer-events:none}
+body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
