@@ -113,7 +113,7 @@
             "title": "iPhone 18",
             "link": "/collections/all/iphone-18",
             "art": "phone",
-            "image": "shopify://shop_images/iphone-18-pro-lineup-v2.png"
+            "asset_image": "iphone-18-lineup.webp"
           }
         }
       },
