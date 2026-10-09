@@ -86,7 +86,7 @@
             "title": "iPhone 11",
             "link": "/collections/all/iphone-11",
             "art": "phone",
-            "image": "shopify://shop_images/width_550_0c2bf946-e64d-408b-b423-e2760f725010.png"
+            "image": "shopify://shop_images/width_550.jpg"
           }
         },
         "t9": {
@@ -113,7 +113,7 @@
             "title": "iPhone 18",
             "link": "/collections/all/iphone-18",
             "art": "phone",
-            "image": "shopify://shop_images/iphone-18-pro-lineup.png"
+            "image": "shopify://shop_images/iphone-18-pro-lineup-v2.png"
           }
         }
       },
