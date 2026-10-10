@@ -3087,3 +3087,65 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   .sell-pay--sample .sell-pay__grid>.pay-group:first-child{grid-row:span 2}
 }
 
+/* ---------- Sell wizard: restrained styling (flat tiles, near-black selection, no gradients) ---------- */
+.sell-wiz .wiz-search{margin-bottom:16px}
+.sell-wiz .wiz-search__box{border:1px solid #d9d9e0;border-radius:12px;box-shadow:none}
+.sell-wiz .wiz-search__box:focus-within{border-color:var(--c-ink);box-shadow:0 0 0 1px var(--c-ink)}
+.sell-wiz .wiz-progress__num{border:1.5px solid #cfcfd6;background:#fff;color:#8a8a94}
+.sell-wiz .wiz-progress__btn[aria-current="step"] .wiz-progress__num,.sell-wiz .wiz-progress__btn.is-done .wiz-progress__num{background:var(--c-ink);border-color:var(--c-ink);color:#fff}
+.sell-wiz .wiz-progress__bar{height:1.5px;background:#e2e2e7}
+.sell-wiz .wiz-progress__bar span{background:var(--c-ink)}
+.sell-wiz .wiz-cards--cats,.sell-wiz .wiz-cards--brands,.sell-wiz .wiz-cards--models{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sell-wiz .wiz-card{border:1px solid #e6e6ea;border-radius:12px;background:#fff;box-shadow:none;transition:border-color .15s}
+.sell-wiz .wiz-card:hover{transform:none;box-shadow:none;border-color:#9a9aa4}
+.sell-wiz .wiz-card:has(input:checked){border-color:var(--c-ink);background:#fff;box-shadow:inset 0 0 0 1px var(--c-ink)}
+.sell-wiz .wiz-card__check{display:none}
+.sell-wiz .wiz-card__media{background:none;border-radius:8px}
+.sell-wiz .wiz-card--model .wiz-card__name,.sell-wiz .wiz-card--fam .wiz-card__name{display:block;min-height:2.5em}
+.sell-wiz .wiz-card--brand{height:104px;min-height:0;padding:12px 10px;justify-content:center;gap:8px}
+.sell-wiz .wiz-card--brand .wiz-card__media{aspect-ratio:auto;width:100%;height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sell-wiz .wiz-card--brand .wiz-card__media img{position:static;width:auto;height:40px;max-width:80%;padding:0;object-fit:contain}
+.sell-wiz .wiz-card--brand .wiz-card__media img[src*="logo-brand-samsung"],.sell-wiz .wiz-card--brand .wiz-card__media img[src*="logo-brand-sony"]{width:112px;max-width:90%;height:44px;padding:0;object-fit:cover}
+.sell-wiz .wiz-card--brand .wiz-card__name{font-size:13px;font-weight:600}
+.sell-wiz .wiz-card__mono{font-size:26px;line-height:1}
+.sell-wiz .wiz-card:has(input:checked) .wiz-card__icon{background:#f1f1f4;color:var(--c-ink)}
+.sell-wiz .wiz-card--more:hover{border-color:var(--c-ink)}
+.wiz-other{grid-column:1/-1;margin:6px 0 0;font-size:14px;color:#55555f}
+.wiz-other a{font-weight:600;color:var(--c-ink);text-decoration:underline;text-underline-offset:3px}
+.wiz-other a:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px;border-radius:4px}
+.sell-wiz .wiz-cond{border:1px solid #e6e6ea;border-radius:12px}
+.sell-wiz .wiz-cond.is-selected{border-color:var(--c-ink);background:#fff;box-shadow:inset 0 0 0 1px var(--c-ink)}
+.sell-wiz .wiz-cond__head .wiz-card__check{display:grid}
+.sell-wiz .wiz-cond__head:has(input:checked) .wiz-card__check{background:var(--c-ink);border-color:var(--c-ink);color:#fff}
+.sell-wiz .wiz-cond.is-selected .wiz-cond__icon{background:#f1f1f4;color:var(--c-ink)}
+.sell-wiz .wiz-cond-note{background:#f5f5f7}
+.sell-wiz .wiz-work__btn{border:1px solid #e6e6ea;border-radius:12px}
+.sell-wiz .wiz-work__btn:hover{transform:none;box-shadow:none;border-color:var(--c-ink);background:#fff}
+.sell-wiz .wiz-work-no{border:1px solid #e6e6ea;border-radius:12px}
+.sell-wiz .wiz-work-no__price{background:#f5f5f7}
+.sell-wiz .wiz-drop__zone:hover,.sell-wiz .wiz-drop__zone.is-over{border-color:#9a9aa4;background:#fafafc}
+.sell-wiz .wiz-sum__device{display:none}
+.sell-wiz .wiz-sum{border:1px solid #e6e6ea;border-radius:12px;box-shadow:none;gap:14px}
+.sell-wiz .wiz-sum__pay{background:#f5f5f7;border-radius:10px}
+.sell-wiz .wiz-sum__guarantee{border:0;padding:0;gap:8px;align-items:flex-start;font-size:13px}
+.sell-wiz .wiz-sum__guarantee-icon{position:relative;width:16px;height:16px;border-radius:0;background:none;margin-top:2px}
+.sell-wiz .wiz-sum__guarantee-icon::after{content:"";position:absolute;left:2px;top:3px;width:10px;height:5px;border-left:2px solid #16a34a;border-bottom:2px solid #16a34a;transform:rotate(-45deg)}
+.sell-wiz .wiz-sum__guarantee strong,.sell-wiz .wiz-sum__guarantee p{display:inline;font-size:13px}
+.sell-wiz .wiz-sum__guarantee strong::after{content:": "}
+.sell-wiz .wiz-bar{border:1px solid #e6e6ea;border-radius:12px;box-shadow:none}
+.sell-wiz .btn--accent{background:var(--c-ink);color:#fff;border-color:var(--c-ink)}
+.sell-wiz .wiz-bar__btns .btn{border-radius:10px}
+.sell-wiz.is-empty .wiz-sum{display:none}
+.wiz-bar.is-idle{display:none}
+.sell-wiz.is-empty .wiz-bar__pay{display:none}
+@media (min-width:990px){
+  .sell-wiz.is-empty .wiz-layout{grid-template-columns:minmax(0,1fr)}
+  .sell-wiz.is-empty .wiz-summary{position:static}
+  .sell-wiz.is-empty .wiz-bar{display:flex;justify-content:flex-end;background:none;border:0;padding:0}
+  .sell-wiz.is-empty .wiz-bar.is-idle{display:none}
+  .sell-wiz.is-empty .wiz-bar__btns{flex-wrap:nowrap}
+  .sell-wiz.is-empty .wiz-bar__btns .btn{flex:0 0 auto!important;min-width:140px}
+}
+@media (max-width:989px){.sell-wiz .wiz-cards--cats,.sell-wiz .wiz-cards--brands,.sell-wiz .wiz-cards--models{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:749px){.sell-wiz .wiz-cards--cats,.sell-wiz .wiz-cards--brands,.sell-wiz .wiz-cards--models{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sell-wiz .wiz-card--model .wiz-card__media,.sell-wiz .wiz-card--fam .wiz-card__media{aspect-ratio:4/3}

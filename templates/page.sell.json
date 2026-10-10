@@ -123,8 +123,8 @@
         "link_other": {
           "type": "link",
           "settings": {
-            "label": "Sell other products",
-            "text": "Ask us about it",
+            "label": "Selling something else?",
+            "text": "Ask us",
             "url": "/pages/contact"
           }
         },

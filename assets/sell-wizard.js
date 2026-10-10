@@ -153,14 +153,6 @@
     return svg;
   };
   const check = () => el('span', { class: 'wiz-card__check', 'aria-hidden': 'true' });
-  const linkIcon = () => {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 0 24 24');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.setAttribute('class', 'wiz-card__linkicon');
-    svg.innerHTML = '<rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><path d="M17 13.5v7M13.5 17h7"/>';
-    return svg;
-  };
   const card = ({ name, value, checked, disabled, cls = '', media, title, meta, meta2, badge }) => {
     const input = el('input', { type: 'radio', name, value, checked, disabled });
     return el('label', { class: `wiz-card ${cls}`.trim() },
@@ -243,10 +235,9 @@
         const inCat = (b) => !catFilter || devices.some((d) => d.b === b.h && d.c === catFilter.h);
         nodes = brands.filter((b) => count(b) > 0 && inCat(b)).sort((a, b) => count(b) - count(a) || a.s - b.s)
           .map((b) => card({ name: 'wiz-brand', value: b.h, checked: c.brand === b.h, title: b.n, media: brandLogo(b) ? thumb(brandLogo(b), '') : el('span', { class: 'wiz-card__mono', text: b.n.slice(0, 1) }), cls: 'wiz-card--brand' }));
-        (config.links || []).filter((l) => l.n && l.u).forEach((l) => nodes.push(el('a', { class: 'wiz-card wiz-card--cat wiz-card--link', href: l.u },
-          el('span', { class: 'wiz-card__media' }, l.i ? thumb(l.i) : linkIcon()),
-          el('span', { class: 'wiz-card__name', text: l.n }),
-          l.t ? el('span', { class: 'wiz-card__meta', text: l.t }) : null)));
+        // "Selling something else? Ask us" as a plain text link under the brand tiles
+        (config.links || []).filter((l) => l.u).forEach((l) => nodes.push(el('p', { class: 'wiz-other' }, `${l.n || 'Selling something else?'} `,
+          el('a', { href: l.u }, `${l.t || 'Ask us'} `, el('span', { 'aria-hidden': 'true', text: '→' })))));
         if (catFilter) nodes.unshift(el('p', { class: 'wiz-catfilter' }, `Brands we buy ${catFilter.n.toLowerCase().replace(/(s|x|ch|sh)$/, '$1e')}s from. `, el('button', { type: 'button', class: 'wiz-work__change', 'data-cat-clear': '' }, 'Show all brands')));
       } else {
         const used = new Set(devices.map((d) => d.c));
@@ -399,6 +390,10 @@
     $('[data-getpaid]').disabled = !complete(5);
     $('[data-addanother]').disabled = !complete(5);
     root.classList.toggle('is-done', step === 7);
+    // Summary panel only once there's something in it: a model picked or devices in the quote.
+    const empty = !state.cur.device && !state.items.length;
+    root.classList.toggle('is-empty', empty);
+    $('[data-bar]')?.classList.toggle('is-idle', empty && next.disabled && prev.disabled && next.hidden === false);
   }
 
   function goTo(n, { push = true, focus = true } = {}) {

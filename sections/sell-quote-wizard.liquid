@@ -80,7 +80,7 @@
           </div>
           <ul class="sell-search__list" id="WizSearchList-{{ section.id }}" role="listbox" aria-label="Matching devices" hidden data-wiz-search-list></ul>
         </div>
-        <p class="wiz-or"><span>{% if families.size > 0 %}or choose a brand{% else %}or pick a category{% endif %}</span></p>
+        {%- unless families.size > 0 -%}<p class="wiz-or"><span>or pick a category</span></p>{%- endunless -%}
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Category</legend><div class="wiz-cards wiz-cards--cats" data-options="1"></div></fieldset>
       </div>
 
@@ -232,7 +232,7 @@
         </div>
         {%- if section.settings.guarantee_title != blank -%}
           <div class="wiz-sum__guarantee">
-            <span class="wiz-sum__guarantee-icon">{% render 'icon', name: 'shield' %}</span>
+            <span class="wiz-sum__guarantee-icon" aria-hidden="true"></span>
             <div>
               <strong>{{ section.settings.guarantee_title }}</strong>
               <p>{% render 'sell-text', text: section.settings.guarantee_text %}</p>
@@ -245,7 +245,7 @@
         <div class="wiz-bar__btns">
           <button type="button" class="btn wiz-bar__prev" data-wiz-prev>Previous</button>
           <button type="button" class="btn btn--dark wiz-bar__next" data-wiz-next disabled>Next</button>
-          <button type="button" class="btn btn--accent wiz-bar__next" data-getpaid hidden>Next</button>
+          <button type="button" class="btn btn--dark wiz-bar__next" data-getpaid hidden>Next</button>
           <button type="button" class="btn wiz-bar__add" data-addanother hidden><span class="wiz-long">Accept &amp; add another device</span><span class="wiz-short">+ Add another</span></button>
         </div>
       </div>
@@ -381,11 +381,11 @@
     },
     {
       "type": "link",
-      "name": "Link card",
+      "name": "Text link under the brands",
       "limit": 2,
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Sell other products" },
-        { "type": "text", "id": "text", "label": "Small text", "default": "Ask us about it" },
+        { "type": "text", "id": "label", "label": "Text", "default": "Selling something else?" },
+        { "type": "text", "id": "text", "label": "Link text", "default": "Ask us" },
         { "type": "url", "id": "url", "label": "Link" },
         { "type": "image_picker", "id": "image", "label": "Image" }
       ]
