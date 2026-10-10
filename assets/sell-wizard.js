@@ -39,7 +39,7 @@
     return typeof v === 'number' && v > 0 ? v : null;
   };
   const storagesFor = (device) => [...new Set(prices.filter((p) => p.d === device).map((p) => p.st))].sort((a, b) => storageGB(a) - storageGB(b));
-  // "Up to" = best used price (Like New); the sealed price is shown separately.
+  // usedTop = best used price (Like New). Displayed "Up to" = max(used, sealed).
   const usedTop = (device, storage) => Math.max(0, ...USED_KEYS.map((k) => priceFor(device, storage, k) || 0));
   const hasUsed = (device, storage) => USED_KEYS.some((k) => priceFor(device, storage, k));
   const imageFor = (d) => (d && (d.i || byHandle(categories, d.c)?.i)) || null;
@@ -154,8 +154,8 @@
         const used = usedTop(d.h, st);
         const sealed = priceFor(d.h, st, 'new');
         return card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st,
-          meta: used ? `Up to ${money(used)}` : (sealed ? `Brand new sealed: ${money(sealed)}` : null),
-          meta2: used && sealed ? `Brand new sealed: ${money(sealed)}` : null, cls: 'wiz-card--storage' });
+          meta: (used || sealed) ? `Up to ${money(Math.max(used || 0, sealed || 0))}` : null,
+          meta2: used && sealed ? `Used, like new: up to ${money(used)}` : (sealed && !used ? 'Brand new sealed only' : null), cls: 'wiz-card--storage' });
       }) : [];
       if (!nodes.length) nodes = [empty('Pick a model first.')];
     } else if (n === 5) {

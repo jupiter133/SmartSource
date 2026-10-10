@@ -1,8 +1,8 @@
 {%- comment -%}
   "What we pay": one tab per brand/category (blocks), each a list of models linking into the quote wizard.
   Everything comes from the buyback metaobjects, so price edits in Content > Metaobjects show up here automatically.
-  One row per model, most valuable first. "Up to" = best Like New price (top storage); rows with a sealed price add a small
-  "Brand new sealed: up to" line, and sealed-only models show their sealed price.
+  One row per model, most valuable first. "Up to" = the top price (top storage): brand new sealed where set, else Like New;
+  rows with both add a small "Used, like new: up to" line.
 {%- endcomment -%}
 {%- liquid
   assign quote_url = section.settings.quote_page | default: request.path
@@ -50,7 +50,7 @@
             Most valuable first (sealed-only models rank by their sealed price), newest first on ties.
           endcomment
           assign rank = best
-          if rank <= 0
+          if sealed > rank
             assign rank = sealed
           endif
           assign pkey = 99999 | minus: rank | round | prepend: '00000' | slice: -5, 5
@@ -79,10 +79,10 @@
                 <a class="pay-row" href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}">
                   <span class="pay-row__model">
                     <span class="pay-row__name">{{ f[2] }}</span>
-                    {%- if sealed > 0 and best > 0 -%}<small class="pay-row__sealed">Brand new sealed: up to {{ sealed_money }}</small>{%- endif -%}
-                    {%- if best <= 0 -%}<small class="pay-row__sealed">Brand new sealed only</small>{%- endif -%}
+                    {%- if sealed > 0 and best > 0 -%}<small class="pay-row__sealed">Used, like new: up to {{ best | times: 100 | round | money_without_trailing_zeros }}</small>{%- elsif best <= 0 -%}<small class="pay-row__sealed">Brand new sealed only</small>{%- endif -%}
                   </span>
-                  <span class="pay-row__price">{% if best > 0 %}<small>Up to</small> {{ best | times: 100 | round | money_without_trailing_zeros }}{% else %}<small>Sealed</small> {{ sealed_money }}{% endif %}</span>
+                  {%- assign top = best -%}{%- if sealed > top -%}{%- assign top = sealed -%}{%- endif -%}
+                  <span class="pay-row__price"><small>Up to</small> {{ top | times: 100 | round | money_without_trailing_zeros }}</span>
                 </a>
               </li>
             {%- endfor -%}
@@ -138,7 +138,7 @@ var first=tabs.find(function(t){return !t.hidden});if(first&&first.getAttribute(
     { "type": "text", "id": "heading", "label": "Heading", "default": "What we pay" },
     { "type": "text", "id": "subtext", "label": "Subtext", "default": "Current top offers for every model we buy. Pick yours for an exact quote." },
     { "type": "text", "id": "panel_line", "label": "Line under each tab heading", "default": "Your exact offer depends on storage, carrier and condition." },
-    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" values are for the top storage option in Like New condition. Your final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" values are for the top storage option, brand new and sealed where we buy sealed, otherwise Like New. Your final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },
     { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on this page." },
     { "type": "paragraph", "content": "Each tab lists every active device of one brand and category from Content > Metaobjects, most valuable first. Prices update automatically." }

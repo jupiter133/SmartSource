@@ -89,7 +89,7 @@ var C=(cat.categories||[]).slice().sort(function(a,b){return a.s-b.s}),B=(cat.br
 var pane=D.querySelector('[data-ti-pane]'),nav=D.querySelector('[data-ti-navbar]'),stepEl=D.querySelector('[data-ti-step]'),st={},hist=[];
 var CARRIERS=['Unlocked','Rogers','Bell','Freedom','Fido','Virgin Plus','Other'];
 function money(n){return '$'+Math.round(n).toLocaleString('en-CA')}
-function maxFor(list){var m=0,n=0;list.forEach(function(d){(d.pr||[]).forEach(function(p){(p.p||[]).forEach(function(x,i){if(i<5){if(+x>m)m=+x}else if(+x>n)n=+x})})});return m||n}
+function maxFor(list){var m=0,n=0;list.forEach(function(d){(d.pr||[]).forEach(function(p){(p.p||[]).forEach(function(x,i){if(i<5){if(+x>m)m=+x}else if(+x>n)n=+x})})});return Math.max(m,n)}
 function row(){return (st.dev.pr||[]).find(function(x){return x.st===st.storage})||(st.dev.pr||[])[0]||{p:[]}}
 function usedOk(r){return (r.p||[]).slice(0,5).some(function(x){return +x>0})}
 function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
