@@ -3086,3 +3086,4 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   .sell-pay--sample .sell-pay__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
   .sell-pay--sample .sell-pay__grid>.pay-group:first-child{grid-row:span 2}
 }
+
