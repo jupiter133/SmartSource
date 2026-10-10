@@ -2,7 +2,7 @@
   "What we pay": one tab per brand/category (blocks), each a list of models linking into the quote wizard.
   Everything comes from the buyback metaobjects, so price edits in Content > Metaobjects show up here automatically.
   One row per model, most valuable first. "Up to" = the top price (top storage): brand new sealed where set, else Like New;
-  rows with both add a small "Used, like new: up to" line.
+  (no secondary used-price line).
 {%- endcomment -%}
 {%- liquid
   assign quote_url = section.settings.quote_page | default: request.path
@@ -89,7 +89,6 @@
                 <a class="pay-row" href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}">
                   <span class="pay-row__model">
                     <span class="pay-row__name">{{ f[2] }}</span>
-                    {%- if sealed > 0 and best > 0 -%}<small class="pay-row__sealed">Used, like new: up to {{ best | times: 100 | round | money_without_trailing_zeros }}</small>{%- elsif best <= 0 -%}<small class="pay-row__sealed">Brand new sealed only</small>{%- endif -%}
                   </span>
                   {%- assign top = best -%}{%- if sealed > top -%}{%- assign top = sealed -%}{%- endif -%}
                   <span class="pay-row__price"><small>Up to</small> {{ top | times: 100 | round | money_without_trailing_zeros }}</span>

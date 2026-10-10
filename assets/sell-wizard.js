@@ -237,7 +237,7 @@
         const sealed = priceFor(d.h, st, 'new');
         return card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st,
           meta: (used || sealed) ? `Up to ${money(Math.max(used || 0, sealed || 0))}` : null,
-          meta2: used && sealed ? `Used, like new: up to ${money(used)}` : (sealed && !used ? 'Brand new sealed only' : null), cls: 'wiz-card--storage' });
+          meta2: null, cls: 'wiz-card--storage' });
       }) : [];
       if (!nodes.length) nodes = [empty('Pick a model first.')];
     } else if (n === 5) {
