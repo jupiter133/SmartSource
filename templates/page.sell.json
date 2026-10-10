@@ -400,46 +400,76 @@
         "text": "SmartSource buys used and brand new sealed iPhone, Samsung Galaxy, Google Pixel, iPad and Apple Watch. Get an instant offer online, then we confirm it after a quick inspection. Ship it free or drop it off in store.",
         "button_label": "",
         "note": "",
-        "fine_print": "Lost, stolen or activation-locked devices aren't eligible."
+        "fine_print": "Lost, stolen or activation-locked devices aren't eligible.",
+        "tagline": "We pay top dollar for your tech in Canada."
       }
     },
     "pay_sample": {
       "type": "sell-pay-sample",
-      "settings": {},
+      "settings": {
+        "tagline": "We pay top dollar for your tech in Canada."
+      },
       "blocks": {
-        "grp_phones": {
+        "grp_iphone": {
           "type": "group",
           "settings": {
-            "title": "Phones",
+            "title": "iPhone",
+            "brand": "Apple",
             "category": "Smartphone",
-            "brand": "",
-            "limit": 7,
-            "handles": "iphone-18-pro-max\niphone-17-pro-max\nsamsung-galaxy-z-fold8-ultra\niphone-16-pro-max\ngoogle-pixel-11-pro-xl\nsamsung-galaxy-s26-ultra\nsamsung-galaxy-z-flip8"
+            "limit": 4,
+            "handles": "",
+            "url": "/pages/sell-iphone"
+          }
+        },
+        "grp_samsung": {
+          "type": "group",
+          "settings": {
+            "title": "Samsung Galaxy",
+            "brand": "Samsung",
+            "category": "Smartphone",
+            "limit": 4,
+            "handles": "",
+            "url": "/pages/sell-samsung"
+          }
+        },
+        "grp_pixel": {
+          "type": "group",
+          "settings": {
+            "title": "Google Pixel",
+            "brand": "Google",
+            "category": "Smartphone",
+            "limit": 4,
+            "handles": "",
+            "url": "/pages/sell-pixel"
           }
         },
         "grp_ipad": {
           "type": "group",
           "settings": {
             "title": "iPad",
-            "category": "Tablet",
             "brand": "Apple",
+            "category": "Tablet",
             "limit": 4,
-            "handles": "ipad-pro-13-inch-m5\nipad-air-13-inch-m4\nipad-mini-a17-pro\nipad-a16"
+            "handles": "",
+            "url": "/pages/sell-ipad"
           }
         },
         "grp_watch": {
           "type": "group",
           "settings": {
             "title": "Apple Watch",
-            "category": "Smartwatch",
             "brand": "Apple",
+            "category": "Smartwatch",
             "limit": 4,
-            "handles": "apple-watch-ultra-4\napple-watch-ultra-3\napple-watch-series-12\napple-watch-se-3"
+            "handles": "",
+            "url": "/pages/sell-apple-watch"
           }
         }
       },
       "block_order": [
-        "grp_phones",
+        "grp_iphone",
+        "grp_samsung",
+        "grp_pixel",
         "grp_ipad",
         "grp_watch"
       ]

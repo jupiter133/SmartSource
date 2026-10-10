@@ -6,7 +6,9 @@
         "heading": "What we pay for every device",
         "subtext": "Every model we buy and our current top offer. Pick yours for an exact quote.",
         "limit": 0,
-        "quote_page": "/pages/sell-your-device"
+        "quote_page": "/pages/sell-your-device",
+        "tagline": "We pay top dollar for your tech in Canada.",
+        "group_series": true
       },
       "blocks": {
         "tab_iphone": {

@@ -10,7 +10,8 @@
         "text": "Pick your iPhone model and storage, answer a few quick questions about its condition, and see your estimate right away. Your final value is confirmed after we inspect it.",
         "button_label": "Get my estimate",
         "note": "Check its value before you erase it. Final value follows inspection.",
-        "image_product": "iphone-18-pro-max"
+        "image_product": "iphone-18-pro-max",
+        "tagline": "We pay top dollar for your tech in Canada."
       }
     },
     "what_we_pay": {
@@ -19,7 +20,9 @@
         "heading": "How much is my iPhone worth?",
         "subtext": "Our current top offer for every iPhone we buy, most valuable first. Pick yours for an exact estimate.",
         "limit": 0,
-        "cta_label": "Get my estimate"
+        "cta_label": "Get my estimate",
+        "tagline": "We pay top dollar for your tech in Canada.",
+        "group_series": true
       },
       "blocks": {
         "tab": {
@@ -247,10 +250,18 @@
         "question_6",
         "question_7"
       ]
+    },
+    "value_chart": {
+      "type": "sell-value-chart",
+      "settings": {
+        "brand": "Apple",
+        "category": "Smartphone"
+      }
     }
   },
   "order": [
     "hero",
+    "value_chart",
     "what_we_pay",
     "quote",
     "how_it_works",
