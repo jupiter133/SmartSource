@@ -136,7 +136,7 @@
         "type": "checkbox",
         "id": "sell_live",
         "label": "Buyback Live",
-        "default": false,
+        "default": true,
         "info": "OFF = offers show 'Preview offer, not final' and customers can't submit a quote. Turn on once your real buyback prices are loaded."
       },
       {
