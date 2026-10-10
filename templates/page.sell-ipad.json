@@ -132,67 +132,13 @@
         "store_7"
       ]
     },
-    "how_it_works": {
-      "type": "sell-steps",
-      "settings": {},
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Get a Quote",
-            "icon": "tag",
-            "body": "<p>Pick your device, storage and condition. Your quote is locked for {quote_valid_days} days.</p>",
-            "bullets": "Choose device, storage and condition\nQuote locked for {quote_valid_days} days\nNo obligation to sell"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Ship or Drop Off",
-            "icon": "truck",
-            "body": "<p>Use our free shipping label, or bring it to any of our stores. It must ship within {quote_valid_days} days of your quote.</p>",
-            "bullets": "Free prepaid shipping label\nOr drop it off at any of our GTA stores\nShip within {quote_valid_days} days"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Inspection",
-            "icon": "inspect",
-            "body": "<p>We test it and confirm the condition. If it's different from your quote, we send a revised offer.[if_free_return] Accept it, or we return it free.[/if_free_return]</p>",
-            "bullets": "We test it and confirm condition\nDifferent? We send a revised offer\n[if_free_return]Decline and we return it free[/if_free_return]"
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "Get Paid",
-            "icon": "cash",
-            "body": "<p>We pay within {payment_business_days} business days of receiving it.[if_instore_pay] In-store drop-offs can be paid on the spot.[/if_instore_pay]</p>",
-            "bullets": "Paid within {payment_business_days} business days of receipt\n[if_instore_pay]In-store drop-offs paid on the spot[/if_instore_pay]"
-          }
-        },
-        "step_5": {
-          "type": "step",
-          "settings": {
-            "title": "Trade-In Option",
-            "icon": "swap",
-            "body": "<p>Want an upgrade instead? Put your value toward any phone in our store.</p>",
-            "bullets": "Put your value toward any phone in our store\nIn store, or as store credit online"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4",
-        "step_5"
-      ]
-    },
     "faq": {
       "type": "sell-faq",
-      "settings": {},
+      "settings": {
+        "heading": "FAQs",
+        "subtext": "The questions people always ask",
+        "style": "list"
+      },
       "blocks": {
         "question_1": {
           "type": "question",
@@ -257,6 +203,47 @@
         "brand": "Apple",
         "category": "Tablet"
       }
+    },
+    "easy_steps": {
+      "type": "sell-easy-steps",
+      "settings": {
+        "heading": "Just 3 easy steps",
+        "subtext": "From quote to payment, here's how it works."
+      },
+      "blocks": {
+        "step_offer": {
+          "type": "step",
+          "settings": {
+            "asset_image": "pdp-step-storage.webp",
+            "image_alt": "Phone showing an online trade-in quote",
+            "title": "Get an offer",
+            "text": "Answer a few quick questions about your device and see your offer online. It only takes a couple of minutes."
+          }
+        },
+        "step_send": {
+          "type": "step",
+          "settings": {
+            "asset_image": "svc-trade-in.webp",
+            "image_alt": "Phone going into a shipping bag",
+            "title": "Ship it free or drop it off",
+            "text": "Use the free shipping label we email you, or bring it to one of our stores, within {quote_valid_days} days of your quote."
+          }
+        },
+        "step_paid": {
+          "type": "step",
+          "settings": {
+            "asset_image": "pdp-step-tradein.webp",
+            "image_alt": "Phone being handed over for cash",
+            "title": "Get paid",
+            "text": "We check your device and pay you within {payment_business_days} business days of receiving it.[if_instore_pay] Dropping off in store? We can pay you on the spot.[/if_instore_pay]"
+          }
+        }
+      },
+      "block_order": [
+        "step_offer",
+        "step_send",
+        "step_paid"
+      ]
     }
   },
   "order": [
@@ -264,7 +251,7 @@
     "value_chart",
     "what_we_pay",
     "quote",
-    "how_it_works",
+    "easy_steps",
     "faq"
   ]
 }
