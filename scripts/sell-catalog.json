@@ -1,5 +1,5 @@
 {
- "note": "ESTIMATED buyback prices in CAD, except iPhones: real SmartSource prices from October 2026 (docs/buyback/iphone-prices-2026-10.csv). Review before launch.",
+ "note": "ESTIMATED buyback prices in CAD, except iPhones: real SmartSource prices from October 2026 (docs/buyback/iphone-prices-2026-10.csv) raised 20% (docs/buyback/iphone-prices-2026-10-plus20.csv). Review before launch.",
  "categories": [
   {
    "handle": "smartphone",
@@ -75,27 +75,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 18,
-     "good": 15,
-     "fair": 13,
-     "cracked": 7,
-     "defective": 4
+     "like_new": 22,
+     "good": 18,
+     "fair": 16,
+     "cracked": 8,
+     "defective": 5
     },
     {
      "storage": "128GB",
-     "like_new": 20,
-     "good": 17,
-     "fair": 14,
-     "cracked": 8,
-     "defective": 4
+     "like_new": 24,
+     "good": 20,
+     "fair": 17,
+     "cracked": 10,
+     "defective": 5
     },
     {
      "storage": "256GB",
-     "like_new": 21,
-     "good": 18,
-     "fair": 15,
-     "cracked": 8,
-     "defective": 4
+     "like_new": 25,
+     "good": 22,
+     "fair": 18,
+     "cracked": 10,
+     "defective": 5
     }
    ],
    "sort_order": 67
@@ -110,27 +110,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 46,
-     "good": 39,
-     "fair": 32,
-     "cracked": 18,
-     "defective": 9
+     "like_new": 55,
+     "good": 47,
+     "fair": 38,
+     "cracked": 22,
+     "defective": 11
     },
     {
      "storage": "128GB",
-     "like_new": 49,
-     "good": 42,
-     "fair": 34,
-     "cracked": 20,
-     "defective": 10
+     "like_new": 59,
+     "good": 50,
+     "fair": 41,
+     "cracked": 24,
+     "defective": 12
     },
     {
      "storage": "256GB",
-     "like_new": 53,
-     "good": 45,
-     "fair": 37,
-     "cracked": 21,
-     "defective": 11
+     "like_new": 64,
+     "good": 54,
+     "fair": 44,
+     "cracked": 25,
+     "defective": 13
     }
    ],
    "sort_order": 66
@@ -145,19 +145,19 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 71,
-     "good": 60,
-     "fair": 50,
-     "cracked": 28,
-     "defective": 14
+     "like_new": 85,
+     "good": 72,
+     "fair": 60,
+     "cracked": 34,
+     "defective": 17
     },
     {
      "storage": "256GB",
-     "like_new": 77,
-     "good": 65,
-     "fair": 54,
-     "cracked": 31,
-     "defective": 15
+     "like_new": 92,
+     "good": 78,
+     "fair": 65,
+     "cracked": 37,
+     "defective": 18
     }
    ],
    "sort_order": 65
@@ -172,27 +172,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 66,
-     "good": 56,
-     "fair": 46,
-     "cracked": 26,
-     "defective": 13
+     "like_new": 79,
+     "good": 67,
+     "fair": 55,
+     "cracked": 31,
+     "defective": 16
     },
     {
      "storage": "128GB",
-     "like_new": 72,
-     "good": 61,
-     "fair": 50,
-     "cracked": 29,
-     "defective": 14
+     "like_new": 86,
+     "good": 73,
+     "fair": 60,
+     "cracked": 35,
+     "defective": 17
     },
     {
      "storage": "256GB",
-     "like_new": 77,
-     "good": 65,
-     "fair": 54,
-     "cracked": 31,
-     "defective": 15
+     "like_new": 92,
+     "good": 78,
+     "fair": 65,
+     "cracked": 37,
+     "defective": 18
     }
    ],
    "sort_order": 64
@@ -207,27 +207,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 66,
-     "good": 56,
-     "fair": 46,
-     "cracked": 26,
-     "defective": 13
+     "like_new": 79,
+     "good": 67,
+     "fair": 55,
+     "cracked": 31,
+     "defective": 16
     },
     {
      "storage": "256GB",
-     "like_new": 72,
-     "good": 61,
-     "fair": 50,
-     "cracked": 29,
-     "defective": 14
+     "like_new": 86,
+     "good": 73,
+     "fair": 60,
+     "cracked": 35,
+     "defective": 17
     },
     {
      "storage": "512GB",
-     "like_new": 77,
-     "good": 65,
-     "fair": 54,
-     "cracked": 31,
-     "defective": 15
+     "like_new": 92,
+     "good": 78,
+     "fair": 65,
+     "cracked": 37,
+     "defective": 18
     }
    ],
    "sort_order": 63
@@ -242,27 +242,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 120,
-     "good": 102,
-     "fair": 84,
-     "cracked": 48,
-     "defective": 24
+     "like_new": 144,
+     "good": 122,
+     "fair": 101,
+     "cracked": 58,
+     "defective": 29
     },
     {
      "storage": "256GB",
-     "like_new": 129,
-     "good": 110,
-     "fair": 90,
-     "cracked": 52,
-     "defective": 26
+     "like_new": 155,
+     "good": 132,
+     "fair": 108,
+     "cracked": 62,
+     "defective": 31
     },
     {
      "storage": "512GB",
-     "like_new": 139,
-     "good": 118,
-     "fair": 97,
-     "cracked": 56,
-     "defective": 28
+     "like_new": 167,
+     "good": 142,
+     "fair": 116,
+     "cracked": 67,
+     "defective": 34
     }
    ],
    "sort_order": 62
@@ -277,27 +277,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 112,
-     "good": 95,
-     "fair": 78,
-     "cracked": 45,
-     "defective": 22
+     "like_new": 134,
+     "good": 114,
+     "fair": 94,
+     "cracked": 54,
+     "defective": 26
     },
     {
      "storage": "128GB",
-     "like_new": 121,
-     "good": 103,
-     "fair": 85,
-     "cracked": 48,
-     "defective": 24
+     "like_new": 145,
+     "good": 124,
+     "fair": 102,
+     "cracked": 58,
+     "defective": 29
     },
     {
      "storage": "256GB",
-     "like_new": 130,
-     "good": 110,
-     "fair": 91,
-     "cracked": 52,
-     "defective": 26
+     "like_new": 156,
+     "good": 132,
+     "fair": 109,
+     "cracked": 62,
+     "defective": 31
     }
    ],
    "sort_order": 61
@@ -312,27 +312,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 128,
-     "good": 109,
-     "fair": 90,
-     "cracked": 51,
-     "defective": 26
+     "like_new": 154,
+     "good": 131,
+     "fair": 108,
+     "cracked": 61,
+     "defective": 31
     },
     {
      "storage": "256GB",
-     "like_new": 139,
-     "good": 118,
-     "fair": 97,
-     "cracked": 56,
-     "defective": 28
+     "like_new": 167,
+     "good": 142,
+     "fair": 116,
+     "cracked": 67,
+     "defective": 34
     },
     {
      "storage": "512GB",
-     "like_new": 149,
-     "good": 127,
-     "fair": 104,
-     "cracked": 60,
-     "defective": 30
+     "like_new": 179,
+     "good": 152,
+     "fair": 125,
+     "cracked": 72,
+     "defective": 36
     }
    ],
    "sort_order": 60
@@ -347,27 +347,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 166,
-     "good": 141,
-     "fair": 116,
-     "cracked": 66,
-     "defective": 33
+     "like_new": 199,
+     "good": 169,
+     "fair": 139,
+     "cracked": 79,
+     "defective": 40
     },
     {
      "storage": "256GB",
-     "like_new": 179,
-     "good": 152,
-     "fair": 125,
-     "cracked": 72,
-     "defective": 36
+     "like_new": 215,
+     "good": 182,
+     "fair": 150,
+     "cracked": 86,
+     "defective": 43
     },
     {
      "storage": "512GB",
-     "like_new": 192,
-     "good": 163,
-     "fair": 134,
-     "cracked": 77,
-     "defective": 38
+     "like_new": 230,
+     "good": 196,
+     "fair": 161,
+     "cracked": 92,
+     "defective": 46
     }
    ],
    "sort_order": 59
@@ -382,27 +382,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 51,
-     "good": 43,
-     "fair": 36,
-     "cracked": 20,
-     "defective": 10
+     "like_new": 61,
+     "good": 52,
+     "fair": 43,
+     "cracked": 24,
+     "defective": 12
     },
     {
      "storage": "128GB",
-     "like_new": 55,
-     "good": 47,
-     "fair": 38,
-     "cracked": 22,
-     "defective": 11
+     "like_new": 66,
+     "good": 56,
+     "fair": 46,
+     "cracked": 26,
+     "defective": 13
     },
     {
      "storage": "256GB",
-     "like_new": 59,
-     "good": 50,
-     "fair": 41,
-     "cracked": 24,
-     "defective": 12
+     "like_new": 71,
+     "good": 60,
+     "fair": 49,
+     "cracked": 29,
+     "defective": 14
     }
    ],
    "sort_order": 58
@@ -417,27 +417,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 122,
-     "good": 104,
-     "fair": 85,
-     "cracked": 49,
-     "defective": 24
+     "like_new": 146,
+     "good": 125,
+     "fair": 102,
+     "cracked": 59,
+     "defective": 29
     },
     {
      "storage": "128GB",
-     "like_new": 132,
-     "good": 112,
-     "fair": 92,
-     "cracked": 53,
-     "defective": 26
+     "like_new": 158,
+     "good": 134,
+     "fair": 110,
+     "cracked": 64,
+     "defective": 31
     },
     {
      "storage": "256GB",
-     "like_new": 142,
-     "good": 121,
-     "fair": 99,
-     "cracked": 57,
-     "defective": 28
+     "like_new": 170,
+     "good": 145,
+     "fair": 119,
+     "cracked": 68,
+     "defective": 34
     }
    ],
    "sort_order": 57
@@ -452,27 +452,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 131,
-     "good": 111,
-     "fair": 92,
-     "cracked": 52,
-     "defective": 26
+     "like_new": 157,
+     "good": 133,
+     "fair": 110,
+     "cracked": 62,
+     "defective": 31
     },
     {
      "storage": "128GB",
-     "like_new": 142,
-     "good": 121,
-     "fair": 99,
-     "cracked": 57,
-     "defective": 28
+     "like_new": 170,
+     "good": 145,
+     "fair": 119,
+     "cracked": 68,
+     "defective": 34
     },
     {
      "storage": "256GB",
-     "like_new": 152,
-     "good": 129,
-     "fair": 106,
-     "cracked": 61,
-     "defective": 30
+     "like_new": 182,
+     "good": 155,
+     "fair": 127,
+     "cracked": 73,
+     "defective": 36
     }
    ],
    "sort_order": 56
@@ -487,27 +487,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 183,
-     "good": 156,
-     "fair": 128,
-     "cracked": 73,
-     "defective": 37
+     "like_new": 220,
+     "good": 187,
+     "fair": 154,
+     "cracked": 88,
+     "defective": 44
     },
     {
      "storage": "256GB",
-     "like_new": 197,
-     "good": 167,
-     "fair": 138,
-     "cracked": 79,
-     "defective": 39
+     "like_new": 236,
+     "good": 200,
+     "fair": 166,
+     "cracked": 95,
+     "defective": 47
     },
     {
      "storage": "512GB",
-     "like_new": 212,
-     "good": 180,
-     "fair": 148,
-     "cracked": 85,
-     "defective": 42
+     "like_new": 254,
+     "good": 216,
+     "fair": 178,
+     "cracked": 102,
+     "defective": 50
     }
    ],
    "sort_order": 55
@@ -522,27 +522,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 211,
-     "good": 179,
-     "fair": 148,
-     "cracked": 84,
-     "defective": 42
+     "like_new": 253,
+     "good": 215,
+     "fair": 178,
+     "cracked": 101,
+     "defective": 50
     },
     {
      "storage": "256GB",
-     "like_new": 228,
-     "good": 194,
-     "fair": 160,
-     "cracked": 91,
-     "defective": 46
+     "like_new": 274,
+     "good": 233,
+     "fair": 192,
+     "cracked": 109,
+     "defective": 55
     },
     {
      "storage": "512GB",
-     "like_new": 245,
-     "good": 208,
-     "fair": 172,
-     "cracked": 98,
-     "defective": 49
+     "like_new": 294,
+     "good": 250,
+     "fair": 206,
+     "cracked": 118,
+     "defective": 59
     }
    ],
    "sort_order": 54
@@ -557,27 +557,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 191,
-     "good": 162,
-     "fair": 134,
-     "cracked": 76,
-     "defective": 38
+     "like_new": 229,
+     "good": 194,
+     "fair": 161,
+     "cracked": 91,
+     "defective": 46
     },
     {
      "storage": "256GB",
-     "like_new": 206,
-     "good": 175,
-     "fair": 144,
-     "cracked": 82,
-     "defective": 41
+     "like_new": 247,
+     "good": 210,
+     "fair": 173,
+     "cracked": 98,
+     "defective": 49
     },
     {
      "storage": "512GB",
-     "like_new": 221,
-     "good": 188,
-     "fair": 155,
-     "cracked": 88,
-     "defective": 44
+     "like_new": 265,
+     "good": 226,
+     "fair": 186,
+     "cracked": 106,
+     "defective": 53
     }
    ],
    "sort_order": 51
@@ -592,27 +592,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 197,
-     "good": 167,
-     "fair": 138,
-     "cracked": 79,
-     "defective": 39
+     "like_new": 236,
+     "good": 200,
+     "fair": 166,
+     "cracked": 95,
+     "defective": 47
     },
     {
      "storage": "256GB",
-     "like_new": 212,
-     "good": 180,
-     "fair": 148,
-     "cracked": 85,
-     "defective": 42
+     "like_new": 254,
+     "good": 216,
+     "fair": 178,
+     "cracked": 102,
+     "defective": 50
     },
     {
      "storage": "512GB",
-     "like_new": 228,
-     "good": 194,
-     "fair": 160,
-     "cracked": 91,
-     "defective": 46
+     "like_new": 274,
+     "good": 233,
+     "fair": 192,
+     "cracked": 109,
+     "defective": 55
     }
    ],
    "sort_order": 50
@@ -627,35 +627,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 285,
-     "good": 242,
-     "fair": 200,
-     "cracked": 114,
-     "defective": 57
+     "like_new": 342,
+     "good": 290,
+     "fair": 240,
+     "cracked": 137,
+     "defective": 68
     },
     {
      "storage": "256GB",
-     "like_new": 307,
-     "good": 261,
-     "fair": 215,
-     "cracked": 123,
-     "defective": 61
+     "like_new": 368,
+     "good": 313,
+     "fair": 258,
+     "cracked": 148,
+     "defective": 73
     },
     {
      "storage": "512GB",
-     "like_new": 330,
-     "good": 280,
-     "fair": 231,
-     "cracked": 132,
-     "defective": 66
+     "like_new": 396,
+     "good": 336,
+     "fair": 277,
+     "cracked": 158,
+     "defective": 79
     },
     {
      "storage": "1TB",
-     "like_new": 353,
-     "good": 300,
-     "fair": 247,
-     "cracked": 141,
-     "defective": 71
+     "like_new": 424,
+     "good": 360,
+     "fair": 296,
+     "cracked": 169,
+     "defective": 85
     }
    ],
    "sort_order": 48
@@ -670,35 +670,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 290,
-     "good": 246,
-     "fair": 203,
-     "cracked": 116,
-     "defective": 58
+     "like_new": 348,
+     "good": 295,
+     "fair": 244,
+     "cracked": 139,
+     "defective": 70
     },
     {
      "storage": "256GB",
-     "like_new": 314,
-     "good": 267,
-     "fair": 220,
-     "cracked": 126,
-     "defective": 63
+     "like_new": 377,
+     "good": 320,
+     "fair": 264,
+     "cracked": 151,
+     "defective": 76
     },
     {
      "storage": "512GB",
-     "like_new": 337,
-     "good": 286,
-     "fair": 236,
-     "cracked": 135,
-     "defective": 67
+     "like_new": 404,
+     "good": 343,
+     "fair": 283,
+     "cracked": 162,
+     "defective": 80
     },
     {
      "storage": "1TB",
-     "like_new": 360,
-     "good": 306,
-     "fair": 252,
-     "cracked": 144,
-     "defective": 72
+     "like_new": 432,
+     "good": 367,
+     "fair": 302,
+     "cracked": 173,
+     "defective": 86
     }
    ],
    "sort_order": 47
@@ -713,27 +713,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 78,
-     "good": 66,
-     "fair": 55,
-     "cracked": 31,
-     "defective": 16
+     "like_new": 94,
+     "good": 79,
+     "fair": 66,
+     "cracked": 37,
+     "defective": 19
     },
     {
      "storage": "128GB",
-     "like_new": 85,
-     "good": 72,
-     "fair": 59,
-     "cracked": 34,
-     "defective": 17
+     "like_new": 102,
+     "good": 86,
+     "fair": 71,
+     "cracked": 41,
+     "defective": 20
     },
     {
      "storage": "256GB",
-     "like_new": 91,
-     "good": 77,
-     "fair": 64,
-     "cracked": 36,
-     "defective": 18
+     "like_new": 109,
+     "good": 92,
+     "fair": 77,
+     "cracked": 43,
+     "defective": 22
     }
    ],
    "sort_order": 46
@@ -748,27 +748,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 264,
-     "good": 224,
-     "fair": 185,
-     "cracked": 106,
-     "defective": 53
+     "like_new": 317,
+     "good": 269,
+     "fair": 222,
+     "cracked": 127,
+     "defective": 64
     },
     {
      "storage": "256GB",
-     "like_new": 285,
-     "good": 242,
-     "fair": 200,
-     "cracked": 114,
-     "defective": 57
+     "like_new": 342,
+     "good": 290,
+     "fair": 240,
+     "cracked": 137,
+     "defective": 68
     },
     {
      "storage": "512GB",
-     "like_new": 306,
-     "good": 260,
-     "fair": 214,
-     "cracked": 122,
-     "defective": 61
+     "like_new": 367,
+     "good": 312,
+     "fair": 257,
+     "cracked": 146,
+     "defective": 73
     }
    ],
    "sort_order": 42
@@ -783,27 +783,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 233,
-     "good": 198,
-     "fair": 163,
-     "cracked": 93,
-     "defective": 47
+     "like_new": 280,
+     "good": 238,
+     "fair": 196,
+     "cracked": 112,
+     "defective": 56
     },
     {
      "storage": "256GB",
-     "like_new": 251,
-     "good": 213,
-     "fair": 176,
-     "cracked": 100,
-     "defective": 50
+     "like_new": 301,
+     "good": 256,
+     "fair": 211,
+     "cracked": 120,
+     "defective": 60
     },
     {
      "storage": "512GB",
-     "like_new": 270,
-     "good": 230,
-     "fair": 189,
-     "cracked": 108,
-     "defective": 54
+     "like_new": 324,
+     "good": 276,
+     "fair": 227,
+     "cracked": 130,
+     "defective": 65
     }
    ],
    "sort_order": 41
@@ -818,35 +818,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 317,
-     "good": 269,
-     "fair": 222,
-     "cracked": 127,
-     "defective": 63
+     "like_new": 380,
+     "good": 323,
+     "fair": 266,
+     "cracked": 152,
+     "defective": 76
     },
     {
      "storage": "256GB",
-     "like_new": 342,
-     "good": 291,
-     "fair": 239,
-     "cracked": 137,
-     "defective": 68
+     "like_new": 410,
+     "good": 349,
+     "fair": 287,
+     "cracked": 164,
+     "defective": 82
     },
     {
      "storage": "512GB",
-     "like_new": 368,
-     "good": 313,
-     "fair": 258,
-     "cracked": 147,
-     "defective": 74
+     "like_new": 442,
+     "good": 376,
+     "fair": 310,
+     "cracked": 176,
+     "defective": 89
     },
     {
      "storage": "1TB",
-     "like_new": 393,
-     "good": 334,
-     "fair": 275,
-     "cracked": 157,
-     "defective": 79
+     "like_new": 472,
+     "good": 401,
+     "fair": 330,
+     "cracked": 188,
+     "defective": 95
     }
    ],
    "sort_order": 39
@@ -861,35 +861,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 389,
-     "good": 331,
-     "fair": 272,
-     "cracked": 156,
-     "defective": 78
+     "like_new": 467,
+     "good": 397,
+     "fair": 326,
+     "cracked": 187,
+     "defective": 94
     },
     {
      "storage": "256GB",
-     "like_new": 420,
-     "good": 357,
-     "fair": 294,
-     "cracked": 168,
-     "defective": 84
+     "like_new": 504,
+     "good": 428,
+     "fair": 353,
+     "cracked": 202,
+     "defective": 101
     },
     {
      "storage": "512GB",
-     "like_new": 451,
-     "good": 383,
-     "fair": 316,
-     "cracked": 180,
-     "defective": 90
+     "like_new": 541,
+     "good": 460,
+     "fair": 379,
+     "cracked": 216,
+     "defective": 108
     },
     {
      "storage": "1TB",
-     "like_new": 482,
-     "good": 410,
-     "fair": 337,
-     "cracked": 193,
-     "defective": 96
+     "like_new": 578,
+     "good": 492,
+     "fair": 404,
+     "cracked": 232,
+     "defective": 115
     }
    ],
    "sort_order": 38
@@ -904,27 +904,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 303,
-     "good": 258,
-     "fair": 212,
-     "cracked": 121,
-     "defective": 61
+     "like_new": 364,
+     "good": 310,
+     "fair": 254,
+     "cracked": 145,
+     "defective": 73
     },
     {
      "storage": "256GB",
-     "like_new": 327,
-     "good": 278,
-     "fair": 229,
-     "cracked": 131,
-     "defective": 65
+     "like_new": 392,
+     "good": 334,
+     "fair": 275,
+     "cracked": 157,
+     "defective": 78
     },
     {
      "storage": "512GB",
-     "like_new": 351,
-     "good": 298,
-     "fair": 246,
-     "cracked": 140,
-     "defective": 70
+     "like_new": 421,
+     "good": 358,
+     "fair": 295,
+     "cracked": 168,
+     "defective": 84
     }
    ],
    "sort_order": 32
@@ -939,27 +939,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 337,
-     "good": 286,
-     "fair": 236,
-     "cracked": 135,
-     "defective": 67
+     "like_new": 404,
+     "good": 343,
+     "fair": 283,
+     "cracked": 162,
+     "defective": 80
     },
     {
      "storage": "256GB",
-     "like_new": 364,
-     "good": 309,
-     "fair": 255,
-     "cracked": 146,
-     "defective": 73
+     "like_new": 437,
+     "good": 371,
+     "fair": 306,
+     "cracked": 175,
+     "defective": 88
     },
     {
      "storage": "512GB",
-     "like_new": 391,
-     "good": 332,
-     "fair": 274,
-     "cracked": 156,
-     "defective": 78
+     "like_new": 469,
+     "good": 398,
+     "fair": 329,
+     "cracked": 187,
+     "defective": 94
     }
    ],
    "sort_order": 31
@@ -974,35 +974,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 392,
-     "good": 333,
-     "fair": 274,
-     "cracked": 157,
-     "defective": 78
+     "like_new": 470,
+     "good": 400,
+     "fair": 329,
+     "cracked": 188,
+     "defective": 94
     },
     {
      "storage": "256GB",
-     "like_new": 423,
-     "good": 360,
-     "fair": 296,
-     "cracked": 169,
-     "defective": 85
+     "like_new": 508,
+     "good": 432,
+     "fair": 355,
+     "cracked": 203,
+     "defective": 102
     },
     {
      "storage": "512GB",
-     "like_new": 455,
-     "good": 387,
-     "fair": 318,
-     "cracked": 182,
-     "defective": 91
+     "like_new": 546,
+     "good": 464,
+     "fair": 382,
+     "cracked": 218,
+     "defective": 109
     },
     {
      "storage": "1TB",
-     "like_new": 486,
-     "good": 413,
-     "fair": 340,
-     "cracked": 194,
-     "defective": 97
+     "like_new": 583,
+     "good": 496,
+     "fair": 408,
+     "cracked": 233,
+     "defective": 116
     }
    ],
    "sort_order": 29
@@ -1017,27 +1017,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 490,
-     "good": 416,
-     "fair": 343,
-     "cracked": 196,
-     "defective": 98
+     "like_new": 588,
+     "good": 499,
+     "fair": 412,
+     "cracked": 235,
+     "defective": 118
     },
     {
      "storage": "512GB",
-     "like_new": 529,
-     "good": 450,
-     "fair": 370,
-     "cracked": 212,
-     "defective": 106
+     "like_new": 635,
+     "good": 540,
+     "fair": 444,
+     "cracked": 254,
+     "defective": 127
     },
     {
      "storage": "1TB",
-     "like_new": 568,
-     "good": 483,
-     "fair": 398,
-     "cracked": 227,
-     "defective": 114
+     "like_new": 682,
+     "good": 580,
+     "fair": 478,
+     "cracked": 272,
+     "defective": 137
     }
    ],
    "sort_order": 28
@@ -1087,27 +1087,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 423,
-     "good": 360,
-     "fair": 296,
-     "cracked": 169,
-     "defective": 85
+     "like_new": 508,
+     "good": 432,
+     "fair": 355,
+     "cracked": 203,
+     "defective": 102
     },
     {
      "storage": "256GB",
-     "like_new": 457,
-     "good": 388,
-     "fair": 320,
-     "cracked": 183,
-     "defective": 91
+     "like_new": 548,
+     "good": 466,
+     "fair": 384,
+     "cracked": 220,
+     "defective": 109
     },
     {
      "storage": "512GB",
-     "like_new": 491,
-     "good": 417,
-     "fair": 344,
-     "cracked": 196,
-     "defective": 98
+     "like_new": 589,
+     "good": 500,
+     "fair": 413,
+     "cracked": 235,
+     "defective": 118
     }
    ],
    "sort_order": 19
@@ -1122,27 +1122,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 444,
-     "good": 377,
-     "fair": 311,
-     "cracked": 178,
-     "defective": 89
+     "like_new": 533,
+     "good": 452,
+     "fair": 373,
+     "cracked": 214,
+     "defective": 107
     },
     {
      "storage": "256GB",
-     "like_new": 479,
-     "good": 407,
-     "fair": 335,
-     "cracked": 192,
-     "defective": 96
+     "like_new": 575,
+     "good": 488,
+     "fair": 402,
+     "cracked": 230,
+     "defective": 115
     },
     {
      "storage": "512GB",
-     "like_new": 515,
-     "good": 438,
-     "fair": 360,
-     "cracked": 206,
-     "defective": 103
+     "like_new": 618,
+     "good": 526,
+     "fair": 432,
+     "cracked": 247,
+     "defective": 124
     }
    ],
    "sort_order": 18
@@ -1157,35 +1157,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 513,
-     "good": 436,
-     "fair": 359,
-     "cracked": 205,
-     "defective": 103
+     "like_new": 616,
+     "good": 523,
+     "fair": 431,
+     "cracked": 246,
+     "defective": 124
     },
     {
      "storage": "256GB",
-     "like_new": 554,
-     "good": 471,
-     "fair": 388,
-     "cracked": 222,
-     "defective": 111
+     "like_new": 665,
+     "good": 565,
+     "fair": 466,
+     "cracked": 266,
+     "defective": 133
     },
     {
      "storage": "512GB",
-     "like_new": 595,
-     "good": 506,
-     "fair": 416,
-     "cracked": 238,
-     "defective": 119
+     "like_new": 714,
+     "good": 607,
+     "fair": 499,
+     "cracked": 286,
+     "defective": 143
     },
     {
      "storage": "1TB",
-     "like_new": 636,
-     "good": 541,
-     "fair": 445,
-     "cracked": 254,
-     "defective": 127
+     "like_new": 763,
+     "good": 649,
+     "fair": 534,
+     "cracked": 305,
+     "defective": 152
     }
    ],
    "sort_order": 16
@@ -1200,27 +1200,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 665,
-     "good": 565,
-     "fair": 465,
-     "cracked": 266,
-     "defective": 133
+     "like_new": 798,
+     "good": 678,
+     "fair": 558,
+     "cracked": 319,
+     "defective": 160
     },
     {
      "storage": "512GB",
-     "like_new": 718,
-     "good": 610,
-     "fair": 503,
-     "cracked": 287,
-     "defective": 144
+     "like_new": 862,
+     "good": 732,
+     "fair": 604,
+     "cracked": 344,
+     "defective": 173
     },
     {
      "storage": "1TB",
-     "like_new": 771,
-     "good": 655,
-     "fair": 540,
-     "cracked": 308,
-     "defective": 154
+     "like_new": 925,
+     "good": 786,
+     "fair": 648,
+     "cracked": 370,
+     "defective": 185
     }
    ],
    "sort_order": 15
@@ -1235,19 +1235,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 584,
-     "good": 496,
-     "fair": 409,
-     "cracked": 234,
-     "defective": 117
+     "like_new": 701,
+     "good": 595,
+     "fair": 491,
+     "cracked": 281,
+     "defective": 140
     },
     {
      "storage": "512GB",
-     "like_new": 631,
-     "good": 536,
-     "fair": 442,
-     "cracked": 252,
-     "defective": 126
+     "like_new": 757,
+     "good": 643,
+     "fair": 530,
+     "cracked": 302,
+     "defective": 151
     }
    ],
    "sort_order": 8
@@ -1262,27 +1262,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 598,
-     "good": 508,
-     "fair": 419,
-     "cracked": 239,
-     "defective": 120
+     "like_new": 718,
+     "good": 610,
+     "fair": 503,
+     "cracked": 287,
+     "defective": 144
     },
     {
      "storage": "512GB",
-     "like_new": 646,
-     "good": 549,
-     "fair": 452,
-     "cracked": 258,
-     "defective": 129
+     "like_new": 775,
+     "good": 659,
+     "fair": 542,
+     "cracked": 310,
+     "defective": 155
     },
     {
      "storage": "1TB",
-     "like_new": 694,
-     "good": 590,
-     "fair": 486,
-     "cracked": 278,
-     "defective": 139
+     "like_new": 833,
+     "good": 708,
+     "fair": 583,
+     "cracked": 334,
+     "defective": 167
     }
    ],
    "sort_order": 4
@@ -1297,27 +1297,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 752,
-     "good": 639,
-     "fair": 526,
-     "cracked": 301,
-     "defective": 150
+     "like_new": 902,
+     "good": 767,
+     "fair": 631,
+     "cracked": 361,
+     "defective": 180
     },
     {
      "storage": "512GB",
-     "like_new": 812,
-     "good": 690,
-     "fair": 568,
-     "cracked": 325,
-     "defective": 162
+     "like_new": 974,
+     "good": 828,
+     "fair": 682,
+     "cracked": 390,
+     "defective": 194
     },
     {
      "storage": "1TB",
-     "like_new": 872,
-     "good": 741,
-     "fair": 610,
-     "cracked": 349,
-     "defective": 174
+     "like_new": 1046,
+     "good": 889,
+     "fair": 732,
+     "cracked": 419,
+     "defective": 209
     }
    ],
    "sort_order": 3
@@ -1332,35 +1332,35 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 785,
-     "good": 667,
-     "fair": 550,
-     "cracked": 314,
-     "defective": 157
+     "like_new": 942,
+     "good": 800,
+     "fair": 660,
+     "cracked": 377,
+     "defective": 188
     },
     {
      "storage": "512GB",
-     "like_new": 847,
-     "good": 720,
-     "fair": 593,
-     "cracked": 339,
-     "defective": 169
+     "like_new": 1016,
+     "good": 864,
+     "fair": 712,
+     "cracked": 407,
+     "defective": 203
     },
     {
      "storage": "1TB",
-     "like_new": 910,
-     "good": 774,
-     "fair": 637,
-     "cracked": 364,
-     "defective": 182
+     "like_new": 1092,
+     "good": 929,
+     "fair": 764,
+     "cracked": 437,
+     "defective": 218
     },
     {
      "storage": "2TB",
-     "like_new": 973,
-     "good": 827,
-     "fair": 681,
-     "cracked": 389,
-     "defective": 195
+     "like_new": 1168,
+     "good": 992,
+     "fair": 817,
+     "cracked": 467,
+     "defective": 234
     }
    ],
    "sort_order": 2
