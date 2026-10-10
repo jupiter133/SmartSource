@@ -78,24 +78,53 @@
             {%- unless single and section.settings.heading != blank -%}<h3>How much is my {{ block.settings.noun }} worth?</h3>{%- endunless -%}
             <p class="muted">{{ section.settings.panel_line }}{% unless settings.sell_live %} <span class="wiz-preview-tag">Preview</span>{% endunless %}</p>
           </div>
+          {%- if section.settings.group_series -%}
+            {%- liquid
+              comment
+                Group by series (iPhone 17, Galaxy S25, Pixel 9, iPad Pro, ...). Rows are already most valuable first,
+                so series come out ordered by their top value and models stay most valuable first inside each series.
+              endcomment
+              assign order = '¦'
+              assign labeled = ''
+              for r in sorted
+                if row_limit > 0 and forloop.index > row_limit
+                  break
+                endif
+                assign f = r | split: '~'
+                capture lab
+                  render 'sell-series', name: f[2]
+                endcapture
+                assign lab = lab | strip
+                assign key = '¦' | append: lab | append: '¦'
+                unless order contains key
+                  assign order = order | append: lab | append: '¦'
+                endunless
+                assign labeled = labeled | append: '§' | append: lab | append: '¤' | append: r
+              endfor
+              assign series_list = order | remove_first: '¦' | split: '¦'
+              assign items = labeled | remove_first: '§' | split: '§'
+            -%}
+            <div class="pay-series-grid">
+              {%- for g in series_list -%}
+                <section class="pay-series">
+                  {%- if single and section.settings.heading != blank -%}<h3 class="pay-series__title">{{ g }}</h3>{%- else -%}<h4 class="pay-series__title">{{ g }}</h4>{%- endif -%}
+                  <ul class="pay-list pay-list--one" role="list">
+                    {%- for it in items -%}
+                      {%- assign parts = it | split: '¤' -%}
+                      {%- if parts[0] == g -%}{%- render 'sell-pay-row', rec: parts[1], quote_url: quote_url -%}{%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </section>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
           <ul class="pay-list" role="list">
             {%- for r in sorted -%}
               {%- if row_limit > 0 and forloop.index > row_limit -%}{%- break -%}{%- endif -%}
-              {%- assign f = r | split: '~' -%}
-              {%- assign best = f[3] | times: 1.0 -%}
-              {%- assign sealed = f[4] | times: 1.0 -%}
-              {%- assign sealed_money = sealed | times: 100 | round | money_without_trailing_zeros -%}
-              <li>
-                <a class="pay-row" href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}">
-                  <span class="pay-row__model">
-                    <span class="pay-row__name">{{ f[2] }}</span>
-                  </span>
-                  {%- assign top = best -%}{%- if sealed > top -%}{%- assign top = sealed -%}{%- endif -%}
-                  <span class="pay-row__price"><small>Up to</small> {{ top | times: 100 | round | money_without_trailing_zeros }}</span>
-                </a>
-              </li>
+              {%- render 'sell-pay-row', rec: r, quote_url: quote_url -%}
             {%- endfor -%}
           </ul>
+          {%- endif -%}
           {%- if row_limit > 0 and sorted.size > row_limit -%}
             <a class="pay-viewall" href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}{{ view_all_url }}?tab={{ block.settings.label | handleize }}{% endif %}">View all {{ sorted.size }} {{ block.settings.noun }} prices <span aria-hidden="true">→</span></a>
           {%- endif -%}
@@ -108,9 +137,10 @@
 
 {%- if panels != blank or request.design_mode -%}
 <section class="section page-width sell-pay{% if single %} sell-pay--single{% endif %}" id="what-we-pay" data-pay>
-  {%- if section.settings.heading != blank or section.settings.subtext != blank -%}
+  {%- if section.settings.heading != blank or section.settings.subtext != blank or section.settings.tagline != blank -%}
   <div class="sell-pay__head">
     {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.tagline != blank -%}<p class="sell-tagline">{{ section.settings.tagline }}</p>{%- endif -%}
     {%- if section.settings.subtext != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.subtext %}</p>{%- endif -%}
   </div>
   {%- endif -%}
@@ -153,7 +183,9 @@ var first=wt||tabs.find(function(t){return !t.hidden});if(first&&first.getAttrib
   "name": "Sell: what we pay",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "What we pay" },
+    { "type": "text", "id": "tagline", "label": "Bold line under the heading", "default": "We pay top dollar for your tech in Canada." },
     { "type": "text", "id": "subtext", "label": "Subtext", "default": "Current top offers for every model we buy. Pick yours for an exact quote." },
+    { "type": "checkbox", "id": "group_series", "label": "Group models by series", "default": true, "info": "e.g. iPhone 17, Galaxy S25, Pixel 9, iPad Pro, Apple Watch Ultra. Series with the highest offers come first." },
     { "type": "text", "id": "panel_line", "label": "Line under each tab heading", "default": "Your exact offer depends on storage, carrier and condition." },
     { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" values are for the top storage option, brand new and sealed where we buy sealed, otherwise Like New. Your final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },

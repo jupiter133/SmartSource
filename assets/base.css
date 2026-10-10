@@ -2972,3 +2972,24 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   .vchart__chips span{font-size:11px}
   .vchart__chips strong{font-size:13px}
 }
+/* Sell: top-dollar line, series groups, brand-page value chart, per-brand sample tables */
+.sell-tagline,.sbh__tagline{font-weight:800;color:var(--c-ink);letter-spacing:-.01em}
+.sbh__tagline{font-size:clamp(1.05rem,1rem + .4vw,1.3rem);margin:-4px 0 12px}
+.sell-tagline{font-size:1.02rem;margin:0 0 6px}
+.sell-pay__head .sell-tagline{margin-top:-2px}
+.pay-series-grid{columns:3 240px;column-gap:28px}
+.pay-series{break-inside:avoid;margin:0 0 18px}
+.pay-series__title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#55555f;margin:0;padding:6px 0 8px;border-bottom:1.5px solid var(--c-ink)}
+.pay-series .pay-list--one li:last-child{border-bottom:0}
+.pay-group__head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.pay-group__head .pay-group__title{margin:0}
+.pay-group__all{font-size:13px;font-weight:600;white-space:nowrap;text-decoration:underline;text-underline-offset:3px}
+.pay-group__all:hover{color:var(--c-accent)}
+.pay-group__all:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px;border-radius:4px}
+.svc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center}
+.svc__copy h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 8px}
+.svc__copy p{margin:0;max-width:46ch;font-size:16px}
+.svc__chart{min-width:0}
+.svc__chart[hidden]{display:none}
+.svc .vchart{box-shadow:var(--sell-card-shadow);border-color:transparent}
+@media (max-width:749px){.svc{grid-template-columns:1fr;gap:16px}.pay-series-grid{columns:1}}

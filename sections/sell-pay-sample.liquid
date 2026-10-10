@@ -72,7 +72,10 @@
       {%- if recs != blank -%}
         {%- assign sorted = recs | remove_first: '¦' | split: '¦' | sort -%}
         <div class="pay-group" {{ block.shopify_attributes }}>
-          <h3 class="pay-group__title">{{ block.settings.title }}</h3>
+          <div class="pay-group__head">
+            <h3 class="pay-group__title">{{ block.settings.title }}</h3>
+            {%- if block.settings.url != blank -%}<a class="pay-group__all" href="{{ block.settings.url }}">See all <span class="visually-hidden">{{ block.settings.title }} prices</span><span aria-hidden="true">→</span></a>{%- endif -%}
+          </div>
           <div class="pay-group__cols" aria-hidden="true"><span>Model</span><span>Up to</span></div>
           <ul class="pay-list pay-list--one" role="list">
             {%- for r in sorted limit: row_limit -%}
@@ -96,6 +99,7 @@
 <section class="section page-width sell-pay sell-pay--sample" id="what-we-pay">
   <div class="sell-pay__head">
     {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.tagline != blank -%}<p class="sell-tagline">{{ section.settings.tagline }}</p>{%- endif -%}
     {%- if section.settings.subtext != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.subtext %}</p>{%- endif -%}
   </div>
   {%- if tables != blank -%}
@@ -122,6 +126,7 @@
   "name": "Sell: pay sample",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "What SmartSource pays" },
+    { "type": "text", "id": "tagline", "label": "Bold line under the heading", "default": "We pay top dollar for your tech in Canada." },
     { "type": "text", "id": "subtext", "label": "Subtext", "default": "A few of our current top offers. Pick yours for an exact quote." },
     { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" is the top storage, brand new sealed where we buy sealed, otherwise Like New. Final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },
@@ -133,13 +138,14 @@
     {
       "type": "group",
       "name": "Table",
-      "limit": 4,
+      "limit": 6,
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Phones" },
+        { "type": "text", "id": "title", "label": "Title", "default": "iPhone" },
+        { "type": "url", "id": "url", "label": "\"See all\" link", "info": "e.g. that brand's sell page" },
         { "type": "textarea", "id": "handles", "label": "Devices", "info": "Buyback device handles, one per line (e.g. iphone-17-pro-max). Leave blank to show the top models of the brand and category below." },
         { "type": "text", "id": "brand", "label": "Brand name", "info": "Only used when Devices is blank. Blank = every brand." },
         { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Only used when Devices is blank." },
-        { "type": "number", "id": "limit", "label": "Rows", "default": 5 }
+        { "type": "number", "id": "limit", "label": "Rows", "default": 4 }
       ]
     }
   ],
@@ -147,9 +153,11 @@
     {
       "name": "Sell: pay sample",
       "blocks": [
-        { "type": "group", "settings": { "title": "Phones", "category": "Smartphone", "limit": 7 } },
-        { "type": "group", "settings": { "title": "iPad", "brand": "Apple", "category": "Tablet", "limit": 4 } },
-        { "type": "group", "settings": { "title": "Apple Watch", "brand": "Apple", "category": "Smartwatch", "limit": 4 } }
+        { "type": "group", "settings": { "title": "iPhone", "brand": "Apple", "category": "Smartphone" } },
+        { "type": "group", "settings": { "title": "Samsung Galaxy", "brand": "Samsung", "category": "Smartphone" } },
+        { "type": "group", "settings": { "title": "Google Pixel", "brand": "Google", "category": "Smartphone" } },
+        { "type": "group", "settings": { "title": "iPad", "brand": "Apple", "category": "Tablet" } },
+        { "type": "group", "settings": { "title": "Apple Watch", "brand": "Apple", "category": "Smartwatch" } }
       ]
     }
   ]

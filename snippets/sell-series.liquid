@@ -1,0 +1,83 @@
+{%- comment -%}
+  Series label for a buyback device name, used to group the price lists: iPhone 17, Galaxy S25, Galaxy Z Fold, Pixel 9, iPad Pro,
+  Apple Watch Ultra, ... Older or unmatched models fall into an "Earlier" group. Usage: {% render 'sell-series', name: 'iPhone 15 Pro' %}
+{%- endcomment -%}
+{%- liquid
+  assign n = name | default: '' | append: ''
+  assign label = 'Earlier models'
+  assign digits = '0123456789'
+  assign after = ''
+  if n contains 'iPhone '
+    assign after = n | split: 'iPhone ' | last
+  elsif n contains 'Galaxy S'
+    assign after = n | split: 'Galaxy S' | last
+  elsif n contains 'Pixel '
+    assign after = n | split: 'Pixel ' | last
+  endif
+  comment
+    Model number right after the name (one or two digits): "16e" -> 16, "9a" -> 9, "SE" -> 0.
+  endcomment
+  assign num = 0
+  assign d1 = after | slice: 0
+  assign d2 = after | slice: 1
+  if d1 != blank and digits contains d1
+    assign ns = d1
+    if d2 != blank and digits contains d2
+      assign ns = d1 | append: d2
+    endif
+    assign num = ns | plus: 0
+  endif
+
+  if n contains 'iPhone Air'
+    assign label = 'iPhone 17'
+  elsif n contains 'iPhone '
+    if num >= 11
+      assign label = 'iPhone ' | append: num
+    else
+      assign label = 'Earlier iPhones'
+    endif
+  elsif n contains 'Galaxy Z Fold' or n contains 'Galaxy Fold'
+    assign label = 'Galaxy Z Fold'
+  elsif n contains 'Galaxy Z Flip' or n contains 'Galaxy Flip'
+    assign label = 'Galaxy Z Flip'
+  elsif n contains 'Galaxy Tab'
+    assign label = 'Galaxy Tab'
+  elsif n contains 'Galaxy A'
+    assign label = 'Galaxy A'
+  elsif n contains 'Galaxy S'
+    if num >= 22
+      assign label = 'Galaxy S' | append: num
+    else
+      assign label = 'Galaxy S21 and S20'
+    endif
+  elsif n contains 'Pixel'
+    if num >= 8
+      assign label = 'Pixel ' | append: num
+    else
+      assign label = 'Pixel 7 and Fold'
+    endif
+  elsif n contains 'iPad Pro'
+    assign label = 'iPad Pro'
+  elsif n contains 'iPad Air'
+    assign label = 'iPad Air'
+  elsif n contains 'iPad mini'
+    assign label = 'iPad mini'
+  elsif n contains 'iPad'
+    assign label = 'iPad'
+  elsif n contains 'Apple Watch Ultra'
+    assign label = 'Apple Watch Ultra'
+  elsif n contains 'Apple Watch Series'
+    assign label = 'Apple Watch Series'
+  elsif n contains 'Apple Watch SE'
+    assign label = 'Apple Watch SE'
+  elsif n contains 'PlayStation'
+    assign label = 'PlayStation'
+  elsif n contains 'Xbox'
+    assign label = 'Xbox'
+  elsif n contains 'Switch'
+    assign label = 'Nintendo Switch'
+  elsif n contains 'Steam Deck'
+    assign label = 'Steam Deck'
+  endif
+-%}
+{{- label -}}

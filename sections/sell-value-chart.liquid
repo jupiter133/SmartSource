@@ -1,0 +1,74 @@
+{%- comment -%}
+  "Best time to sell" example for a brand page: today's top offer for the brand's most valuable model (or a chosen device)
+  and estimated 1, 3 and 6-month values from Theme settings > Sell program. Drawn by assets/sell-chart.js.
+{%- endcomment -%}
+{%- liquid
+  assign want_brand = section.settings.brand | downcase | strip
+  assign want_cat = section.settings.category | downcase | strip
+  assign want_dev = section.settings.device | downcase | strip
+  assign best_top = 0
+  assign best_name = ''
+-%}
+{%- if metaobjects.buyback_device.values.size > 0 -%}
+  {%- paginate metaobjects.buyback_device.values by 250 -%}
+    {%- liquid
+      for d in metaobjects.buyback_device.values
+        if d.active.value == false
+          continue
+        endif
+        if want_dev != blank
+          if d.system.handle != want_dev
+            continue
+          endif
+        else
+          assign b = d.brand.value.name.value | downcase | strip
+          assign c = d.category.value.name.value | downcase | strip
+          if b != want_brand or c != want_cat
+            continue
+          endif
+        endif
+        assign top = 0
+        for pr in d.prices.value
+          assign v = pr.price_like_new.value | default: 0 | times: 1.0
+          if v > top
+            assign top = v
+          endif
+          assign s = pr.price_new.value | default: 0 | times: 1.0
+          if s > top
+            assign top = s
+          endif
+        endfor
+        if top > best_top
+          assign best_top = top
+          assign best_name = d.name.value
+        endif
+      endfor
+    -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
+{%- if best_top > 0 -%}
+<section class="section page-width svc">
+  <div class="svc__copy">
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    {%- if section.settings.text != blank -%}<p class="muted">{{ section.settings.text | replace: '[model]', best_name }}</p>{%- endif -%}
+  </div>
+  <div class="svc__chart" data-sell-chart data-now="{{ best_top | round }}" data-title="{{ best_name | escape }}" data-level="3" data-f="{{ settings.sell_value_1m | default: 97 }},{{ settings.sell_value_3m | default: 91 }},{{ settings.sell_value_6m | default: 83 }}"></div>
+</section>
+<script src="{{ 'sell-chart.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sell: value chart",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "When's the best time to sell?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Trade-in values usually drop as devices get older and new models come out. Here's how today's top offer for the [model] could change over the next six months.", "info": "[model] is replaced with the model's name." },
+    { "type": "text", "id": "brand", "label": "Brand name", "default": "Apple", "info": "The chart uses this brand's most valuable model in the category below." },
+    { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone" },
+    { "type": "text", "id": "device", "label": "Or this device", "info": "Optional buyback device handle, e.g. iphone-17-pro-max." },
+    { "type": "paragraph", "content": "Today = the current top offer (brand new sealed or Like New). Future values = today times the percentages in Theme settings > Sell program, labelled as estimates." }
+  ],
+  "presets": [ { "name": "Sell: value chart" } ]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{%- comment -%}
+  One price row of the "What we pay" list. rec = "sortkey~handle~name~best like new~best sealed"; quote_url = page with the wizard.
+{%- endcomment -%}
+{%- assign f = rec | split: '~' -%}
+{%- assign best = f[3] | times: 1.0 -%}
+{%- assign sealed = f[4] | times: 1.0 -%}
+{%- assign top = best -%}{%- if sealed > top -%}{%- assign top = sealed -%}{%- endif -%}
+<li>
+  <a class="pay-row" href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}">
+    <span class="pay-row__model">
+      <span class="pay-row__name">{{ f[2] }}</span>
+    </span>
+    <span class="pay-row__price"><small>Up to</small> {{ top | times: 100 | round | money_without_trailing_zeros }}</span>
+  </a>
+</li>
