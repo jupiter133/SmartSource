@@ -3077,3 +3077,12 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
   .sx-dir__list{columns:2;column-gap:16px}
   .sx-number__tile{aspect-ratio:auto;padding:22px 12px}
 }
+/* What SmartSource pays sample: tall iPhone card on the left, the other 4 brands as a 2x2 box on the right */
+@media (min-width:990px){
+  .sell-pay--sample .sell-pay__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:row dense}
+  .sell-pay--sample .sell-pay__grid>.pay-group:first-child{grid-row:span 2}
+}
+@media (min-width:750px) and (max-width:989px){
+  .sell-pay--sample .sell-pay__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sell-pay--sample .sell-pay__grid>.pay-group:first-child{grid-row:span 2}
+}
