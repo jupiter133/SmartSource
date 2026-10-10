@@ -1,0 +1,115 @@
+{%- comment -%}
+  "Most wanted right now": a carousel of the devices with the highest current offers (only ones with a photo), at most a few
+  per brand so it isn't all one brand, or the device handles you list. Cards open the quote wizard with the device picked.
+{%- endcomment -%}
+{%- liquid
+  assign quote_url = section.settings.quote_page | default: request.path
+  assign per_brand = section.settings.per_brand | default: 3
+  assign max_cards = section.settings.limit | default: 8
+  assign picks = ','
+  assign lines = section.settings.handles | newline_to_br | replace: '<br />', ',' | split: ','
+  for x in lines
+    assign hx = x | strip | downcase
+    if hx != blank
+      assign picks = picks | append: hx | append: ','
+    endif
+  endfor
+  assign chosen = ''
+-%}
+{%- if metaobjects.buyback_device.values.size > 0 -%}
+  {%- paginate metaobjects.buyback_device.values by 250 -%}
+    {%- liquid
+      assign recs = ''
+      for d in metaobjects.buyback_device.values
+        if d.active.value == false or d.image.value == blank
+          continue
+        endif
+        if picks != ','
+          assign key = ',' | append: d.system.handle | append: ','
+          unless picks contains key
+            continue
+          endunless
+        endif
+        assign top = 0
+        for pr in d.prices.value
+          assign v = pr.price_like_new.value | default: 0 | times: 1.0
+          if v > top
+            assign top = v
+          endif
+          assign s = pr.price_new.value | default: 0 | times: 1.0
+          if s > top
+            assign top = s
+          endif
+        endfor
+        if top <= 0
+          continue
+        endif
+        assign pkey = 99999 | minus: top | round | prepend: '00000' | slice: -5, 5
+        assign safe_name = d.name.value | replace: '~', '-' | replace: '¦', '-'
+        assign img = d.image.value | image_url: width: 400
+        assign rec = pkey | append: '~' | append: d.system.handle | append: '~' | append: safe_name | append: '~' | append: top | append: '~' | append: d.brand.value.system.handle | append: '~' | append: img
+        assign recs = recs | append: '¦' | append: rec
+      endfor
+      assign sorted = recs | remove_first: '¦' | split: '¦' | sort
+      assign taken = ''
+      assign n = 0
+      for r in sorted
+        if n >= max_cards
+          break
+        endif
+        assign f = r | split: '~'
+        if picks == ','
+          assign cnt = 0
+          assign tl = taken | split: ','
+          for t in tl
+            if t == f[4]
+              assign cnt = cnt | plus: 1
+            endif
+          endfor
+          if cnt >= per_brand
+            continue
+          endif
+        endif
+        assign taken = taken | append: f[4] | append: ','
+        assign n = n | plus: 1
+        assign chosen = chosen | append: '¦' | append: r
+      endfor
+    -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
+{%- if chosen != blank -%}
+<section class="section page-width sx sx-wanted" data-carousel>
+  <div class="sx-head sx-head--row">
+    {%- if section.settings.heading != blank -%}<h2 class="sx-title">{{ section.settings.heading }}</h2>{%- endif -%}
+    {% render 'carousel-arrows' %}
+  </div>
+  <ul class="carousel sx-wanted__track" role="list" data-track>
+    {%- assign items = chosen | remove_first: '¦' | split: '¦' -%}
+    {%- for r in items -%}
+      {%- assign f = r | split: '~' -%}
+      <li class="sx-wanted__item">
+        <a class="sx-card sx-wanted__card" href="{{ quote_url }}?sell_device={{ f[1] | url_encode }}#sell-quote" data-sell-start data-device="{{ f[1] | escape }}">
+          <span class="sx-wanted__img"><img src="{{ f[5] }}" alt="" width="200" height="200" loading="lazy"></span>
+          <span class="sx-wanted__name">{{ f[2] }}</span>
+          <span class="sx-wanted__price">Up to <strong>{{ f[3] | times: 100 | round | money_without_trailing_zeros }}</strong></span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sell: most wanted",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Most wanted right now" },
+    { "type": "number", "id": "limit", "label": "Devices", "default": 8 },
+    { "type": "number", "id": "per_brand", "label": "At most per brand", "default": 3 },
+    { "type": "textarea", "id": "handles", "label": "Or show these devices", "info": "Buyback device handles, one per line. Leave blank for the highest current offers." },
+    { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on this page." }
+  ],
+  "presets": [ { "name": "Sell: most wanted" } ]
+}
+{% endschema %}

@@ -239,12 +239,15 @@
     if (n === 1) {
       if (famMode) {
         const count = (b) => devices.filter((d) => d.b === b.h).length;
-        nodes = brands.filter((b) => count(b) > 0).sort((a, b) => count(b) - count(a) || a.s - b.s)
+        const catFilter = !c.brand && c.cat ? byHandle(categories, c.cat) : null; // from a category link
+        const inCat = (b) => !catFilter || devices.some((d) => d.b === b.h && d.c === catFilter.h);
+        nodes = brands.filter((b) => count(b) > 0 && inCat(b)).sort((a, b) => count(b) - count(a) || a.s - b.s)
           .map((b) => card({ name: 'wiz-brand', value: b.h, checked: c.brand === b.h, title: b.n, media: brandLogo(b) ? thumb(brandLogo(b), '') : el('span', { class: 'wiz-card__mono', text: b.n.slice(0, 1) }), cls: 'wiz-card--brand' }));
         (config.links || []).filter((l) => l.n && l.u).forEach((l) => nodes.push(el('a', { class: 'wiz-card wiz-card--cat wiz-card--link', href: l.u },
           el('span', { class: 'wiz-card__media' }, l.i ? thumb(l.i) : linkIcon()),
           el('span', { class: 'wiz-card__name', text: l.n }),
           l.t ? el('span', { class: 'wiz-card__meta', text: l.t }) : null)));
+        if (catFilter) nodes.unshift(el('p', { class: 'wiz-catfilter' }, `Brands we buy ${catFilter.n.toLowerCase().replace(/(s|x|ch|sh)$/, '$1e')}s from. `, el('button', { type: 'button', class: 'wiz-work__change', 'data-cat-clear': '' }, 'Show all brands')));
       } else {
         const used = new Set(devices.map((d) => d.c));
         nodes = categories.filter((cat) => used.has(cat.h)).map((cat) => card({ name: 'wiz-cat', value: cat.h, checked: c.cat === cat.h, title: cat.n, media: thumb(cat.i), cls: 'wiz-card--cat' }));
@@ -254,7 +257,9 @@
       const b = byHandle(brands, c.brand);
       const title = $('[data-step="2"] .wiz-step__title');
       if (title && b) title.textContent = `Which ${b.n} device?`;
-      nodes = b ? famsForBrand(b.h).map((f) => card({ name: 'wiz-fam', value: f.id, checked: c.fam === f.id, title: f.n, media: thumb(famImage(f, b.h)), cls: 'wiz-card--cat wiz-card--fam' })) : [];
+      const fams = b ? famsForBrand(b.h) : [];
+      const shownFams = !c.fam && c.cat && fams.some((f) => f.cat === c.cat) ? fams.filter((f) => f.cat === c.cat) : fams;
+      nodes = b ? shownFams.map((f) => card({ name: 'wiz-fam', value: f.id, checked: c.fam === f.id, title: f.n, media: thumb(famImage(f, b.h)), cls: 'wiz-card--cat wiz-card--fam' })) : [];
       if (!nodes.length) nodes = [empty('Pick a brand first.')];
     } else if (n === 2) {
       const used = new Set(devices.filter((d) => d.c === c.cat && inFam(d, c.fam)).map((d) => d.b));
@@ -491,8 +496,10 @@
       state.cur = { ...fresh().cur, brand: c.brand, cat: f.cat, fam: f.id };
       resetModelSearch();
     } else if (t.name === 'wiz-brand' && famMode) {
+      const catFilter = c.fam ? null : c.cat; // from a category link (e.g. consoles)
       state.cur = { ...fresh().cur, brand: t.value };
-      const fams = famsForBrand(t.value);
+      let fams = famsForBrand(t.value);
+      if (catFilter && fams.some((f) => f.cat === catFilter)) { fams = fams.filter((f) => f.cat === catFilter); state.cur.cat = catFilter; }
       if (fams.length === 1) Object.assign(state.cur, { fam: fams[0].id, cat: fams[0].cat }); // one device type: skip that step
       resetModelSearch();
     } else if (t.name === 'wiz-brand') { state.cur = { ...fresh().cur, cat: c.cat, fam: c.fam, brand: t.value }; resetModelSearch(); }
@@ -514,6 +521,7 @@
       $$('[data-options="3"] input[name="wiz-device"]')[before]?.focus(); // first newly shown model
       return;
     }
+    if (e.target.closest('[data-cat-clear]')) { state.cur.cat = null; renderOptions(1); save(); return; }
     const wk = e.target.closest('[data-work]');
     if (wk || e.target.closest('[data-work-reset]')) { setWork(wk ? wk.dataset.work : null); return; }
     const tog = e.target.closest('[data-cond-toggle]');
@@ -778,6 +786,13 @@
       if (cat) {
         const brand = opts.brand ? brands.find((b) => norm(b.n) === norm(opts.brand) || b.h === opts.brand) : null;
         const hasBrand = brand && devices.some((d) => d.c === cat.h && d.b === brand.h);
+        if (famMode) { // brand first: the category filters the brand cards (step 1) and device types (step 2)
+          state.cur = { ...fresh().cur, cat: cat.h, brand: hasBrand ? brand.h : null };
+          const fams = hasBrand ? famsForBrand(brand.h).filter((f) => f.cat === cat.h) : [];
+          if (fams.length === 1) state.cur.fam = fams[0].id;
+          resetModelSearch();
+          return goTo(Math.min(firstOpen(), 5));
+        }
         state.cur = { ...fresh().cur, cat: cat.h, brand: hasBrand ? brand.h : null };
         return goTo(hasBrand ? 3 : 2);
       }

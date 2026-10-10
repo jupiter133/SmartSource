@@ -7,7 +7,7 @@
     assign you_pay = 0
   endif
 -%}
-<section class="section page-width trade-banner">
+<section class="section page-width trade-banner{% if section.settings.style == 'light' %} trade-banner--light{% endif %}">
   <div class="trade-banner__card">
     <div class="trade-banner__copy">
       {%- if section.settings.show_bonus and section.settings.bonus_text != blank -%}
@@ -48,6 +48,7 @@
 {
   "name": "Trade-in banner",
   "settings": [
+    { "type": "select", "id": "style", "label": "Style", "options": [ { "value": "dark", "label": "Dark" }, { "value": "light", "label": "Light, plain white card" } ], "default": "dark" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Trade in. Trade up." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Put your device's value toward any phone in our store, in person or as store credit online.</p>" },
     { "type": "text", "id": "step_1", "label": "Step 1", "default": "Get your value" },

@@ -1,0 +1,31 @@
+{%- comment -%} A centered title and a row of pill links, e.g. to each brand's sell page. {%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+<section class="section page-width sx sx-pills">
+  {%- if section.settings.heading != blank -%}<h2 class="sx-title">{{ section.settings.heading }}</h2>{%- endif -%}
+  <ul class="sx-pills__list" role="list">
+    {%- for block in section.blocks -%}
+      <li {{ block.shopify_attributes }}><a class="sx-pill" href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sell: pill links",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trade in a device" }
+  ],
+  "blocks": [
+    {
+      "type": "pill",
+      "name": "Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Sell: pill links", "blocks": [ { "type": "pill" } ] } ]
+}
+{% endschema %}

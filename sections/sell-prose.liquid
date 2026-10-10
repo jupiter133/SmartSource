@@ -1,0 +1,21 @@
+{%- comment -%} Plain text block for the sell pages: a centered heading, a few paragraphs and an optional button. {%- endcomment -%}
+<section class="section page-width sx sx-prose">
+  {%- if section.settings.heading != blank -%}<h2 class="sx-title">{{ section.settings.heading }}</h2>{%- endif -%}
+  {%- if section.settings.text != blank -%}<div class="rte sx-prose__text">{% render 'sell-text', text: section.settings.text %}</div>{%- endif -%}
+  {%- if section.settings.button_label != blank -%}
+    <p class="sx-prose__cta"><a class="sx-pill" href="{{ section.settings.button_link | default: '#sell-quote' }}"{% if section.settings.button_link == blank %} data-sell-start{% endif %}>{{ section.settings.button_label }}</a></p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Sell: text",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How does trade-in work at SmartSource?" },
+    { "type": "richtext", "id": "text", "label": "Text", "info": "Can use {quote_valid_days}, {payment_business_days}, [if_free_return]...[/if_free_return] and [if_instore_pay]...[/if_instore_pay]." },
+    { "type": "text", "id": "button_label", "label": "Button" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave blank to open the quote wizard on this page." }
+  ],
+  "presets": [ { "name": "Sell: text" } ]
+}
+{% endschema %}
