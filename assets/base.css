@@ -2807,3 +2807,6 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 @media (max-width:749px){.mp-device__price{font-size:16px}}
 /* Mobile menu already has the "Mobile plans" dropdown, so hide the duplicate quick link there */
 @media (max-width:749px){.nav-side--plans{display:none}}
+/* What we pay: View all link */
+.pay-viewall{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.pay-viewall:hover{text-decoration-thickness:2px}

@@ -6,6 +6,8 @@
 {%- endcomment -%}
 {%- liquid
   assign quote_url = section.settings.quote_page | default: request.path
+  assign row_limit = section.settings.limit | default: 0
+  assign view_all_url = section.settings.view_all_page | default: '/pages/what-we-pay'
   assign tabs = section.blocks | where: 'type', 'tab'
   if settings.prices_updated_date != blank
     assign updated = settings.prices_updated_date
@@ -64,13 +66,14 @@
       -%}
       {%- if recs != blank -%}
         {%- assign sorted = recs | remove_first: '¦' | split: '¦' | sort -%}
-        <div class="pay-panel" id="pay-panel-{{ block.id }}" role="tabpanel" aria-labelledby="pay-tab-{{ block.id }}" data-pay-panel {{ block.shopify_attributes }}{% unless forloop.first %} hidden{% endunless %}>
+        <div class="pay-panel" id="pay-panel-{{ block.id }}" role="tabpanel" aria-labelledby="pay-tab-{{ block.id }}" data-pay-panel data-pay-key="{{ block.settings.label | handleize }}" {{ block.shopify_attributes }}{% unless forloop.first %} hidden{% endunless %}>
           <div class="pay-panel__head">
             <h3>How much is my {{ block.settings.noun }} worth?</h3>
             <p class="muted">{{ section.settings.panel_line }}{% unless settings.sell_live %} <span class="wiz-preview-tag">Preview</span>{% endunless %}</p>
           </div>
           <ul class="pay-list" role="list">
             {%- for r in sorted -%}
+              {%- if row_limit > 0 and forloop.index > row_limit -%}{%- break -%}{%- endif -%}
               {%- assign f = r | split: '~' -%}
               {%- assign best = f[3] | times: 1.0 -%}
               {%- assign sealed = f[4] | times: 1.0 -%}
@@ -87,6 +90,9 @@
               </li>
             {%- endfor -%}
           </ul>
+          {%- if row_limit > 0 and sorted.size > row_limit -%}
+            <a class="pay-viewall" href="{{ view_all_url }}?tab={{ block.settings.label | handleize }}">View all {{ sorted.size }} {{ block.settings.noun }} prices <span aria-hidden="true">→</span></a>
+          {%- endif -%}
         </div>
       {%- endif -%}
     {%- endfor -%}
@@ -104,7 +110,7 @@
   {%- if panels != blank -%}
     <div class="pay-tabs" role="tablist" aria-label="Device type" data-pay-tabs>
       {%- for block in tabs -%}
-        <button type="button" class="pay-tab" role="tab" id="pay-tab-{{ block.id }}" aria-controls="pay-panel-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %} data-pay-tab>{{ block.settings.label }}</button>
+        <button type="button" class="pay-tab" role="tab" id="pay-tab-{{ block.id }}" aria-controls="pay-panel-{{ block.id }}" data-pay-key="{{ block.settings.label | handleize }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %} data-pay-tab>{{ block.settings.label }}</button>
       {%- endfor -%}
     </div>
     {{ panels }}
@@ -116,7 +122,7 @@
   <div class="sell-pay__foot">
     <p class="sell-pay__note">Prices updated {{ updated }}. {% render 'sell-text', text: section.settings.footnote %}</p>
     {%- if section.settings.cta_label != blank -%}
-      <a class="btn btn--accent btn--lg" href="#sell-quote" data-sell-start>{{ section.settings.cta_label }}</a>
+      <a class="btn btn--accent btn--lg" href="{% if section.settings.quote_page != blank %}{{ section.settings.quote_page }}{% endif %}#sell-quote"{% if section.settings.quote_page == blank %} data-sell-start{% endif %}>{{ section.settings.cta_label }}</a>
     {%- endif -%}
   </div>
 </section>
@@ -127,7 +133,8 @@ function pick(t,focus){tabs.forEach(function(x){var on=x===t;x.setAttribute('ari
 tabs.forEach(function(t,i){t.addEventListener('click',function(){pick(t)});t.addEventListener('keydown',function(e){var k=e.key,j=k==='ArrowRight'?i+1:k==='ArrowLeft'?i-1:k==='Home'?0:k==='End'?tabs.length-1:null;if(j===null)return;e.preventDefault();pick(tabs[(j+tabs.length)%tabs.length],true)})});
 // a tab whose brand has no priced models has no panel: hide it
 tabs.forEach(function(t){if(!document.getElementById(t.getAttribute('aria-controls')))t.hidden=true});
-var first=tabs.find(function(t){return !t.hidden});if(first&&first.getAttribute('aria-selected')!=='true')pick(first)})();
+var want=new URLSearchParams(location.search).get('tab');var wt=want&&tabs.find(function(t){return !t.hidden&&t.dataset.payKey===want});
+var first=wt||tabs.find(function(t){return !t.hidden});if(first&&first.getAttribute('aria-selected')!=='true')pick(first)})();
 </script>
 {%- endif -%}
 
@@ -141,6 +148,8 @@ var first=tabs.find(function(t){return !t.hidden});if(first&&first.getAttribute(
     { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" values are for the top storage option, brand new and sealed where we buy sealed, otherwise Like New. Your final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },
     { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on this page." },
+    { "type": "number", "id": "limit", "label": "Models shown per tab", "default": 9, "info": "0 = show every model. When there are more, a \"View all\" link opens the full price page." },
+    { "type": "url", "id": "view_all_page", "label": "Full price list page", "info": "Defaults to /pages/what-we-pay" },
     { "type": "paragraph", "content": "Each tab lists every active device of one brand and category from Content > Metaobjects, most valuable first. Prices update automatically." }
   ],
   "blocks": [

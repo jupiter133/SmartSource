@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "main": {
+      "type": "sell-what-we-pay",
+      "settings": {
+        "heading": "What we pay for every device",
+        "subtext": "Every model we buy and our current top offer. Pick yours for an exact quote.",
+        "limit": 0,
+        "quote_page": "/pages/sell-your-device"
+      },
+      "blocks": {
+        "tab_iphone": {
+          "type": "tab",
+          "settings": {
+            "label": "iPhone",
+            "noun": "iPhone",
+            "brand": "Apple",
+            "category": "Smartphone"
+          }
+        },
+        "tab_samsung": {
+          "type": "tab",
+          "settings": {
+            "label": "Samsung",
+            "noun": "Samsung Galaxy",
+            "brand": "Samsung",
+            "category": "Smartphone"
+          }
+        },
+        "tab_pixel": {
+          "type": "tab",
+          "settings": {
+            "label": "Pixel",
+            "noun": "Google Pixel",
+            "brand": "Google",
+            "category": "Smartphone"
+          }
+        },
+        "tab_ipad": {
+          "type": "tab",
+          "settings": {
+            "label": "iPad",
+            "noun": "iPad",
+            "brand": "Apple",
+            "category": "Tablet"
+          }
+        },
+        "tab_watch": {
+          "type": "tab",
+          "settings": {
+            "label": "Apple Watch",
+            "noun": "Apple Watch",
+            "brand": "Apple",
+            "category": "Smartwatch"
+          }
+        }
+      },
+      "block_order": [
+        "tab_iphone",
+        "tab_samsung",
+        "tab_pixel",
+        "tab_ipad",
+        "tab_watch"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
