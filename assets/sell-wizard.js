@@ -63,10 +63,20 @@
   const famMatch = (f, d) => d.c === f.cat && (!f.brand || d.b === f.brand) && (!f.match.length || f.match.some((m) => norm(d.n).includes(m)));
   const families = lock ? [] : (config.families || []).map((f) => ({ ...f, match: String(f.match || '').split(',').map(norm).filter(Boolean) }))
     .filter((f) => byHandle(categories, f.cat) && devices.some((d) => famMatch(f, d)));
-  const famOf = (id) => families.find((f) => f.id === id) || null;
-  const famFor = (d) => (d && families.find((f) => famMatch(f, d))?.id) || null;
+  // With device types the main page asks Brand first (step 1), then Device type (step 2). Classic flow: Category, then Brand.
+  const famMode = families.length > 0;
+  const pseudoFam = (h) => { const cat = byHandle(categories, h); return cat ? { id: `cat:${h}`, n: cat.n, cat: h, brand: null, match: [], i: null, dev: '' } : null; };
+  const famOf = (id) => (id && (families.find((f) => f.id === id) || (String(id).startsWith('cat:') ? pseudoFam(String(id).slice(4)) : null))) || null;
+  const famFor = (d) => (d ? families.find((f) => famMatch(f, d))?.id || (famMode ? `cat:${d.c}` : null) : null);
   const inFam = (d, id) => { const f = famOf(id); return !f || famMatch(f, d); };
-  const famImage = (f) => f.i || imageFor(byHandle(devices, f.dev)) || imageFor(devices.filter((d) => famMatch(f, d) && d.i).sort((a, b) => topPrice(b.h) - topPrice(a.h))[0]);
+  // Device types for a brand, in block order; a brand's models no device type covers get one card per category.
+  const famsForBrand = (b) => {
+    const own = devices.filter((d) => d.b === b);
+    const extra = [...new Set(own.filter((d) => !families.some((f) => famMatch(f, d))).map((d) => d.c))].map(pseudoFam).filter(Boolean);
+    return families.filter((f) => own.some((d) => famMatch(f, d))).concat(extra);
+  };
+  const famImage = (f, b) => f.i || imageFor(byHandle(devices, f.dev)) || imageFor(devices.filter((d) => famMatch(f, d) && (!b || d.b === b) && d.i).sort((a, b2) => topPrice(b2.h) - topPrice(a.h))[0]);
+  const brandLogo = (b) => b.i || (config.brandLogos || {})[b.h] || null;
   const extras = Boolean(config.modelExtras); // model step: "Get up to" prices, search and Load more
   const batch = Math.max(4, Number(config.modelBatch) || 11);
 
@@ -96,8 +106,8 @@
     return Boolean(d.name && d.name.trim() && emailOk && d.method && (d.method !== 'dropoff' || d.store || !$('[data-detail="store"] option[value]:not([value=""])')));
   };
   const complete = (n) => ({
-    1: () => Boolean(state.cur.cat),
-    2: () => Boolean(state.cur.brand),
+    1: () => Boolean(famMode ? state.cur.brand : state.cur.cat),
+    2: () => Boolean(famMode ? state.cur.fam && state.cur.cat : state.cur.brand),
     3: () => Boolean(state.cur.device),
     4: () => Boolean(state.cur.storage),
     5: () => Boolean(curPrice()),
@@ -110,6 +120,9 @@
     return n === 5 && complete(5) ? 6 : n;
   };
   const allowed = (n) => n === 7 || n <= firstOpen() || (n === 6 && state.items.length > 0);
+  // Steps the wizard filled in by itself (one device type for the brand, one storage option): Previous skips them.
+  const autoStep = (n) => (n === 2 && famMode && Boolean(state.cur.brand) && famsForBrand(state.cur.brand).length === 1)
+    || (n === 4 && Boolean(state.cur.device) && storagesFor(state.cur.device).length === 1);
 
   // ---------- rendering helpers ----------
   const el = (tag, attrs = {}, ...kids) => {
@@ -208,8 +221,10 @@
     const c = state.cur;
     let nodes = [];
     if (n === 1) {
-      if (families.length) {
-        nodes = families.map((f) => card({ name: 'wiz-fam', value: f.id, checked: c.fam === f.id, title: f.n, media: thumb(famImage(f)), cls: 'wiz-card--cat wiz-card--fam' }));
+      if (famMode) {
+        const count = (b) => devices.filter((d) => d.b === b.h).length;
+        nodes = brands.filter((b) => count(b) > 0).sort((a, b) => count(b) - count(a) || a.s - b.s)
+          .map((b) => card({ name: 'wiz-brand', value: b.h, checked: c.brand === b.h, title: b.n, media: brandLogo(b) ? thumb(brandLogo(b), '') : el('span', { class: 'wiz-card__mono', text: b.n.slice(0, 1) }), cls: 'wiz-card--brand' }));
         (config.links || []).filter((l) => l.n && l.u).forEach((l) => nodes.push(el('a', { class: 'wiz-card wiz-card--cat wiz-card--link', href: l.u },
           el('span', { class: 'wiz-card__media' }, l.i ? thumb(l.i) : linkIcon()),
           el('span', { class: 'wiz-card__name', text: l.n }),
@@ -219,6 +234,12 @@
         nodes = categories.filter((cat) => used.has(cat.h)).map((cat) => card({ name: 'wiz-cat', value: cat.h, checked: c.cat === cat.h, title: cat.n, media: thumb(cat.i), cls: 'wiz-card--cat' }));
       }
       if (!nodes.length) nodes = [empty("We're updating our prices. Check back soon, or visit one of our stores.")];
+    } else if (n === 2 && famMode) {
+      const b = byHandle(brands, c.brand);
+      const title = $('[data-step="2"] .wiz-step__title');
+      if (title && b) title.textContent = `Which ${b.n} device?`;
+      nodes = b ? famsForBrand(b.h).map((f) => card({ name: 'wiz-fam', value: f.id, checked: c.fam === f.id, title: f.n, media: thumb(famImage(f, b.h)), cls: 'wiz-card--cat wiz-card--fam' })) : [];
+      if (!nodes.length) nodes = [empty('Pick a brand first.')];
     } else if (n === 2) {
       const used = new Set(devices.filter((d) => d.c === c.cat && inFam(d, c.fam)).map((d) => d.b));
       nodes = brands.filter((b) => used.has(b.h)).map((b) => card({ name: 'wiz-brand', value: b.h, checked: c.brand === b.h, title: b.n, media: b.i ? thumb(b.i) : el('span', { class: 'wiz-card__mono', text: b.n.slice(0, 1) }), cls: 'wiz-card--brand' }));
@@ -373,6 +394,7 @@
     const d = byHandle(devices, handle);
     if (!d) return false;
     state.cur = { cat: d.c, brand: d.b, fam: famFor(d), device: d.h, storage: null, cond: null };
+    state.jump = null;
     const sts = storagesFor(d.h);
     if (sts.length === 1) state.cur.storage = sts[0];
     return true;
@@ -402,8 +424,12 @@
     else if (t.name === 'wiz-fam') {
       const f = famOf(t.value);
       if (!f) return;
-      const hasBrand = f.brand && devices.some((d) => famMatch(f, d) && d.b === f.brand);
-      state.cur = { ...fresh().cur, cat: f.cat, brand: hasBrand ? f.brand : null, fam: f.id };
+      state.cur = { ...fresh().cur, brand: c.brand, cat: f.cat, fam: f.id };
+      resetModelSearch();
+    } else if (t.name === 'wiz-brand' && famMode) {
+      state.cur = { ...fresh().cur, brand: t.value };
+      const fams = famsForBrand(t.value);
+      if (fams.length === 1) Object.assign(state.cur, { fam: fams[0].id, cat: fams[0].cat }); // one device type: skip that step
       resetModelSearch();
     } else if (t.name === 'wiz-brand') { state.cur = { ...fresh().cur, cat: c.cat, fam: c.fam, brand: t.value }; resetModelSearch(); }
     else if (t.name === 'wiz-device') { selectDevice(t.value); }
@@ -452,8 +478,10 @@
       return goTo(5);
     }
     if (state.step <= minStep && state.items.length) return goTo(6);
-    if (state.step === 3 && famOf(state.cur.fam)?.brand) return goTo(1); // the brand came with the device type card
-    goTo(state.step - 1);
+    if (state.jump && state.jump.at === state.step) { const back = state.jump.back; state.jump = null; return goTo(back); } // after a search jump
+    let n = state.step - 1;
+    while (n > minStep && autoStep(n)) n -= 1; // skip steps that were filled in automatically
+    goTo(n);
   });
   $('[data-getpaid]').addEventListener('click', () => { if (addCurrent()) goTo(6); });
   $('[data-addanother]').addEventListener('click', () => {
@@ -473,7 +501,14 @@
     let results = [];
     let active = -1;
     const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
-    const choose = (d) => { close(); input.value = ''; if (selectDevice(d.h)) goTo(Math.min(firstOpen(), 5)); };
+    const choose = (d) => {
+      close();
+      input.value = '';
+      const from = state.step;
+      if (!selectDevice(d.h)) return;
+      goTo(Math.min(firstOpen(), 5));
+      if (state.step > from + 1) { state.jump = { at: state.step, back: from }; save(); } // Previous returns to the search
+    };
     const setActive = (i) => {
       const opts = $$('[role="option"]:not([aria-disabled])', list);
       if (!opts.length) return;

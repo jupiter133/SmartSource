@@ -2892,3 +2892,7 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 .sbh--centered .sbh__cta{margin-top:24px}
 .sbh--centered .sbh__note{margin-top:12px;text-align:left}
 @media (max-width:749px){.sbh--centered .sbh__inner{padding-block:32px 0}.sbh--centered .sbh__title{font-size:clamp(2.2rem,1.4rem + 5vw,3rem)}}
+.wiz-card--brand .wiz-card__media img{padding:14% 26%}
+.wiz-progress__btn.is-done .wiz-progress__num{font-size:0}
+.wiz-progress__btn.is-done .wiz-progress__num::after{content:"";width:11px;height:6px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-1px) rotate(-45deg)}
+.wiz-card--brand .wiz-card__media img[src*="logo-brand-samsung"],.wiz-card--brand .wiz-card__media img[src*="logo-brand-sony"]{padding:6% 12%}

@@ -51,7 +51,11 @@
 
   <nav class="wiz-progress" aria-label="Quote steps" data-progress style="--wiz-steps: {{ 7 | minus: min_step }}">
     <ol role="list">
-      {%- assign labels = 'Device,Brand,Model,Storage,Condition,Details' | split: ',' -%}
+      {%- if families.size > 0 and min_step == 1 -%}
+        {%- assign labels = 'Brand,Device,Model,Storage,Condition,Details' | split: ',' -%}
+      {%- else -%}
+        {%- assign labels = 'Device,Brand,Model,Storage,Condition,Details' | split: ',' -%}
+      {%- endif -%}
       {%- for label in labels -%}
         <li{% if forloop.index < min_step %} hidden{% endif %}>
           <button type="button" class="wiz-progress__btn" data-goto="{{ forloop.index }}" disabled>
@@ -76,12 +80,12 @@
           </div>
           <ul class="sell-search__list" id="WizSearchList-{{ section.id }}" role="listbox" aria-label="Matching devices" hidden data-wiz-search-list></ul>
         </div>
-        <p class="wiz-or"><span>{% if families.size > 0 %}or choose your device{% else %}or pick a category{% endif %}</span></p>
+        <p class="wiz-or"><span>{% if families.size > 0 %}or choose a brand{% else %}or pick a category{% endif %}</span></p>
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Category</legend><div class="wiz-cards wiz-cards--cats" data-options="1"></div></fieldset>
       </div>
 
       <div class="wiz-step" data-step="2" role="group" aria-labelledby="WizStep2-{{ section.id }}" hidden>
-        <h3 class="wiz-step__title" id="WizStep2-{{ section.id }}" tabindex="-1">Select brand</h3>
+        <h3 class="wiz-step__title" id="WizStep2-{{ section.id }}" tabindex="-1">{% if families.size > 0 %}Select device type{% else %}Select brand{% endif %}</h3>
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Brand</legend><div class="wiz-cards wiz-cards--brands" data-options="2"></div></fieldset>
       </div>
 
@@ -203,7 +207,7 @@
         <div class="wiz-bar__btns">
           <button type="button" class="btn wiz-bar__prev" data-wiz-prev>Previous</button>
           <button type="button" class="btn btn--dark wiz-bar__next" data-wiz-next disabled>Next</button>
-          <button type="button" class="btn btn--accent wiz-bar__next" data-getpaid hidden>Get paid</button>
+          <button type="button" class="btn btn--accent wiz-bar__next" data-getpaid hidden>Next</button>
           <button type="button" class="btn wiz-bar__add" data-addanother hidden><span class="wiz-long">Accept &amp; add another device</span><span class="wiz-short">+ Add another</span></button>
         </div>
       </div>
@@ -253,6 +257,10 @@
           {%- endif -%}
         {%- endfor -%}
       ],
+      "brandLogos": {
+        {%- assign logo_brands = 'apple,google,microsoft,nintendo,samsung,sony' | split: ',' -%}
+        {%- for lb in logo_brands -%}{{ lb | json }}:{{ 'logo-brand-' | append: lb | append: '.svg' | asset_url | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
+      },
       "links": [
         {%- for block in link_cards -%}
           {"n":{{ block.settings.label | json }},"t":{{ block.settings.text | json }},"u":{{ block.settings.url | json }},"i":{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 400 | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
@@ -304,7 +312,7 @@
       "type": "family",
       "name": "Device type card",
       "settings": [
-        { "type": "paragraph", "content": "Device type cards replace the category cards on the first step (not on brand pages that lock the wizard). Each opens the models of one category and brand, optionally only those whose name contains a word." },
+        { "type": "paragraph", "content": "With device type cards the first step asks for the brand, then shows that brand's device types (skipped when a brand has only one). Not used on brand pages that lock the wizard. Each card opens the models of one category and brand, optionally only those whose name contains a word." },
         { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
         { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Must match a buyback category name." },
         { "type": "text", "id": "brand", "label": "Brand name", "default": "Apple", "info": "Must match a buyback brand name. Blank = ask for the brand next." },

@@ -199,14 +199,14 @@
       },
       "block_order": [
         "fam_iphone",
-        "fam_watch",
         "fam_ipad",
+        "fam_watch",
         "fam_galaxy_s",
-        "fam_pixel",
-        "fam_galaxy_a",
         "fam_fold",
         "fam_flip",
+        "fam_galaxy_a",
         "fam_tab",
+        "fam_pixel",
         "fam_console",
         "link_other",
         "condition_new",
@@ -520,5 +520,3 @@
     "cta"
   ]
 }
-
-
