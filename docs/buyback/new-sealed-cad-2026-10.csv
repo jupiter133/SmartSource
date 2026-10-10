@@ -1,0 +1,284 @@
+brand,model,device_handle,storage,brand_new_cad,used_like_new_cad,top_storage
+Apple,iPhone 18 Pro Max,iphone-18-pro-max,256GB,1750,,
+Apple,iPhone 18 Pro Max,iphone-18-pro-max,512GB,2010,,
+Apple,iPhone 18 Pro Max,iphone-18-pro-max,1TB,2210,,
+Apple,iPhone 18 Pro Max,iphone-18-pro-max,2TB,2400,,yes
+Apple,iPhone 18 Pro,iphone-18-pro,256GB,1530,,
+Apple,iPhone 18 Pro,iphone-18-pro,512GB,1820,,
+Apple,iPhone 18 Pro,iphone-18-pro,1TB,2100,,yes
+Apple,iPhone 17 Pro Max,iphone-17-pro-max,256GB,1350,1075,
+Apple,iPhone 17 Pro Max,iphone-17-pro-max,512GB,1550,1161,
+Apple,iPhone 17 Pro Max,iphone-17-pro-max,1TB,1700,1247,
+Apple,iPhone 17 Pro Max,iphone-17-pro-max,2TB,1850,1333,yes
+Apple,iPhone 17 Pro,iphone-17-pro,256GB,1170,1030,
+Apple,iPhone 17 Pro,iphone-17-pro,512GB,1380,1113,
+Apple,iPhone 17 Pro,iphone-17-pro,1TB,1600,1195,yes
+Apple,iPhone Air,iphone-air,256GB,800,820,
+Apple,iPhone Air,iphone-air,512GB,950,885,
+Apple,iPhone Air,iphone-air,1TB,1100,951,yes
+Apple,iPhone 17,iphone-17,256GB,660,800,
+Apple,iPhone 17,iphone-17,512GB,900,864,yes
+Apple,iPhone 17e,iphone-17e,256GB,460,,
+Apple,iPhone 17e,iphone-17e,512GB,630,,yes
+Apple,iPhone 16 Pro Max,iphone-16-pro-max,256GB,1060,910,
+Apple,iPhone 16 Pro Max,iphone-16-pro-max,512GB,1250,983,
+Apple,iPhone 16 Pro Max,iphone-16-pro-max,1TB,1450,1056,yes
+Apple,iPhone 16 Pro,iphone-16-pro,128GB,880,702,
+Apple,iPhone 16 Pro,iphone-16-pro,256GB,1010,759,
+Apple,iPhone 16 Pro,iphone-16-pro,512GB,1100,815,
+Apple,iPhone 16 Pro,iphone-16-pro,1TB,1200,871,yes
+Apple,iPhone 16 Plus,iphone-16-plus,128GB,580,609,
+Apple,iPhone 16 Plus,iphone-16-plus,256GB,690,657,
+Apple,iPhone 16 Plus,iphone-16-plus,512GB,800,706,yes
+Apple,iPhone 16,iphone-16,128GB,570,580,
+Apple,iPhone 16,iphone-16,256GB,670,627,
+Apple,iPhone 16,iphone-16,512GB,780,673,yes
+Apple,iPhone 16e,iphone-16e,128GB,320,,
+Apple,iPhone 16e,iphone-16e,256GB,380,,
+Apple,iPhone 16e,iphone-16e,512GB,440,,yes
+Apple,iPhone 15 Pro Max,iphone-15-pro-max,256GB,730,671,
+Apple,iPhone 15 Pro Max,iphone-15-pro-max,512GB,860,724,
+Apple,iPhone 15 Pro Max,iphone-15-pro-max,1TB,1000,778,yes
+Apple,iPhone 15 Pro,iphone-15-pro,128GB,580,537,
+Apple,iPhone 15 Pro,iphone-15-pro,256GB,670,580,
+Apple,iPhone 15 Pro,iphone-15-pro,512GB,740,623,
+Apple,iPhone 15 Pro,iphone-15-pro,1TB,800,666,yes
+Apple,iPhone 15 Plus,iphone-15-plus,128GB,470,462,
+Apple,iPhone 15 Plus,iphone-15-plus,256GB,560,499,
+Apple,iPhone 15 Plus,iphone-15-plus,512GB,650,536,yes
+Apple,iPhone 15,iphone-15,128GB,450,415,
+Apple,iPhone 15,iphone-15,256GB,540,448,
+Apple,iPhone 15,iphone-15,512GB,620,481,yes
+Apple,iPhone 14 Pro Max,iphone-14-pro-max,128GB,550,532,
+Apple,iPhone 14 Pro Max,iphone-14-pro-max,256GB,630,575,
+Apple,iPhone 14 Pro Max,iphone-14-pro-max,512GB,690,617,
+Apple,iPhone 14 Pro Max,iphone-14-pro-max,1TB,750,660,yes
+Apple,iPhone 14 Pro,iphone-14-pro,128GB,440,434,
+Apple,iPhone 14 Pro,iphone-14-pro,256GB,500,469,
+Apple,iPhone 14 Pro,iphone-14-pro,512GB,550,503,
+Apple,iPhone 14 Pro,iphone-14-pro,1TB,600,538,yes
+Apple,iPhone 14 Plus,iphone-14-plus,128GB,360,319,
+Apple,iPhone 14 Plus,iphone-14-plus,256GB,430,344,
+Apple,iPhone 14 Plus,iphone-14-plus,512GB,500,370,yes
+Apple,iPhone 14,iphone-14,128GB,360,361,
+Apple,iPhone 14,iphone-14,256GB,430,390,
+Apple,iPhone 14,iphone-14,512GB,500,419,yes
+Apple,iPhone 13 Pro Max,iphone-13-pro-max,128GB,440,398,
+Apple,iPhone 13 Pro Max,iphone-13-pro-max,256GB,500,429,
+Apple,iPhone 13 Pro Max,iphone-13-pro-max,512GB,550,461,
+Apple,iPhone 13 Pro Max,iphone-13-pro-max,1TB,600,493,yes
+Apple,iPhone 13 Pro,iphone-13-pro,128GB,360,390,
+Apple,iPhone 13 Pro,iphone-13-pro,256GB,420,422,
+Apple,iPhone 13 Pro,iphone-13-pro,512GB,460,453,
+Apple,iPhone 13 Pro,iphone-13-pro,1TB,500,484,yes
+Apple,iPhone 13,iphone-13,128GB,290,269,
+Apple,iPhone 13,iphone-13,256GB,350,290,
+Apple,iPhone 13,iphone-13,512GB,400,312,yes
+Apple,iPhone 13 mini,iphone-13-mini,128GB,250,261,
+Apple,iPhone 13 mini,iphone-13-mini,256GB,290,282,
+Apple,iPhone 13 mini,iphone-13-mini,512GB,340,303,yes
+Apple,iPhone 12 Pro Max,iphone-12-pro-max,128GB,260,290,
+Apple,iPhone 12 Pro Max,iphone-12-pro-max,256GB,300,313,
+Apple,iPhone 12 Pro Max,iphone-12-pro-max,512GB,350,336,yes
+Apple,iPhone 12 Pro,iphone-12-pro,128GB,220,250,
+Apple,iPhone 12 Pro,iphone-12-pro,256GB,260,270,
+Apple,iPhone 12 Pro,iphone-12-pro,512GB,300,290,yes
+Apple,iPhone 12,iphone-12,64GB,180,179,
+Apple,iPhone 12,iphone-12,128GB,220,194,
+Apple,iPhone 12,iphone-12,256GB,250,208,yes
+Samsung,Galaxy Z Fold 8 Ultra,samsung-galaxy-z-fold8-ultra,256GB,1240,,
+Samsung,Galaxy Z Fold 8 Ultra,samsung-galaxy-z-fold8-ultra,512GB,1470,,
+Samsung,Galaxy Z Fold 8 Ultra,samsung-galaxy-z-fold8-ultra,1TB,1700,,yes
+Samsung,Galaxy Z Fold 8,samsung-galaxy-z-fold8,256GB,1170,,
+Samsung,Galaxy Z Fold 8,samsung-galaxy-z-fold8,512GB,1380,,
+Samsung,Galaxy Z Fold 8,samsung-galaxy-z-fold8,1TB,1600,,yes
+Samsung,Galaxy Z Flip 8,samsung-galaxy-z-flip8,256GB,580,,
+Samsung,Galaxy Z Flip 8,samsung-galaxy-z-flip8,512GB,800,,yes
+Samsung,Galaxy S26 Ultra,samsung-galaxy-s26-ultra,256GB,800,,
+Samsung,Galaxy S26 Ultra,samsung-galaxy-s26-ultra,512GB,950,,
+Samsung,Galaxy S26 Ultra,samsung-galaxy-s26-ultra,1TB,1100,,yes
+Samsung,Galaxy S26+,samsung-galaxy-s26-plus,256GB,550,,
+Samsung,Galaxy S26+,samsung-galaxy-s26-plus,512GB,750,,yes
+Samsung,Galaxy S26,samsung-galaxy-s26,256GB,510,,
+Samsung,Galaxy S26,samsung-galaxy-s26,512GB,700,,yes
+Samsung,Galaxy S26 FE,samsung-galaxy-s26-fe,128GB,400,,
+Samsung,Galaxy S26 FE,samsung-galaxy-s26-fe,256GB,550,,yes
+Samsung,Galaxy S25 Ultra,samsung-galaxy-s25-ultra,256GB,720,749,
+Samsung,Galaxy S25 Ultra,samsung-galaxy-s25-ultra,512GB,850,809,
+Samsung,Galaxy S25 Ultra,samsung-galaxy-s25-ultra,1TB,980,869,yes
+Samsung,Galaxy S25+,samsung-galaxy-s25-plus,256GB,490,534,
+Samsung,Galaxy S25+,samsung-galaxy-s25-plus,512GB,670,577,yes
+Samsung,Galaxy S25,samsung-galaxy-s25,128GB,360,546,
+Samsung,Galaxy S25,samsung-galaxy-s25,256GB,490,590,yes
+Samsung,Galaxy S25 FE,samsung-galaxy-s25-fe,128GB,250,,
+Samsung,Galaxy S25 FE,samsung-galaxy-s25-fe,256GB,340,,yes
+Samsung,Galaxy S25 Edge,samsung-galaxy-s25-edge,256GB,400,,
+Samsung,Galaxy S25 Edge,samsung-galaxy-s25-edge,512GB,550,,yes
+Samsung,Galaxy S24 Ultra,samsung-galaxy-s24-ultra,256GB,510,627,
+Samsung,Galaxy S24 Ultra,samsung-galaxy-s24-ultra,512GB,610,677,
+Samsung,Galaxy S24 Ultra,samsung-galaxy-s24-ultra,1TB,700,727,yes
+Samsung,Galaxy S24+,samsung-galaxy-s24-plus,256GB,370,410,
+Samsung,Galaxy S24+,samsung-galaxy-s24-plus,512GB,510,443,yes
+Samsung,Galaxy S24,samsung-galaxy-s24,128GB,260,381,
+Samsung,Galaxy S24,samsung-galaxy-s24,256GB,350,412,yes
+Samsung,Galaxy S24 FE,samsung-galaxy-s24-fe,128GB,230,270,
+Samsung,Galaxy S24 FE,samsung-galaxy-s24-fe,256GB,320,292,yes
+Samsung,Galaxy S23 Ultra,samsung-galaxy-s23-ultra,256GB,360,421,
+Samsung,Galaxy S23 Ultra,samsung-galaxy-s23-ultra,512GB,430,454,
+Samsung,Galaxy S23 Ultra,samsung-galaxy-s23-ultra,1TB,500,488,yes
+Samsung,Galaxy S23+,samsung-galaxy-s23-plus,256GB,250,327,
+Samsung,Galaxy S23+,samsung-galaxy-s23-plus,512GB,340,353,yes
+Samsung,Galaxy S23,samsung-galaxy-s23,128GB,160,263,
+Samsung,Galaxy S23,samsung-galaxy-s23,256GB,220,284,yes
+Samsung,Galaxy S23 FE,samsung-galaxy-s23-fe,128GB,150,186,
+Samsung,Galaxy S23 FE,samsung-galaxy-s23-fe,256GB,200,201,yes
+Samsung,Galaxy Z Fold 7,samsung-galaxy-z-fold7,256GB,1020,,
+Samsung,Galaxy Z Fold 7,samsung-galaxy-z-fold7,512GB,1210,,
+Samsung,Galaxy Z Fold 7,samsung-galaxy-z-fold7,1TB,1400,,yes
+Samsung,Galaxy Z Fold 6,samsung-galaxy-z-fold6,256GB,730,,
+Samsung,Galaxy Z Fold 6,samsung-galaxy-z-fold6,512GB,860,,
+Samsung,Galaxy Z Fold 6,samsung-galaxy-z-fold6,1TB,1000,,yes
+Samsung,Galaxy Z Fold 5,samsung-galaxy-z-fold5,256GB,470,,
+Samsung,Galaxy Z Fold 5,samsung-galaxy-z-fold5,512GB,560,,
+Samsung,Galaxy Z Fold 5,samsung-galaxy-z-fold5,1TB,650,,yes
+Samsung,Galaxy Z Fold 4,samsung-galaxy-z-fold4,256GB,340,,
+Samsung,Galaxy Z Fold 4,samsung-galaxy-z-fold4,512GB,400,,
+Samsung,Galaxy Z Fold 4,samsung-galaxy-z-fold4,1TB,460,,yes
+Samsung,Galaxy Z Flip 7,samsung-galaxy-z-flip7,256GB,470,,
+Samsung,Galaxy Z Flip 7,samsung-galaxy-z-flip7,512GB,640,,yes
+Samsung,Galaxy Z Flip 6,samsung-galaxy-z-flip6,256GB,260,335,
+Samsung,Galaxy Z Flip 6,samsung-galaxy-z-flip6,512GB,360,362,yes
+Samsung,Galaxy Z Flip 5,samsung-galaxy-z-flip5,256GB,190,,
+Samsung,Galaxy Z Flip 5,samsung-galaxy-z-flip5,512GB,260,,yes
+Google,Pixel 11 Pro Fold,google-pixel-11-pro-fold,256GB,1170,,
+Google,Pixel 11 Pro Fold,google-pixel-11-pro-fold,512GB,1380,,
+Google,Pixel 11 Pro Fold,google-pixel-11-pro-fold,1TB,1600,,yes
+Google,Pixel 11 Pro XL,google-pixel-11-pro-xl,256GB,950,,
+Google,Pixel 11 Pro XL,google-pixel-11-pro-xl,512GB,1120,,
+Google,Pixel 11 Pro XL,google-pixel-11-pro-xl,1TB,1300,,yes
+Google,Pixel 11 Pro,google-pixel-11-pro,128GB,840,,
+Google,Pixel 11 Pro,google-pixel-11-pro,256GB,960,,
+Google,Pixel 11 Pro,google-pixel-11-pro,512GB,1060,,
+Google,Pixel 11 Pro,google-pixel-11-pro,1TB,1150,,yes
+Google,Pixel 11,google-pixel-11,128GB,580,,
+Google,Pixel 11,google-pixel-11,256GB,800,,yes
+Google,Pixel 10 Pro Fold,google-pixel-10-pro-fold,256GB,950,995,
+Google,Pixel 10 Pro Fold,google-pixel-10-pro-fold,512GB,1120,1074,
+Google,Pixel 10 Pro Fold,google-pixel-10-pro-fold,1TB,1300,1154,yes
+Google,Pixel 10 Pro XL,google-pixel-10-pro-xl,256GB,800,599,
+Google,Pixel 10 Pro XL,google-pixel-10-pro-xl,512GB,950,647,
+Google,Pixel 10 Pro XL,google-pixel-10-pro-xl,1TB,1100,695,yes
+Google,Pixel 10 Pro,google-pixel-10-pro,128GB,690,532,
+Google,Pixel 10 Pro,google-pixel-10-pro,256GB,800,575,
+Google,Pixel 10 Pro,google-pixel-10-pro,512GB,870,617,
+Google,Pixel 10 Pro,google-pixel-10-pro,1TB,950,660,yes
+Google,Pixel 10,google-pixel-10,128GB,410,380,
+Google,Pixel 10,google-pixel-10,256GB,560,410,yes
+Google,Pixel 10a,google-pixel-10a,128GB,230,308,
+Google,Pixel 10a,google-pixel-10a,256GB,320,333,yes
+Google,Pixel 9 Pro Fold,google-pixel-9-pro-fold,256GB,580,656,
+Google,Pixel 9 Pro Fold,google-pixel-9-pro-fold,512GB,800,708,yes
+Google,Pixel 9 Pro XL,google-pixel-9-pro-xl,128GB,500,415,
+Google,Pixel 9 Pro XL,google-pixel-9-pro-xl,256GB,570,448,
+Google,Pixel 9 Pro XL,google-pixel-9-pro-xl,512GB,620,481,
+Google,Pixel 9 Pro XL,google-pixel-9-pro-xl,1TB,680,514,yes
+Google,Pixel 9 Pro,google-pixel-9-pro,128GB,440,376,
+Google,Pixel 9 Pro,google-pixel-9-pro,256GB,500,406,
+Google,Pixel 9 Pro,google-pixel-9-pro,512GB,550,436,
+Google,Pixel 9 Pro,google-pixel-9-pro,1TB,600,466,yes
+Google,Pixel 9,google-pixel-9,128GB,330,347,
+Google,Pixel 9,google-pixel-9,256GB,450,375,yes
+Google,Pixel 9a,google-pixel-9a,128GB,260,250,
+Google,Pixel 9a,google-pixel-9a,256GB,350,270,yes
+Google,Pixel 8 Pro,google-pixel-8-pro,128GB,260,274,
+Google,Pixel 8 Pro,google-pixel-8-pro,256GB,300,296,
+Google,Pixel 8 Pro,google-pixel-8-pro,512GB,330,318,
+Google,Pixel 8 Pro,google-pixel-8-pro,1TB,360,340,yes
+Google,Pixel 8,google-pixel-8,128GB,220,212,
+Google,Pixel 8,google-pixel-8,256GB,300,229,yes
+Google,Pixel 8a,google-pixel-8a,128GB,160,199,
+Google,Pixel 8a,google-pixel-8a,256GB,220,215,yes
+Apple,"iPad Pro 13"" M5",ipad-pro-13-inch-m5,256GB Wi-Fi,1350,1021,
+Apple,"iPad Pro 13"" M5",ipad-pro-13-inch-m5,256GB Wi-Fi + Cellular,1550,1103,
+Apple,"iPad Pro 13"" M5",ipad-pro-13-inch-m5,512GB Wi-Fi,1700,1184,
+Apple,"iPad Pro 13"" M5",ipad-pro-13-inch-m5,512GB Wi-Fi + Cellular,1850,1266,yes
+Apple,"iPad Pro 11"" M5",ipad-pro-11-inch-m5,256GB Wi-Fi,1240,956,
+Apple,"iPad Pro 11"" M5",ipad-pro-11-inch-m5,256GB Wi-Fi + Cellular,1420,1032,
+Apple,"iPad Pro 11"" M5",ipad-pro-11-inch-m5,512GB Wi-Fi,1560,1109,
+Apple,"iPad Pro 11"" M5",ipad-pro-11-inch-m5,512GB Wi-Fi + Cellular,1700,1185,yes
+Apple,"iPad Pro 13"" M4",ipad-pro-13-inch-m4,256GB Wi-Fi,1170,911,
+Apple,"iPad Pro 13"" M4",ipad-pro-13-inch-m4,256GB Wi-Fi + Cellular,1340,984,
+Apple,"iPad Pro 13"" M4",ipad-pro-13-inch-m4,512GB Wi-Fi,1470,1057,
+Apple,"iPad Pro 13"" M4",ipad-pro-13-inch-m4,512GB Wi-Fi + Cellular,1600,1130,yes
+Apple,"iPad Pro 11"" M4",ipad-pro-11-inch-m4,256GB Wi-Fi,1030,846,
+Apple,"iPad Pro 11"" M4",ipad-pro-11-inch-m4,256GB Wi-Fi + Cellular,1180,914,
+Apple,"iPad Pro 11"" M4",ipad-pro-11-inch-m4,512GB Wi-Fi,1300,981,
+Apple,"iPad Pro 11"" M4",ipad-pro-11-inch-m4,512GB Wi-Fi + Cellular,1410,1049,yes
+Apple,"iPad Pro 12.9"" 6th gen",ipad-pro-12-9-inch-6th-gen-m2,128GB Wi-Fi,850,642,
+Apple,"iPad Pro 12.9"" 6th gen",ipad-pro-12-9-inch-6th-gen-m2,128GB Wi-Fi + Cellular,980,693,
+Apple,"iPad Pro 12.9"" 6th gen",ipad-pro-12-9-inch-6th-gen-m2,256GB Wi-Fi,1080,745,
+Apple,"iPad Pro 12.9"" 6th gen",ipad-pro-12-9-inch-6th-gen-m2,256GB Wi-Fi + Cellular,1170,796,yes
+Apple,"iPad Pro 11"" 4th gen",ipad-pro-11-inch-4th-gen-m2,128GB Wi-Fi,660,522,
+Apple,"iPad Pro 11"" 4th gen",ipad-pro-11-inch-4th-gen-m2,128GB Wi-Fi + Cellular,760,564,
+Apple,"iPad Pro 11"" 4th gen",ipad-pro-11-inch-4th-gen-m2,256GB Wi-Fi,840,605,
+Apple,"iPad Pro 11"" 4th gen",ipad-pro-11-inch-4th-gen-m2,256GB Wi-Fi + Cellular,910,647,yes
+Apple,"iPad Pro 12.9"" 5th gen",ipad-pro-12-9-inch-5th-gen-m1,128GB Wi-Fi,820,590,
+Apple,"iPad Pro 12.9"" 5th gen",ipad-pro-12-9-inch-5th-gen-m1,128GB Wi-Fi + Cellular,950,638,
+Apple,"iPad Pro 12.9"" 5th gen",ipad-pro-12-9-inch-5th-gen-m1,256GB Wi-Fi,1040,685,
+Apple,"iPad Pro 12.9"" 5th gen",ipad-pro-12-9-inch-5th-gen-m1,256GB Wi-Fi + Cellular,1130,732,yes
+Apple,"iPad Pro 11"" 3rd gen",ipad-pro-11-inch-3rd-gen-m1,128GB Wi-Fi,620,513,
+Apple,"iPad Pro 11"" 3rd gen",ipad-pro-11-inch-3rd-gen-m1,128GB Wi-Fi + Cellular,710,554,
+Apple,"iPad Pro 11"" 3rd gen",ipad-pro-11-inch-3rd-gen-m1,256GB Wi-Fi,780,595,
+Apple,"iPad Pro 11"" 3rd gen",ipad-pro-11-inch-3rd-gen-m1,256GB Wi-Fi + Cellular,850,636,yes
+Apple,"iPad Air 13"" M4 (2026)",ipad-air-13-inch-m4,128GB Wi-Fi,820,773,
+Apple,"iPad Air 13"" M4 (2026)",ipad-air-13-inch-m4,128GB Wi-Fi + Cellular,940,835,
+Apple,"iPad Air 13"" M4 (2026)",ipad-air-13-inch-m4,256GB Wi-Fi,1030,897,
+Apple,"iPad Air 13"" M4 (2026)",ipad-air-13-inch-m4,256GB Wi-Fi + Cellular,1120,959,yes
+Apple,"iPad Air 11"" M4 (2026)",ipad-air-11-inch-m4,128GB Wi-Fi,740,,
+Apple,"iPad Air 11"" M4 (2026)",ipad-air-11-inch-m4,128GB Wi-Fi + Cellular,850,,
+Apple,"iPad Air 11"" M4 (2026)",ipad-air-11-inch-m4,256GB Wi-Fi,940,,
+Apple,"iPad Air 11"" M4 (2026)",ipad-air-11-inch-m4,256GB Wi-Fi + Cellular,1020,,yes
+Apple,"iPad Air 13"" M3",ipad-air-13-inch-m3,128GB Wi-Fi,600,702,
+Apple,"iPad Air 13"" M3",ipad-air-13-inch-m3,128GB Wi-Fi + Cellular,690,759,
+Apple,"iPad Air 13"" M3",ipad-air-13-inch-m3,256GB Wi-Fi,750,815,
+Apple,"iPad Air 13"" M3",ipad-air-13-inch-m3,256GB Wi-Fi + Cellular,820,871,yes
+Apple,"iPad Air 11"" M3",ipad-air-11-inch-m3,128GB Wi-Fi,600,592,
+Apple,"iPad Air 11"" M3",ipad-air-11-inch-m3,128GB Wi-Fi + Cellular,690,639,
+Apple,"iPad Air 11"" M3",ipad-air-11-inch-m3,256GB Wi-Fi,750,687,
+Apple,"iPad Air 11"" M3",ipad-air-11-inch-m3,256GB Wi-Fi + Cellular,820,734,yes
+Apple,"iPad Air 13"" M2",ipad-air-13-inch-m2,128GB Wi-Fi,530,681,
+Apple,"iPad Air 13"" M2",ipad-air-13-inch-m2,128GB Wi-Fi + Cellular,600,736,
+Apple,"iPad Air 13"" M2",ipad-air-13-inch-m2,256GB Wi-Fi,660,790,
+Apple,"iPad Air 13"" M2",ipad-air-13-inch-m2,256GB Wi-Fi + Cellular,720,845,yes
+Apple,"iPad Air 11"" M2",ipad-air-11-inch-m2,128GB Wi-Fi,450,538,
+Apple,"iPad Air 11"" M2",ipad-air-11-inch-m2,128GB Wi-Fi + Cellular,510,581,
+Apple,"iPad Air 11"" M2",ipad-air-11-inch-m2,256GB Wi-Fi,560,624,
+Apple,"iPad Air 11"" M2",ipad-air-11-inch-m2,256GB Wi-Fi + Cellular,610,667,yes
+Apple,iPad mini (A17 Pro),ipad-mini-a17-pro,128GB Wi-Fi,470,472,
+Apple,iPad mini (A17 Pro),ipad-mini-a17-pro,128GB Wi-Fi + Cellular,540,510,
+Apple,iPad mini (A17 Pro),ipad-mini-a17-pro,256GB Wi-Fi,600,547,
+Apple,iPad mini (A17 Pro),ipad-mini-a17-pro,256GB Wi-Fi + Cellular,650,585,yes
+Apple,iPad 11th gen (A16),ipad-a16,128GB Wi-Fi,400,395,
+Apple,iPad 11th gen (A16),ipad-a16,128GB Wi-Fi + Cellular,460,427,
+Apple,iPad 11th gen (A16),ipad-a16,256GB Wi-Fi,510,458,
+Apple,iPad 11th gen (A16),ipad-a16,256GB Wi-Fi + Cellular,550,490,yes
+Apple,iPad 10th gen,ipad-10th-gen,64GB Wi-Fi,260,257,
+Apple,iPad 10th gen,ipad-10th-gen,64GB Wi-Fi + Cellular,290,278,
+Apple,iPad 10th gen,ipad-10th-gen,256GB Wi-Fi,320,298,
+Apple,iPad 10th gen,ipad-10th-gen,256GB Wi-Fi + Cellular,350,319,yes
+Apple,Apple Watch Ultra 4,apple-watch-ultra-4,49mm GPS + Cellular,750,,yes
+Apple,Apple Watch Ultra 3,apple-watch-ultra-3,49mm GPS + Cellular,600,443,yes
+Apple,Apple Watch Ultra 2,apple-watch-ultra-2-2024,49mm GPS + Cellular,500,367,yes
+Apple,Apple Watch Ultra (1st gen),apple-watch-ultra,49mm GPS + Cellular,350,164,yes
+Apple,Apple Watch Series 12,apple-watch-series-12,42mm GPS,330,,
+Apple,Apple Watch Series 12,apple-watch-series-12,42mm GPS + Cellular,380,,
+Apple,Apple Watch Series 12,apple-watch-series-12,46mm GPS,410,,
+Apple,Apple Watch Series 12,apple-watch-series-12,46mm GPS + Cellular,450,,yes
+Apple,Apple Watch Series 11,apple-watch-series-11,42mm GPS,220,195,
+Apple,Apple Watch Series 11,apple-watch-series-11,42mm GPS + Cellular,250,211,
+Apple,Apple Watch Series 11,apple-watch-series-11,46mm GPS,280,226,
+Apple,Apple Watch Series 11,apple-watch-series-11,46mm GPS + Cellular,300,242,yes
+Apple,Apple Watch Series 10,apple-watch-series-10,42mm GPS,190,168,
+Apple,Apple Watch Series 10,apple-watch-series-10,42mm GPS + Cellular,220,181,
+Apple,Apple Watch Series 10,apple-watch-series-10,46mm GPS,240,195,
+Apple,Apple Watch Series 10,apple-watch-series-10,46mm GPS + Cellular,260,208,yes

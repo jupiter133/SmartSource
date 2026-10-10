@@ -1,4 +1,5 @@
-{%- comment -%} Buyback catalog JSON (categories, brands, devices with prices). Used by the Sell wizard and the product-page trade-in panel. {%- endcomment -%}
+{%- comment -%} Buyback catalog JSON (categories, brands, devices with prices). Used by the Sell wizard and the product-page trade-in panel.
+  Each price row "p" = [like new, good, fair, cracked, defective, brand new sealed]; null where a condition isn't bought. {%- endcomment -%}
   <script type="application/json" data-sell-catalog>
     {
       "categories": [
@@ -27,7 +28,7 @@
               {%- assign psep = false -%}
               {%- for pr in d.prices.value -%}
                 {%- if psep -%},{%- endif -%}{%- assign psep = true -%}
-                {"st":{{ pr.storage.value | json }},"p":[{{ pr.price_like_new.value | json }},{{ pr.price_good.value | json }},{{ pr.price_fair.value | json }},{{ pr.price_cracked.value | json }},{{ pr.price_defective.value | json }}]}
+                {"st":{{ pr.storage.value | json }},"p":[{{ pr.price_like_new.value | json }},{{ pr.price_good.value | json }},{{ pr.price_fair.value | json }},{{ pr.price_cracked.value | json }},{{ pr.price_defective.value | json }},{{ pr.price_new.value | json }}]}
               {%- endfor -%}
             ]}
           {%- endfor -%}

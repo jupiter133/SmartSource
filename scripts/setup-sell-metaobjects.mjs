@@ -122,6 +122,9 @@ async function addFields(id, type, fields) {
   console.log(`+ ${type}: added ${fields.map((f) => f.key).join(', ')}`);
 }
 
+// null/undefined = not bought in that condition (field left empty), e.g. sealed-only devices have no used prices.
+const dec = (n) => (typeof n === 'number' ? n.toFixed(2) : null);
+
 async function upsert(type, handle, fields) {
   const data = await gql(
     `mutation($handle: MetaobjectHandleInput!, $metaobject: MetaobjectUpsertInput!) {
@@ -170,6 +173,7 @@ async function main() {
     money('price_fair', 'Price: Fair'),
     money('price_cracked', 'Price: Cracked or Minor Issue'),
     money('price_defective', 'Price: Defective'),
+    money('price_new', 'Price: Brand new (sealed)'),
   ]);
   // Device -> its prices. The theme reads prices through this list, so there's no 250-row page limit.
   await ensureDefinition('buyback_device', 'Buyback device', [refList('prices', 'Prices (one entry per storage option)', priceDef)]);
@@ -195,8 +199,8 @@ async function main() {
       const ph = `${d.handle}-${p.storage}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       priceIds.push(await upsert('buyback_price', ph, {
         name: `${d.name} ${p.storage}`, device: id, storage: p.storage,
-        price_like_new: p.like_new.toFixed(2), price_good: p.good.toFixed(2), price_fair: p.fair.toFixed(2),
-        price_cracked: p.cracked.toFixed(2), price_defective: p.defective.toFixed(2),
+        price_like_new: dec(p.like_new), price_good: dec(p.good), price_fair: dec(p.fair),
+        price_cracked: dec(p.cracked), price_defective: dec(p.defective), price_new: dec(p.new),
       }));
     }
     await upsert('buyback_device', d.handle, { prices: JSON.stringify(priceIds) });

@@ -129,6 +129,7 @@
             <span class="wiz-sum__meta" data-sum-meta>Your offer updates as you go.</span>
           </div>
         </div>
+        <dl class="wiz-sum__rows" data-sum-rows hidden></dl>
         <div class="wiz-sum__pay">
           <span>{{ section.settings.pay_label }}</span>
           <strong data-sum-total aria-live="polite" aria-atomic="true">$0</strong>
@@ -205,12 +206,12 @@
     {
       "type": "condition",
       "name": "Condition",
-      "limit": 5,
+      "limit": 6,
       "settings": [
-        { "type": "select", "id": "key", "label": "Price column", "options": [ { "value": "like_new", "label": "Like New" }, { "value": "good", "label": "Good" }, { "value": "fair", "label": "Fair" }, { "value": "cracked", "label": "Cracked or Minor Issue" }, { "value": "defective", "label": "Defective" } ], "default": "good" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Good" },
-        { "type": "text", "id": "summary", "label": "One-line summary", "default": "Normal signs of use, works perfectly." },
-        { "type": "textarea", "id": "checklist", "label": "Checklist", "info": "One item per line.", "default": "Normal signs of wear\nFully functional\nUnlocked Canadian model\nBattery health 84%+\nNo heavy scratches or cracks\nNo liquid damage\nNot iCloud locked or blacklisted" }
+        { "type": "select", "id": "key", "label": "Price column", "info": "Brand new (sealed) only shows for devices that have a sealed price.", "options": [ { "value": "new", "label": "Brand new (sealed)" }, { "value": "like_new", "label": "Like New" }, { "value": "good", "label": "Good" }, { "value": "fair", "label": "Fair" }, { "value": "cracked", "label": "Cracked or Minor Issue" }, { "value": "defective", "label": "Defective" } ], "default": "good" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Good Condition" },
+        { "type": "text", "id": "summary", "label": "One-line summary", "default": "Minor signs of use (light scratches), fully functional." },
+        { "type": "textarea", "id": "checklist", "label": "What qualifies? (one item per line)", "default": "Light scratches or scuffs only\nNo cracks or dents\nEverything works, battery health 80%+\nNot iCloud/Google locked or blacklisted" }
       ]
     },
     {
@@ -226,11 +227,12 @@
     {
       "name": "Sell: quote wizard",
       "blocks": [
-        { "type": "condition", "settings": { "key": "like_new", "title": "Like New", "summary": "Flawless. Looks and works like new.", "checklist": "No visible scratches, scuffs or dents\nFully functional\nUnlocked Canadian model\nBattery health 90%+\nNo liquid damage\nNot iCloud locked or blacklisted" } },
+        { "type": "condition", "settings": { "key": "new", "title": "Brand New / Sealed", "summary": "Factory sealed in original box. Never opened or activated.", "checklist": "Unopened, in the original shrink-wrapped box\nNever powered on or activated\nAll original accessories still sealed inside\nNot carrier or iCloud/Google locked" } },
+        { "type": "condition", "settings": { "key": "like_new", "title": "Like New", "summary": "A-Grade. No scratches or dents. 85%+ battery health.", "checklist": "No visible scratches, scuffs or dents\nScreen and body look like new\nEverything works, battery health 85%+\nNot iCloud/Google locked or blacklisted" } },
         { "type": "condition", "settings": { "key": "good" } },
-        { "type": "condition", "settings": { "key": "fair", "title": "Fair", "summary": "Heavy wear, still works perfectly.", "checklist": "Heavy scratches, scuffs or dents\nFully functional\nNo cracks on the screen or back\nUnlocked Canadian model\nNo liquid damage\nNot iCloud locked or blacklisted" } },
-        { "type": "condition", "settings": { "key": "cracked", "title": "Cracked or Minor Issue", "summary": "Cracked glass, or one small fault.", "checklist": "Cracked screen or back glass, or\nOne minor fault, e.g. weak battery, camera or button\nPowers on and the screen displays\nNot iCloud locked or blacklisted" } },
-        { "type": "condition", "settings": { "key": "defective", "title": "Defective", "summary": "Doesn't power on, or has a major fault.", "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud locked or blacklisted" } },
+        { "type": "condition", "settings": { "key": "fair", "title": "Fair", "summary": "Heavy use, deep scratches or scuffs on frame/back. No cracks.", "checklist": "Deep scratches, scuffs or small dents\nNo cracks on the screen or back\nEverything works" } },
+        { "type": "condition", "settings": { "key": "cracked", "title": "Cracked / Minor Issue", "summary": "Front or back glass cracked. All functions work perfectly.", "checklist": "Cracked front or back glass\nScreen displays and responds to touch\nAll other functions work" } },
+        { "type": "condition", "settings": { "key": "defective", "title": "Defective", "summary": "Doesn't power on, or has a major fault.", "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud/Google locked or blacklisted" } },
         { "type": "store", "settings": { "name": "Store 1 (edit me)", "address": "Street, Toronto, ON" } },
         { "type": "store", "settings": { "name": "Store 2 (edit me)", "address": "Street, Mississauga, ON" } }
       ]

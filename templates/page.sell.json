@@ -102,67 +102,89 @@
       "type": "sell-what-we-pay",
       "settings": {},
       "blocks": {
-        "group_1": {
-          "type": "group",
+        "tab_iphone": {
+          "type": "tab",
           "settings": {
-            "title": "Phones",
-            "categories": "Smartphone"
+            "label": "iPhone",
+            "noun": "iPhone",
+            "brand": "Apple",
+            "category": "Smartphone"
           }
         },
-        "group_2": {
-          "type": "group",
+        "tab_samsung": {
+          "type": "tab",
           "settings": {
-            "title": "Tablets",
-            "categories": "Tablet"
+            "label": "Samsung",
+            "noun": "Samsung Galaxy",
+            "brand": "Samsung",
+            "category": "Smartphone"
           }
         },
-        "group_3": {
-          "type": "group",
+        "tab_pixel": {
+          "type": "tab",
           "settings": {
-            "title": "Laptops",
-            "categories": "Laptop/MacBook, Laptop, MacBook"
+            "label": "Pixel",
+            "noun": "Google Pixel",
+            "brand": "Google",
+            "category": "Smartphone"
           }
         },
-        "group_4": {
-          "type": "group",
+        "tab_ipad": {
+          "type": "tab",
           "settings": {
-            "title": "Watch & Audio",
-            "categories": "Smartwatch, Audio"
+            "label": "iPad",
+            "noun": "iPad",
+            "brand": "Apple",
+            "category": "Tablet"
           }
         },
-        "group_5": {
-          "type": "group",
+        "tab_watch": {
+          "type": "tab",
           "settings": {
-            "title": "Gaming",
-            "categories": "Gaming Console"
+            "label": "Apple Watch",
+            "noun": "Apple Watch",
+            "brand": "Apple",
+            "category": "Smartwatch"
           }
         }
       },
       "block_order": [
-        "group_1",
-        "group_2",
-        "group_3",
-        "group_4",
-        "group_5"
+        "tab_iphone",
+        "tab_samsung",
+        "tab_pixel",
+        "tab_ipad",
+        "tab_watch"
       ]
     },
     "quote": {
       "type": "sell-quote-wizard",
       "settings": {},
       "blocks": {
+        "condition_new": {
+          "type": "condition",
+          "settings": {
+            "key": "new",
+            "title": "Brand New / Sealed",
+            "summary": "Factory sealed in original box. Never opened or activated.",
+            "checklist": "Unopened, in the original shrink-wrapped box\nNever powered on or activated\nAll original accessories still sealed inside\nNot carrier or iCloud/Google locked"
+          }
+        },
         "condition_1": {
           "type": "condition",
           "settings": {
             "key": "like_new",
             "title": "Like New",
-            "summary": "Flawless. Looks and works like new.",
-            "checklist": "No visible scratches, scuffs or dents\nFully functional\nUnlocked Canadian model\nBattery health 90%+\nNo liquid damage\nNot iCloud locked or blacklisted"
+            "summary": "A-Grade. No scratches or dents. 85%+ battery health.",
+            "checklist": "No visible scratches, scuffs or dents\nScreen and body look like new\nEverything works, battery health 85%+\nNot iCloud/Google locked or blacklisted"
           }
         },
         "condition_2": {
           "type": "condition",
           "settings": {
-            "key": "good"
+            "key": "good",
+            "title": "Good Condition",
+            "summary": "Minor signs of use (light scratches), fully functional.",
+            "checklist": "Light scratches or scuffs only\nNo cracks or dents\nEverything works, battery health 80%+\nNot iCloud/Google locked or blacklisted"
           }
         },
         "condition_3": {
@@ -170,17 +192,17 @@
           "settings": {
             "key": "fair",
             "title": "Fair",
-            "summary": "Heavy wear, still works perfectly.",
-            "checklist": "Heavy scratches, scuffs or dents\nFully functional\nNo cracks on the screen or back\nUnlocked Canadian model\nNo liquid damage\nNot iCloud locked or blacklisted"
+            "summary": "Heavy use, deep scratches or scuffs on frame/back. No cracks.",
+            "checklist": "Deep scratches, scuffs or small dents\nNo cracks on the screen or back\nEverything works"
           }
         },
         "condition_4": {
           "type": "condition",
           "settings": {
             "key": "cracked",
-            "title": "Cracked or Minor Issue",
-            "summary": "Cracked glass, or one small fault.",
-            "checklist": "Cracked screen or back glass, or\nOne minor fault, e.g. weak battery, camera or button\nPowers on and the screen displays\nNot iCloud locked or blacklisted"
+            "title": "Cracked / Minor Issue",
+            "summary": "Front or back glass cracked. All functions work perfectly.",
+            "checklist": "Cracked front or back glass\nScreen displays and responds to touch\nAll other functions work"
           }
         },
         "condition_5": {
@@ -189,7 +211,7 @@
             "key": "defective",
             "title": "Defective",
             "summary": "Doesn't power on, or has a major fault.",
-            "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud locked or blacklisted"
+            "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud/Google locked or blacklisted"
           }
         },
         "store_6": {
@@ -208,6 +230,7 @@
         }
       },
       "block_order": [
+        "condition_new",
         "condition_1",
         "condition_2",
         "condition_3",

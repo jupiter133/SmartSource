@@ -11,7 +11,10 @@
 
   const catalog = parse('[data-sell-catalog]');
   const config = parse('[data-sell-config]');
-  const COND_INDEX = { like_new: 0, good: 1, fair: 2, cracked: 3, defective: 4 };
+  const COND_INDEX = { like_new: 0, good: 1, fair: 2, cracked: 3, defective: 4, new: 5 };
+  const USED_KEYS = ['like_new', 'good', 'fair', 'cracked', 'defective'];
+  // "Brand new (sealed)" falls back to these words if the theme editor has no condition block for it yet.
+  const NEW_DEFAULT = { key: 'new', title: 'Brand New / Sealed', summary: 'Factory sealed in original box. Never opened or activated.', checklist: ['Unopened, in the original shrink-wrapped box', 'Never powered on or activated', 'All original accessories still sealed inside', 'Not carrier or iCloud/Google locked'] };
   const STORE_KEY = 'sellQuote:v1';
   const LAST_KEY = 'sellQuote:last';
   const TZ = 'America/Toronto';
@@ -23,6 +26,8 @@
   const pricedDevices = new Set(prices.map((p) => p.d));
   const devices = (catalog.devices || []).filter((d) => pricedDevices.has(d.h));
   const conditions = (config.conditions || []).filter((c) => c.key in COND_INDEX);
+  if (!conditions.some((c) => c.key === 'new')) conditions.unshift(NEW_DEFAULT);
+  else conditions.sort((a, b) => (b.key === 'new') - (a.key === 'new')); // sealed always first
   const byHandle = (list, h) => list.find((x) => x.h === h);
   const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
@@ -34,7 +39,9 @@
     return typeof v === 'number' && v > 0 ? v : null;
   };
   const storagesFor = (device) => [...new Set(prices.filter((p) => p.d === device).map((p) => p.st))].sort((a, b) => storageGB(a) - storageGB(b));
-  const topPrice = (device, storage) => Math.max(0, ...Object.keys(COND_INDEX).map((k) => priceFor(device, storage, k) || 0));
+  // "Up to" = best used price (Like New); the sealed price is shown separately.
+  const usedTop = (device, storage) => Math.max(0, ...USED_KEYS.map((k) => priceFor(device, storage, k) || 0));
+  const hasUsed = (device, storage) => USED_KEYS.some((k) => priceFor(device, storage, k));
   const imageFor = (d) => (d && (d.i || byHandle(categories, d.c)?.i)) || null;
 
   // ---------- state ----------
@@ -96,15 +103,32 @@
     return svg;
   };
   const check = () => el('span', { class: 'wiz-card__check', 'aria-hidden': 'true' });
-  const card = ({ name, value, checked, disabled, cls = '', media, title, meta, badge }) => {
+  const card = ({ name, value, checked, disabled, cls = '', media, title, meta, meta2, badge }) => {
     const input = el('input', { type: 'radio', name, value, checked, disabled });
     return el('label', { class: `wiz-card ${cls}`.trim() },
       input, check(),
       media ? el('span', { class: 'wiz-card__media' }, media) : null,
       badge ? el('span', { class: 'wiz-card__badge', text: badge }) : null,
       el('span', { class: 'wiz-card__name', text: title }),
-      meta ? el('span', { class: 'wiz-card__meta', text: meta }) : null);
+      meta ? el('span', { class: 'wiz-card__meta', text: meta }) : null,
+      meta2 ? el('span', { class: 'wiz-card__meta wiz-card__meta--sealed', text: meta2 }) : null);
   };
+  const ICONS = {
+    new: '<path d="M3.5 7.5L12 3.5l8.5 4-8.5 4z"/><path d="M3.5 7.5v9l8.5 4 8.5-4v-9"/><path d="M12 11.5v9M7.8 5.5l8.4 4"/>',
+    like_new: '<path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+    good: '<circle cx="12" cy="12" r="8.5"/><path d="M8.3 12.4l2.4 2.4 5-5"/>',
+    fair: '<rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M9.6 8.2l3.2-2.1M9.8 13.6l4.4-3"/>',
+    cracked: '<rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M12.6 5.5l-2 4.2 2.6 2.1-2.2 5.2"/>',
+    defective: '<path d="M12 3.5v7.5"/><path d="M6.6 7.2a7.5 7.5 0 1010.8 0"/>',
+  };
+  const condIcon = (key) => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = ICONS[key] || ICONS.good;
+    return el('span', { class: 'wiz-cond__icon' }, svg);
+  };
+  const openConds = new Set(); // condition cards whose "What qualifies?" list is open
   const empty = (msg) => el('p', { class: 'wiz-empty', text: msg });
 
   function renderOptions(n) {
@@ -126,21 +150,38 @@
     } else if (n === 4) {
       const d = byHandle(devices, c.device);
       $('[data-step-sub="4"]').textContent = d ? d.n : '';
-      nodes = d ? storagesFor(d.h).map((st) => card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st, meta: `Up to ${money(topPrice(d.h, st))}`, cls: 'wiz-card--storage' })) : [];
+      nodes = d ? storagesFor(d.h).map((st) => {
+        const used = usedTop(d.h, st);
+        const sealed = priceFor(d.h, st, 'new');
+        return card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st,
+          meta: used ? `Up to ${money(used)}` : (sealed ? `Brand new sealed: ${money(sealed)}` : null),
+          meta2: used && sealed ? `Brand new sealed: ${money(sealed)}` : null, cls: 'wiz-card--storage' });
+      }) : [];
       if (!nodes.length) nodes = [empty('Pick a model first.')];
     } else if (n === 5) {
-      nodes = conditions.map((cond) => {
+      // Sealed is offered only where it has a price; a sealed-only model shows just that option.
+      const used = hasUsed(c.device, c.storage);
+      const shown = conditions.filter((cond) => (cond.key === 'new' ? Boolean(priceFor(c.device, c.storage, 'new')) : used));
+      if (c.cond && !shown.some((cond) => cond.key === c.cond)) c.cond = null;
+      nodes = shown.map((cond) => {
         const price = priceFor(c.device, c.storage, cond.key);
         const id = `WizCond-${cond.key}`;
+        const open = openConds.has(cond.key);
         const input = el('input', { type: 'radio', name: 'wiz-cond', value: cond.key, checked: c.cond === cond.key, disabled: !price, 'aria-describedby': `${id}-sum` });
         const label = el('label', { class: 'wiz-cond__head' },
-          input, check(),
+          input, check(), condIcon(cond.key),
           el('span', { class: 'wiz-cond__text' }, el('span', { class: 'wiz-card__name', text: cond.title }), el('span', { class: 'wiz-card__meta', id: `${id}-sum`, text: cond.summary })),
           el('span', { class: `wiz-cond__price${price ? '' : ' is-na'}`, text: price ? money(price) : 'Not accepted' }));
-        const list = el('ul', { class: 'wiz-cond__list', role: 'list' }, cond.checklist.map((item) => el('li', { text: item })));
-        const more = el('div', { class: 'wiz-cond__more', hidden: c.cond !== cond.key }, list);
-        return el('div', { class: `wiz-cond${c.cond === cond.key ? ' is-selected' : ''}${price ? '' : ' is-disabled'}` }, label, more);
+        const kids = [label];
+        if (cond.checklist && cond.checklist.length) {
+          const toggle = el('button', { type: 'button', class: 'wiz-cond__toggle', 'aria-expanded': String(open), 'aria-controls': `${id}-more`, 'data-cond-toggle': cond.key }, 'What qualifies?');
+          const list = el('ul', { class: 'wiz-cond__list', role: 'list' }, cond.checklist.map((item) => el('li', { text: item })));
+          kids.push(toggle, el('div', { class: 'wiz-cond__more', id: `${id}-more`, hidden: !open }, list));
+        }
+        return el('div', { class: `wiz-cond wiz-cond--${cond.key}${c.cond === cond.key ? ' is-selected' : ''}${price ? '' : ' is-disabled'}` }, ...kids);
       });
+      if (!used && nodes.length) nodes.unshift(el('p', { class: 'wiz-cond-note', text: 'We buy this model brand new and sealed only.' }));
+      if (!nodes.length) nodes = [empty('Pick a storage option first.')];
     }
     box.replaceChildren(...nodes);
   }
@@ -169,7 +210,14 @@
     const cond = conditions.find((x) => x.key === c.cond);
     $('[data-sum-img]').replaceChildren(thumb(imageFor(d)));
     $('[data-sum-name]').textContent = d ? d.n : (state.items.length ? 'Add another device, or get paid' : 'Pick your device');
-    $('[data-sum-meta]').textContent = d ? [c.storage, cond && cond.title].filter(Boolean).join(' · ') || 'Choose storage and condition' : 'Your offer updates as you go.';
+    const rows = $('[data-sum-rows]');
+    if (rows) {
+      rows.hidden = !d;
+      rows.replaceChildren(...[['Device', d && d.n], ['Storage', c.storage], ['Condition', cond && cond.title]].map(([k, v]) => el('div', {}, el('dt', { text: k }), el('dd', { text: v || '–' }))));
+      $('[data-sum-meta]').textContent = d ? '' : 'Your offer updates as you go.';
+    } else {
+      $('[data-sum-meta]').textContent = d ? [c.storage, cond && cond.title].filter(Boolean).join(' · ') || 'Choose storage and condition' : 'Your offer updates as you go.';
+    }
     animateTotal(total());
 
     const list = $('[data-sum-items]');
@@ -271,7 +319,7 @@
     else if (t.name === 'wiz-brand') state.cur = { ...fresh().cur, cat: c.cat, brand: t.value };
     else if (t.name === 'wiz-device') { selectDevice(t.value); }
     else if (t.name === 'wiz-storage') state.cur = { ...c, storage: t.value, cond: null };
-    else if (t.name === 'wiz-cond') { c.cond = t.value; renderOptions(5); $(`input[name="wiz-cond"][value="${t.value}"]`)?.focus(); }
+    else if (t.name === 'wiz-cond') { c.cond = t.value; openConds.add(t.value); renderOptions(5); $(`input[name="wiz-cond"][value="${t.value}"]`)?.focus(); }
     else if (t.dataset && t.dataset.detail) { readDetails(); renderNav(); save(); return; }
     else return;
     renderSummary();
@@ -280,6 +328,16 @@
   });
   // Pointer clicks on steps 1-4 move on automatically; keyboard users stay put and press Next.
   root.addEventListener('click', (e) => {
+    const tog = e.target.closest('[data-cond-toggle]');
+    if (tog) {
+      const key = tog.dataset.condToggle;
+      const more = tog.nextElementSibling;
+      const open = tog.getAttribute('aria-expanded') !== 'true';
+      if (open) openConds.add(key); else openConds.delete(key);
+      tog.setAttribute('aria-expanded', String(open));
+      if (more) more.hidden = !open;
+      return;
+    }
     const input = e.target.closest('.wiz-card')?.querySelector('input[type="radio"]');
     if (!input || e.detail === 0 || !['wiz-cat', 'wiz-brand', 'wiz-device', 'wiz-storage'].includes(input.name)) return;
     clearTimeout(autoTimer);

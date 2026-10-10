@@ -546,6 +546,27 @@ shopify-payment-terms{font-size:13px}
 .sell-pay__foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:20px}
 .sell-pay__note{font-size:13px;color:#55555f;max-width:70ch;margin:0}
 .sell-pay__empty{background:#fff8e1;border:1px dashed #e0b400;border-radius:12px;padding:16px;font-size:14px}
+.pay-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.pay-tab{font:inherit;font-size:15px;font-weight:700;padding:10px 18px;border-radius:99px;border:1.5px solid #dcdce2;background:var(--c-surface);color:var(--c-ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.pay-tab:hover{border-color:var(--c-ink)}
+.pay-tab[aria-selected="true"]{background:var(--c-ink);border-color:var(--c-ink);color:#fff}
+.pay-tab:focus-visible{outline:2px solid var(--c-accent);outline-offset:2px}
+.pay-tab[hidden],.pay-panel[hidden]{display:none}
+.pay-panel{background:var(--c-surface);border-radius:var(--sell-radius);padding:24px;box-shadow:var(--sell-card-shadow)}
+.pay-panel__head{margin-bottom:14px}
+.pay-panel__head h3{font-size:clamp(1.25rem,2.2vw,1.6rem);margin:0 0 4px}
+.pay-panel__head p{margin:0;font-size:14px}
+.pay-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px}
+.pay-list li{border-bottom:1px solid #f1f1f4;min-width:0}
+.pay-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 6px;margin:0 -6px;border-radius:10px;color:var(--c-ink);text-decoration:none;transition:background .2s}
+.pay-row:hover{background:var(--sell-tint)}
+.pay-row:focus-visible{outline:2px solid var(--c-ink);outline-offset:1px}
+.pay-row__model{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pay-row__name{font-weight:500;font-size:14px;overflow-wrap:anywhere}
+.pay-row__sealed{font-size:12px;font-weight:600;color:#0f7a3d}
+.pay-row__price{font-weight:800;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pay-row__price small{font-size:11px;font-weight:600;color:#6b6b76;text-transform:uppercase;letter-spacing:.04em;margin-right:2px}
+.pay-row:hover .pay-row__price{color:var(--c-accent)}
 
 /* ---------- Quote wizard ---------- */
 .sell-wiz{scroll-margin-top:16px}
@@ -625,6 +646,22 @@ shopify-payment-terms{font-size:13px}
 .wiz-cond__list{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
 .wiz-cond__list li{display:flex;gap:8px;align-items:flex-start}
 .wiz-cond__list li::before{content:"";flex-shrink:0;width:14px;height:8px;margin-top:5px;border-left:2px solid #16a34a;border-bottom:2px solid #16a34a;transform:rotate(-45deg)}
+.wiz-cond__icon{width:40px;height:40px;flex-shrink:0;border-radius:12px;display:grid;place-items:center;background:#f1f1f4;color:var(--c-ink);transition:background .2s,color .2s}
+.wiz-cond__icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wiz-cond.is-selected .wiz-cond__icon{background:#fff;color:var(--c-accent)}
+.wiz-cond--new .wiz-cond__icon{background:#e7f8ee;color:#0f7a3d}
+.wiz-cond__toggle{display:inline-flex;align-items:center;gap:6px;margin:-6px 0 14px 108px;padding:2px 0;background:none;border:0;font:inherit;font-size:13px;font-weight:600;color:var(--c-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.wiz-cond__toggle::after{content:"";width:6px;height:6px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.wiz-cond__toggle[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-1px)}
+.wiz-cond__toggle:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px;border-radius:4px}
+.wiz-cond .wiz-cond__more{padding-left:108px}
+.wiz-cond-note{margin:0 0 2px;padding:10px 14px;border-radius:12px;background:var(--sell-tint);font-size:14px;font-weight:600}
+.wiz-card__meta--sealed{color:#0f7a3d;font-weight:600}
+.wiz-sum__rows{display:grid;gap:6px;margin:0;font-size:13px}
+.wiz-sum__rows[hidden]{display:none}
+.wiz-sum__rows div{display:flex;justify-content:space-between;gap:12px;padding-bottom:6px;border-bottom:1px solid #f1f1f4}
+.wiz-sum__rows dt{color:#55555f}
+.wiz-sum__rows dd{margin:0;font-weight:600;text-align:right;min-width:0;overflow-wrap:anywhere}
 .wiz-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
 .wiz-method legend{font-weight:700;margin-bottom:10px;padding:0}
 .wiz-store{margin-top:14px}
@@ -710,6 +747,7 @@ shopify-payment-terms{font-size:13px}
   .sell-hero__visual{max-width:440px}
   .sell-hero__trust-list{grid-template-columns:1fr 1fr}
   .sell-pay__grid{grid-template-columns:1fr 1fr}
+  .pay-list{grid-template-columns:1fr 1fr}
   .wiz-layout{grid-template-columns:1fr}
   .wiz-summary{position:static}
   .trade-banner__card{grid-template-columns:1fr;padding:32px}
@@ -726,6 +764,10 @@ shopify-payment-terms{font-size:13px}
   .sell-hero__trust-list{gap:12px;padding-block:14px}
   .sell-hero__trust-list li{font-size:13px}
   .sell-pay__grid{grid-template-columns:1fr}
+  .pay-list{grid-template-columns:1fr}
+  .pay-panel{padding:16px}
+  .pay-tabs{flex-wrap:nowrap;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:none}
+  .pay-tab{flex-shrink:0;padding:9px 14px;font-size:14px}
   .sell-pay__foot .btn{width:100%}
   .wiz-progress ol{gap:0}
   .wiz-progress__label{display:none}
@@ -736,6 +778,9 @@ shopify-payment-terms{font-size:13px}
   .wiz-card{padding:12px 10px}
   .wiz-cond__head{padding:14px}
   .wiz-cond__more{padding:0 14px 14px 50px}
+  .wiz-cond .wiz-cond__more{padding-left:14px}
+  .wiz-cond__toggle{margin-left:14px}
+  .wiz-cond__icon{width:34px;height:34px}
   .wiz-fields{grid-template-columns:1fr}
   .sell-wiz.is-inview:not(.is-done){padding-bottom:120px}
   .sell-wiz.is-inview:not(.is-done) .wiz-bar{position:fixed;left:0;right:0;bottom:0;z-index:30;border-radius:18px 18px 0 0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));box-shadow:0 -10px 30px #00000024}
