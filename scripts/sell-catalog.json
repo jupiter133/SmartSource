@@ -1,5 +1,5 @@
 {
- "note": "ESTIMATED buyback prices in CAD, except iPhones: real SmartSource prices from October 2026 (docs/buyback/iphone-prices-2026-10.csv) raised 20% (docs/buyback/iphone-prices-2026-10-plus20.csv). Review before launch.",
+ "note": "ESTIMATED buyback prices in CAD, except devices listed in docs/buyback/prices-cad-2026-10.csv: real SmartSource \"Up to\" prices (October 2026), converted from USD at 1.37 (tiers in docs/buyback/tiers-cad-2026-10.csv). Review before launch.",
  "categories": [
   {
    "handle": "smartphone",
@@ -62,6 +62,11 @@
    "handle": "valve",
    "name": "Valve",
    "sort_order": 6
+  },
+  {
+   "handle": "google",
+   "name": "Google",
+   "sort_order": 7
   }
  ],
  "devices": [
@@ -75,27 +80,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 22,
-     "good": 18,
-     "fair": 16,
-     "cracked": 8,
+     "like_new": 25,
+     "good": 21,
+     "fair": 18,
+     "cracked": 10,
      "defective": 5
     },
     {
      "storage": "128GB",
-     "like_new": 24,
-     "good": 20,
-     "fair": 17,
-     "cracked": 10,
+     "like_new": 27,
+     "good": 23,
+     "fair": 19,
+     "cracked": 11,
      "defective": 5
     },
     {
      "storage": "256GB",
-     "like_new": 25,
-     "good": 22,
-     "fair": 18,
-     "cracked": 10,
-     "defective": 5
+     "like_new": 29,
+     "good": 25,
+     "fair": 20,
+     "cracked": 12,
+     "defective": 6
     }
    ],
    "sort_order": 67
@@ -110,27 +115,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 55,
-     "good": 47,
-     "fair": 38,
-     "cracked": 22,
-     "defective": 11
-    },
-    {
-     "storage": "128GB",
-     "like_new": 59,
-     "good": 50,
-     "fair": 41,
-     "cracked": 24,
-     "defective": 12
-    },
-    {
-     "storage": "256GB",
-     "like_new": 64,
+     "like_new": 63,
      "good": 54,
      "fair": 44,
      "cracked": 25,
      "defective": 13
+    },
+    {
+     "storage": "128GB",
+     "like_new": 68,
+     "good": 58,
+     "fair": 48,
+     "cracked": 27,
+     "defective": 14
+    },
+    {
+     "storage": "256GB",
+     "like_new": 73,
+     "good": 62,
+     "fair": 51,
+     "cracked": 29,
+     "defective": 15
     }
    ],
    "sort_order": 66
@@ -145,19 +150,19 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 85,
-     "good": 72,
-     "fair": 60,
-     "cracked": 34,
-     "defective": 17
+     "like_new": 97,
+     "good": 82,
+     "fair": 68,
+     "cracked": 39,
+     "defective": 19
     },
     {
      "storage": "256GB",
-     "like_new": 92,
-     "good": 78,
-     "fair": 65,
-     "cracked": 37,
-     "defective": 18
+     "like_new": 105,
+     "good": 89,
+     "fair": 74,
+     "cracked": 42,
+     "defective": 21
     }
    ],
    "sort_order": 65
@@ -172,27 +177,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 79,
-     "good": 67,
-     "fair": 55,
-     "cracked": 31,
-     "defective": 16
+     "like_new": 91,
+     "good": 77,
+     "fair": 64,
+     "cracked": 36,
+     "defective": 18
     },
     {
      "storage": "128GB",
-     "like_new": 86,
-     "good": 73,
-     "fair": 60,
-     "cracked": 35,
-     "defective": 17
+     "like_new": 98,
+     "good": 83,
+     "fair": 69,
+     "cracked": 39,
+     "defective": 20
     },
     {
      "storage": "256GB",
-     "like_new": 92,
-     "good": 78,
-     "fair": 65,
-     "cracked": 37,
-     "defective": 18
+     "like_new": 105,
+     "good": 89,
+     "fair": 74,
+     "cracked": 42,
+     "defective": 21
     }
    ],
    "sort_order": 64
@@ -207,27 +212,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 79,
-     "good": 67,
-     "fair": 55,
-     "cracked": 31,
-     "defective": 16
+     "like_new": 91,
+     "good": 77,
+     "fair": 64,
+     "cracked": 36,
+     "defective": 18
     },
     {
      "storage": "256GB",
-     "like_new": 86,
-     "good": 73,
-     "fair": 60,
-     "cracked": 35,
-     "defective": 17
+     "like_new": 98,
+     "good": 83,
+     "fair": 69,
+     "cracked": 39,
+     "defective": 20
     },
     {
      "storage": "512GB",
-     "like_new": 92,
-     "good": 78,
-     "fair": 65,
-     "cracked": 37,
-     "defective": 18
+     "like_new": 105,
+     "good": 89,
+     "fair": 74,
+     "cracked": 42,
+     "defective": 21
     }
    ],
    "sort_order": 63
@@ -242,27 +247,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 144,
-     "good": 122,
-     "fair": 101,
-     "cracked": 58,
-     "defective": 29
+     "like_new": 164,
+     "good": 139,
+     "fair": 115,
+     "cracked": 66,
+     "defective": 33
     },
     {
      "storage": "256GB",
-     "like_new": 155,
-     "good": 132,
-     "fair": 108,
-     "cracked": 62,
-     "defective": 31
+     "like_new": 177,
+     "good": 150,
+     "fair": 124,
+     "cracked": 71,
+     "defective": 35
     },
     {
      "storage": "512GB",
-     "like_new": 167,
-     "good": 142,
-     "fair": 116,
-     "cracked": 67,
-     "defective": 34
+     "like_new": 190,
+     "good": 162,
+     "fair": 133,
+     "cracked": 76,
+     "defective": 38
     }
    ],
    "sort_order": 62
@@ -277,27 +282,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 134,
-     "good": 114,
-     "fair": 94,
-     "cracked": 54,
-     "defective": 26
+     "like_new": 153,
+     "good": 130,
+     "fair": 107,
+     "cracked": 61,
+     "defective": 31
     },
     {
      "storage": "128GB",
-     "like_new": 145,
-     "good": 124,
-     "fair": 102,
-     "cracked": 58,
-     "defective": 29
+     "like_new": 166,
+     "good": 141,
+     "fair": 116,
+     "cracked": 66,
+     "defective": 33
     },
     {
      "storage": "256GB",
-     "like_new": 156,
-     "good": 132,
-     "fair": 109,
-     "cracked": 62,
-     "defective": 31
+     "like_new": 178,
+     "good": 151,
+     "fair": 125,
+     "cracked": 71,
+     "defective": 36
     }
    ],
    "sort_order": 61
@@ -312,27 +317,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 154,
-     "good": 131,
-     "fair": 108,
-     "cracked": 61,
-     "defective": 31
+     "like_new": 176,
+     "good": 150,
+     "fair": 123,
+     "cracked": 70,
+     "defective": 35
     },
     {
      "storage": "256GB",
-     "like_new": 167,
-     "good": 142,
-     "fair": 116,
-     "cracked": 67,
-     "defective": 34
+     "like_new": 190,
+     "good": 162,
+     "fair": 133,
+     "cracked": 76,
+     "defective": 38
     },
     {
      "storage": "512GB",
-     "like_new": 179,
-     "good": 152,
-     "fair": 125,
-     "cracked": 72,
-     "defective": 36
+     "like_new": 204,
+     "good": 173,
+     "fair": 143,
+     "cracked": 82,
+     "defective": 41
     }
    ],
    "sort_order": 60
@@ -347,27 +352,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 199,
-     "good": 169,
-     "fair": 139,
-     "cracked": 79,
-     "defective": 40
+     "like_new": 227,
+     "good": 193,
+     "fair": 159,
+     "cracked": 91,
+     "defective": 45
     },
     {
      "storage": "256GB",
-     "like_new": 215,
-     "good": 182,
-     "fair": 150,
-     "cracked": 86,
-     "defective": 43
+     "like_new": 245,
+     "good": 208,
+     "fair": 172,
+     "cracked": 98,
+     "defective": 49
     },
     {
      "storage": "512GB",
-     "like_new": 230,
-     "good": 196,
-     "fair": 161,
-     "cracked": 92,
-     "defective": 46
+     "like_new": 263,
+     "good": 224,
+     "fair": 184,
+     "cracked": 105,
+     "defective": 53
     }
    ],
    "sort_order": 59
@@ -382,27 +387,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 61,
-     "good": 52,
-     "fair": 43,
-     "cracked": 24,
-     "defective": 12
+     "like_new": 70,
+     "good": 60,
+     "fair": 49,
+     "cracked": 28,
+     "defective": 14
     },
     {
      "storage": "128GB",
-     "like_new": 66,
-     "good": 56,
-     "fair": 46,
-     "cracked": 26,
-     "defective": 13
+     "like_new": 75,
+     "good": 64,
+     "fair": 52,
+     "cracked": 30,
+     "defective": 15
     },
     {
      "storage": "256GB",
-     "like_new": 71,
-     "good": 60,
-     "fair": 49,
-     "cracked": 29,
-     "defective": 14
+     "like_new": 81,
+     "good": 69,
+     "fair": 57,
+     "cracked": 32,
+     "defective": 16
     }
    ],
    "sort_order": 58
@@ -417,27 +422,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 146,
-     "good": 125,
-     "fair": 102,
-     "cracked": 59,
-     "defective": 29
+     "like_new": 168,
+     "good": 143,
+     "fair": 118,
+     "cracked": 67,
+     "defective": 34
     },
     {
      "storage": "128GB",
-     "like_new": 158,
-     "good": 134,
-     "fair": 110,
-     "cracked": 64,
-     "defective": 31
+     "like_new": 182,
+     "good": 155,
+     "fair": 127,
+     "cracked": 73,
+     "defective": 36
     },
     {
      "storage": "256GB",
-     "like_new": 170,
-     "good": 145,
-     "fair": 119,
-     "cracked": 68,
-     "defective": 34
+     "like_new": 195,
+     "good": 166,
+     "fair": 136,
+     "cracked": 78,
+     "defective": 39
     }
    ],
    "sort_order": 57
@@ -452,27 +457,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 157,
-     "good": 133,
-     "fair": 110,
-     "cracked": 62,
-     "defective": 31
+     "like_new": 179,
+     "good": 152,
+     "fair": 125,
+     "cracked": 72,
+     "defective": 36
     },
     {
      "storage": "128GB",
-     "like_new": 170,
-     "good": 145,
-     "fair": 119,
-     "cracked": 68,
-     "defective": 34
+     "like_new": 194,
+     "good": 165,
+     "fair": 136,
+     "cracked": 78,
+     "defective": 39
     },
     {
      "storage": "256GB",
-     "like_new": 182,
-     "good": 155,
-     "fair": 127,
-     "cracked": 73,
-     "defective": 36
+     "like_new": 208,
+     "good": 177,
+     "fair": 146,
+     "cracked": 83,
+     "defective": 42
     }
    ],
    "sort_order": 56
@@ -487,27 +492,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 220,
-     "good": 187,
-     "fair": 154,
-     "cracked": 88,
-     "defective": 44
+     "like_new": 250,
+     "good": 212,
+     "fair": 175,
+     "cracked": 100,
+     "defective": 50
     },
     {
      "storage": "256GB",
-     "like_new": 236,
-     "good": 200,
-     "fair": 166,
-     "cracked": 95,
-     "defective": 47
+     "like_new": 270,
+     "good": 230,
+     "fair": 189,
+     "cracked": 108,
+     "defective": 54
     },
     {
      "storage": "512GB",
-     "like_new": 254,
-     "good": 216,
-     "fair": 178,
-     "cracked": 102,
-     "defective": 50
+     "like_new": 290,
+     "good": 246,
+     "fair": 203,
+     "cracked": 116,
+     "defective": 58
     }
    ],
    "sort_order": 55
@@ -522,27 +527,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 253,
-     "good": 215,
-     "fair": 178,
-     "cracked": 101,
-     "defective": 50
+     "like_new": 290,
+     "good": 246,
+     "fair": 203,
+     "cracked": 116,
+     "defective": 58
     },
     {
      "storage": "256GB",
-     "like_new": 274,
-     "good": 233,
-     "fair": 192,
-     "cracked": 109,
-     "defective": 55
+     "like_new": 313,
+     "good": 266,
+     "fair": 219,
+     "cracked": 125,
+     "defective": 63
     },
     {
      "storage": "512GB",
-     "like_new": 294,
-     "good": 250,
-     "fair": 206,
-     "cracked": 118,
-     "defective": 59
+     "like_new": 336,
+     "good": 286,
+     "fair": 235,
+     "cracked": 134,
+     "defective": 67
     }
    ],
    "sort_order": 54
@@ -557,27 +562,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 229,
-     "good": 194,
-     "fair": 161,
-     "cracked": 91,
-     "defective": 46
+     "like_new": 261,
+     "good": 222,
+     "fair": 183,
+     "cracked": 104,
+     "defective": 52
     },
     {
      "storage": "256GB",
-     "like_new": 247,
-     "good": 210,
-     "fair": 173,
-     "cracked": 98,
-     "defective": 49
+     "like_new": 282,
+     "good": 240,
+     "fair": 197,
+     "cracked": 113,
+     "defective": 56
     },
     {
      "storage": "512GB",
-     "like_new": 265,
-     "good": 226,
-     "fair": 186,
-     "cracked": 106,
-     "defective": 53
+     "like_new": 303,
+     "good": 258,
+     "fair": 212,
+     "cracked": 121,
+     "defective": 61
     }
    ],
    "sort_order": 51
@@ -592,27 +597,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 236,
-     "good": 200,
-     "fair": 166,
-     "cracked": 95,
-     "defective": 47
+     "like_new": 269,
+     "good": 229,
+     "fair": 188,
+     "cracked": 108,
+     "defective": 54
     },
     {
      "storage": "256GB",
-     "like_new": 254,
-     "good": 216,
-     "fair": 178,
-     "cracked": 102,
-     "defective": 50
+     "like_new": 290,
+     "good": 246,
+     "fair": 203,
+     "cracked": 116,
+     "defective": 58
     },
     {
      "storage": "512GB",
-     "like_new": 274,
-     "good": 233,
-     "fair": 192,
-     "cracked": 109,
-     "defective": 55
+     "like_new": 312,
+     "good": 265,
+     "fair": 218,
+     "cracked": 125,
+     "defective": 62
     }
    ],
    "sort_order": 50
@@ -627,35 +632,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 342,
-     "good": 290,
-     "fair": 240,
-     "cracked": 137,
-     "defective": 68
+     "like_new": 390,
+     "good": 332,
+     "fair": 273,
+     "cracked": 156,
+     "defective": 78
     },
     {
      "storage": "256GB",
-     "like_new": 368,
-     "good": 313,
-     "fair": 258,
-     "cracked": 148,
-     "defective": 73
+     "like_new": 422,
+     "good": 359,
+     "fair": 295,
+     "cracked": 169,
+     "defective": 84
     },
     {
      "storage": "512GB",
-     "like_new": 396,
-     "good": 336,
-     "fair": 277,
-     "cracked": 158,
-     "defective": 79
+     "like_new": 453,
+     "good": 385,
+     "fair": 317,
+     "cracked": 181,
+     "defective": 91
     },
     {
      "storage": "1TB",
-     "like_new": 424,
-     "good": 360,
-     "fair": 296,
-     "cracked": 169,
-     "defective": 85
+     "like_new": 484,
+     "good": 411,
+     "fair": 339,
+     "cracked": 194,
+     "defective": 97
     }
    ],
    "sort_order": 48
@@ -670,35 +675,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 348,
-     "good": 295,
-     "fair": 244,
-     "cracked": 139,
-     "defective": 70
-    },
-    {
-     "storage": "256GB",
-     "like_new": 377,
-     "good": 320,
-     "fair": 264,
-     "cracked": 151,
-     "defective": 76
-    },
-    {
-     "storage": "512GB",
-     "like_new": 404,
-     "good": 343,
-     "fair": 283,
-     "cracked": 162,
+     "like_new": 398,
+     "good": 338,
+     "fair": 279,
+     "cracked": 159,
      "defective": 80
     },
     {
-     "storage": "1TB",
-     "like_new": 432,
-     "good": 367,
-     "fair": 302,
-     "cracked": 173,
+     "storage": "256GB",
+     "like_new": 429,
+     "good": 365,
+     "fair": 300,
+     "cracked": 172,
      "defective": 86
+    },
+    {
+     "storage": "512GB",
+     "like_new": 461,
+     "good": 392,
+     "fair": 323,
+     "cracked": 184,
+     "defective": 92
+    },
+    {
+     "storage": "1TB",
+     "like_new": 493,
+     "good": 419,
+     "fair": 345,
+     "cracked": 197,
+     "defective": 99
     }
    ],
    "sort_order": 47
@@ -713,27 +718,27 @@
    "prices": [
     {
      "storage": "64GB",
-     "like_new": 94,
-     "good": 79,
-     "fair": 66,
-     "cracked": 37,
-     "defective": 19
+     "like_new": 108,
+     "good": 92,
+     "fair": 76,
+     "cracked": 43,
+     "defective": 22
     },
     {
      "storage": "128GB",
-     "like_new": 102,
-     "good": 86,
-     "fair": 71,
-     "cracked": 41,
-     "defective": 20
+     "like_new": 116,
+     "good": 99,
+     "fair": 81,
+     "cracked": 46,
+     "defective": 23
     },
     {
      "storage": "256GB",
-     "like_new": 109,
-     "good": 92,
-     "fair": 77,
-     "cracked": 43,
-     "defective": 22
+     "like_new": 125,
+     "good": 106,
+     "fair": 88,
+     "cracked": 50,
+     "defective": 25
     }
    ],
    "sort_order": 46
@@ -748,27 +753,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 317,
-     "good": 269,
-     "fair": 222,
-     "cracked": 127,
-     "defective": 64
+     "like_new": 361,
+     "good": 307,
+     "fair": 253,
+     "cracked": 144,
+     "defective": 72
     },
     {
      "storage": "256GB",
-     "like_new": 342,
-     "good": 290,
-     "fair": 240,
-     "cracked": 137,
-     "defective": 68
+     "like_new": 390,
+     "good": 332,
+     "fair": 273,
+     "cracked": 156,
+     "defective": 78
     },
     {
      "storage": "512GB",
-     "like_new": 367,
-     "good": 312,
-     "fair": 257,
-     "cracked": 146,
-     "defective": 73
+     "like_new": 419,
+     "good": 356,
+     "fair": 293,
+     "cracked": 168,
+     "defective": 84
     }
    ],
    "sort_order": 42
@@ -783,27 +788,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 280,
-     "good": 238,
-     "fair": 196,
-     "cracked": 112,
-     "defective": 56
+     "like_new": 319,
+     "good": 271,
+     "fair": 223,
+     "cracked": 128,
+     "defective": 64
     },
     {
      "storage": "256GB",
-     "like_new": 301,
-     "good": 256,
-     "fair": 211,
-     "cracked": 120,
-     "defective": 60
+     "like_new": 344,
+     "good": 292,
+     "fair": 241,
+     "cracked": 138,
+     "defective": 69
     },
     {
      "storage": "512GB",
-     "like_new": 324,
-     "good": 276,
-     "fair": 227,
-     "cracked": 130,
-     "defective": 65
+     "like_new": 370,
+     "good": 314,
+     "fair": 259,
+     "cracked": 148,
+     "defective": 74
     }
    ],
    "sort_order": 41
@@ -818,35 +823,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 380,
-     "good": 323,
-     "fair": 266,
-     "cracked": 152,
-     "defective": 76
+     "like_new": 434,
+     "good": 369,
+     "fair": 304,
+     "cracked": 174,
+     "defective": 87
     },
     {
      "storage": "256GB",
-     "like_new": 410,
-     "good": 349,
-     "fair": 287,
-     "cracked": 164,
-     "defective": 82
+     "like_new": 469,
+     "good": 399,
+     "fair": 328,
+     "cracked": 188,
+     "defective": 94
     },
     {
      "storage": "512GB",
-     "like_new": 442,
-     "good": 376,
-     "fair": 310,
-     "cracked": 176,
-     "defective": 89
+     "like_new": 503,
+     "good": 428,
+     "fair": 352,
+     "cracked": 201,
+     "defective": 101
     },
     {
      "storage": "1TB",
-     "like_new": 472,
-     "good": 401,
-     "fair": 330,
-     "cracked": 188,
-     "defective": 95
+     "like_new": 538,
+     "good": 457,
+     "fair": 377,
+     "cracked": 215,
+     "defective": 108
     }
    ],
    "sort_order": 39
@@ -861,35 +866,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 467,
-     "good": 397,
-     "fair": 326,
-     "cracked": 187,
-     "defective": 94
+     "like_new": 532,
+     "good": 452,
+     "fair": 372,
+     "cracked": 213,
+     "defective": 106
     },
     {
      "storage": "256GB",
-     "like_new": 504,
-     "good": 428,
-     "fair": 353,
-     "cracked": 202,
-     "defective": 101
+     "like_new": 575,
+     "good": 489,
+     "fair": 402,
+     "cracked": 230,
+     "defective": 115
     },
     {
      "storage": "512GB",
-     "like_new": 541,
-     "good": 460,
-     "fair": 379,
-     "cracked": 216,
-     "defective": 108
+     "like_new": 617,
+     "good": 524,
+     "fair": 432,
+     "cracked": 247,
+     "defective": 123
     },
     {
      "storage": "1TB",
-     "like_new": 578,
-     "good": 492,
-     "fair": 404,
-     "cracked": 232,
-     "defective": 115
+     "like_new": 660,
+     "good": 561,
+     "fair": 462,
+     "cracked": 264,
+     "defective": 132
     }
    ],
    "sort_order": 38
@@ -904,27 +909,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 364,
-     "good": 310,
-     "fair": 254,
-     "cracked": 145,
-     "defective": 73
+     "like_new": 415,
+     "good": 353,
+     "fair": 290,
+     "cracked": 166,
+     "defective": 83
     },
     {
      "storage": "256GB",
-     "like_new": 392,
-     "good": 334,
-     "fair": 275,
-     "cracked": 157,
-     "defective": 78
+     "like_new": 448,
+     "good": 381,
+     "fair": 314,
+     "cracked": 179,
+     "defective": 90
     },
     {
      "storage": "512GB",
-     "like_new": 421,
-     "good": 358,
-     "fair": 295,
-     "cracked": 168,
-     "defective": 84
+     "like_new": 481,
+     "good": 409,
+     "fair": 337,
+     "cracked": 192,
+     "defective": 96
     }
    ],
    "sort_order": 32
@@ -939,27 +944,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 404,
-     "good": 343,
-     "fair": 283,
-     "cracked": 162,
-     "defective": 80
+     "like_new": 462,
+     "good": 393,
+     "fair": 323,
+     "cracked": 185,
+     "defective": 92
     },
     {
      "storage": "256GB",
-     "like_new": 437,
-     "good": 371,
-     "fair": 306,
-     "cracked": 175,
-     "defective": 88
+     "like_new": 499,
+     "good": 424,
+     "fair": 349,
+     "cracked": 200,
+     "defective": 100
     },
     {
      "storage": "512GB",
-     "like_new": 469,
-     "good": 398,
-     "fair": 329,
-     "cracked": 187,
-     "defective": 94
+     "like_new": 536,
+     "good": 456,
+     "fair": 375,
+     "cracked": 214,
+     "defective": 107
     }
    ],
    "sort_order": 31
@@ -974,35 +979,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 470,
-     "good": 400,
-     "fair": 329,
-     "cracked": 188,
-     "defective": 94
+     "like_new": 537,
+     "good": 456,
+     "fair": 376,
+     "cracked": 215,
+     "defective": 107
     },
     {
      "storage": "256GB",
-     "like_new": 508,
-     "good": 432,
-     "fair": 355,
-     "cracked": 203,
-     "defective": 102
+     "like_new": 580,
+     "good": 493,
+     "fair": 406,
+     "cracked": 232,
+     "defective": 116
     },
     {
      "storage": "512GB",
-     "like_new": 546,
-     "good": 464,
-     "fair": 382,
-     "cracked": 218,
-     "defective": 109
+     "like_new": 623,
+     "good": 530,
+     "fair": 436,
+     "cracked": 249,
+     "defective": 125
     },
     {
      "storage": "1TB",
-     "like_new": 583,
-     "good": 496,
-     "fair": 408,
-     "cracked": 233,
-     "defective": 116
+     "like_new": 666,
+     "good": 566,
+     "fair": 466,
+     "cracked": 266,
+     "defective": 133
     }
    ],
    "sort_order": 29
@@ -1017,27 +1022,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 588,
-     "good": 499,
-     "fair": 412,
-     "cracked": 235,
-     "defective": 118
+     "like_new": 671,
+     "good": 570,
+     "fair": 470,
+     "cracked": 268,
+     "defective": 134
     },
     {
      "storage": "512GB",
-     "like_new": 635,
-     "good": 540,
-     "fair": 444,
-     "cracked": 254,
-     "defective": 127
+     "like_new": 724,
+     "good": 615,
+     "fair": 507,
+     "cracked": 290,
+     "defective": 145
     },
     {
      "storage": "1TB",
-     "like_new": 682,
-     "good": 580,
-     "fair": 478,
-     "cracked": 272,
-     "defective": 137
+     "like_new": 778,
+     "good": 661,
+     "fair": 545,
+     "cracked": 311,
+     "defective": 156
     }
    ],
    "sort_order": 28
@@ -1087,27 +1092,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 508,
-     "good": 432,
-     "fair": 355,
-     "cracked": 203,
-     "defective": 102
+     "like_new": 580,
+     "good": 493,
+     "fair": 406,
+     "cracked": 232,
+     "defective": 116
     },
     {
      "storage": "256GB",
-     "like_new": 548,
-     "good": 466,
-     "fair": 384,
-     "cracked": 220,
-     "defective": 109
+     "like_new": 627,
+     "good": 533,
+     "fair": 439,
+     "cracked": 251,
+     "defective": 125
     },
     {
      "storage": "512GB",
-     "like_new": 589,
-     "good": 500,
-     "fair": 413,
-     "cracked": 235,
-     "defective": 118
+     "like_new": 673,
+     "good": 572,
+     "fair": 471,
+     "cracked": 269,
+     "defective": 135
     }
    ],
    "sort_order": 19
@@ -1122,27 +1127,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 533,
-     "good": 452,
-     "fair": 373,
-     "cracked": 214,
-     "defective": 107
+     "like_new": 609,
+     "good": 518,
+     "fair": 426,
+     "cracked": 244,
+     "defective": 122
     },
     {
      "storage": "256GB",
-     "like_new": 575,
-     "good": 488,
-     "fair": 402,
-     "cracked": 230,
-     "defective": 115
+     "like_new": 657,
+     "good": 558,
+     "fair": 460,
+     "cracked": 263,
+     "defective": 131
     },
     {
      "storage": "512GB",
-     "like_new": 618,
-     "good": 526,
-     "fair": 432,
-     "cracked": 247,
-     "defective": 124
+     "like_new": 706,
+     "good": 600,
+     "fair": 494,
+     "cracked": 282,
+     "defective": 141
     }
    ],
    "sort_order": 18
@@ -1157,35 +1162,35 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 616,
-     "good": 523,
-     "fair": 431,
-     "cracked": 246,
-     "defective": 124
+     "like_new": 702,
+     "good": 597,
+     "fair": 491,
+     "cracked": 281,
+     "defective": 140
     },
     {
      "storage": "256GB",
-     "like_new": 665,
-     "good": 565,
-     "fair": 466,
-     "cracked": 266,
-     "defective": 133
+     "like_new": 759,
+     "good": 645,
+     "fair": 531,
+     "cracked": 304,
+     "defective": 152
     },
     {
      "storage": "512GB",
-     "like_new": 714,
-     "good": 607,
-     "fair": 499,
-     "cracked": 286,
-     "defective": 143
+     "like_new": 815,
+     "good": 693,
+     "fair": 570,
+     "cracked": 326,
+     "defective": 163
     },
     {
      "storage": "1TB",
-     "like_new": 763,
-     "good": 649,
-     "fair": 534,
-     "cracked": 305,
-     "defective": 152
+     "like_new": 871,
+     "good": 740,
+     "fair": 610,
+     "cracked": 348,
+     "defective": 174
     }
    ],
    "sort_order": 16
@@ -1200,27 +1205,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 798,
-     "good": 678,
-     "fair": 558,
-     "cracked": 319,
-     "defective": 160
+     "like_new": 910,
+     "good": 774,
+     "fair": 637,
+     "cracked": 364,
+     "defective": 182
     },
     {
      "storage": "512GB",
-     "like_new": 862,
-     "good": 732,
-     "fair": 604,
-     "cracked": 344,
-     "defective": 173
+     "like_new": 983,
+     "good": 836,
+     "fair": 688,
+     "cracked": 393,
+     "defective": 197
     },
     {
      "storage": "1TB",
-     "like_new": 925,
-     "good": 786,
-     "fair": 648,
-     "cracked": 370,
-     "defective": 185
+     "like_new": 1056,
+     "good": 898,
+     "fair": 739,
+     "cracked": 422,
+     "defective": 211
     }
    ],
    "sort_order": 15
@@ -1235,19 +1240,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 701,
-     "good": 595,
-     "fair": 491,
-     "cracked": 281,
-     "defective": 140
+     "like_new": 800,
+     "good": 680,
+     "fair": 560,
+     "cracked": 320,
+     "defective": 160
     },
     {
      "storage": "512GB",
-     "like_new": 757,
-     "good": 643,
-     "fair": 530,
-     "cracked": 302,
-     "defective": 151
+     "like_new": 864,
+     "good": 734,
+     "fair": 605,
+     "cracked": 346,
+     "defective": 173
     }
    ],
    "sort_order": 8
@@ -1262,27 +1267,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 718,
-     "good": 610,
-     "fair": 503,
-     "cracked": 287,
-     "defective": 144
+     "like_new": 820,
+     "good": 697,
+     "fair": 574,
+     "cracked": 328,
+     "defective": 164
     },
     {
      "storage": "512GB",
-     "like_new": 775,
-     "good": 659,
-     "fair": 542,
-     "cracked": 310,
-     "defective": 155
+     "like_new": 885,
+     "good": 752,
+     "fair": 620,
+     "cracked": 354,
+     "defective": 177
     },
     {
      "storage": "1TB",
-     "like_new": 833,
-     "good": 708,
-     "fair": 583,
-     "cracked": 334,
-     "defective": 167
+     "like_new": 951,
+     "good": 808,
+     "fair": 666,
+     "cracked": 380,
+     "defective": 190
     }
    ],
    "sort_order": 4
@@ -1297,27 +1302,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 902,
-     "good": 767,
-     "fair": 631,
-     "cracked": 361,
-     "defective": 180
+     "like_new": 1030,
+     "good": 876,
+     "fair": 721,
+     "cracked": 412,
+     "defective": 206
     },
     {
      "storage": "512GB",
-     "like_new": 974,
-     "good": 828,
-     "fair": 682,
-     "cracked": 390,
-     "defective": 194
+     "like_new": 1113,
+     "good": 946,
+     "fair": 779,
+     "cracked": 445,
+     "defective": 223
     },
     {
      "storage": "1TB",
-     "like_new": 1046,
-     "good": 889,
-     "fair": 732,
-     "cracked": 419,
-     "defective": 209
+     "like_new": 1195,
+     "good": 1016,
+     "fair": 836,
+     "cracked": 478,
+     "defective": 239
     }
    ],
    "sort_order": 3
@@ -1332,35 +1337,35 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 942,
-     "good": 800,
-     "fair": 660,
-     "cracked": 377,
-     "defective": 188
+     "like_new": 1075,
+     "good": 914,
+     "fair": 752,
+     "cracked": 430,
+     "defective": 215
     },
     {
      "storage": "512GB",
-     "like_new": 1016,
-     "good": 864,
-     "fair": 712,
-     "cracked": 407,
-     "defective": 203
+     "like_new": 1161,
+     "good": 987,
+     "fair": 813,
+     "cracked": 464,
+     "defective": 232
     },
     {
      "storage": "1TB",
-     "like_new": 1092,
-     "good": 929,
-     "fair": 764,
-     "cracked": 437,
-     "defective": 218
+     "like_new": 1247,
+     "good": 1060,
+     "fair": 873,
+     "cracked": 499,
+     "defective": 249
     },
     {
      "storage": "2TB",
-     "like_new": 1168,
-     "good": 992,
-     "fair": 817,
-     "cracked": 467,
-     "defective": 234
+     "like_new": 1333,
+     "good": 1133,
+     "fair": 933,
+     "cracked": 533,
+     "defective": 267
     }
    ],
    "sort_order": 2
@@ -1375,19 +1380,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 180,
-     "good": 150,
-     "fair": 115,
-     "cracked": 70,
-     "defective": 25
+     "like_new": 104,
+     "good": 88,
+     "fair": 73,
+     "cracked": 42,
+     "defective": 21
     },
     {
      "storage": "256GB",
-     "like_new": 190,
-     "good": 160,
-     "fair": 125,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 112,
+     "good": 95,
+     "fair": 78,
+     "cracked": 45,
+     "defective": 22
     }
    ],
    "sort_order": 53
@@ -1402,19 +1407,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 225,
-     "good": 190,
-     "fair": 145,
-     "cracked": 85,
-     "defective": 30
+     "like_new": 154,
+     "good": 131,
+     "fair": 108,
+     "cracked": 62,
+     "defective": 31
     },
     {
      "storage": "256GB",
-     "like_new": 235,
-     "good": 200,
-     "fair": 155,
-     "cracked": 90,
-     "defective": 30
+     "like_new": 166,
+     "good": 141,
+     "fair": 116,
+     "cracked": 66,
+     "defective": 33
     }
    ],
    "sort_order": 52
@@ -1429,27 +1434,27 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 198,
+     "good": 168,
+     "fair": 139,
+     "cracked": 79,
+     "defective": 40
     },
     {
      "storage": "256GB",
-     "like_new": 280,
-     "good": 235,
-     "fair": 180,
-     "cracked": 110,
-     "defective": 35
+     "like_new": 214,
+     "good": 182,
+     "fair": 150,
+     "cracked": 86,
+     "defective": 43
     },
     {
      "storage": "512GB",
-     "like_new": 310,
-     "good": 260,
-     "fair": 200,
-     "cracked": 120,
-     "defective": 40
+     "like_new": 230,
+     "good": 196,
+     "fair": 161,
+     "cracked": 92,
+     "defective": 46
     }
    ],
    "sort_order": 49
@@ -1491,19 +1496,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 210,
-     "good": 175,
-     "fair": 135,
-     "cracked": 80,
-     "defective": 25
+     "like_new": 160,
+     "good": 136,
+     "fair": 112,
+     "cracked": 64,
+     "defective": 32
     },
     {
      "storage": "256GB",
-     "like_new": 225,
-     "good": 190,
-     "fair": 145,
-     "cracked": 85,
-     "defective": 30
+     "like_new": 173,
+     "good": 147,
+     "fair": 121,
+     "cracked": 69,
+     "defective": 35
     }
    ],
    "sort_order": 44
@@ -1518,19 +1523,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 265,
-     "good": 220,
-     "fair": 170,
-     "cracked": 100,
-     "defective": 35
+     "like_new": 184,
+     "good": 156,
+     "fair": 129,
+     "cracked": 74,
+     "defective": 37
     },
     {
      "storage": "256GB",
-     "like_new": 275,
-     "good": 230,
-     "fair": 180,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 199,
+     "good": 169,
+     "fair": 139,
+     "cracked": 80,
+     "defective": 40
     }
    ],
    "sort_order": 43
@@ -1546,34 +1551,34 @@
     {
      "storage": "128GB",
      "like_new": 315,
-     "good": 265,
-     "fair": 205,
-     "cracked": 120,
-     "defective": 40
+     "good": 268,
+     "fair": 220,
+     "cracked": 126,
+     "defective": 63
     },
     {
      "storage": "256GB",
      "like_new": 340,
-     "good": 285,
-     "fair": 220,
-     "cracked": 135,
-     "defective": 45
+     "good": 289,
+     "fair": 238,
+     "cracked": 136,
+     "defective": 68
     },
     {
      "storage": "512GB",
-     "like_new": 370,
+     "like_new": 365,
      "good": 310,
-     "fair": 240,
-     "cracked": 145,
-     "defective": 50
+     "fair": 255,
+     "cracked": 146,
+     "defective": 73
     },
     {
      "storage": "1TB",
-     "like_new": 420,
-     "good": 355,
-     "fair": 270,
-     "cracked": 165,
-     "defective": 55
+     "like_new": 390,
+     "good": 332,
+     "fair": 273,
+     "cracked": 156,
+     "defective": 78
     }
    ],
    "sort_order": 40
@@ -1588,19 +1593,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 250,
-     "good": 210,
-     "fair": 160,
-     "cracked": 95,
-     "defective": 30
+     "like_new": 263,
+     "good": 224,
+     "fair": 184,
+     "cracked": 105,
+     "defective": 53
     },
     {
      "storage": "256GB",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 284,
+     "good": 241,
+     "fair": 199,
+     "cracked": 114,
+     "defective": 57
     }
    ],
    "sort_order": 35
@@ -1615,19 +1620,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 315,
-     "good": 265,
-     "fair": 200,
-     "cracked": 120,
-     "defective": 40
+     "like_new": 327,
+     "good": 278,
+     "fair": 229,
+     "cracked": 131,
+     "defective": 65
     },
     {
      "storage": "512GB",
-     "like_new": 350,
-     "good": 295,
-     "fair": 225,
-     "cracked": 135,
-     "defective": 45
+     "like_new": 353,
+     "good": 300,
+     "fair": 247,
+     "cracked": 141,
+     "defective": 71
     }
    ],
    "sort_order": 33
@@ -1642,27 +1647,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 375,
-     "good": 315,
-     "fair": 245,
-     "cracked": 145,
-     "defective": 50
+     "like_new": 421,
+     "good": 358,
+     "fair": 295,
+     "cracked": 168,
+     "defective": 84
     },
     {
      "storage": "512GB",
-     "like_new": 435,
-     "good": 365,
-     "fair": 280,
-     "cracked": 170,
-     "defective": 55
+     "like_new": 454,
+     "good": 386,
+     "fair": 318,
+     "cracked": 182,
+     "defective": 91
     },
     {
      "storage": "1TB",
-     "like_new": 510,
-     "good": 425,
-     "fair": 330,
+     "like_new": 488,
+     "good": 415,
+     "fair": 342,
      "cracked": 195,
-     "defective": 65
+     "defective": 98
     }
    ],
    "sort_order": 30
@@ -1677,19 +1682,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 186,
+     "good": 158,
+     "fair": 130,
+     "cracked": 74,
+     "defective": 37
     },
     {
      "storage": "256GB",
-     "like_new": 205,
-     "good": 175,
-     "fair": 135,
+     "like_new": 201,
+     "good": 171,
+     "fair": 141,
      "cracked": 80,
-     "defective": 25
+     "defective": 40
     }
    ],
    "sort_order": 36
@@ -1704,19 +1709,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 300,
-     "good": 250,
-     "fair": 195,
-     "cracked": 115,
-     "defective": 40
+     "like_new": 381,
+     "good": 324,
+     "fair": 267,
+     "cracked": 152,
+     "defective": 76
     },
     {
      "storage": "256GB",
-     "like_new": 325,
-     "good": 270,
-     "fair": 210,
-     "cracked": 125,
-     "defective": 40
+     "like_new": 412,
+     "good": 350,
+     "fair": 288,
+     "cracked": 165,
+     "defective": 82
     }
    ],
    "sort_order": 22
@@ -1731,19 +1736,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 375,
-     "good": 315,
-     "fair": 245,
-     "cracked": 145,
-     "defective": 50
+     "like_new": 410,
+     "good": 348,
+     "fair": 287,
+     "cracked": 164,
+     "defective": 82
     },
     {
      "storage": "512GB",
-     "like_new": 420,
-     "good": 355,
-     "fair": 270,
-     "cracked": 165,
-     "defective": 55
+     "like_new": 443,
+     "good": 377,
+     "fair": 310,
+     "cracked": 177,
+     "defective": 89
     }
    ],
    "sort_order": 21
@@ -1758,27 +1763,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 490,
-     "good": 410,
-     "fair": 315,
-     "cracked": 190,
-     "defective": 65
+     "like_new": 627,
+     "good": 533,
+     "fair": 439,
+     "cracked": 251,
+     "defective": 125
     },
     {
      "storage": "512GB",
-     "like_new": 535,
-     "good": 450,
-     "fair": 345,
-     "cracked": 205,
-     "defective": 70
+     "like_new": 677,
+     "good": 575,
+     "fair": 474,
+     "cracked": 271,
+     "defective": 135
     },
     {
      "storage": "1TB",
-     "like_new": 625,
-     "good": 525,
-     "fair": 405,
-     "cracked": 240,
-     "defective": 80
+     "like_new": 727,
+     "good": 618,
+     "fair": 509,
+     "cracked": 291,
+     "defective": 145
     }
    ],
    "sort_order": 17
@@ -1793,19 +1798,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 245,
-     "good": 205,
-     "fair": 160,
-     "cracked": 95,
-     "defective": 30
+     "like_new": 270,
+     "good": 230,
+     "fair": 189,
+     "cracked": 108,
+     "defective": 54
     },
     {
      "storage": "256GB",
-     "like_new": 265,
-     "good": 225,
-     "fair": 170,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 292,
+     "good": 248,
+     "fair": 204,
+     "cracked": 117,
+     "defective": 58
     }
    ],
    "sort_order": 23
@@ -1820,19 +1825,19 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 360,
-     "good": 305,
-     "fair": 235,
-     "cracked": 140,
-     "defective": 45
+     "like_new": 546,
+     "good": 464,
+     "fair": 382,
+     "cracked": 218,
+     "defective": 109
     },
     {
      "storage": "256GB",
-     "like_new": 390,
-     "good": 325,
-     "fair": 250,
-     "cracked": 150,
-     "defective": 50
+     "like_new": 590,
+     "good": 502,
+     "fair": 413,
+     "cracked": 236,
+     "defective": 118
     }
    ],
    "sort_order": 11
@@ -1847,19 +1852,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 450,
-     "good": 380,
-     "fair": 290,
-     "cracked": 175,
-     "defective": 60
+     "like_new": 534,
+     "good": 454,
+     "fair": 374,
+     "cracked": 214,
+     "defective": 107
     },
     {
      "storage": "512GB",
-     "like_new": 505,
-     "good": 425,
-     "fair": 325,
-     "cracked": 195,
-     "defective": 65
+     "like_new": 577,
+     "good": 490,
+     "fair": 404,
+     "cracked": 231,
+     "defective": 115
     }
    ],
    "sort_order": 9
@@ -1874,27 +1879,27 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 585,
-     "good": 490,
-     "fair": 380,
-     "cracked": 225,
-     "defective": 75
+     "like_new": 749,
+     "good": 637,
+     "fair": 524,
+     "cracked": 300,
+     "defective": 150
     },
     {
      "storage": "512GB",
-     "like_new": 640,
-     "good": 540,
-     "fair": 415,
-     "cracked": 250,
-     "defective": 85
+     "like_new": 809,
+     "good": 688,
+     "fair": 566,
+     "cracked": 324,
+     "defective": 162
     },
     {
      "storage": "1TB",
-     "like_new": 750,
-     "good": 630,
-     "fair": 485,
-     "cracked": 290,
-     "defective": 95
+     "like_new": 869,
+     "good": 739,
+     "fair": 608,
+     "cracked": 348,
+     "defective": 174
     }
    ],
    "sort_order": 5
@@ -2025,19 +2030,19 @@
    "prices": [
     {
      "storage": "256GB",
-     "like_new": 415,
-     "good": 345,
-     "fair": 265,
-     "cracked": 160,
-     "defective": 55
+     "like_new": 335,
+     "good": 285,
+     "fair": 234,
+     "cracked": 134,
+     "defective": 67
     },
     {
      "storage": "512GB",
-     "like_new": 460,
-     "good": 385,
-     "fair": 295,
-     "cracked": 180,
-     "defective": 60
+     "like_new": 362,
+     "good": 308,
+     "fair": 253,
+     "cracked": 145,
+     "defective": 72
     }
    ],
    "sort_order": 20
@@ -2149,11 +2154,11 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 75,
-     "good": 65,
-     "fair": 50,
-     "cracked": 30,
-     "defective": 10
+     "like_new": 33,
+     "good": 28,
+     "fair": 23,
+     "cracked": 13,
+     "defective": 7
     }
    ],
    "sort_order": 25
@@ -2233,11 +2238,11 @@
    "prices": [
     {
      "storage": "128GB",
-     "like_new": 140,
-     "good": 120,
-     "fair": 90,
-     "cracked": 55,
-     "defective": 20
+     "like_new": 33,
+     "good": 28,
+     "fair": 23,
+     "cracked": 13,
+     "defective": 7
     }
    ],
    "sort_order": 37
@@ -2252,35 +2257,35 @@
    "prices": [
     {
      "storage": "64GB Wi-Fi",
-     "like_new": 90,
-     "good": 75,
-     "fair": 60,
-     "cracked": 35,
-     "defective": 10
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 130,
-     "good": 110,
-     "fair": 85,
-     "cracked": 50,
-     "defective": 15
+     "like_new": 185,
+     "good": 157,
+     "fair": 130,
+     "cracked": 74,
+     "defective": 37
     },
     {
      "storage": "64GB Wi-Fi + Cellular",
-     "like_new": 125,
-     "good": 105,
-     "fair": 80,
-     "cracked": 50,
-     "defective": 15
+     "like_new": 200,
+     "good": 170,
+     "fair": 140,
+     "cracked": 80,
+     "defective": 40
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 215,
+     "good": 183,
+     "fair": 150,
+     "cracked": 86,
+     "defective": 43
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 165,
-     "good": 140,
-     "fair": 105,
-     "cracked": 65,
-     "defective": 20
+     "like_new": 230,
+     "good": 196,
+     "fair": 161,
+     "cracked": 92,
+     "defective": 46
     }
    ],
    "sort_order": 27
@@ -2295,35 +2300,35 @@
    "prices": [
     {
      "storage": "64GB Wi-Fi",
-     "like_new": 140,
-     "good": 120,
-     "fair": 90,
-     "cracked": 55,
-     "defective": 20
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 257,
+     "good": 218,
+     "fair": 180,
+     "cracked": 103,
+     "defective": 51
     },
     {
      "storage": "64GB Wi-Fi + Cellular",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 278,
+     "good": 236,
+     "fair": 195,
+     "cracked": 111,
+     "defective": 56
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 298,
+     "good": 253,
+     "fair": 209,
+     "cracked": 119,
+     "defective": 60
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 235,
-     "good": 200,
-     "fair": 155,
-     "cracked": 90,
-     "defective": 30
+     "like_new": 319,
+     "good": 271,
+     "fair": 223,
+     "cracked": 128,
+     "defective": 64
     }
    ],
    "sort_order": 24
@@ -2338,51 +2343,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 245,
-     "good": 205,
-     "fair": 155,
-     "cracked": 95,
-     "defective": 30
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 350,
-     "good": 295,
-     "fair": 225,
-     "cracked": 135,
-     "defective": 45
+     "like_new": 395,
+     "good": 336,
+     "fair": 276,
+     "cracked": 158,
+     "defective": 79
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 427,
+     "good": 363,
+     "fair": 299,
+     "cracked": 171,
+     "defective": 85
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 458,
+     "good": 389,
+     "fair": 321,
+     "cracked": 183,
+     "defective": 92
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 325,
-     "good": 270,
-     "fair": 210,
-     "cracked": 125,
-     "defective": 40
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 435,
-     "good": 365,
-     "fair": 280,
-     "cracked": 170,
-     "defective": 55
+     "like_new": 490,
+     "good": 416,
+     "fair": 343,
+     "cracked": 196,
+     "defective": 98
     }
    ],
    "sort_order": 3
@@ -2397,35 +2386,35 @@
    "prices": [
     {
      "storage": "64GB Wi-Fi",
-     "like_new": 135,
-     "good": 115,
-     "fair": 85,
-     "cracked": 50,
-     "defective": 15
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 175,
-     "good": 150,
-     "fair": 115,
-     "cracked": 70,
-     "defective": 25
+     "like_new": 262,
+     "good": 223,
+     "fair": 183,
+     "cracked": 105,
+     "defective": 52
     },
     {
      "storage": "64GB Wi-Fi + Cellular",
-     "like_new": 175,
-     "good": 150,
-     "fair": 115,
-     "cracked": 70,
-     "defective": 25
+     "like_new": 283,
+     "good": 241,
+     "fair": 198,
+     "cracked": 113,
+     "defective": 57
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 304,
+     "good": 258,
+     "fair": 213,
+     "cracked": 122,
+     "defective": 61
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 215,
-     "good": 180,
-     "fair": 140,
-     "cracked": 85,
-     "defective": 30
+     "like_new": 325,
+     "good": 276,
+     "fair": 227,
+     "cracked": 130,
+     "defective": 65
     }
    ],
    "sort_order": 26
@@ -2440,51 +2429,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 225,
-     "good": 190,
-     "fair": 145,
-     "cracked": 85,
-     "defective": 30
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 360,
-     "good": 305,
-     "fair": 235,
-     "cracked": 140,
-     "defective": 45
+     "like_new": 472,
+     "good": 401,
+     "fair": 330,
+     "cracked": 189,
+     "defective": 94
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 295,
-     "good": 245,
-     "fair": 190,
-     "cracked": 115,
-     "defective": 40
+     "like_new": 510,
+     "good": 434,
+     "fair": 357,
+     "cracked": 204,
+     "defective": 102
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 547,
+     "good": 465,
+     "fair": 383,
+     "cracked": 219,
+     "defective": 109
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 340,
-     "good": 285,
-     "fair": 220,
-     "cracked": 130,
-     "defective": 45
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 430,
-     "good": 360,
-     "fair": 275,
-     "cracked": 165,
-     "defective": 55
+     "like_new": 585,
+     "good": 497,
+     "fair": 410,
+     "cracked": 234,
+     "defective": 117
     }
    ],
    "sort_order": 11
@@ -2499,35 +2472,35 @@
    "prices": [
     {
      "storage": "64GB Wi-Fi",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 235,
-     "good": 200,
-     "fair": 155,
-     "cracked": 90,
-     "defective": 30
+     "like_new": 290,
+     "good": 246,
+     "fair": 203,
+     "cracked": 116,
+     "defective": 58
     },
     {
      "storage": "64GB Wi-Fi + Cellular",
-     "like_new": 235,
-     "good": 200,
-     "fair": 155,
-     "cracked": 90,
-     "defective": 30
+     "like_new": 314,
+     "good": 267,
+     "fair": 220,
+     "cracked": 126,
+     "defective": 63
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 337,
+     "good": 286,
+     "fair": 236,
+     "cracked": 135,
+     "defective": 67
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 285,
-     "good": 240,
-     "fair": 185,
-     "cracked": 110,
-     "defective": 35
+     "like_new": 360,
+     "good": 306,
+     "fair": 252,
+     "cracked": 144,
+     "defective": 72
     }
    ],
    "sort_order": 22
@@ -2542,67 +2515,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 315,
-     "good": 265,
-     "fair": 205,
-     "cracked": 120,
-     "defective": 40
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 405,
-     "good": 340,
-     "fair": 260,
-     "cracked": 155,
-     "defective": 50
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 495,
-     "good": 415,
-     "fair": 320,
-     "cracked": 190,
-     "defective": 65
+     "like_new": 538,
+     "good": 457,
+     "fair": 377,
+     "cracked": 215,
+     "defective": 108
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 340,
-     "good": 285,
-     "fair": 220,
-     "cracked": 130,
-     "defective": 45
+     "like_new": 581,
+     "good": 494,
+     "fair": 407,
+     "cracked": 232,
+     "defective": 116
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 624,
+     "good": 530,
+     "fair": 437,
+     "cracked": 250,
+     "defective": 125
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 385,
-     "good": 320,
-     "fair": 250,
-     "cracked": 150,
-     "defective": 50
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 475,
-     "good": 400,
-     "fair": 305,
-     "cracked": 185,
-     "defective": 60
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 565,
-     "good": 475,
-     "fair": 365,
-     "cracked": 220,
-     "defective": 75
+     "like_new": 667,
+     "good": 567,
+     "fair": 467,
+     "cracked": 267,
+     "defective": 133
     }
    ],
    "sort_order": 10
@@ -2617,67 +2558,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 360,
-     "good": 305,
-     "fair": 235,
-     "cracked": 140,
-     "defective": 45
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 405,
-     "good": 340,
-     "fair": 260,
-     "cracked": 155,
-     "defective": 50
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 495,
-     "good": 415,
-     "fair": 320,
-     "cracked": 190,
-     "defective": 65
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 585,
-     "good": 490,
-     "fair": 380,
-     "cracked": 225,
-     "defective": 75
+     "like_new": 681,
+     "good": 579,
+     "fair": 477,
+     "cracked": 272,
+     "defective": 136
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 430,
-     "good": 360,
-     "fair": 275,
-     "cracked": 165,
-     "defective": 55
+     "like_new": 736,
+     "good": 626,
+     "fair": 515,
+     "cracked": 294,
+     "defective": 147
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 790,
+     "good": 672,
+     "fair": 553,
+     "cracked": 316,
+     "defective": 158
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 475,
-     "good": 400,
-     "fair": 305,
-     "cracked": 185,
-     "defective": 60
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 565,
-     "good": 475,
-     "fair": 365,
-     "cracked": 220,
-     "defective": 75
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 655,
-     "good": 550,
-     "fair": 425,
-     "cracked": 255,
-     "defective": 85
+     "like_new": 845,
+     "good": 718,
+     "fair": 592,
+     "cracked": 338,
+     "defective": 169
     }
    ],
    "sort_order": 8
@@ -2692,67 +2601,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 325,
-     "good": 270,
-     "fair": 210,
-     "cracked": 125,
-     "defective": 40
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 380,
-     "good": 320,
-     "fair": 245,
-     "cracked": 145,
-     "defective": 50
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 490,
-     "good": 410,
-     "fair": 315,
-     "cracked": 190,
-     "defective": 65
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 595,
-     "good": 500,
-     "fair": 385,
-     "cracked": 230,
-     "defective": 75
+     "like_new": 592,
+     "good": 503,
+     "fair": 414,
+     "cracked": 237,
+     "defective": 118
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 405,
-     "good": 340,
-     "fair": 260,
-     "cracked": 155,
-     "defective": 50
+     "like_new": 639,
+     "good": 543,
+     "fair": 447,
+     "cracked": 256,
+     "defective": 128
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 687,
+     "good": 584,
+     "fair": 481,
+     "cracked": 275,
+     "defective": 137
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 460,
-     "good": 385,
-     "fair": 295,
-     "cracked": 180,
-     "defective": 60
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 570,
-     "good": 475,
-     "fair": 365,
-     "cracked": 220,
-     "defective": 75
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 675,
-     "good": 570,
-     "fair": 435,
-     "cracked": 260,
-     "defective": 85
+     "like_new": 734,
+     "good": 624,
+     "fair": 514,
+     "cracked": 294,
+     "defective": 147
     }
    ],
    "sort_order": 2
@@ -2767,67 +2644,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 435,
-     "good": 365,
-     "fair": 280,
-     "cracked": 170,
-     "defective": 55
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 490,
-     "good": 410,
-     "fair": 315,
-     "cracked": 190,
-     "defective": 65
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 595,
-     "good": 500,
-     "fair": 385,
-     "cracked": 230,
-     "defective": 75
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 705,
-     "good": 590,
-     "fair": 455,
-     "cracked": 275,
-     "defective": 90
+     "like_new": 702,
+     "good": 597,
+     "fair": 491,
+     "cracked": 281,
+     "defective": 140
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 515,
-     "good": 430,
-     "fair": 330,
-     "cracked": 200,
-     "defective": 65
+     "like_new": 759,
+     "good": 645,
+     "fair": 531,
+     "cracked": 304,
+     "defective": 152
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 815,
+     "good": 693,
+     "fair": 570,
+     "cracked": 326,
+     "defective": 163
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 570,
-     "good": 475,
-     "fair": 365,
-     "cracked": 220,
-     "defective": 75
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 675,
-     "good": 570,
-     "fair": 435,
-     "cracked": 260,
-     "defective": 85
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 785,
-     "good": 660,
-     "fair": 505,
-     "cracked": 305,
-     "defective": 100
+     "like_new": 871,
+     "good": 740,
+     "fair": 610,
+     "cracked": 348,
+     "defective": 174
     }
    ],
    "sort_order": 1
@@ -2842,83 +2687,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 255,
-     "good": 210,
-     "fair": 165,
-     "cracked": 100,
-     "defective": 35
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 285,
-     "good": 240,
-     "fair": 185,
-     "cracked": 110,
-     "defective": 35
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 350,
-     "good": 290,
-     "fair": 225,
-     "cracked": 135,
-     "defective": 45
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 475,
-     "good": 400,
-     "fair": 305,
-     "cracked": 185,
-     "defective": 60
-    },
-    {
-     "storage": "2TB Wi-Fi",
-     "like_new": 600,
-     "good": 505,
-     "fair": 390,
-     "cracked": 235,
-     "defective": 80
+     "like_new": 522,
+     "good": 444,
+     "fair": 365,
+     "cracked": 209,
+     "defective": 104
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 315,
-     "good": 265,
-     "fair": 205,
-     "cracked": 120,
-     "defective": 40
+     "like_new": 564,
+     "good": 479,
+     "fair": 395,
+     "cracked": 226,
+     "defective": 113
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 605,
+     "good": 514,
+     "fair": 424,
+     "cracked": 242,
+     "defective": 121
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 350,
-     "good": 290,
-     "fair": 225,
-     "cracked": 135,
-     "defective": 45
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 410,
-     "good": 345,
-     "fair": 265,
-     "cracked": 160,
-     "defective": 55
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 540,
-     "good": 450,
-     "fair": 345,
-     "cracked": 210,
-     "defective": 70
-    },
-    {
-     "storage": "2TB Wi-Fi + Cellular",
-     "like_new": 665,
-     "good": 555,
-     "fair": 430,
-     "cracked": 255,
-     "defective": 85
+     "like_new": 647,
+     "good": 550,
+     "fair": 453,
+     "cracked": 259,
+     "defective": 129
     }
    ],
    "sort_order": 20
@@ -2933,83 +2730,35 @@
    "prices": [
     {
      "storage": "128GB Wi-Fi",
-     "like_new": 350,
-     "good": 290,
-     "fair": 225,
-     "cracked": 135,
-     "defective": 45
-    },
-    {
-     "storage": "256GB Wi-Fi",
-     "like_new": 380,
-     "good": 320,
-     "fair": 245,
-     "cracked": 145,
-     "defective": 50
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 445,
-     "good": 370,
-     "fair": 285,
-     "cracked": 170,
-     "defective": 55
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 570,
-     "good": 475,
-     "fair": 365,
-     "cracked": 220,
-     "defective": 75
-    },
-    {
-     "storage": "2TB Wi-Fi",
-     "like_new": 695,
-     "good": 585,
-     "fair": 450,
-     "cracked": 270,
-     "defective": 90
+     "like_new": 642,
+     "good": 546,
+     "fair": 449,
+     "cracked": 257,
+     "defective": 128
     },
     {
      "storage": "128GB Wi-Fi + Cellular",
-     "like_new": 410,
-     "good": 345,
-     "fair": 265,
-     "cracked": 160,
-     "defective": 55
+     "like_new": 693,
+     "good": 589,
+     "fair": 485,
+     "cracked": 277,
+     "defective": 139
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 745,
+     "good": 633,
+     "fair": 522,
+     "cracked": 298,
+     "defective": 149
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 445,
-     "good": 370,
-     "fair": 285,
-     "cracked": 170,
-     "defective": 55
-    },
-    {
-     "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 505,
-     "good": 425,
-     "fair": 325,
-     "cracked": 195,
-     "defective": 65
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 630,
-     "good": 530,
-     "fair": 410,
-     "cracked": 245,
-     "defective": 80
-    },
-    {
-     "storage": "2TB Wi-Fi + Cellular",
-     "like_new": 760,
-     "good": 635,
-     "fair": 490,
-     "cracked": 295,
-     "defective": 100
+     "like_new": 796,
+     "good": 677,
+     "fair": 557,
+     "cracked": 318,
+     "defective": 159
     }
    ],
    "sort_order": 19
@@ -3024,67 +2773,35 @@
    "prices": [
     {
      "storage": "256GB Wi-Fi",
-     "like_new": 450,
-     "good": 380,
-     "fair": 290,
-     "cracked": 175,
-     "defective": 60
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 540,
-     "good": 455,
-     "fair": 350,
-     "cracked": 210,
-     "defective": 70
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 725,
-     "good": 605,
-     "fair": 465,
-     "cracked": 280,
-     "defective": 95
-    },
-    {
-     "storage": "2TB Wi-Fi",
-     "like_new": 905,
-     "good": 760,
-     "fair": 585,
-     "cracked": 350,
-     "defective": 115
+     "like_new": 846,
+     "good": 719,
+     "fair": 592,
+     "cracked": 338,
+     "defective": 169
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 540,
-     "good": 455,
-     "fair": 350,
-     "cracked": 210,
-     "defective": 70
+     "like_new": 914,
+     "good": 777,
+     "fair": 640,
+     "cracked": 366,
+     "defective": 183
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 981,
+     "good": 834,
+     "fair": 687,
+     "cracked": 392,
+     "defective": 196
     },
     {
      "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 630,
-     "good": 530,
-     "fair": 410,
-     "cracked": 245,
-     "defective": 80
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 815,
-     "good": 680,
-     "fair": 525,
-     "cracked": 315,
-     "defective": 105
-    },
-    {
-     "storage": "2TB Wi-Fi + Cellular",
-     "like_new": 995,
-     "good": 835,
-     "fair": 640,
-     "cracked": 385,
-     "defective": 130
+     "like_new": 1049,
+     "good": 892,
+     "fair": 734,
+     "cracked": 420,
+     "defective": 210
     }
    ],
    "sort_order": 7
@@ -3099,67 +2816,35 @@
    "prices": [
     {
      "storage": "256GB Wi-Fi",
-     "like_new": 585,
-     "good": 490,
-     "fair": 380,
-     "cracked": 225,
-     "defective": 75
-    },
-    {
-     "storage": "512GB Wi-Fi",
-     "like_new": 680,
-     "good": 570,
-     "fair": 435,
-     "cracked": 260,
-     "defective": 85
-    },
-    {
-     "storage": "1TB Wi-Fi",
-     "like_new": 860,
-     "good": 720,
-     "fair": 555,
-     "cracked": 330,
-     "defective": 110
-    },
-    {
-     "storage": "2TB Wi-Fi",
-     "like_new": 1040,
-     "good": 870,
-     "fair": 670,
-     "cracked": 400,
-     "defective": 135
+     "like_new": 911,
+     "good": 774,
+     "fair": 638,
+     "cracked": 364,
+     "defective": 182
     },
     {
      "storage": "256GB Wi-Fi + Cellular",
-     "like_new": 680,
-     "good": 570,
-     "fair": 435,
-     "cracked": 260,
-     "defective": 85
+     "like_new": 984,
+     "good": 836,
+     "fair": 689,
+     "cracked": 394,
+     "defective": 197
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 1057,
+     "good": 898,
+     "fair": 740,
+     "cracked": 423,
+     "defective": 211
     },
     {
      "storage": "512GB Wi-Fi + Cellular",
-     "like_new": 770,
-     "good": 645,
-     "fair": 495,
-     "cracked": 295,
-     "defective": 100
-    },
-    {
-     "storage": "1TB Wi-Fi + Cellular",
-     "like_new": 950,
-     "good": 795,
-     "fair": 610,
-     "cracked": 365,
-     "defective": 120
-    },
-    {
-     "storage": "2TB Wi-Fi + Cellular",
      "like_new": 1130,
-     "good": 945,
-     "fair": 730,
-     "cracked": 435,
-     "defective": 145
+     "good": 960,
+     "fair": 791,
+     "cracked": 452,
+     "defective": 226
     }
    ],
    "sort_order": 6
@@ -3876,35 +3561,35 @@
    "prices": [
     {
      "storage": "41mm GPS",
-     "like_new": 110,
-     "good": 90,
-     "fair": 70,
-     "cracked": 40,
-     "defective": 15
-    },
-    {
-     "storage": "45mm GPS",
-     "like_new": 115,
-     "good": 100,
-     "fair": 75,
-     "cracked": 45,
-     "defective": 15
+     "like_new": 64,
+     "good": 54,
+     "fair": 45,
+     "cracked": 26,
+     "defective": 13
     },
     {
      "storage": "41mm GPS + Cellular",
-     "like_new": 135,
-     "good": 115,
-     "fair": 85,
-     "cracked": 50,
+     "like_new": 69,
+     "good": 59,
+     "fair": 48,
+     "cracked": 28,
+     "defective": 14
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 74,
+     "good": 63,
+     "fair": 52,
+     "cracked": 30,
      "defective": 15
     },
     {
      "storage": "45mm GPS + Cellular",
-     "like_new": 145,
-     "good": 120,
-     "fair": 95,
-     "cracked": 55,
-     "defective": 20
+     "like_new": 79,
+     "good": 67,
+     "fair": 55,
+     "cracked": 32,
+     "defective": 16
     }
    ],
    "sort_order": 10
@@ -3919,34 +3604,34 @@
    "prices": [
     {
      "storage": "40mm GPS",
-     "like_new": 80,
-     "good": 65,
-     "fair": 50,
-     "cracked": 30,
-     "defective": 10
-    },
-    {
-     "storage": "44mm GPS",
-     "like_new": 90,
-     "good": 75,
-     "fair": 55,
-     "cracked": 35,
-     "defective": 10
+     "like_new": 59,
+     "good": 50,
+     "fair": 41,
+     "cracked": 24,
+     "defective": 12
     },
     {
      "storage": "40mm GPS + Cellular",
-     "like_new": 95,
-     "good": 80,
-     "fair": 60,
-     "cracked": 35,
-     "defective": 10
+     "like_new": 64,
+     "good": 54,
+     "fair": 45,
+     "cracked": 26,
+     "defective": 13
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 68,
+     "good": 58,
+     "fair": 48,
+     "cracked": 27,
+     "defective": 14
     },
     {
      "storage": "44mm GPS + Cellular",
-     "like_new": 105,
-     "good": 85,
-     "fair": 65,
-     "cracked": 40,
+     "like_new": 73,
+     "good": 62,
+     "fair": 51,
+     "cracked": 29,
      "defective": 15
     }
    ],
@@ -3962,35 +3647,35 @@
    "prices": [
     {
      "storage": "41mm GPS",
-     "like_new": 125,
-     "good": 105,
-     "fair": 80,
-     "cracked": 50,
-     "defective": 15
-    },
-    {
-     "storage": "45mm GPS",
-     "like_new": 135,
-     "good": 115,
-     "fair": 90,
-     "cracked": 55,
-     "defective": 20
+     "like_new": 86,
+     "good": 73,
+     "fair": 60,
+     "cracked": 34,
+     "defective": 17
     },
     {
      "storage": "41mm GPS + Cellular",
-     "like_new": 160,
-     "good": 130,
-     "fair": 100,
-     "cracked": 60,
+     "like_new": 93,
+     "good": 79,
+     "fair": 65,
+     "cracked": 37,
+     "defective": 19
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 100,
+     "good": 85,
+     "fair": 70,
+     "cracked": 40,
      "defective": 20
     },
     {
      "storage": "45mm GPS + Cellular",
-     "like_new": 165,
-     "good": 140,
-     "fair": 110,
-     "cracked": 65,
-     "defective": 20
+     "like_new": 107,
+     "good": 91,
+     "fair": 75,
+     "cracked": 43,
+     "defective": 21
     }
    ],
    "sort_order": 8
@@ -4005,11 +3690,11 @@
    "prices": [
     {
      "storage": "49mm GPS + Cellular",
-     "like_new": 255,
-     "good": 210,
-     "fair": 165,
-     "cracked": 100,
-     "defective": 35
+     "like_new": 164,
+     "good": 139,
+     "fair": 115,
+     "cracked": 66,
+     "defective": 33
     }
    ],
    "sort_order": 7
@@ -4024,35 +3709,35 @@
    "prices": [
     {
      "storage": "41mm GPS",
-     "like_new": 150,
-     "good": 125,
-     "fair": 95,
-     "cracked": 60,
-     "defective": 20
-    },
-    {
-     "storage": "45mm GPS",
-     "like_new": 160,
-     "good": 135,
-     "fair": 105,
-     "cracked": 65,
-     "defective": 20
+     "like_new": 131,
+     "good": 111,
+     "fair": 92,
+     "cracked": 52,
+     "defective": 26
     },
     {
      "storage": "41mm GPS + Cellular",
-     "like_new": 190,
-     "good": 160,
-     "fair": 120,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 141,
+     "good": 120,
+     "fair": 99,
+     "cracked": 56,
+     "defective": 28
+    },
+    {
+     "storage": "45mm GPS",
+     "like_new": 152,
+     "good": 129,
+     "fair": 106,
+     "cracked": 61,
+     "defective": 30
     },
     {
      "storage": "45mm GPS + Cellular",
-     "like_new": 200,
-     "good": 165,
-     "fair": 130,
-     "cracked": 75,
-     "defective": 25
+     "like_new": 162,
+     "good": 138,
+     "fair": 113,
+     "cracked": 65,
+     "defective": 32
     }
    ],
    "sort_order": 6
@@ -4067,11 +3752,11 @@
    "prices": [
     {
      "storage": "49mm GPS + Cellular",
-     "like_new": 300,
-     "good": 250,
-     "fair": 195,
-     "cracked": 115,
-     "defective": 40
+     "like_new": 311,
+     "good": 264,
+     "fair": 218,
+     "cracked": 124,
+     "defective": 62
     }
    ],
    "sort_order": 5
@@ -4086,35 +3771,35 @@
    "prices": [
     {
      "storage": "42mm GPS",
-     "like_new": 180,
-     "good": 150,
-     "fair": 115,
-     "cracked": 70,
-     "defective": 25
+     "like_new": 168,
+     "good": 143,
+     "fair": 118,
+     "cracked": 67,
+     "defective": 34
+    },
+    {
+     "storage": "42mm GPS + Cellular",
+     "like_new": 181,
+     "good": 154,
+     "fair": 127,
+     "cracked": 72,
+     "defective": 36
     },
     {
      "storage": "46mm GPS",
      "like_new": 195,
-     "good": 165,
-     "fair": 125,
-     "cracked": 75,
-     "defective": 25
-    },
-    {
-     "storage": "42mm GPS + Cellular",
-     "like_new": 225,
-     "good": 190,
-     "fair": 145,
-     "cracked": 85,
-     "defective": 30
+     "good": 166,
+     "fair": 136,
+     "cracked": 78,
+     "defective": 39
     },
     {
      "storage": "46mm GPS + Cellular",
-     "like_new": 240,
-     "good": 200,
-     "fair": 155,
-     "cracked": 95,
-     "defective": 30
+     "like_new": 208,
+     "good": 177,
+     "fair": 146,
+     "cracked": 83,
+     "defective": 42
     }
    ],
    "sort_order": 4
@@ -4129,35 +3814,35 @@
    "prices": [
     {
      "storage": "40mm GPS",
-     "like_new": 135,
-     "good": 115,
-     "fair": 85,
-     "cracked": 50,
-     "defective": 15
-    },
-    {
-     "storage": "44mm GPS",
-     "like_new": 150,
-     "good": 125,
-     "fair": 100,
-     "cracked": 60,
-     "defective": 20
+     "like_new": 134,
+     "good": 114,
+     "fair": 94,
+     "cracked": 54,
+     "defective": 27
     },
     {
      "storage": "40mm GPS + Cellular",
-     "like_new": 160,
-     "good": 135,
-     "fair": 105,
-     "cracked": 65,
-     "defective": 20
+     "like_new": 145,
+     "good": 123,
+     "fair": 102,
+     "cracked": 58,
+     "defective": 29
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 155,
+     "good": 132,
+     "fair": 108,
+     "cracked": 62,
+     "defective": 31
     },
     {
      "storage": "44mm GPS + Cellular",
-     "like_new": 180,
-     "good": 150,
-     "fair": 115,
-     "cracked": 70,
-     "defective": 25
+     "like_new": 166,
+     "good": 141,
+     "fair": 116,
+     "cracked": 66,
+     "defective": 33
     }
    ],
    "sort_order": 3
@@ -4172,35 +3857,35 @@
    "prices": [
     {
      "storage": "42mm GPS",
-     "like_new": 215,
-     "good": 180,
-     "fair": 140,
-     "cracked": 85,
-     "defective": 30
-    },
-    {
-     "storage": "46mm GPS",
-     "like_new": 235,
-     "good": 195,
-     "fair": 150,
-     "cracked": 90,
-     "defective": 30
+     "like_new": 195,
+     "good": 166,
+     "fair": 136,
+     "cracked": 78,
+     "defective": 39
     },
     {
      "storage": "42mm GPS + Cellular",
-     "like_new": 270,
-     "good": 225,
-     "fair": 175,
-     "cracked": 105,
-     "defective": 35
+     "like_new": 211,
+     "good": 179,
+     "fair": 148,
+     "cracked": 84,
+     "defective": 42
+    },
+    {
+     "storage": "46mm GPS",
+     "like_new": 226,
+     "good": 192,
+     "fair": 158,
+     "cracked": 90,
+     "defective": 45
     },
     {
      "storage": "46mm GPS + Cellular",
-     "like_new": 285,
-     "good": 240,
-     "fair": 185,
-     "cracked": 110,
-     "defective": 35
+     "like_new": 242,
+     "good": 206,
+     "fair": 169,
+     "cracked": 97,
+     "defective": 48
     }
    ],
    "sort_order": 2
@@ -4215,11 +3900,11 @@
    "prices": [
     {
      "storage": "49mm GPS + Cellular",
-     "like_new": 435,
-     "good": 365,
-     "fair": 280,
-     "cracked": 170,
-     "defective": 55
+     "like_new": 443,
+     "good": 377,
+     "fair": 310,
+     "cracked": 177,
+     "defective": 89
     }
    ],
    "sort_order": 1
@@ -4621,6 +4306,1874 @@
     }
    ],
    "sort_order": 4
+  },
+  {
+   "handle": "samsung-galaxy-s20-ultra",
+   "name": "Samsung Galaxy S20 Ultra",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 200,
+     "good": 170,
+     "fair": 140,
+     "cracked": 80,
+     "defective": 40
+    },
+    {
+     "storage": "512GB",
+     "like_new": 216,
+     "good": 184,
+     "fair": 151,
+     "cracked": 86,
+     "defective": 43
+    }
+   ],
+   "sort_order": 117
+  },
+  {
+   "handle": "samsung-galaxy-s20-plus",
+   "name": "Samsung Galaxy S20+",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 82,
+     "good": 70,
+     "fair": 57,
+     "cracked": 33,
+     "defective": 16
+    },
+    {
+     "storage": "512GB",
+     "like_new": 89,
+     "good": 76,
+     "fair": 62,
+     "cracked": 36,
+     "defective": 18
+    }
+   ],
+   "sort_order": 118
+  },
+  {
+   "handle": "samsung-galaxy-s20",
+   "name": "Samsung Galaxy S20",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 140,
+     "good": 119,
+     "fair": 98,
+     "cracked": 56,
+     "defective": 28
+    }
+   ],
+   "sort_order": 119
+  },
+  {
+   "handle": "samsung-galaxy-z-flip4",
+   "name": "Samsung Galaxy Z Flip4",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 191,
+     "good": 162,
+     "fair": 134,
+     "cracked": 76,
+     "defective": 38
+    },
+    {
+     "storage": "256GB",
+     "like_new": 207,
+     "good": 176,
+     "fair": 145,
+     "cracked": 83,
+     "defective": 41
+    },
+    {
+     "storage": "512GB",
+     "like_new": 222,
+     "good": 189,
+     "fair": 155,
+     "cracked": 89,
+     "defective": 44
+    }
+   ],
+   "sort_order": 120
+  },
+  {
+   "handle": "samsung-galaxy-z-flip3",
+   "name": "Samsung Galaxy Z Flip3",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 122,
+     "good": 104,
+     "fair": 85,
+     "cracked": 49,
+     "defective": 24
+    },
+    {
+     "storage": "256GB",
+     "like_new": 132,
+     "good": 112,
+     "fair": 92,
+     "cracked": 53,
+     "defective": 26
+    }
+   ],
+   "sort_order": 121
+  },
+  {
+   "handle": "samsung-galaxy-a53-5g",
+   "name": "Samsung Galaxy A53 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 23,
+     "good": 20,
+     "fair": 16,
+     "cracked": 9,
+     "defective": 5
+    },
+    {
+     "storage": "256GB",
+     "like_new": 25,
+     "good": 21,
+     "fair": 18,
+     "cracked": 10,
+     "defective": 5
+    }
+   ],
+   "sort_order": 122
+  },
+  {
+   "handle": "samsung-galaxy-a14-5g",
+   "name": "Samsung Galaxy A14 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 28,
+     "good": 24,
+     "fair": 20,
+     "cracked": 11,
+     "defective": 6
+    },
+    {
+     "storage": "128GB",
+     "like_new": 30,
+     "good": 26,
+     "fair": 21,
+     "cracked": 12,
+     "defective": 6
+    }
+   ],
+   "sort_order": 123
+  },
+  {
+   "handle": "samsung-galaxy-a13-5g",
+   "name": "Samsung Galaxy A13 5G",
+   "category": "Smartphone",
+   "brand": "Samsung",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB",
+     "like_new": 28,
+     "good": 24,
+     "fair": 20,
+     "cracked": 11,
+     "defective": 6
+    },
+    {
+     "storage": "128GB",
+     "like_new": 30,
+     "good": 26,
+     "fair": 21,
+     "cracked": 12,
+     "defective": 6
+    }
+   ],
+   "sort_order": 124
+  },
+  {
+   "handle": "google-pixel-10-pro-fold",
+   "name": "Google Pixel 10 Pro Fold",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 995,
+     "good": 846,
+     "fair": 696,
+     "cracked": 398,
+     "defective": 199
+    },
+    {
+     "storage": "512GB",
+     "like_new": 1074,
+     "good": 913,
+     "fair": 752,
+     "cracked": 430,
+     "defective": 215
+    },
+    {
+     "storage": "1TB",
+     "like_new": 1154,
+     "good": 981,
+     "fair": 808,
+     "cracked": 462,
+     "defective": 231
+    }
+   ],
+   "sort_order": 125
+  },
+  {
+   "handle": "google-pixel-10-pro-xl",
+   "name": "Google Pixel 10 Pro XL",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 599,
+     "good": 509,
+     "fair": 419,
+     "cracked": 240,
+     "defective": 120
+    },
+    {
+     "storage": "512GB",
+     "like_new": 647,
+     "good": 550,
+     "fair": 453,
+     "cracked": 259,
+     "defective": 129
+    },
+    {
+     "storage": "1TB",
+     "like_new": 695,
+     "good": 591,
+     "fair": 486,
+     "cracked": 278,
+     "defective": 139
+    }
+   ],
+   "sort_order": 126
+  },
+  {
+   "handle": "google-pixel-10-pro",
+   "name": "Google Pixel 10 Pro",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 532,
+     "good": 452,
+     "fair": 372,
+     "cracked": 213,
+     "defective": 106
+    },
+    {
+     "storage": "256GB",
+     "like_new": 575,
+     "good": 489,
+     "fair": 402,
+     "cracked": 230,
+     "defective": 115
+    },
+    {
+     "storage": "512GB",
+     "like_new": 617,
+     "good": 524,
+     "fair": 432,
+     "cracked": 247,
+     "defective": 123
+    },
+    {
+     "storage": "1TB",
+     "like_new": 660,
+     "good": 561,
+     "fair": 462,
+     "cracked": 264,
+     "defective": 132
+    }
+   ],
+   "sort_order": 127
+  },
+  {
+   "handle": "google-pixel-10",
+   "name": "Google Pixel 10",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 380,
+     "good": 323,
+     "fair": 266,
+     "cracked": 152,
+     "defective": 76
+    },
+    {
+     "storage": "256GB",
+     "like_new": 410,
+     "good": 348,
+     "fair": 287,
+     "cracked": 164,
+     "defective": 82
+    }
+   ],
+   "sort_order": 128
+  },
+  {
+   "handle": "google-pixel-10a",
+   "name": "Google Pixel 10a",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2026,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 308,
+     "good": 262,
+     "fair": 216,
+     "cracked": 123,
+     "defective": 62
+    },
+    {
+     "storage": "256GB",
+     "like_new": 333,
+     "good": 283,
+     "fair": 233,
+     "cracked": 133,
+     "defective": 67
+    }
+   ],
+   "sort_order": 129
+  },
+  {
+   "handle": "google-pixel-9-pro-fold",
+   "name": "Google Pixel 9 Pro Fold",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 656,
+     "good": 558,
+     "fair": 459,
+     "cracked": 262,
+     "defective": 131
+    },
+    {
+     "storage": "512GB",
+     "like_new": 708,
+     "good": 602,
+     "fair": 496,
+     "cracked": 283,
+     "defective": 142
+    }
+   ],
+   "sort_order": 130
+  },
+  {
+   "handle": "google-pixel-9-pro-xl",
+   "name": "Google Pixel 9 Pro XL",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 415,
+     "good": 353,
+     "fair": 290,
+     "cracked": 166,
+     "defective": 83
+    },
+    {
+     "storage": "256GB",
+     "like_new": 448,
+     "good": 381,
+     "fair": 314,
+     "cracked": 179,
+     "defective": 90
+    },
+    {
+     "storage": "512GB",
+     "like_new": 481,
+     "good": 409,
+     "fair": 337,
+     "cracked": 192,
+     "defective": 96
+    },
+    {
+     "storage": "1TB",
+     "like_new": 514,
+     "good": 437,
+     "fair": 360,
+     "cracked": 206,
+     "defective": 103
+    }
+   ],
+   "sort_order": 131
+  },
+  {
+   "handle": "google-pixel-9-pro",
+   "name": "Google Pixel 9 Pro",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 376,
+     "good": 320,
+     "fair": 263,
+     "cracked": 150,
+     "defective": 75
+    },
+    {
+     "storage": "256GB",
+     "like_new": 406,
+     "good": 345,
+     "fair": 284,
+     "cracked": 162,
+     "defective": 81
+    },
+    {
+     "storage": "512GB",
+     "like_new": 436,
+     "good": 371,
+     "fair": 305,
+     "cracked": 174,
+     "defective": 87
+    },
+    {
+     "storage": "1TB",
+     "like_new": 466,
+     "good": 396,
+     "fair": 326,
+     "cracked": 186,
+     "defective": 93
+    }
+   ],
+   "sort_order": 132
+  },
+  {
+   "handle": "google-pixel-9",
+   "name": "Google Pixel 9",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 347,
+     "good": 295,
+     "fair": 243,
+     "cracked": 139,
+     "defective": 69
+    },
+    {
+     "storage": "256GB",
+     "like_new": 375,
+     "good": 319,
+     "fair": 262,
+     "cracked": 150,
+     "defective": 75
+    }
+   ],
+   "sort_order": 133
+  },
+  {
+   "handle": "google-pixel-9a",
+   "name": "Google Pixel 9a",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 250,
+     "good": 212,
+     "fair": 175,
+     "cracked": 100,
+     "defective": 50
+    },
+    {
+     "storage": "256GB",
+     "like_new": 270,
+     "good": 230,
+     "fair": 189,
+     "cracked": 108,
+     "defective": 54
+    }
+   ],
+   "sort_order": 134
+  },
+  {
+   "handle": "google-pixel-8-pro",
+   "name": "Google Pixel 8 Pro",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 274,
+     "good": 233,
+     "fair": 192,
+     "cracked": 110,
+     "defective": 55
+    },
+    {
+     "storage": "256GB",
+     "like_new": 296,
+     "good": 252,
+     "fair": 207,
+     "cracked": 118,
+     "defective": 59
+    },
+    {
+     "storage": "512GB",
+     "like_new": 318,
+     "good": 270,
+     "fair": 223,
+     "cracked": 127,
+     "defective": 64
+    },
+    {
+     "storage": "1TB",
+     "like_new": 340,
+     "good": 289,
+     "fair": 238,
+     "cracked": 136,
+     "defective": 68
+    }
+   ],
+   "sort_order": 135
+  },
+  {
+   "handle": "google-pixel-8",
+   "name": "Google Pixel 8",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 212,
+     "good": 180,
+     "fair": 148,
+     "cracked": 85,
+     "defective": 42
+    },
+    {
+     "storage": "256GB",
+     "like_new": 229,
+     "good": 195,
+     "fair": 160,
+     "cracked": 92,
+     "defective": 46
+    }
+   ],
+   "sort_order": 136
+  },
+  {
+   "handle": "google-pixel-8a",
+   "name": "Google Pixel 8a",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 199,
+     "good": 169,
+     "fair": 139,
+     "cracked": 80,
+     "defective": 40
+    },
+    {
+     "storage": "256GB",
+     "like_new": 215,
+     "good": 183,
+     "fair": 150,
+     "cracked": 86,
+     "defective": 43
+    }
+   ],
+   "sort_order": 137
+  },
+  {
+   "handle": "google-pixel-7-pro",
+   "name": "Google Pixel 7 Pro",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 168,
+     "good": 143,
+     "fair": 118,
+     "cracked": 67,
+     "defective": 34
+    },
+    {
+     "storage": "256GB",
+     "like_new": 182,
+     "good": 155,
+     "fair": 127,
+     "cracked": 73,
+     "defective": 36
+    },
+    {
+     "storage": "512GB",
+     "like_new": 195,
+     "good": 166,
+     "fair": 136,
+     "cracked": 78,
+     "defective": 39
+    }
+   ],
+   "sort_order": 138
+  },
+  {
+   "handle": "google-pixel-7",
+   "name": "Google Pixel 7",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2022,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 103,
+     "good": 88,
+     "fair": 72,
+     "cracked": 41,
+     "defective": 21
+    },
+    {
+     "storage": "256GB",
+     "like_new": 111,
+     "good": 94,
+     "fair": 78,
+     "cracked": 44,
+     "defective": 22
+    }
+   ],
+   "sort_order": 139
+  },
+  {
+   "handle": "google-pixel-7a",
+   "name": "Google Pixel 7a",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB",
+     "like_new": 111,
+     "good": 94,
+     "fair": 78,
+     "cracked": 44,
+     "defective": 22
+    }
+   ],
+   "sort_order": 140
+  },
+  {
+   "handle": "google-pixel-fold",
+   "name": "Google Pixel Fold",
+   "category": "Smartphone",
+   "brand": "Google",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB",
+     "like_new": 277,
+     "good": 235,
+     "fair": 194,
+     "cracked": 111,
+     "defective": 55
+    },
+    {
+     "storage": "512GB",
+     "like_new": 299,
+     "good": 254,
+     "fair": 209,
+     "cracked": 120,
+     "defective": 60
+    }
+   ],
+   "sort_order": 141
+  },
+  {
+   "handle": "ipad-pro-11-inch-m5",
+   "name": "iPad Pro 11-inch (M5)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 956,
+     "good": 813,
+     "fair": 669,
+     "cracked": 382,
+     "defective": 191
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 1032,
+     "good": 877,
+     "fair": 722,
+     "cracked": 413,
+     "defective": 206
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 1109,
+     "good": 943,
+     "fair": 776,
+     "cracked": 444,
+     "defective": 222
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 1185,
+     "good": 1007,
+     "fair": 830,
+     "cracked": 474,
+     "defective": 237
+    }
+   ],
+   "sort_order": 142
+  },
+  {
+   "handle": "ipad-pro-13-inch-m5",
+   "name": "iPad Pro 13-inch (M5)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2025,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 1021,
+     "good": 868,
+     "fair": 715,
+     "cracked": 408,
+     "defective": 204
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 1103,
+     "good": 938,
+     "fair": 772,
+     "cracked": 441,
+     "defective": 221
+    },
+    {
+     "storage": "512GB Wi-Fi",
+     "like_new": 1184,
+     "good": 1006,
+     "fair": 829,
+     "cracked": 474,
+     "defective": 237
+    },
+    {
+     "storage": "512GB Wi-Fi + Cellular",
+     "like_new": 1266,
+     "good": 1076,
+     "fair": 886,
+     "cracked": 506,
+     "defective": 253
+    }
+   ],
+   "sort_order": 143
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-5th-gen-m1",
+   "name": "iPad Pro 12.9-inch (5th gen, M1)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 590,
+     "good": 502,
+     "fair": 413,
+     "cracked": 236,
+     "defective": 118
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 638,
+     "good": 542,
+     "fair": 447,
+     "cracked": 255,
+     "defective": 128
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 685,
+     "good": 582,
+     "fair": 479,
+     "cracked": 274,
+     "defective": 137
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 732,
+     "good": 622,
+     "fair": 512,
+     "cracked": 293,
+     "defective": 146
+    }
+   ],
+   "sort_order": 144
+  },
+  {
+   "handle": "ipad-pro-11-inch-3rd-gen-m1",
+   "name": "iPad Pro 11-inch (3rd gen, M1)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2021,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 513,
+     "good": 436,
+     "fair": 359,
+     "cracked": 205,
+     "defective": 103
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 554,
+     "good": 471,
+     "fair": 388,
+     "cracked": 222,
+     "defective": 111
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 595,
+     "good": 506,
+     "fair": 416,
+     "cracked": 238,
+     "defective": 119
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 636,
+     "good": 541,
+     "fair": 445,
+     "cracked": 254,
+     "defective": 127
+    }
+   ],
+   "sort_order": 145
+  },
+  {
+   "handle": "ipad-pro-11-inch-2nd-gen",
+   "name": "iPad Pro 11-inch (2nd gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 349,
+     "good": 297,
+     "fair": 244,
+     "cracked": 140,
+     "defective": 70
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 377,
+     "good": 320,
+     "fair": 264,
+     "cracked": 151,
+     "defective": 75
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 405,
+     "good": 344,
+     "fair": 284,
+     "cracked": 162,
+     "defective": 81
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 433,
+     "good": 368,
+     "fair": 303,
+     "cracked": 173,
+     "defective": 87
+    }
+   ],
+   "sort_order": 146
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-4th-gen",
+   "name": "iPad Pro 12.9-inch (4th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 415,
+     "good": 353,
+     "fair": 290,
+     "cracked": 166,
+     "defective": 83
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 449,
+     "good": 382,
+     "fair": 314,
+     "cracked": 180,
+     "defective": 90
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 482,
+     "good": 410,
+     "fair": 337,
+     "cracked": 193,
+     "defective": 96
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 515,
+     "good": 438,
+     "fair": 360,
+     "cracked": 206,
+     "defective": 103
+    }
+   ],
+   "sort_order": 147
+  },
+  {
+   "handle": "ipad-pro-11-inch-1st-gen",
+   "name": "iPad Pro 11-inch (1st gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 251,
+     "good": 213,
+     "fair": 176,
+     "cracked": 100,
+     "defective": 50
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 271,
+     "good": 230,
+     "fair": 190,
+     "cracked": 108,
+     "defective": 54
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 291,
+     "good": 247,
+     "fair": 204,
+     "cracked": 116,
+     "defective": 58
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 311,
+     "good": 264,
+     "fair": 218,
+     "cracked": 124,
+     "defective": 62
+    }
+   ],
+   "sort_order": 148
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-3rd-gen",
+   "name": "iPad Pro 12.9-inch (3rd gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 306,
+     "good": 260,
+     "fair": 214,
+     "cracked": 122,
+     "defective": 61
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 330,
+     "good": 280,
+     "fair": 231,
+     "cracked": 132,
+     "defective": 66
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 355,
+     "good": 302,
+     "fair": 248,
+     "cracked": 142,
+     "defective": 71
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 379,
+     "good": 322,
+     "fair": 265,
+     "cracked": 152,
+     "defective": 76
+    }
+   ],
+   "sort_order": 149
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-2nd-gen",
+   "name": "iPad Pro 12.9-inch (2nd gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 190,
+     "good": 162,
+     "fair": 133,
+     "cracked": 76,
+     "defective": 38
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 206,
+     "good": 175,
+     "fair": 144,
+     "cracked": 82,
+     "defective": 41
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 221,
+     "good": 188,
+     "fair": 155,
+     "cracked": 88,
+     "defective": 44
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 236,
+     "good": 201,
+     "fair": 165,
+     "cracked": 94,
+     "defective": 47
+    }
+   ],
+   "sort_order": 150
+  },
+  {
+   "handle": "ipad-pro-10-5-inch",
+   "name": "iPad Pro 10.5-inch",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 119,
+     "good": 101,
+     "fair": 83,
+     "cracked": 48,
+     "defective": 24
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 128,
+     "good": 109,
+     "fair": 90,
+     "cracked": 51,
+     "defective": 26
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 138,
+     "good": 117,
+     "fair": 97,
+     "cracked": 55,
+     "defective": 28
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 147,
+     "good": 125,
+     "fair": 103,
+     "cracked": 59,
+     "defective": 29
+    }
+   ],
+   "sort_order": 151
+  },
+  {
+   "handle": "ipad-pro-9-7-inch",
+   "name": "iPad Pro 9.7-inch",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2016,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 66,
+     "good": 56,
+     "fair": 46,
+     "cracked": 26,
+     "defective": 13
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 71,
+     "good": 60,
+     "fair": 50,
+     "cracked": 28,
+     "defective": 14
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 77,
+     "good": 65,
+     "fair": 54,
+     "cracked": 31,
+     "defective": 15
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 82,
+     "good": 70,
+     "fair": 57,
+     "cracked": 33,
+     "defective": 16
+    }
+   ],
+   "sort_order": 152
+  },
+  {
+   "handle": "ipad-pro-12-9-inch-1st-gen",
+   "name": "iPad Pro 12.9-inch (1st gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2015,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 83,
+     "good": 71,
+     "fair": 58,
+     "cracked": 33,
+     "defective": 17
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 90,
+     "good": 76,
+     "fair": 63,
+     "cracked": 36,
+     "defective": 18
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 96,
+     "good": 82,
+     "fair": 67,
+     "cracked": 38,
+     "defective": 19
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 103,
+     "good": 88,
+     "fair": 72,
+     "cracked": 41,
+     "defective": 21
+    }
+   ],
+   "sort_order": 153
+  },
+  {
+   "handle": "ipad-air-13-inch-m4",
+   "name": "iPad Air 13-inch (M4)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2026,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 773,
+     "good": 657,
+     "fair": 541,
+     "cracked": 309,
+     "defective": 155
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 835,
+     "good": 710,
+     "fair": 584,
+     "cracked": 334,
+     "defective": 167
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 897,
+     "good": 762,
+     "fair": 628,
+     "cracked": 359,
+     "defective": 179
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 959,
+     "good": 815,
+     "fair": 671,
+     "cracked": 384,
+     "defective": 192
+    }
+   ],
+   "sort_order": 154
+  },
+  {
+   "handle": "ipad-air-4th-gen",
+   "name": "iPad Air (4th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 206,
+     "good": 175,
+     "fair": 144,
+     "cracked": 82,
+     "defective": 41
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 223,
+     "good": 190,
+     "fair": 156,
+     "cracked": 89,
+     "defective": 45
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 239,
+     "good": 203,
+     "fair": 167,
+     "cracked": 96,
+     "defective": 48
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 256,
+     "good": 218,
+     "fair": 179,
+     "cracked": 102,
+     "defective": 51
+    }
+   ],
+   "sort_order": 155
+  },
+  {
+   "handle": "ipad-air-3rd-gen",
+   "name": "iPad Air (3rd gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 134,
+     "good": 114,
+     "fair": 94,
+     "cracked": 54,
+     "defective": 27
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 145,
+     "good": 123,
+     "fair": 102,
+     "cracked": 58,
+     "defective": 29
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 155,
+     "good": 132,
+     "fair": 108,
+     "cracked": 62,
+     "defective": 31
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 166,
+     "good": 141,
+     "fair": 116,
+     "cracked": 66,
+     "defective": 33
+    }
+   ],
+   "sort_order": 156
+  },
+  {
+   "handle": "ipad-mini-5th-gen",
+   "name": "iPad mini (5th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "64GB Wi-Fi",
+     "like_new": 140,
+     "good": 119,
+     "fair": 98,
+     "cracked": 56,
+     "defective": 28
+    },
+    {
+     "storage": "64GB Wi-Fi + Cellular",
+     "like_new": 151,
+     "good": 128,
+     "fair": 106,
+     "cracked": 60,
+     "defective": 30
+    },
+    {
+     "storage": "256GB Wi-Fi",
+     "like_new": 162,
+     "good": 138,
+     "fair": 113,
+     "cracked": 65,
+     "defective": 32
+    },
+    {
+     "storage": "256GB Wi-Fi + Cellular",
+     "like_new": 173,
+     "good": 147,
+     "fair": 121,
+     "cracked": 69,
+     "defective": 35
+    }
+   ],
+   "sort_order": 157
+  },
+  {
+   "handle": "ipad-mini-4th-gen",
+   "name": "iPad mini (4th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2015,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 53,
+     "good": 45,
+     "fair": 37,
+     "cracked": 21,
+     "defective": 11
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 57,
+     "good": 48,
+     "fair": 40,
+     "cracked": 23,
+     "defective": 11
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 62,
+     "good": 53,
+     "fair": 43,
+     "cracked": 25,
+     "defective": 12
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 66,
+     "good": 56,
+     "fair": 46,
+     "cracked": 26,
+     "defective": 13
+    }
+   ],
+   "sort_order": 158
+  },
+  {
+   "handle": "ipad-8th-gen",
+   "name": "iPad (8th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 114,
+     "good": 97,
+     "fair": 80,
+     "cracked": 46,
+     "defective": 23
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 123,
+     "good": 105,
+     "fair": 86,
+     "cracked": 49,
+     "defective": 25
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 132,
+     "good": 112,
+     "fair": 92,
+     "cracked": 53,
+     "defective": 26
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 141,
+     "good": 120,
+     "fair": 99,
+     "cracked": 56,
+     "defective": 28
+    }
+   ],
+   "sort_order": 159
+  },
+  {
+   "handle": "ipad-7th-gen",
+   "name": "iPad (7th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 93,
+     "good": 79,
+     "fair": 65,
+     "cracked": 37,
+     "defective": 19
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 100,
+     "good": 85,
+     "fair": 70,
+     "cracked": 40,
+     "defective": 20
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 108,
+     "good": 92,
+     "fair": 76,
+     "cracked": 43,
+     "defective": 22
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 115,
+     "good": 98,
+     "fair": 80,
+     "cracked": 46,
+     "defective": 23
+    }
+   ],
+   "sort_order": 160
+  },
+  {
+   "handle": "ipad-6th-gen",
+   "name": "iPad (6th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 69,
+     "good": 59,
+     "fair": 48,
+     "cracked": 28,
+     "defective": 14
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 75,
+     "good": 64,
+     "fair": 52,
+     "cracked": 30,
+     "defective": 15
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 80,
+     "good": 68,
+     "fair": 56,
+     "cracked": 32,
+     "defective": 16
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 86,
+     "good": 73,
+     "fair": 60,
+     "cracked": 34,
+     "defective": 17
+    }
+   ],
+   "sort_order": 161
+  },
+  {
+   "handle": "ipad-5th-gen",
+   "name": "iPad (5th gen)",
+   "category": "Tablet",
+   "brand": "Apple",
+   "release_year": 2017,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "32GB Wi-Fi",
+     "like_new": 32,
+     "good": 27,
+     "fair": 22,
+     "cracked": 13,
+     "defective": 6
+    },
+    {
+     "storage": "32GB Wi-Fi + Cellular",
+     "like_new": 35,
+     "good": 30,
+     "fair": 24,
+     "cracked": 14,
+     "defective": 7
+    },
+    {
+     "storage": "128GB Wi-Fi",
+     "like_new": 37,
+     "good": 31,
+     "fair": 26,
+     "cracked": 15,
+     "defective": 7
+    },
+    {
+     "storage": "128GB Wi-Fi + Cellular",
+     "like_new": 40,
+     "good": 34,
+     "fair": 28,
+     "cracked": 16,
+     "defective": 8
+    }
+   ],
+   "sort_order": 162
+  },
+  {
+   "handle": "apple-watch-ultra-2-hermes",
+   "name": "Apple Watch Ultra 2 Hermès",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2023,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "49mm GPS + Cellular",
+     "like_new": 590,
+     "good": 502,
+     "fair": 413,
+     "cracked": 236,
+     "defective": 118
+    }
+   ],
+   "sort_order": 163
+  },
+  {
+   "handle": "apple-watch-ultra-2-2024",
+   "name": "Apple Watch Ultra 2 (2024)",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2024,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "49mm GPS + Cellular",
+     "like_new": 367,
+     "good": 312,
+     "fair": 257,
+     "cracked": 147,
+     "defective": 73
+    }
+   ],
+   "sort_order": 164
+  },
+  {
+   "handle": "apple-watch-series-6",
+   "name": "Apple Watch Series 6",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 60,
+     "good": 51,
+     "fair": 42,
+     "cracked": 24,
+     "defective": 12
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 64,
+     "good": 54,
+     "fair": 45,
+     "cracked": 26,
+     "defective": 13
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 69,
+     "good": 59,
+     "fair": 48,
+     "cracked": 28,
+     "defective": 14
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 74,
+     "good": 63,
+     "fair": 52,
+     "cracked": 30,
+     "defective": 15
+    }
+   ],
+   "sort_order": 165
+  },
+  {
+   "handle": "apple-watch-se-1st-gen",
+   "name": "Apple Watch SE (1st gen)",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2020,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 32,
+     "good": 27,
+     "fair": 22,
+     "cracked": 13,
+     "defective": 6
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 35,
+     "good": 30,
+     "fair": 24,
+     "cracked": 14,
+     "defective": 7
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 37,
+     "good": 31,
+     "fair": 26,
+     "cracked": 15,
+     "defective": 7
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 40,
+     "good": 34,
+     "fair": 28,
+     "cracked": 16,
+     "defective": 8
+    }
+   ],
+   "sort_order": 166
+  },
+  {
+   "handle": "apple-watch-series-5",
+   "name": "Apple Watch Series 5",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2019,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 23,
+     "good": 20,
+     "fair": 16,
+     "cracked": 9,
+     "defective": 5
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 25,
+     "good": 21,
+     "fair": 18,
+     "cracked": 10,
+     "defective": 5
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 27,
+     "good": 23,
+     "fair": 19,
+     "cracked": 11,
+     "defective": 5
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 29,
+     "good": 25,
+     "fair": 20,
+     "cracked": 12,
+     "defective": 6
+    }
+   ],
+   "sort_order": 167
+  },
+  {
+   "handle": "apple-watch-series-4",
+   "name": "Apple Watch Series 4",
+   "category": "Smartwatch",
+   "brand": "Apple",
+   "release_year": 2018,
+   "is_popular": false,
+   "prices": [
+    {
+     "storage": "40mm GPS",
+     "like_new": 27,
+     "good": 23,
+     "fair": 19,
+     "cracked": 11,
+     "defective": 5
+    },
+    {
+     "storage": "40mm GPS + Cellular",
+     "like_new": 30,
+     "good": 26,
+     "fair": 21,
+     "cracked": 12,
+     "defective": 6
+    },
+    {
+     "storage": "44mm GPS",
+     "like_new": 32,
+     "good": 27,
+     "fair": 22,
+     "cracked": 13,
+     "defective": 6
+    },
+    {
+     "storage": "44mm GPS + Cellular",
+     "like_new": 34,
+     "good": 29,
+     "fair": 24,
+     "cracked": 14,
+     "defective": 7
+    }
+   ],
+   "sort_order": 168
   }
  ]
 }

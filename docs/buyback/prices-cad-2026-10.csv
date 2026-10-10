@@ -1,0 +1,132 @@
+brand,model,usd_max,cad_max,device_handle
+Apple,iPhone 17 Pro Max,973,1333,iphone-17-pro-max
+Apple,iPhone 17 Pro,872,1195,iphone-17-pro
+Apple,iPhone Air,694,951,iphone-air
+Apple,iPhone 17,631,864,iphone-17
+Apple,iPhone 16 Pro Max,771,1056,iphone-16-pro-max
+Apple,iPhone 16 Pro,636,871,iphone-16-pro
+Apple,iPhone 16 Plus,515,706,iphone-16-plus
+Apple,iPhone 16,491,673,iphone-16
+Apple,iPhone 15 Pro Max,568,778,iphone-15-pro-max
+Apple,iPhone 15 Pro,486,666,iphone-15-pro
+Apple,iPhone 15 Plus,391,536,iphone-15-plus
+Apple,iPhone 15,351,481,iphone-15
+Apple,iPhone 14 Pro Max,482,660,iphone-14-pro-max
+Apple,iPhone 14 Pro,393,538,iphone-14-pro
+Apple,iPhone 14 Plus,270,370,iphone-14-plus
+Apple,iPhone 14,306,419,iphone-14
+Apple,iPhone 13 Pro Max,360,493,iphone-13-pro-max
+Apple,iPhone 13 Pro,353,484,iphone-13-pro
+Apple,iPhone 13,228,312,iphone-13
+Apple,iPhone 13 mini,221,303,iphone-13-mini
+Apple,iPhone 12 Pro Max,245,336,iphone-12-pro-max
+Apple,iPhone 12 Pro,212,290,iphone-12-pro
+Apple,iPhone 12,152,208,iphone-12
+Apple,iPhone 12 mini,142,195,iphone-12-mini
+Apple,iPhone 11 Pro Max,192,263,iphone-11-pro-max
+Apple,iPhone 11 Pro,149,204,iphone-11-pro
+Apple,iPhone 11,130,178,iphone-11
+Apple,iPhone SE (3rd gen),91,125,iphone-se-3rd-gen
+Apple,iPhone SE (2nd gen / 2020),59,81,iphone-se-2nd-gen
+Apple,iPhone XS Max,139,190,iphone-xs-max
+Apple,iPhone XS,77,105,iphone-xs
+Apple,iPhone XR,77,105,iphone-xr
+Apple,iPhone X,77,105,iphone-x
+Apple,iPhone 8 Plus,53,73,iphone-8-plus
+Apple,iPhone 8,21,29,iphone-8
+Samsung,Galaxy S25 Ultra,634,869,samsung-galaxy-s25-ultra
+Samsung,Galaxy S25 Plus,421,577,samsung-galaxy-s25-plus
+Samsung,Galaxy S25,431,590,samsung-galaxy-s25
+Samsung,Galaxy S24 Ultra,531,727,samsung-galaxy-s24-ultra
+Samsung,Galaxy S24 Plus,323,443,samsung-galaxy-s24-plus
+Samsung,Galaxy S24,301,412,samsung-galaxy-s24
+Samsung,Galaxy S24 FE,213,292,samsung-galaxy-s24-fe
+Samsung,Galaxy S23 Ultra,356,488,samsung-galaxy-s23-ultra
+Samsung,Galaxy S23 Plus,258,353,samsung-galaxy-s23-plus
+Samsung,Galaxy S23,207,284,samsung-galaxy-s23
+Samsung,Galaxy S23 FE,147,201,samsung-galaxy-s23-fe
+Samsung,Galaxy S22 Ultra,285,390,samsung-galaxy-s22-ultra
+Samsung,Galaxy S22 Plus,145,199,samsung-galaxy-s22-plus
+Samsung,Galaxy S22,126,173,samsung-galaxy-s22
+Samsung,Galaxy S21 Ultra,168,230,samsung-galaxy-s21-ultra
+Samsung,Galaxy S21 Plus,121,166,samsung-galaxy-s21-plus
+Samsung,Galaxy S21,82,112,samsung-galaxy-s21
+Samsung,Galaxy S20 Ultra,158,216,samsung-galaxy-s20-ultra
+Samsung,Galaxy S20 Plus,65,89,samsung-galaxy-s20-plus
+Samsung,Galaxy S20,102,140,samsung-galaxy-s20
+Samsung,Galaxy Z Flip 6,264,362,samsung-galaxy-z-flip6
+Samsung,Galaxy Z Flip 4,162,222,samsung-galaxy-z-flip4
+Samsung,Galaxy Z Flip 3,96,132,samsung-galaxy-z-flip3
+Samsung,Galaxy A54 5G,24,33,samsung-galaxy-a54-5g
+Samsung,Galaxy A53 5G,18,25,samsung-galaxy-a53-5g
+Samsung,Galaxy A15 5G,24,33,samsung-galaxy-a15-5g
+Samsung,Galaxy A14 5G,22,30,samsung-galaxy-a14-5g
+Samsung,Galaxy A13 5G,22,30,samsung-galaxy-a13-5g
+Google,Pixel 10 Pro Fold,842,1154,google-pixel-10-pro-fold
+Google,Pixel 10 Pro XL,507,695,google-pixel-10-pro-xl
+Google,Pixel 10 Pro,482,660,google-pixel-10-pro
+Google,Pixel 10,299,410,google-pixel-10
+Google,Pixel 10a,243,333,google-pixel-10a
+Google,Pixel 9 Pro Fold,517,708,google-pixel-9-pro-fold
+Google,Pixel 9 Pro XL,375,514,google-pixel-9-pro-xl
+Google,Pixel 9 Pro,340,466,google-pixel-9-pro
+Google,Pixel 9,274,375,google-pixel-9
+Google,Pixel 9a,197,270,google-pixel-9a
+Google,Pixel 8 Pro,248,340,google-pixel-8-pro
+Google,Pixel 8,167,229,google-pixel-8
+Google,Pixel 8a,157,215,google-pixel-8a
+Google,Pixel 7 Pro,142,195,google-pixel-7-pro
+Google,Pixel 7,81,111,google-pixel-7
+Google,Pixel 7a,81,111,google-pixel-7a
+Google,Pixel Fold,218,299,google-pixel-fold
+Apple,"iPad Pro 11"" M5",865,1185,ipad-pro-11-inch-m5
+Apple,"iPad Pro 13"" M5",924,1266,ipad-pro-13-inch-m5
+Apple,"iPad Pro 11"" M4",766,1049,ipad-pro-11-inch-m4
+Apple,"iPad Pro 13"" M4",825,1130,ipad-pro-13-inch-m4
+Apple,"iPad Pro 11"" (4th gen) M2",472,647,ipad-pro-11-inch-4th-gen-m2
+Apple,"iPad Pro 12.9"" (6th gen) M2",581,796,ipad-pro-12-9-inch-6th-gen-m2
+Apple,"iPad Pro 12.9"" (5th gen) M1",534,732,ipad-pro-12-9-inch-5th-gen-m1
+Apple,"iPad Pro 11"" (3rd gen) M1",464,636,ipad-pro-11-inch-3rd-gen-m1
+Apple,"iPad Pro 11"" (2nd gen)",316,433,ipad-pro-11-inch-2nd-gen
+Apple,"iPad Pro 12.9"" (4th gen)",376,515,ipad-pro-12-9-inch-4th-gen
+Apple,"iPad Pro 11"" (1st gen)",227,311,ipad-pro-11-inch-1st-gen
+Apple,"iPad Pro 12.9"" (3rd gen)",277,379,ipad-pro-12-9-inch-3rd-gen
+Apple,"iPad Pro 12.9"" (2nd gen)",172,236,ipad-pro-12-9-inch-2nd-gen
+Apple,"iPad Pro 10.5""",107,147,ipad-pro-10-5-inch
+Apple,"iPad Pro 9.7""",60,82,ipad-pro-9-7-inch
+Apple,"iPad Pro 12.9"" (1st gen)",75,103,ipad-pro-12-9-inch-1st-gen
+Apple,"iPad Air 13"" M4",700,959,ipad-air-13-inch-m4
+Apple,"iPad Air 11"" M3",536,734,ipad-air-11-inch-m3
+Apple,"iPad Air 13"" M3",636,871,ipad-air-13-inch-m3
+Apple,"iPad Air 11"" M2",487,667,ipad-air-11-inch-m2
+Apple,"iPad Air 13"" M2",617,845,ipad-air-13-inch-m2
+Apple,iPad Air 5,263,360,ipad-air-5th-gen-m1
+Apple,iPad Air 4,187,256,ipad-air-4th-gen
+Apple,iPad Air 3,121,166,ipad-air-3rd-gen
+Apple,iPad mini 7,427,585,ipad-mini-a17-pro
+Apple,iPad mini 6,237,325,ipad-mini-6th-gen
+Apple,iPad mini 5,126,173,ipad-mini-5th-gen
+Apple,iPad mini 4,48,66,ipad-mini-4th-gen
+Apple,iPad 11th gen,358,490,ipad-a16
+Apple,iPad 10th gen,233,319,ipad-10th-gen
+Apple,iPad 9th gen,168,230,ipad-9th-gen
+Apple,iPad 8th gen,103,141,ipad-8th-gen
+Apple,iPad 7th gen,84,115,ipad-7th-gen
+Apple,iPad 6th gen,63,86,ipad-6th-gen
+Apple,iPad 5th gen,29,40,ipad-5th-gen
+Apple,Apple Watch SE 3,121,166,apple-watch-se-3
+Apple,Apple Watch Series 11,177,242,apple-watch-series-11
+Apple,Apple Watch Ultra 3,323,443,apple-watch-ultra-3
+Apple,Apple Watch Ultra 2 Hermès,431,590,apple-watch-ultra-2-hermes
+Apple,Apple Watch Series 10,152,208,apple-watch-series-10
+Apple,Apple Watch Ultra 2 (2024),268,367,apple-watch-ultra-2-2024
+Apple,Apple Watch Ultra 2 (2023),227,311,apple-watch-ultra-2
+Apple,Apple Watch Series 9,118,162,apple-watch-series-9
+Apple,Apple Watch Ultra (1st gen),120,164,apple-watch-ultra
+Apple,Apple Watch SE (2022),53,73,apple-watch-se-2nd-gen
+Apple,Apple Watch Series 8,78,107,apple-watch-series-8
+Apple,Apple Watch Series 7,58,79,apple-watch-series-7
+Apple,Apple Watch Series 6,54,74,apple-watch-series-6
+Apple,Apple Watch SE (1st gen),29,40,apple-watch-se-1st-gen
+Apple,Apple Watch Series 5,21,29,apple-watch-series-5
+Apple,Apple Watch Series 4,25,34,apple-watch-series-4
