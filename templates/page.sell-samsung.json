@@ -197,13 +197,6 @@
         "question_7"
       ]
     },
-    "value_chart": {
-      "type": "sell-value-chart",
-      "settings": {
-        "brand": "Samsung",
-        "category": "Smartphone"
-      }
-    },
     "easy_steps": {
       "type": "sell-easy-steps",
       "settings": {
@@ -248,7 +241,6 @@
   },
   "order": [
     "hero",
-    "value_chart",
     "what_we_pay",
     "quote",
     "easy_steps",
