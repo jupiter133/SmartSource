@@ -28,6 +28,11 @@
   const conditions = (config.conditions || []).filter((c) => c.key in COND_INDEX);
   if (!conditions.some((c) => c.key === 'new')) conditions.unshift(NEW_DEFAULT);
   else conditions.sort((a, b) => (b.key === 'new') - (a.key === 'new')); // sealed always first
+  if (!conditions.some((c) => c.key === 'defective')) conditions.push({ key: 'defective', title: 'Defective', summary: '', checklist: [] });
+  // "Is it fully working?" asked before the condition cards: Yes = conditions without Defective, No = priced as Defective.
+  const W = config.working || {};
+  const WORK_ITEMS = (W.items && W.items.length) ? W.items : ['It turns on and off and charges, and the battery, back cover and SIM tray are all there.', 'Front and rear cameras work properly.', 'Speakers and microphones work properly.', 'Face ID, Touch ID or the fingerprint sensor works, if it has one.', 'Everything else works too: Wi-Fi, Bluetooth, buttons and the touchscreen.'];
+  const NOT_WORKING = 'Not fully working — offer is for a defective device.';
   const byHandle = (list, h) => list.find((x) => x.h === h);
   const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
@@ -81,8 +86,8 @@
   const batch = Math.max(4, Number(config.modelBatch) || 11);
 
   // ---------- state ----------
-  const freshCur = () => ({ cat: lock ? lock.cat : null, brand: lock ? lock.brand : null, fam: null, device: null, storage: null, cond: null });
-  const fresh = () => ({ step: minStep, cur: freshCur(), items: [], details: { name: '', email: '', phone: '', method: '', store: '' } });
+  const freshCur = () => ({ cat: lock ? lock.cat : null, brand: lock ? lock.brand : null, fam: null, device: null, storage: null, work: null, cond: null });
+  const fresh = () => ({ step: minStep, cur: freshCur(), items: [], details: { name: '', email: '', phone: '', method: '', store: '', proof: '', purchased_from: '', purchase_date: '' } });
   const store = {
     get(key) { try { return JSON.parse(window.sessionStorage.getItem(key)); } catch (e) { return null; } },
     set(key, v) { try { window.sessionStorage.setItem(key, JSON.stringify(v)); } catch (e) { /* private mode: progress just isn't saved */ } },
@@ -95,6 +100,8 @@
   // A device in progress from another page that doesn't fit this page's lock starts over (devices already in the quote stay).
   if (lock && (state.cur.cat !== lock.cat || (lock.brand && state.cur.brand !== lock.brand))) state.cur = freshCur();
   if (state.cur.fam && !famOf(state.cur.fam)) state.cur.fam = null;
+  if (state.cur.cond && !state.cur.work) state.cur.work = state.cur.cond === 'defective' ? 'no' : 'yes'; // saved before the working question existed
+  state.details = Object.assign(fresh().details, state.details);
   const save = () => store.set(STORE_KEY, state);
 
   const curPrice = () => (state.cur.device && state.cur.storage && state.cur.cond ? priceFor(state.cur.device, state.cur.storage, state.cur.cond) : null);
@@ -110,7 +117,7 @@
     2: () => Boolean(famMode ? state.cur.fam && state.cur.cat : state.cur.brand),
     3: () => Boolean(state.cur.device),
     4: () => Boolean(state.cur.storage),
-    5: () => Boolean(curPrice()),
+    5: () => Boolean(state.cur.work && curPrice()),
     6: () => state.items.length > 0 && detailsValid(),
   }[n] || (() => false))();
   // First step the current device still needs; 6 once it is fully described.
@@ -181,6 +188,15 @@
   };
   const openConds = new Set(); // condition cards whose "What qualifies?" list is open
   const empty = (msg) => el('p', { class: 'wiz-empty', text: msg });
+
+  const condTitle0 = $('[data-step="5"] .wiz-step__title')?.textContent || 'Condition';
+  const condSub0 = $('[data-step="5"] .wiz-step__sub')?.textContent || '';
+  const workQuestion = () => el('div', { class: 'wiz-work' },
+    el('ul', { class: 'wiz-work__list', role: 'list' }, WORK_ITEMS.map((t) => el('li', { text: t }))),
+    W.note ? el('p', { class: 'wiz-work__note', text: W.note }) : null,
+    el('div', { class: 'wiz-work__btns' },
+      el('button', { type: 'button', class: 'wiz-work__btn', 'data-work': 'yes' }, el('strong', { text: 'Yes' }), el('span', { text: 'Everything works' })),
+      el('button', { type: 'button', class: 'wiz-work__btn', 'data-work': 'no' }, el('strong', { text: 'No' }), el('span', { text: "Something doesn't work" }))));
 
   // Model step with prices (brand pages): most valuable first, a search box, and a "Load more" card after `batch` models.
   const modelSearchWrap = $('[data-model-search]');
@@ -256,15 +272,35 @@
       nodes = d ? storagesFor(d.h).map((st) => {
         const used = usedTop(d.h, st);
         const sealed = priceFor(d.h, st, 'new');
-        return card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st,
-          meta: (used || sealed) ? `Up to ${money(Math.max(used || 0, sealed || 0))}` : null,
-          meta2: null, cls: 'wiz-card--storage' });
+        return card({ name: 'wiz-storage', value: st, checked: c.storage === st, title: st, disabled: !(used || sealed), cls: 'wiz-card--storage' });
       }) : [];
       if (!nodes.length) nodes = [empty('Pick a model first.')];
+    } else if (n === 5 && c.device && c.storage && c.work !== 'yes') {
+      const title = $('[data-step="5"] .wiz-step__title');
+      const sub = $('[data-step="5"] .wiz-step__sub');
+      if (!c.work) {
+        title.textContent = W.title || 'Is it fully working?';
+        sub.textContent = W.sub || '';
+        sub.hidden = !W.sub;
+        nodes = [workQuestion()];
+      } else {
+        const price = priceFor(c.device, c.storage, 'defective');
+        c.cond = price ? 'defective' : null;
+        title.textContent = 'Not fully working';
+        sub.hidden = true;
+        nodes = [el('div', { class: 'wiz-work-no' },
+          el('p', { class: 'wiz-work-no__text', text: price ? NOT_WORKING : "We can't make an online offer for this model if it isn't fully working. Contact us or visit one of our stores." }),
+          price ? el('p', { class: 'wiz-work-no__price' }, el('span', { text: 'Your offer' }), el('strong', { text: money(price) })) : null,
+          el('button', { type: 'button', class: 'wiz-work__change', 'data-work-reset': '' }, 'Change my answer'))];
+      }
     } else if (n === 5) {
-      // Sealed is offered only where it has a price; a sealed-only model shows just that option.
+      $('[data-step="5"] .wiz-step__title').textContent = condTitle0;
+      const sub5 = $('[data-step="5"] .wiz-step__sub');
+      sub5.textContent = condSub0;
+      sub5.hidden = !condSub0;
+      // Sealed is offered only where it has a price; a sealed-only model shows just that option. Defective is the "No" answer.
       const used = hasUsed(c.device, c.storage);
-      const shown = conditions.filter((cond) => (cond.key === 'new' ? Boolean(priceFor(c.device, c.storage, 'new')) : used));
+      const shown = conditions.filter((cond) => cond.key !== 'defective' && (cond.key === 'new' ? Boolean(priceFor(c.device, c.storage, 'new')) : used));
       if (c.cond && !shown.some((cond) => cond.key === c.cond)) c.cond = null;
       nodes = shown.map((cond) => {
         const price = priceFor(c.device, c.storage, cond.key);
@@ -285,6 +321,7 @@
       });
       if (!used && nodes.length) nodes.unshift(el('p', { class: 'wiz-cond-note', text: 'We buy this model brand new and sealed only.' }));
       if (!nodes.length) nodes = [empty('Pick a storage option first.')];
+      else if (c.device) nodes.push(el('button', { type: 'button', class: 'wiz-work__change', 'data-work-reset': '' }, 'Something not working? Change your answer'));
     }
     box.replaceChildren(...nodes);
   }
@@ -316,8 +353,10 @@
     const rows = $('[data-sum-rows]');
     if (rows) {
       rows.hidden = !d;
-      rows.replaceChildren(...[['Device', d && d.n], ['Storage', c.storage], ['Condition', cond && cond.title]].map(([k, v]) => el('div', {}, el('dt', { text: k }), el('dd', { text: v || '–' }))));
+      rows.replaceChildren(...[['Device', d && d.n], ['Storage', c.storage], ['Fully working', c.work && (c.work === 'yes' ? 'Yes' : 'No')], ['Condition', cond && cond.title]].map(([k, v]) => el('div', {}, el('dt', { text: k }), el('dd', { text: v || '–' }))));
       $('[data-sum-meta]').textContent = d ? '' : 'Your offer updates as you go.';
+      const note = $('[data-sum-note]');
+      if (note) { note.textContent = NOT_WORKING; note.hidden = !(d && c.work === 'no' && curPrice()); }
     } else {
       $('[data-sum-meta]').textContent = d ? [c.storage, cond && cond.title].filter(Boolean).join(' · ') || 'Choose storage and condition' : 'Your offer updates as you go.';
     }
@@ -374,6 +413,7 @@
       panel.classList.add('is-entering');
     }
     renderOptions(n);
+    renderChart();
     if (n === 6) syncDetailsToForm();
     renderSummary();
     renderNav();
@@ -387,6 +427,30 @@
       if (top < 0 || top > window.innerHeight * 0.5) root.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
       panel?.querySelector('.wiz-step__title')?.focus({ preventScroll: true });
     }
+  }
+
+  // ---------- "Is it fully working?" + value chart ----------
+  function setWork(v) {
+    const c = state.cur;
+    c.work = v;
+    if (v !== 'yes' || c.cond === 'defective') c.cond = null;
+    renderOptions(5);
+    renderChart();
+    renderSummary();
+    renderNav();
+    save();
+    const title = $('[data-step="5"] .wiz-step__title');
+    if (title) { title.focus({ preventScroll: true }); if (title.getBoundingClientRect().top < 0) title.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'center' }); }
+  }
+  const chartBox = $('[data-wiz-chart]');
+  // Today = the picked condition's price, else the top offer for that storage. Future values are estimates (theme settings).
+  function renderChart() {
+    if (!chartBox) return;
+    const c = state.cur;
+    const d = byHandle(devices, c.device);
+    const now = d && c.storage ? (curPrice() || (c.work === 'no' ? 0 : Math.max(usedTop(d.h, c.storage) || 0, priceFor(d.h, c.storage, 'new') || 0))) : 0;
+    if (state.step !== 5 || !now || !config.chart || !window.SellChart) { chartBox.hidden = true; return; }
+    window.SellChart.render(chartBox, { title: `${d.n} ${c.storage}`, now, f: config.chart.f, level: 4 });
   }
 
   // ---------- selections ----------
@@ -405,7 +469,7 @@
     const cond = conditions.find((x) => x.key === c.cond);
     const price = curPrice();
     if (!d || !cond || !price) return false;
-    state.items.push({ device: d.h, name: d.n, img: imageFor(d), storage: c.storage, cond: c.cond, condTitle: cond.title, price });
+    state.items.push({ device: d.h, name: d.n, img: imageFor(d), storage: c.storage, cond: c.cond, condTitle: c.work === 'no' ? `${cond.title} (not fully working)` : cond.title, work: c.work === 'no' ? 'no' : 'yes', price });
     state.cur = fresh().cur;
     return true;
   }
@@ -433,8 +497,8 @@
       resetModelSearch();
     } else if (t.name === 'wiz-brand') { state.cur = { ...fresh().cur, cat: c.cat, fam: c.fam, brand: t.value }; resetModelSearch(); }
     else if (t.name === 'wiz-device') { selectDevice(t.value); }
-    else if (t.name === 'wiz-storage') state.cur = { ...c, storage: t.value, cond: null };
-    else if (t.name === 'wiz-cond') { c.cond = t.value; openConds.add(t.value); renderOptions(5); $(`input[name="wiz-cond"][value="${t.value}"]`)?.focus(); }
+    else if (t.name === 'wiz-storage') state.cur = { ...c, storage: t.value, work: null, cond: null };
+    else if (t.name === 'wiz-cond') { c.cond = t.value; openConds.add(t.value); renderOptions(5); renderChart(); $(`input[name="wiz-cond"][value="${t.value}"]`)?.focus(); }
     else if (t.dataset && t.dataset.detail) { readDetails(); renderNav(); save(); return; }
     else return;
     renderSummary();
@@ -450,6 +514,8 @@
       $$('[data-options="3"] input[name="wiz-device"]')[before]?.focus(); // first newly shown model
       return;
     }
+    const wk = e.target.closest('[data-work]');
+    if (wk || e.target.closest('[data-work-reset]')) { setWork(wk ? wk.dataset.work : null); return; }
     const tog = e.target.closest('[data-cond-toggle]');
     if (tog) {
       const key = tog.dataset.condToggle;
@@ -471,10 +537,11 @@
     if (complete(state.step)) goTo(state.step === 1 ? Math.min(firstOpen(), 5) : state.step + 1); // a device type card already picks the brand
   });
   $('[data-wiz-prev]').addEventListener('click', () => {
+    if (state.step === 5 && state.cur.work) return setWork(null); // back to "Is it fully working?"
     if (state.step === 6 && !state.cur.cat && state.items.length) {
       const last = state.items.pop(); // bring the last device back so its condition can be changed
       const ld = byHandle(devices, last.device);
-      state.cur = { cat: ld?.c, brand: ld?.b, fam: famFor(ld), device: last.device, storage: last.storage, cond: last.cond };
+      state.cur = { cat: ld?.c, brand: ld?.b, fam: famFor(ld), device: last.device, storage: last.storage, work: last.work || (last.cond === 'defective' ? 'no' : 'yes'), cond: last.cond };
       return goTo(5);
     }
     if (state.step <= minStep && state.items.length) return goTo(6);
@@ -573,6 +640,41 @@
     });
     const storeField = $('[data-store-field]');
     if (storeField) storeField.hidden = state.details.method !== 'dropoff';
+    syncProof();
+  }
+  // Proof of purchase: the contact form can't carry files, so only the answers are sent and we follow up by email.
+  const proofFile = $('[data-proof-file]');
+  let proofName = '';
+  function syncProof() {
+    const more = $('[data-proof-more]');
+    if (more) more.hidden = state.details.proof !== 'yes';
+    const rec = $('[data-proof-rec]');
+    if (rec) rec.hidden = !state.items.concat([state.cur]).some((it) => it.cond === 'new');
+  }
+  function showProofFile(file) {
+    proofName = file ? file.name : '';
+    const chosen = $('[data-proof-chosen]');
+    const thumb = $('[data-proof-thumb]');
+    if (!chosen || !thumb) return;
+    chosen.hidden = !file;
+    $('[data-proof-name]').textContent = proofName;
+    if (thumb.src.startsWith('blob:')) URL.revokeObjectURL(thumb.src);
+    if (file && /^image\//.test(file.type)) { thumb.src = URL.createObjectURL(file); thumb.hidden = false; } else { thumb.removeAttribute('src'); thumb.hidden = true; }
+  }
+  if (proofFile) {
+    proofFile.removeAttribute('name'); // never submitted with the form
+    proofFile.addEventListener('change', () => showProofFile(proofFile.files[0] || null));
+    $('[data-proof-clear]')?.addEventListener('click', () => { proofFile.value = ''; showProofFile(null); proofFile.focus(); });
+    const zone = $('.wiz-drop__zone');
+    ['dragenter', 'dragover'].forEach((ev) => zone?.addEventListener(ev, (e) => { e.preventDefault(); zone.classList.add('is-over'); }));
+    ['dragleave', 'drop'].forEach((ev) => zone?.addEventListener(ev, () => zone.classList.remove('is-over')));
+    zone?.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const file = e.dataTransfer?.files?.[0];
+      if (!file || !/^image\/|application\/pdf/.test(file.type)) return;
+      try { const dt = new DataTransfer(); dt.items.add(file); proofFile.files = dt.files; } catch (err) { /* older browsers: name is still shown */ }
+      showProofFile(file);
+    });
   }
   function syncDetailsToForm() {
     $$('[data-detail]').forEach((f) => {
@@ -622,10 +724,13 @@
     const methodLabel = state.details.method === 'dropoff' ? 'Drop off in store' : 'Ship it (free label)';
     const fields = {
       'Quote reference': state.ref,
-      ...Object.fromEntries(state.items.map((it, i) => [`Device ${i + 1}`, `${it.name} | ${it.storage} | ${it.condTitle} | ${money(it.price)}`])),
+      ...Object.fromEntries(state.items.flatMap((it, i) => [[`Device ${i + 1}`, `${it.name} | ${it.storage} | ${it.condTitle} | ${money(it.price)}`], [`Device ${i + 1} working`, it.work === 'no' ? 'No' : 'Yes']])),
       Total: money(state.items.reduce((s, it) => s + it.price, 0)),
       'Send method': methodLabel,
       Store: state.details.method === 'dropoff' ? (state.details.store || 'Not chosen') : 'n/a',
+      'Proof of purchase': state.details.proof === 'yes' ? (proofName ? `Has receipt (file selected: ${proofName})` : 'Has receipt') : (state.details.proof === 'no' ? 'No receipt' : 'Not answered'),
+      'Purchased from': (state.details.proof === 'yes' && state.details.purchased_from.trim()) || 'Not given',
+      'Purchase date': (state.details.proof === 'yes' && state.details.purchase_date) || 'Not given',
       'Submitted at': `${now.toLocaleString('en-CA', { timeZone: TZ })} (Toronto)`,
       'Quote expires': `${torontoDate(expires)} (${config.quoteDays} days)`,
     };

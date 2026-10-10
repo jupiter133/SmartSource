@@ -114,6 +114,7 @@
         <h3 class="wiz-step__title" id="WizStep5-{{ section.id }}" tabindex="-1">Condition</h3>
         <p class="wiz-step__sub">Be honest. We check every device, and an accurate pick means no surprises.</p>
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Condition</legend><div class="wiz-conds" data-options="5"></div></fieldset>
+        {%- if section.settings.show_value_chart -%}<div class="wiz-chart" data-wiz-chart hidden></div>{%- endif -%}
       </div>
 
       {%- form 'contact', id: 'SellWizardForm', class: 'wiz-form', data-wiz-form: '' -%}
@@ -166,6 +167,42 @@
                 {%- endfor -%}
               </select>
             </label>
+            <fieldset class="wiz-fieldset wiz-proof" data-proof>
+              <legend>Proof of purchase <small class="muted">(optional)</small></legend>
+              <p class="wiz-proof__rec" data-proof-rec hidden>Recommended for brand new / sealed devices.</p>
+              <div class="wiz-cards wiz-cards--method wiz-cards--proof">
+                <label class="wiz-card wiz-card--method wiz-card--proof">
+                  <input type="radio" name="wiz-proof" value="yes" data-detail="proof">
+                  <span class="wiz-card__check" aria-hidden="true"></span>
+                  <span class="wiz-card__name">I have a receipt or invoice</span>
+                </label>
+                <label class="wiz-card wiz-card--method wiz-card--proof">
+                  <input type="radio" name="wiz-proof" value="no" data-detail="proof">
+                  <span class="wiz-card__check" aria-hidden="true"></span>
+                  <span class="wiz-card__name">I don't have one</span>
+                </label>
+              </div>
+              <div class="wiz-proof__more" data-proof-more hidden>
+                <div class="wiz-drop" data-proof-drop>
+                  {%- comment -%} No name attribute: the contact form can't carry files, so the file is never submitted. {%- endcomment -%}
+                  <input type="file" id="WizProofFile-{{ section.id }}" class="wiz-drop__input visually-hidden" accept="image/*,application/pdf" aria-describedby="WizProofHelp-{{ section.id }}" data-proof-file>
+                  <label class="wiz-drop__zone" for="WizProofFile-{{ section.id }}">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M12 17v-6M9.5 13.5L12 11l2.5 2.5"/></svg>
+                    <span><strong>Add a photo or PDF of your receipt</strong><small>Tap to choose a file, or drop it here</small></span>
+                  </label>
+                  <div class="wiz-drop__file" data-proof-chosen hidden>
+                    <img class="wiz-drop__thumb" data-proof-thumb alt="" width="48" height="48" hidden>
+                    <span class="wiz-drop__name" data-proof-name></span>
+                    <button type="button" class="wiz-drop__clear" data-proof-clear>Remove</button>
+                  </div>
+                  <p class="wiz-drop__help" id="WizProofHelp-{{ section.id }}">We'll email you to collect it after you submit, so keep it handy. Files aren't sent with this form.</p>
+                </div>
+                <div class="wiz-fields wiz-fields--proof">
+                  <label class="field"><span>Where did you buy it? <small class="muted">(optional)</small></span><input type="text" autocomplete="off" placeholder="Store or retailer" data-detail="purchased_from"></label>
+                  <label class="field"><span>Purchase date <small class="muted">(optional)</small></span><input type="date" data-detail="purchase_date"></label>
+                </div>
+              </div>
+            </fieldset>
             <p class="wiz-fine muted">{% render 'sell-text', text: section.settings.fine_print %}</p>
             <div data-hidden-fields></div>
           </div>
@@ -184,6 +221,7 @@
           </div>
         </div>
         <dl class="wiz-sum__rows" data-sum-rows hidden></dl>
+        <p class="wiz-sum__note" data-sum-note hidden></p>
         <div class="wiz-sum__pay">
           <span>{{ section.settings.pay_label }}</span>
           <strong data-sum-total aria-live="polite" aria-atomic="true">$0</strong>
@@ -261,6 +299,17 @@
         {%- assign logo_brands = 'apple,google,microsoft,nintendo,samsung,sony' | split: ',' -%}
         {%- for lb in logo_brands -%}{{ lb | json }}:{{ 'logo-brand-' | append: lb | append: '.svg' | asset_url | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
       },
+      "working": {
+        "title": {{ section.settings.working_title | json }},
+        "sub": {{ section.settings.working_sub | json }},
+        "items": [
+          {%- assign wlines = section.settings.working_checklist | newline_to_br | split: '<br />' -%}
+          {%- assign wsep = false -%}
+          {%- for line in wlines -%}{%- assign item = line | strip -%}{%- if item != blank -%}{%- if wsep -%},{%- endif -%}{%- assign wsep = true -%}{{ item | json }}{%- endif -%}{%- endfor -%}
+        ],
+        "note": {{ section.settings.working_note | json }}
+      },
+      "chart": {% if section.settings.show_value_chart %}{"f": [{{ settings.sell_value_1m | default: 97 | json }}, {{ settings.sell_value_3m | default: 91 | json }}, {{ settings.sell_value_6m | default: 83 | json }}]}{% else %}null{% endif %},
       "links": [
         {%- for block in link_cards -%}
           {"n":{{ block.settings.label | json }},"t":{{ block.settings.text | json }},"u":{{ block.settings.url | json }},"i":{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 400 | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
@@ -279,6 +328,7 @@
   </script>
 </section>
 
+<script src="{{ 'sell-chart.js' | asset_url }}" defer></script>
 <script src="{{ 'sell-wizard.js' | asset_url }}" defer></script>
 
 {% schema %}
@@ -298,6 +348,14 @@
     { "type": "checkbox", "id": "model_extras", "label": "Model step: show \"Get up to\" prices, a search box and Load more", "default": false, "info": "Models are listed most valuable first." },
     { "type": "text", "id": "model_search_placeholder", "label": "Model search placeholder", "default": "Find your device" },
     { "type": "number", "id": "model_batch", "label": "Models shown before Load more", "default": 11 },
+    { "type": "header", "content": "\"Is it fully working?\" question" },
+    { "type": "paragraph", "content": "Asked before the condition cards. Yes shows the conditions (without Defective); No prices the device as Defective." },
+    { "type": "text", "id": "working_title", "label": "Heading", "default": "Is it fully working?" },
+    { "type": "text", "id": "working_sub", "label": "Line under the heading", "default": "Check everything below before you answer." },
+    { "type": "textarea", "id": "working_checklist", "label": "Checklist (one item per line)", "default": "It turns on and off and charges, and the battery, back cover and SIM tray are all there.\nFront and rear cameras work properly.\nSpeakers and microphones work properly.\nFace ID, Touch ID or the fingerprint sensor works, if it has one.\nEverything else works too: Wi-Fi, Bluetooth, buttons and the touchscreen." },
+    { "type": "textarea", "id": "working_note", "label": "Important note", "default": "Important: sign out of iCloud, Google and any other accounts and remove them, working or not. We can't accept bent or water-damaged devices." },
+    { "type": "header", "content": "Value over time chart" },
+    { "type": "checkbox", "id": "show_value_chart", "label": "Show the estimated value chart on the condition step", "default": true, "info": "Uses the estimate percentages in Theme settings > Sell program." },
     { "type": "header", "content": "Guarantee card" },
     { "type": "text", "id": "guarantee_title", "label": "Title", "default": "Price Promise" },
     { "type": "textarea", "id": "guarantee_text", "label": "Text", "default": "Your quote is locked in for {quote_valid_days} days.[if_free_return] If inspection finds a different condition, accept the revised offer or get your device back free.[/if_free_return]" },

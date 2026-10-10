@@ -176,6 +176,44 @@
         "id": "prices_updated_date",
         "label": "Prices last updated",
         "info": "Shown under the price list, e.g. October 6, 2026. Leave blank to hide."
+      },
+      {
+        "type": "header",
+        "content": "Value over time chart (estimates)"
+      },
+      {
+        "type": "paragraph",
+        "content": "The \"Best time to sell\" chart shows today's offer and estimated future values: today's value times these percentages. It always says future values are estimates."
+      },
+      {
+        "type": "range",
+        "id": "sell_value_1m",
+        "label": "Estimated value in 1 month",
+        "min": 50,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 97
+      },
+      {
+        "type": "range",
+        "id": "sell_value_3m",
+        "label": "Estimated value in 3 months",
+        "min": 50,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 91
+      },
+      {
+        "type": "range",
+        "id": "sell_value_6m",
+        "label": "Estimated value in 6 months",
+        "min": 50,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "default": 83
       }
     ]
   },
