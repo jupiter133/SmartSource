@@ -1,21 +1,61 @@
 {%- liquid
   assign conditions = section.blocks | where: 'type', 'condition'
   assign stores = section.blocks | where: 'type', 'store'
+  assign families = section.blocks | where: 'type', 'family'
+  assign link_cards = section.blocks | where: 'type', 'link'
+
+  comment
+    Brand pages: lock the wizard to one buyback category (and brand), matched by name or handle, so it opens on the model grid.
+    Blank = the full Device > Brand > Model flow.
+  endcomment
+  assign lock_cat = ''
+  assign lock_brand = ''
+  assign want_cat = section.settings.lock_category | downcase | strip
+  assign want_brand = section.settings.lock_brand | downcase | strip
+  if want_cat != blank
+    for c in metaobjects.buyback_category.values limit: 50
+      assign cn = c.name.value | downcase | strip
+      if cn == want_cat or c.system.handle == want_cat
+        assign lock_cat = c.system.handle
+        break
+      endif
+    endfor
+  endif
+  if lock_cat != blank and want_brand != blank
+    for b in metaobjects.buyback_brand.values limit: 50
+      assign bn = b.name.value | downcase | strip
+      if bn == want_brand or b.system.handle == want_brand
+        assign lock_brand = b.system.handle
+        break
+      endif
+    endfor
+  endif
+  assign min_step = 1
+  if lock_cat != blank
+    assign min_step = 2
+    if lock_brand != blank
+      assign min_step = 3
+    endif
+  endif
 -%}
-<section class="section page-width sell-wiz" id="sell-quote" data-sell-wizard data-section-id="{{ section.id }}">
+<section class="section page-width sell-wiz{% if min_step > 1 %} is-locked{% endif %}" id="sell-quote" data-sell-wizard data-section-id="{{ section.id }}">
+  {%- if section.settings.heading != blank -%}
   <div class="sell-wiz__head">
     {%- if section.settings.eyebrow != blank -%}<p class="eyebrow-grad">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2>{{ section.settings.heading }}</h2>
     {%- if section.settings.intro != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.intro %}</p>{%- endif -%}
   </div>
+  {%- else -%}
+  <h2 class="visually-hidden">Get your instant offer</h2>
+  {%- endif -%}
 
-  <nav class="wiz-progress" aria-label="Quote steps" data-progress>
+  <nav class="wiz-progress" aria-label="Quote steps" data-progress style="--wiz-steps: {{ 7 | minus: min_step }}">
     <ol role="list">
       {%- assign labels = 'Device,Brand,Model,Storage,Condition,Details' | split: ',' -%}
       {%- for label in labels -%}
-        <li>
+        <li{% if forloop.index < min_step %} hidden{% endif %}>
           <button type="button" class="wiz-progress__btn" data-goto="{{ forloop.index }}" disabled>
-            <span class="wiz-progress__num" aria-hidden="true">{{ forloop.index }}</span>
+            <span class="wiz-progress__num" aria-hidden="true">{{ forloop.index | minus: min_step | plus: 1 | at_least: 1 }}</span>
             <span class="wiz-progress__label">{{ label }}</span>
           </button>
         </li>
@@ -26,7 +66,7 @@
 
   <div class="wiz-layout">
     <div class="wiz-main" data-wiz-main>
-      <div class="wiz-step" data-step="1" role="group" aria-labelledby="WizStep1-{{ section.id }}">
+      <div class="wiz-step" data-step="1" role="group" aria-labelledby="WizStep1-{{ section.id }}"{% if min_step > 1 %} hidden{% endif %}>
         <h3 class="wiz-step__title" id="WizStep1-{{ section.id }}" tabindex="-1">What are you selling?</h3>
         <div class="wiz-search">
           <label class="visually-hidden" for="WizSearch-{{ section.id }}">Search for your device</label>
@@ -36,7 +76,7 @@
           </div>
           <ul class="sell-search__list" id="WizSearchList-{{ section.id }}" role="listbox" aria-label="Matching devices" hidden data-wiz-search-list></ul>
         </div>
-        <p class="wiz-or"><span>or pick a category</span></p>
+        <p class="wiz-or"><span>{% if families.size > 0 %}or choose your device{% else %}or pick a category{% endif %}</span></p>
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Category</legend><div class="wiz-cards wiz-cards--cats" data-options="1"></div></fieldset>
       </div>
 
@@ -45,9 +85,19 @@
         <fieldset class="wiz-fieldset"><legend class="visually-hidden">Brand</legend><div class="wiz-cards wiz-cards--brands" data-options="2"></div></fieldset>
       </div>
 
-      <div class="wiz-step" data-step="3" role="group" aria-labelledby="WizStep3-{{ section.id }}" hidden>
-        <h3 class="wiz-step__title" id="WizStep3-{{ section.id }}" tabindex="-1">Select model</h3>
-        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Model</legend><div class="wiz-cards wiz-cards--models" data-options="3"></div></fieldset>
+      <div class="wiz-step" data-step="3" role="group" aria-labelledby="WizStep3-{{ section.id }}"{% if min_step != 3 %} hidden{% endif %}>
+        <h3 class="wiz-step__title" id="WizStep3-{{ section.id }}" tabindex="-1">{{ section.settings.model_title | default: 'Select model' }}</h3>
+        {%- if section.settings.model_extras -%}
+          <div class="wiz-search wiz-search--models" data-model-search hidden>
+            <label class="visually-hidden" for="WizModelSearch-{{ section.id }}">{{ section.settings.model_search_placeholder | default: 'Find your device' }}</label>
+            <div class="wiz-search__box">
+              {% render 'icon', name: 'search' %}
+              <input id="WizModelSearch-{{ section.id }}" type="search" placeholder="{{ section.settings.model_search_placeholder | default: 'Find your device' | escape }}" autocomplete="off" aria-controls="WizModels-{{ section.id }}">
+            </div>
+          </div>
+        {%- endif -%}
+        <fieldset class="wiz-fieldset"><legend class="visually-hidden">Model</legend><div class="wiz-cards wiz-cards--models" id="WizModels-{{ section.id }}" data-options="3"></div></fieldset>
+        <p class="visually-hidden" aria-live="polite" data-model-status></p>
       </div>
 
       <div class="wiz-step" data-step="4" role="group" aria-labelledby="WizStep4-{{ section.id }}" hidden>
@@ -169,6 +219,45 @@
       "payDays": {{ settings.payment_business_days | json }},
       "freeReturn": {{ settings.free_return_on_decline | json }},
       "instorePay": {{ settings.instore_instant_pay | json }},
+      "lock": {% if lock_cat != blank %}{"cat":{{ lock_cat | json }},"brand":{% if lock_brand != blank %}{{ lock_brand | json }}{% else %}null{% endif %}}{% else %}null{% endif %},
+      "modelExtras": {{ section.settings.model_extras | json }},
+      "modelBatch": {{ section.settings.model_batch | default: 11 | json }},
+      "families": [
+        {%- assign fsep = false -%}
+        {%- for block in families -%}
+          {%- liquid
+            assign fc = ''
+            assign fb = ''
+            assign want = block.settings.category | downcase | strip
+            for c in metaobjects.buyback_category.values limit: 50
+              assign cn = c.name.value | downcase | strip
+              if cn == want or c.system.handle == want
+                assign fc = c.system.handle
+                break
+              endif
+            endfor
+            assign want = block.settings.brand | downcase | strip
+            if want != blank
+              for b in metaobjects.buyback_brand.values limit: 50
+                assign bn = b.name.value | downcase | strip
+                if bn == want or b.system.handle == want
+                  assign fb = b.system.handle
+                  break
+                endif
+              endfor
+            endif
+          -%}
+          {%- if fc != blank -%}
+            {%- if fsep -%},{%- endif -%}{%- assign fsep = true -%}
+            {"id":{{ block.id | json }},"n":{{ block.settings.label | json }},"cat":{{ fc | json }},"brand":{% if fb != blank %}{{ fb | json }}{% else %}null{% endif %},"match":{{ block.settings.match | json }},"dev":{{ block.settings.image_device | strip | json }},"i":{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 400 | json }}{% else %}null{% endif %}}
+          {%- endif -%}
+        {%- endfor -%}
+      ],
+      "links": [
+        {%- for block in link_cards -%}
+          {"n":{{ block.settings.label | json }},"t":{{ block.settings.text | json }},"u":{{ block.settings.url | json }},"i":{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 400 | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
       "conditions": [
         {%- for block in conditions -%}
           {%- assign lines = block.settings.checklist | newline_to_br | split: '<br />' -%}
@@ -193,6 +282,14 @@
     { "type": "text", "id": "intro", "label": "Intro", "default": "Five quick questions. Your quote is locked in for {quote_valid_days} days." },
     { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search your model, e.g. iPhone 15 Pro" },
     { "type": "text", "id": "pay_label", "label": "Price label", "default": "You'll get paid" },
+    { "type": "header", "content": "Brand page (lock to one device type)" },
+    { "type": "paragraph", "content": "Leave both blank on the main sell page. Filled in, the wizard skips the Device and Brand steps and opens on that brand's models." },
+    { "type": "text", "id": "lock_category", "label": "Category name", "info": "Must match a buyback category name, e.g. Smartphone, Tablet, Smartwatch." },
+    { "type": "text", "id": "lock_brand", "label": "Brand name", "info": "Must match a buyback brand name, e.g. Apple, Samsung, Google." },
+    { "type": "text", "id": "model_title", "label": "Model step heading", "placeholder": "Select model" },
+    { "type": "checkbox", "id": "model_extras", "label": "Model step: show \"Get up to\" prices, a search box and Load more", "default": false, "info": "Models are listed most valuable first." },
+    { "type": "text", "id": "model_search_placeholder", "label": "Model search placeholder", "default": "Find your device" },
+    { "type": "number", "id": "model_batch", "label": "Models shown before Load more", "default": 11 },
     { "type": "header", "content": "Guarantee card" },
     { "type": "text", "id": "guarantee_title", "label": "Title", "default": "Price Promise" },
     { "type": "textarea", "id": "guarantee_text", "label": "Text", "default": "Your quote is locked in for {quote_valid_days} days.[if_free_return] If inspection finds a different condition, accept the revised offer or get your device back free.[/if_free_return]" },
@@ -203,6 +300,30 @@
     { "type": "paragraph", "content": "Devices and prices come from Content > Metaobjects. Submissions arrive in your store's contact inbox with the quote reference, every device, the total and the expiry date." }
   ],
   "blocks": [
+    {
+      "type": "family",
+      "name": "Device type card",
+      "settings": [
+        { "type": "paragraph", "content": "Device type cards replace the category cards on the first step (not on brand pages that lock the wizard). Each opens the models of one category and brand, optionally only those whose name contains a word." },
+        { "type": "text", "id": "label", "label": "Label", "default": "iPhone" },
+        { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Must match a buyback category name." },
+        { "type": "text", "id": "brand", "label": "Brand name", "default": "Apple", "info": "Must match a buyback brand name. Blank = ask for the brand next." },
+        { "type": "text", "id": "match", "label": "Model name contains", "info": "Optional. Comma-separated, e.g. Galaxy S. Blank = every model of that brand and category." },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Blank = the photo of this group's top model." },
+        { "type": "text", "id": "image_device", "label": "Or use this device's photo", "info": "Buyback device handle, e.g. google-pixel-11-pro." }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link card",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Sell other products" },
+        { "type": "text", "id": "text", "label": "Small text", "default": "Ask us about it" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
     {
       "type": "condition",
       "name": "Condition",

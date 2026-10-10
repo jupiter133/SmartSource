@@ -1,0 +1,82 @@
+{%- comment -%}
+  Sell page hero. Split (brand pages, /pages/sell-iphone etc.): back link, pill, H1, short text, a button that opens the
+  quote wizard on this page, a small note, and a product photo on a white card (the picked image, else the chosen
+  product's featured image, else a simple outline). Centered (main sell page): the same text, centered, no photo.
+{%- endcomment -%}
+{%- liquid
+  assign centered = false
+  if section.settings.layout == 'centered'
+    assign centered = true
+  endif
+  assign back_url = section.settings.back_url | default: '/pages/sell-your-device'
+  assign img = section.settings.image
+  assign img_alt = section.settings.image_alt
+  if img == blank and section.settings.image_product != blank
+    assign img = section.settings.image_product.featured_media.preview_image
+    if img_alt == blank
+      assign img_alt = section.settings.image_product.title
+    endif
+  endif
+-%}
+<section class="sbh{% if centered %} sbh--centered{% endif %}" id="SellBrandHero-{{ section.id }}">
+  <div class="page-width sbh__inner">
+    <div class="sbh__copy">
+      {%- if section.settings.back_label != blank -%}
+        <a class="sbh__back" href="{{ back_url }}"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5L5.5 8l4.5 4.5"/></svg>{{ section.settings.back_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.pill != blank -%}
+        <p class="sell-hero__pill sbh__pill">{{ section.settings.pill }}</p>
+      {%- endif -%}
+      <h1 class="sbh__title">{{ section.settings.title }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="sbh__text">{% render 'sell-text', text: section.settings.text %}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <div class="sbh__cta">
+          <a class="btn btn--accent sbh__btn" href="#sell-quote" data-sell-start>{{ section.settings.button_label }} <span aria-hidden="true">→</span></a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}
+        <p class="sbh__note"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5l6 2.3v4.6c0 3.8-2.5 6.6-6 8.1-3.5-1.5-6-4.3-6-8.1V4.8z"/><path d="M7.2 10.1l2 2 3.8-4"/></svg><span>{% render 'sell-text', text: section.settings.note %}</span></p>
+      {%- endif -%}
+      {%- if section.settings.fine_print != blank -%}
+        <p class="sbh__fine">{% render 'sell-text', text: section.settings.fine_print %}</p>
+      {%- endif -%}
+    </div>
+
+    {%- unless centered -%}
+    <div class="sbh__visual">
+      <div class="sbh__card">
+        {%- if img != blank -%}
+          {{ img | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 440px, (min-width: 750px) 50vw, 80vw', class: 'sbh__img', alt: img_alt }}
+        {%- else -%}
+          <svg class="sbh__ph" viewBox="0 0 40 64" aria-hidden="true"><rect x="4" y="2" width="32" height="60" rx="7" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15" y="6" width="10" height="3" rx="1.5" fill="currentColor"/></svg>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- endunless -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sell: brand hero",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Layout", "options": [ { "value": "split", "label": "Text and photo (brand pages)" }, { "value": "centered", "label": "Centered text, no photo" } ], "default": "split" },
+    { "type": "text", "id": "back_label", "label": "Back link", "default": "All trade-in options" },
+    { "type": "url", "id": "back_url", "label": "Back link URL", "info": "Defaults to /pages/sell-your-device" },
+    { "type": "text", "id": "pill", "label": "Pill", "default": "Trade in with SmartSource" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Sell your iPhone" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Pick your model and storage, answer a few quick questions about its condition, and see your estimate right away. Your final value is confirmed after we inspect it." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Get my estimate", "info": "Scrolls to the quote wizard on this page." },
+    { "type": "text", "id": "note", "label": "Note under the button", "default": "Check its value before you erase it. Final value follows inspection." },
+    { "type": "text", "id": "fine_print", "label": "Small print", "info": "e.g. who can't sell. Leave blank to hide." },
+    { "type": "header", "content": "Photo" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG works best. Leave blank to use the product below." },
+    { "type": "product", "id": "image_product", "label": "Or use this product's photo" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Defaults to the product title." }
+  ],
+  "presets": [ { "name": "Sell: brand hero" } ]
+}
+{% endschema %}

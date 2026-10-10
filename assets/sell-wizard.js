@@ -43,9 +43,36 @@
   const usedTop = (device, storage) => Math.max(0, ...USED_KEYS.map((k) => priceFor(device, storage, k) || 0));
   const hasUsed = (device, storage) => USED_KEYS.some((k) => priceFor(device, storage, k));
   const imageFor = (d) => (d && (d.i || byHandle(categories, d.c)?.i)) || null;
+  // "Up to" shown on model cards: best Like New or brand new sealed price across storages (same as the What we pay list).
+  const topCache = new Map();
+  const topPrice = (h) => {
+    if (!topCache.has(h)) topCache.set(h, Math.max(0, ...prices.filter((p) => p.d === h).flatMap((p) => [p.p[COND_INDEX.like_new], p.p[COND_INDEX.new]]).map((v) => (typeof v === 'number' && v > 0 ? v : 0))));
+    return topCache.get(h);
+  };
+
+  // Brand pages lock the wizard to one category (and brand), so it opens on the model grid. Blank lock = full flow.
+  const lock = (() => {
+    const l = config.lock || {};
+    const cat = l.cat && byHandle(categories, l.cat);
+    if (!cat || !devices.some((d) => d.c === cat.h)) return null;
+    const brand = l.brand && byHandle(brands, l.brand);
+    return { cat: cat.h, brand: brand && devices.some((d) => d.c === cat.h && d.b === brand.h) ? brand.h : null };
+  })();
+  const minStep = lock ? (lock.brand ? 3 : 2) : 1;
+  // Main page: step 1 shows device types (iPhone, Galaxy S Series, ...) = category + brand + optional words in the model name.
+  const famMatch = (f, d) => d.c === f.cat && (!f.brand || d.b === f.brand) && (!f.match.length || f.match.some((m) => norm(d.n).includes(m)));
+  const families = lock ? [] : (config.families || []).map((f) => ({ ...f, match: String(f.match || '').split(',').map(norm).filter(Boolean) }))
+    .filter((f) => byHandle(categories, f.cat) && devices.some((d) => famMatch(f, d)));
+  const famOf = (id) => families.find((f) => f.id === id) || null;
+  const famFor = (d) => (d && families.find((f) => famMatch(f, d))?.id) || null;
+  const inFam = (d, id) => { const f = famOf(id); return !f || famMatch(f, d); };
+  const famImage = (f) => f.i || imageFor(byHandle(devices, f.dev)) || imageFor(devices.filter((d) => famMatch(f, d) && d.i).sort((a, b) => topPrice(b.h) - topPrice(a.h))[0]);
+  const extras = Boolean(config.modelExtras); // model step: "Get up to" prices, search and Load more
+  const batch = Math.max(4, Number(config.modelBatch) || 11);
 
   // ---------- state ----------
-  const fresh = () => ({ step: 1, cur: { cat: null, brand: null, device: null, storage: null, cond: null }, items: [], details: { name: '', email: '', phone: '', method: '', store: '' } });
+  const freshCur = () => ({ cat: lock ? lock.cat : null, brand: lock ? lock.brand : null, fam: null, device: null, storage: null, cond: null });
+  const fresh = () => ({ step: minStep, cur: freshCur(), items: [], details: { name: '', email: '', phone: '', method: '', store: '' } });
   const store = {
     get(key) { try { return JSON.parse(window.sessionStorage.getItem(key)); } catch (e) { return null; } },
     set(key, v) { try { window.sessionStorage.setItem(key, JSON.stringify(v)); } catch (e) { /* private mode: progress just isn't saved */ } },
@@ -55,6 +82,9 @@
   // drop saved selections that no longer exist (prices changed, device removed)
   if (state.cur.device && !byHandle(devices, state.cur.device)) state.cur = fresh().cur;
   state.items = (state.items || []).filter((it) => byHandle(devices, it.device) && priceFor(it.device, it.storage, it.cond));
+  // A device in progress from another page that doesn't fit this page's lock starts over (devices already in the quote stay).
+  if (lock && (state.cur.cat !== lock.cat || (lock.brand && state.cur.brand !== lock.brand))) state.cur = freshCur();
+  if (state.cur.fam && !famOf(state.cur.fam)) state.cur.fam = null;
   const save = () => store.set(STORE_KEY, state);
 
   const curPrice = () => (state.cur.device && state.cur.storage && state.cur.cond ? priceFor(state.cur.device, state.cur.storage, state.cur.cond) : null);
@@ -103,6 +133,14 @@
     return svg;
   };
   const check = () => el('span', { class: 'wiz-card__check', 'aria-hidden': 'true' });
+  const linkIcon = () => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'wiz-card__linkicon');
+    svg.innerHTML = '<rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><path d="M17 13.5v7M13.5 17h7"/>';
+    return svg;
+  };
   const card = ({ name, value, checked, disabled, cls = '', media, title, meta, meta2, badge }) => {
     const input = el('input', { type: 'radio', name, value, checked, disabled });
     return el('label', { class: `wiz-card ${cls}`.trim() },
@@ -131,22 +169,66 @@
   const openConds = new Set(); // condition cards whose "What qualifies?" list is open
   const empty = (msg) => el('p', { class: 'wiz-empty', text: msg });
 
+  // Model step with prices (brand pages): most valuable first, a search box, and a "Load more" card after `batch` models.
+  const modelSearchWrap = $('[data-model-search]');
+  const modelSearch = modelSearchWrap?.querySelector('input');
+  let modelShown = batch;
+  let modelQuery = '';
+  const resetModelSearch = () => { modelShown = batch; modelQuery = ''; if (modelSearch) modelSearch.value = ''; };
+  function modelGrid(list) {
+    const c = state.cur;
+    list.sort((a, b) => topPrice(b.h) - topPrice(a.h) || (b.y || 0) - (a.y || 0) || a.n.localeCompare(b.n));
+    if (modelSearchWrap) modelSearchWrap.hidden = list.length <= batch && !modelQuery;
+    const terms = norm(modelQuery).split(' ').filter(Boolean);
+    let shown;
+    if (terms.length) shown = list.filter((d) => terms.every((t) => norm(d.n).includes(t)));
+    else {
+      const sel = list.findIndex((d) => d.h === c.device); // keep the chosen model visible when coming back
+      if (sel >= modelShown) modelShown = batch + Math.ceil((sel + 1 - batch) / (batch + 1)) * (batch + 1);
+      shown = list.slice(0, modelShown);
+    }
+    const nodes = shown.map((d) => {
+      const top = topPrice(d.h);
+      return card({ name: 'wiz-device', value: d.h, checked: c.device === d.h, title: d.n, meta: top ? `Get up to ${money(top)}` : null, media: thumb(imageFor(d)), badge: d.p ? 'Popular' : null, cls: 'wiz-card--model wiz-card--priced' });
+    });
+    if (!terms.length && list.length > shown.length) {
+      const left = list.length - shown.length;
+      nodes.push(el('button', { type: 'button', class: 'wiz-card wiz-card--more', 'data-model-more': '' },
+        el('span', { class: 'wiz-card__more-icon', 'aria-hidden': 'true' }),
+        el('span', { class: 'wiz-card__name', text: 'Load more' }),
+        el('span', { class: 'wiz-card__meta', text: `${left} more model${left === 1 ? '' : 's'}` })));
+    }
+    if (!nodes.length) nodes.push(empty(`No match for "${modelQuery.trim()}". Check the spelling, or clear the search to see every model.`));
+    return nodes;
+  }
+
   function renderOptions(n) {
     const box = $(`[data-options="${n}"]`);
     if (!box) return;
     const c = state.cur;
     let nodes = [];
     if (n === 1) {
-      const used = new Set(devices.map((d) => d.c));
-      nodes = categories.filter((cat) => used.has(cat.h)).map((cat) => card({ name: 'wiz-cat', value: cat.h, checked: c.cat === cat.h, title: cat.n, media: thumb(cat.i), cls: 'wiz-card--cat' }));
+      if (families.length) {
+        nodes = families.map((f) => card({ name: 'wiz-fam', value: f.id, checked: c.fam === f.id, title: f.n, media: thumb(famImage(f)), cls: 'wiz-card--cat wiz-card--fam' }));
+        (config.links || []).filter((l) => l.n && l.u).forEach((l) => nodes.push(el('a', { class: 'wiz-card wiz-card--cat wiz-card--link', href: l.u },
+          el('span', { class: 'wiz-card__media' }, l.i ? thumb(l.i) : linkIcon()),
+          el('span', { class: 'wiz-card__name', text: l.n }),
+          l.t ? el('span', { class: 'wiz-card__meta', text: l.t }) : null)));
+      } else {
+        const used = new Set(devices.map((d) => d.c));
+        nodes = categories.filter((cat) => used.has(cat.h)).map((cat) => card({ name: 'wiz-cat', value: cat.h, checked: c.cat === cat.h, title: cat.n, media: thumb(cat.i), cls: 'wiz-card--cat' }));
+      }
       if (!nodes.length) nodes = [empty("We're updating our prices. Check back soon, or visit one of our stores.")];
     } else if (n === 2) {
-      const used = new Set(devices.filter((d) => d.c === c.cat).map((d) => d.b));
+      const used = new Set(devices.filter((d) => d.c === c.cat && inFam(d, c.fam)).map((d) => d.b));
       nodes = brands.filter((b) => used.has(b.h)).map((b) => card({ name: 'wiz-brand', value: b.h, checked: c.brand === b.h, title: b.n, media: b.i ? thumb(b.i) : el('span', { class: 'wiz-card__mono', text: b.n.slice(0, 1) }), cls: 'wiz-card--brand' }));
     } else if (n === 3) {
-      nodes = devices.filter((d) => d.c === c.cat && d.b === c.brand)
-        .sort((a, b) => (b.y || 0) - (a.y || 0) || a.s - b.s || a.n.localeCompare(b.n))
-        .map((d) => card({ name: 'wiz-device', value: d.h, checked: c.device === d.h, title: d.n, meta: d.y ? String(d.y) : null, media: thumb(imageFor(d)), badge: d.p ? 'Popular' : null, cls: 'wiz-card--model' }));
+      const list = devices.filter((d) => d.c === c.cat && d.b === c.brand && inFam(d, c.fam));
+      if (extras) nodes = modelGrid(list);
+      else {
+        nodes = list.sort((a, b) => (b.y || 0) - (a.y || 0) || a.s - b.s || a.n.localeCompare(b.n))
+          .map((d) => card({ name: 'wiz-device', value: d.h, checked: c.device === d.h, title: d.n, meta: d.y ? String(d.y) : null, media: thumb(imageFor(d)), badge: d.p ? 'Popular' : null, cls: 'wiz-card--model' }));
+      }
     } else if (n === 4) {
       const d = byHandle(devices, c.device);
       $('[data-step-sub="4"]').textContent = d ? d.n : '';
@@ -237,12 +319,12 @@
       b.classList.toggle('is-done', n !== step && allowed(n) && (n < step || complete(n)));
       if (n === step) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
     });
-    $('[data-progress-fill]').style.width = `${(Math.min(step, 6) - 1) / 5 * 100}%`;
+    $('[data-progress-fill]').style.width = `${(Math.min(step, 6) - minStep) / (6 - minStep) * 100}%`;
 
     const next = $('[data-wiz-next]');
     const prev = $('[data-wiz-prev]');
     const onCond = step === 5;
-    prev.disabled = step === 1 && !state.items.length;
+    prev.disabled = step <= minStep && !state.items.length;
     prev.hidden = step === 7;
     next.hidden = onCond || step === 7;
     next.textContent = step === 6 ? 'Submit my quote' : 'Next';
@@ -255,6 +337,7 @@
   }
 
   function goTo(n, { push = true, focus = true } = {}) {
+    if (n < minStep) n = minStep; // locked pages skip the category/brand steps
     if (n === 6 && curPrice()) addCurrent(); // reaching details with a finished device adds it to the quote
     if (!allowed(n)) n = Math.min(firstOpen(), 5);
     if (n === 6 && !state.items.length) n = Math.min(firstOpen(), 5);
@@ -289,7 +372,7 @@
   function selectDevice(handle) {
     const d = byHandle(devices, handle);
     if (!d) return false;
-    state.cur = { cat: d.c, brand: d.b, device: d.h, storage: null, cond: null };
+    state.cur = { cat: d.c, brand: d.b, fam: famFor(d), device: d.h, storage: null, cond: null };
     const sts = storagesFor(d.h);
     if (sts.length === 1) state.cur.storage = sts[0];
     return true;
@@ -316,7 +399,13 @@
     const t = e.target;
     const c = state.cur;
     if (t.name === 'wiz-cat') state.cur = { ...fresh().cur, cat: t.value };
-    else if (t.name === 'wiz-brand') state.cur = { ...fresh().cur, cat: c.cat, brand: t.value };
+    else if (t.name === 'wiz-fam') {
+      const f = famOf(t.value);
+      if (!f) return;
+      const hasBrand = f.brand && devices.some((d) => famMatch(f, d) && d.b === f.brand);
+      state.cur = { ...fresh().cur, cat: f.cat, brand: hasBrand ? f.brand : null, fam: f.id };
+      resetModelSearch();
+    } else if (t.name === 'wiz-brand') { state.cur = { ...fresh().cur, cat: c.cat, fam: c.fam, brand: t.value }; resetModelSearch(); }
     else if (t.name === 'wiz-device') { selectDevice(t.value); }
     else if (t.name === 'wiz-storage') state.cur = { ...c, storage: t.value, cond: null };
     else if (t.name === 'wiz-cond') { c.cond = t.value; openConds.add(t.value); renderOptions(5); $(`input[name="wiz-cond"][value="${t.value}"]`)?.focus(); }
@@ -328,6 +417,13 @@
   });
   // Pointer clicks on steps 1-4 move on automatically; keyboard users stay put and press Next.
   root.addEventListener('click', (e) => {
+    if (e.target.closest('[data-model-more]')) {
+      const before = modelShown;
+      modelShown += batch + 1;
+      renderOptions(3);
+      $$('[data-options="3"] input[name="wiz-device"]')[before]?.focus(); // first newly shown model
+      return;
+    }
     const tog = e.target.closest('[data-cond-toggle]');
     if (tog) {
       const key = tog.dataset.condToggle;
@@ -339,27 +435,30 @@
       return;
     }
     const input = e.target.closest('.wiz-card')?.querySelector('input[type="radio"]');
-    if (!input || e.detail === 0 || !['wiz-cat', 'wiz-brand', 'wiz-device', 'wiz-storage'].includes(input.name)) return;
+    if (!input || e.detail === 0 || !['wiz-cat', 'wiz-fam', 'wiz-brand', 'wiz-device', 'wiz-storage'].includes(input.name)) return;
     clearTimeout(autoTimer);
     autoTimer = setTimeout(() => { if (complete(state.step) && state.step < 5) goTo(Math.min(firstOpen(), 5)); }, 260); // skips storage when there's only one
   });
 
   $('[data-wiz-next]').addEventListener('click', () => {
     if (state.step === 6) return form?.requestSubmit();
-    if (complete(state.step)) goTo(state.step + 1);
+    if (complete(state.step)) goTo(state.step === 1 ? Math.min(firstOpen(), 5) : state.step + 1); // a device type card already picks the brand
   });
   $('[data-wiz-prev]').addEventListener('click', () => {
     if (state.step === 6 && !state.cur.cat && state.items.length) {
       const last = state.items.pop(); // bring the last device back so its condition can be changed
-      state.cur = { cat: byHandle(devices, last.device)?.c, brand: byHandle(devices, last.device)?.b, device: last.device, storage: last.storage, cond: last.cond };
+      const ld = byHandle(devices, last.device);
+      state.cur = { cat: ld?.c, brand: ld?.b, fam: famFor(ld), device: last.device, storage: last.storage, cond: last.cond };
       return goTo(5);
     }
-    if (state.step === 1 && state.items.length) return goTo(6);
+    if (state.step <= minStep && state.items.length) return goTo(6);
+    if (state.step === 3 && famOf(state.cur.fam)?.brand) return goTo(1); // the brand came with the device type card
     goTo(state.step - 1);
   });
   $('[data-getpaid]').addEventListener('click', () => { if (addCurrent()) goTo(6); });
   $('[data-addanother]').addEventListener('click', () => {
     if (!addCurrent()) return;
+    resetModelSearch();
     goTo(1);
     $('[data-sum-total]').textContent = money(total()); // announce the running total
   });
@@ -410,6 +509,25 @@
     });
     root.sellSearch = (q) => { input.value = q || ''; render(); input.focus({ preventScroll: true }); };
   })();
+
+  // ---------- model step search (filters the grid in place) ----------
+  if (modelSearch) {
+    const status = $('[data-model-status]');
+    modelSearch.addEventListener('input', () => {
+      modelQuery = modelSearch.value;
+      renderOptions(3);
+      const n = $$('[data-options="3"] input[name="wiz-device"]').length;
+      if (status) status.textContent = modelQuery.trim() ? `${n} model${n === 1 ? '' : 's'} found` : '';
+    });
+    modelSearch.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modelSearch.value) { e.preventDefault(); resetModelSearch(); renderOptions(3); }
+      else if (e.key === 'Enter') {
+        e.preventDefault();
+        const only = $$('[data-options="3"] input[name="wiz-device"]');
+        if (only.length === 1 && selectDevice(only[0].value)) goTo(Math.min(firstOpen(), 5)); // a single match: take it
+      }
+    });
+  }
 
   // ---------- details + submission ----------
   const form = $('[data-wiz-form]');
@@ -525,7 +643,8 @@
       }
     }
     goTo(opts.query !== undefined || !state.cur.cat ? 1 : state.step);
-    if (opts.query) root.sellSearch(opts.query);
+    if (opts.query && state.step === 1) root.sellSearch(opts.query);
+    else if (opts.query && state.step === 3 && modelSearch) { modelQuery = opts.query; modelSearch.value = opts.query; renderOptions(3); }
   }
   window.SellQuote = { start };
   document.addEventListener('click', (e) => {
@@ -539,8 +658,19 @@
     if (state.step === 7) return;
     const m = /^#sell-step-(\d)$/.exec(window.location.hash);
     if (m) goTo(Number(m[1]), { push: false });
-    else if (window.location.hash === '' && state.step !== 1 && state.step !== 7) goTo(1, { push: false, focus: false });
+    else if (window.location.hash === '' && state.step !== minStep && state.step !== 7) goTo(1, { push: false, focus: false });
   });
+
+  // Locked pages: hide the skipped steps in the progress bar and renumber the rest.
+  $$('[data-goto]').forEach((b) => {
+    const n = Number(b.dataset.goto);
+    const li = b.closest('li');
+    if (li) li.hidden = n < minStep;
+    const num = b.querySelector('.wiz-progress__num');
+    if (num && n >= minStep) num.textContent = String(n - minStep + 1);
+  });
+  $('[data-progress]')?.style.setProperty('--wiz-steps', String(7 - minStep));
+  root.classList.toggle('is-locked', minStep > 1);
 
   // ---------- mobile sticky bar ----------
   if ('IntersectionObserver' in window) {

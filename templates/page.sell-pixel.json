@@ -1,0 +1,259 @@
+{
+  "sections": {
+    "hero": {
+      "type": "sell-brand-hero",
+      "settings": {
+        "back_label": "All trade-in options",
+        "back_url": "/pages/sell-your-device",
+        "pill": "Trade in with SmartSource",
+        "title": "Sell your Google Pixel",
+        "text": "Pick your Google Pixel model and storage, answer a few quick questions about its condition, and see your estimate right away. Your final value is confirmed after we inspect it.",
+        "button_label": "Get my estimate",
+        "note": "Check its value before you erase it. Final value follows inspection.",
+        "image_product": "google-pixel-11-pro"
+      }
+    },
+    "what_we_pay": {
+      "type": "sell-what-we-pay",
+      "settings": {
+        "heading": "How much is my Google Pixel worth?",
+        "subtext": "Our current top offer for every Google Pixel we buy, most valuable first. Pick yours for an exact estimate.",
+        "limit": 0,
+        "cta_label": "Get my estimate"
+      },
+      "blocks": {
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "label": "Pixel",
+            "noun": "Google Pixel",
+            "brand": "Google",
+            "category": "Smartphone"
+          }
+        }
+      },
+      "block_order": [
+        "tab"
+      ]
+    },
+    "quote": {
+      "type": "sell-quote-wizard",
+      "settings": {
+        "heading": "Check your Google Pixel trade-in value",
+        "intro": "Pick your model, then storage and condition. Your quote is locked in for {quote_valid_days} days.",
+        "lock_category": "Smartphone",
+        "lock_brand": "Google",
+        "model_title": "Which Google Pixel do you have?",
+        "model_extras": true,
+        "model_search_placeholder": "Find your device",
+        "model_batch": 11
+      },
+      "blocks": {
+        "condition_new": {
+          "type": "condition",
+          "settings": {
+            "key": "new",
+            "title": "Brand New / Sealed",
+            "summary": "Factory sealed in original box. Never opened or activated.",
+            "checklist": "Unopened, in the original shrink-wrapped box\nNever powered on or activated\nAll original accessories still sealed inside\nNot carrier or iCloud/Google locked"
+          }
+        },
+        "condition_1": {
+          "type": "condition",
+          "settings": {
+            "key": "like_new",
+            "title": "Like New",
+            "summary": "A-Grade. No scratches or dents. 85%+ battery health.",
+            "checklist": "No visible scratches, scuffs or dents\nScreen and body look like new\nEverything works, battery health 85%+\nNot iCloud/Google locked or blacklisted"
+          }
+        },
+        "condition_2": {
+          "type": "condition",
+          "settings": {
+            "key": "good",
+            "title": "Good Condition",
+            "summary": "Minor signs of use (light scratches), fully functional.",
+            "checklist": "Light scratches or scuffs only\nNo cracks or dents\nEverything works, battery health 80%+\nNot iCloud/Google locked or blacklisted"
+          }
+        },
+        "condition_3": {
+          "type": "condition",
+          "settings": {
+            "key": "fair",
+            "title": "Fair",
+            "summary": "Heavy use, deep scratches or scuffs on frame/back. No cracks.",
+            "checklist": "Deep scratches, scuffs or small dents\nNo cracks on the screen or back\nEverything works"
+          }
+        },
+        "condition_4": {
+          "type": "condition",
+          "settings": {
+            "key": "cracked",
+            "title": "Cracked / Minor Issue",
+            "summary": "Front or back glass cracked. All functions work perfectly.",
+            "checklist": "Cracked front or back glass\nScreen displays and responds to touch\nAll other functions work"
+          }
+        },
+        "condition_5": {
+          "type": "condition",
+          "settings": {
+            "key": "defective",
+            "title": "Defective",
+            "summary": "Doesn't power on, or has a major fault.",
+            "checklist": "Doesn't turn on, or has a major fault\nLiquid damage or missing parts accepted\nNot iCloud/Google locked or blacklisted"
+          }
+        },
+        "store_6": {
+          "type": "store",
+          "settings": {
+            "name": "Store 1 (edit me)",
+            "address": "Street, Toronto, ON"
+          }
+        },
+        "store_7": {
+          "type": "store",
+          "settings": {
+            "name": "Store 2 (edit me)",
+            "address": "Street, Mississauga, ON"
+          }
+        }
+      },
+      "block_order": [
+        "condition_new",
+        "condition_1",
+        "condition_2",
+        "condition_3",
+        "condition_4",
+        "condition_5",
+        "store_6",
+        "store_7"
+      ]
+    },
+    "how_it_works": {
+      "type": "sell-steps",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Get a Quote",
+            "icon": "tag",
+            "body": "<p>Pick your device, storage and condition. Your quote is locked for {quote_valid_days} days.</p>",
+            "bullets": "Choose device, storage and condition\nQuote locked for {quote_valid_days} days\nNo obligation to sell"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Ship or Drop Off",
+            "icon": "truck",
+            "body": "<p>Use our free shipping label, or bring it to any of our stores. It must ship within {quote_valid_days} days of your quote.</p>",
+            "bullets": "Free prepaid shipping label\nOr drop it off at any of our GTA stores\nShip within {quote_valid_days} days"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Inspection",
+            "icon": "inspect",
+            "body": "<p>We test it and confirm the condition. If it's different from your quote, we send a revised offer.[if_free_return] Accept it, or we return it free.[/if_free_return]</p>",
+            "bullets": "We test it and confirm condition\nDifferent? We send a revised offer\n[if_free_return]Decline and we return it free[/if_free_return]"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Get Paid",
+            "icon": "cash",
+            "body": "<p>We pay within {payment_business_days} business days of receiving it.[if_instore_pay] In-store drop-offs can be paid on the spot.[/if_instore_pay]</p>",
+            "bullets": "Paid within {payment_business_days} business days of receipt\n[if_instore_pay]In-store drop-offs paid on the spot[/if_instore_pay]"
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "title": "Trade-In Option",
+            "icon": "swap",
+            "body": "<p>Want an upgrade instead? Put your value toward any phone in our store.</p>",
+            "bullets": "Put your value toward any phone in our store\nIn store, or as store credit online"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ]
+    },
+    "faq": {
+      "type": "sell-faq",
+      "settings": {},
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How long does payment take?",
+            "answer": "<p>We pay within {payment_business_days} business days of receiving your device.[if_instore_pay] Drop it off in one of our stores and we can pay you on the spot.[/if_instore_pay]</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {}
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need to remove my accounts?",
+            "answer": "<p>Yes. Before you send it, sign out of iCloud and turn off Find My (iPhone), or remove your Google and Samsung accounts (Android), then take out your SIM card. We can't buy a device that's still locked to an account.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "What if my phone is cracked?",
+            "answer": "<p>We still buy it. Choose <strong>Cracked or Minor Issue</strong> in the quote tool to see your price.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "What if inspection finds a different condition?",
+            "answer": "<p>We send you a revised offer. Accept it and we pay the new amount.[if_free_return] Decline it and we return your device free.[/if_free_return]</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Do you buy locked or financed phones?",
+            "answer": "<p>We can't buy phones that are blacklisted, reported lost or stolen, or locked to an iCloud or Google account. If your phone is still on a financing plan or carrier contract, pay it off first.</p>"
+          }
+        },
+        "question_7": {
+          "type": "question",
+          "settings": {
+            "question": "Is my data safe?",
+            "answer": "<p>Yes. Every device we buy is securely wiped before it's resold. Back it up and reset it before you send it, too.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6",
+        "question_7"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "what_we_pay",
+    "quote",
+    "how_it_works",
+    "faq"
+  ]
+}

@@ -9,6 +9,13 @@
   assign row_limit = section.settings.limit | default: 0
   assign view_all_url = section.settings.view_all_page | default: '/pages/what-we-pay'
   assign tabs = section.blocks | where: 'type', 'tab'
+  comment
+    One tab (brand pages): no tab bar, and the section heading replaces the panel heading.
+  endcomment
+  assign single = false
+  if tabs.size == 1
+    assign single = true
+  endif
   if settings.prices_updated_date != blank
     assign updated = settings.prices_updated_date
   else
@@ -66,9 +73,9 @@
       -%}
       {%- if recs != blank -%}
         {%- assign sorted = recs | remove_first: '¦' | split: '¦' | sort -%}
-        <div class="pay-panel" id="pay-panel-{{ block.id }}" role="tabpanel" aria-labelledby="pay-tab-{{ block.id }}" data-pay-panel data-pay-key="{{ block.settings.label | handleize }}" {{ block.shopify_attributes }}{% unless forloop.first %} hidden{% endunless %}>
+        <div class="pay-panel" id="pay-panel-{{ block.id }}"{% unless single %} role="tabpanel" aria-labelledby="pay-tab-{{ block.id }}"{% endunless %} data-pay-panel data-pay-key="{{ block.settings.label | handleize }}" {{ block.shopify_attributes }}{% unless forloop.first %} hidden{% endunless %}>
           <div class="pay-panel__head">
-            <h3>How much is my {{ block.settings.noun }} worth?</h3>
+            {%- unless single and section.settings.heading != blank -%}<h3>How much is my {{ block.settings.noun }} worth?</h3>{%- endunless -%}
             <p class="muted">{{ section.settings.panel_line }}{% unless settings.sell_live %} <span class="wiz-preview-tag">Preview</span>{% endunless %}</p>
           </div>
           <ul class="pay-list" role="list">
@@ -91,7 +98,7 @@
             {%- endfor -%}
           </ul>
           {%- if row_limit > 0 and sorted.size > row_limit -%}
-            <a class="pay-viewall" href="{{ view_all_url }}?tab={{ block.settings.label | handleize }}">View all {{ sorted.size }} {{ block.settings.noun }} prices <span aria-hidden="true">→</span></a>
+            <a class="pay-viewall" href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}{{ view_all_url }}?tab={{ block.settings.label | handleize }}{% endif %}">View all {{ sorted.size }} {{ block.settings.noun }} prices <span aria-hidden="true">→</span></a>
           {%- endif -%}
         </div>
       {%- endif -%}
@@ -101,18 +108,22 @@
 {%- endcapture -%}
 
 {%- if panels != blank or request.design_mode -%}
-<section class="section page-width sell-pay" id="what-we-pay" data-pay>
+<section class="section page-width sell-pay{% if single %} sell-pay--single{% endif %}" id="what-we-pay" data-pay>
+  {%- if section.settings.heading != blank or section.settings.subtext != blank -%}
   <div class="sell-pay__head">
-    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
     {%- if section.settings.subtext != blank -%}<p class="muted">{% render 'sell-text', text: section.settings.subtext %}</p>{%- endif -%}
   </div>
+  {%- endif -%}
 
   {%- if panels != blank -%}
+    {%- unless single -%}
     <div class="pay-tabs" role="tablist" aria-label="Device type" data-pay-tabs>
       {%- for block in tabs -%}
         <button type="button" class="pay-tab" role="tab" id="pay-tab-{{ block.id }}" aria-controls="pay-panel-{{ block.id }}" data-pay-key="{{ block.settings.label | handleize }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %} data-pay-tab>{{ block.settings.label }}</button>
       {%- endfor -%}
     </div>
+    {%- endunless -%}
     {{ panels }}
     <noscript><style>[data-pay-panel][hidden]{display:block!important}.pay-tabs{display:none}</style></noscript>
   {%- else -%}
@@ -148,7 +159,7 @@ var first=wt||tabs.find(function(t){return !t.hidden});if(first&&first.getAttrib
     { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "\"Up to\" values are for the top storage option, brand new and sealed where we buy sealed, otherwise Like New. Your final offer follows inspection.", "info": "Starts with \"Prices updated\" and the date from Theme settings > Sell program (today's date if that's empty)." },
     { "type": "text", "id": "cta_label", "label": "Button", "default": "Get my instant offer" },
     { "type": "url", "id": "quote_page", "label": "Page with the quote wizard", "info": "Leave blank when the wizard is on this page." },
-    { "type": "number", "id": "limit", "label": "Models shown per tab", "default": 9, "info": "0 = show every model. When there are more, a \"View all\" link opens the full price page." },
+    { "type": "number", "id": "limit", "label": "Models shown per tab", "default": 9, "info": "0 = show every model. When there are more, a \"View all\" link opens the tab's link, or the full price page. With one tab, the tab bar is hidden." },
     { "type": "url", "id": "view_all_page", "label": "Full price list page", "info": "Defaults to /pages/what-we-pay" },
     { "type": "paragraph", "content": "Each tab lists every active device of one brand and category from Content > Metaobjects, most valuable first. Prices update automatically." }
   ],
@@ -160,7 +171,8 @@ var first=wt||tabs.find(function(t){return !t.hidden});if(first&&first.getAttrib
         { "type": "text", "id": "label", "label": "Tab label", "default": "iPhone" },
         { "type": "text", "id": "noun", "label": "Heading device name", "default": "iPhone", "info": "Shown as: How much is my ___ worth?" },
         { "type": "text", "id": "brand", "label": "Brand name", "default": "Apple", "info": "Must match the buyback brand name." },
-        { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Must match the buyback category name." }
+        { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "Must match the buyback category name." },
+        { "type": "url", "id": "url", "label": "\"View all\" link", "info": "e.g. this brand's own sell page. Blank = the full price page." }
       ]
     }
   ],

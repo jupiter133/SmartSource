@@ -1,0 +1,119 @@
+{%- comment -%}
+  "Find your device trade-in guide": a 2-column list of cards linking to each brand's own sell page
+  (Sell your iPhone, Samsung Galaxy, ...). Optional "Up to" line = the top current offer for that brand and category,
+  brand new sealed or Like New (same as What we pay).
+{%- endcomment -%}
+{%- assign tops = '' -%}
+{%- if section.settings.show_price and metaobjects.buyback_device.values.size > 0 -%}
+  {%- paginate metaobjects.buyback_device.values by 250 -%}
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign want_brand = block.settings.brand | downcase | strip
+        assign want_cat = block.settings.category | downcase | strip
+        assign top = 0
+        for d in metaobjects.buyback_device.values
+          if d.active.value == false
+            continue
+          endif
+          assign b = d.brand.value.name.value | downcase | strip
+          assign c = d.category.value.name.value | downcase | strip
+          if b != want_brand or c != want_cat
+            continue
+          endif
+          for pr in d.prices.value
+            assign v = pr.price_like_new.value | default: 0 | times: 1.0
+            if v > top
+              assign top = v
+            endif
+            assign s = pr.price_new.value | default: 0 | times: 1.0
+            if s > top
+              assign top = s
+            endif
+          endfor
+        endfor
+        assign tops = tops | append: top | append: '|'
+      -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+{%- assign tops = tops | split: '|' -%}
+
+{%- if section.blocks.size > 0 -%}
+<section class="section page-width sbc"{% if section.settings.heading != blank %} aria-labelledby="SellBrandCards-{{ section.id }}"{% endif %}>
+  {%- if section.settings.heading != blank or section.settings.subtext != blank -%}
+    <div class="sbc__head">
+      {%- if section.settings.heading != blank -%}<h2 id="SellBrandCards-{{ section.id }}">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subtext != blank -%}<p class="muted">{{ section.settings.subtext }}</p>{%- endif -%}
+    </div>
+  {%- endif -%}
+  <ul class="sbc__list" role="list">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign top = tops[forloop.index0] | default: 0 | times: 1.0
+        assign img = block.settings.image
+        if img == blank and block.settings.product != blank
+          assign img = block.settings.product.featured_media.preview_image
+        endif
+      -%}
+      <li {{ block.shopify_attributes }}>
+        <a class="sbc__card" href="{{ block.settings.url | default: '#' }}">
+          <span class="sbc__media">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100, 150, 200', sizes: '88px', alt: '' }}
+            {%- else -%}
+              <svg viewBox="0 0 40 64" aria-hidden="true"><rect x="4" y="2" width="32" height="60" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="15" y="6" width="10" height="3" rx="1.5" fill="currentColor"/></svg>
+            {%- endif -%}
+          </span>
+          <span class="sbc__body">
+            <span class="sbc__title">{{ block.settings.title }}</span>
+            {%- if section.settings.show_price and top > 0 -%}
+              <span class="sbc__price">Up to <strong>{{ top | times: 100 | round | money_without_trailing_zeros }}</strong></span>
+            {%- elsif block.settings.text != blank -%}
+              <span class="sbc__price">{{ block.settings.text }}</span>
+            {%- endif -%}
+          </span>
+          <span class="sbc__arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sell: device trade-in guide",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your device trade-in guide" },
+    { "type": "text", "id": "subtext", "label": "Subtext", "default": "Every model we buy, its top offer and a quote tool just for that device." },
+    { "type": "checkbox", "id": "show_price", "label": "Show \"Up to\" price on each card", "default": false, "info": "The top current offer for that brand and category from Content > Metaobjects." }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Sell your iPhone" },
+        { "type": "text", "id": "text", "label": "Small text", "info": "Shown when the price is off." },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "text", "id": "brand", "label": "Brand name", "default": "Apple", "info": "For the price. Must match the buyback brand name." },
+        { "type": "text", "id": "category", "label": "Category name", "default": "Smartphone", "info": "For the price. Must match the buyback category name." },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "product", "id": "product", "label": "Or use this product's photo" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sell: device trade-in guide",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Sell your iPhone", "brand": "Apple", "category": "Smartphone" } },
+        { "type": "card", "settings": { "title": "Sell your Samsung Galaxy", "brand": "Samsung", "category": "Smartphone" } },
+        { "type": "card", "settings": { "title": "Sell your Google Pixel", "brand": "Google", "category": "Smartphone" } },
+        { "type": "card", "settings": { "title": "Sell your iPad", "brand": "Apple", "category": "Tablet" } },
+        { "type": "card", "settings": { "title": "Sell your Apple Watch", "brand": "Apple", "category": "Smartwatch" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

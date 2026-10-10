@@ -9,157 +9,125 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "sell-hero",
+    "quote": {
+      "type": "sell-quote-wizard",
       "settings": {
-        "background": "plain",
-        "asset_image": "sell-hero-photo.webp",
-        "card2_text": ""
+        "heading": "",
+        "search_placeholder": "Find your device",
+        "model_extras": true,
+        "model_search_placeholder": "Find your device",
+        "model_batch": 11
       },
       "blocks": {
-        "chip_1": {
-          "type": "chip",
+        "fam_iphone": {
+          "type": "family",
           "settings": {
             "label": "iPhone",
             "category": "Smartphone",
-            "brand": "Apple"
+            "brand": "Apple",
+            "match": "",
+            "image_device": ""
           }
         },
-        "chip_2": {
-          "type": "chip",
+        "fam_watch": {
+          "type": "family",
           "settings": {
-            "label": "Samsung",
-            "category": "Smartphone",
-            "brand": "Samsung"
+            "label": "Apple Watch",
+            "category": "Smartwatch",
+            "brand": "Apple",
+            "match": "",
+            "image_device": ""
           }
         },
-        "chip_3": {
-          "type": "chip",
+        "fam_ipad": {
+          "type": "family",
           "settings": {
             "label": "iPad",
             "category": "Tablet",
-            "brand": "Apple"
-          }
-        },
-        "chip_4": {
-          "type": "chip",
-          "settings": {
-            "label": "MacBook",
-            "category": "Laptop/MacBook",
-            "brand": "Apple"
-          }
-        },
-        "chip_5": {
-          "type": "chip",
-          "settings": {
-            "label": "Watch",
-            "category": "Smartwatch",
-            "brand": ""
-          }
-        },
-        "trust_6": {
-          "type": "trust",
-          "settings": {
-            "icon": "truck",
-            "text": "Free shipping label"
-          }
-        },
-        "trust_7": {
-          "type": "trust",
-          "settings": {
-            "icon": "clock",
-            "text": "Quote locked {quote_valid_days} days"
-          }
-        },
-        "trust_8": {
-          "type": "trust",
-          "settings": {
-            "icon": "lock",
-            "text": "Data wiped securely"
-          }
-        },
-        "trust_9": {
-          "type": "trust",
-          "settings": {
-            "icon": "store",
-            "text": "Drop off in store"
-          }
-        }
-      },
-      "block_order": [
-        "chip_1",
-        "chip_2",
-        "chip_3",
-        "chip_4",
-        "chip_5",
-        "trust_6",
-        "trust_7",
-        "trust_8",
-        "trust_9"
-      ]
-    },
-    "what_we_pay": {
-      "type": "sell-what-we-pay",
-      "settings": {},
-      "blocks": {
-        "tab_iphone": {
-          "type": "tab",
-          "settings": {
-            "label": "iPhone",
-            "noun": "iPhone",
             "brand": "Apple",
-            "category": "Smartphone"
+            "match": "",
+            "image_device": ""
           }
         },
-        "tab_samsung": {
-          "type": "tab",
+        "fam_galaxy_s": {
+          "type": "family",
           "settings": {
-            "label": "Samsung",
-            "noun": "Samsung Galaxy",
+            "label": "Galaxy S Series",
+            "category": "Smartphone",
             "brand": "Samsung",
-            "category": "Smartphone"
+            "match": "Galaxy S",
+            "image_device": ""
           }
         },
-        "tab_pixel": {
-          "type": "tab",
+        "fam_pixel": {
+          "type": "family",
           "settings": {
             "label": "Pixel",
-            "noun": "Google Pixel",
+            "category": "Smartphone",
             "brand": "Google",
-            "category": "Smartphone"
+            "match": "",
+            "image_device": "google-pixel-11-pro"
           }
         },
-        "tab_ipad": {
-          "type": "tab",
+        "fam_galaxy_a": {
+          "type": "family",
           "settings": {
-            "label": "iPad",
-            "noun": "iPad",
-            "brand": "Apple",
-            "category": "Tablet"
+            "label": "Galaxy A Series",
+            "category": "Smartphone",
+            "brand": "Samsung",
+            "match": "Galaxy A",
+            "image_device": ""
           }
         },
-        "tab_watch": {
-          "type": "tab",
+        "fam_fold": {
+          "type": "family",
           "settings": {
-            "label": "Apple Watch",
-            "noun": "Apple Watch",
-            "brand": "Apple",
-            "category": "Smartwatch"
+            "label": "Galaxy Z Fold Series",
+            "category": "Smartphone",
+            "brand": "Samsung",
+            "match": "Fold",
+            "image_device": ""
           }
-        }
-      },
-      "block_order": [
-        "tab_iphone",
-        "tab_samsung",
-        "tab_pixel",
-        "tab_ipad",
-        "tab_watch"
-      ]
-    },
-    "quote": {
-      "type": "sell-quote-wizard",
-      "settings": {},
-      "blocks": {
+        },
+        "fam_flip": {
+          "type": "family",
+          "settings": {
+            "label": "Galaxy Z Flip Series",
+            "category": "Smartphone",
+            "brand": "Samsung",
+            "match": "Flip",
+            "image_device": ""
+          }
+        },
+        "fam_tab": {
+          "type": "family",
+          "settings": {
+            "label": "Galaxy Tab",
+            "category": "Tablet",
+            "brand": "Samsung",
+            "match": "",
+            "image_device": ""
+          }
+        },
+        "fam_console": {
+          "type": "family",
+          "settings": {
+            "label": "Game consoles",
+            "category": "Gaming Console",
+            "brand": "",
+            "match": "",
+            "image_device": "",
+            "image": "shopify://shop_images/ps5-product-thumbnail-01-en-14sep21.png"
+          }
+        },
+        "link_other": {
+          "type": "link",
+          "settings": {
+            "label": "Sell other products",
+            "text": "Ask us about it",
+            "url": "/pages/contact"
+          }
+        },
         "condition_new": {
           "type": "condition",
           "settings": {
@@ -230,6 +198,17 @@
         }
       },
       "block_order": [
+        "fam_iphone",
+        "fam_watch",
+        "fam_ipad",
+        "fam_galaxy_s",
+        "fam_pixel",
+        "fam_galaxy_a",
+        "fam_fold",
+        "fam_flip",
+        "fam_tab",
+        "fam_console",
+        "link_other",
         "condition_new",
         "condition_1",
         "condition_2",
@@ -410,12 +389,130 @@
     "cta": {
       "type": "sell-cta",
       "settings": {}
+    },
+    "hero_center": {
+      "type": "sell-brand-hero",
+      "settings": {
+        "layout": "centered",
+        "back_label": "",
+        "pill": "Trade in with SmartSource",
+        "title": "Sell your old phone and tech",
+        "text": "SmartSource buys used and brand new sealed iPhone, Samsung Galaxy, Google Pixel, iPad and Apple Watch. Get an instant offer online, then we confirm it after a quick inspection. Ship it free or drop it off in store.",
+        "button_label": "",
+        "note": "",
+        "fine_print": "Lost, stolen or activation-locked devices aren't eligible."
+      }
+    },
+    "pay_sample": {
+      "type": "sell-pay-sample",
+      "settings": {},
+      "blocks": {
+        "grp_phones": {
+          "type": "group",
+          "settings": {
+            "title": "Phones",
+            "category": "Smartphone",
+            "brand": "",
+            "limit": 7,
+            "handles": "iphone-18-pro-max\niphone-17-pro-max\nsamsung-galaxy-z-fold8-ultra\niphone-16-pro-max\ngoogle-pixel-11-pro-xl\nsamsung-galaxy-s26-ultra\nsamsung-galaxy-z-flip8"
+          }
+        },
+        "grp_ipad": {
+          "type": "group",
+          "settings": {
+            "title": "iPad",
+            "category": "Tablet",
+            "brand": "Apple",
+            "limit": 4,
+            "handles": "ipad-pro-13-inch-m5\nipad-air-13-inch-m4\nipad-mini-a17-pro\nipad-a16"
+          }
+        },
+        "grp_watch": {
+          "type": "group",
+          "settings": {
+            "title": "Apple Watch",
+            "category": "Smartwatch",
+            "brand": "Apple",
+            "limit": 4,
+            "handles": "apple-watch-ultra-4\napple-watch-ultra-3\napple-watch-series-12\napple-watch-se-3"
+          }
+        }
+      },
+      "block_order": [
+        "grp_phones",
+        "grp_ipad",
+        "grp_watch"
+      ]
+    },
+    "guide": {
+      "type": "sell-brand-cards",
+      "settings": {},
+      "blocks": {
+        "card_iphone": {
+          "type": "card",
+          "settings": {
+            "title": "Sell your iPhone",
+            "url": "/pages/sell-iphone",
+            "brand": "Apple",
+            "category": "Smartphone",
+            "product": "iphone-18-pro-max"
+          }
+        },
+        "card_samsung": {
+          "type": "card",
+          "settings": {
+            "title": "Sell your Samsung Galaxy",
+            "url": "/pages/sell-samsung",
+            "brand": "Samsung",
+            "category": "Smartphone",
+            "product": "samsung-galaxy-s26-ultra"
+          }
+        },
+        "card_pixel": {
+          "type": "card",
+          "settings": {
+            "title": "Sell your Google Pixel",
+            "url": "/pages/sell-pixel",
+            "brand": "Google",
+            "category": "Smartphone",
+            "product": "google-pixel-11-pro"
+          }
+        },
+        "card_ipad": {
+          "type": "card",
+          "settings": {
+            "title": "Sell your iPad",
+            "url": "/pages/sell-ipad",
+            "brand": "Apple",
+            "category": "Tablet",
+            "product": "ipad-pro-13-inch-m4"
+          }
+        },
+        "card_apple_watch": {
+          "type": "card",
+          "settings": {
+            "title": "Sell your Apple Watch",
+            "url": "/pages/sell-apple-watch",
+            "brand": "Apple",
+            "category": "Smartwatch",
+            "product": "apple-watch-ultra-3"
+          }
+        }
+      },
+      "block_order": [
+        "card_iphone",
+        "card_samsung",
+        "card_pixel",
+        "card_ipad",
+        "card_apple_watch"
+      ]
     }
   },
   "order": [
-    "hero",
-    "what_we_pay",
+    "hero_center",
     "quote",
+    "pay_sample",
+    "guide",
     "how_it_works",
     "terms",
     "trade_in",

@@ -2810,3 +2810,85 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 /* What we pay: View all link */
 .pay-viewall{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .pay-viewall:hover{text-decoration-thickness:2px}
+/* ---------- Sell: brand pages (hero, device type cards, locked wizard) ---------- */
+.sbh{position:relative;overflow:hidden;background:radial-gradient(55% 70% at 85% 35%,color-mix(in srgb,var(--c-accent) 14%,transparent),transparent 70%),var(--c-bg)}
+.sbh__inner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:28px 56px}
+.sbh__copy{min-width:0}
+.sbh__back{display:inline-flex;align-items:center;gap:4px;margin:0 0 22px;font-size:14px;font-weight:600;color:#55555f;border-radius:6px;transition:color .2s}
+.sbh__back:hover{color:var(--c-ink)}
+.sbh__back:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+.sbh__back svg{flex-shrink:0}
+.sbh .sbh__pill{display:flex;width:fit-content;margin:0 0 16px}
+.sbh__title{font-size:clamp(2.4rem,1.6rem + 3vw,4rem);font-weight:800;letter-spacing:-.04em;line-height:1.02;margin:0 0 16px;text-wrap:balance}
+.sbh__text{font-size:clamp(1.02rem,1rem + .25vw,1.15rem);color:#3f3f48;max-width:48ch;margin:0 0 24px;line-height:1.55}
+.sbh__cta{margin:0 0 14px}
+.sbh__btn{padding:17px 28px;font-size:17px;border-radius:14px;min-height:56px}
+.sbh__note{display:flex;align-items:flex-start;gap:8px;margin:0;font-size:13.5px;color:#55555f;max-width:46ch}
+.sbh__note svg{flex-shrink:0;color:#16a34a;margin-top:1px}
+.sbh__visual{min-width:0;justify-self:center;width:100%;max-width:460px}
+.sbh__card{aspect-ratio:1;background:#fff;border-radius:28px;box-shadow:0 1px 2px #0000000a,0 28px 60px -28px #00000040;display:grid;place-items:center;padding:9%;overflow:hidden}
+.sbh__img{width:100%;height:100%;object-fit:contain}
+.sbh__ph{width:26%;height:auto;color:#c9c9d2}
+.sell-pay--single .pay-panel__head p{font-size:14px}
+.sbc__head{margin-bottom:18px;max-width:640px}
+.sbc__head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 6px}
+.sbc__head p{margin:0}
+.sbc__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.sbc__list>li{min-width:0}
+.sbc__card{display:flex;align-items:center;gap:16px;height:100%;padding:14px 16px 14px 14px;background:var(--c-surface);border-radius:var(--sell-radius);box-shadow:var(--sell-card-shadow);color:var(--c-ink);transition:transform .2s,box-shadow .2s}
+.sbc__card:hover{transform:translateY(-2px);box-shadow:0 2px 4px #0000000d,0 18px 40px #00000017}
+.sbc__card:focus-visible{outline:2px solid var(--c-ink);outline-offset:3px}
+.sbc__media{flex-shrink:0;width:88px;height:88px;border-radius:14px;background:#f5f5f8;display:grid;place-items:center;overflow:hidden;color:#b4b4be}
+.sbc__media img{width:100%;height:100%;object-fit:contain;padding:8px}
+.sbc__media svg{width:30%;height:auto}
+.sbc__body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.sbc__title{font-weight:700;font-size:clamp(1rem,.95rem + .3vw,1.15rem);line-height:1.25}
+.sbc__price{font-size:13px;color:#55555f}
+.sbc__price strong{color:var(--c-ink);font-weight:800;font-variant-numeric:tabular-nums}
+.sbc__arrow{flex-shrink:0;width:40px;height:40px;border-radius:99px;display:grid;place-items:center;background:#f1f1f4;transition:background .2s,color .2s}
+.sbc__card:hover .sbc__arrow{background:var(--c-ink);color:#fff}
+.sell-pay--sample .sell-pay__grid{gap:16px}
+.pay-group__cols{display:flex;justify-content:space-between;gap:12px;font-size:12px;font-weight:600;color:#6b6b76;text-transform:uppercase;letter-spacing:.04em;padding:0 0 8px;border-bottom:1px solid #ececf0}
+.pay-list--one{grid-template-columns:minmax(0,1fr)!important}
+.pay-list--one li:last-child{border-bottom:0}
+.sell-pay__actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.sell-pay__actions .pay-viewall{margin-top:0}
+.wiz-card--link{text-decoration:none}
+.wiz-card--link .wiz-card__media{background:#fafafc;border:1.5px dashed #dcdce2}
+.wiz-card__linkicon{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;color:#55555f}
+.wiz-progress ol{grid-template-columns:repeat(var(--wiz-steps,6),minmax(0,1fr))}
+.wiz-progress__bar{left:calc(100% / var(--wiz-steps,6) / 2);right:calc(100% / var(--wiz-steps,6) / 2)}
+.wiz-progress li[hidden]{display:none}
+.wiz-search--models{margin-bottom:16px}
+.wiz-card--priced .wiz-card__meta{font-weight:700;color:var(--c-ink)}
+.wiz-card--more{justify-content:center;border-style:dashed;background:#fafafc;color:var(--c-ink);font:inherit}
+.wiz-card--more:hover{border-color:var(--c-ink)}
+.wiz-card--more:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+.wiz-card__more-icon{position:relative;width:44px;height:44px;border-radius:99px;background:var(--c-ink);margin-bottom:4px}
+.wiz-card__more-icon::before,.wiz-card__more-icon::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:2px;border-radius:2px;background:#fff;transform:translate(-50%,-50%)}
+.wiz-card__more-icon::after{transform:translate(-50%,-50%) rotate(90deg)}
+@media (prefers-reduced-motion:reduce){.sbc__card,.sbc__arrow{transition:none}.sbc__card:hover{transform:none}}
+@media (max-width:989px){
+  .sbh__inner{gap:32px}
+}
+@media (max-width:749px){
+  .sbh__inner{grid-template-columns:1fr;gap:24px;padding-block:18px 32px}
+  .sbh__back{margin-bottom:16px}
+  .sbh__visual{max-width:300px}
+  .sbh__card{border-radius:22px}
+  .sbh__btn{width:100%}
+  .sbc__list{grid-template-columns:1fr;gap:10px}
+  .sbc__card{gap:12px;padding:10px 14px 10px 10px}
+  .sbc__media{width:68px;height:68px}
+  .sbc__arrow{width:36px;height:36px}
+  .sell-pay__actions{width:100%;flex-direction:column;align-items:stretch;gap:12px}
+  .sell-pay__actions .pay-viewall{justify-content:center}
+}
+.sbh__fine{margin:12px 0 0;font-size:13px;color:#6b6b76}
+.sbh--centered .sbh__inner{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding-block:48px 8px}
+.sbh--centered .sbh__copy{max-width:820px;display:flex;flex-direction:column;align-items:center}
+.sbh--centered .sbh__title{font-size:clamp(2.5rem,1.5rem + 4vw,4.75rem)}
+.sbh--centered .sbh__text{max-width:62ch;margin-bottom:0}
+.sbh--centered .sbh__cta{margin-top:24px}
+.sbh--centered .sbh__note{margin-top:12px;text-align:left}
+@media (max-width:749px){.sbh--centered .sbh__inner{padding-block:32px 0}.sbh--centered .sbh__title{font-size:clamp(2.2rem,1.4rem + 5vw,3rem)}}
