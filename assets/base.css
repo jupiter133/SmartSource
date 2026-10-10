@@ -3149,3 +3149,9 @@ body:has(.pdp-sticky.is-on) .mega-overlay{display:none}
 @media (max-width:989px){.sell-wiz .wiz-cards--cats,.sell-wiz .wiz-cards--brands,.sell-wiz .wiz-cards--models{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:749px){.sell-wiz .wiz-cards--cats,.sell-wiz .wiz-cards--brands,.sell-wiz .wiz-cards--models{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .sell-wiz .wiz-card--model .wiz-card__media,.sell-wiz .wiz-card--fam .wiz-card__media{aspect-ratio:4/3}
+/* Sell / trade-in pages + What we pay: Back Market type style (DM Sans, medium-weight headings, tight tracking, no heavy 800s) */
+body[class*="tpl-page-sell"], body.tpl-page-what-we-pay{font-family:"DM Sans",Inter,system-ui,sans-serif}
+body[class*="tpl-page-sell"] main :is(h1,h2,h3,h4), body.tpl-page-what-we-pay main :is(h1,h2,h3,h4){font-family:"DM Sans",Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.02em}
+body[class*="tpl-page-sell"] main h1, body.tpl-page-what-we-pay main h1{font-weight:700;letter-spacing:-.03em;line-height:1.05}
+body[class*="tpl-page-sell"] main :is(button,input,select,textarea,.btn), body.tpl-page-what-we-pay main :is(button,input,select,textarea,.btn){font-family:inherit}
+body[class*="tpl-page-sell"] main :is(strong,b,.pay-row__price,.wiz-card__title), body.tpl-page-what-we-pay main :is(strong,b,.pay-row__price){font-weight:600}
